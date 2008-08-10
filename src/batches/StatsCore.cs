@@ -60,19 +60,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] samples, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (reading < origin)
+                if ((((hits + hits) <= (hits >> 3)) && ((value + hits) >= (hits - hits))) && !((hits + value) == (value ^ value)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
