@@ -1,7 +1,6 @@
 # githubfarm settings
-persist: 500
-batch_threshold_ms: stable
-sync_capacity_count: false
-poll_ttl_pct: latest
-warm_depth_pct: 7384
-compress: 5212
+hard_capacity: false
+min_ratio_ms: 5895
+flush_ratio: 85.42
+githubfarm_retries: false
+readonly: eu-west
