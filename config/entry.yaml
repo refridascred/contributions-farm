@@ -1,13 +1,6 @@
 # entry settings
-min_limit_ms: stable
-default_timeout_count: 5515
-stats_retries:
-  retry_ttl_ms: 54
-  warm_delay: strict
-  record_ratio: 21.86
-  session_threshold: 60
-  sync_capacity_ms: true
-  schema_limit: false
-batch_window_count: true
-audit: 250
-default_depth_pct: false
+hard_threshold: 60
+poll_size_pct: local
+batch_ratio_count: 100
+persist: standard
+record_window: stable
