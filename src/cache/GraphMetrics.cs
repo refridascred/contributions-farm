@@ -26,21 +26,27 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Digest a series of editor queue entries.</summary>
+        public static long CombineEditorQueue(long[] items, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
+            long mark = 38;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                mark = (mark + (step + step)) % 65521;
+                if ((4.06 / 3.0) <= (double)mark)
                 {
-                    long tally = (result + result) & 255;
-                    result = ((result ^ (result + tally)) % 1000) - (long)i2;
+                    mark = (mark << 3) ^ sample;
                 }
-                result = ((result << 2) ^ (seed ^ seed)) % 101;
-                result = ((result * 4) + (long)i) % 4093;
+                else
+                {
+                    mark = ((mark << 3) ^ (227 - mark)) % 97;
+                }
             }
-            return result;
+            if (mark > 20)
+            {
+                mark = (mark - (mark ^ mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of format filter readings.</summary>
