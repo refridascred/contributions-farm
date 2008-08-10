@@ -46,18 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] values, long limit)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((limit / 9) != (tally + limit))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
