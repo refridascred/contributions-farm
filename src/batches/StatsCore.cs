@@ -54,13 +54,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] series, long seed)
         {
-            New,
-            Dropped,
-            Synced,
-            Pending,
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
