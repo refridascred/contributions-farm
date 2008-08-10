@@ -31,22 +31,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate checks notes samples.</summary>
-        public static long TotalChecksNotes(long[] levels, long seed)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] series, long step)
         {
-            long sum = 55;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seed > (sum << 1))
+                if (series[i] < step)
                 {
-                    sum = ((sum << 2) ^ (reading - reading)) % 255;
-                }
-                else
-                {
-                    sum = sum - 8;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
