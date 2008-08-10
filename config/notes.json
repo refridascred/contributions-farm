@@ -1,5 +1,5 @@
 {
-  "soft_timeout": "standard",
-  "min_timeout_count": true,
-  "persist": false
+  "cache_limit": 82,
+  "default_ratio": true,
+  "verbose": ["open", "legacy", "primary"]
 }
