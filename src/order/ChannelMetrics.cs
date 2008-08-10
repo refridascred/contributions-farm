@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Count format record pairs that satisfy a relation.</summary>
+        public static long PairFormatRecordCount(long[] values)
         {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the cluster level values.</summary>
