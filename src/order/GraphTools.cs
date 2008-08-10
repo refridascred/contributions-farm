@@ -15,23 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] series)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] readings)
         {
-            long mix = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((double)sample >= 4.9)
+                if (!((double)datum < 11.0) && ((double)count <= (double)74))
                 {
-                    mix = (mix ^ (962 * 2)) % 97;
+                    count = count + 2;
                 }
-                mix = ((mix * 2) + (sample >> 1)) % 65521;
             }
-            if (mix > 307)
-            {
-                mix = ((mix * 4) + (mix ^ 3)) % 1000;
-            }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Fold a list of filter schema readings.</summary>
