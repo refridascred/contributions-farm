@@ -22,22 +22,12 @@ namespace Common.Utilities
         public const long SoftWidth = 3393;
         public const long BurstAccount = 669;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] data)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (hits > (reading * 5))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Synced,
+            Active,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
