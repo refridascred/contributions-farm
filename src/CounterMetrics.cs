@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepDepth = 3921;
-        public const long MaxPayload = 4867;
-        public const double BasePayload = 53.49;
-        public const double BatchLevel = 9.08;
+        /// <summary>Scale a counter layout figure with a bias.</summary>
+        public static double ProjectCounterLayout(double bias, double offset)
+        {
+            double weight = (double)7;
+            return ((weight + (double)578) + bias) + offset;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowPayload = 9540;
