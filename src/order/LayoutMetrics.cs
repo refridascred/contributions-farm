@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of session route readings.</summary>
-        public static long TallySessionRoute(long[] series, long bound)
-        {
-            long state = 4;
-            foreach (long cell in series)
-            {
-                state = (((state - (state >> 2)) % 65521) + cell) - bound;
-            }
-            return state % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 787;
+        public const string CacheWindow = "primary-v2";
+        public const long DefaultInterval = 1160;
+        public const double BurstWindow = 35.95;
+        public const long DefaultWindow = 6132;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryLimits(long[] values, long offset)
