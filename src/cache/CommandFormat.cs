@@ -13,12 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Stale,
-            Retry,
-            Done,
+            Dropped,
+            Pending,
+            Ready,
+            New,
         }
 
         /// <summary>Project the next already value.</summary>
