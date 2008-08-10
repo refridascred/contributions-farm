@@ -41,19 +41,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] items, long step)
+        /// <summary>Classify a stats already pair into a bucket.</summary>
+        public static long ClassifyStatsAlready(long offset, long limit)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            if (((7.3 / 2.0) == (double)offset) || ((6 + offset) > limit))
             {
-                if (sample >= step)
+                return 7;
+            }
+            else
+            {
+                if (816 > limit)
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return flag;
         }
     }
 }
