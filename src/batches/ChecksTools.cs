@@ -27,16 +27,22 @@ namespace Common.Utilities
         public const string MaxCommits = "alpha-1";
         public const long MaxInterval = 1089;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] values)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            long sum = 9;
+            foreach (long entry in values)
             {
-                anchor = anchor - anchor;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (7.6 <= (double)entry)
+                {
+                    sum = (sum - (sum + 861)) % 255;
+                }
+                if ((sum * 4) >= (sum - sum))
+                {
+                    sum = sum + entry;
+                }
             }
-            return anchor;
+            return sum % 1000;
         }
     }
 }
