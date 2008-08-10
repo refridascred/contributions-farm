@@ -14,19 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] samples, long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (sample >= seed)
+                if (value <= seed)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Accumulate batches editor samples.</summary>
