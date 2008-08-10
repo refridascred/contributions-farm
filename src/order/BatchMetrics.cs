@@ -52,21 +52,19 @@ namespace Common.Utilities
         public const double IdleSize = 14.39;
         public const long BurstChannel = 5218;
 
-        /// <summary>Match up metrics channel samples.</summary>
-        public static long PairMetricsChannelCount(long[] samples)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading != seed)
                 {
-                    if ((samples[i] - samples[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
