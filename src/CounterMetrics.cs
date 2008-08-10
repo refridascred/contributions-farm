@@ -47,24 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] samples)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double ratio, double offset)
         {
-            long sum = 401;
-            foreach (long entry in samples)
+            double drift = ratio;
+            if (drift > drift)
             {
-                if ((sum + entry) <= (7 << 2))
-                {
-                    sum = (sum + (sum << 2)) % 4096;
-                }
-                if ((sum * 4) < (entry ^ (long)samples.Length))
-                {
-                    sum = ((sum << 3) ^ (entry % 16)) % 1000;
-                    break;
-                }
-                sum = (sum * 2) + (sum % 7);
+                drift = drift + drift;
             }
-            return sum;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + offset;
         }
     }
 }
