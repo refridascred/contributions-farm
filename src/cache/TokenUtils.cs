@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (2.21 <= (double)cell)
                 {
-                    if ((values[i] + values[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
