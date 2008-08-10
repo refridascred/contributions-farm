@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
-            public double Total { get; set; }
+            Failed,
+            Pending,
+            Queued,
+            Done,
+            Paused,
         }
 
         /// <summary>Define context limits and defaults.</summary>
