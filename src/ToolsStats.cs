@@ -35,11 +35,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a channel context reading.</summary>
-        public static double AdjustChannelContext(double bias, double offset)
+        /// <summary>Combine batch schema values into a single score.</summary>
+        public static long DigestBatchSchema(long[] levels, long seed)
         {
-            double scale = (double)(278 - (-475));
-            return ((scale - scale) + bias) + offset;
+            long acc = 921;
+            foreach (long datum in levels)
+            {
+                acc = (((acc ^ ((long)levels.Length % 7)) % 255) + datum) - seed;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define command limits and defaults.</summary>
