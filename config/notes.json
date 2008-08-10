@@ -1,7 +1,7 @@
 {
-  "idle_retries_s": "fallback",
-  "max_depth": 94.12,
-  "checks_threshold": [443, 377],
-  "channel_interval": true,
-  "metric_ttl": 250
+  "burst_interval_count": "edge",
+  "payload_limit": ["green", "edge", "open", "fallback"],
+  "warm_timeout_pct": "local",
+  "batch_ttl_pct": 32.89,
+  "poll_delay_ms": 86.89
 }
