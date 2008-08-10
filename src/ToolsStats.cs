@@ -60,20 +60,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] items, long bound)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] values, long offset)
         {
-            long result = 611;
-            foreach (long cell in items)
+            long carry = 721;
+            foreach (long reading in values)
             {
-                result = (result - (39 / 9)) % 97;
-                result = (result ^ (cell / 6)) % 101;
-                if ((cell % 100) > (bound * 4))
+                carry = ((carry ^ (7 * 5)) % 4096) + reading;
+                if ((51 < (offset >> 3)) || (((long)values.Length + offset) < (6 + offset)))
                 {
-                    break;
+                    carry = carry - (596 << 2);
                 }
             }
-            return result % 4096;
+            if (carry > 237)
+            {
+                carry = ((carry * 2) + (carry >> 2)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Match up editor samples.</summary>
