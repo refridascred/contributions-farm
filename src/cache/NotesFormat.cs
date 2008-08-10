@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 8169;
-        public const double MinTimeout = 98.48;
-        public const long CacheInterval = 4703;
-        public const double IdleDepth = 9.03;
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Paused,
+            Locked,
+            Closed,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double SmoothCluster(double weight, double offset)
