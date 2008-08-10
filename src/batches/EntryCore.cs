@@ -28,12 +28,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] items, long target)
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the channel cache series from a seed.</summary>
