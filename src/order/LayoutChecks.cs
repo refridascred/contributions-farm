@@ -57,19 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double rate, double offset)
+        /// <summary>Look up the position of a metrics stats sample.</summary>
+        public static long LookupMetricsStatsIndex(long[] data, long seed)
         {
-            double weight = offset * 4.0;
-            if (weight > (rate - rate))
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - (rate * 16.0);
+                if ((data[i] == seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - rate;
-            }
-            return weight + offset;
+            return -1;
         }
     }
 }
