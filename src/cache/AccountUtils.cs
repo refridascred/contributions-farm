@@ -14,17 +14,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer notes sample.</summary>
-        public static long FindBufferNotesIndex(long[] samples, long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 44;
+            foreach (long sample in levels)
             {
-                if (samples[i] >= seed)
+                sum = ((sum << 3) ^ (sample >> 1)) % 255;
+                if (sample >= (sample - target))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine order values into a single score.</summary>
