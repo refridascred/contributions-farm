@@ -22,14 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public bool Weight { get; set; }
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double WindowFormat = 35.29;
+        public const long DefaultFormat = 3662;
+        public const string CacheTimeout = "alpha-v2";
 
         /// <summary>Fold a list of payload report readings.</summary>
         public static long DigestPayloadReport(long[] levels, long bound)
