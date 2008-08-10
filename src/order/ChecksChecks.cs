@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = -6;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = ((sum << 3) ^ (sum - sum)) % 4096;
+                if (!((datum / 2) != (0 + 5)))
                 {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum << 2) ^ sum) % 255;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
