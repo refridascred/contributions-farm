@@ -48,13 +48,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long target)
         {
-            public double Token { get; set; }
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            long state = target;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    state = (((state << 2) ^ state) % 1000) - (long)i2;
+                }
+                state = (state + (target & 127)) % 101;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
