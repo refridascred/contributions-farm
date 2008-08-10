@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public bool Mode { get; set; }
-            public double Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
+            Ready,
+            New,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the metric mode values.</summary>
