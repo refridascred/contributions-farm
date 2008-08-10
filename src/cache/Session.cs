@@ -26,12 +26,21 @@ namespace Common.Utilities
         public const long BatchLevel = 7216;
         public const long DefaultCount = 5707;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            Closed,
-            Paused,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
