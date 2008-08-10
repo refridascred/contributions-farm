@@ -16,12 +16,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] values, long offset)
         {
-            Idle,
-            Paused,
-            Done,
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up buffer samples.</summary>
