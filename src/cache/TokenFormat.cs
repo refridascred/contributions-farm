@@ -43,11 +43,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long bound)
         {
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
+            long total = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
