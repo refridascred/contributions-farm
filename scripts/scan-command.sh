@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in strict stable; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 8); do
     total=$((total + i * 3))
 done
 log "total ${total}"
-
-for item in local stable eu-west fallback; do
-    log "checking ${item}"
-done
