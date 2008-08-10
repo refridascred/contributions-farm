@@ -27,12 +27,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Dropped,
+            Draft,
+            Ready,
+            Done,
+            Synced,
         }
 
         /// <summary>Combine route values into a single score.</summary>
