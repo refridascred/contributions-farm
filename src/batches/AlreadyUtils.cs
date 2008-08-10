@@ -25,21 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] series)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)(269 + 338);
+            if (ratio <= ratio)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (ratio - offset) - scale;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (ratio * 7.2);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
