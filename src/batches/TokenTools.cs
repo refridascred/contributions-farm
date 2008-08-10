@@ -12,22 +12,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] values, long step)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (!((step + 267) == (3 * 3)) || ((step << 2) <= (44 - tally)))
-                {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
