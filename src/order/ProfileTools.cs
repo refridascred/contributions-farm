@@ -27,19 +27,38 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] readings, long seed)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long seed, long limit)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            if (((8.0 / 4.0) == (double)seed) && ((seed + seed) >= (seed + limit)))
             {
-                if (entry < seed)
+                return 8;
+            }
+            else
+            {
+                if (limit < (limit >> 3))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit << 1) > (seed + 243))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((16.0 - 8.6) >= (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
