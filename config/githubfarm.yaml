@@ -1,7 +1,14 @@
 # githubfarm settings
-default_threshold:
-  - 322
-  - 59
-soft_size_s: 8489
-audit: 92.4
-channel_ratio: eu-west
+retry_capacity:
+  checks_size: 500
+  warm_timeout_s:
+    - 214
+    - 343
+    - 408
+  retry_ttl_s:
+    - 232
+    - 262
+dry_run: 1024
+payload_ttl: staging
+batch_ratio_ms: 1024
+buffer_timeout: 60
