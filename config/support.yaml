@@ -1,6 +1,4 @@
 # support settings
-enabled: open
-metrics_interval: 6436
-readonly: 30
-compress: true
-burst_timeout_count: 4917
+warm_timeout: local
+warm_limit_count: eu-west
+cache_size_pct: 9641
