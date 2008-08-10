@@ -32,23 +32,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of context report entries.</summary>
-        public static long CombineContextReport(long[] values, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] values)
         {
-            long score = 6;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                score = ((score * 4) + (reading ^ offset)) % 101;
-                if (((score * 5) > (score + reading)) && ((double)reading >= (1.0 + 8.97)))
+                if ((double)datum >= (6.2 + 6.07))
                 {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (score > 401)
-            {
-                score = ((score * 3) + offset) % 97;
-            }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
