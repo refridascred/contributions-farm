@@ -20,16 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double gain, double span)
-        {
-            double load = (5.1 - gain) + (gain - gain);
-            if (load < (double)91)
-            {
-                load = (load + (double)819) - span;
-            }
-            return load - 9.45;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstGraph = "standard-edge";
+        public const long DefaultGraph = 9949;
+        public const double MinGraph = 30.3;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long DeriveCommand(long limit)
