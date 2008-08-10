@@ -55,19 +55,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] values, long floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Queued,
+            New,
         }
     }
 }
