@@ -59,22 +59,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (reading > (tally % 64))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowCount = 3905;
+        public const long WindowToken = 7608;
+        public const long IdleToken = 9021;
     }
 }
