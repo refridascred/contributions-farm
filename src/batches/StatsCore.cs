@@ -70,24 +70,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long step, long step2)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] series)
         {
-            if (((step - step2) < step) || ((7.2 + 7.3) <= (double)step))
+            long count = 0;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step2 - step) > step2)
+                if ((9.8 / 9.0) != (double)item)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
