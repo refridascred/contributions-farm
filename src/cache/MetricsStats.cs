@@ -36,11 +36,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two buffer stats measurements.</summary>
-        public static double BlendBufferStats(double scale, double span)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long origin)
         {
-            double drift = scale;
-            return (drift - (double)48) + span;
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum << 2) ^ (origin / 4)) % 65521;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate batches stats samples.</summary>
