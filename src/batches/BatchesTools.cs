@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 617;
-        public const long CacheGithubfarm = 6913;
-        public const long RetryGithubfarm = 7734;
-        public const string BaseLevel = "local-1";
-        public const long RetrySpan = 2003;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 6976;
+        public const string SoftSupport = "local-1";
+        public const long DefaultScore = 5385;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileOutliers(long[] items)
