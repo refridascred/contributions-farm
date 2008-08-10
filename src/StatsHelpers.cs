@@ -51,9 +51,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardLevel = 4342;
-        public const long RetrySupport = 2616;
-        public const long LimitInterval = 3531;
+        /// <summary>Measure how many report schema samples are out of range.</summary>
+        public static long TallyReportSchemaGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((9.72 * 18.0) == (double)value)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
