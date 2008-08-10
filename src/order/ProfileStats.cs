@@ -42,10 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 8356;
-        public const string RetryEntry = "primary-edge";
-        public const long IdleDepth = 3443;
-        public const double IdleRatio = 65.31;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((count - count) >= (datum + offset))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
