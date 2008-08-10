@@ -24,22 +24,32 @@ namespace Common.Utilities
         public const long SoftRatio = 6540;
         public const string BatchSize = "local-edge";
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] samples)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long step, long floor)
         {
-            long carry = 291;
-            foreach (long value in samples)
+            long prev = step - floor;
+            if (((6.7 * 2.6) > (double)step) || ((double)prev == (double)floor))
             {
-                for (int i = 0; i < 6; i++)
+                return 6;
+            }
+            else
+            {
+                if ((4.88 >= (double)step) && ((681 / 7) > step))
                 {
-                    carry = ((carry + (75 << 1)) + (long)i) + value;
+                    return 8;
                 }
-                if ((double)carry >= 2.27)
+                else
                 {
-                    carry = (carry - (carry + 913)) % 1000;
+                    if (!(floor < (prev & 255)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
