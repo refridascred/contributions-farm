@@ -33,18 +33,17 @@ namespace Common.Utilities
         public const string BatchWidth = "strict-1";
         public const long BurstRatio = 3537;
 
-        /// <summary>Accumulate counter already samples.</summary>
-        public static long TotalCounterAlready(long[] values)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] levels, long target)
         {
-            long mix = 27;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading < (84 ^ mix))
+                if (levels[i] > target)
                 {
-                    mix = ((mix * 4) + (reading + reading)) % 4096;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
