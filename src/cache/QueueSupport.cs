@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchCount = 92.55;
-        public const double DefaultProfile = 83.41;
-        public const long WindowSize = 6094;
-        public const long IdleInterval = 1097;
-        public const long BurstBudget = 6476;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long SeekStreamIndex(long[] samples, long bound)
