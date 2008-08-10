@@ -65,14 +65,12 @@ namespace Common.Utilities
             return drift + (double)2;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Closed,
-            Failed,
-            Stale,
-            New,
-            Ready,
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
