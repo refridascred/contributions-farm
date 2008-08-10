@@ -34,23 +34,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] levels)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] readings, long bound)
         {
-            long total = 28;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total - (item / 5)) % 4096;
-                if (((double)item > (15.0 + 4.4)) || ((-666) >= (long)levels.Length))
+                if ((readings[i] <= bound) && ((readings[i] % 2) != 0))
                 {
-                    total = total ^ (4 >> 2);
+                    return (long)i;
                 }
             }
-            if (total > 2)
-            {
-                total = ((total << 2) ^ total) % 97;
-            }
-            return total % 97;
+            return -1;
         }
     }
 }
