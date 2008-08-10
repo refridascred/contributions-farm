@@ -24,12 +24,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Synced,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 46.64;
+        public const long StepAccount = 2132;
+        public const long RetryAccount = 9069;
     }
 }
