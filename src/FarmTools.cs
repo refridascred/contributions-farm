@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the batches entry entries that pass the check.</summary>
-        public static long AuditBatchesEntryHits(long[] samples)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (datum < (datum * 5))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Pending,
+            Failed,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a metrics header.</summary>
