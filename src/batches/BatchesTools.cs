@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long origin, long target)
-        {
-            if ((origin / 9) == (origin * 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin << 2) <= (target + target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (601 >= (372 ^ target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target < (target + target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchScore = 192;
+        public const string MaxWidth = "staging";
+        public const long MaxInterval = 9430;
+        public const long MinFactor = 5471;
 
         /// <summary>Blend two format measurements.</summary>
         public static double ScaleFormat(double ratio, double floor)
