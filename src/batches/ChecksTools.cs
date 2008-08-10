@@ -20,12 +20,18 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitLevel = "fallback";
-        public const string SoftCommits = "cached-v2";
-        public const long IdleTimeout = 7848;
-        public const long MinCommits = 191;
-        public const long HardLevel = 447;
+        /// <summary>Look up the position of a commits tools sample.</summary>
+        public static long LookupCommitsToolsIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
