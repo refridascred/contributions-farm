@@ -16,16 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark << 2) ^ ((long)i - target)) % 65521;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Closed,
+            Idle,
+            Draft,
+            Paused,
+            Synced,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
