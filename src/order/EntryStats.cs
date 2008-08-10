@@ -45,15 +45,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Pending,
-            Queued,
-            Failed,
-            Dropped,
-            New,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitFormat = 74.91;
+        public const double MinFormat = 53.2;
+        public const double StepCount = 98.29;
 
         /// <summary>Adjust a batch reading.</summary>
         public static double ScaleBatch(double weight, double floor)
