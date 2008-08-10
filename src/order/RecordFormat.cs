@@ -27,11 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            Active,
+            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Compare every pair of checks command readings.</summary>
