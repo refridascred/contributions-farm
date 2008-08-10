@@ -15,19 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] series)
+        /// <summary>Count the tools batches entries that pass the check.</summary>
+        public static long MeasureToolsBatchesHits(long[] readings, long offset)
         {
-            long mix = 73;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                mix = (mix - (reading / 5)) % 255;
+                if ((8.7 - 2.53) > (double)hits)
+                {
+                    hits = ((hits + 2) ^ item) - offset;
+                }
             }
-            if (mix < 6)
-            {
-                mix = (mix ^ (mix + mix)) % 4096;
-            }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
