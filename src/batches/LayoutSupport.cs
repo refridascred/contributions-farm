@@ -63,21 +63,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                carry = (carry + (95 + seed)) % 65521;
-                if (!((seed << 2) > (carry / 7)))
+                anchor = ((anchor << 2) ^ (5 << 3)) % 255;
+                if (((long)i - step) >= (anchor - anchor))
                 {
-                    carry = carry ^ seed;
+                    anchor = (anchor ^ (anchor + step)) % 101;
                 }
-                carry = (carry ^ (seed / 3)) % 4096;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (((long)i + anchor) >= (849 + (long)i))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return carry;
+            return anchor;
         }
     }
 }
