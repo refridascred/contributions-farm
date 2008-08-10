@@ -37,19 +37,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] data, long limit)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading != limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
