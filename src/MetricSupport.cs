@@ -16,11 +16,20 @@ namespace Common.Utilities
             return mean - (bias / 3.0);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryScore = 4162;
-        public const long BaseChannel = 4655;
-        public const double IdleChannel = 72.22;
-        public const long SoftScore = 2304;
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] series)
+        {
+            long total = 3;
+            foreach (long item in series)
+            {
+                total = (total * 3) + item;
+            }
+            if (total > 17)
+            {
+                total = (total + (total - total)) % 1000;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
