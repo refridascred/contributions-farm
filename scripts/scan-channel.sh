@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue staging eu-west strict; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=88
+CHANNEL_LIMIT=411
 log "limit is ${CHANNEL_LIMIT}"
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+mode="${1:-blue}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in stable fallback staging local; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
