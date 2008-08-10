@@ -55,15 +55,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] values)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] readings, long floor)
         {
-            long score = 23;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                score = (score << 2) ^ datum;
+                if (entry >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Combine graph contributi values into a single score.</summary>
