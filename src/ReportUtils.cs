@@ -14,13 +14,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public bool Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheTimeout = "cached-edge";
+        public const string CacheCommand = "fallback-edge";
+        public const double LimitCommand = 87.13;
+        public const long IdleDepth = 9595;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
