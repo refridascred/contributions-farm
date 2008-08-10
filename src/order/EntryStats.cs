@@ -45,11 +45,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftSize = 5532;
-        public const double LimitDepth = 19.45;
-        public const long MinRatio = 7834;
-        public const double RetryFactor = 95.55;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Draft,
+            Done,
+            Failed,
+            Active,
+            Locked,
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
