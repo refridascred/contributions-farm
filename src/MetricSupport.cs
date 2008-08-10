@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next payload format value.</summary>
-        public static double BlendPayloadFormat(double bias, double offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double weight, double bias)
         {
-            double rate = bias;
-            if (rate >= rate)
+            double mean = bias;
+            for (int i = 0; i < 8; i++)
             {
-                rate = rate - offset;
+                mean = (mean + (5.6 + weight)) + (double)(long)i;
             }
-            else
-            {
-                rate = rate + (bias + offset);
-            }
-            return rate + (double)90;
+            return mean - (bias / 3.0);
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
