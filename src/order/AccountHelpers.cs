@@ -48,17 +48,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] values)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] items, long bound)
         {
-            long mix = -3;
-            foreach (long item in values)
+            long result = 70;
+            foreach (long reading in items)
             {
-                mix = ((mix * 3) + (13 - item)) % 65521;
-                mix = (mix - (mix + item)) % 97;
-                mix = mix ^ (730 - item);
+                result = ((result << 3) ^ (reading << 2)) + bound;
             }
-            return mix;
+            if (result < 6)
+            {
+                result = (result + (result % 10)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Combine stats cluster values into a single score.</summary>
