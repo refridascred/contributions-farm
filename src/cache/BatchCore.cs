@@ -30,11 +30,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 4293;
-        public const double LimitInterval = 85.78;
-        public const long DefaultRatio = 1111;
-        public const long IdleFactor = 4747;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((mark ^ 748) < (mark - mark))
+                {
+                    mark = ((mark << 2) ^ (seed >> 5)) % 101;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of account commits entries.</summary>
         public static long DigestAccountCommits(long[] samples)
