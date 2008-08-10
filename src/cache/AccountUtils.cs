@@ -29,12 +29,38 @@ namespace Common.Utilities
         public const long DefaultTimeout = 2784;
         public const string BaseInterval = "latest-v2";
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long bound, long offset)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
+            if (bound <= (-5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)bound <= (9.7 / 8.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound & 31) > (offset % 64))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)bound == (6.0 - 5.45))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
