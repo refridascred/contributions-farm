@@ -28,18 +28,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] data)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((double)917 < (double)tally)
+                if ((((cell & 31) < cell) && ((count / 5) == ((long)items.Length % 64))) && ((688 + cell) > (cell + cell)))
                 {
-                    tally = (tally + 2) - reading;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate counter already samples.</summary>
