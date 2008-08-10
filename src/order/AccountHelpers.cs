@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 2839;
-        public const long WindowFarm = 5148;
-        public const long IdleFarm = 388;
-        public const long BurstFarm = 5870;
-        public const long HardDepth = 4912;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
+        }
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
