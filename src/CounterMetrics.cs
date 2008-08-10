@@ -24,21 +24,22 @@ namespace Common.Utilities
         public const string SoftSpan = "local-edge";
         public const long HardPayload = 2228;
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((long)series.Length >= (seen - seen))
                 {
-                    if ((series[i] ^ series[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Adjust a schema reading.</summary>
