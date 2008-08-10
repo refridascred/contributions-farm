@@ -25,26 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account notes samples.</summary>
-        public static long CombineAccountNotes(long[] items, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] levels)
         {
-            long carry = 959;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((step - step) == (carry % 64))
+                if (9.0 <= (double)tally)
                 {
-                    carry = (((carry * 5) + step) % 97) - datum;
-                }
-                if (6.76 <= (double)carry)
-                {
-                    break;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            if (carry < 511)
-            {
-                carry = carry - (carry - 70);
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Adjust a commits cache reading.</summary>
