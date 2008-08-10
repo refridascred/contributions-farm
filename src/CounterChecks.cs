@@ -32,16 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Digest a series of metrics schema entries.</summary>
+        public static long DigestMetricsSchema(long[] data)
         {
-            long result = -92;
-            foreach (long value in values)
+            long anchor = 9;
+            foreach (long cell in data)
             {
-                result = (result - ((-4) / 5)) % 4096;
-                result = (result * 2) + (value ^ result);
+                if (anchor > (cell - 53))
+                {
+                    anchor = ((anchor << 3) ^ ((long)data.Length * 2)) % 101;
+                    break;
+                }
+                anchor = (anchor ^ (anchor + anchor)) % 65521;
             }
-            return result;
+            if (anchor > 7)
+            {
+                anchor = (anchor * 4) + (long)data.Length;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
