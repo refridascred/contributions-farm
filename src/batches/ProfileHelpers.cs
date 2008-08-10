@@ -69,12 +69,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long result = 966;
+            foreach (long cell in readings)
+            {
+                result = (result ^ (result + result)) % 101;
+                if (((result + 275) < (cell + result)) || ((cell - result) >= (cell + cell)))
+                {
+                    result = (result + result) % 65521;
+                }
+            }
+            return result;
         }
     }
 }
