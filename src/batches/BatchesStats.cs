@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] levels)
         {
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((tally << 3) >= cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
