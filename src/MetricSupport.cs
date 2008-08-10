@@ -19,19 +19,15 @@ namespace Common.Utilities
         public const double LimitSpan = 59.85;
         public const double BatchScore = 4.83;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] values, long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long acc = -1;
+            foreach (long sample in data)
             {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc << 2) ^ bound) + sample;
             }
-            return stale;
+            return acc;
         }
     }
 }
