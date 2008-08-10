@@ -1,9 +1,13 @@
 # entry settings
-context_window: 1442
-sync_depth: true
-poll_threshold:
-  - open
-  - strict
-farm_window: primary
-default_delay_pct: 13.7
-max_depth: 500
+enabled: 3723
+persist:
+  - 435
+  - 139
+  - 471
+poll_window_pct: 42.71
+stats_ratio:
+  - 158
+  - 421
+  - 127
+  - 424
+min_interval_s: green
