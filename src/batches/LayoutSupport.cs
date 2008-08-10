@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            Failed,
+            Dropped,
+            Ready,
+            Done,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
