@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] items, long target)
-        {
-            long total = 6;
-            foreach (long reading in items)
-            {
-                total = (((total - (total & 63)) % 255) - reading) - target;
-                total = (total - (total % 60)) % 101;
-            }
-            if (total > 932)
-            {
-                total = total + (total / 3);
-            }
-            return total % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepWidth = 4749;
+        public const long BaseDepth = 1880;
+        public const long LimitNotes = 8793;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long PairSupportCount(long[] samples)
