@@ -32,21 +32,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Derive the next command graph value from a seed.</summary>
+        public static long IterateCommandGraph(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
