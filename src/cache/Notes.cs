@@ -28,18 +28,12 @@ namespace Common.Utilities
             return (bias2 - rate) + bias;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] items, long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((double)limit > (1.8 * 16.0))
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
+            Ready,
+            Queued,
+            Done,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
