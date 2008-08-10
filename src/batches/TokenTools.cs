@@ -31,18 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] data)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!((1.55 * 3.0) == (double)tally))
-                {
-                    tally = (tally + 2) - item;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
