@@ -1,18 +1,9 @@
 # support settings
-retry_window_pct: 62.48
-route_threshold: true
-base_size_ms:
-  poll_limit_s:
-    - 216
-    - 423
-    - 113
-    - 281
-  audit: edge
-  filter_delay:
-    idle_depth: blue
-    flush_ratio_ms: 86
-    batch_interval: eu-west
-    editor_limit: false
-    base_capacity_pct: latest
-    commits_interval: 82.78
-farm_timeout: strict
+base_ttl_pct: false
+cache_interval:
+  layout_delay: 30
+  burst_size_s: eu-west
+  verbose: 100
+  min_depth_ms: 83.75
+  base_depth: false
+cache_threshold_pct: blue
