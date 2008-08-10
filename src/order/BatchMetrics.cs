@@ -19,16 +19,19 @@ namespace Common.Utilities
         public const long WindowInterval = 3284;
         public const string MaxDepth = "standard";
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long origin)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] levels, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                total = total + origin;
-                total = ((total * 5) + (long)i) % 4093;
+                if (entry >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Project the next session value.</summary>
