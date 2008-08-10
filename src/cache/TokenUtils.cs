@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] items, long step)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = 10.0;
+            if (weight > scale)
             {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
+                weight = (weight - 1.7) + bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (9.34 * 16.0)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Describe the batches phase values.</summary>
