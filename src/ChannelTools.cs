@@ -16,22 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] items, long offset)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long acc = 4;
-            foreach (long datum in items)
-            {
-                if (((1.0 / 2.0) != (double)datum) && (((long)items.Length >> 3) <= offset))
-                {
-                    acc = (acc + acc) % 65521;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (offset ^ acc)) % 4096;
-                }
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Locate a stream reading by value.</summary>
