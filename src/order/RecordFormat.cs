@@ -20,17 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] levels, long floor)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
