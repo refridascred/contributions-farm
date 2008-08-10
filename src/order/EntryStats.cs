@@ -20,19 +20,19 @@ namespace Common.Utilities
         public const long LimitInterval = 776;
         public const long MinRatio = 4990;
 
-        /// <summary>Roll a command commits counter forward.</summary>
-        public static long RollCommandCommits(long step)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] values, long step)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (!((-663) <= (step + step)))
+                if (sample <= step)
                 {
-                    score = (score + (step % 97)) % 97;
+                    ok = false;
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Find the first order context entry that matches the target.</summary>
