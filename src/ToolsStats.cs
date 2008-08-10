@@ -62,22 +62,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema stream readings against a rule.</summary>
-        public static long MeasureSchemaStreamHits(long[] readings, long bound)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long result = 611;
+            foreach (long cell in items)
             {
-                if ((long)readings.Length == (datum + (-745)))
+                result = (result - (39 / 9)) % 97;
+                result = (result ^ (cell / 6)) % 101;
+                if ((cell % 100) > (bound * 4))
                 {
-                    seen = (seen + 1) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return result % 4096;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
