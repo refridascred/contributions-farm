@@ -1,7 +1,10 @@
 # githubfarm settings
-warm_size_ms: 3596
-base_threshold_ms:
-  - stable
-  - fallback
-  - edge
-enabled: primary
+warm_timeout_s:
+  - 352
+  - 244
+  - 445
+base_retries_s: cached
+poll_limit: 30
+compress: 1024
+retry_ratio: 54.11
+soft_limit_ms: 16.65
