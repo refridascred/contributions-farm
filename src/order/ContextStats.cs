@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] values)
+        /// <summary>Roll a record schema counter forward.</summary>
+        public static long DeriveRecordSchema(long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long carry = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((9.32 - 2.74) == (double)sample)
-                {
-                    hits = hits + 2;
-                }
+                carry = carry + (limit - carry);
+                carry = (carry ^ (limit * 3)) % 65521;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
