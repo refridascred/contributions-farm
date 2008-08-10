@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 2))
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-mode="${1:-primary}"
+mode="${1:-green}"
 case "${mode}" in
-    eu-west)
+    strict)
         log "fast path"
         ;;
     *)
@@ -22,6 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest local open; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=119
+log "limit is ${COMMAND_LIMIT}"
