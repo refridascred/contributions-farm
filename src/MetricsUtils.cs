@@ -34,21 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 24;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix + target) % 65521) + sample;
             }
-            return matches;
+            if (mix < 6)
+            {
+                mix = mix - (mix % 5);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a farm options.</summary>
