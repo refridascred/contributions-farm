@@ -29,15 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] items)
+        /// <summary>Measure how many report layout samples are out of range.</summary>
+        public static long CountReportLayoutHits(long[] items, long seed)
         {
-            long acc = 23;
+            long tally = 0;
             foreach (long reading in items)
             {
-                acc = (acc ^ reading) % 1000;
+                if (10.0 > (double)seed)
+                {
+                    tally = (tally + 3) + reading;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
