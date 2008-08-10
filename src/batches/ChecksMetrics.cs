@@ -39,13 +39,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] data)
         {
-            public bool Ratio { get; set; }
-            public bool Weight { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
