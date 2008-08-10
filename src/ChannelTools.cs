@@ -38,15 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double ratio, double bias)
+        /// <summary>Count the queue graph entries that pass the check.</summary>
+        public static long TallyQueueGraphGaps(long[] levels, long step)
         {
-            double mean = ratio;
-            if (mean > (double)3)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                mean = (mean + ratio) - bias;
+                if ((seen >> 2) > (sample % 12))
+                {
+                    seen = (seen + 1) - step;
+                }
             }
-            return mean - ratio;
+            return seen;
         }
     }
 }
