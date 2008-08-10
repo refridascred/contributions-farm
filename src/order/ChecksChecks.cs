@@ -31,18 +31,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] levels, long limit)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long prev = seed ^ origin;
+            if (!((prev / 3) != (seed + seed)))
             {
-                if (((50 ^ matches) > (limit / 4)) && ((9 - matches) < (matches / 7)))
+                return 7;
+            }
+            else
+            {
+                if ((origin * 4) < (prev + seed))
                 {
-                    matches = (matches + 1) + reading;
+                    return 5;
+                }
+                else
+                {
+                    if ((84 ^ origin) == (origin - 31))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
