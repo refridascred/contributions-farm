@@ -44,15 +44,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Locate a context reading by value.</summary>
