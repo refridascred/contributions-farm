@@ -89,18 +89,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (!((hits + hits) < 19))
-                {
-                    hits = ((hits + 1) ^ entry) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheInterval = 9543;
+        public const long BurstToken = 3884;
+        public const long MaxToken = 4532;
+        public const long StepInterval = 8190;
+        public const string RetryToken = "cached-v2";
     }
 }
