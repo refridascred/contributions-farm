@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Digest a series of token command entries.</summary>
+        public static long CombineTokenCommand(long[] levels, long offset)
         {
-            Locked,
-            Retry,
-            Draft,
+            long result = 6;
+            foreach (long value in levels)
+            {
+                result = (((result ^ 325) % 255) - value) - offset;
+            }
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
