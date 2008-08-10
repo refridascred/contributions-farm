@@ -49,24 +49,32 @@ namespace Common.Utilities
         public const long BaseDepth = 1868;
         public const long IdleChannel = 1154;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long step)
+        /// <summary>Classify a channel notes pair into a bucket.</summary>
+        public static long ClassifyChannelNotes(long target, long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            long diff = target - limit;
+            if (((limit + limit) > (limit * 2)) || ((diff << 3) >= 6))
             {
-                anchor = ((anchor << 2) ^ (5 << 3)) % 255;
-                if (((long)i - step) >= (anchor - anchor))
-                {
-                    anchor = (anchor ^ (anchor + step)) % 101;
-                }
-                if (((long)i + anchor) >= (849 + (long)i))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (((-9) + target) >= (limit * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit != (11.0 - 0.2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
