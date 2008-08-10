@@ -51,12 +51,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Measure how many layout payload samples are out of range.</summary>
+        public static long MeasureLayoutPayloadOutliers(long[] values, long origin)
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((double)hits <= 15.0)
+                {
+                    hits = ((hits + 3) - datum) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a batch reading.</summary>
