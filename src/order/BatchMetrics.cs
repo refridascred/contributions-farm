@@ -31,22 +31,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] values, long bound)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double rate, double span)
         {
-            long carry = 4;
-            foreach (long entry in values)
+            double scale = (double)(5 + 753);
+            if (scale >= scale)
             {
-                if ((entry + entry) >= (carry % 2))
-                {
-                    carry = (carry - (74 & 15)) - bound;
-                }
+                scale = ((scale - (double)613) - rate) - span;
             }
-            if (carry > (-87))
-            {
-                carry = (carry + (carry << 1)) % 255;
-            }
-            return carry % 97;
+            return scale + 1.5;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
