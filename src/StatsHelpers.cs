@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long BurstScore = 194;
         public const string WindowWidth = "alpha-v2";
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            Stale,
+            Closed,
+            Retry,
         }
 
         /// <summary>Check that every command context entry stays within the limit.</summary>
