@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] levels, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                total = ((total * 5) + ((long)i * 3)) % 65521;
-                total = ((total * 4) + (long)i) % 4093;
+                if ((638 >> 1) > (hits ^ bound))
+                {
+                    hits = (hits + 2) ^ datum;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
