@@ -79,12 +79,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first checks batch entry that matches the target.</summary>
-        public static long LocateChecksBatchIndex(long[] values, long bound)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] > bound) && ((values[i] % 2) != 0))
+                if (items[i] > limit)
                 {
                     return (long)i;
                 }
