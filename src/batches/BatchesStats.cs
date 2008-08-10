@@ -18,24 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next schema order value from a seed.</summary>
-        public static long IterateSchemaOrder(long floor)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] series)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)mix < (16.0 / 3.0)) || ((floor ^ mix) >= floor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix - (mix + (long)i)) % 4096;
-                    mix = (mix * 5) + (floor * 4);
+                    if ((series[i] + series[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix << 3) ^ (mix + floor);
-                }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
