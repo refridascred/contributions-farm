@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long BatchCluster = 7432;
         public const long RetryTimeout = 8926;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] levels, long target)
-        {
-            long sum = 44;
-            foreach (long sample in levels)
-            {
-                sum = ((sum << 3) ^ (sample >> 1)) % 255;
-                if (sample >= (sample - target))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 7379;
+        public const string HardFactor = "cached-v2";
+        public const long SoftBatches = 2846;
+        public const long DefaultTimeout = 2784;
+        public const string BaseInterval = "latest-v2";
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LocateAccountIndex(long[] items, long target)
