@@ -1,12 +1,5 @@
 {
-  "compress": {
-    "route_capacity": true,
-    "schema_limit": [9, 79, 316, 69],
-    "enabled": [295, 210, 325],
-    "batch_threshold_ms": 1024,
-    "queue_limit": [348, 154, 11]
-  },
-  "route_timeout": true,
-  "min_limit_s": 100,
-  "command_threshold": 6915
+  "min_threshold_s": true,
+  "idle_capacity": 92.91,
+  "flush_depth": "cached"
 }
