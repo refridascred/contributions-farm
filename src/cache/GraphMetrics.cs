@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long limit, long offset)
-        {
-            if (((limit + offset) < (offset - limit)) && ((offset + limit) >= offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit < (double)3)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit - offset) >= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double WindowChannel = 27.03;
+        public const long WindowScore = 6757;
+        public const long BurstRatio = 8135;
+        public const long MinChannel = 206;
+        public const long BurstSize = 3438;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
