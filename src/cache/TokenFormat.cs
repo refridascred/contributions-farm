@@ -15,25 +15,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long floor, long bound)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long step)
         {
-            long diff = floor + bound;
-            if ((diff < 650) && ((double)diff < 9.3))
+            long result = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2 + floor) == (8 - floor))
+                if ((((long)i ^ result) >= (step ^ result)) || ((double)(long)i < (2.62 * 5.98)))
                 {
-                    return 6;
+                    result = (result + (long)i) % 1000;
+                }
+                if (!((result + result) < (step << 2)))
+                {
+                    result = result - (result - (long)i);
+                }
+                if ((result - step) < (76 / 3))
+                {
+                    result = result - (result + result);
                 }
                 else
                 {
-                    return 3;
+                    result = ((result << 2) ^ (result ^ 35)) % 255;
+                    result = (result - ((long)i << 3)) % 4096;
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Hold a payload stats.</summary>
