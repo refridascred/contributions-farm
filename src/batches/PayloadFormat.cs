@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] levels, long origin)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] data)
         {
             long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((origin + 29) >= (tally - origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) + item;
+                    if ((data[i] - data[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
