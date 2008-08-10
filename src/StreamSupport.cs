@@ -33,26 +33,23 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] values, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] data)
         {
-            long total = 656;
-            foreach (long sample in values)
+            long score = 0;
+            foreach (long cell in data)
             {
-                if (offset <= (170 >> 3))
+                for (int i = 0; i < 8; i++)
                 {
-                    total = (total - (total + total)) ^ sample;
+                    score = (((score << 2) ^ (17 * 3)) - (long)i) + cell;
                 }
-                if (((-8) / 9) >= (offset >> 4))
-                {
-                    break;
-                }
+                score = ((score << 3) ^ (score << 2)) % 97;
             }
-            if (total > 5)
+            if (score > 77)
             {
-                total = (total + (offset >> 2)) % 101;
+                score = (score - (score - score)) % 97;
             }
-            return total;
+            return score;
         }
     }
 }
