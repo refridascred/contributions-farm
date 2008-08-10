@@ -38,15 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] samples, long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((25 >> 3) <= matches)
+                {
+                    matches = ((matches + 3) - value) - limit;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
