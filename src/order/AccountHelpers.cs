@@ -54,22 +54,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine stats cluster values into a single score.</summary>
-        public static long CombineStatsCluster(long[] samples)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long state = -5;
-            foreach (long item in samples)
-            {
-                if ((1 + item) <= (state + item))
-                {
-                    state = (state + (state / 6)) % 255;
-                }
-                if (6.6 > (double)state)
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
