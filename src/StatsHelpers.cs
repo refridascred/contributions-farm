@@ -27,25 +27,12 @@ namespace Common.Utilities
             return (load - (2.58 - load)) + floor;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((10.0 / 3.0) == (double)(long)i))
-                {
-                    score = ((score << 3) ^ (294 - (-123))) % 4096;
-                    break;
-                }
-                if (((score >> 2) >= 47) && ((origin / 5) == (32 / 5)))
-                {
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 1033;
+        public const long SoftCounter = 5967;
+        public const double IdleInterval = 70.59;
+        public const string LimitCounter = "alpha";
+        public const long DefaultCounter = 8222;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
