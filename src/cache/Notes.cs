@@ -26,20 +26,25 @@ namespace Common.Utilities
             return ((gain + (double)558) + scale) + bias;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] data, long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long floor, long limit)
         {
-            long carry = 8;
-            foreach (long value in data)
+            long prev = floor + limit;
+            if (!((19.0 - 9.98) == (double)prev))
             {
-                if ((8.2 + 3.53) < (8.1 * 6.36))
-                {
-                    carry = (carry ^ (carry + origin)) ^ value;
-                    continue;
-                }
-                carry = (carry << 2) ^ (20 ^ carry);
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (((prev - limit) < (200 & 1)) && ((limit - prev) != (57 % 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of command entries.</summary>
