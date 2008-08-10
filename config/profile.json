@@ -1,16 +1,5 @@
 {
-  "burst_ratio_pct": {
-    "warm_ttl": "green",
-    "persist": 49,
-    "burst_interval": [487, 25],
-    "verbose": "blue",
-    "max_ratio_s": 12.12
-  },
-  "soft_limit_ms": {
-    "max_threshold_count": "latest",
-    "sync_threshold_ms": "blue",
-    "burst_depth_s": ["legacy", "staging", "blue", "green"],
-    "strict": 161
-  },
-  "sync_delay": 62.87
+  "cluster_timeout": false,
+  "order_window": false,
+  "sync_limit_ms": 30
 }
