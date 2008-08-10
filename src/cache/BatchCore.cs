@@ -34,16 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of account commits entries.</summary>
-        public static long DigestAccountCommits(long[] samples)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] samples, long step)
         {
-            long result = 39;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long item in samples)
             {
-                result = (result + result) - entry;
-                result = result + ((-2) - 68);
+                if (item >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result % 1000;
+            return found;
         }
     }
 }
