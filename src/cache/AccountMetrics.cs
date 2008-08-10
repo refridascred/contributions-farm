@@ -46,16 +46,11 @@ namespace Common.Utilities
         public const long MaxToken = 114;
         public const long MinToken = 674;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double rate, double span)
-        {
-            double drift = (rate / 4.0) - rate;
-            if (drift >= (double)(-931))
-            {
-                drift = (drift + 0.1) - span;
-            }
-            return drift - rate;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftLevel = 1293;
+        public const long DefaultRecord = 5396;
+        public const double MaxTimeout = 1.19;
+        public const long SoftRecord = 9936;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterGaps(long[] levels, long floor)
