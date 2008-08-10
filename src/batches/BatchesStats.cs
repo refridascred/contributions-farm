@@ -40,35 +40,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long floor, long limit)
+        /// <summary>Classify a token queue pair into a bucket.</summary>
+        public static long BucketTokenQueue(long seed, long bound)
         {
-            long prev = floor ^ limit;
-            if (((prev / 5) >= 2) && ((76 + floor) != (floor + floor)))
+            if (((double)bound < (0.9 * 4.0)) && ((bound % 60) < 5))
             {
                 return 4;
             }
             else
             {
-                if (floor <= (limit * 4))
+                if (!(141 < bound))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if ((5.83 * 4.8) == (double)floor)
+                    if ((bound / 8) != (492 + 858))
                     {
                         return 6;
                     }
                     else
                     {
-                        if (90 >= (limit * 2))
+                        if (((82 + bound) <= (seed + bound)) || ((8.4 * 5.0) >= (double)seed))
                         {
-                            return 0;
+                            return 5;
                         }
                         else
                         {
-                            return 3;
+                            return 2;
                         }
                     }
                 }
