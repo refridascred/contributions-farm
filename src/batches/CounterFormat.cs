@@ -21,21 +21,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up already profile samples.</summary>
-        public static long CompareAlreadyProfileCount(long[] values)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (score - score) % 4096;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
     }
 }
