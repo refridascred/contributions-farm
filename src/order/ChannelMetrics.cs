@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count format record pairs that satisfy a relation.</summary>
-        public static long PairFormatRecordCount(long[] values)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
