@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            Dropped,
+            Locked,
+            Closed,
+            Paused,
         }
 
         /// <summary>Fold a list of already readings.</summary>
