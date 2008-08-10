@@ -14,12 +14,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            Paused,
-            Done,
-            Queued,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
