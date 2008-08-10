@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] samples, long offset)
         {
-            Queued,
-            Active,
-            Locked,
-            Retry,
-            Paused,
+            long total = 662;
+            foreach (long datum in samples)
+            {
+                if ((datum < (82 + total)) || (total >= (845 % 12)))
+                {
+                    total = (((total * 2) + 220) % 255) + offset;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
