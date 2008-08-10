@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] levels, long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((638 >> 1) > (hits ^ bound))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 2) ^ datum;
+                    if ((items[i] - items[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
