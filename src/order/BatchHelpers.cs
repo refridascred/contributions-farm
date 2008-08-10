@@ -33,19 +33,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate notes checks readings against a bound.</summary>
-        public static bool CheckNotesChecksLimits(long[] levels, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (item >= limit)
+                if (sample >= target)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
