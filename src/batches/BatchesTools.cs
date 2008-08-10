@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((9.72 * 13.0) >= (double)sample) && ((sample + sample) >= matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
