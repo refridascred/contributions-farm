@@ -20,11 +20,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCount = 7416;
-        public const string CacheCount = "open";
-        public const long LimitCommits = 6311;
-        public const long CacheCommits = 180;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((sum - bound) <= (long)i)
+                {
+                    sum = (sum * 2) + bound;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long IdleCounter = 9093;
