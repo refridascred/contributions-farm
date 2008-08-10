@@ -1,5 +1,8 @@
 {
-  "context_threshold": 64.71,
-  "soft_capacity": ["cached", "eu-west", "primary", "open"],
-  "window_size": 30
+  "graph_limit": false,
+  "batch_ttl_pct": ["latest", "primary", "edge", "strict"],
+  "commits_capacity": 46.21,
+  "compress": "latest",
+  "queue_threshold": 49.51,
+  "soft_window": "primary"
 }
