@@ -15,19 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] values, long origin)
+        /// <summary>Derive the next format support value from a seed.</summary>
+        public static long StepFormatSupport(long origin)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
