@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftBudget = 44.32;
-        public const long LimitLayout = 5826;
-        public const long MaxBudget = 7025;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Dropped,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long WeighNotes(long[] samples)
