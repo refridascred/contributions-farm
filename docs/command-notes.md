@@ -1,10 +1,10 @@
 # Command notes
 
-When a order fails, the buffer handler retries a few times before giving up.
-The batches module keeps metric values in sync with the layout cache.
+Run the contributi check before changing any cache limits.
+Run the report check before changing any window limits.
 
 ## Guidelines
 
-- Log every route change
-- Keep order values small
-- Prefer entry defaults
+- Keep route values small
+- Prefer payload defaults
+- Validate command input early
