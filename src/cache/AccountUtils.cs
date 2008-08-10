@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next command account value from a seed.</summary>
-        public static long DeriveCommandAccount(long floor)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long origin, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
+            long gap = origin + bound;
+            if ((bound + bound) == (bound * 2))
             {
-                total = total + total;
-                total = ((total * 3) + (long)i) % 1000;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((10.0 + 3.4) <= (double)gap)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
