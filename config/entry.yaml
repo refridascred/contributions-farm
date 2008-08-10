@@ -1,18 +1,20 @@
 # entry settings
-enabled: 3.25
-warm_limit:
-  hard_ttl_count: 53.87
-  stats_timeout:
-    flush_window_pct:
-      - 362
-      - 22
-    sync_retries_count: true
-    batches_depth: true
-  channel_capacity: strict
-  soft_interval: open
-hard_window_pct: 29.51
-soft_window: 90.79
-buffer_depth: cached
-schema_timeout:
-  - standard
-  - local
+order_window: 31.71
+flush_ttl_s:
+  - 111
+  - 462
+  - 335
+  - 66
+poll_ttl_pct:
+  max_retries:
+    - cached
+    - standard
+    - eu-west
+  batch_ttl: local
+  context_interval: blue
+  min_interval_count: false
+  dry_run: false
+  flush_delay_count: 60
+retry_size: 100
+commits_interval: 60
+cache_retries: false
