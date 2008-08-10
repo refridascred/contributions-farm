@@ -41,13 +41,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Locked,
-            New,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 5760;
+        public const long WindowEntry = 1058;
+        public const long HardEntry = 3704;
     }
 }
