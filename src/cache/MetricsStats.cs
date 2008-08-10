@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Accumulate format stream samples.</summary>
+        public static long TallyFormatStream(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 17;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(datum < 773))
                 {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix * 5) + (mix - mix)) + limit;
+                }
+                else
+                {
+                    mix = mix + ((-3) << 2);
                 }
             }
-            return count;
+            if (mix < 146)
+            {
+                mix = (mix * 5) + ((-82) & 15);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
