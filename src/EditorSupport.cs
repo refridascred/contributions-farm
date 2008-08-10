@@ -72,15 +72,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double bias, double span)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] series, long bound)
         {
-            double bias2 = span;
-            if (bias2 > (span + 6.58))
+            bool valid = true;
+            foreach (long entry in series)
             {
-                bias2 = (bias2 + 1.66) - bias;
+                if (entry > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias2 - bias2;
+            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
