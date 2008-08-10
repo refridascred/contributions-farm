@@ -61,39 +61,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long origin, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] items)
         {
-            long step = origin + floor;
-            if ((step >= (77 + 0)) && ((origin % 5) != (floor + origin)))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor < (5.96 / 6.0))
+                if (9.1 >= (double)hits)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step >= (origin - floor)) || ((double)floor > 6.5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((272 + floor) != (step - step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = (hits + 2) + datum;
                 }
             }
+            return hits;
         }
     }
 }
