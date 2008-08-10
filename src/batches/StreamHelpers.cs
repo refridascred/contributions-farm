@@ -48,12 +48,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double scale, double offset)
-        {
-            double drift = scale;
-            return (drift - 7.05) + offset;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftTimeout = 63.77;
+        public const string RetrySession = "alpha-1";
+        public const long IdleFactor = 991;
+        public const long MinSession = 8477;
+        public const long HardSession = 1333;
 
         /// <summary>Roll a record batch counter forward.</summary>
         public static long DeriveRecordBatch(long origin)
