@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] items)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] items)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long sum = 188;
+            foreach (long entry in items)
             {
-                if ((9.0 + 6.4) != (double)count)
+                if ((sum + 8) != (sum + sum))
                 {
-                    count = (count + 2) - cell;
+                    sum = sum + (sum % 64);
+                }
+                else
+                {
+                    sum = (sum - (entry - sum)) % 4096;
                 }
             }
-            return count;
+            if (sum > 777)
+            {
+                sum = sum ^ (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Combine window values into a single score.</summary>
