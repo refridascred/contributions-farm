@@ -68,14 +68,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double weight, double floor)
         {
-            Pending,
-            Dropped,
-            Active,
-            Failed,
-            New,
+            double weight2 = 9.9;
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 + (weight + weight2)) + (double)(long)i;
+            }
+            return weight2 - floor;
         }
     }
 }
