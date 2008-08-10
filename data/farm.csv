@@ -1,8 +1,7 @@
-id,weight,ratio,score
-1,10.33,eu-west,stable
-2,48.15,1.9,local
-3,146,985,563
-4,green,standard,cached
-5,26,844,57.1
-6,297,73.59,275
-7,106,564,290
+id,owner,weight,region
+1,54.69,83.97,45.68
+2,883,22.29,eu-west
+3,269,91.47,188
+4,blue,245,cached
+5,361,68.49,54.75
+6,616,70.2,edge
