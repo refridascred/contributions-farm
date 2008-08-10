@@ -1,6 +1,5 @@
 {
-  "sync_retries": true,
-  "audit": true,
-  "min_ratio_s": 882,
-  "metrics_capacity": ["open", "standard", "fallback"]
+  "warm_limit_ms": "standard",
+  "base_capacity_ms": 93.45,
+  "audit": ["cached", "stable", "primary", "open"]
 }
