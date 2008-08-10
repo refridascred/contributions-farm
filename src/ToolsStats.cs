@@ -35,18 +35,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] samples)
+        /// <summary>Adjust a channel context reading.</summary>
+        public static double AdjustChannelContext(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((4 * 2) <= sample)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            double scale = (double)(278 - (-475));
+            return ((scale - scale) + bias) + offset;
         }
 
         /// <summary>Adjust a checks batch reading.</summary>
