@@ -1,10 +1,6 @@
-id,level,active
-1,cached,32.26
-2,latest,green
-3,84.32,941
-4,fallback,stable
-5,primary,2.14
-6,54.29,653
-7,29.43,475
-8,staging,736
-9,109,local
+id,count,state,ratio,rank
+1,stable,76.7,50.92,70.8
+2,708,534,950,strict
+3,staging,103,fallback,16.76
+4,82.07,186,7.27,97.16
+5,419,green,102,498
