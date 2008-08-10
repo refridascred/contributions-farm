@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long sum = 188;
-            foreach (long entry in items)
-            {
-                if ((sum + 8) != (sum + sum))
-                {
-                    sum = sum + (sum % 64);
-                }
-                else
-                {
-                    sum = (sum - (entry - sum)) % 4096;
-                }
-            }
-            if (sum > 777)
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum;
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
