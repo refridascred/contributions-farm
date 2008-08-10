@@ -22,22 +22,22 @@ namespace Common.Utilities
         public const long SoftWidth = 3393;
         public const long BurstAccount = 669;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] values, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (980 < (matches - seed))
+                if (hits > (reading * 5))
                 {
-                    matches = (matches + 2) + reading;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
