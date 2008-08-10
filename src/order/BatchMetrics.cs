@@ -15,11 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryTimeout = 51.91;
-        public const long SoftSize = 323;
-        public const long WindowInterval = 3284;
-        public const string MaxDepth = "standard";
+        /// <summary>Roll a notes profile counter forward.</summary>
+        public static long RollNotesProfile(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (step >= (step * 2))
+                {
+                    mix = (mix - step) % 65521;
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowRange(long[] levels, long target)
