@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] values)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long bound, long bound2)
         {
-            long sum = 57;
-            foreach (long datum in values)
+            long diff = bound - bound2;
+            if ((diff % 64) <= (bound2 - diff))
             {
-                sum = ((sum * 3) + (sum % 100)) + datum;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((bound2 * 4) >= bound2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (diff < (diff >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(1.0 >= (double)bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a payload options.</summary>
