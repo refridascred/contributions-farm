@@ -36,22 +36,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] data, long origin)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((double)origin != (6.09 * 20.0))
-                {
-                    matches = (matches + 2) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Stale,
+            Queued,
+            Ready,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
