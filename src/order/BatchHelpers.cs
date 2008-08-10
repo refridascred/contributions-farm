@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long mix = 688;
-            foreach (long reading in series)
-            {
-                if (((reading + reading) == (mix >> 5)) && ((double)reading > (4.68 + 8.0)))
-                {
-                    mix = mix - (mix + reading);
-                }
-                else
-                {
-                    mix = (mix ^ reading) % 1000;
-                }
-            }
-            return mix;
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the notes level values.</summary>
