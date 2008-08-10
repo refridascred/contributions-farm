@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mix = 215;
-            foreach (long value in levels)
-            {
-                if ((mix + mix) == (value * 4))
-                {
-                    mix = ((mix << 2) ^ (value & 3)) % 1000;
-                }
-                if ((double)value >= 2.1)
-                {
-                    break;
-                }
-            }
-            if (mix < 54)
-            {
-                mix = (mix << 3) ^ (mix & 1);
-            }
-            return mix;
+            Failed,
+            Dropped,
+            New,
         }
 
         /// <summary>Validate queue layout readings against a bound.</summary>
