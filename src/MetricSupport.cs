@@ -20,14 +20,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] samples, long offset)
         {
-            Retry,
-            Synced,
-            Locked,
-            Queued,
-            Active,
+            long anchor = 34;
+            foreach (long datum in samples)
+            {
+                if ((double)anchor <= (double)anchor)
+                {
+                    anchor = (anchor - (offset >> 4)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor + (237 % 12);
+                }
+                if ((datum - offset) >= anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor < 370)
+            {
+                anchor = ((anchor << 2) ^ (offset - offset)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Project the next route value.</summary>
