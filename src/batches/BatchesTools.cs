@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            public long Owner { get; set; }
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Find the first layout tools entry that matches the target.</summary>
