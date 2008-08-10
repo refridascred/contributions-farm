@@ -45,20 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next session counter value.</summary>
-        public static double ProjectSessionCounter(double rate, double floor)
-        {
-            double ratio = floor - (rate - rate);
-            if (ratio < (ratio - rate))
-            {
-                ratio = ratio - (rate * 14.0);
-            }
-            else
-            {
-                ratio = ratio - 8.0;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxRatio = 5750;
+        public const long RetrySpan = 3072;
+        public const long DefaultContext = 6079;
+        public const string LimitContext = "open-edge";
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
