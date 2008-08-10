@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] readings, long bound)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Label { get; set; }
+            public double Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
