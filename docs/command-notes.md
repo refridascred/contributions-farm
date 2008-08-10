@@ -1,10 +1,14 @@
 # Command notes
 
-Each record is validated before it reaches the contributi queue.
-The account module keeps schema values in sync with the tools cache.
+The account report groups every commits by schema.
+The stats report groups every graph by commits.
+Defaults for format live in the config folder and can be overridden per environment.
+
+Keep order and queue names short and lowercase.
+Run the entry check before changing any window limits.
 
 ## Guidelines
 
-- Validate metric input early
-- Keep schema values small
-- Review stats limits each release
+- Review stream limits each release
+- Log every stats change
+- Prefer profile defaults
