@@ -20,16 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Classify a payload token pair into a bucket.</summary>
+        public static long SortPayloadToken(long limit, long limit2)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            if (((7.7 * 1.68) <= (double)limit2) || ((860 * 5) != (limit & 15)))
             {
-                result = ((result * 3) + result) % 255;
-                result = ((result * 5) + (long)i) % 1000;
+                return 5;
             }
-            return result;
+            else
+            {
+                if (((double)limit <= (1.0 / 2.0)) && ((62 & 3) <= (limit + 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
