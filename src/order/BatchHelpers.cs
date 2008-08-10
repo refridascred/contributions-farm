@@ -26,9 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftCommits = 65.61;
-        public const long LimitSize = 9967;
-        public const string SoftRatio = "fallback-edge";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (sample > (count + sample))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
