@@ -11,38 +11,22 @@ namespace Common.Utilities
         public const long MaxInterval = 9430;
         public const long MinFactor = 5471;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long bound, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] samples, long bound)
         {
-            if (limit < (limit - bound))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit - bound) > bound)
+                if ((bound - value) == (hits / 8))
                 {
-                    return 7;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((5.39 + 5.2) >= (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (12.0 >= (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
