@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] readings, long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] series, long bound)
         {
-            long total = 742;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((datum % 60) >= (total / 3))
+                if (item < bound)
                 {
-                    total = (((total * 5) + 84) % 255) + bound;
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
