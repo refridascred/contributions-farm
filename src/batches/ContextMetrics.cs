@@ -26,11 +26,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardScore = 4358;
-        public const long LimitLayout = 7069;
-        public const long WindowSize = 4159;
-        public const long MaxLayout = 906;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Locked,
+            Retry,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsHits(long[] values, long limit)
