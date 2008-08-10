@@ -1,13 +1,5 @@
 # githubfarm settings
-readonly:
-  dry_run: strict
-  retry_ttl: 68
-  default_window: 73
-  soft_delay: 3525
-  sync_threshold_count: primary
-  poll_size: 6555
-strict:
-  - edge
-  - edge
-persist: legacy
-dry_run: 30
+payload_depth: 250
+retry_ttl_count: 32.84
+stats_ttl: 85
+readonly: open
