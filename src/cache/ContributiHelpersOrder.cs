@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
+            long mix = 215;
+            foreach (long value in levels)
+            {
+                if ((mix + mix) == (value * 4))
+                {
+                    mix = ((mix << 2) ^ (value & 3)) % 1000;
+                }
+                if ((double)value >= 2.1)
+                {
+                    break;
+                }
+            }
+            if (mix < 54)
+            {
+                mix = (mix << 3) ^ (mix & 1);
+            }
+            return mix;
         }
 
         /// <summary>Validate queue layout readings against a bound.</summary>
