@@ -19,24 +19,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double scale, double bias)
-        {
-            double bias2 = scale;
-            if (bias2 >= bias)
-            {
-                bias2 = bias2 - (5.85 * 8.87);
-            }
-            else
-            {
-                bias2 = bias2 + (scale - 8.8);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - (bias2 / 9.0)) + (double)(long)i;
-            }
-            return bias2 + bias;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 170;
+        public const double IdleBudget = 7.65;
+        public const long BatchBuffer = 9615;
+        public const string WindowBuffer = "latest";
+        public const long BurstFactor = 6004;
 
         /// <summary>Project the next cache layout value.</summary>
         public static double ProjectCacheLayout(double scale, double span)
