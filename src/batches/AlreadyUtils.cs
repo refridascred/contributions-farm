@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] series, long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long total = 6;
+            foreach (long reading in items)
             {
-                if (datum != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (((total - (total & 63)) % 255) - reading) - target;
+                total = (total - (total % 60)) % 101;
             }
-            return valid;
+            if (total > 932)
+            {
+                total = total + (total / 3);
+            }
+            return total % 1000;
         }
 
         /// <summary>Count the metrics route entries that pass the check.</summary>
