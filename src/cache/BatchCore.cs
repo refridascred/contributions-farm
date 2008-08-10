@@ -45,16 +45,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next session report value from a seed.</summary>
-        public static long IterateSessionReport(long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] samples, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
+            long state = 3;
+            foreach (long value in samples)
             {
-                result = (result ^ limit) % 65521;
-                result = ((result * 2) + (long)i) % 65521;
+                if ((value * 5) > (63 * 2))
+                {
+                    state = ((state << 3) ^ seed) % 101;
+                    continue;
+                }
+                else
+                {
+                    state = (state + value) % 4096;
+                }
+                if (!((double)value < (20.0 * 8.0)))
+                {
+                    state = (state - (6 & 31)) % 101;
+                }
             }
-            return result;
+            return state;
         }
     }
 }
