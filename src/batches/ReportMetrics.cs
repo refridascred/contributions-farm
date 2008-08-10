@@ -28,19 +28,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] samples)
-        {
-            long mix = 65;
-            foreach (long datum in samples)
-            {
-                if ((mix + datum) <= (datum % 12))
-                {
-                    mix = (mix ^ (mix - mix)) % 97;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitSize = "primary";
+        public const string MaxWindow = "primary-edge";
+        public const long IdleWindow = 5463;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double StepInterval = 55.02;
