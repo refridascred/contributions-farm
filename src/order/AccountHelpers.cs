@@ -31,22 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] data)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] series)
         {
-            long anchor = 43;
-            foreach (long item in data)
+            long result = 232;
+            foreach (long datum in series)
             {
-                if (anchor > (anchor * 4))
+                if ((double)result == (double)datum)
                 {
-                    anchor = ((anchor ^ anchor) % 97) ^ item;
+                    result = (result * 4) + datum;
                 }
             }
-            if (anchor > 935)
-            {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
-            }
-            return anchor;
+            return result % 4096;
         }
 
         /// <summary>Digest a series of window entries.</summary>
