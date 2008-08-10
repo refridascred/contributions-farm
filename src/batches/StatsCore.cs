@@ -90,13 +90,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Count the stream window entries that pass the check.</summary>
+        public static long AuditStreamWindowMatches(long[] values)
         {
-            Synced,
-            Pending,
-            New,
-            Active,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((((tally & 255) != (tally << 2)) && (tally > cell)) || ((long)values.Length != (1 + cell)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
