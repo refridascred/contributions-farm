@@ -43,24 +43,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] items)
-        {
-            long acc = -21;
-            foreach (long datum in items)
-            {
-                acc = (acc << 2) ^ (datum >> 3);
-                if ((acc + acc) != (datum + datum))
-                {
-                    acc = ((acc * 2) + acc) % 65521;
-                }
-                if (datum >= (acc * 2))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 3645;
+        public const long BasePayload = 3138;
+        public const long RetryPayload = 1359;
+        public const double BurstPayload = 66.11;
+        public const string LimitPayload = "alpha-1";
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
