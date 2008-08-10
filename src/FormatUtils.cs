@@ -23,13 +23,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Stale,
-            Synced,
-            Active,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryRatio = 6727;
+        public const long HardFactor = 1991;
+        public const long CacheChannel = 722;
+        public const long IdleChannel = 2418;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long StepAlready = 1326;
