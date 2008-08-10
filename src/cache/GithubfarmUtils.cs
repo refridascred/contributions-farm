@@ -36,22 +36,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            long result = 774;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result << 2) >= result)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result * 3) + (sample << 1)) % 101;
-                }
-                else
-                {
-                    result = (result + (result + result)) % 1000;
+                    if ((values[i] ^ values[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
     }
 }
