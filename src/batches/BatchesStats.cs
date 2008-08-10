@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long offset)
         {
-            Locked,
-            Paused,
-            Done,
-            Retry,
-            Closed,
+            long total = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
