@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 8355;
-        public const long CacheLevel = 4028;
-        public const long SoftRatio = 6540;
-        public const string BatchSize = "local-edge";
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((entry <= 384) || (hits >= (hits + hits)))
+                {
+                    hits = (hits + 3) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long RankSession(long step, long floor)
