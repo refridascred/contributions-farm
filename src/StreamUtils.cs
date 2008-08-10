@@ -19,18 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] readings)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long bound, long target)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            if (bound >= (126 >> 1))
             {
-                if ((((count + reading) < reading) || (reading <= count)) || ((reading / 5) <= (268 - reading)))
+                return 2;
+            }
+            else
+            {
+                if ((double)target > 3.0)
                 {
-                    count = count + 3;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of route readings.</summary>
