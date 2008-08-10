@@ -54,12 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Retry,
-            Dropped,
-            Failed,
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
