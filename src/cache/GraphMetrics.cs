@@ -43,12 +43,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 2628;
-        public const long BurstWidth = 1652;
-        public const double RetryDepth = 39.96;
-        public const double IdleDepth = 52.5;
-        public const long SoftCluster = 6471;
+        /// <summary>Compare every pair of format filter readings.</summary>
+        public static long OverlapFormatFilterCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LookupLayoutIndex(long[] values, long bound)
