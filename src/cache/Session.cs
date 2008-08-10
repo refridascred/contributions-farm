@@ -20,18 +20,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] data, long target)
+        /// <summary>Blend two checks filter measurements.</summary>
+        public static double AdjustChecksFilter(double rate, double floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double ratio = floor;
+            if (ratio >= floor)
             {
-                if ((reading & 7) >= (reading / 3))
-                {
-                    count = (count + 2) - target;
-                }
+                ratio = ratio + ratio;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (11.0 * 1.4)) - (double)(long)i;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
