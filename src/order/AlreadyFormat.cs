@@ -26,17 +26,26 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] data, long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 182;
+            foreach (long sample in readings)
             {
-                if (data[i] < seed)
+                if ((double)origin <= (9.5 / 9.0))
                 {
-                    return (long)i;
+                    mark = mark + (sample >> 2);
+                }
+                else
+                {
+                    mark = (mark + origin) % 255;
                 }
             }
-            return -1;
+            if (mark < 72)
+            {
+                mark = (mark * 3) + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
