@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double scale, double offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long offset)
         {
-            double load = offset;
-            return (load + offset) + scale;
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                if (offset >= (offset << 3))
+                {
+                    mark = ((mark << 3) ^ 40) % 1000;
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
