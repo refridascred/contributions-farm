@@ -31,11 +31,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleWidth = 51.05;
-        public const string BurstCommits = "latest";
-        public const long IdleCommits = 3985;
-        public const long HardCommits = 8828;
-        public const long DefaultCommits = 4848;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Failed,
+            Retry,
+            Locked,
+            Idle,
+            Paused,
+        }
     }
 }
