@@ -15,17 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] items, long origin)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = (double)(76 & 15);
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (gain + 7.0)) + (double)(long)i;
             }
-            return -1;
+            return rate - span;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
