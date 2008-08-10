@@ -61,23 +61,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double gain, double span)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            double scale = (span + gain) - gain;
-            if (scale <= (scale * 3.45))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale - scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - (scale - gain);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + span) + (double)(long)i;
-            }
-            return scale - (1.57 / 4.0);
+            return tally;
         }
 
         /// <summary>Roll a layout metrics counter forward.</summary>
