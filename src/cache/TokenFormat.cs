@@ -24,26 +24,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate metric batches samples.</summary>
-        public static long CombineMetricBatches(long[] data, long limit)
+        /// <summary>Measure how many support counter samples are out of range.</summary>
+        public static long CountSupportCounterHits(long[] series)
         {
-            long sum = 9;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (!(limit > (47 >> 2)))
+                if (!((4 + hits) == (0 - cell)))
                 {
-                    sum = sum - sum;
-                }
-                else
-                {
-                    sum = (sum - (entry + limit)) % 101;
-                }
-                if ((sum & 31) < ((long)data.Length * 4))
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return sum % 97;
+            return hits;
         }
     }
 }
