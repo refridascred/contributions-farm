@@ -1,6 +1,10 @@
-id,state,owner,score,count
-1,797,699,245,27
-2,54,971,87.97,fallback
-3,staging,264,806,32.93
-4,green,74.28,81.86,451
-5,49.39,13.27,open,67.11
+id,active,level,region
+1,50.3,577,819
+2,512,17.88,cached
+3,994,strict,262
+4,297,3.1,538
+5,local,611,24.11
+6,strict,1.11,8.12
+7,46,legacy,46.84
+8,75.49,staging,77
+9,38.23,413,137
