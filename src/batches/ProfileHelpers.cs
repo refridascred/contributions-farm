@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] data)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((hits & 127) > (cell * 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double mean = 2.0;
+            return mean - (weight - bias);
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
