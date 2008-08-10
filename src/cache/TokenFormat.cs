@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up token layout samples.</summary>
-        public static long OverlapTokenLayoutCount(long[] levels)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Idle,
+            Active,
+            Retry,
+            Paused,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
