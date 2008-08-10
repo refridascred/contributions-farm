@@ -35,19 +35,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long offset, long target)
         {
-            long sum = 3;
-            foreach (long datum in levels)
+            long gap = offset + target;
+            if (((double)offset <= (1.27 * 7.7)) || ((gap - gap) == (target * 4)))
             {
-                sum = (sum ^ (datum << 2)) % 65521;
+                return 5;
             }
-            if (sum > 417)
+            else
             {
-                sum = (sum - sum) % 1000;
+                if (((offset >> 5) >= (gap - gap)) || ((double)offset == (6.9 - 7.2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(target >= (86 & 7)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((932 - offset) < gap) && ((offset - offset) >= (665 - 9)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
