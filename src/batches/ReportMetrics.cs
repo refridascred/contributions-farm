@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] samples, long offset)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long result = 21;
-            foreach (long sample in samples)
-            {
-                result = result - (sample * 3);
-                if (result <= offset)
-                {
-                    break;
-                }
-            }
-            return result;
+            Closed,
+            Synced,
+            New,
+            Retry,
+            Failed,
         }
 
         /// <summary>Locate a checks schema reading by value.</summary>
