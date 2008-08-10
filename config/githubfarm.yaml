@@ -1,8 +1,10 @@
 # githubfarm settings
-hard_depth: primary
-buffer_window: 10.63
-hard_interval: 91
-batches_limit:
-  - 368
-  - 215
-queue_ratio: 7547
+counter_delay: 8426
+soft_window_s: legacy
+poll_retries_count: strict
+warm_timeout_s: edge
+base_ttl:
+  - 325
+  - 23
+  - 475
+buffer_depth: fallback
