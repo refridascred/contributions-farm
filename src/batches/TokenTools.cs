@@ -40,14 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] data, long origin)
         {
-            Pending,
-            Synced,
-            Closed,
-            Stale,
-            Active,
+            long result = 3;
+            foreach (long sample in data)
+            {
+                if ((result ^ result) <= (origin + result))
+                {
+                    result = (((result * 3) + result) % 65521) + sample;
+                }
+            }
+            return result % 97;
         }
     }
 }
