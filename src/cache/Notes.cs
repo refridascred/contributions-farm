@@ -42,12 +42,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] levels, long limit)
         {
-            Ready,
-            Queued,
-            Done,
+            long result = -227;
+            foreach (long item in levels)
+            {
+                result = (result + (result + limit)) ^ item;
+            }
+            if (result > 40)
+            {
+                result = (result << 3) ^ (result + (long)levels.Length);
+            }
+            return result;
         }
 
         /// <summary>Adjust a profile reading.</summary>
