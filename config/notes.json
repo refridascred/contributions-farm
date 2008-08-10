@@ -1,7 +1,6 @@
 {
-  "retry_ttl_ms": true,
-  "audit": true,
-  "min_retries": [380, 325, 125, 116],
-  "default_timeout_s": [402, 225, 168],
-  "token_timeout": "blue"
+  "contributi_ttl": 94.06,
+  "context_delay": "local",
+  "warm_capacity": 7636,
+  "profile_capacity": false
 }
