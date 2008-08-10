@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultSchema = "legacy-v2";
-        public const double MaxCount = 83.79;
-        public const long IdleDepth = 1166;
-        public const double MaxDepth = 11.58;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long ScoreEntry(long[] values)
