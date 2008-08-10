@@ -34,19 +34,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double scale, double offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long step, long step2)
         {
-            double ratio = (double)(269 + 338);
-            if (ratio <= ratio)
+            long offset = step + step2;
+            if ((13.0 - 17.0) == (double)offset)
             {
-                ratio = (ratio - offset) - scale;
+                return 6;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                ratio = (ratio - ratio) + (double)(long)i;
+                if ((step * 3) > step2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return ratio + (ratio * 7.2);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
