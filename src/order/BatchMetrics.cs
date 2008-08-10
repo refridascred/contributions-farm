@@ -23,11 +23,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            long score = 5;
+            foreach (long reading in data)
+            {
+                score = ((score << 3) ^ ((long)data.Length + reading)) % 4096;
+                score = (score * 3) + 212;
+            }
+            if (score < 7)
+            {
+                score = score ^ (score ^ 79);
+            }
+            return score % 97;
         }
 
         /// <summary>Digest a series of session entries.</summary>
