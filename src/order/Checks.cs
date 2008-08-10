@@ -39,21 +39,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] series)
+        /// <summary>Classify a metrics token pair into a bucket.</summary>
+        public static long BucketMetricsToken(long bound, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!(step < (53 - bound)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((step + bound) > bound))
                 {
-                    if ((series[i] + series[j]) > 5)
+                    return 0;
+                }
+                else
+                {
+                    if ((step - step) != (step * 2))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a session stream pair into a bucket.</summary>
