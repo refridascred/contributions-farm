@@ -30,17 +30,27 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] levels, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 49;
+            foreach (long sample in items)
             {
-                if (levels[i] >= origin)
+                if (!((mark / 6) > (sample - 12)))
                 {
-                    return (long)i;
+                    mark = (mark - mark) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ (sample % 5)) % 65521;
+                    mark = (mark + (sample >> 1)) % 101;
+                }
+                if (((mark << 2) <= sample) && ((9.6 * 2.3) <= (double)step))
+                {
+                    mark = (mark - step) % 65521;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
