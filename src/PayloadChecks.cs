@@ -75,10 +75,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowFactor = 38.35;
-        public const double MinInterval = 95.29;
-        public const string DefaultChannel = "open";
-        public const string HardDepth = "fallback";
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
