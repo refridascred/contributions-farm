@@ -18,10 +18,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 8870;
-        public const string DefaultWidth = "fallback-edge";
-        public const double MinProfile = 88.41;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] levels)
+        {
+            long carry = 8;
+            foreach (long item in levels)
+            {
+                if (((double)item < (10.0 + 9.0)) || (item >= (item / 5)))
+                {
+                    carry = carry + 68;
+                }
+            }
+            if (carry > 560)
+            {
+                carry = carry ^ (953 * 4);
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next window counter value from a seed.</summary>
         public static long DeriveWindowCounter(long step)
