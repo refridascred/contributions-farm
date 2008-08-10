@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long offset, long step)
         {
-            Ready,
-            Draft,
-            Locked,
+            if ((3.3 * 9.0) >= (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset <= ((-551) - offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step >= (867 & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
