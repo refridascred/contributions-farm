@@ -2,11 +2,13 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
-    state TEXT NOT NULL DEFAULT 'new',
-    active INTEGER NOT NULL DEFAULT 1
+    created_at TIMESTAMP,
+    owner TEXT NOT NULL,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
+CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
 
-INSERT INTO commits_records (count, state, active) VALUES (85, 'local', 77);
-INSERT INTO commits_records (count, state, active) VALUES (36, 'green', 98);
+INSERT INTO commits_records (count, owner, rank) VALUES (84, 'stable', 78);
+INSERT INTO commits_records (count, owner, rank) VALUES (95, 'latest', 66);
+INSERT INTO commits_records (count, owner, rank) VALUES (81, 'latest', 70);
