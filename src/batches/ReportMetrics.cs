@@ -24,12 +24,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] values)
         {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((matches & 15) <= matches)
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
     }
 }
