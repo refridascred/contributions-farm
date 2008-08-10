@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Closed,
-            Synced,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitAccount = "latest";
+        public const double IdleAccount = 75.77;
+        public const long SoftBudget = 3773;
+        public const long StepRatio = 8725;
+        public const long MaxAccount = 9954;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long OverlapFormatCount(long[] values)
