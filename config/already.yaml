@@ -1,6 +1,16 @@
 # already settings
-hard_window_pct: false
-cache_size_pct: 1024
-max_ratio_count: 30
-dry_run: 1061
-readonly: eu-west
+idle_ratio:
+  checks_ttl: standard
+  counter_delay: 8526
+  default_timeout_ms:
+    - cached
+    - primary
+    - latest
+  warm_depth: 8852
+  min_limit: 500
+  batch_capacity_ms: standard
+entry_timeout: legacy
+graph_ttl: eu-west
+poll_window: 12
+warm_depth_count: standard
+flush_retries: 80.27
