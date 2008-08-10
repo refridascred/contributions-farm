@@ -22,24 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order format pair into a bucket.</summary>
-        public static long SortOrderFormat(long floor, long offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] samples, long limit)
         {
-            if (!((floor / 2) <= (floor << 1)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((4.39 + 7.0) < (double)floor))
+                if (samples[i] == limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the notes phase values.</summary>
