@@ -1,6 +1,10 @@
 # entry settings
-hard_threshold: 60
-poll_size_pct: local
-batch_ratio_count: 100
-persist: standard
-record_window: stable
+hard_interval_count: 74.37
+min_delay_count: staging
+notes_depth:
+  - 383
+  - 84
+  - 264
+retry_timeout: open
+enabled: 5.99
+default_retries_count: 9495
