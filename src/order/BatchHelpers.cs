@@ -13,18 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] items)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((count << 3) >= (7 + 309)))
+                if ((data[i] == floor) && ((data[i] % 2) != 0))
                 {
-                    count = (count + 2) + sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a channel already pair into a bucket.</summary>
