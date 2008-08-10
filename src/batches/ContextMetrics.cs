@@ -54,15 +54,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 7507;
+        public const double BatchTimeout = 45.59;
+        public const double StepCounter = 34.95;
+        public const string MaxCounter = "open";
     }
 }
