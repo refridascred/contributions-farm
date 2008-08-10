@@ -38,11 +38,16 @@ namespace Common.Utilities
         public const long StepRatio = 1183;
         public const long CacheWidth = 7177;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxRatio = 5750;
-        public const long RetrySpan = 3072;
-        public const long DefaultContext = 6079;
-        public const string LimitContext = "open-edge";
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double scale, double floor)
+        {
+            double ratio = scale + 9.21;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (scale - scale)) + (double)(long)i;
+            }
+            return ratio - floor;
+        }
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
