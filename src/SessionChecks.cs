@@ -43,18 +43,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit token checks readings against a rule.</summary>
-        public static long CountTokenChecksOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell << 1) >= 90)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 7424;
+        public const long RetryFilter = 1979;
+        public const long BurstFactor = 8356;
+        public const long IdleFilter = 9068;
+        public const double WindowRatio = 88.75;
     }
 }
