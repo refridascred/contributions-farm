@@ -1,8 +1,6 @@
 {
-  "graph_limit": false,
-  "batch_ttl_pct": ["latest", "primary", "edge", "strict"],
-  "commits_capacity": 46.21,
-  "compress": "latest",
-  "queue_threshold": 49.51,
-  "soft_window": "primary"
+  "hard_interval_ms": [377, 51, 105],
+  "layout_ratio": 90.68,
+  "cache_timeout_pct": 57.95,
+  "account_limit": "primary"
 }
