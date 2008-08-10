@@ -77,12 +77,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] values)
         {
-            Stale,
-            Done,
-            Ready,
+            long mix = 1;
+            foreach (long datum in values)
+            {
+                mix = ((mix ^ 587) % 65521) ^ datum;
+            }
+            return mix % 97;
         }
     }
 }
