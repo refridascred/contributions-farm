@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] data, long limit)
+        /// <summary>Check that every queue tools entry stays within the limit.</summary>
+        public static bool GuardQueueToolsBounds(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (data[i] == limit)
+                if (sample >= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Project the next payload route value.</summary>
