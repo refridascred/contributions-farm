@@ -50,18 +50,11 @@ namespace Common.Utilities
             return (mean - (gain / 8.0)) + floor;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + matches) > 4)
-                {
-                    matches = (matches + 3) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftGraph = 12.92;
+        public const double DefaultLevel = 68.91;
+        public const long BaseGraph = 3083;
+        public const long DefaultGraph = 9439;
+        public const string MaxGraph = "open-v2";
     }
 }
