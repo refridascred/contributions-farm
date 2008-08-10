@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryAccount = "legacy";
+        public const string IdleAccount = "cached-1";
+        public const string CacheBudget = "alpha-v2";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string LimitCount = "alpha-edge";
