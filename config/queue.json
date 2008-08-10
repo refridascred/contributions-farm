@@ -1,14 +1,11 @@
 {
-  "default_delay": "open",
-  "max_delay": 23.9,
-  "retry_limit_s": false,
-  "hard_size_s": "local",
-  "verbose": "legacy",
-  "command_capacity": {
-    "hard_ratio": 84,
-    "account_limit": 32.09,
-    "window_interval": "fallback",
-    "batch_delay": 250,
-    "batch_limit_ms": [161, 80]
-  }
+  "persist": 41.91,
+  "cache_retries_s": false,
+  "batch_retries": {
+    "min_window_count": true,
+    "warm_window_pct": "local",
+    "idle_timeout": "stable"
+  },
+  "burst_size_s": false,
+  "filter_timeout": true
 }
