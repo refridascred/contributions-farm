@@ -47,18 +47,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] samples, long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((427 - value) > bound)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Ready,
+            Draft,
+            Queued,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
