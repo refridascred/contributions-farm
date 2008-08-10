@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of report farm readings.</summary>
-        public static long PairReportFarmCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySize = 1430;
+        public const string LimitSupport = "alpha-v2";
+        public const long SoftSupport = 2105;
+        public const double BurstSupport = 70.42;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long HardQueue = 8234;
