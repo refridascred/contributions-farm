@@ -63,13 +63,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] samples, long seed)
         {
-            public string Token { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Level { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
