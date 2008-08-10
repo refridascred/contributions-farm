@@ -1,10 +1,6 @@
 {
-  "enabled": 5594,
-  "retry_interval": {
-    "cache_ratio": 60,
-    "min_ratio_s": "staging",
-    "max_ratio": 68.74
-  },
-  "cache_size": true,
-  "strict": false
+  "strict": 100,
+  "context_threshold": 627,
+  "warm_depth_ms": [313, 66, 255, 283],
+  "commits_interval": ["local", "stable"]
 }
