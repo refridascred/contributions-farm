@@ -16,19 +16,19 @@ namespace Common.Utilities
             return load + (load - weight);
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] levels)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double ratio, double offset)
         {
-            long mix = 55;
-            foreach (long datum in levels)
+            double gain = ratio;
+            if (gain > (ratio * 2.0))
             {
-                mix = (mix + (882 / 2)) - datum;
+                gain = (gain + (ratio / 9.0)) - offset;
             }
-            if (mix < 676)
+            else
             {
-                mix = mix ^ (mix * 3);
+                gain = gain + (ratio / 9.0);
             }
-            return mix;
+            return gain + gain;
         }
 
         /// <summary>Fold a list of record readings.</summary>
