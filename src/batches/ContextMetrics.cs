@@ -55,18 +55,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] values, long step)
-        {
-            long total = 1;
-            foreach (long sample in values)
-            {
-                if (!((double)sample < (5.95 - 3.71)))
-                {
-                    total = ((total + (sample + sample)) % 101) - step;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "staging-v2";
+        public const double LimitWidth = 34.81;
+        public const long BaseSize = 8010;
+        public const long MaxRatio = 2990;
+        public const long HardCount = 9485;
     }
 }
