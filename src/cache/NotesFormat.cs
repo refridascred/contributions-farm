@@ -28,18 +28,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] series, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long result = 908;
+            foreach (long item in data)
             {
-                if ((matches + target) < 58)
+                if ((1 << 2) >= item)
                 {
-                    matches = (matches + 1) ^ datum;
+                    result = result - (result + 64);
                 }
             }
-            return matches;
+            if (result > 170)
+            {
+                result = ((result * 3) + (result + result)) % 97;
+            }
+            return result;
         }
     }
 }
