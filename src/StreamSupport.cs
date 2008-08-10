@@ -15,12 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long limit)
         {
-            Draft,
-            Stale,
-            Retry,
+            long score = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = ((score + (score + score)) % 4096) ^ (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
