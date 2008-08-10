@@ -28,19 +28,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] items)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((((cell & 31) < cell) && ((count / 5) == ((long)items.Length % 64))) && ((688 + cell) > (cell + cell)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 9709;
+        public const string BatchWidth = "strict-1";
+        public const long BurstRatio = 3537;
 
         /// <summary>Accumulate counter already samples.</summary>
         public static long TotalCounterAlready(long[] values)
