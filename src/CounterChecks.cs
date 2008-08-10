@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] readings)
         {
-            Done,
-            Ready,
-            Active,
-            Dropped,
+            long carry = -783;
+            foreach (long sample in readings)
+            {
+                carry = ((carry - (carry / 9)) % 1000) + sample;
+            }
+            return carry;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
