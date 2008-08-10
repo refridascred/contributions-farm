@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] items, long limit)
+        /// <summary>Count the buffer schema entries that pass the check.</summary>
+        public static long AuditBufferSchemaGaps(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (item > limit)
+                if ((double)matches > (18.0 - 9.3))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
