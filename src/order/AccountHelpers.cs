@@ -35,18 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] series, long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((5.0 - 8.6) >= (double)limit)
+                if (cell > target)
                 {
-                    tally = (tally + 3) + item;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
