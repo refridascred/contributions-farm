@@ -40,13 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Adjust a filter context reading.</summary>
+        public static double ProjectFilterContext(double gain, double span)
         {
-            New,
-            Pending,
-            Synced,
-            Active,
+            double scale = (8.8 - 2.9) * 2.0;
+            if (scale >= (6.0 * 11.0))
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (gain - gain)) + (double)(long)i;
+            }
+            return scale + (0.43 - span);
         }
 
         /// <summary>Fold a list of order readings.</summary>
