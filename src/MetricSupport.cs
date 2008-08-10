@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] readings, long step)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale2 = (17.0 * 9.15) / 5.0;
+            if (scale2 <= (scale2 / 5.0))
             {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
+                scale2 = ((scale2 - (double)57) - scale) - span;
             }
-            return -1;
+            return scale2 + scale2;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
