@@ -77,19 +77,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long result = 966;
-            foreach (long cell in readings)
-            {
-                result = (result ^ (result + result)) % 101;
-                if (((result + 275) < (cell + result)) || ((cell - result) >= (cell + cell)))
-                {
-                    result = (result + result) % 65521;
-                }
-            }
-            return result;
+            Paused,
+            Dropped,
+            Done,
         }
     }
 }
