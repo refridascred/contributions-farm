@@ -43,23 +43,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((origin % 60) == (count - count))
-                {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 8262;
+        public const long CacheChannel = 8005;
+        public const long BaseDepth = 1868;
+        public const long IdleChannel = 1154;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long StepRoute(long step)
