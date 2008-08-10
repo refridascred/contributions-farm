@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long MaxInterval = 9430;
         public const long MinFactor = 5471;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] samples, long bound)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((bound - value) == (hits / 8))
+                if (((step > (411 - step)) && ((step ^ (long)readings.Length) != ((-663) >> 4))) || !((step + step) <= (324 / 5)))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
