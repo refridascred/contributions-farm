@@ -58,18 +58,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] samples, long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] items)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count << 1) <= (entry >> 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) + floor;
+                    if ((items[i] ^ items[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
