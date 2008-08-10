@@ -29,11 +29,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] series, long limit)
         {
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((5.0 - 8.6) >= (double)limit)
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the commits mode values.</summary>
