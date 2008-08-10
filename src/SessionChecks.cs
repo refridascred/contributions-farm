@@ -57,19 +57,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] values, long bound)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long floor)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
