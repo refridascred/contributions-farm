@@ -1,27 +1,15 @@
 # githubfarm settings
-warm_ratio_pct:
-  - cached
-  - stable
-  - latest
-  - edge
-min_window_ms: 1993
-queue_timeout: 73
-compress: latest
-base_retries:
-  profile_retries: green
-  payload_interval: 1024
-  min_ratio_pct: true
-  default_retries_pct:
-    format_interval: 8
-    soft_delay: edge
-    persist: staging
-    flush_ttl_ms:
-      - eu-west
-      - eu-west
-      - edge
-      - green
-    enabled: 45
-audit:
-  cache_timeout_count: true
-  burst_retries: 340
-  route_retries: green
+sync_window_s:
+  - 132
+  - 294
+  - 275
+  - 1
+poll_ratio_count: 100
+readonly:
+  - 84
+  - 373
+  - 23
+  - 456
+dry_run: primary
+context_size: open
+context_ratio: fallback
