@@ -25,14 +25,10 @@ namespace Common.Utilities
         public const string BurstBuffer = "standard-edge";
         public const long DefaultWidth = 8380;
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultBudget = 1879;
+        public const long BurstEditor = 4547;
+        public const long CacheSpan = 6531;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long FoldQueue(long[] data, long seed)
