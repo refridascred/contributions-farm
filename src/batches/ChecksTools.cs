@@ -20,11 +20,15 @@ namespace Common.Utilities
         public const long MinCommits = 191;
         public const long HardLevel = 447;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitScore = 9726;
-        public const string WindowFactor = "strict";
-        public const string MaxCommits = "alpha-1";
-        public const long MaxInterval = 1089;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Active,
+            Draft,
+            Synced,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long DigestStream(long[] values)
