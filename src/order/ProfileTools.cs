@@ -15,15 +15,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next format support value from a seed.</summary>
-        public static long StepFormatSupport(long origin)
+        /// <summary>Project the next payload route value.</summary>
+        public static double ScalePayloadRoute(double bias, double floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
+            double ratio = bias;
+            if (ratio >= (ratio + floor))
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                ratio = ratio + bias;
             }
-            return mark;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + 8.89) - (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Describe the command kind values.</summary>
