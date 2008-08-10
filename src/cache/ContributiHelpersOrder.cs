@@ -27,39 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long limit, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] values)
         {
-            long diff = limit + seed;
-            if ((double)diff != (5.0 - 17.0))
+            long acc = 5;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0 > diff) && ((limit + diff) < (639 ^ diff)))
+                if ((value ^ value) <= (526 ^ value))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed >= (2.67 / 6.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((diff - diff) == (825 & 7)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    acc = (acc - (acc ^ acc)) % 255;
                 }
             }
+            return acc;
         }
     }
 }
