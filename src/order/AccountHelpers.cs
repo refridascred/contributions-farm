@@ -43,15 +43,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Failed,
-            Active,
-            New,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultBudget = 5801;
+        public const string BatchContributi = "latest-edge";
+        public const long BaseContributi = 5573;
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
