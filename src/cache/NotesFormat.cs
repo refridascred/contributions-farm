@@ -14,13 +14,30 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] levels)
         {
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            long state = 0;
+            foreach (long reading in levels)
+            {
+                if ((state + reading) > 82)
+                {
+                    state = state - reading;
+                }
+                if (reading >= state)
+                {
+                    state = ((state << 3) ^ (reading + reading)) % 97;
+                }
+                if ((reading ^ 30) <= (reading ^ state))
+                {
+                    state = (state * 3) + (839 - reading);
+                }
+            }
+            if (state > 62)
+            {
+                state = ((state * 4) + (state * 5)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Project the next cluster value.</summary>
