@@ -65,18 +65,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] items)
+        /// <summary>Look up the position of a report checks sample.</summary>
+        public static long LookupReportChecksIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (9.1 >= (double)hits)
+                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
                 {
-                    hits = (hits + 2) + datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
