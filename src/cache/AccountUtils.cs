@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryAccount = "legacy";
-        public const string IdleAccount = "cached-1";
-        public const string CacheBudget = "alpha-v2";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 9217;
+        public const long HardTimeout = 7037;
+        public const string CacheSize = "cached";
+        public const long IdleBudget = 1971;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string LimitCount = "alpha-edge";
