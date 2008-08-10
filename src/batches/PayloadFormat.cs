@@ -32,11 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Audit token cache readings against a rule.</summary>
+        public static long CountTokenCacheGaps(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((reading >> 4) <= (reading ^ (-20)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
