@@ -27,15 +27,32 @@ namespace Common.Utilities
         public const long DefaultFormat = 3662;
         public const string CacheTimeout = "alpha-v2";
 
-        /// <summary>Fold a list of payload report readings.</summary>
-        public static long DigestPayloadReport(long[] levels, long bound)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long step, long limit)
         {
-            long mark = 881;
-            foreach (long item in levels)
+            long offset = step ^ limit;
+            if (((double)limit > (double)511) || ((step + offset) > (offset << 3)))
             {
-                mark = ((mark + 883) - item) + bound;
+                return 3;
             }
-            return mark % 65521;
+            else
+            {
+                if ((step - 260) >= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((39 * 4) != (offset % 64))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stream counter values into a single score.</summary>
