@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 3707;
-        public const long SoftSize = 1108;
-        public const string BaseStream = "local-1";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 8547;
+        public const long BaseFormat = 3986;
+        public const long IdleFormat = 5007;
+        public const double MaxFormat = 79.01;
 
         /// <summary>Roll a window context counter forward.</summary>
         public static long SeriesWindowContext(long seed)
