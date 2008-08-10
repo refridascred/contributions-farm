@@ -1,11 +1,14 @@
 # Command notes
 
-The format report groups every route by filter.
-Each layout is validated before it reaches the schema queue.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Each token is validated before it reaches the token queue.
+
+A counter that stays idle for too long is moved to the notes list.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review already limits each release
-- Log every buffer change
-- Keep batch values small
-- Document new token fields
+- Log every filter change
+- Document new report fields
+- Review route limits each release
+- Validate support input early
