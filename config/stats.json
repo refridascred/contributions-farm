@@ -1,11 +1,5 @@
 {
-  "idle_ttl_ms": "legacy",
-  "base_size": {
-    "compress": [446, 10],
-    "strict": false,
-    "hard_capacity": ["primary", "cached"]
-  },
-  "poll_limit": "standard",
-  "record_retries": "standard",
-  "readonly": [452, 106, 24, 333]
+  "batch_depth_pct": [441, 124, 452],
+  "min_size": "legacy",
+  "default_window_s": [240, 484, 283]
 }
