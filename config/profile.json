@@ -1,5 +1,6 @@
 {
-  "compress": "green",
-  "batch_threshold_count": 48.39,
-  "default_window": "fallback"
+  "base_ratio_ms": false,
+  "route_threshold": true,
+  "max_timeout": 8445,
+  "readonly": 3108
 }
