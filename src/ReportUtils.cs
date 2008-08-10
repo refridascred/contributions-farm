@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Compare every pair of editor checks readings.</summary>
+        public static long PairEditorChecksCount(long[] series)
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
