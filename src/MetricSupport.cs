@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many support editor samples are out of range.</summary>
-        public static long TallySupportEditorGaps(long[] levels, long limit)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (((limit % 7) < 842) && !(9 <= (seen + seen)))
+                if (entry > target)
                 {
-                    seen = (seen + 2) - entry;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the order status values.</summary>
