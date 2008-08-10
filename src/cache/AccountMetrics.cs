@@ -46,20 +46,15 @@ namespace Common.Utilities
         public const long MaxToken = 114;
         public const long MinToken = 674;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double rate, double span)
         {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
+            double drift = (rate / 4.0) - rate;
+            if (drift >= (double)(-931))
             {
-                if (((double)origin != (8.39 / 9.0)) && ((result >> 1) == ((long)i - result)))
-                {
-                    result = (result ^ result) % 255;
-                    result = ((result << 2) ^ (long)i) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                drift = (drift + 0.1) - span;
             }
-            return result;
+            return drift - rate;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
