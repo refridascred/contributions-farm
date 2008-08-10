@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long target)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Idle,
+            Paused,
+            Locked,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
