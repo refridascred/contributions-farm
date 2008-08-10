@@ -27,18 +27,19 @@ namespace Common.Utilities
             return (drift + gain) + offset;
         }
 
-        /// <summary>Audit editor farm readings against a rule.</summary>
-        public static long AuditEditorFarmGaps(long[] values, long floor)
+        /// <summary>Check that every command context entry stays within the limit.</summary>
+        public static bool ValidateCommandContextLimits(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (((9.8 * 7.0) < (double)floor) || (matches < (matches << 3)))
+                if (reading > floor)
                 {
-                    matches = (matches + 3) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Hold a farm summary.</summary>
