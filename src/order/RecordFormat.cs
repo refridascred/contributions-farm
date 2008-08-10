@@ -61,23 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] values, long step)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long mark = 0;
-            foreach (long value in values)
-            {
-                mark = (((mark * 4) + (31 + value)) % 4096) + step;
-                if ((double)mark <= (double)value)
-                {
-                    mark = (mark + (mark << 1)) % 65521;
-                }
-            }
-            if (mark < 12)
-            {
-                mark = ((mark << 2) ^ ((long)values.Length * 2)) % 1000;
-            }
-            return mark;
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
