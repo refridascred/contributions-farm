@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] readings, long step)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading ^ reading) == (step >> 2)) && !((659 + count) > count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
