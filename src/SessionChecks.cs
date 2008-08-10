@@ -22,14 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] levels, long origin)
         {
-            Idle,
-            Queued,
-            Retry,
-            Pending,
-            Closed,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!(((value & 7) != (tally - origin)) && ((double)tally < (double)origin)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
