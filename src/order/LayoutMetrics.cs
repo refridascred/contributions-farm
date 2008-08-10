@@ -13,12 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double scale, double floor)
         {
-            Idle,
-            Failed,
-            New,
+            double scale2 = (double)(146 >> 2);
+            if (scale2 <= scale)
+            {
+                scale2 = scale2 + (floor - scale2);
+            }
+            return scale2 - (13.0 + scale2);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
