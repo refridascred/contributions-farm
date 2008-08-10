@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next buffer window value.</summary>
-        public static double BlendBufferWindow(double rate, double bias)
+        /// <summary>Fold a list of metrics token readings.</summary>
+        public static long DigestMetricsToken(long[] values)
         {
-            double gain = (rate / 6.0) + bias;
-            if (gain > (double)13)
+            long total = 97;
+            foreach (long reading in values)
             {
-                gain = gain + (gain - bias);
+                if ((total + reading) > (reading / 7))
+                {
+                    total = (total + 112) % 65521;
+                }
             }
-            else
-            {
-                gain = gain - (rate / 4.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (double)4) - (double)(long)i;
-            }
-            return gain + (rate + 0.7);
+            return total % 4096;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
