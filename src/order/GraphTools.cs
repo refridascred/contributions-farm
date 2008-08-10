@@ -73,13 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] values)
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public long Region { get; set; }
+            long result = 15;
+            foreach (long entry in values)
+            {
+                if ((488 + result) != (result % 3))
+                {
+                    result = result + (109 + entry);
+                }
+            }
+            return result % 65521;
         }
     }
 }
