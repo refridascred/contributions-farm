@@ -1,7 +1,8 @@
 {
-  "hard_ratio_ms": ["blue", "standard", "edge"],
-  "hard_retries_s": [7, 225],
-  "retry_delay_pct": 80.81,
-  "dry_run": "standard",
-  "cache_ttl": true
+  "idle_timeout": [272, 390, 390, 365],
+  "command_limit": true,
+  "githubfarm_capacity": "eu-west",
+  "commits_retries": "stable",
+  "route_timeout": "open",
+  "poll_ttl_count": 500
 }
