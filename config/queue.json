@@ -1,7 +1,20 @@
 {
-  "verbose": true,
-  "min_ratio": 43.53,
-  "burst_ratio_pct": 250,
-  "account_ttl": ["eu-west", "stable"],
-  "cache_window_s": 51.22
+  "audit": 27.05,
+  "base_window": 73,
+  "format_capacity": {
+    "batch_ratio": true,
+    "compress": ["edge", "latest"],
+    "strict": 30,
+    "already_threshold": true,
+    "base_interval_ms": "edge",
+    "githubfarm_timeout": {
+      "retry_interval_ms": 30,
+      "batch_size": 98.09,
+      "cache_capacity_s": [171, 178],
+      "base_ratio_s": 8909,
+      "persist": 29.12
+    }
+  },
+  "record_ratio": 100,
+  "cache_threshold": [331, 344, 423]
 }
