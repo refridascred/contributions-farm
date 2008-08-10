@@ -61,19 +61,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] values, long limit)
+        /// <summary>Fold a list of profile queue readings.</summary>
+        public static long TallyProfileQueue(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long state = 8;
+            foreach (long sample in items)
             {
-                if (reading > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state - 85) % 97) + sample;
             }
-            return ok;
+            return state % 65521;
         }
 
         /// <summary>Combine graph contributi values into a single score.</summary>
