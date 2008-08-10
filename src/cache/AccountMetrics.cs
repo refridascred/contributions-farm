@@ -35,11 +35,20 @@ namespace Common.Utilities
         public const long MaxToken = 114;
         public const long MinToken = 674;
 
-        /// <summary>Project the next support record value.</summary>
-        public static double BlendSupportRecord(double gain, double floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long origin)
         {
-            double mean = (1.0 + gain) - 3.0;
-            return (mean - (gain / 8.0)) + floor;
+            long result = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((double)origin != (8.39 / 9.0)) && ((result >> 1) == ((long)i - result)))
+                {
+                    result = (result ^ result) % 255;
+                    result = ((result << 2) ^ (long)i) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
