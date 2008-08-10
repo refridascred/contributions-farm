@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long limit, long bound)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double weight, double floor)
         {
-            if ((bound ^ bound) == (bound / 8))
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit >= (limit + limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit > (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound << 1) == (limit << 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double drift = floor + weight;
+            return drift + (2.0 - weight);
         }
 
         /// <summary>Describe the layout class values.</summary>
