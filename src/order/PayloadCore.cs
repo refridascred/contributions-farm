@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 157;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 3) + (score + score)) % 1000;
+                score = (score << 2) ^ (seed + reading);
             }
-            return matches;
+            if (score < 1)
+            {
+                score = (score << 3) ^ seed;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a stats entry.</summary>
