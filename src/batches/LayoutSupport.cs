@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] items, long origin)
         {
-            public string Weight { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value + hits) > (origin * 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many commits filter samples are out of range.</summary>
