@@ -49,12 +49,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long step)
         {
-            Locked,
-            Ready,
-            Queued,
+            long result = step;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
