@@ -24,12 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public double Total { get; set; }
-            public bool Level { get; set; }
-            public bool Mode { get; set; }
+            Pending,
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
