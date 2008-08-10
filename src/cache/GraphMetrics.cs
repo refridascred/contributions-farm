@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] items, long seed)
         {
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a queue record.</summary>
