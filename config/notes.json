@@ -1,12 +1,6 @@
 {
-  "githubfarm_capacity": 1024,
-  "max_ttl_ms": 41.32,
-  "flush_delay": 36,
-  "account_retries": 58,
-  "persist": {
-    "githubfarm_ratio": ["fallback", "fallback", "edge", "fallback"],
-    "sync_retries": 3034,
-    "metrics_limit": false,
-    "flush_size_ms": [263, 112, 37, 262]
-  }
+  "enabled": "standard",
+  "audit": 86,
+  "base_size_pct": ["local", "strict"],
+  "retry_depth_ms": 6600
 }
