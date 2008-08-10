@@ -1,8 +1,7 @@
-id,state,owner,label
-1,179,61.29,848
-2,staging,933,453
-3,fallback,40.5,519
-4,blue,20.54,20.35
-5,364,fallback,stable
-6,stable,76.45,58.8
-7,open,451,439
+id,level,active
+1,primary,548
+2,51.16,614
+3,21.96,edge
+4,137,76.77
+5,469,local
+6,staging,standard
