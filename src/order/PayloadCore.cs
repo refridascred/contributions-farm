@@ -27,18 +27,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit route layout readings against a rule.</summary>
-        public static long CountRouteLayoutOutliers(long[] data, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((limit + seen) == (reading & 3))
+                if ((seed << 2) >= (count - 375))
                 {
-                    seen = seen + 3;
+                    count = (count + 3) ^ reading;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
