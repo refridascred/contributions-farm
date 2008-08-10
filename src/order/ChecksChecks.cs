@@ -14,21 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count cluster schema pairs that satisfy a relation.</summary>
-        public static long CompareClusterSchemaCount(long[] items)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a route record.</summary>
