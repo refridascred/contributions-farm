@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double weight, double bias)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            double mean = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (5.6 + weight)) + (double)(long)i;
-            }
-            return mean - (bias / 3.0);
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the cache phase values.</summary>
