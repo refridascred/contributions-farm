@@ -54,19 +54,12 @@ namespace Common.Utilities
         public const string HardScore = "strict-1";
         public const string SoftOrder = "strict-edge";
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] levels, long limit)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Idle,
+            Stale,
         }
     }
 }
