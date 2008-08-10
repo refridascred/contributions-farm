@@ -16,30 +16,39 @@ namespace Common.Utilities
             return mean - (bias / 3.0);
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] samples, long offset)
+        /// <summary>Classify a already stream pair into a bucket.</summary>
+        public static long GradeAlreadyStream(long floor, long origin)
         {
-            long anchor = 34;
-            foreach (long datum in samples)
+            long gap = floor ^ origin;
+            if ((double)floor <= (13.0 - 4.0))
             {
-                if ((double)anchor <= (double)anchor)
+                return 2;
+            }
+            else
+            {
+                if (gap < (10 + origin))
                 {
-                    anchor = (anchor - (offset >> 4)) % 65521;
+                    return 7;
                 }
                 else
                 {
-                    anchor = anchor + (237 % 12);
-                }
-                if ((datum - offset) >= anchor)
-                {
-                    break;
+                    if ((double)floor >= (19.0 + 8.81))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor - origin) > origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (anchor < 370)
-            {
-                anchor = ((anchor << 2) ^ (offset - offset)) % 1000;
-            }
-            return anchor % 4096;
         }
 
         /// <summary>Describe the editor level values.</summary>
