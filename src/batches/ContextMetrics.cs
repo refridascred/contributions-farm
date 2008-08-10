@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] data)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] samples, long target)
         {
-            long carry = 70;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((carry - 328) >= (carry + carry))
+                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
                 {
-                    carry = (carry - (item + item)) % 1000;
-                }
-                else
-                {
-                    carry = (carry * 5) + (706 >> 4);
+                    return (long)i;
                 }
             }
-            if (carry > (-873))
-            {
-                carry = carry - (carry - carry);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
