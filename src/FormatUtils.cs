@@ -55,15 +55,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double ratio, double span)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            double scale = (span + ratio) * 9.0;
-            if (scale > (double)(-95))
-            {
-                scale = scale + span;
-            }
-            return scale + ratio;
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
