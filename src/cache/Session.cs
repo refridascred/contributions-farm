@@ -43,19 +43,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] levels, long target)
+        /// <summary>Rank commits schema input into a small class.</summary>
+        public static long RankCommitsSchema(long origin, long origin2)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            if (origin <= (origin2 & 7))
             {
-                if (value <= target)
+                return 4;
+            }
+            else
+            {
+                if (((4.0 - 5.2) != (double)origin) && ((double)origin > (5.4 / 5.0)))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return valid;
         }
     }
 }
