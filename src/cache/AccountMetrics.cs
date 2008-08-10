@@ -10,18 +10,31 @@ namespace Common.Utilities
         public const double StepWidth = 36.61;
         public const double BaseInterval = 41.27;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] items)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long target, long target2)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if ((923 * 4) <= (target2 & 15))
             {
-                if (!(item <= tally))
+                return 8;
+            }
+            else
+            {
+                if (target2 > (target ^ target2))
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((2.47 + 7.0) == (double)target2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate format samples.</summary>
