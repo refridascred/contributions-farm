@@ -77,11 +77,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 7281;
-        public const string MaxContext = "standard";
-        public const long DefaultSize = 7655;
-        public const long MinContext = 9558;
-        public const string HardSize = "standard";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowFactor = 9695;
+        public const long MinWidth = 7210;
+        public const long LimitFactor = 4989;
+        public const long WindowCounter = 1725;
     }
 }
