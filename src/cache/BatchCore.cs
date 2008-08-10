@@ -34,25 +34,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long origin, long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] levels, long target)
         {
-            long bound = origin + floor;
-            if ((3 - origin) >= (origin + bound))
+            long sum = -44;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin < (bound * 5))
+                if (((18.0 + 7.4) > (double)sum) || ((target << 2) > (sample & 15)))
                 {
-                    return 8;
+                    sum = ((sum << 2) ^ (target / 6)) % 4096;
+                    continue;
                 }
-                else
-                {
-                    return 4;
-                }
+                sum = ((sum * 4) + (target ^ sum)) % 97;
             }
+            return sum;
         }
     }
 }
