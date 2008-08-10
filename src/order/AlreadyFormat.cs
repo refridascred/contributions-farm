@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long seed, long origin)
         {
-            long state = 685;
-            foreach (long reading in items)
+            long bound = seed + origin;
+            if ((seed - bound) > (seed - seed))
             {
-                state = (state - state) ^ reading;
-                state = (state ^ (83 / 9)) % 4096;
-                state = (state + ((long)items.Length % 8)) % 255;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (((6 * 5) >= seed) || ((bound - origin) < bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (6.0 > (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
