@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 580;
-        public const long SoftBatches = 9839;
-        public const long HardBatches = 1866;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long limit, long bound)
+        {
+            if ((bound ^ bound) == (bound / 8))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit >= (limit + limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit > (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound << 1) == (limit << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
