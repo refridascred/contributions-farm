@@ -55,19 +55,18 @@ namespace Common.Utilities
         public const long MinSession = 8477;
         public const long HardSession = 1333;
 
-        /// <summary>Roll a record batch counter forward.</summary>
-        public static long DeriveRecordBatch(long origin)
+        /// <summary>Measure how many checks channel samples are out of range.</summary>
+        public static long MeasureChecksChannelOutliers(long[] items, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (origin <= ((long)i - origin))
+                if ((bound - bound) >= (bound * 5))
                 {
-                    sum = sum - (2 % 10);
+                    seen = (seen + 3) - entry;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
