@@ -1,9 +1,15 @@
 # entry settings
-sync_ttl_count: true
-burst_retries: false
-default_window_ms:
-  - 414
-  - 160
-  - 310
-  - 284
-account_ttl: 8781
+compress: 63
+enabled:
+  record_retries:
+    - 328
+    - 4
+    - 429
+  schema_size: cached
+  default_retries: 2640
+  soft_timeout_s: 30
+  dry_run: true
+  max_interval_ms: true
+readonly: open
+min_timeout_ms: 64
+burst_ttl_count: 70.48
