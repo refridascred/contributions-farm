@@ -16,16 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] items, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                sum = (sum - sum) % 101;
-                sum = ((sum * 4) + (long)i) % 101;
+                if (cell != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
