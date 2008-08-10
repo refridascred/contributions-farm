@@ -22,21 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((5 + target) <= (target % 3)) && (((long)i + target) > (2 ^ 87)))
                 {
-                    if ((readings[i] + readings[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    long offset = 1;
+                    anchor = (anchor << 2) ^ offset;
                 }
+                if ((target & 63) <= anchor)
+                {
+                    anchor = (anchor * 3) + (anchor / 4);
+                    anchor = ((anchor << 3) ^ target) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ (2 / 9)) % 101;
+                    anchor = ((anchor * 3) + (2 % 3)) % 1000;
+                }
+                anchor = (anchor + (2 / 4)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Combine order values into a single score.</summary>
