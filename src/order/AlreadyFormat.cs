@@ -18,12 +18,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] samples, long target)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public bool Weight { get; set; }
+            long result = 3;
+            foreach (long item in samples)
+            {
+                if ((0 % 60) >= (target - result))
+                {
+                    result = (result + (225 % 97)) - item;
+                }
+            }
+            return result;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
