@@ -42,13 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Accumulate counter already samples.</summary>
+        public static long TotalCounterAlready(long[] values)
         {
-            Stale,
-            Idle,
-            Paused,
-            Ready,
+            long mix = 27;
+            foreach (long reading in values)
+            {
+                if (reading < (84 ^ mix))
+                {
+                    mix = ((mix * 4) + (reading + reading)) % 4096;
+                }
+            }
+            return mix;
         }
     }
 }
