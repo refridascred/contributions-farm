@@ -47,13 +47,12 @@ namespace Common.Utilities
             return scale + 1.5;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            Done,
-            Closed,
-            Locked,
+            Ready,
             Active,
+            Closed,
         }
 
         /// <summary>Accumulate cache samples.</summary>
