@@ -32,38 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long target, long seed)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if (!((double)target >= (5.3 - 8.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed % 24) <= seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (748 >= (target + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target >> 5) == (target + seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Active,
+            Ready,
+            Idle,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
