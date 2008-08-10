@@ -27,18 +27,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many report layout samples are out of range.</summary>
-        public static long CountReportLayoutHits(long[] items, long seed)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (10.0 > (double)seed)
+                if ((items[i] > origin) && ((items[i] % 3) == 0))
                 {
-                    tally = (tally + 3) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
