@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next counter batches value.</summary>
-        public static double ScaleCounterBatches(double rate, double span)
-        {
-            double mean = span;
-            if (mean >= (rate * 6.0))
-            {
-                mean = mean + (mean * 2.9);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - 6.0) - (double)(long)i;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 89.04;
+        public const long BaseStats = 5861;
+        public const double WindowWidth = 91.32;
+        public const long HardBudget = 4455;
+        public const long MaxLevel = 3525;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
