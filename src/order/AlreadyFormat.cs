@@ -54,21 +54,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] items)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 7;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)total < (3.7 * 18.0))
                 {
-                    if ((items[i] + items[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total + 761) - sample) - offset;
+                }
+                else
+                {
+                    total = total + total;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Grade a stream token value against two limits.</summary>
