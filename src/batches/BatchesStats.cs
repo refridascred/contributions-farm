@@ -33,20 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] readings, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] data, long step)
         {
-            long anchor = 239;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                anchor = ((anchor * 2) + limit) ^ entry;
-                anchor = anchor + ((long)readings.Length % 64);
+                if ((double)reading >= (double)seen)
+                {
+                    seen = (seen + 3) - step;
+                }
             }
-            if (anchor < 161)
-            {
-                anchor = ((anchor << 2) ^ (limit * 4)) % 1000;
-            }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Grade a layout support value against two limits.</summary>
