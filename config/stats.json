@@ -1,8 +1,7 @@
 {
-  "soft_retries": 100,
-  "audit": [270, 48, 142],
-  "batch_ratio": 60,
-  "enabled": 30,
-  "persist": "primary",
-  "warm_ttl_s": 30
+  "cache_size_pct": 9602,
+  "batches_retries": 21,
+  "hard_retries_s": false,
+  "max_ratio": 76.85,
+  "readonly": 1024
 }
