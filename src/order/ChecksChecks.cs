@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 8211;
-        public const long StepAlready = 1656;
-        public const string MaxLevel = "primary-1";
-        public const string BatchAlready = "open-edge";
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Active,
+            Queued,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Count cluster schema pairs that satisfy a relation.</summary>
         public static long CompareClusterSchemaCount(long[] items)
