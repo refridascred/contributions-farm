@@ -39,30 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] series)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double rate, double span)
         {
-            long state = 604;
-            foreach (long cell in series)
+            double mean = 10.0;
+            if (mean > (0.7 + 5.3))
             {
-                if ((double)cell == (20.0 - 4.86))
-                {
-                    state = state - (6 - cell);
-                }
-                if ((double)state > (6.25 * 2.45))
-                {
-                    state = (state << 3) ^ (286 - cell);
-                }
-                if ((state > (cell + 4)) || ((state * 2) >= (cell / 4)))
-                {
-                    break;
-                }
+                mean = (mean + (span - mean)) - rate;
             }
-            if (state < 5)
+            for (int i = 0; i < 2; i++)
             {
-                state = (state * 2) + (state + 548);
+                mean = (mean + span) - (double)(long)i;
             }
-            return state % 97;
+            return mean - (double)7;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
