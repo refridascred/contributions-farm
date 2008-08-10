@@ -20,17 +20,23 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] readings, long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 18;
+            foreach (long sample in items)
             {
-                if (readings[i] > floor)
+                mark = ((mark << 2) ^ (mark ^ 3)) % 4096;
+                if ((mark & 7) <= (sample + sample))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mark < 163)
+            {
+                mark = mark - (mark + seed);
+            }
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
