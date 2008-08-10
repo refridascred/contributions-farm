@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            public double Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
