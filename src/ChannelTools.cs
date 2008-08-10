@@ -27,18 +27,13 @@ namespace Common.Utilities
             return mean - (7.79 / 7.0);
         }
 
-        /// <summary>Audit metric command readings against a rule.</summary>
-        public static long AuditMetricCommandHits(long[] series)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((37 + tally) > (tally << 2))
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
