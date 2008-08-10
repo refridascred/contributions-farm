@@ -13,12 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            New,
-            Draft,
-            Active,
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
