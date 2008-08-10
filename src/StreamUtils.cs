@@ -93,17 +93,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] readings, long origin)
+        /// <summary>Combine queue route values into a single score.</summary>
+        public static long ScoreQueueRoute(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 74;
+            foreach (long cell in samples)
             {
-                if ((readings[i] > origin) && ((readings[i] % 2) == 0))
+                anchor = ((anchor << 3) ^ (anchor + cell)) % 101;
+                if (!((offset ^ cell) <= (cell + anchor)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
     }
 }
