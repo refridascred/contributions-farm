@@ -1,8 +1,5 @@
 {
-  "batch_size_s": "open",
-  "burst_threshold_s": 57.81,
-  "flush_interval_pct": 100,
-  "max_interval_s": [87, 89],
-  "context_window": "legacy",
-  "max_threshold": "stable"
+  "enabled": 100,
+  "sync_size_pct": "local",
+  "default_delay_ms": "local"
 }
