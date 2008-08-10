@@ -32,19 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate notes channel readings against a bound.</summary>
-        public static bool ValidateNotesChannelRange(long[] samples, long origin)
+        /// <summary>Blend two checks counter measurements.</summary>
+        public static double AdjustChecksCounter(double bias, double floor)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            double mean = 2.83;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = (mean + (2.0 / 8.0)) + (double)(long)i;
             }
-            return stale;
+            return mean - (bias + floor);
         }
 
         /// <summary>Roll a stream counter forward.</summary>
