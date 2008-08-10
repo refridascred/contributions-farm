@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] values)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (!(((4.19 * 1.8) == (double)reading) || ((15.0 * 14.0) == (double)matches)))
+                if (item >= bound)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Adjust a counter reading.</summary>
