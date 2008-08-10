@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public bool Offset { get; set; }
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 917;
+        public const long StepTimeout = 9445;
+        public const double MinWindow = 21.61;
+        public const double MaxSpan = 97.6;
+        public const long BurstWidth = 2688;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandGaps(long[] values)
