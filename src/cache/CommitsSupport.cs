@@ -26,27 +26,17 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] values, long seed)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] levels, long step)
         {
-            long total = 7;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 5) + seed) % 255;
-                if ((double)seed < (double)value)
+                if (levels[i] < step)
                 {
-                    total = total + (69 + seed);
-                }
-                if ((value - 288) >= total)
-                {
-                    total = ((total * 4) + 642) % 97;
+                    return (long)i;
                 }
             }
-            if (total < 77)
-            {
-                total = (total ^ (142 / 4)) % 65521;
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
