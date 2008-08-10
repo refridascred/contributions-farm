@@ -46,17 +46,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] readings, long bound)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long limit, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long cur = limit ^ step;
+            if ((cur / 3) == (57 % 12))
             {
-                if ((readings[i] <= bound) && ((readings[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((5.0 * 15.0) < (double)limit)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((cur - step) < step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit > (limit / 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
