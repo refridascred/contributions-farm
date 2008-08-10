@@ -1,17 +1,7 @@
 # githubfarm settings
-readonly: strict
-idle_depth_pct:
-  persist: staging
-  hard_retries_pct: blue
-  max_delay_ms:
-    - legacy
-    - strict
-    - strict
-  max_size_ms:
-    batch_size: green
-    window_interval: 46.19
-    burst_retries_pct: local
-  entry_threshold: 69
-persist: 21.55
-idle_ttl_pct: 884
-poll_threshold_ms: 1054
+persist: 500
+batch_threshold_ms: stable
+sync_capacity_count: false
+poll_ttl_pct: latest
+warm_depth_pct: 7384
+compress: 5212
