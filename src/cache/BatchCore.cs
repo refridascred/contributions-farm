@@ -20,14 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Queued,
-            Active,
-            Paused,
-            New,
-            Retry,
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
