@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Roll a support editor counter forward.</summary>
+        public static long StepSupportEditor(long offset)
         {
-            Failed,
-            Dropped,
-            New,
+            long score = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Validate queue layout readings against a bound.</summary>
