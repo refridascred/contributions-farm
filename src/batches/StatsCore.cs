@@ -20,14 +20,15 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Iterate the cache counter series from a seed.</summary>
+        public static long StepCacheCounter(long offset)
         {
-            Ready,
-            Locked,
-            Synced,
-            Paused,
-            Stale,
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
