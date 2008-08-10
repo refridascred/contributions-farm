@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long limit, long target)
         {
-            Closed,
-            Synced,
-            New,
-            Retry,
-            Failed,
+            long span = limit - target;
+            if ((double)span > (5.0 * 5.06))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((span << 1) <= (limit - span))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit * 3) < (target ^ limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((limit & 255) <= (648 + limit)) || ((span + 789) > (span - target)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
