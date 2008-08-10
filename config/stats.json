@@ -1,6 +1,5 @@
 {
-  "route_delay": "eu-west",
-  "editor_threshold": "primary",
-  "min_ttl_s": 250,
-  "batch_capacity": 39.97
+  "cache_depth_count": 45,
+  "graph_interval": 30,
+  "warm_delay": 75.1
 }
