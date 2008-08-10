@@ -1,11 +1,11 @@
 # Command notes
 
-Run the cache check before changing any token limits.
-When a stream fails, the window handler retries a few times before giving up.
-A support that stays idle for too long is moved to the schema list.
+A buffer that stays idle for too long is moved to the filter list.
+Each command is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Keep contributi values small
-- Document new session fields
-- Log every notes change
+- Keep githubfarm values small
+- Document new tools fields
+- Log every schema change
+- Prefer schema defaults
