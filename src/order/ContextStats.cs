@@ -12,26 +12,24 @@ namespace Common.Utilities
         public const double IdleGraph = 71.58;
         public const string StepGraph = "local-1";
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] samples)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            long sum = -96;
+            foreach (long reading in samples)
             {
-                if (((long)i * 4) >= (8 ^ step))
+                sum = ((sum << 2) ^ (sum ^ reading)) % 4096;
+                sum = (sum ^ (739 % 2)) % 97;
+                if (((1.5 + 10.0) > (double)reading) && ((double)reading <= (double)sum))
                 {
-                    carry = (carry * 5) + (long)i;
-                    carry = ((carry << 2) ^ step) % 255;
-                    continue;
+                    sum = (sum ^ (reading * 3)) % 1000;
                 }
-                else
+                if (((3.2 + 2.5) == (double)sum) || ((reading + sum) != (sum & 31)))
                 {
-                    long step3 = ((-966) + step) / 6;
-                    carry = carry - (step3 - step);
+                    break;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Hold a batches record.</summary>
