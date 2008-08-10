@@ -40,22 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] levels)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long score = 338;
-            foreach (long datum in levels)
-            {
-                if (((806 - datum) != (score + 509)) || (1.4 <= (6.75 + 6.5)))
-                {
-                    score = score + (76 + datum);
-                }
-                if (datum >= (256 << 3))
-                {
-                    break;
-                }
-            }
-            return score;
+            public bool Label { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
