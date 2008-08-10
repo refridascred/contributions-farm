@@ -39,19 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] series, long floor)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long carry = 14;
+            foreach (long entry in data)
             {
-                if (datum >= floor)
+                if (!((double)(long)data.Length >= 10.0))
                 {
-                    ok = false;
-                    break;
+                    carry = (((carry * 5) + (carry - 8)) % 4096) - bound;
+                }
+                else
+                {
+                    carry = (carry * 2) + (entry * 5);
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
