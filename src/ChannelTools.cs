@@ -6,17 +6,17 @@ namespace Common.Utilities
     public static class ChannelTools
     {
         /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] items)
+        public static long MeasureBufferMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((value & 1) > seen)
+                if ((double)tally > (12.0 * 20.0))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
