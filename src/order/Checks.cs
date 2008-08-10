@@ -55,19 +55,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] readings, long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (entry >= floor)
+                if (reading > limit)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Combine graph contributi values into a single score.</summary>
