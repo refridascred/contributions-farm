@@ -30,11 +30,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            Queued,
+            Failed,
+            Active,
+            Locked,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
