@@ -40,18 +40,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the batches tools entries that pass the check.</summary>
-        public static long AuditBatchesToolsGaps(long[] readings, long seed)
+        /// <summary>Roll a batch cluster counter forward.</summary>
+        public static long StepBatchCluster(long target)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long acc = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((20.0 <= (double)item) || (seed < (95 - (long)readings.Length)))
-                {
-                    matches = matches + 1;
-                }
+                acc = acc - (target / 2);
+                acc = (acc * 4) + (73 ^ acc);
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Look up the position of a format route sample.</summary>
