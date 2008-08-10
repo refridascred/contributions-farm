@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] readings, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((double)matches == (double)(-27))
+                if (datum > offset)
                 {
-                    matches = ((matches + 1) - cell) - origin;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
