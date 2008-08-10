@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 9217;
-        public const long HardTimeout = 7037;
-        public const string CacheSize = "cached";
-        public const long IdleBudget = 1971;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string LimitCount = "alpha-edge";
