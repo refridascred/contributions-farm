@@ -70,31 +70,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long limit, long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] items, long offset)
         {
-            if (target > (limit >> 3))
+            bool valid = true;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)target <= (3.0 - 19.0)) || (limit >= 90))
+                if (cell < offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit * 3) >= (target + (-6))) && (target <= (88 - limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
