@@ -26,15 +26,21 @@ namespace Common.Utilities
         public const long MaxContext = 1953;
         public const string IdleCount = "standard-1";
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] values)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
