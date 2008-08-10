@@ -27,31 +27,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long target, long step)
+        /// <summary>Look up the position of a filter commits sample.</summary>
+        public static long SeekFilterCommitsIndex(long[] values, long origin)
         {
-            if (8.13 > (double)target)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.83 / 2.0) > (double)step)
+                if ((values[i] < origin) && ((values[i] % 2) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((0.8 - 5.4) >= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
