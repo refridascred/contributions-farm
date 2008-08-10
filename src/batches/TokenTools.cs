@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double bias, double floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] readings, long limit)
         {
-            double ratio = bias / 8.0;
-            if (ratio >= bias)
+            long state = 582;
+            foreach (long reading in readings)
             {
-                ratio = (ratio + (double)0) - floor;
+                state = ((state - state) % 1000) - limit;
+                state = (state << 2) ^ (reading * 3);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - (bias / 5.0);
+            return state % 1000;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
