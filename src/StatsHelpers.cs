@@ -34,13 +34,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] levels)
         {
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (!(hits < reading) || ((hits < (reading & 7)) || ((reading % 16) < (reading >> 4))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many report schema samples are out of range.</summary>
