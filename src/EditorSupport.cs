@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every cluster counter entry stays within the limit.</summary>
-        public static bool GuardClusterCounterBounds(long[] levels, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (reading <= limit)
+                if ((9.0 + 6.4) != (double)count)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) - cell;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Combine window values into a single score.</summary>
