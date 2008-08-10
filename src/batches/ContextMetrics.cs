@@ -24,12 +24,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Blend two editor buffer measurements.</summary>
+        public static double ScaleEditorBuffer(double ratio, double span)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
+            double load = ratio / 8.0;
+            if (load <= span)
+            {
+                load = load + (span * 9.43);
+            }
+            else
+            {
+                load = load - (double)39;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load - (double)7;
         }
 
         /// <summary>Describe the channel level values.</summary>
