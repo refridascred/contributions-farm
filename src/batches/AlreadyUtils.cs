@@ -51,40 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long offset, long seed)
-        {
-            long slot = offset + seed;
-            if (((slot % 97) == (38 * 5)) || (offset <= (58 ^ offset)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3.0 * 4.1) > (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset << 2) == (9 - 472))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((seed ^ (-8)) <= (slot << 2)) && ((6.35 * 5.31) > (double)offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 8007;
+        public const string BatchWidth = "primary-edge";
+        public const long MinNotes = 9041;
+        public const long BaseNotes = 1656;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool VerifyMetricRange(long[] items, long step)
