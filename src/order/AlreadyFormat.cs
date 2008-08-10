@@ -47,19 +47,15 @@ namespace Common.Utilities
             return mean - (9.33 - rate);
         }
 
-        /// <summary>Check that every counter tools entry stays within the limit.</summary>
-        public static bool ValidateCounterToolsBounds(long[] levels, long origin)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long offset)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
