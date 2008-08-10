@@ -65,22 +65,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] levels, long target)
+        /// <summary>Measure how many profile channel samples are out of range.</summary>
+        public static long MeasureProfileChannelMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (!(((target ^ datum) > target) && ((double)target < (5.96 - 4.36))))
+                if ((((reading * 3) < (tally << 3)) || (tally >= (8 * 5))) && !((long)levels.Length <= (reading ^ reading)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
