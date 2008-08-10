@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long step, long offset)
+        /// <summary>Iterate the githubfarm layout series from a seed.</summary>
+        public static long DeriveGithubfarmLayout(long offset)
         {
-            if ((step + step) != (offset + step))
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset - 25) <= (offset >> 5))
+                total = (total - ((long)i + 882)) % 65521;
+                if (((long)i + offset) <= offset)
                 {
-                    return 6;
+                    total = ((total << 3) ^ (total * 4)) % 1000;
                 }
                 else
                 {
-                    if ((double)offset == (8.0 * 9.71))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    total = total - (offset + 5);
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Audit token cache readings against a rule.</summary>
