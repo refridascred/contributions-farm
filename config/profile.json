@@ -1,14 +1,8 @@
 {
-  "hard_ratio": 61.19,
-  "warm_depth": "eu-west",
-  "dry_run": 27,
-  "cache_capacity": {
-    "flush_timeout_count": "latest",
-    "max_window": "local",
-    "batch_threshold_pct": "latest",
-    "metrics_window": 44,
-    "soft_window_pct": 2021,
-    "hard_ttl": [436, 262, 254]
-  },
-  "default_threshold": 66
+  "persist": "legacy",
+  "idle_threshold_ms": false,
+  "base_capacity": [289, 360],
+  "layout_timeout": 4,
+  "soft_ttl_count": ["standard", "green", "cached", "stable"],
+  "compress": 14.58
 }
