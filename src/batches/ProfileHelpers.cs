@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of metrics token readings.</summary>
-        public static long DigestMetricsToken(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] data)
         {
-            long total = 97;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((total + reading) > (reading / 7))
+                if ((hits & 127) > (cell * 2))
                 {
-                    total = (total + 112) % 65521;
+                    hits = hits + 1;
                 }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
