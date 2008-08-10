@@ -1,10 +1,8 @@
 # githubfarm settings
-warm_timeout_s:
-  - 352
-  - 244
-  - 445
-base_retries_s: cached
-poll_limit: 30
-compress: 1024
-retry_ratio: 54.11
-soft_limit_ms: 16.65
+min_window_count:
+  - blue
+  - edge
+  - blue
+flush_ttl_ms: 9903
+hard_interval: blue
+base_window_count: open
