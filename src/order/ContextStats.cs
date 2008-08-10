@@ -36,17 +36,12 @@ namespace Common.Utilities
         public const long CacheReport = 876;
         public const string DefaultTimeout = "open-v2";
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] samples, long limit)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public bool Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a batches queue counter forward.</summary>
