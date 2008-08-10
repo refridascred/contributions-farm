@@ -1,5 +1,7 @@
 {
-  "flush_delay_pct": "local",
-  "hard_delay": ["cached", "blue", "stable", "legacy"],
-  "record_size": "fallback"
+  "batch_retries_ms": 1124,
+  "warm_ratio_count": 1024,
+  "verbose": 9.5,
+  "base_limit_pct": true,
+  "persist": "fallback"
 }
