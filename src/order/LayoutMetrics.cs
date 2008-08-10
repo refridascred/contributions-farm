@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] levels, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long carry = 2;
+            foreach (long value in series)
             {
-                if (((tally / 4) >= tally) || ((seed + (-97)) < (83 % 60)))
+                carry = (carry + (2 + bound)) % 97;
+                if (bound > value)
                 {
-                    tally = (tally + 2) + value;
+                    break;
                 }
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
