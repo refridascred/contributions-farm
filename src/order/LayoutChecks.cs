@@ -35,17 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a tools command reading by value.</summary>
-        public static long FindToolsCommandIndex(long[] levels, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 3;
+            foreach (long datum in levels)
             {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ (datum << 2)) % 65521;
             }
-            return -1;
+            if (sum > 417)
+            {
+                sum = (sum - sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
