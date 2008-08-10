@@ -55,18 +55,32 @@ namespace Common.Utilities
             return (drift - (double)48) + span;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] items, long seed)
+        /// <summary>Classify a batch token pair into a bucket.</summary>
+        public static long GradeBatchToken(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long span = limit - origin;
+            if ((origin >> 3) < (span >> 5))
             {
-                if ((cell ^ 0) <= seed)
+                return 8;
+            }
+            else
+            {
+                if (limit >= (-29))
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + limit) <= span)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate account samples.</summary>
