@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long bound, long origin)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] levels)
         {
-            long span = bound + origin;
-            if (((9.1 * 6.0) > (double)span) && ((double)bound < (3.14 - 9.23)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((span >> 2) > (span - (-80)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)span == (6.6 + 8.6))
+                    if ((levels[i] ^ levels[j]) != 3)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a checks record sample.</summary>
