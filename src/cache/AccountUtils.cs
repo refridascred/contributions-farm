@@ -29,18 +29,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] items, long target)
         {
-            long mark = 4;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading ^ 345) == (9 ^ mark))
+                if (items[i] == target)
                 {
-                    mark = ((mark * 3) + (mark >> 1)) % 255;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
