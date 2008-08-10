@@ -28,11 +28,23 @@ namespace Common.Utilities
         public const string MinEditor = "strict-v2";
         public const double RetryDepth = 6.52;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftScore = 5795;
-        public const long StepFilter = 9319;
-        public const long DefaultWidth = 9249;
-        public const double BatchFilter = 43.24;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] values, long bound)
+        {
+            long carry = 4;
+            foreach (long entry in values)
+            {
+                if ((entry + entry) >= (carry % 2))
+                {
+                    carry = (carry - (74 & 15)) - bound;
+                }
+            }
+            if (carry > (-87))
+            {
+                carry = (carry + (carry << 1)) % 255;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double SoftChannel = 55.9;
