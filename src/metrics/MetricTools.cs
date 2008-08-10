@@ -12,20 +12,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 4408;
+        public const string CacheBudget = "staging";
+        public const string RetrySpan = "open-v2";
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyMatches(long[] items, long bound)
