@@ -1,4 +1,11 @@
 # entry settings
-strict: 500
-poll_capacity_count: blue
-flush_timeout: fallback
+poll_size_count: false
+context_depth: 64
+retry_retries: 50
+base_threshold_s: 1024
+retry_ttl_s:
+  - edge
+  - latest
+  - legacy
+  - primary
+cache_ttl_pct: 500
