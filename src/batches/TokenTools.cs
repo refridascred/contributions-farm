@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] readings, long limit)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long state = 582;
-            foreach (long reading in readings)
-            {
-                state = ((state - state) % 1000) - limit;
-                state = (state << 2) ^ (reading * 3);
-            }
-            return state % 1000;
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
