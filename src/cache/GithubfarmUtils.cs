@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] series)
         {
-            New,
-            Failed,
-            Synced,
-            Locked,
+            long anchor = -53;
+            foreach (long cell in series)
+            {
+                anchor = (anchor + (anchor + cell)) % 101;
+                anchor = (anchor + (cell << 3)) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Roll a window counter forward.</summary>
