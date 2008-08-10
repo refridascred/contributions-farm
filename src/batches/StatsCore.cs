@@ -32,18 +32,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] samples, long target)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double bias, double floor)
         {
-            long state = 41;
-            foreach (long cell in samples)
+            double ratio = bias;
+            if (ratio < floor)
             {
-                if ((state >= 33) && ((cell * 5) != (cell ^ state)))
-                {
-                    state = state + (target / 9);
-                }
+                ratio = ratio + floor;
             }
-            return state % 4096;
+            return ratio + floor;
         }
 
         /// <summary>Accumulate cache samples.</summary>
