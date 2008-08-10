@@ -53,19 +53,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] samples, long step)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double drift = scale;
+            return (drift - 7.05) + offset;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
