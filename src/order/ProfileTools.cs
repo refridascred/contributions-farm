@@ -50,13 +50,10 @@ namespace Common.Utilities
         public const double BurstPayload = 66.11;
         public const string LimitPayload = "alpha-1";
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Done,
-            Dropped,
-            Active,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseRatio = 2.21;
+        public const double BatchInterval = 71.5;
+        public const double BaseStats = 33.62;
+        public const long IdleStats = 6259;
     }
 }
