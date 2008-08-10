@@ -22,24 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a tools window pair into a bucket.</summary>
-        public static long GradeToolsWindow(long step, long offset)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            if ((offset << 1) > (step << 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset > (10.0 * 8.7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Done,
+            Draft,
+            Paused,
+            Idle,
         }
 
         /// <summary>Hold a order entry.</summary>
