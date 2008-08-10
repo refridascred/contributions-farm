@@ -29,9 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 3681;
-        public const long LimitFarm = 3124;
-        public const string SoftFarm = "cached";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchSize = 5225;
+        public const double BurstFactor = 27.16;
+        public const long IdleMetric = 1900;
+        public const long StepMetric = 641;
+        public const string BaseMetric = "strict-v2";
     }
 }
