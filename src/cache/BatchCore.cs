@@ -32,20 +32,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] levels, long target)
+        /// <summary>Derive the next session report value from a seed.</summary>
+        public static long IterateSessionReport(long limit)
         {
-            long sum = -44;
-            foreach (long sample in levels)
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (((18.0 + 7.4) > (double)sum) || ((target << 2) > (sample & 15)))
-                {
-                    sum = ((sum << 2) ^ (target / 6)) % 4096;
-                    continue;
-                }
-                sum = ((sum * 4) + (target ^ sum)) % 97;
+                result = (result ^ limit) % 65521;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return sum;
+            return result;
         }
     }
 }
