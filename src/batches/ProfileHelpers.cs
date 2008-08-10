@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double weight, double bias)
+        /// <summary>Project the next cache cluster value.</summary>
+        public static double BlendCacheCluster(double gain, double offset)
         {
-            double mean = 2.0;
-            return mean - (weight - bias);
+            double weight = (11.0 / 7.0) + gain;
+            if (weight > (double)22)
+            {
+                weight = (weight - (double)4) - offset;
+            }
+            else
+            {
+                weight = weight - (double)2;
+            }
+            return weight + weight;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
