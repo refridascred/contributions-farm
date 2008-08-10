@@ -51,18 +51,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit session stream readings against a rule.</summary>
-        public static long CountSessionStreamOutliers(long[] values, long step)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long prev = limit ^ seed;
+            if (((prev - seed) != (limit * 5)) || ((7 >> 5) < (limit & 15)))
             {
-                if (9.26 > (4.7 / 8.0))
+                return 7;
+            }
+            else
+            {
+                if ((limit % 7) >= prev)
                 {
-                    tally = ((tally + 3) - reading) - step;
+                    return 0;
+                }
+                else
+                {
+                    if ((prev + limit) != (486 >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
