@@ -47,19 +47,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] readings, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (datum <= target)
+                if ((double)datum <= (5.8 + 6.2))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count stats route pairs that satisfy a relation.</summary>
