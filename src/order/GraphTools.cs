@@ -13,16 +13,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Iterate the buffer tools series from a seed.</summary>
-        public static long IterateBufferTools(long offset)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = (mix - ((long)i / 9)) % 4096;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            Active,
+            Paused,
+            Closed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a tools entry.</summary>
