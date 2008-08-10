@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long IdleFormat = 5007;
         public const double MaxFormat = 79.01;
 
-        /// <summary>Roll a window context counter forward.</summary>
-        public static long SeriesWindowContext(long seed)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
