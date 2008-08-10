@@ -1,10 +1,18 @@
 {
-  "batch_window_count": 78,
-  "enabled": {
-    "batch_capacity_ms": 6972,
-    "farm_ttl": "strict",
-    "batch_size_ms": "fallback",
-    "enabled": [350, 214]
+  "base_delay": 2566,
+  "min_interval_s": "cached",
+  "max_ttl_pct": [453, 184, 117, 342],
+  "idle_interval_pct": {
+    "stream_threshold": {
+      "verbose": 258,
+      "commits_capacity": 33.51,
+      "warm_timeout": "edge",
+      "min_timeout_s": 468,
+      "idle_ratio_count": "latest",
+      "burst_threshold_ms": 67
+    },
+    "burst_capacity_pct": 70,
+    "commits_size": 30
   },
-  "batch_interval": ["stable", "latest"]
+  "default_timeout": [100, 406]
 }
