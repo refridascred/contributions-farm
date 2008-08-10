@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary blue eu-west; do
-    log "checking ${item}"
-done
+mode="${1:-strict}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-CHANNEL_LIMIT=18
+CHANNEL_LIMIT=25
 log "limit is ${CHANNEL_LIMIT}"
