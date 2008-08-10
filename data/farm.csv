@@ -1,8 +1,9 @@
-id,token
-1,825
-2,primary
-3,84.2
-4,45.22
-5,372
-6,667
-7,primary
+id,score,state,label
+1,40.71,blue,latest
+2,324,edge,543
+3,20,72.3,strict
+4,962,18.96,417
+5,green,29.24,96.38
+6,local,strict,cached
+7,816,blue,staging
+8,primary,877,84
