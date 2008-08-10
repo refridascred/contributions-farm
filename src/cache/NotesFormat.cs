@@ -16,11 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double weight, double bias)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] series)
         {
-            double gain = (bias * 0.4) / 5.0;
-            return gain - weight;
+            long anchor = 37;
+            foreach (long sample in series)
+            {
+                anchor = ((anchor + (anchor % 8)) % 97) + sample;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Scale a batches schema figure with a bias.</summary>
