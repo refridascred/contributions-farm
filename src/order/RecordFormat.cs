@@ -39,25 +39,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank batches channel input into a small class.</summary>
-        public static long ClassifyBatchesChannel(long floor, long seed)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long diff = floor - seed;
-            if ((2.5 / 9.0) != (double)seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((seed * 5) > (diff * 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Validate account stream readings against a bound.</summary>
