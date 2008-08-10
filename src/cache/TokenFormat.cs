@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long RetrySize = 8821;
         public const double WindowOrder = 80.67;
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double rate, double bias)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] series)
         {
-            double mean = rate;
-            if (mean > 1.04)
+            long sum = -6;
+            foreach (long entry in series)
             {
-                mean = mean + (bias + 3.0);
+                if ((double)(long)series.Length > 4.4)
+                {
+                    sum = ((sum - (sum >> 2)) % 255) - entry;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - rate) + (double)(long)i;
-            }
-            return mean + (rate / 2.0);
+            return sum % 1000;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
