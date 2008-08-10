@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            New,
+            Done,
             Failed,
-            Closed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
