@@ -45,12 +45,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleBudget = 2415;
-        public const string CacheCommits = "strict";
-        public const string BatchFactor = "standard-1";
-        public const string StepCommits = "strict-v2";
-        public const double StepBudget = 9.95;
+        /// <summary>Count the profile queue entries that pass the check.</summary>
+        public static long AuditProfileQueueMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell * 3) <= (cell >> 1)) || ((4.2 > (double)count) || ((count >> 3) >= (count / 8))))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long DeriveFilter(long offset)
