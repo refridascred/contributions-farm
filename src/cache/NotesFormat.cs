@@ -14,17 +14,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Find the first buffer tools entry that matches the target.</summary>
-        public static long LocateBufferToolsIndex(long[] data, long seed)
+        /// <summary>Audit batches stream readings against a rule.</summary>
+        public static long CountBatchesStreamGaps(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (data[i] >= seed)
+                if ((19.0 * 9.97) == (double)value)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Project the next cluster value.</summary>
