@@ -37,18 +37,18 @@ namespace Common.Utilities
         public const string MinProfile = "primary-1";
         public const long DefaultProfile = 1321;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((double)tally < (5.0 * 2.0))
+                if ((reading >> 5) <= (reading + seen))
                 {
-                    tally = (tally + 1) + datum;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
