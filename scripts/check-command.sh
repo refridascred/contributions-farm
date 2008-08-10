@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=283
+COMMAND_LIMIT=323
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-local}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in local staging; do
+for item in blue local edge; do
     log "checking ${item}"
 done
