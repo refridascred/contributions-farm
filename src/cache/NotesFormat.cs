@@ -26,12 +26,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] series, long target)
         {
-            Ready,
-            Queued,
-            Dropped,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((matches + target) < 58)
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
         }
     }
 }
