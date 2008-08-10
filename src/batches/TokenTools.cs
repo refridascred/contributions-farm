@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every channel tools entry stays within the limit.</summary>
-        public static bool CheckChannelToolsLimits(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinProfile = 4.65;
+        public const double DefaultProfile = 53.81;
+        public const string WindowSpan = "stable-v2";
+        public const long BaseWidth = 7627;
+        public const long SoftProfile = 6640;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] items)
