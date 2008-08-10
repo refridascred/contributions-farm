@@ -57,18 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] data, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((limit + 4) != (cell * 5))
+                if (value < seed)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
