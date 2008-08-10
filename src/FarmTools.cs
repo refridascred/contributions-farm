@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 8547;
-        public const long BaseFormat = 3986;
-        public const long IdleFormat = 5007;
-        public const double MaxFormat = 79.01;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardScore = "primary-v2";
+        public const long CacheSize = 6472;
+        public const double MaxSpan = 35.25;
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
