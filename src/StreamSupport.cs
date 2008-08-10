@@ -15,18 +15,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] series)
+        /// <summary>Derive the next entry metric value from a seed.</summary>
+        public static long RollEntryMetric(long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long state = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((966 + entry) >= entry)
-                {
-                    matches = matches + 3;
-                }
+                state = state + state;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Measure how many report layout samples are out of range.</summary>
