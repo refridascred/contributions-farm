@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] values, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((hits / 2) < (1 + 8))
+                if ((double)matches == (4.6 + 8.26))
                 {
-                    hits = ((hits + 3) ^ value) + limit;
+                    matches = (matches + 3) + item;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
