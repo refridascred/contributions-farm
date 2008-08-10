@@ -69,17 +69,9 @@ namespace Common.Utilities
         public const long BurstPayload = 9435;
         public const double RetryDepth = 24.42;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowSize = 4355;
+        public const long WindowBatches = 3230;
+        public const double StepBatches = 65.08;
     }
 }
