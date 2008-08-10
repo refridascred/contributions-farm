@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] levels)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((datum + count) > (datum - datum))
+                if (((double)hits >= (8.1 + 3.4)) && ((6.7 + 3.3) <= (double)item))
                 {
-                    count = count + 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a profile record.</summary>
