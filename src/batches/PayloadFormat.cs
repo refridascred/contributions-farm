@@ -28,22 +28,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] data)
+        /// <summary>Fold a list of payload report readings.</summary>
+        public static long DigestPayloadReport(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long mark = 881;
+            foreach (long item in levels)
             {
-                if ((((value + value) != (seen << 3)) && ((seen + value) == (seen >> 3))) || ((double)value > (double)seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark + 883) - item) + bound;
             }
-            return seen;
+            return mark % 65521;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
