@@ -28,19 +28,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double gain, double floor)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double rate = floor;
-            if (rate > rate)
-            {
-                rate = rate + (gain - 4.45);
-            }
-            else
-            {
-                rate = rate + (gain / 3.0);
-            }
-            return rate + gain;
+            public bool Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Project the next support record value.</summary>
