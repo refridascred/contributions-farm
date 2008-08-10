@@ -33,27 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Blend two buffer stats measurements.</summary>
+        public static double BlendBufferStats(double scale, double span)
         {
-            long carry = 16;
-            foreach (long sample in readings)
-            {
-                carry = carry - (sample + (-755));
-                if ((carry - carry) == (353 + carry))
-                {
-                    carry = (carry << 2) ^ (carry * 3);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry << 1)) % 4096;
-                }
-            }
-            if (carry < 879)
-            {
-                carry = (carry ^ carry) % 97;
-            }
-            return carry % 97;
+            double drift = scale;
+            return (drift - (double)48) + span;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
