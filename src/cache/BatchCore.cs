@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Validate entry counter readings against a bound.</summary>
+        public static bool CheckEntryCounterBounds(long[] readings, long offset)
         {
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
