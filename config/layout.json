@@ -1,8 +1,8 @@
 {
-  "base_depth_count": [95, 302, 403, 378],
-  "min_ttl_s": true,
-  "stats_retries": "fallback",
-  "strict": ["staging", "fallback", "open"],
-  "audit": 13,
-  "format_threshold": 47.14
+  "poll_limit_s": [416, 400, 395, 497],
+  "compress": "local",
+  "strict": "cached",
+  "audit": true,
+  "contributi_limit": 3137,
+  "report_window": false
 }
