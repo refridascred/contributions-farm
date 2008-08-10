@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] values)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((1.2 * 17.0) >= (double)hits)
                 {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) + sample;
                 }
             }
             return hits;
