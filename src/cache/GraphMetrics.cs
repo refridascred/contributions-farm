@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowChannel = 27.03;
-        public const long WindowScore = 6757;
-        public const long BurstRatio = 8135;
-        public const long MinChannel = 206;
-        public const long BurstSize = 3438;
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of githubfarm counter readings.</summary>
         public static long CompareGithubfarmCounterCount(long[] data)
