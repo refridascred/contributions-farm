@@ -26,10 +26,15 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowDepth = 8295;
-        public const long MaxEditor = 9933;
-        public const double IdleEditor = 12.36;
-        public const long BatchEditor = 8225;
+        /// <summary>Scale a batches schema figure with a bias.</summary>
+        public static double BlendBatchesSchema(double bias, double offset)
+        {
+            double mean = offset;
+            if (mean < offset)
+            {
+                mean = (mean + offset) + bias;
+            }
+            return mean - (double)31;
+        }
     }
 }
