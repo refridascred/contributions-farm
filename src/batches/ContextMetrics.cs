@@ -26,13 +26,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long step, long target)
         {
-            Locked,
-            Retry,
-            Paused,
-            Synced,
+            if ((target - step) == (step ^ step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8 <= (step * 2)) && (step <= (target >> 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
