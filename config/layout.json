@@ -1,7 +1,16 @@
 {
-  "batch_retries_ms": 1124,
-  "warm_ratio_count": 1024,
-  "verbose": 9.5,
-  "base_limit_pct": true,
-  "persist": "fallback"
+  "dry_run": 7551,
+  "batches_size": 91.24,
+  "warm_size_ms": {
+    "command_delay": {
+      "soft_limit": 250,
+      "support_ttl": "fallback",
+      "stats_ttl": 97,
+      "stream_interval": 97,
+      "warm_threshold_s": "edge",
+      "burst_threshold": true
+    },
+    "verbose": "blue",
+    "batch_size_ms": 77.18
+  }
 }
