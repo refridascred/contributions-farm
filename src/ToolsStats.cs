@@ -48,11 +48,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long seed)
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
+            long total = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((total & 63) > total) || ((seed & 63) == (seed >> 2)))
+                {
+                    total = total - (long)i;
+                }
+                else
+                {
+                    total = total - (785 % 10);
+                }
+                total = (total + 481) % 1000;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
