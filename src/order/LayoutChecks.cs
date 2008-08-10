@@ -79,13 +79,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Measure how many stream command samples are out of range.</summary>
+        public static long TallyStreamCommandHits(long[] items)
         {
-            New,
-            Dropped,
-            Synced,
-            Draft,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((((sample - sample) <= seen) || ((double)seen <= (0.1 * 8.5))) || ((((long)items.Length >> 4) <= (seen - seen)) && ((6.5 / 9.0) == (double)seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
