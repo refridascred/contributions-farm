@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSchema = "legacy-1";
-        public const string SoftTimeout = "fallback-1";
-        public const string LimitSchema = "alpha";
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiHits(long[] levels, long target)
