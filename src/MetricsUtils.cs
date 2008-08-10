@@ -31,18 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] readings)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] samples, long offset)
         {
-            long carry = 513;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((carry - carry) >= ((long)readings.Length / 3))
+                if (samples[i] > offset)
                 {
-                    carry = ((carry - 791) % 65521) ^ datum;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
