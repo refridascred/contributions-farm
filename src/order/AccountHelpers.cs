@@ -72,31 +72,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long limit, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] series)
         {
-            if ((limit ^ bound) < (bound / 8))
+            long carry = 400;
+            foreach (long sample in series)
             {
-                return 3;
+                carry = (carry ^ (98 - sample)) % 1000;
             }
-            else
-            {
-                if ((double)bound == (1.7 + 6.2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit == (4.1 + 6.9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
