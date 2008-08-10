@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] readings, long origin)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftScore = "fallback-1";
+        public const long HardDepth = 9758;
+        public const double BatchCount = 85.86;
+        public const long CacheTools = 8331;
+        public const long DefaultSize = 5948;
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long MatchMetricCount(long[] items)
