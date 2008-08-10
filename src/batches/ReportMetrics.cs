@@ -42,11 +42,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 8257;
-        public const long BurstBudget = 1070;
-        public const double MaxFactor = 7.85;
-        public const long BatchFilter = 2839;
-        public const string MaxRatio = "latest-1";
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double bias, double span)
+        {
+            double scale = bias;
+            if (scale > bias)
+            {
+                scale = (scale - bias) - span;
+            }
+            return scale + (bias / 6.0);
+        }
     }
 }
