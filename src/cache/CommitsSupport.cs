@@ -29,19 +29,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] samples, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (sample != limit)
+                if ((double)count <= (8.06 / 9.0))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) + sample;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a schema record.</summary>
