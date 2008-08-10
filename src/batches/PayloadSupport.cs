@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] levels)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long state = 85;
+            foreach (long cell in levels)
             {
-                if ((1.2 * 17.0) >= (double)hits)
+                for (int i = 0; i < 2; i++)
                 {
-                    hits = (hits + 2) + sample;
+                    state = ((((state << 2) ^ 1) % 101) - (long)i) ^ cell;
                 }
+                state = (state ^ (state & 31)) % 101;
             }
-            return hits;
+            return state % 65521;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
