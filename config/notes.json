@@ -1,6 +1,12 @@
 {
-  "base_ratio_s": "cached",
-  "flush_timeout_pct": false,
-  "audit": true,
-  "sync_interval_ms": false
+  "idle_ratio_pct": {
+    "burst_size_count": 250,
+    "flush_size_s": true,
+    "hard_depth": 90,
+    "report_capacity": [133, 256],
+    "soft_window_count": 30.97,
+    "filter_window": 27.48
+  },
+  "burst_size_s": [107, 322, 199],
+  "buffer_depth": "edge"
 }
