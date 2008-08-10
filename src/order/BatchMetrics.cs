@@ -53,11 +53,39 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long seed, long step)
         {
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
+            long offset = seed ^ step;
+            if (!(step < (seed & 7)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((seed / 4) >= seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((step + offset) >= (offset >> 3)) && (((-798) - 356) == (seed + seed)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset > step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
