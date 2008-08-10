@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate cache tools readings against a bound.</summary>
-        public static bool ValidateCacheToolsLimits(long[] levels, long bound)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheAlready = 28.83;
+        public const string BaseDepth = "stable";
+        public const long MinCount = 3275;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
