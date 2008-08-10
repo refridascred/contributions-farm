@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a batches layout pair into a bucket.</summary>
-        public static long ClassifyBatchesLayout(long step, long step2)
-        {
-            long span = step - step2;
-            if (((13.0 * 8.0) != (double)step) || ((1.6 / 4.0) > (double)span))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step2 <= (5.2 / 6.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step >> 2) < (span + step)) || (step >= (step2 / 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (3.5 > (double)step2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchCount = 92.55;
+        public const double DefaultProfile = 83.41;
+        public const long WindowSize = 6094;
+        public const long IdleInterval = 1097;
+        public const long BurstBudget = 6476;
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long SeekStreamIndex(long[] samples, long bound)
