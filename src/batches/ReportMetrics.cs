@@ -28,10 +28,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitSize = "primary";
-        public const string MaxWindow = "primary-edge";
-        public const long IdleWindow = 5463;
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] levels, long limit)
+        {
+            long state = 347;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    long edge = ((-85) * 4) * 4;
+                    state = ((((state << 3) ^ (edge << 2)) % 97) + (long)i) + limit;
+                }
+                state = (state * 3) + (datum * 3);
+            }
+            return state;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
