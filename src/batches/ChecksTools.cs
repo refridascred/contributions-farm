@@ -35,21 +35,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
