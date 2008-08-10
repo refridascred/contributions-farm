@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const long RetryInterval = 1014;
         public const double WindowWidth = 44.83;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long offset, long seed)
         {
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public double Level { get; set; }
+            if ((seed + offset) == (174 + offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((offset * 3) <= seed) && ((double)offset < (7.32 + 18.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
