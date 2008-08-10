@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Paused,
-            Stale,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheDepth = 806;
+        public const long BatchFilter = 8484;
+        public const double HardWidth = 51.26;
+        public const long DefaultRatio = 2298;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long DigestTools(long[] samples, long offset)
