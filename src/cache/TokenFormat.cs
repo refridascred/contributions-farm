@@ -24,18 +24,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many support counter samples are out of range.</summary>
-        public static long CountSupportCounterHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!((4 + hits) == (0 - cell)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 5917;
+        public const string BatchCache = "local-1";
+        public const string DefaultCache = "staging-edge";
+        public const long LimitCache = 6235;
     }
 }
