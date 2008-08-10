@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            public string Size { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
