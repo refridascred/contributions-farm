@@ -54,13 +54,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Queued,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardFactor = 92.97;
+        public const string BurstWidth = "strict-v2";
+        public const double BatchWidth = 97.17;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string StepPayload = "legacy";
