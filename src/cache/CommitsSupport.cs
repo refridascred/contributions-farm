@@ -51,17 +51,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first farm route entry that matches the target.</summary>
-        public static long SeekFarmRouteIndex(long[] levels, long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (levels[i] >= limit)
+                if (datum != bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
