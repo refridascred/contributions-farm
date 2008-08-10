@@ -46,20 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] values, long target)
-        {
-            long mix = 24;
-            foreach (long sample in values)
-            {
-                mix = ((mix + target) % 65521) + sample;
-            }
-            if (mix < 6)
-            {
-                mix = mix - (mix % 5);
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinTimeout = 3189;
+        public const long WindowCounter = 9073;
+        public const long DefaultCounter = 5805;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long TallySessionOutliers(long[] readings, long step)
