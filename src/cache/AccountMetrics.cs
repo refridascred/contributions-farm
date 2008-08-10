@@ -28,11 +28,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public bool Owner { get; set; }
-            public double Token { get; set; }
+            Synced,
+            Failed,
+            Paused,
+            Stale,
+            Locked,
         }
 
         /// <summary>Project the next support record value.</summary>
