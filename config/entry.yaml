@@ -1,27 +1,31 @@
 # entry settings
-schema_retries:
-  - cached
-  - legacy
-  - staging
-cluster_window: 100
-dry_run:
-  compress: 12
-  idle_window_count: 100
-  flush_retries:
+hard_capacity_pct: 80.25
+max_delay: 10.09
+queue_retries: true
+verbose:
+  readonly:
+    - 129
+    - 196
+  max_retries_ms:
+    max_depth: 12.75
+    strict: 9908
+    base_threshold_ms: cached
+    session_ttl: local
+  format_limit: 6468
+readonly:
+  idle_limit:
+    max_limit_count: local
+    format_threshold: edge
+    compress: 3307
+    record_interval: 82.26
+    soft_window_s: 45.53
+  default_interval: 74.81
+  schema_capacity: 64.47
+  report_limit: 8261
+  persist: 60
+  channel_limit:
+    - primary
+    - cached
+    - cached
     - staging
-    - staging
-  max_depth_ms:
-    - 404
-    - 42
-    - 173
-  soft_depth:
-    warm_threshold_s: strict
-    command_limit: 5
-    burst_delay: cached
-    burst_ratio_s: 15.15
-    buffer_capacity:
-      - primary
-      - eu-west
-      - legacy
-      - strict
-sync_delay_pct: stable
+sync_ttl: 54.16
