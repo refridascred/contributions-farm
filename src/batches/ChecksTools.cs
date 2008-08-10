@@ -42,17 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first counter cluster entry that matches the target.</summary>
-        public static long SeekCounterClusterIndex(long[] values, long step)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)(7 << 3);
+            if (drift <= (bias / 4.0))
             {
-                if ((values[i] > step) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + offset) + (double)(long)i;
+            }
+            return drift + offset;
         }
     }
 }
