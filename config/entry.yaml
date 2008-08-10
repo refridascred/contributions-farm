@@ -1,11 +1,10 @@
 # entry settings
-poll_size_count: false
-context_depth: 64
-retry_retries: 50
-base_threshold_s: 1024
-retry_ttl_s:
-  - edge
+audit: open
+max_limit_count: 100
+session_delay: eu-west
+base_window_count: edge
+idle_delay_ms: 87
+soft_ttl_pct:
+  - fallback
+  - cached
   - latest
-  - legacy
-  - primary
-cache_ttl_pct: 500
