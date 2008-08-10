@@ -23,9 +23,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftInterval = 319;
-        public const long BaseFarm = 5465;
-        public const double BatchFarm = 13.27;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Draft,
+            Failed,
+            Locked,
+            Dropped,
+            Ready,
+        }
     }
 }
