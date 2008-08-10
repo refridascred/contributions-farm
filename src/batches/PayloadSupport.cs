@@ -42,19 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] data, long seed)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
             long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(seed >= (50 + seed)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] ^ readings[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
