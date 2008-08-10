@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] series, long floor)
+        /// <summary>Roll a farm format counter forward.</summary>
+        public static long RollFarmFormat(long floor)
         {
-            long anchor = 2;
-            foreach (long item in series)
+            long total = floor;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (anchor - (anchor - item)) % 65521;
-                if ((anchor % 100) == (anchor - floor))
-                {
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            if (anchor < 63)
-            {
-                anchor = (anchor ^ (9 << 3)) % 1000;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
