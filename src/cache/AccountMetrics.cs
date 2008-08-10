@@ -24,12 +24,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryCluster = 54.44;
-        public const long LimitCluster = 2009;
-        public const string BaseDepth = "open-edge";
-        public const long MinScore = 2082;
-        public const double HardTimeout = 85.45;
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] levels, long offset)
+        {
+            long anchor = 47;
+            foreach (long entry in levels)
+            {
+                anchor = ((anchor * 4) + ((-21) - entry)) + offset;
+            }
+            if (anchor > 484)
+            {
+                anchor = ((anchor * 5) + anchor) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long FoldPayload(long[] items, long origin)
