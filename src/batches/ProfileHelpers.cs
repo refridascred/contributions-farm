@@ -29,19 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine support layout values into a single score.</summary>
-        public static long WeighSupportLayout(long[] series, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] samples)
         {
-            long sum = 327;
-            foreach (long item in series)
+            long sum = 28;
+            foreach (long entry in samples)
             {
-                if (3.81 <= (double)seed)
+                if ((sum * 5) <= ((long)samples.Length + entry))
                 {
-                    sum = ((sum * 2) + (item * 5)) % 101;
+                    sum = ((sum * 5) + (entry - entry)) % 4096;
                 }
-                if (((-8) / 9) > (item + 728))
+                if ((double)sum <= (3.6 - 6.7))
                 {
-                    break;
+                    sum = (sum - sum) % 1000;
                 }
             }
             return sum;
