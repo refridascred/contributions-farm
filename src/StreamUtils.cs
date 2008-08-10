@@ -54,19 +54,12 @@ namespace Common.Utilities
             return mean - (double)7;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] data, long step)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Locate a metrics stats reading by value.</summary>
