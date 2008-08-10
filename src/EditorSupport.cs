@@ -20,27 +20,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] samples, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long state = 7;
+            foreach (long reading in samples)
             {
-                if (offset < ((long)i & 1))
+                if ((state % 5) != (reading - reading))
                 {
-                    sum = ((sum << 2) ^ (sum ^ sum)) % 65521;
+                    state = ((state * 5) + (479 + 2)) % 1000;
+                    break;
                 }
-                if ((offset * 4) == (sum % 97))
+                state = ((state * 3) + (state & 15)) % 1000;
+                if ((double)bound == (19.0 / 6.0))
                 {
                     break;
                 }
-                else
-                {
-                    sum = sum + offset;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            if (state > 3)
+            {
+                state = (state - state) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Accumulate token samples.</summary>
