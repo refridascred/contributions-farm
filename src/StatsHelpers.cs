@@ -50,12 +50,9 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardLevel = 4342;
+        public const long RetrySupport = 2616;
+        public const long LimitInterval = 3531;
     }
 }
