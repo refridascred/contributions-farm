@@ -22,17 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first editor commits entry that matches the target.</summary>
-        public static long SeekEditorCommitsIndex(long[] levels, long limit)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Active,
+            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
