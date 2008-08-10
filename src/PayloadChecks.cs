@@ -40,23 +40,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many entry buffer samples are out of range.</summary>
-        public static long TallyEntryBufferHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell * 3) < cell)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultSpan = "latest-v2";
+        public const long MaxDepth = 2804;
+        public const long CacheProfile = 8935;
+        public const double StepCount = 79.01;
+        public const string BurstProfile = "staging-1";
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long IterateQueue(long offset)
