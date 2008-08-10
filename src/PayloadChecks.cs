@@ -51,39 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long target, long step)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long offset)
         {
-            long prev = target - step;
-            if ((double)target != (7.8 + 3.21))
+            long score = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)109 >= (double)prev)
+                if (offset > (offset ^ (long)i))
                 {
-                    return 4;
+                    score = (score + (0 << 1)) % 1000;
                 }
-                else
-                {
-                    if (target < (prev - target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((5.37 / 3.0) >= (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
+            return score;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
