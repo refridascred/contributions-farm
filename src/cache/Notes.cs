@@ -58,14 +58,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] values)
         {
-            Queued,
-            Locked,
-            Failed,
-            Pending,
-            Ready,
+            long sum = 3;
+            foreach (long item in values)
+            {
+                sum = (sum + item) % 4096;
+                sum = (sum - (item * 2)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Adjust a profile reading.</summary>
