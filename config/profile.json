@@ -1,5 +1,14 @@
 {
-  "sync_limit": 9.72,
-  "sync_retries": [499, 485, 235, 287],
-  "batches_limit": 64.19
+  "hard_ratio": 61.19,
+  "warm_depth": "eu-west",
+  "dry_run": 27,
+  "cache_capacity": {
+    "flush_timeout_count": "latest",
+    "max_window": "local",
+    "batch_threshold_pct": "latest",
+    "metrics_window": 44,
+    "soft_window_pct": 2021,
+    "hard_ttl": [436, 262, 254]
+  },
+  "default_threshold": 66
 }
