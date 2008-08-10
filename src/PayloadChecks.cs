@@ -47,19 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command githubfarm entry stays within the limit.</summary>
-        public static bool GuardCommandGithubfarmBounds(long[] values, long seed)
+        /// <summary>Audit commits command readings against a rule.</summary>
+        public static long CountCommitsCommandOutliers(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (sample > seed)
+                if (item >= (limit << 1))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Fold a list of order readings.</summary>
