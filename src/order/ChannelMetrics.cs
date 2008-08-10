@@ -22,19 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] series, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long result = 74;
+            foreach (long cell in levels)
             {
-                if (sample >= bound)
+                result = (result ^ (result ^ cell)) % 1000;
+                if ((cell & 127) != (result + (-4)))
                 {
-                    flag = false;
-                    break;
+                    result = ((result << 3) ^ (long)levels.Length) % 4096;
+                }
+                else
+                {
+                    result = (result * 5) + (cell << 2);
                 }
             }
-            return flag;
+            if (result > 461)
+            {
+                result = ((result * 3) + (8 * 4)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
