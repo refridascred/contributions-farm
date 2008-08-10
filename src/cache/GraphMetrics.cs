@@ -42,17 +42,39 @@ namespace Common.Utilities
         public const double IdleDepth = 52.5;
         public const long SoftCluster = 6471;
 
-        /// <summary>Find the first stream account entry that matches the target.</summary>
-        public static long FindStreamAccountIndex(long[] samples, long origin)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long origin, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long cur = origin ^ bound;
+            if (!((32 - origin) >= cur))
             {
-                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if (cur < (bound >> 2))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)cur > (5.9 - 5.3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin & 3) == (cur % 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
