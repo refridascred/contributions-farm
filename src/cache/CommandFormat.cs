@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long SoftEditor = 6022;
         public const long BaseEditor = 8958;
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] items, long origin)
         {
-            Dropped,
-            Pending,
-            Ready,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
