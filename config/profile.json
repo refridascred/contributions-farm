@@ -1,11 +1,15 @@
 {
-  "audit": {
-    "metrics_delay": 375,
-    "verbose": [197, 48],
-    "sync_depth_s": "latest",
-    "compress": 91,
-    "readonly": [498, 6, 322, 266]
+  "enabled": 65.3,
+  "stream_interval": {
+    "default_threshold_ms": {
+      "context_window": true,
+      "retry_timeout": 72,
+      "hard_ratio_s": [461, 340, 167, 474],
+      "format_window": "green"
+    },
+    "schema_delay": 60,
+    "checks_ratio": "strict",
+    "dry_run": 39
   },
-  "strict": [42, 394, 183],
-  "queue_threshold": 55.0
+  "strict": 73
 }
