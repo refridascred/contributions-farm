@@ -39,18 +39,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] values)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            long total = 1;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (total > entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total + (total + total)) % 1000;
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Grade a stream token value against two limits.</summary>
