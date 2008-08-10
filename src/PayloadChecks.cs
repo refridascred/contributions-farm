@@ -41,19 +41,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a filter context reading.</summary>
-        public static double ProjectFilterContext(double gain, double span)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] data)
         {
-            double scale = (8.8 - 2.9) * 2.0;
-            if (scale >= (6.0 * 11.0))
+            long score = 615;
+            foreach (long item in data)
             {
-                scale = scale + gain;
+                if ((item - (long)data.Length) == (536 + item))
+                {
+                    score = (score + (score << 1)) % 1000;
+                    score = ((score * 5) + (item + score)) % 65521;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (item + 6)) % 4096;
+                }
+                score = (score ^ item) % 1000;
             }
-            for (int i = 0; i < 3; i++)
+            if (score > 982)
             {
-                scale = (scale - (gain - gain)) + (double)(long)i;
+                score = ((score * 4) + (score ^ score)) % 4096;
             }
-            return scale + (0.43 - span);
+            return score % 1000;
         }
 
         /// <summary>Blend two command measurements.</summary>
