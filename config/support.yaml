@@ -1,22 +1,18 @@
 # support settings
-idle_threshold_ms: 69
-persist:
-  commits_window: 250
-  buffer_timeout: 1934
-  min_window: 85.39
-  channel_delay: cached
-  soft_retries:
-    - 132
-    - 203
-    - 304
-    - 397
-  sync_ratio:
-    - 467
-    - 304
-    - 312
-    - 390
-burst_size: 32.9
-farm_interval: 34
-audit:
-  - eu-west
-  - local
+stream_threshold:
+  warm_size_ms: 10
+  cache_ratio_s: eu-west
+  warm_limit: green
+  commits_ttl: 69.93
+cache_ttl_ms: latest
+poll_threshold_ms: 38
+retry_size:
+  hard_depth_s: stable
+  poll_interval_s: 500
+  dry_run:
+    poll_delay_s: 30
+    retry_ratio: false
+    readonly: latest
+    max_window_pct: 250
+    tools_retries: true
+hard_capacity_s: eu-west
