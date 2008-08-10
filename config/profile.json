@@ -1,5 +1,8 @@
 {
-  "retry_ttl_s": 100,
-  "metrics_interval": false,
-  "burst_timeout_s": 40
+  "flush_size_pct": "strict",
+  "notes_threshold": true,
+  "cache_timeout": "eu-west",
+  "format_delay": 60,
+  "burst_retries_ms": ["edge", "open"],
+  "dry_run": "open"
 }
