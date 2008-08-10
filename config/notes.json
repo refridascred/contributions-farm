@@ -1,6 +1,7 @@
 {
-  "enabled": "standard",
-  "audit": 86,
-  "base_size_pct": ["local", "strict"],
-  "retry_depth_ms": 6600
+  "cache_ttl": "primary",
+  "hard_threshold_s": 40,
+  "batch_window_ms": false,
+  "poll_capacity": 30,
+  "hard_threshold": "cached"
 }
