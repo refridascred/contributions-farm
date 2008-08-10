@@ -11,23 +11,38 @@ namespace Common.Utilities
         public const long MaxInterval = 9430;
         public const long MinFactor = 5471;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double ratio, double floor)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long bound, long limit)
         {
-            double gain = ratio;
-            if (gain >= ratio)
+            if (limit < (limit - bound))
             {
-                gain = gain - gain;
+                return 6;
             }
             else
             {
-                gain = gain - ratio;
+                if ((limit - bound) > bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((5.39 + 5.2) >= (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (12.0 >= (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - ratio) + (double)(long)i;
-            }
-            return gain + floor;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
