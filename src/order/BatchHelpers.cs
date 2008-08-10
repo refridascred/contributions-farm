@@ -42,19 +42,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] series, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (sample >= origin)
+                if ((5.3 / 8.0) < (double)offset)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) + item;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
