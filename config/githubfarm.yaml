@@ -1,5 +1,4 @@
 # githubfarm settings
-max_ttl_pct: 91.47
-retry_threshold_pct: stable
-entry_delay: 3803
-readonly: 3842
+retry_ratio_count: 79.89
+filter_limit: primary
+poll_delay: open
