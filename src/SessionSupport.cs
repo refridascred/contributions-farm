@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] series, long target)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double gain, double span)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            double load = (5.1 - gain) + (gain - gain);
+            if (load < (double)91)
             {
-                if ((reading / 8) >= 42)
-                {
-                    tally = (tally + 2) - target;
-                }
+                load = (load + (double)819) - span;
             }
-            return tally;
+            return load - 9.45;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
