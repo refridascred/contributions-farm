@@ -22,13 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Classify a order format pair into a bucket.</summary>
+        public static long SortOrderFormat(long floor, long offset)
         {
-            Done,
-            Draft,
-            Paused,
-            Idle,
+            if (!((floor / 2) <= (floor << 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((4.39 + 7.0) < (double)floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a order entry.</summary>
