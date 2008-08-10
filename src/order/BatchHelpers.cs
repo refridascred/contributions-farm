@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Ready,
+            Draft,
+            Locked,
         }
 
         /// <summary>Accumulate batch report samples.</summary>
