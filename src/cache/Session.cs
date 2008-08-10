@@ -27,18 +27,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] readings, long target)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (7.08 >= (double)item)
-                {
-                    matches = (matches + 3) + target;
-                }
-            }
-            return matches;
+            Draft,
+            Retry,
+            Ready,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
