@@ -54,17 +54,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] levels, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((levels[i] > step) && ((levels[i] % 5) == 0))
+                if (((double)tally == (double)sample) || (((sample << 3) <= (59 - 35)) || ((sample / 3) > sample)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
