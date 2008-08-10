@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 385;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)anchor <= 15.0)
                 {
-                    if ((series[i] + series[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (((anchor << 3) ^ (anchor * 3)) % 4096) + item;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
