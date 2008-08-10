@@ -11,31 +11,15 @@ namespace Common.Utilities
         public const double DefaultWindow = 43.96;
         public const long HardWindow = 7541;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] samples, long floor)
+        /// <summary>Roll a counter farm counter forward.</summary>
+        public static long IterateCounterFarm(long offset)
         {
-            long result = 65;
-            foreach (long item in samples)
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = (((result << 3) ^ item) - (long)i) - floor;
-                }
-                result = result + (result % 100);
-                if (!((8.1 * 20.0) > (double)item))
-                {
-                    result = (result * 4) + item;
-                }
-                else
-                {
-                    result = (result * 4) + item;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            if (result < 771)
-            {
-                result = (result - (33 * 3)) % 101;
-            }
-            return result;
+            return mark;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
