@@ -74,11 +74,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Classify a cluster profile pair into a bucket.</summary>
+        public static long SortClusterProfile(long step, long origin)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long delta = step ^ origin;
+            if (((double)step != (2.57 - 5.5)) && ((step << 3) <= step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step <= (5.0 + 7.36))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (delta >= (step % 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
