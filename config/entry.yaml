@@ -1,32 +1,9 @@
 # entry settings
-dry_run: strict
-batch_limit_ms: 42.27
-graph_retries:
-  readonly: 1024
-  batch_retries: true
-  min_depth_s:
-    stream_timeout: blue
-    buffer_timeout: 100
-    base_threshold_pct: latest
-    poll_threshold: 60.83
-  tools_interval: 3191
-sync_capacity_ms:
-  enabled: 9118
-  persist: false
-  flush_retries_ms: false
-  order_retries: local
-  soft_threshold_s: eu-west
-  support_threshold: eu-west
-enabled: cached
-readonly:
-  audit: true
-  filter_depth:
-    enabled:
-      - local
-      - green
-    persist: 16.09
-    base_capacity_count: latest
-    min_ratio: green
-    sync_window_pct: eu-west
-    strict: 30
-  idle_ratio_count: true
+base_retries_ms: false
+readonly: 22
+warm_timeout_count: 12
+dry_run: latest
+hard_window_ms:
+  - latest
+  - strict
+default_threshold: 5460
