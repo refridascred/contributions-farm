@@ -47,18 +47,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit profile payload readings against a rule.</summary>
-        public static long AuditProfilePayloadMatches(long[] readings)
+        /// <summary>Derive the next channel metrics value from a seed.</summary>
+        public static long DeriveChannelMetrics(long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((seen * 2) > (seen + datum))
+                if (((long)i + mark) <= (mark + mark))
                 {
-                    seen = seen + 3;
+                    mark = mark ^ mark;
                 }
+                mark = (mark ^ (mark ^ bound)) % 97;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a context snapshot.</summary>
