@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long floor)
+        /// <summary>Look up the position of a token editor sample.</summary>
+        public static long FindTokenEditorIndex(long[] series, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if ((series[i] == step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
