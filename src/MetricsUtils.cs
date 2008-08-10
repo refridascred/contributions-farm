@@ -49,17 +49,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] series, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 7;
+            foreach (long datum in samples)
             {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
+                state = (state - (datum & 7)) % 101;
             }
-            return -1;
+            if (state < 418)
+            {
+                state = ((state << 2) ^ ((-143) + state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Accumulate token batches samples.</summary>
