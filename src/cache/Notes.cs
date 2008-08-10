@@ -36,15 +36,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next commits githubfarm value from a seed.</summary>
-        public static long StepCommitsGithubfarm(long bound)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Done,
+            Retry,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
