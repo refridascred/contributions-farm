@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const double DefaultRatio = 47.5;
         public const double HardProfile = 89.75;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Retry,
-            Dropped,
-            Queued,
-            New,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 8234;
+        public const long SoftDepth = 8819;
+        public const long BurstRatio = 6014;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LocateProfileIndex(long[] items, long bound)
