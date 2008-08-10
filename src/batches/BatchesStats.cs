@@ -37,22 +37,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] readings)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long anchor = 239;
+            foreach (long entry in readings)
             {
-                if ((cell - tally) >= (tally ^ 69))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor * 2) + limit) ^ entry;
+                anchor = anchor + ((long)readings.Length % 64);
             }
-            return tally;
+            if (anchor < 161)
+            {
+                anchor = ((anchor << 2) ^ (limit * 4)) % 1000;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Grade a layout support value against two limits.</summary>
