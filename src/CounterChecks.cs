@@ -86,9 +86,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleTimeout = "open-1";
-        public const long DefaultRatio = 6016;
-        public const string StepSpan = "latest";
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] samples, long seed)
+        {
+            long anchor = 6;
+            foreach (long sample in samples)
+            {
+                if (((285 & 15) == (seed << 2)) && ((sample + anchor) >= (anchor ^ seed)))
+                {
+                    anchor = (anchor - (anchor - anchor)) % 255;
+                }
+            }
+            return anchor % 65521;
+        }
     }
 }
