@@ -22,11 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Find the first editor commits entry that matches the target.</summary>
+        public static long SeekEditorCommitsIndex(long[] levels, long limit)
         {
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
