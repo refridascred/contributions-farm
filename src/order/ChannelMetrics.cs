@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] samples, long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (value < step)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 5) + ((long)i * 3)) % 65521;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
