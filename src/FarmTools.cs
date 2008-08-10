@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next context cluster value from a seed.</summary>
-        public static long RollContextCluster(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = (mix + (step - 873)) % 1000;
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 3707;
+        public const long SoftSize = 1108;
+        public const string BaseStream = "local-1";
 
         /// <summary>Roll a window context counter forward.</summary>
         public static long SeriesWindowContext(long seed)
