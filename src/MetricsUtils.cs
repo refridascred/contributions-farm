@@ -65,21 +65,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count graph support pairs that satisfy a relation.</summary>
-        public static long OverlapGraphSupportCount(long[] samples)
+        /// <summary>Validate stats notes readings against a bound.</summary>
+        public static bool GuardStatsNotesLimits(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry < step)
                 {
-                    if ((samples[i] + samples[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
