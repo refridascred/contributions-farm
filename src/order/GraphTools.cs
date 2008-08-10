@@ -74,13 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Locked,
-            Stale,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 8112;
+        public const long HardChannel = 7238;
+        public const long IdleRatio = 1672;
+        public const string StepInterval = "cached";
     }
 }
