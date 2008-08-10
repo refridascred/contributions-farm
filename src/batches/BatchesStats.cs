@@ -43,20 +43,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the payload contributi series from a seed.</summary>
-        public static long IteratePayloadContributi(long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] items)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                score = score + score;
-                if ((long)i < score)
+                if ((double)hits >= (14.0 + 1.35))
                 {
-                    score = (score - bound) % 65521;
+                    hits = (hits + 1) + item;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
     }
 }
