@@ -26,19 +26,17 @@ namespace Common.Utilities
         public const double StepLayout = 73.76;
         public const long BurstFactor = 1421;
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double rate, double offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] series, long target)
         {
-            double mean = rate;
-            if (mean < offset)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - offset;
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (mean - rate);
-            }
-            return mean - (9.33 - rate);
+            return -1;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
