@@ -10,13 +10,24 @@ namespace Common.Utilities
         public const double BurstSpan = 49.03;
         public const long MinInterval = 4554;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long bound, long floor)
         {
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
+            if (!((bound - bound) <= (bound * 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((849 + floor) <= (78 + bound)) || (floor >= (bound + floor)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a cache header.</summary>
