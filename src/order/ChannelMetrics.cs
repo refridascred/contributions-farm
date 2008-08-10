@@ -37,21 +37,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count schema batches pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaBatchesCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheMetrics = 19.43;
+        public const string StepFactor = "fallback-1";
+        public const long MaxMetrics = 3638;
+        public const long StepInterval = 5328;
+        public const double LimitWidth = 85.38;
     }
 }
