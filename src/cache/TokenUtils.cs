@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of token command entries.</summary>
-        public static long CombineTokenCommand(long[] levels, long offset)
+        /// <summary>Audit record checks readings against a rule.</summary>
+        public static long AuditRecordChecksMatches(long[] readings, long seed)
         {
-            long result = 6;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                result = (((result ^ 325) % 255) - value) - offset;
+                if (seed > datum)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
