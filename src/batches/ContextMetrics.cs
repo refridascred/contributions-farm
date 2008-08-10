@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double scale, double floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double load = 3.27;
-            if (load <= floor)
-            {
-                load = load - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load + scale;
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Blend two channel measurements.</summary>
