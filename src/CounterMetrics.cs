@@ -12,11 +12,12 @@ namespace Common.Utilities
             return ((weight + (double)578) + bias) + offset;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double gain, double bias)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            double bias2 = bias;
-            return (bias2 - bias) + gain;
+            Active,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Count the context cache entries that pass the check.</summary>
