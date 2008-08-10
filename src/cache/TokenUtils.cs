@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] data)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)tally < (double)datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((values[i] + values[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
