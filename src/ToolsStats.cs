@@ -23,15 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] data, long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long bound)
         {
-            long anchor = 30;
-            foreach (long entry in data)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = ((anchor * 4) + (entry - origin)) % 97;
+                long matches = mix;
+                if (2.32 <= (double)matches)
+                {
+                    matches = matches - bound;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return anchor % 65521;
+            return mix;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
