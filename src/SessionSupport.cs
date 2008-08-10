@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] samples)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum << 3) > (datum / 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public double Token { get; set; }
+            public double Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
