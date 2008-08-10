@@ -1,7 +1,9 @@
-id,state,token
-1,54.51,39.85
-2,39.8,fallback
-3,7.05,43.96
-4,515,676
-5,blue,stable
-6,125,266
+id,owner,state
+1,1.91,235
+2,fallback,primary
+3,171,13.67
+4,standard,92.01
+5,43.67,edge
+6,0.3,79.17
+7,26.88,860
+8,833,76
