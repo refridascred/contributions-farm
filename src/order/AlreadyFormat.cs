@@ -39,13 +39,19 @@ namespace Common.Utilities
         public const double DefaultTimeout = 42.87;
         public const long DefaultReport = 2877;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Check that every counter tools entry stays within the limit.</summary>
+        public static bool ValidateCounterToolsBounds(long[] levels, long origin)
         {
-            Ready,
-            Pending,
-            Retry,
-            Stale,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the cache support entries that pass the check.</summary>
