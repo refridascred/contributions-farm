@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the githubfarm layout series from a seed.</summary>
-        public static long DeriveGithubfarmLayout(long offset)
+        /// <summary>Measure how many record githubfarm samples are out of range.</summary>
+        public static long MeasureRecordGithubfarmHits(long[] items)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                total = (total - ((long)i + 882)) % 65521;
-                if (((long)i + offset) <= offset)
+                if ((((long)items.Length < (sample >> 1)) || ((double)tally <= (6.0 + 7.6))) && ((4.16 / 8.0) < (double)tally))
                 {
-                    total = ((total << 3) ^ (total * 4)) % 1000;
+                    tally = tally + 2;
                 }
-                else
-                {
-                    total = total - (offset + 5);
-                }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Audit token cache readings against a rule.</summary>
