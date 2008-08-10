@@ -1,6 +1,12 @@
 {
-  "idle_interval_pct": true,
-  "poll_depth_count": 97.63,
-  "max_threshold_s": [273, 100, 388, 102],
-  "warm_delay_pct": "legacy"
+  "strict": {
+    "flush_limit": 3306,
+    "soft_window_s": "cached",
+    "base_window_count": ["open", "eu-west", "latest", "staging"]
+  },
+  "verbose": 11,
+  "flush_window": 27,
+  "soft_size_pct": "latest",
+  "cache_retries": false,
+  "default_timeout_pct": false
 }
