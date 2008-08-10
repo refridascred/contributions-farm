@@ -51,30 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] samples)
+        /// <summary>Audit session stream readings against a rule.</summary>
+        public static long CountSessionStreamOutliers(long[] values, long step)
         {
-            long acc = 3;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (!((acc + 470) >= acc))
+                if (9.26 > (4.7 / 8.0))
                 {
-                    acc = (acc + acc) % 1000;
-                }
-                if ((double)datum <= (double)6)
-                {
-                    acc = (acc * 2) + datum;
-                }
-                if ((double)datum >= (double)55)
-                {
-                    acc = acc + (datum + datum);
+                    tally = ((tally + 3) - reading) - step;
                 }
             }
-            if (acc < 54)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc;
+            return tally;
         }
     }
 }
