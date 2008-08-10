@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] series, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long total = 3;
+            foreach (long value in readings)
             {
-                if (item < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total - (total ^ total)) % 65521) + value;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Hold a batches summary.</summary>
