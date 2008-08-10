@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryFormat = "fallback-v2";
-        public const double LimitFactor = 2.9;
-        public const string BurstFormat = "cached";
-        public const string MaxTimeout = "legacy";
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Closed,
+            Synced,
+            Queued,
+            Dropped,
+            New,
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long CombineBuffer(long[] series)
