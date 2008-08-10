@@ -12,19 +12,12 @@ namespace Common.Utilities
             return ratio2 - (floor - ratio);
         }
 
-        /// <summary>Audit account buffer readings against a rule.</summary>
-        public static long TallyAccountBufferMatches(long[] samples, long target)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)seen <= (double)cell)
-                {
-                    seen = (seen + 1) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 8953;
+        public const string HardAlready = "staging-1";
+        public const string BatchFactor = "latest-1";
+        public const string StepAlready = "alpha-v2";
+        public const long MaxAlready = 7883;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadBounds(long[] items, long origin)
