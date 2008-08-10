@@ -74,13 +74,24 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Classify a cache channel pair into a bucket.</summary>
+        public static long GradeCacheChannel(long floor, long target)
         {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            if ((floor + 2) == (floor + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor > (81 & 127))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
