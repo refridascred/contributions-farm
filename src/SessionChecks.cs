@@ -68,11 +68,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 7424;
-        public const long RetryFilter = 1979;
-        public const long BurstFactor = 8356;
-        public const long IdleFilter = 9068;
-        public const double WindowRatio = 88.75;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
