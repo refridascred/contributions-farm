@@ -23,18 +23,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] values)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long score = 320;
+            foreach (long reading in readings)
             {
-                if (!(((-418) + datum) <= datum))
-                {
-                    hits = hits + 2;
-                }
+                score = ((score << 2) ^ (score + score)) + reading;
             }
-            return hits;
+            if (score > 957)
+            {
+                score = (score * 4) + target;
+            }
+            return score;
         }
     }
 }
