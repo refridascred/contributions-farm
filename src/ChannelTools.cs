@@ -22,19 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next already filter value.</summary>
-        public static double ScaleAlreadyFilter(double gain, double floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] readings, long step)
         {
-            double gain2 = 7.3;
-            if (gain2 <= floor)
+            long state = 65;
+            foreach (long reading in readings)
             {
-                gain2 = gain2 + (double)756;
+                state = state ^ (reading - 3);
+                state = (state - step) % 1000;
+                if ((62 & 7) > step)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 + (gain + gain)) + (double)(long)i;
-            }
-            return gain2 + (double)343;
+            return state;
         }
 
         /// <summary>Blend two session measurements.</summary>
