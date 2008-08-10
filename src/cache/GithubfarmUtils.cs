@@ -27,19 +27,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double ratio, double floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] series, long offset)
         {
-            double gain = (floor * 18.0) - 0.8;
-            if (gain >= (double)14)
+            long result = 940;
+            foreach (long cell in series)
             {
-                gain = gain + floor;
+                if (offset < cell)
+                {
+                    result = ((result * 4) + (result % 7)) % 97;
+                }
+                if (!((result - cell) == (cell + 782)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain + (ratio / 8.0);
+            return result;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
