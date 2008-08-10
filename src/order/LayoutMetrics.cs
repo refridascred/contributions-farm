@@ -13,22 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] levels, long floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((hits + hits) < (808 % 7))
-                {
-                    hits = ((hits + 2) + entry) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            Closed,
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
