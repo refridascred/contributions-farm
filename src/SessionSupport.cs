@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] series, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (cell <= bound)
+                if (datum <= count)
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
