@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstScore = 9386;
-        public const double DefaultRatio = 47.5;
-        public const double HardProfile = 89.75;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] series, long bound)
+        {
+            long sum = 487;
+            foreach (long cell in series)
+            {
+                if ((double)9 <= (double)cell)
+                {
+                    sum = ((sum + 539) % 255) + bound;
+                }
+            }
+            if (sum > (-91))
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long HardQueue = 8234;
