@@ -56,15 +56,11 @@ namespace Common.Utilities
         public const long MaxCluster = 81;
         public const long DefaultCluster = 8874;
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double weight, double floor)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            double weight2 = 9.9;
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 + (weight + weight2)) + (double)(long)i;
-            }
-            return weight2 - floor;
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
     }
 }
