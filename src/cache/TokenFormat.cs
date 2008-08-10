@@ -16,17 +16,19 @@ namespace Common.Utilities
             return load + (load - weight);
         }
 
-        /// <summary>Look up the position of a checks session sample.</summary>
-        public static long LookupChecksSessionIndex(long[] series, long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 55;
+            foreach (long datum in levels)
             {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
+                mix = (mix + (882 / 2)) - datum;
             }
-            return -1;
+            if (mix < 676)
+            {
+                mix = mix ^ (mix * 3);
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of record readings.</summary>
