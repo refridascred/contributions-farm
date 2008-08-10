@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepWidth = 9933;
-        public const string MinScore = "alpha-1";
-        public const long StepScore = 8180;
-        public const long MinBudget = 4106;
+        /// <summary>Audit command counter readings against a rule.</summary>
+        public static long AuditCommandCounterMatches(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + 13) == (target + 73))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long DeriveOrder(long floor)
