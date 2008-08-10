@@ -45,14 +45,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] values, long limit)
         {
-            Queued,
-            Done,
-            Draft,
-            Pending,
-            Dropped,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((limit / 9) != (tally + limit))
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
