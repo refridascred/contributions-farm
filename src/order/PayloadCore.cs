@@ -19,10 +19,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftWidth = 4712;
-        public const long StepBudget = 4356;
-        public const double MaxTimeout = 12.77;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Audit route layout readings against a rule.</summary>
         public static long CountRouteLayoutOutliers(long[] data, long limit)
