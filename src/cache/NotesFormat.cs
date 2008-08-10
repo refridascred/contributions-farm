@@ -22,16 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] values, long step)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double gain, double bias)
         {
-            long result = 482;
-            foreach (long value in values)
-            {
-                result = (result + value) - step;
-                result = ((result << 3) ^ (value * 3)) % 65521;
-            }
-            return result;
+            double mean = (bias + gain) + (bias / 4.0);
+            return mean + bias;
         }
 
         /// <summary>Describe the window state values.</summary>
