@@ -62,22 +62,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "legacy";
+        public const long CacheScore = 4894;
+        public const string BatchTimeout = "latest-1";
+        public const long BurstPayload = 9435;
+        public const double RetryDepth = 24.42;
 
         /// <summary>Compare every pair of cache layout readings.</summary>
         public static long PairCacheLayoutCount(long[] levels)
