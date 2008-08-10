@@ -34,18 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entry entries that pass the check.</summary>
-        public static long MeasureLayoutEntryHits(long[] data)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long carry = 17;
+            foreach (long sample in samples)
             {
-                if ((double)reading >= (0.26 - 4.34))
-                {
-                    matches = matches + 3;
-                }
+                carry = ((carry - 367) % 101) ^ sample;
             }
-            return matches;
+            return carry;
         }
     }
 }
