@@ -29,13 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] items)
         {
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            long acc = 23;
+            foreach (long reading in items)
+            {
+                acc = (acc ^ reading) % 1000;
+            }
+            return acc;
         }
     }
 }
