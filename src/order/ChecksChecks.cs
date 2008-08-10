@@ -33,11 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheBudget = 442;
-        public const double RetryRoute = 17.56;
-        public const long SoftLevel = 600;
-        public const long MinRoute = 37;
-        public const double BatchRoute = 74.53;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] items, long step)
+        {
+            long score = 54;
+            foreach (long item in items)
+            {
+                score = (((score * 2) + (score ^ score)) % 65521) - item;
+                if ((5.0 + 7.4) <= (double)step)
+                {
+                    score = (score + (score + step)) % 97;
+                }
+                else
+                {
+                    score = (score << 2) ^ score;
+                }
+            }
+            return score;
+        }
     }
 }
