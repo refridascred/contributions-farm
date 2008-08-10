@@ -40,21 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 338;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((806 - datum) != (score + 509)) || (1.4 <= (6.75 + 6.5)))
                 {
-                    if ((values[i] - values[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score + (76 + datum);
+                }
+                if (datum >= (256 << 3))
+                {
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
