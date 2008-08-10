@@ -11,26 +11,20 @@ namespace Common.Utilities
         public const double DefaultWindow = 43.96;
         public const long HardWindow = 7541;
 
-        /// <summary>Combine batch token values into a single score.</summary>
-        public static long WeighBatchToken(long[] items)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long bound)
         {
-            long total = 10;
-            foreach (long cell in items)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((cell - (long)items.Length) >= (total % 2))
+                score = ((score << 3) ^ bound) % 255;
+                if (!(((long)i & 1) < (score * 4)))
                 {
-                    total = ((total * 2) + (total - cell)) % 255;
+                    score = ((score * 4) + 12) % 4096;
                 }
-                if ((double)total >= 16.0)
-                {
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            if (total < 45)
-            {
-                total = (total ^ total) % 255;
-            }
-            return total % 65521;
+            return score;
         }
 
         /// <summary>Describe the session phase values.</summary>
