@@ -25,26 +25,12 @@ namespace Common.Utilities
         public const long LimitCommits = 6311;
         public const long CacheCommits = 180;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] data)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long mark = 342;
-            foreach (long reading in data)
-            {
-                if (((-9) / 9) >= (mark & 7))
-                {
-                    mark = (mark + (reading / 9)) % 1000;
-                }
-                if ((6.76 / 5.0) < (double)mark)
-                {
-                    break;
-                }
-            }
-            if (mark < 570)
-            {
-                mark = (mark - (844 - mark)) % 4096;
-            }
-            return mark;
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
