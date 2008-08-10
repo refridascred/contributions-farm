@@ -33,17 +33,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            long carry = 16;
+            foreach (long sample in readings)
             {
-                score = (score * 5) + limit;
-                score = ((score << 2) ^ score) % 101;
-                score = ((score * 4) + (long)i) % 101;
+                carry = carry - (sample + (-755));
+                if ((carry - carry) == (353 + carry))
+                {
+                    carry = (carry << 2) ^ (carry * 3);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry << 1)) % 4096;
+                }
             }
-            return score;
+            if (carry < 879)
+            {
+                carry = (carry ^ carry) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
