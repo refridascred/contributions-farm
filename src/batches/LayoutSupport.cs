@@ -45,22 +45,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] readings, long target)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long score = 804;
-            foreach (long value in readings)
-            {
-                if (target < score)
-                {
-                    score = (((score * 3) + (score - target)) % 1000) ^ value;
-                }
-            }
-            if (score > 3)
-            {
-                score = score ^ (score << 2);
-            }
-            return score;
+            Pending,
+            Ready,
+            Stale,
+            Closed,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
