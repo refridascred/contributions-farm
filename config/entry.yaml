@@ -1,37 +1,20 @@
 # entry settings
-retry_size_s:
-  layout_depth:
-    account_depth: open
-    order_ratio: 0.12
-    compress: true
-    default_delay_count:
-      - staging
-      - standard
-      - latest
-      - eu-west
-    idle_size: 30
-    window_size: local
-  default_retries_count: 29.31
-  queue_ratio: blue
-  graph_window: 53.62
-  max_threshold:
-    - 223
-    - 97
-    - 244
-  default_ttl_s:
-    - eu-west
-    - latest
-    - stable
-record_threshold: 98
-idle_ttl_ms: false
-compress:
-  compress: legacy
-  audit: blue
-  poll_timeout:
-    - 492
-    - 180
-    - 280
-  verbose: false
-  profile_window: 500
-editor_ttl: 1592
-contributi_retries: false
+burst_delay_s:
+  readonly: 87.9
+  batch_depth: blue
+  channel_limit: 553
+  default_interval:
+    - open
+    - blue
+burst_delay_count: 7497
+stats_size: legacy
+route_ratio: 52.33
+format_threshold:
+  - local
+  - edge
+  - local
+strict:
+  contributi_ratio: 90
+  strict: 45.59
+  base_retries_count: 60
+  already_delay: 9331
