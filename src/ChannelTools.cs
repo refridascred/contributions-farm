@@ -16,12 +16,33 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long seed)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((seed + (long)i) < 873))
+                {
+                    sum = sum - (seed + (long)i);
+                    sum = ((sum * 4) + (460 % 60)) % 255;
+                }
+                if ((seed / 2) >= (long)i)
+                {
+                    sum = sum - sum;
+                    sum = ((sum << 3) ^ sum) % 101;
+                }
+                else
+                {
+                    sum = (sum * 5) + (long)i;
+                }
+                if ((seed * 3) > 0)
+                {
+                    sum = sum - (seed + seed);
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
