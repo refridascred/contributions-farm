@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long anchor = -31;
-            foreach (long reading in readings)
-            {
-                anchor = (anchor ^ 45) + reading;
-            }
-            if (anchor < 2)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) % 65521;
-            }
-            return anchor;
+            public string Owner { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
