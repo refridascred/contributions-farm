@@ -1,12 +1,5 @@
 # githubfarm settings
-compress: 8518
-persist: edge
-default_size_s: true
-poll_ratio_count:
-  window_limit: 34.36
-  batch_ttl: green
-  soft_capacity_count: true
-  cache_size_ms: open
-  hard_threshold: true
-retry_size_pct: 1024
-enabled: fallback
+max_ttl_pct: 91.47
+retry_threshold_pct: stable
+entry_delay: 3803
+readonly: 3842
