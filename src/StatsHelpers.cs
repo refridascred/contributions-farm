@@ -41,14 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Active,
-            Locked,
-            Done,
-            Idle,
-            Retry,
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a entry summary.</summary>
