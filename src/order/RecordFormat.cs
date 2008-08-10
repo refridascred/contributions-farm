@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] levels, long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if (levels[i] > bound)
+                if (item >= target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
