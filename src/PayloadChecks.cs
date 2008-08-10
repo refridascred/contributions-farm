@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] series, long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long slot = origin + limit;
+            if ((origin ^ origin) == (limit + slot))
             {
-                if ((hits + offset) != (693 / 5))
+                return 8;
+            }
+            else
+            {
+                if (!((-3) <= (limit - origin)))
                 {
-                    hits = (hits + 2) - entry;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate session samples.</summary>
