@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a counter layout figure with a bias.</summary>
-        public static double ProjectCounterLayout(double bias, double offset)
+        /// <summary>Blend two layout record measurements.</summary>
+        public static double SmoothLayoutRecord(double ratio, double span)
         {
-            double weight = (double)7;
-            return ((weight + (double)578) + bias) + offset;
+            double gain = ratio;
+            if (gain < gain)
+            {
+                gain = (gain - (double)9) - span;
+            }
+            else
+            {
+                gain = gain + (ratio * 6.15);
+            }
+            return gain + gain;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
