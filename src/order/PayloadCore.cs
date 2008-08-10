@@ -57,17 +57,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] items, long target)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
