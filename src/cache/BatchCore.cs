@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Validate cache tools readings against a bound.</summary>
+        public static bool ValidateCacheToolsLimits(long[] levels, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                carry = (carry << 2) ^ (carry * 2);
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (sample <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Describe the buffer class values.</summary>
