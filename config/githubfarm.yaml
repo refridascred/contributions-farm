@@ -1,6 +1,8 @@
 # githubfarm settings
-counter_ttl: fallback
-queue_ratio: 250
-readonly: 5039
-warm_interval_count: 46.77
-audit: 20
+hard_depth: primary
+buffer_window: 10.63
+hard_interval: 91
+batches_limit:
+  - 368
+  - 215
+queue_ratio: 7547
