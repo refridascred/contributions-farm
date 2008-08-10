@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchSize = 36.58;
-        public const double BurstSpan = 49.03;
-        public const long MinInterval = 4554;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepWindow = "stable-v2";
+        public const long CacheFactor = 3774;
+        public const long IdleWindow = 2202;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long WeighTools(long[] samples)
