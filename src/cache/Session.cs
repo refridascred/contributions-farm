@@ -32,12 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] readings, long target)
         {
-            public double Rank { get; set; }
-            public double Size { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (7.08 >= (double)item)
+                {
+                    matches = (matches + 3) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of already farm entries.</summary>
