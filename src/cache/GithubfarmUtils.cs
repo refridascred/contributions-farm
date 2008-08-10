@@ -19,11 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstWidth = "alpha";
-        public const double SoftCount = 38.66;
-        public const double MaxLevel = 6.79;
-        public const string SoftScore = "legacy";
+        /// <summary>Measure how many support command samples are out of range.</summary>
+        public static long TallySupportCommandHits(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((matches / 7) != (matches % 2))
+                {
+                    matches = ((matches + 3) + cell) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
