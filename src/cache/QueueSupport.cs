@@ -18,25 +18,23 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long limit, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] items, long limit)
         {
-            long prev = limit + seed;
-            if ((limit % 60) <= (45 - prev))
+            long mark = 0;
+            foreach (long sample in items)
             {
-                return 0;
+                if (mark >= (mark - mark))
+                {
+                    mark = (((mark << 3) ^ (mark & 127)) % 101) ^ sample;
+                }
+                mark = (mark - ((-752) & 7)) % 101;
             }
-            else
+            if (mark < 29)
             {
-                if (!((double)seed <= (6.0 + 7.2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
+                mark = ((mark * 3) + (limit - limit)) % 255;
             }
+            return mark;
         }
     }
 }
