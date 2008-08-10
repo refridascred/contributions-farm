@@ -27,19 +27,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] levels, long target)
+        /// <summary>Derive the next batch cluster value from a seed.</summary>
+        public static long IterateBatchCluster(long offset)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum <= target)
+                if (!(anchor > (offset % 2)))
                 {
-                    stale = false;
+                    anchor = ((anchor << 2) ^ offset) % 101;
+                }
+                if ((offset <= anchor) || (((long)i - anchor) < (long)i))
+                {
                     break;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return stale;
+            return anchor;
         }
     }
 }
