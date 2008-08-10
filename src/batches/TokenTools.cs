@@ -31,19 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] readings, long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (value < bound)
+                if (!((1.55 * 3.0) == (double)tally))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) - item;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
