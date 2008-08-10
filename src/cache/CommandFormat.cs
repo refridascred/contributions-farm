@@ -22,15 +22,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double scale, double offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long target)
         {
-            double weight = offset;
-            if (weight > scale)
+            long state = target;
+            for (int i = 0; i < 7; i++)
             {
-                weight = weight + offset;
+                if ((target - 241) >= (state - state))
+                {
+                    state = (state << 3) ^ state;
+                }
+                state = (state - (state / 7)) % 101;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return weight - offset;
+            return state;
         }
 
         /// <summary>Describe the format level values.</summary>
