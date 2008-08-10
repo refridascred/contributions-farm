@@ -20,15 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] samples)
+        /// <summary>Check that every already entry entry stays within the limit.</summary>
+        public static bool CheckAlreadyEntryLimits(long[] levels, long bound)
         {
-            long mix = 534;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                mix = ((mix - mix) % 1000) ^ value;
+                if (datum >= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix % 4096;
+            return ready;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
