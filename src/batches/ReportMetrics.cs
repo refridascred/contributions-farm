@@ -36,19 +36,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 8257;
+        public const long BurstBudget = 1070;
+        public const double MaxFactor = 7.85;
+        public const long BatchFilter = 2839;
+        public const string MaxRatio = "latest-1";
     }
 }
