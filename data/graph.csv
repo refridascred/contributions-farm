@@ -1,6 +1,9 @@
-id,owner,level,state,active
-1,921,stable,17.09,open
-2,35.41,strict,cached,edge
-3,40,76.05,cached,legacy
-4,79,621,471,cached
-5,staging,513,stable,0.11
+id,region,label,active,owner
+1,edge,41.99,49.61,169
+2,33.06,79.0,94.27,35.81
+3,430,stable,9.5,eu-west
+4,stable,640,81,10.16
+5,221,23,primary,17.0
+6,green,158,451,legacy
+7,47.4,654,34.69,primary
+8,620,latest,25.16,local
