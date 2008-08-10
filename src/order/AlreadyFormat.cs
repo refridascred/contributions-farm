@@ -51,38 +51,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a stream token value against two limits.</summary>
-        public static long RankStreamToken(long seed, long step)
+        /// <summary>Count the cache support entries that pass the check.</summary>
+        public static long AuditCacheSupportHits(long[] items)
         {
-            if ((double)seed > 12.0)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed > (7.0 - 2.21))
+                if ((tally <= datum) && ((datum * 2) > (91 ^ 825)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((((-19) % 3) > step) && ((double)seed <= (6.28 - 3.28)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed >> 5) <= (5 * 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
