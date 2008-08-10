@@ -24,11 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 3128;
-        public const double DefaultSpan = 84.18;
-        public const string LimitDepth = "strict-v2";
-        public const double IdleSession = 22.82;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryCluster = 54.44;
+        public const long LimitCluster = 2009;
+        public const string BaseDepth = "open-edge";
+        public const long MinScore = 2082;
+        public const double HardTimeout = 85.45;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long FoldPayload(long[] items, long origin)
