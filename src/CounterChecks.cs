@@ -86,10 +86,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitBudget = 7538;
-        public const long LimitContext = 7951;
-        public const long BatchWidth = 8757;
-        public const long BaseContext = 1410;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleTimeout = "open-1";
+        public const long DefaultRatio = 6016;
+        public const string StepSpan = "latest";
     }
 }
