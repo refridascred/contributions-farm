@@ -1,8 +1,7 @@
-id,score,weight,state
-1,936,46.36,latest
-2,396,582,35.04
-3,edge,679,staging
-4,edge,94,92.41
-5,656,edge,448
-6,537,288,88.43
-7,721,92,87
+id,score,rank,ratio
+1,87.3,edge,legacy
+2,staging,641,940
+3,952,95.78,stable
+4,green,40.02,edge
+5,open,554,33.14
+6,green,26.3,897
