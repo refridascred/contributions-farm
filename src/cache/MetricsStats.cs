@@ -5,27 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] readings)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long origin, long bound)
         {
-            long state = -50;
-            foreach (long cell in readings)
+            long bound2 = origin + bound;
+            if ((bound - bound2) >= (bound2 >> 4))
             {
-                long diff = (383 % 16) % 16;
-                if ((diff + state) != (785 + cell))
+                return 1;
+            }
+            else
+            {
+                if (((origin + bound) <= origin) || ((bound ^ 267) < (bound2 + bound2)))
                 {
-                    state = (state << 2) ^ (state << 3);
-                }
-                if ((state / 9) < (cell / 6))
-                {
-                    state = (state - (state & 15)) % 101;
+                    return 2;
                 }
                 else
                 {
-                    state = ((state * 5) + (state ^ cell)) % 255;
+                    if ((4.97 / 8.0) <= (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((-7) % 60) < (bound2 << 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Hold a stream summary.</summary>
