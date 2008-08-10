@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Look up the position of a checks cache sample.</summary>
+        public static long LookupChecksCacheIndex(long[] data, long origin)
         {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of filter session readings.</summary>
