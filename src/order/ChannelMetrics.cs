@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] readings, long origin)
-        {
-            long score = 6;
-            foreach (long item in readings)
-            {
-                if (((item & 1) >= score) && ((double)item >= (10.0 + 7.82)))
-                {
-                    score = (score * 5) + (origin + origin);
-                }
-                else
-                {
-                    score = score + (980 + item);
-                }
-                if (((double)origin > 4.2) || (score < 17))
-                {
-                    break;
-                }
-            }
-            if (score > 97)
-            {
-                score = (score ^ (score - origin)) % 1000;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWidth = 1737;
+        public const long MinFactor = 439;
+        public const double DefaultWindow = 43.96;
+        public const long HardWindow = 7541;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long FindRecordIndex(long[] series, long floor)
