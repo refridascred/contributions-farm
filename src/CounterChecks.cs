@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command counter readings against a rule.</summary>
-        public static long AuditCommandCounterMatches(long[] values, long target)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + 13) == (target + 73))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 3075;
+        public const long CacheWidth = 2397;
+        public const long RetryDepth = 467;
+        public const string BurstFactor = "legacy-edge";
+        public const long MaxInterval = 9342;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long DeriveOrder(long floor)
