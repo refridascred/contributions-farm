@@ -10,20 +10,13 @@ namespace Common.Utilities
         public const double DefaultRatio = 47.5;
         public const double HardProfile = 89.75;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long seed)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((seed * 5) > 43)
-                {
-                    anchor = (anchor << 3) ^ (anchor >> 5);
-                    continue;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Retry,
+            Dropped,
+            Queued,
+            New,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
