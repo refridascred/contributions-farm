@@ -14,22 +14,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] data)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long total = 41;
-            foreach (long value in data)
-            {
-                if ((7.0 / 2.0) == (double)total)
-                {
-                    total = ((total - (-6)) % 97) + value;
-                }
-            }
-            if (total < 52)
-            {
-                total = (total + (total ^ total)) % 255;
-            }
-            return total % 4096;
+            public bool Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the metric mode values.</summary>
