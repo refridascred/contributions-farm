@@ -65,22 +65,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Fold a list of payload graph readings.</summary>
+        public static long ScorePayloadGraph(long[] samples, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
+            long anchor = 51;
+            foreach (long entry in samples)
             {
-                long slot = 387;
-                score = (score + score) % 1000;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = ((score ^ (slot - score)) % 101) ^ (long)i2;
-                    slot = (slot ^ 147) % 4096;
-                }
-                score = ((score * 5) + (long)i) % 1000;
+                anchor = (anchor << 2) ^ anchor;
+                anchor = ((anchor << 3) ^ (offset ^ entry)) % 4096;
             }
-            return score;
+            if (anchor < 912)
+            {
+                anchor = (anchor - (offset + anchor)) % 101;
+            }
+            return anchor % 65521;
         }
     }
 }
