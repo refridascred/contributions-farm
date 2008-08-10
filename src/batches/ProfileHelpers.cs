@@ -48,18 +48,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] items)
+        /// <summary>Grade a stream cache value against two limits.</summary>
+        public static long ClassifyStreamCache(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long offset = seed + limit;
+            if ((limit ^ offset) > (limit & 3))
             {
-                if ((double)sample == (double)hits)
+                return 4;
+            }
+            else
+            {
+                if ((double)limit == (double)27)
                 {
-                    hits = hits + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((798 - limit) == (limit * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit > (limit + seed)) || ((limit * 3) < (seed << 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
