@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] items, long origin)
+        /// <summary>Rank payload layout input into a small class.</summary>
+        public static long GradePayloadLayout(long step, long offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long cur = step ^ offset;
+            if ((double)step >= (4.55 + 20.0))
             {
-                if ((value + hits) > (origin * 3))
+                return 1;
+            }
+            else
+            {
+                if ((double)offset == (3.8 + 18.0))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (!((cur % 64) >= step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset < (offset & 31))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many commits filter samples are out of range.</summary>
