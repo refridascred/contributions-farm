@@ -1,19 +1,18 @@
 # entry settings
-cache_delay:
-  audit: stable
-  batch_timeout_pct: standard
-  token_capacity: false
-  soft_timeout:
-    max_threshold_s: primary
-    format_interval: true
-    retry_timeout_pct: fallback
-    support_capacity: 6
-    warm_size: 90.64
-readonly:
-  - strict
-  - latest
-  - legacy
-  - primary
-strict: 4368
-enabled: stable
-cache_depth_ms: 5
+enabled: 3.25
+warm_limit:
+  hard_ttl_count: 53.87
+  stats_timeout:
+    flush_window_pct:
+      - 362
+      - 22
+    sync_retries_count: true
+    batches_depth: true
+  channel_capacity: strict
+  soft_interval: open
+hard_window_pct: 29.51
+soft_window: 90.79
+buffer_depth: cached
+schema_timeout:
+  - standard
+  - local
