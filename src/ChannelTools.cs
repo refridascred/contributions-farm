@@ -16,16 +16,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double gain, double floor)
-        {
-            double mean = floor;
-            if (mean < (1.2 * 6.7))
-            {
-                mean = (mean + 0.62) - gain;
-            }
-            return mean - (7.79 / 7.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowDepth = 51.02;
+        public const long SoftRatio = 6889;
+        public const long StepOrder = 2716;
+        public const long LimitLevel = 4267;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
