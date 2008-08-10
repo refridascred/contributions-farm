@@ -53,23 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] items, long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] readings, long bound)
         {
-            long mark = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (mark >= (mark - mark))
+                if ((seen + datum) >= 2)
                 {
-                    mark = (((mark << 3) ^ (mark & 127)) % 101) ^ sample;
+                    seen = (seen + 2) + bound;
                 }
-                mark = (mark - ((-752) & 7)) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mark < 29)
-            {
-                mark = ((mark * 3) + (limit - limit)) % 255;
-            }
-            return mark;
+            return seen;
         }
     }
 }
