@@ -24,17 +24,10 @@ namespace Common.Utilities
         public const long DefaultTimeout = 2784;
         public const string BaseInterval = "latest-v2";
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 4553;
+        public const long StepInterval = 8223;
+        public const double BurstBatches = 3.29;
+        public const string HardSize = "primary-edge";
     }
 }
