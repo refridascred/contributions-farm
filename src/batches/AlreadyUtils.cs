@@ -35,18 +35,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] items)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((matches >> 4) > (matches >> 3)) || (413 < (sample % 60))))
+                if (values[i] <= offset)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
