@@ -37,21 +37,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 286;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((14.0 * 9.0) != (double)mix)
                 {
-                    if ((data[i] - data[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix << 2) ^ (value + mix)) % 101;
+                }
+                else
+                {
+                    mix = mix - (value << 3);
                 }
             }
-            return matches;
+            if (mix < (-16))
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
