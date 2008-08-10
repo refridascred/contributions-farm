@@ -45,12 +45,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 1166;
+        public const long BatchFormat = 8534;
+        public const long SoftDepth = 3969;
 
         /// <summary>Classify a contributi notes pair into a bucket.</summary>
         public static long RankContributiNotes(long bound, long step)
