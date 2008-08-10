@@ -1,4 +1,19 @@
 # githubfarm settings
-cluster_threshold: false
-readonly: 1199
-sync_depth_ms: 3775
+soft_interval_count: 30
+hard_window_count:
+  hard_ttl_s:
+    poll_timeout: cached
+    command_ratio: 43.77
+    enabled: strict
+    entry_retries: 60
+    readonly:
+      - 42
+      - 362
+      - 32
+      - 163
+  stream_limit: true
+  max_limit_s: false
+  idle_timeout: 30
+  burst_size_ms: primary
+  burst_timeout: 60
+idle_limit_s: false
