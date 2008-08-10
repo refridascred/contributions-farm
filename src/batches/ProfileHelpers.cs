@@ -64,17 +64,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first command githubfarm entry that matches the target.</summary>
-        public static long SeekCommandGithubfarmIndex(long[] values, long limit)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
