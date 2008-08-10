@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many entry route samples are out of range.</summary>
-        public static long CountEntryRouteHits(long[] levels, long limit)
+        /// <summary>Count the support already entries that pass the check.</summary>
+        public static long AuditSupportAlreadyOutliers(long[] values)
         {
             long tally = 0;
-            foreach (long sample in levels)
+            foreach (long entry in values)
             {
-                if ((sample & 15) > (tally / 6))
+                if (9.17 <= (double)entry)
                 {
-                    tally = (tally + 1) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 1;
                 }
             }
             return tally;
