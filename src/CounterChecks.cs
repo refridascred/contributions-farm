@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] readings, long origin)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
