@@ -32,14 +32,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Failed,
-            Retry,
-            New,
-            Closed,
-            Paused,
+            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of order readings.</summary>
