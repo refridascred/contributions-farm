@@ -87,9 +87,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 9510;
-        public const double DefaultCount = 45.86;
-        public const long HardAccount = 6719;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (floor >= (reading / 9))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
