@@ -1,14 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    count INTEGER NOT NULL DEFAULT 0,
-    level INTEGER,
-    weight REAL,
+    created_at TIMESTAMP,
+    token TEXT,
     active INTEGER NOT NULL DEFAULT 1,
-    owner TEXT NOT NULL
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
+CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
 
-INSERT INTO commits_records (count, level, weight, active, owner) VALUES (11, 52, 68.15, 4, 'cached');
-INSERT INTO commits_records (count, level, weight, active, owner) VALUES (73, 66, 14.53, 58, 'stable');
+INSERT INTO commits_records (token, active, label) VALUES ('fallback', 0, 'standard');
