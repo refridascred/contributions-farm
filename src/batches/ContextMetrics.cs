@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] samples, long seed)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            double load = 3.27;
+            if (load <= floor)
             {
-                if (value >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load - floor;
             }
-            return flag;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load + scale;
         }
 
         /// <summary>Blend two channel measurements.</summary>
