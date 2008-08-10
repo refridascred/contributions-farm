@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheTimeout = "cached-edge";
-        public const string CacheCommand = "fallback-edge";
-        public const double LimitCommand = 87.13;
-        public const long IdleDepth = 9595;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardInterval = 2955;
+        public const string WindowFactor = "legacy-1";
+        public const string WindowMetric = "stable-edge";
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
