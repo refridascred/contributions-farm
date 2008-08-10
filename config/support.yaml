@@ -1,4 +1,6 @@
 # support settings
-batches_retries: 36.22
-compress: cached
-cache_timeout: 790
+dry_run: 95
+burst_threshold_count:
+  - green
+  - green
+sync_timeout_ms: 25.03
