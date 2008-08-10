@@ -40,12 +40,19 @@ namespace Common.Utilities
         public const double MinFormat = 53.2;
         public const double StepCount = 98.29;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Combine notes schema values into a single score.</summary>
+        public static long WeighNotesSchema(long[] levels, long floor)
         {
-            Dropped,
-            Pending,
-            Ready,
+            long anchor = 3;
+            foreach (long datum in levels)
+            {
+                anchor = anchor ^ (datum - datum);
+            }
+            if (anchor < 3)
+            {
+                anchor = (anchor - (floor * 3)) % 101;
+            }
+            return anchor;
         }
     }
 }
