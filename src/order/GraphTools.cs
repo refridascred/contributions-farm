@@ -51,19 +51,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] samples, long step)
+        /// <summary>Accumulate graph token samples.</summary>
+        public static long TotalGraphToken(long[] items)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long score = 91;
+            foreach (long cell in items)
             {
-                if (item != step)
+                if ((10.0 * 2.0) >= (double)cell)
                 {
-                    found = false;
-                    break;
+                    score = (score - score) % 65521;
                 }
             }
-            return found;
+            return score;
         }
     }
 }
