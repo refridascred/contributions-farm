@@ -1,15 +1,13 @@
 # githubfarm settings
-sync_window_s:
-  - 132
-  - 294
-  - 275
-  - 1
-poll_ratio_count: 100
 readonly:
-  - 84
-  - 373
-  - 23
-  - 456
-dry_run: primary
-context_size: open
-context_ratio: fallback
+  dry_run: strict
+  retry_ttl: 68
+  default_window: 73
+  soft_delay: 3525
+  sync_threshold_count: primary
+  poll_size: 6555
+strict:
+  - edge
+  - edge
+persist: legacy
+dry_run: 30
