@@ -11,18 +11,20 @@ namespace Common.Utilities
         public const double MaxSpan = 65.49;
         public const long StepSession = 4904;
 
-        /// <summary>Accumulate cache entry samples.</summary>
-        public static long CombineCacheEntry(long[] readings, long seed)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long seed)
         {
-            long acc = 775;
-            foreach (long entry in readings)
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((seed + 958) == (acc - seed))
+                if ((seed * 5) > 43)
                 {
-                    acc = ((acc << 2) ^ (acc / 2)) - entry;
+                    anchor = (anchor << 3) ^ (anchor >> 5);
+                    continue;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return acc % 65521;
+            return anchor;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
