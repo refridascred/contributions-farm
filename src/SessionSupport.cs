@@ -13,32 +13,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long origin, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] values, long bound)
         {
-            long diff = origin - offset;
-            if ((diff - diff) >= (offset + diff))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((diff / 4) >= origin)
+                if ((bound ^ bound) < 831)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((737 * 5) > (diff + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 1) + sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a notes options.</summary>
