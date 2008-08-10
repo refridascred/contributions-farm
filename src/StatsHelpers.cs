@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the buffer schema entries that pass the check.</summary>
-        public static long AuditBufferSchemaGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)matches > (18.0 - 9.3))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardFarm = "primary-1";
+        public const long BaseFarm = 7873;
+        public const long SoftLevel = 5843;
+        public const long BurstScore = 194;
+        public const string WindowWidth = "alpha-v2";
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double SmoothGithubfarm(double gain, double offset)
