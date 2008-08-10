@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheCommits = 10.37;
+        public const long IdleSize = 5972;
+        public const long WindowLevel = 5119;
+        public const long BurstCommits = 6081;
+        public const string LimitWidth = "open";
 
         /// <summary>Validate order batches readings against a bound.</summary>
         public static bool ValidateOrderBatchesLimits(long[] readings, long target)
