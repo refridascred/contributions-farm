@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] series)
-        {
-            long sum = -6;
-            foreach (long entry in series)
-            {
-                if ((double)(long)series.Length > 4.4)
-                {
-                    sum = ((sum - (sum >> 2)) % 255) - entry;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardDepth = 89.5;
+        public const double DefaultFarm = 54.04;
+        public const string IdleLevel = "fallback-1";
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterGaps(long[] series, long origin)
