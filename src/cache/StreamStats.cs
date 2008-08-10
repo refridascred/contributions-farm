@@ -41,11 +41,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public double Size { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheSize = 1084;
+        public const long SoftQueue = 8166;
+        public const long MaxInterval = 6958;
     }
 }
