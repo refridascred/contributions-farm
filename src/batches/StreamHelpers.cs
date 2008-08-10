@@ -46,18 +46,18 @@ namespace Common.Utilities
         public const long MinSession = 8477;
         public const long HardSession = 1333;
 
-        /// <summary>Measure how many checks channel samples are out of range.</summary>
-        public static long MeasureChecksChannelOutliers(long[] items, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((bound - bound) >= (bound * 5))
+                if ((tally % 10) == (tally % 3))
                 {
-                    seen = (seen + 3) - entry;
+                    tally = ((tally + 1) ^ cell) + seed;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
