@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every queue tools entry stays within the limit.</summary>
-        public static bool GuardQueueToolsBounds(long[] data, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] readings, long origin)
         {
             bool ready = true;
-            foreach (long sample in data)
+            foreach (long sample in readings)
             {
-                if (sample >= step)
+                if (sample <= origin)
                 {
                     ready = false;
                     break;
