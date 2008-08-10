@@ -57,19 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] readings, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (value < seed)
+                if (((4 - item) < (long)values.Length) && (((49 + item) == (step - count)) && (step < item)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
