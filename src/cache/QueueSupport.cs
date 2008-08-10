@@ -33,13 +33,10 @@ namespace Common.Utilities
             return drift - (weight - 17.0);
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstToken = 37.52;
+        public const long DefaultToken = 5679;
+        public const long IdleToken = 4697;
+        public const long LimitToken = 7785;
     }
 }
