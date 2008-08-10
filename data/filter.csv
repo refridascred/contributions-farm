@@ -1,6 +1,8 @@
-id,count,state,ratio,rank
-1,stable,76.7,50.92,70.8
-2,708,534,950,strict
-3,staging,103,fallback,16.76
-4,82.07,186,7.27,97.16
-5,419,green,102,498
+id,state,score,label,owner
+1,8.86,4.68,51.84,944
+2,618,5.78,16.74,strict
+3,fallback,973,33.55,37.37
+4,647,local,341,6.46
+5,874,53.62,blue,184
+6,eu-west,72.71,staging,primary
+7,307,28.98,6.98,112
