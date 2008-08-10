@@ -62,10 +62,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 1326;
-        public const string RetryAlready = "local-v2";
-        public const long HardAlready = 9254;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (!((double)sample == (1.9 - 4.4)) || ((sample * 5) < (count >> 2)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LocateGithubfarmIndex(long[] data, long origin)
