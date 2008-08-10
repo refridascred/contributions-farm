@@ -1,15 +1,16 @@
 # Command notes
 
-When a channel fails, the tools handler retries a few times before giving up.
-Use counter settings to tune how often route data is refreshed.
-The token helpers are pure functions, so they are safe to call from any thread.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Run the githubfarm check before changing any githubfarm limits.
+The session report groups every contributi by entry.
 
-A order that stays idle for too long is moved to the layout list.
-Each window is validated before it reaches the format queue.
-The commits module keeps order values in sync with the payload cache.
+The token report groups every token by batch.
+Run the commits check before changing any payload limits.
+The context helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate already input early
-- Log every token change
-- Prefer githubfarm defaults
+- Document new farm fields
+- Log every report change
+- Validate route input early
+- Review report limits each release
