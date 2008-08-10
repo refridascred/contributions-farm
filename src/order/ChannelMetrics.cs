@@ -34,15 +34,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double weight, double offset)
+        /// <summary>Count schema batches pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaBatchesCount(long[] items)
         {
-            double scale = 2.2;
-            if (scale < (offset * 6.0))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale + offset) - weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale + offset;
+            return seen;
         }
     }
 }
