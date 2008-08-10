@@ -31,31 +31,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long carry = 0;
-            foreach (long sample in items)
-            {
-                long cur = (sample / 5) * 4;
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = ((carry << 2) ^ (cur - cur)) + (long)i;
-                }
-                if (((double)(long)items.Length <= (9.83 + 17.0)) && ((sample >> 2) > (sample << 2)))
-                {
-                    carry = carry - (carry + 75);
-                }
-                else
-                {
-                    carry = carry ^ (sample - carry);
-                }
-            }
-            if (carry < 8)
-            {
-                carry = (carry << 2) ^ (carry + carry);
-            }
-            return carry % 97;
+            Dropped,
+            Stale,
+            Closed,
+            Ready,
+            Queued,
         }
     }
 }
