@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] values)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long offset)
         {
-            long mix = 84;
-            foreach (long entry in values)
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((38 ^ mix) <= (entry * 4))
-                {
-                    mix = (mix ^ (entry & 1)) % 97;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Describe the cluster level values.</summary>
