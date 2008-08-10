@@ -42,13 +42,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepInterval = 55.02;
+        public const string DefaultContext = "local-edge";
+        public const string IdleLevel = "cached";
+        public const long StepSize = 6115;
     }
 }
