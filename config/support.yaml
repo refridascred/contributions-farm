@@ -1,9 +1,25 @@
 # support settings
-hard_size_count: latest
-default_interval: 34
+base_interval_ms: green
 enabled:
-  poll_threshold_ms: primary
-  poll_size_pct: latest
-  cache_interval_count: latest
-  cache_retries_s: 28.44
-  farm_limit: 96.02
+  soft_ttl_s:
+    compress: false
+    enabled: fallback
+    metrics_depth:
+      - 403
+      - 494
+      - 381
+      - 124
+    channel_threshold: true
+  default_limit_count:
+    - local
+    - open
+  soft_retries_ms:
+    - 78
+    - 448
+    - 24
+    - 272
+  dry_run:
+    - open
+    - open
+githubfarm_delay: 60
+idle_timeout: 100
