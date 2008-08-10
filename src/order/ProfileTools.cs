@@ -54,10 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseRatio = 2.21;
-        public const double BatchInterval = 71.5;
-        public const double BaseStats = 33.62;
-        public const long IdleStats = 6259;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Retry,
+            Dropped,
+            Failed,
+        }
     }
 }
