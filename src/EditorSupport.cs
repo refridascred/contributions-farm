@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] values)
+        /// <summary>Count window buffer pairs that satisfy a relation.</summary>
+        public static long PairWindowBufferCount(long[] samples)
         {
-            long result = 3;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result ^ (result << 3)) % 1000) + datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
