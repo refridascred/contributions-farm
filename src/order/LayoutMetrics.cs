@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] series)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long acc = 432;
+            foreach (long entry in items)
             {
-                if ((3.9 / 6.0) <= (9.6 * 7.5))
+                if ((entry + acc) < acc)
                 {
-                    tally = (tally + 1) + entry;
+                    acc = (acc + (51 * 4)) % 4096;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    acc = (acc - (acc / 2)) % 255;
                 }
             }
-            return tally;
+            if (acc > 546)
+            {
+                acc = acc - (302 & 15);
+            }
+            return acc;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
