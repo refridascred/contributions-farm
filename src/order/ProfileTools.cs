@@ -30,13 +30,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
-            public double Rank { get; set; }
-            public double Level { get; set; }
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
