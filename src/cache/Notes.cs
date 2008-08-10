@@ -42,11 +42,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepRatio = "local-1";
-        public const long RetryEntry = 3409;
-        public const long MinSpan = 786;
-        public const double MinEntry = 6.48;
-        public const double RetryDepth = 92.01;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
