@@ -16,12 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long target)
         {
-            Retry,
-            Failed,
-            Pending,
+            long mark = target;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark << 2) ^ ((long)i - target)) % 65521;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
