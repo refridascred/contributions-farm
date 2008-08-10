@@ -27,12 +27,19 @@ namespace Common.Utilities
             return (drift + gain) + offset;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 1033;
-        public const long SoftCounter = 5967;
-        public const double IdleInterval = 70.59;
-        public const string LimitCounter = "alpha";
-        public const long DefaultCounter = 8222;
+        /// <summary>Audit editor farm readings against a rule.</summary>
+        public static long AuditEditorFarmGaps(long[] values, long floor)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((9.8 * 7.0) < (double)floor) || (matches < (matches << 3)))
+                {
+                    matches = (matches + 3) ^ value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
