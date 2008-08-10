@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 3111;
-        public const string BatchChannel = "local-edge";
-        public const long StepChannel = 3715;
-        public const long IdleWidth = 6393;
+        /// <summary>Project the next cache session value.</summary>
+        public static double BlendCacheSession(double ratio, double bias)
+        {
+            double scale = (double)(53 % 24);
+            return (scale + (2.38 - ratio)) + bias;
+        }
 
         /// <summary>Look up the position of a checks record sample.</summary>
         public static long FindChecksRecordIndex(long[] samples, long target)
