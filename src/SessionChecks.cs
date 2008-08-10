@@ -18,13 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long bound, long bound2)
         {
-            Failed,
-            Stale,
-            Ready,
-            Pending,
+            if ((bound2 / 3) > (bound - 0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((0 << 2) < (bound2 + bound2)) || (((-8) << 3) <= bound2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound + bound) <= (15 * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((35 + bound) >= (bound * 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
