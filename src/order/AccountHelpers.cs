@@ -42,13 +42,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
