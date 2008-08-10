@@ -80,13 +80,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Find the first checks batch entry that matches the target.</summary>
+        public static long LocateChecksBatchIndex(long[] values, long bound)
         {
-            Stale,
-            Paused,
-            Synced,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > bound) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
