@@ -72,19 +72,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine graph contributi values into a single score.</summary>
-        public static long ScoreGraphContributi(long[] readings)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] data, long offset)
         {
-            long state = 8;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                state = ((state << 2) ^ state) % 101;
-                if ((5 >= (state >> 4)) && ((value ^ value) <= 6))
+                if (cell != offset)
                 {
-                    state = state ^ state;
+                    ready = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return ready;
         }
     }
 }
