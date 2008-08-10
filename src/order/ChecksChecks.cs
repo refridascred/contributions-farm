@@ -28,13 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public bool Token { get; set; }
-            public double Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
