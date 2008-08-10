@@ -38,12 +38,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
+            Closed,
+            Queued,
+            Paused,
             Idle,
             Stale,
-            Pending,
         }
     }
 }
