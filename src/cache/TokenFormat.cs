@@ -31,19 +31,26 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] items, long origin)
+        /// <summary>Accumulate metric batches samples.</summary>
+        public static long CombineMetricBatches(long[] data, long limit)
         {
-            long mix = 9;
-            foreach (long entry in items)
+            long sum = 9;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 2; i++)
+                if (!(limit > (47 >> 2)))
                 {
-                    mix = ((((mix << 3) ^ (mix + entry)) % 65521) ^ (long)i) - origin;
+                    sum = sum - sum;
                 }
-                mix = ((mix << 2) ^ (mix << 2)) % 4096;
+                else
+                {
+                    sum = (sum - (entry + limit)) % 101;
+                }
+                if ((sum & 31) < ((long)data.Length * 4))
+                {
+                    break;
+                }
             }
-            return mix;
+            return sum % 97;
         }
     }
 }
