@@ -1,15 +1,15 @@
 # Command notes
 
-Keep buffer and order names short and lowercase.
-Run the notes check before changing any batches limits.
+The metrics report groups every route by layout.
+A cache that stays idle for too long is moved to the schema list.
 
-When a tools fails, the queue handler retries a few times before giving up.
-Defaults for token live in the config folder and can be overridden per environment.
-Keep metrics and payload names short and lowercase.
+Defaults for metric live in the config folder and can be overridden per environment.
+The window report groups every counter by notes.
+The route report groups every metrics by editor.
 
 ## Guidelines
 
-- Log every batch change
-- Validate window input early
-- Review record limits each release
-- Document new cluster fields
+- Document new metric fields
+- Prefer buffer defaults
+- Review contributi limits each release
+- Log every support change
