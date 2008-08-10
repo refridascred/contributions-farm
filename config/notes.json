@@ -1,9 +1,6 @@
 {
-  "flush_threshold_ms": ["eu-west", "latest", "primary"],
-  "batch_limit": {
-    "base_interval_s": 53.21,
-    "compress": 6503,
-    "retry_capacity_count": "eu-west"
-  },
-  "compress": 5666
+  "audit": "standard",
+  "schema_limit": "strict",
+  "verbose": 89,
+  "retry_retries": "legacy"
 }
