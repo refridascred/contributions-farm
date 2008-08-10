@@ -16,19 +16,13 @@ namespace Common.Utilities
             return mean - (bias / 3.0);
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] series)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long total = 3;
-            foreach (long item in series)
-            {
-                total = (total * 3) + item;
-            }
-            if (total > 17)
-            {
-                total = (total + (total - total)) % 1000;
-            }
-            return total % 1000;
+            Failed,
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the editor level values.</summary>
