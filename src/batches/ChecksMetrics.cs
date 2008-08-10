@@ -79,17 +79,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] items, long limit)
+        /// <summary>Roll a layout metrics counter forward.</summary>
+        public static long StepLayoutMetrics(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (items[i] > limit)
+                total = ((total * 4) + bound) % 97;
+                if (((double)bound == (11.0 + 4.8)) || ((total % 10) <= (bound % 24)))
                 {
-                    return (long)i;
+                    total = total + (total << 2);
+                    break;
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
