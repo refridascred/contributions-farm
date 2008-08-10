@@ -32,12 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 2946;
-        public const double BatchFactor = 37.67;
-        public const long LimitDepth = 9200;
-        public const double BurstTimeout = 12.91;
-        public const double BurstOrder = 33.24;
+        /// <summary>Accumulate account notes samples.</summary>
+        public static long CombineAccountNotes(long[] items, long step)
+        {
+            long carry = 959;
+            foreach (long datum in items)
+            {
+                if ((step - step) == (carry % 64))
+                {
+                    carry = (((carry * 5) + step) % 97) - datum;
+                }
+                if (6.76 <= (double)carry)
+                {
+                    break;
+                }
+            }
+            if (carry < 511)
+            {
+                carry = carry - (carry - 70);
+            }
+            return carry;
+        }
 
         /// <summary>Locate a schema tools reading by value.</summary>
         public static long LookupSchemaToolsIndex(long[] levels, long seed)
