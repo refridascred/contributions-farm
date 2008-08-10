@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next metric metrics value from a seed.</summary>
-        public static long SeriesMetricMetrics(long seed)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc << 3) ^ (seed - acc);
-                if (acc < (acc - (long)i))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc + (seed - 945)) % 65521;
-                    acc = acc + (acc + (long)i);
-                    continue;
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if ((double)(long)i <= (16.0 / 8.0))
-                {
-                    acc = acc ^ (1 - seed);
-                    acc = ((acc * 3) + (6 + (long)i)) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the metric mode values.</summary>
