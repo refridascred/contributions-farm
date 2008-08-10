@@ -51,19 +51,19 @@ namespace Common.Utilities
         public const double CacheRatio = 97.69;
         public const long BurstSupport = 751;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] series, long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (reading <= seed)
+                if (reading < origin)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
