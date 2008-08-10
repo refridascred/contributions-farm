@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepRatio = 8339;
+        public const long MaxBudget = 3547;
+        public const double BurstTimeout = 90.43;
 
         /// <summary>Digest a series of checks already entries.</summary>
         public static long CombineChecksAlready(long[] samples, long step)
