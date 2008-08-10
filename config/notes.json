@@ -1,5 +1,15 @@
 {
-  "max_size": "local",
-  "default_window_s": 1024,
-  "soft_size_count": "latest"
+  "retry_retries_ms": false,
+  "dry_run": "fallback",
+  "readonly": {
+    "poll_capacity_pct": "strict",
+    "sync_ratio": {
+      "warm_capacity_ms": 60,
+      "warm_depth_count": 66,
+      "burst_threshold": 63.78
+    },
+    "sync_retries_s": "latest"
+  },
+  "idle_threshold_ms": "primary",
+  "cache_size_pct": "fallback"
 }
