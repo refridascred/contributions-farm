@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long floor, long bound)
         {
-            New,
-            Draft,
-            Idle,
-            Ready,
-            Stale,
+            if ((bound * 4) >= (floor & 127))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound == (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor / 5) == (floor / 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((bound >> 2) < (bound % 100)) || ((double)floor >= (16.0 / 3.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many commits filter samples are out of range.</summary>
