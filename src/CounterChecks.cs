@@ -67,21 +67,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count editor channel pairs that satisfy a relation.</summary>
-        public static long OverlapEditorChannelCount(long[] data)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
