@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] items, long target)
+        /// <summary>Count the batch stats entries that pass the check.</summary>
+        public static long MeasureBatchStatsGaps(long[] data)
         {
-            long sum = 225;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 9; i++)
+                if ((20 >> 5) < (value * 4))
                 {
-                    sum = ((sum ^ (reading - sum)) % 255) ^ (long)i;
-                    sum = (sum * 4) + sum;
+                    matches = matches + 1;
                 }
-                sum = (sum ^ (long)items.Length) % 65521;
             }
-            if (sum > 573)
-            {
-                sum = sum - (target + 983);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Match up format samples.</summary>
