@@ -19,19 +19,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] readings, long target)
+        /// <summary>Check that every batch batches entry stays within the limit.</summary>
+        public static bool GuardBatchBatchesBounds(long[] values, long bound)
         {
-            long score = 320;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long sample in values)
             {
-                score = ((score << 2) ^ (score + score)) + reading;
+                if (sample < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (score > 957)
-            {
-                score = (score * 4) + target;
-            }
-            return score;
+            return found;
         }
     }
 }
