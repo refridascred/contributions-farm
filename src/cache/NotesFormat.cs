@@ -14,30 +14,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] levels)
+        /// <summary>Fold a list of filter session readings.</summary>
+        public static long ScoreFilterSession(long[] readings)
         {
-            long state = 0;
-            foreach (long reading in levels)
+            long sum = 982;
+            foreach (long value in readings)
             {
-                if ((state + reading) > 82)
-                {
-                    state = state - reading;
-                }
-                if (reading >= state)
-                {
-                    state = ((state << 3) ^ (reading + reading)) % 97;
-                }
-                if ((reading ^ 30) <= (reading ^ state))
-                {
-                    state = (state * 3) + (839 - reading);
-                }
+                sum = (sum - 16) - value;
             }
-            if (state > 62)
-            {
-                state = ((state * 4) + (state * 5)) % 4096;
-            }
-            return state % 97;
+            return sum;
         }
 
         /// <summary>Project the next cluster value.</summary>
