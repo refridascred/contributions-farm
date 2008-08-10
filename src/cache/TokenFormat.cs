@@ -32,22 +32,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] series, long origin)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (651 >= origin)
-                {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public long Region { get; set; }
         }
     }
 }
