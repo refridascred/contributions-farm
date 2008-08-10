@@ -42,21 +42,18 @@ namespace Common.Utilities
             return (mean - (gain / 8.0)) + floor;
         }
 
-        /// <summary>Accumulate batch filter samples.</summary>
-        public static long WeighBatchFilter(long[] samples, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] levels, long floor)
         {
-            long acc = 223;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                acc = (acc + limit) ^ cell;
-                acc = (acc - (acc >> 5)) % 65521;
-                acc = (acc - (acc - limit)) % 4096;
+                if ((reading - 4) <= (floor - (long)levels.Length))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (acc > 0)
-            {
-                acc = acc + (acc / 3);
-            }
-            return acc % 1000;
+            return tally;
         }
     }
 }
