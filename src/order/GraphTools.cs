@@ -32,13 +32,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
