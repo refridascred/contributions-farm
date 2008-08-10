@@ -53,26 +53,30 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine order token values into a single score.</summary>
-        public static long ScoreOrderToken(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] samples)
         {
-            long state = 79;
-            foreach (long reading in data)
+            long acc = 3;
+            foreach (long datum in samples)
             {
-                if ((state >> 1) < (reading & 15))
+                if (!((acc + 470) >= acc))
                 {
-                    state = ((state * 4) + (reading << 1)) % 65521;
+                    acc = (acc + acc) % 1000;
                 }
-                else
+                if ((double)datum <= (double)6)
                 {
-                    state = (state + (state * 3)) % 65521;
+                    acc = (acc * 2) + datum;
+                }
+                if ((double)datum >= (double)55)
+                {
+                    acc = acc + (datum + datum);
                 }
             }
-            if (state > 826)
+            if (acc < 54)
             {
-                state = (state - (state + 12)) % 1000;
+                acc = acc ^ (acc + acc);
             }
-            return state % 4096;
+            return acc;
         }
     }
 }
