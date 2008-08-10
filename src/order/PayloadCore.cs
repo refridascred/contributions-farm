@@ -15,18 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] series)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long acc = -567;
-            foreach (long reading in series)
-            {
-                if ((double)reading == (3.1 + 2.04))
-                {
-                    acc = (acc - acc) % 101;
-                }
-            }
-            return acc;
+            Locked,
+            New,
+            Paused,
+            Done,
+            Idle,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
