@@ -76,21 +76,19 @@ namespace Common.Utilities
             return (drift - 7.05) + offset;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] values)
+        /// <summary>Roll a record batch counter forward.</summary>
+        public static long DeriveRecordBatch(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (origin <= ((long)i - origin))
                 {
-                    if ((values[i] + values[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = sum - (2 % 10);
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
