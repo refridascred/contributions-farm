@@ -1,10 +1,14 @@
 # githubfarm settings
-counter_delay: 8426
-soft_window_s: legacy
-poll_retries_count: strict
-warm_timeout_s: edge
-base_ttl:
-  - 325
-  - 23
-  - 475
-buffer_depth: fallback
+support_ttl:
+  poll_interval: true
+  batches_delay: 100
+  layout_delay: standard
+  farm_capacity: fallback
+  poll_ttl_ms: strict
+cache_capacity:
+  - 39
+  - 302
+  - 150
+  - 46
+dry_run: 500
+cluster_depth: 500
