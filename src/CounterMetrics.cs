@@ -36,21 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of tools command readings.</summary>
-        public static long CompareToolsCommandCount(long[] samples)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 19)
+                    if ((data[i] - data[j]) < 10)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the entry kind values.</summary>
