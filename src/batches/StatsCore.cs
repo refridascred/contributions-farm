@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] items, long step)
-        {
-            long mix = 154;
-            foreach (long item in items)
-            {
-                mix = ((mix * 3) + item) % 255;
-                if (step >= (item << 1))
-                {
-                    mix = ((mix * 3) + step) % 4096;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryEntry = "standard-edge";
+        public const long MaxEntry = 5976;
+        public const string WindowTimeout = "primary-v2";
+        public const long IdleRatio = 851;
+        public const double LimitEntry = 21.34;
 
         /// <summary>Iterate the cache counter series from a seed.</summary>
         public static long StepCacheCounter(long offset)
