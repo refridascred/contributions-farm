@@ -33,14 +33,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Count token editor pairs that satisfy a relation.</summary>
+        public static long PairTokenEditorCount(long[] values)
         {
-            Closed,
-            Draft,
-            Queued,
-            Pending,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up report samples.</summary>
