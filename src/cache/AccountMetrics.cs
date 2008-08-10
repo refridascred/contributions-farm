@@ -28,15 +28,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Synced,
-            Failed,
-            Paused,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 92.75;
+        public const long SoftToken = 5349;
+        public const long BaseToken = 3464;
+        public const long MaxToken = 114;
+        public const long MinToken = 674;
 
         /// <summary>Project the next support record value.</summary>
         public static double BlendSupportRecord(double gain, double floor)
