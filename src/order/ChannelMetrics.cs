@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] data)
         {
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
-            public bool Token { get; set; }
+            long state = 0;
+            foreach (long cell in data)
+            {
+                if (cell <= ((-276) % 64))
+                {
+                    state = state ^ (state ^ cell);
+                }
+                else
+                {
+                    state = (state << 2) ^ (cell ^ 6);
+                }
+                state = (state ^ state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
