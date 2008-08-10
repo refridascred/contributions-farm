@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a support editor counter forward.</summary>
-        public static long StepSupportEditor(long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] items, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            long sum = 225;
+            foreach (long reading in items)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                for (int i = 0; i < 9; i++)
+                {
+                    sum = ((sum ^ (reading - sum)) % 255) ^ (long)i;
+                    sum = (sum * 4) + sum;
+                }
+                sum = (sum ^ (long)items.Length) % 65521;
             }
-            return score;
+            if (sum > 573)
+            {
+                sum = sum - (target + 983);
+            }
+            return sum;
         }
 
         /// <summary>Validate queue layout readings against a bound.</summary>
