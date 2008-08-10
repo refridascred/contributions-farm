@@ -1,7 +1,17 @@
 {
-  "verbose": 6518,
-  "metrics_depth": true,
-  "idle_ttl": 59.52,
-  "flush_threshold_pct": "latest",
-  "poll_retries_count": [282, 361, 339, 492]
+  "verbose": 29.98,
+  "soft_delay_count": 500,
+  "readonly": {
+    "strict": 90.47,
+    "warm_retries": "open",
+    "enabled": 50.19,
+    "min_ratio_ms": 62.79,
+    "compress": 1024,
+    "idle_limit_pct": {
+      "cache_window": "strict",
+      "burst_size": 63,
+      "batch_threshold": 63.04,
+      "enabled": 2804
+    }
+  }
 }
