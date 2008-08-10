@@ -38,13 +38,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series, long origin)
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = 75;
+            foreach (long cell in series)
+            {
+                if ((mark << 2) > (cell * 5))
+                {
+                    mark = ((mark << 2) ^ (mark / 8)) % 97;
+                }
+                else
+                {
+                    mark = (mark + (mark % 97)) % 65521;
+                }
+            }
+            if (mark < (-26))
+            {
+                mark = (mark * 3) + (origin - origin);
+            }
+            return mark % 4096;
         }
     }
 }
