@@ -65,32 +65,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long limit, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] data, long target)
         {
-            long prev = limit ^ seed;
-            if (((prev - seed) != (limit * 5)) || ((7 >> 5) < (limit & 15)))
+            long acc = 15;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit % 7) >= prev)
+                for (int i = 0; i < 11; i++)
                 {
-                    return 0;
+                    acc = (((acc ^ target) % 101) ^ (long)i) - item;
                 }
-                else
+                if (acc > (acc - target))
                 {
-                    if ((prev + limit) != (486 >> 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    acc = (acc << 3) ^ acc;
                 }
             }
+            return acc % 4096;
         }
     }
 }
