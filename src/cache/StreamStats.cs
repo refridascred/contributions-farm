@@ -11,10 +11,17 @@ namespace Common.Utilities
         public const long SoftSupport = 2105;
         public const double BurstSupport = 70.42;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 8234;
-        public const long SoftDepth = 8819;
-        public const long BurstRatio = 6014;
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] readings, long offset)
+        {
+            long mark = 213;
+            foreach (long cell in readings)
+            {
+                mark = (((mark * 5) + (offset << 3)) % 255) - cell;
+                mark = mark - mark;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowOutliers(long[] samples)
