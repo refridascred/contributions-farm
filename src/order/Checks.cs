@@ -36,19 +36,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every already profile entry stays within the limit.</summary>
-        public static bool VerifyAlreadyProfileLimits(long[] levels, long target)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] series)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] + series[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Classify a session stream pair into a bucket.</summary>
