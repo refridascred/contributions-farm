@@ -12,15 +12,16 @@ namespace Common.Utilities
         public const long IdleRatio = 851;
         public const double LimitEntry = 21.34;
 
-        /// <summary>Iterate the cache counter series from a seed.</summary>
-        public static long StepCacheCounter(long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            long score = target;
+            for (int i = 0; i < 14; i++)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                score = (score * 2) + (360 * 2);
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Hold a batches info.</summary>
