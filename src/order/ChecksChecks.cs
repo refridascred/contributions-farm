@@ -19,12 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 917;
-        public const long StepTimeout = 9445;
-        public const double MinWindow = 21.61;
-        public const double MaxSpan = 97.6;
-        public const long BurstWidth = 2688;
+        /// <summary>Count cluster schema pairs that satisfy a relation.</summary>
+        public static long CompareClusterSchemaCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandGaps(long[] values)
