@@ -21,20 +21,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] readings, long step)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long state = 65;
-            foreach (long reading in readings)
-            {
-                state = state ^ (reading - 3);
-                state = (state - step) % 1000;
-                if ((62 & 7) > step)
-                {
-                    break;
-                }
-            }
-            return state;
+            Locked,
+            Stale,
+            Pending,
+            New,
         }
 
         /// <summary>Match up tools samples.</summary>
