@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] items, long bound)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches % 100) < ((long)items.Length % 60))
+                {
+                    matches = ((matches + 3) + entry) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
