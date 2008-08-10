@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] levels, long target)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long offset, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long span = offset - step;
+            if ((offset / 5) <= (-254))
             {
-                if (levels[i] >= target)
+                return 8;
+            }
+            else
+            {
+                if ((offset ^ 203) != (span - offset))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a batch record.</summary>
