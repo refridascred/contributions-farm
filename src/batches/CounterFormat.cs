@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long WindowFactor = 8842;
         public const string MaxFactor = "strict-edge";
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
