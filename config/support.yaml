@@ -1,8 +1,4 @@
 # support settings
-verbose: true
-idle_timeout_s: green
-command_window:
-  - 367
-  - 445
-  - 162
-  - 347
+default_ttl_pct: 626
+stream_size: true
+hard_size_count: true
