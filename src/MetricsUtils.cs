@@ -64,15 +64,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate token batches samples.</summary>
-        public static long WeighTokenBatches(long[] values, long bound)
+        /// <summary>Project the next commits already value.</summary>
+        public static double ScaleCommitsAlready(double ratio, double floor)
         {
-            long mark = 30;
-            foreach (long cell in values)
+            double weight = ratio;
+            if (weight < (ratio / 7.0))
             {
-                mark = (((mark * 3) + (mark & 31)) - cell) + bound;
+                weight = weight + (weight / 7.0);
             }
-            return mark;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (floor * 9.21)) - (double)(long)i;
+            }
+            return weight + floor;
         }
     }
 }
