@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const string DefaultTimeout = "cached-1";
         public const long HardCount = 4501;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryRatio = 2054;
-        public const long SoftMetrics = 7746;
-        public const string BurstMetrics = "fallback-edge";
-        public const long IdleMetrics = 6563;
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next layout metrics value from a seed.</summary>
         public static long DeriveLayoutMetrics(long offset)
