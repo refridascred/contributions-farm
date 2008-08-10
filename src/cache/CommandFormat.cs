@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] series)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double gain = (double)(62 >> 2);
+            for (int i = 0; i < 2; i++)
             {
-                if ((hits & 7) >= item)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = ((gain + (floor / 7.0)) + (double)(long)i) - scale;
             }
-            return hits;
+            return gain - gain;
         }
 
         /// <summary>Describe the metric state values.</summary>
