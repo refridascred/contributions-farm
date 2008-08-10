@@ -24,9 +24,11 @@ namespace Common.Utilities
             return weight - (double)496;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultInterval = 37.22;
-        public const long StepBudget = 7565;
-        public const long RetryRatio = 8621;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitSize = "primary-v2";
+        public const long WindowSpan = 2941;
+        public const long HardSize = 1653;
+        public const long MaxEntry = 4245;
+        public const long RetryEntry = 9403;
     }
 }
