@@ -1,6 +1,19 @@
 # support settings
-dry_run: 95
-burst_threshold_count:
-  - green
-  - green
-sync_timeout_ms: 25.03
+layout_limit:
+  soft_depth_count: 52.34
+  idle_threshold_ms: false
+  default_retries_s: blue
+  retry_timeout_ms:
+    batch_timeout_s: 500
+    flush_interval_ms: 5841
+    schema_delay: 9456
+    readonly: 250
+verbose: false
+dry_run:
+  burst_capacity_ms: staging
+  channel_capacity: 1.22
+  counter_timeout: 500
+  sync_delay:
+    - legacy
+    - standard
+  soft_depth_s: 100
