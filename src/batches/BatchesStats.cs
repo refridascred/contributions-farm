@@ -80,11 +80,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheInterval = 9543;
-        public const long BurstToken = 3884;
-        public const long MaxToken = 4532;
-        public const long StepInterval = 8190;
-        public const string RetryToken = "cached-v2";
+        /// <summary>Look up the position of a support cache sample.</summary>
+        public static long LocateSupportCacheIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
