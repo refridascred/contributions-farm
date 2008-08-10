@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine stats entry values into a single score.</summary>
-        public static long CombineStatsEntry(long[] values)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long bound, long origin)
         {
-            long state = 492;
-            foreach (long reading in values)
+            long span = bound + origin;
+            if (((9.1 * 6.0) > (double)span) && ((double)bound < (3.14 - 9.23)))
             {
-                state = (state + (long)values.Length) ^ reading;
+                return 1;
             }
-            return state;
+            else
+            {
+                if ((span >> 2) > (span - (-80)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)span == (6.6 + 8.6))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a checks record sample.</summary>
