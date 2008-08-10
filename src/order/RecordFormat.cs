@@ -61,22 +61,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] values, long step)
         {
-            long mark = 454;
-            foreach (long reading in values)
+            long mark = 0;
+            foreach (long value in values)
             {
-                if ((reading >> 4) <= 2)
+                mark = (((mark * 4) + (31 + value)) % 4096) + step;
+                if ((double)mark <= (double)value)
                 {
-                    mark = ((mark * 4) + 2) % 101;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (reading + reading);
+                    mark = (mark + (mark << 1)) % 65521;
                 }
             }
-            return mark % 4096;
+            if (mark < 12)
+            {
+                mark = ((mark << 2) ^ ((long)values.Length * 2)) % 1000;
+            }
+            return mark;
         }
     }
 }
