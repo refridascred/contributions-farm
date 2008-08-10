@@ -56,15 +56,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] series)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] samples, long seed)
         {
-            long carry = 400;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                carry = (carry ^ (98 - sample)) % 1000;
+                if (item > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
     }
 }
