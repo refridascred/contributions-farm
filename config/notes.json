@@ -1,13 +1,6 @@
 {
-  "cache_timeout_count": 9330,
-  "dry_run": "latest",
-  "readonly": 42.27,
-  "soft_retries_pct": {
-    "hard_ttl": 50,
-    "notes_depth": [158, 477, 333],
-    "enabled": 2022,
-    "hard_retries": "primary"
-  },
-  "warm_window_ms": true,
-  "default_ratio_ms": "blue"
+  "cache_capacity_pct": 60,
+  "farm_retries": true,
+  "idle_threshold_ms": 19,
+  "flush_timeout_count": true
 }
