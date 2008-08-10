@@ -22,15 +22,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a format queue counter forward.</summary>
-        public static long DeriveFormatQueue(long seed)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            Draft,
+            New,
+            Retry,
+            Active,
+            Failed,
         }
     }
 }
