@@ -30,21 +30,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] values)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((483 ^ (long)i) == (offset + total))
+                if (!((hits % 5) < hits))
                 {
-                    total = (total << 2) ^ offset;
-                    total = ((total * 5) + (total % 7)) % 97;
+                    hits = (hits + 1) + datum;
                 }
-                total = (total - (offset % 3)) % 4096;
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
     }
 }
