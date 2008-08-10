@@ -16,19 +16,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] readings, long limit)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            double mean = floor;
+            if (mean < (1.2 * 6.7))
             {
-                if (entry >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean + 0.62) - gain;
             }
-            return flag;
+            return mean - (7.79 / 7.0);
         }
 
         /// <summary>Roll a format counter forward.</summary>
