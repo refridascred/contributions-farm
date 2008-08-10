@@ -20,13 +20,14 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Draft,
-            Done,
-            Failed,
-            Dropped,
+            Ready,
+            Locked,
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
