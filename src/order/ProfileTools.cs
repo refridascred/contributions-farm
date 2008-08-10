@@ -13,11 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 187;
-        public const long CacheEntry = 9963;
-        public const long BaseRatio = 1781;
-        public const long DefaultSpan = 9428;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Done,
+            Queued,
+            Ready,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
