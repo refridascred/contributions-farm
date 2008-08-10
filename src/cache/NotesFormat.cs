@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a token editor sample.</summary>
-        public static long FindTokenEditorIndex(long[] series, long step)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] series)
         {
+            long count = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] == step) && ((series[i] % 5) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
