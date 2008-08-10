@@ -74,17 +74,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] levels, long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long limit, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (47 >= (target << 3))
             {
-                if (levels[i] == limit)
+                return 8;
+            }
+            else
+            {
+                if ((limit + target) >= 73)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
