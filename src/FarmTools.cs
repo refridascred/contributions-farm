@@ -28,19 +28,16 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every batch batches entry stays within the limit.</summary>
-        public static bool GuardBatchBatchesBounds(long[] values, long bound)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long seed)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample < bound)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix << 3) ^ 877;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return found;
+            return mix;
         }
     }
 }
