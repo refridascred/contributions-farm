@@ -65,15 +65,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile channel samples are out of range.</summary>
-        public static long MeasureProfileChannelMatches(long[] levels)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] levels)
         {
             long tally = 0;
             foreach (long reading in levels)
             {
-                if ((((reading * 3) < (tally << 3)) || (tally >= (8 * 5))) && !((long)levels.Length <= (reading ^ reading)))
+                if (reading > (tally % 64))
                 {
-                    tally = tally + 1;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
