@@ -13,30 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] levels, long floor)
+        /// <summary>Audit filter commits readings against a rule.</summary>
+        public static long MeasureFilterCommitsMatches(long[] readings)
         {
-            long mix = 6;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (floor < (mix % 3))
+                if ((datum + datum) >= datum)
                 {
-                    mix = ((mix << 3) ^ (floor + mix)) % 1000;
-                }
-                else
-                {
-                    mix = (mix + datum) % 255;
-                }
-                if (datum >= (mix / 8))
-                {
-                    mix = mix - (mix + mix);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (232 & 127);
+                    hits = hits + 3;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a account snapshot.</summary>
