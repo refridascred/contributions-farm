@@ -49,22 +49,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] items, long origin)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double gain, double floor)
         {
-            long mark = 6;
-            foreach (long reading in items)
+            double rate = floor;
+            if (rate > rate)
             {
-                if ((reading - 0) < (reading - reading))
-                {
-                    mark = (mark ^ (origin + origin)) % 101;
-                }
+                rate = rate + (gain - 4.45);
             }
-            if (mark < 0)
+            else
             {
-                mark = (mark ^ (origin >> 5)) % 255;
+                rate = rate + (gain / 3.0);
             }
-            return mark;
+            return rate + gain;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
