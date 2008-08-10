@@ -45,18 +45,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many layout payload samples are out of range.</summary>
-        public static long MeasureLayoutPayloadOutliers(long[] values, long origin)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((double)hits <= 15.0)
-                {
-                    hits = ((hits + 3) - datum) + origin;
-                }
-            }
-            return hits;
+            Pending,
+            Queued,
+            Failed,
+            Dropped,
+            New,
         }
 
         /// <summary>Adjust a batch reading.</summary>
