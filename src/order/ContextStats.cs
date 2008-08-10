@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] items, long origin)
-        {
-            long acc = 0;
-            foreach (long entry in items)
-            {
-                acc = (((acc * 5) + (origin + acc)) % 101) + entry;
-            }
-            if (acc < 535)
-            {
-                acc = (acc - (808 - acc)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 4225;
+        public const long BaseTimeout = 5695;
+        public const long MinGraph = 1364;
+        public const double IdleGraph = 71.58;
+        public const string StepGraph = "local-1";
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long IterateEditor(long step)
