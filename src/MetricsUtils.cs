@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] items)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (tally > item)
+                if (values[i] > bound)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
