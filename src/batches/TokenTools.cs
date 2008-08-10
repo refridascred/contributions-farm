@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double bias, double floor)
         {
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            double ratio = bias / 8.0;
+            if (ratio >= bias)
+            {
+                ratio = (ratio + (double)0) - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - (bias / 5.0);
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
