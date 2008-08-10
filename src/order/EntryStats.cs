@@ -35,10 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitFormat = 74.91;
-        public const double MinFormat = 53.2;
-        public const double StepCount = 98.29;
+        /// <summary>Find the first order context entry that matches the target.</summary>
+        public static long LocateOrderContextIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine notes schema values into a single score.</summary>
         public static long WeighNotesSchema(long[] levels, long floor)
