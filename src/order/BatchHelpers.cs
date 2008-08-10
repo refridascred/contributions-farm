@@ -16,21 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Accumulate editor record samples.</summary>
+        public static long TallyEditorRecord(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 2;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state + (sample % 12)) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Describe the graph mode values.</summary>
