@@ -25,18 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] levels)
+        /// <summary>Combine route stats values into a single score.</summary>
+        public static long ScoreRouteStats(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long mark = 715;
+            foreach (long datum in series)
             {
-                if (9.0 <= (double)tally)
-                {
-                    tally = (tally + 3) ^ datum;
-                }
+                mark = ((mark ^ (42 & 127)) ^ datum) + target;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Adjust a commits cache reading.</summary>
