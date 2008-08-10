@@ -41,19 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] series, long bound)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a farm options.</summary>
