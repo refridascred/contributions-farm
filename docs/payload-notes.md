@@ -1,10 +1,15 @@
 # Payload notes
 
-When a editor fails, the record handler retries a few times before giving up.
-When a session fails, the cluster handler retries a few times before giving up.
+Use metric settings to tune how often route data is refreshed.
+Use filter settings to tune how often route data is refreshed.
+Each counter is validated before it reaches the stats queue.
+
+Use command settings to tune how often filter data is refreshed.
+Use metric settings to tune how often token data is refreshed.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new token fields
-- Keep stats values small
-- Log every githubfarm change
+- Prefer order defaults
+- Validate counter input early
+- Keep metrics values small
