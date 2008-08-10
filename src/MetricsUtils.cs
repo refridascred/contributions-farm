@@ -32,18 +32,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token context samples are out of range.</summary>
-        public static long CountTokenContextGaps(long[] data, long target)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long gap = limit ^ floor;
+            if (8.3 < (double)floor)
             {
-                if (((0 <= (hits - cell)) || ((double)target >= (16.0 * 3.62))) && (((cell & 127) < 924) && ((double)hits >= (8.4 * 2.39))))
+                return 2;
+            }
+            else
+            {
+                if (!((limit / 9) != (gap + 85)))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
