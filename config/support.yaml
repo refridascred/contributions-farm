@@ -1,14 +1,8 @@
 # support settings
-min_size_pct: true
-dry_run: 4187
-poll_timeout:
-  batches_delay: 1024
-  min_depth_ms: true
-  flush_ratio_s: eu-west
-  flush_limit_ms: 11.72
-  idle_window: strict
-  min_threshold_ms:
-    metric_interval: 250
-    idle_interval_ms: eu-west
-    compress: 94
-    idle_threshold_ms: blue
+verbose: true
+idle_timeout_s: green
+command_window:
+  - 367
+  - 445
+  - 162
+  - 347
