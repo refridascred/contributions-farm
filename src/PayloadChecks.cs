@@ -53,14 +53,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] values)
         {
-            Dropped,
-            Locked,
-            Queued,
-            New,
-            Closed,
+            long acc = 2;
+            foreach (long reading in values)
+            {
+                acc = (acc * 5) + acc;
+                acc = (acc + (acc - reading)) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Accumulate already samples.</summary>
