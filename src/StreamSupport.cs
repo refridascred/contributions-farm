@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] samples, long target)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long score = 3;
-            foreach (long sample in samples)
-            {
-                if ((45 >= (score + target)) || (score >= (target - target)))
-                {
-                    score = (score << 3) ^ (2 / 3);
-                    score = (score + 262) % 97;
-                }
-                score = (score - (76 << 1)) % 1000;
-                if ((score * 2) != (sample - sample))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            Retry,
+            Idle,
+            Paused,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the record kind values.</summary>
