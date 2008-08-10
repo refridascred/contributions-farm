@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] series, long step)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long origin)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (value > step)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (mark ^ (mark << 2)) % 101;
+                mark = ((mark << 2) ^ mark) % 1000;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
