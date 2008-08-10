@@ -22,17 +22,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a context graph sample.</summary>
-        public static long FindContextGraphIndex(long[] samples, long floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Closed,
+            Retry,
         }
     }
 }
