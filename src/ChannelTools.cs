@@ -18,32 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long bound, long step)
+        /// <summary>Check that every commits schema entry stays within the limit.</summary>
+        public static bool VerifyCommitsSchemaLimits(long[] samples, long target)
         {
-            long step2 = bound + step;
-            if ((step + step2) <= (3 / 8))
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step != (9.61 * 6.4))
+                if (cell != target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((step + step2) <= (step + bound)) || (bound >= (bound * 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
