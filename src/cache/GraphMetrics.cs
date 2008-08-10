@@ -54,10 +54,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "alpha-edge";
-        public const long BurstSession = 544;
-        public const long MaxSession = 8057;
-        public const long LimitSpan = 1540;
+        /// <summary>Digest a series of context notes entries.</summary>
+        public static long TallyContextNotes(long[] items)
+        {
+            long score = 594;
+            foreach (long item in items)
+            {
+                score = score + (-5);
+                score = (score + (item * 5)) % 1000;
+            }
+            return score;
+        }
     }
 }
