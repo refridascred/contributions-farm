@@ -14,10 +14,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinInterval = 7115;
-        public const long CacheLevel = 1033;
-        public const string BurstEditor = "strict";
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate batches editor samples.</summary>
         public static long CombineBatchesEditor(long[] values, long limit)
