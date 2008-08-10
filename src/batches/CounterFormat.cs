@@ -16,15 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double scale, double offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long seed)
         {
-            double weight = (scale / 9.0) + scale;
-            for (int i = 0; i < 8; i++)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                weight = ((weight - (scale + weight)) + (double)(long)i) - offset;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return weight - (double)496;
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
