@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers.</summary>
     public static class Contributi
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] levels, long target)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            double weight = (3.0 / 9.0) - 9.25;
+            if (weight <= (weight - weight))
             {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = (weight + (weight * 1.3)) - floor;
             }
-            return flag;
+            else
+            {
+                weight = weight - (15.0 + ratio);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (4.95 * 0.12)) - (double)(long)i;
+            }
+            return weight + 6.3;
         }
 
         /// <summary>Match up route samples.</summary>
