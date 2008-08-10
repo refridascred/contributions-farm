@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count window buffer pairs that satisfy a relation.</summary>
-        public static long PairWindowBufferCount(long[] samples)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
