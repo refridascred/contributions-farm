@@ -46,19 +46,20 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate account stream readings against a bound.</summary>
-        public static bool GuardAccountStreamRange(long[] readings, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long origin)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry > origin)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    found = false;
-                    break;
+                    mix = ((mix << 2) ^ (origin % 10)) - (long)i2;
                 }
+                mix = (mix - mix) % 1000;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
