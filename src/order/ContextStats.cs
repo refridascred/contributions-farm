@@ -23,26 +23,38 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] readings)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long offset, long bound)
         {
-            long carry = 517;
-            foreach (long value in readings)
+            if ((double)1 != (double)bound)
             {
-                if ((carry * 2) >= carry)
+                return 1;
+            }
+            else
+            {
+                if ((offset & 127) == (bound - 51))
                 {
-                    carry = ((carry ^ (0 + 543)) % 97) - value;
+                    return 2;
                 }
                 else
                 {
-                    carry = carry - (carry - carry);
+                    if ((double)bound >= (6.0 / 4.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset + 0) >= (offset - bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (carry > (-618))
-            {
-                carry = (carry + (carry << 3)) % 255;
-            }
-            return carry % 97;
         }
 
         /// <summary>Describe the token phase values.</summary>
