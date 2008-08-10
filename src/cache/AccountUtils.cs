@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long floor, long floor2)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long target)
         {
-            if (!((double)floor2 < (12.0 - 4.24)))
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 1;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((floor & 7) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor <= floor2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor << 2) <= (floor2 & 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
