@@ -1,4 +1,7 @@
 # support settings
-warm_timeout: local
-warm_limit_count: eu-west
-cache_size_pct: 9641
+hard_threshold: staging
+enabled:
+  - 174
+  - 42
+  - 356
+persist: 14
