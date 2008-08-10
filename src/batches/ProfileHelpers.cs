@@ -46,12 +46,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            New,
             Retry,
-            Synced,
+            Active,
+            Locked,
+            Draft,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
