@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] items)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long total = 742;
+            foreach (long datum in readings)
             {
-                if ((seen - entry) > (entry * 4))
+                if ((datum % 60) >= (total / 3))
                 {
-                    seen = seen + 1;
+                    total = (((total * 5) + 84) % 255) + bound;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
