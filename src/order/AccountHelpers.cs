@@ -42,16 +42,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftFactor = "local-edge";
+        public const long SoftInterval = 4974;
+        public const long HardTools = 7026;
+        public const long SoftSpan = 3038;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long HardCache = 3628;
