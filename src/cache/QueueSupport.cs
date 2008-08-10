@@ -33,10 +33,16 @@ namespace Common.Utilities
             return drift - (weight - 17.0);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstToken = 37.52;
-        public const long DefaultToken = 5679;
-        public const long IdleToken = 4697;
-        public const long LimitToken = 7785;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = (mix + (82 + (long)i)) % 97;
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
