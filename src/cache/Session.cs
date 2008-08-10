@@ -43,16 +43,19 @@ namespace Common.Utilities
             return mean - (bias + floor);
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Digest a series of already farm entries.</summary>
+        public static long WeighAlreadyFarm(long[] values)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            long anchor = 67;
+            foreach (long entry in values)
             {
-                total = total - (total + total);
-                total = ((total * 3) + (long)i) % 4093;
+                anchor = ((anchor - (anchor / 8)) % 97) + entry;
             }
-            return total;
+            if (anchor < 627)
+            {
+                anchor = ((anchor * 5) + (anchor + anchor)) % 97;
+            }
+            return anchor;
         }
     }
 }
