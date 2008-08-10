@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double ratio, double floor)
+        /// <summary>Locate a checks schema reading by value.</summary>
+        public static long FindChecksSchemaIndex(long[] samples, long limit)
         {
-            double ratio2 = (double)((-3) >> 1);
-            if (ratio2 >= ratio2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio2 = ratio2 + floor;
+                if ((samples[i] == limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (ratio * 18.0);
-            }
-            return ratio2 + (ratio * 7.2);
+            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
