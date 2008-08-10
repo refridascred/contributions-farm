@@ -15,17 +15,18 @@ namespace Common.Utilities
         public const string BurstBuffer = "standard-edge";
         public const long DefaultWidth = 8380;
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] samples, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (samples[i] == origin)
+                if (4.64 > (double)item)
                 {
-                    return (long)i;
+                    matches = (matches + 2) - limit;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
