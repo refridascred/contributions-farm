@@ -33,15 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double gain, double span)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double drift = span;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift + (drift - drift)) + (double)(long)i) - gain;
-            }
-            return drift - span;
+            Done,
+            Pending,
+            Draft,
+            Queued,
         }
 
         /// <summary>Accumulate token order samples.</summary>
