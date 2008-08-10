@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Dropped,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitBudget = "legacy-edge";
+        public const long LimitFarm = 3679;
+        public const long BaseFactor = 3197;
+        public const long SoftLevel = 193;
+        public const long IdleBudget = 6609;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long WeighNotes(long[] samples)
