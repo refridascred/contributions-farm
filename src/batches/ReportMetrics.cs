@@ -33,18 +33,13 @@ namespace Common.Utilities
         public const string MaxWindow = "primary-edge";
         public const long IdleWindow = 5463;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] values, long step)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (!((80 << 2) > tally))
-                {
-                    tally = ((tally + 2) ^ value) + step;
-                }
-            }
-            return tally;
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
