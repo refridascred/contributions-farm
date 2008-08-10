@@ -1,7 +1,7 @@
 {
-  "burst_delay_pct": 6.82,
-  "min_retries": "edge",
-  "idle_window_ms": false,
-  "verbose": "fallback",
-  "hard_size": true
+  "hard_ratio_ms": ["blue", "standard", "edge"],
+  "hard_retries_s": [7, 225],
+  "retry_delay_pct": 80.81,
+  "dry_run": "standard",
+  "cache_ttl": true
 }
