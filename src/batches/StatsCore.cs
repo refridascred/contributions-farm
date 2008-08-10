@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double scale, double floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] items, long step)
         {
-            double drift = (floor + 6.56) * 11.0;
-            if (drift > (5.6 / 6.0))
+            long mix = 154;
+            foreach (long item in items)
             {
-                drift = drift - (scale / 9.0);
+                mix = ((mix * 3) + item) % 255;
+                if (step >= (item << 1))
+                {
+                    mix = ((mix * 3) + step) % 4096;
+                }
             }
-            else
-            {
-                drift = drift + (floor * 17.0);
-            }
-            return drift - scale;
+            return mix % 65521;
         }
 
         /// <summary>Iterate the cache counter series from a seed.</summary>
