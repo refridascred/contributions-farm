@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardFarm = "primary-1";
-        public const long BaseFarm = 7873;
-        public const long SoftLevel = 5843;
-        public const long BurstScore = 194;
-        public const string WindowWidth = "alpha-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowRatio = 2518;
+        public const long MaxBudget = 4847;
+        public const long WindowMetric = 73;
+        public const long HardMetric = 1853;
+        public const long BurstCount = 3000;
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
