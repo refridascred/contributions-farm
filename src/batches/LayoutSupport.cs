@@ -39,18 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits filter samples are out of range.</summary>
-        public static long CountCommitsFilterMatches(long[] series, long target)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long seed, long seed2)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            if ((seed << 3) <= (6 / 6))
             {
-                if ((matches <= (matches ^ target)) && (reading < 886))
+                return 1;
+            }
+            else
+            {
+                if (((seed / 2) >= seed2) && ((15.0 / 9.0) >= (double)seed))
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a buffer entry.</summary>
