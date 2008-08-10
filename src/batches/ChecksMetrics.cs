@@ -49,22 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics schema samples.</summary>
-        public static long WeighMetricsSchema(long[] levels)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long state = 9;
-            foreach (long entry in levels)
-            {
-                if (state > (state + state))
-                {
-                    state = state ^ (entry % 2);
-                }
-            }
-            if (state < 5)
-            {
-                state = (state - (state + state)) % 65521;
-            }
-            return state;
+            public bool Ratio { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
