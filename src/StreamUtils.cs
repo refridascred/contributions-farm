@@ -62,20 +62,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] levels)
+        /// <summary>Adjust a account token reading.</summary>
+        public static double ProjectAccountToken(double gain, double bias)
         {
-            long sum = 75;
-            foreach (long cell in levels)
+            double load = bias;
+            if (load <= (double)129)
             {
-                sum = (sum << 3) ^ (cell / 8);
-                sum = (sum * 5) + cell;
-                if (!((1.13 + 5.1) == (double)(long)levels.Length))
-                {
-                    sum = (sum ^ (98 % 2)) % 101;
-                }
+                load = (load + (7.26 + 7.0)) + gain;
             }
-            return sum % 1000;
+            return load + 11.0;
         }
     }
 }
