@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] values, long offset)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen + seen) >= (seen - entry))
-                {
-                    seen = (seen + 3) + offset;
-                }
-            }
-            return seen;
+            Locked,
+            Pending,
+            Draft,
         }
 
         /// <summary>Match up support samples.</summary>
