@@ -1,4 +1,20 @@
 # githubfarm settings
-retry_ratio_count: 79.89
-filter_limit: primary
-poll_delay: open
+cache_window: 58.56
+idle_timeout_count:
+  - 71
+  - 159
+  - 227
+soft_interval_s:
+  soft_threshold_ms:
+    hard_depth_s:
+      - 296
+      - 225
+    command_delay: green
+    default_size_ms: 55.06
+  batch_size_pct:
+    idle_timeout_ms: true
+    enabled: 4043
+    idle_timeout_count: primary
+  max_threshold_count: 837
+  retry_retries_ms: blue
+  base_ratio_pct: 79.92
