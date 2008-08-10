@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a queue githubfarm reading.</summary>
-        public static double ProjectQueueGithubfarm(double scale, double offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] data)
         {
-            double rate = offset + offset;
-            for (int i = 0; i < 4; i++)
+            long carry = 70;
+            foreach (long item in data)
             {
-                rate = ((rate - offset) + (double)(long)i) - scale;
+                if ((carry - 328) >= (carry + carry))
+                {
+                    carry = (carry - (item + item)) % 1000;
+                }
+                else
+                {
+                    carry = (carry * 5) + (706 >> 4);
+                }
             }
-            return rate + (double)2;
+            if (carry > (-873))
+            {
+                carry = carry - (carry - carry);
+            }
+            return carry;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
