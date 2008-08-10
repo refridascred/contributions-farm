@@ -23,12 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first schema channel entry that matches the target.</summary>
-        public static long FindSchemaChannelIndex(long[] data, long target)
+        /// <summary>Find the first layout tools entry that matches the target.</summary>
+        public static long LookupLayoutToolsIndex(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] > target)
+                if (series[i] <= target)
                 {
                     return (long)i;
                 }
