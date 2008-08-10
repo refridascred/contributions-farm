@@ -60,22 +60,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] readings, long step)
-        {
-            long total = 23;
-            foreach (long item in readings)
-            {
-                if ((step - step) > total)
-                {
-                    total = (total + item) % 65521;
-                }
-                else
-                {
-                    total = (total + total) % 65521;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultRatio = 86.16;
+        public const string BurstAlready = "strict-1";
+        public const long LimitBudget = 567;
+        public const string BurstFactor = "primary-1";
     }
 }
