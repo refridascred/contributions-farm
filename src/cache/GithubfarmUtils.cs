@@ -52,9 +52,31 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleDepth = "standard-1";
-        public const double BurstFactor = 37.93;
-        public const long CacheGithubfarm = 3261;
+        /// <summary>Classify a contributi notes pair into a bucket.</summary>
+        public static long RankContributiNotes(long bound, long step)
+        {
+            if ((5 << 3) > (step ^ bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound & 127) <= 734)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((2 / 5) <= (bound - 0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
