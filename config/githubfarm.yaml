@@ -1,5 +1,22 @@
 # githubfarm settings
-payload_depth: 250
-retry_ttl_count: 32.84
-stats_ttl: 85
-readonly: open
+default_size: local
+readonly:
+  idle_limit_ms: stable
+  report_window: 4544
+  order_timeout:
+    metrics_ratio: latest
+    persist: eu-west
+    idle_timeout_ms: 250
+    cache_ratio_count: 9675
+    audit: 9328
+  account_delay: 60.21
+verbose:
+  - strict
+  - stable
+  - edge
+  - local
+batch_depth_count:
+  - standard
+  - local
+  - standard
+  - latest
