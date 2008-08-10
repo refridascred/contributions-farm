@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            public double Label { get; set; }
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
+            long sum = 647;
+            foreach (long cell in data)
+            {
+                sum = (sum ^ (938 - cell)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
