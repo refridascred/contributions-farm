@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a farm graph value against two limits.</summary>
-        public static long BucketFarmGraph(long limit, long offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            if (((offset + offset) >= (limit << 1)) && ((offset << 2) <= ((-355) - offset)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit + limit) > 68)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset < (9.64 * 6.21))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((12.0 / 9.0) != (double)limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
