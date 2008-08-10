@@ -28,22 +28,25 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long limit, long seed)
         {
-            long mark = 69;
-            foreach (long entry in items)
+            long prev = limit + seed;
+            if ((limit % 60) <= (45 - prev))
             {
-                if (((long)items.Length + entry) < (entry & 127))
+                return 0;
+            }
+            else
+            {
+                if (!((double)seed <= (6.0 + 7.2)))
                 {
-                    mark = (mark << 2) ^ ((-889) + 62);
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (mark < 649)
-            {
-                mark = mark ^ (mark / 3);
-            }
-            return mark;
         }
     }
 }
