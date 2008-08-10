@@ -1,19 +1,13 @@
 {
-  "batch_size_count": 13.52,
-  "min_interval": "stable",
-  "profile_limit": {
-    "already_size": 5006,
-    "sync_ratio_ms": ["stable", "legacy", "legacy"],
-    "metric_threshold": {
-      "base_threshold_pct": 30,
-      "default_ttl_pct": "open",
-      "dry_run": "edge",
-      "readonly": "primary",
-      "base_interval": "cached",
-      "compress": ["edge", "green", "eu-west", "green"]
-    },
-    "dry_run": 51.53,
-    "base_threshold_pct": 1,
-    "base_limit_count": 63.91
-  }
+  "flush_interval_count": 93.95,
+  "warm_limit": {
+    "layout_ratio": 30,
+    "record_limit": 59,
+    "flush_timeout_ms": 37.41,
+    "strict": ["local", "standard", "standard"]
+  },
+  "graph_retries": 69,
+  "cluster_limit": true,
+  "readonly": 5,
+  "dry_run": ["strict", "green", "legacy", "latest"]
 }
