@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstLevel = 7973;
+        public const long BatchChecks = 9558;
+        public const string RetryChecks = "fallback";
 
         /// <summary>Roll a support counter forward.</summary>
         public static long IterateSupport(long seed)
