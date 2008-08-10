@@ -1,6 +1,7 @@
 {
-  "base_ratio_ms": false,
-  "route_threshold": true,
-  "max_timeout": 8445,
-  "readonly": 3108
+  "soft_ttl_pct": true,
+  "batch_window_pct": "eu-west",
+  "compress": false,
+  "contributi_depth": "blue",
+  "soft_timeout": 30
 }
