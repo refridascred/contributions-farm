@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] levels, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (!((double)(long)levels.Length < 8.4))
-                {
-                    tally = ((tally + 1) + reading) - target;
-                }
-            }
-            return tally;
+            Locked,
+            Paused,
+            Done,
+            Retry,
+            Closed,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
