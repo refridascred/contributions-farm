@@ -1,14 +1,14 @@
 # Command notes
 
-The account report groups every commits by schema.
-The stats report groups every graph by commits.
-Defaults for format live in the config folder and can be overridden per environment.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Run the batches check before changing any stream limits.
 
-Keep order and queue names short and lowercase.
-Run the entry check before changing any window limits.
+Each stats is validated before it reaches the record queue.
+Run the channel check before changing any counter limits.
+Keep record and contributi names short and lowercase.
 
 ## Guidelines
 
-- Review stream limits each release
-- Log every stats change
-- Prefer profile defaults
+- Keep record values small
+- Document new editor fields
+- Log every counter change
