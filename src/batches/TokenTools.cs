@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long total = 3;
-            foreach (long value in readings)
-            {
-                total = ((total - (total ^ total)) % 65521) + value;
-            }
-            return total;
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a batches summary.</summary>
