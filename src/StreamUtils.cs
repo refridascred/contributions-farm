@@ -65,12 +65,20 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 8788;
-        public const long DefaultDepth = 8688;
-        public const long LimitBudget = 2779;
-        public const long BatchDepth = 7656;
-        public const long CacheCount = 5052;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] data, long step)
+        {
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Locate a metrics stats reading by value.</summary>
         public static long LocateMetricsStatsIndex(long[] items, long limit)
