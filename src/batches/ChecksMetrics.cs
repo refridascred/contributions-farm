@@ -16,19 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of schema payload readings.</summary>
-        public static long DigestSchemaPayload(long[] data)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] series, long limit)
         {
-            long sum = 929;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long value in series)
             {
-                sum = (sum * 4) + 534;
-                if ((double)value != (0.5 * 12.0))
+                if (value != limit)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
