@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Draft,
-            Retry,
-            Failed,
-            Closed,
-            New,
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
