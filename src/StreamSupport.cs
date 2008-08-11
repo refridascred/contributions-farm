@@ -19,13 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] samples)
         {
-            Done,
-            New,
-            Active,
-            Failed,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)tally >= (11.0 * 4.19))
+                {
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
