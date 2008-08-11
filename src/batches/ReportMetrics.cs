@@ -14,11 +14,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleDepth = 36.77;
-        public const double HardQueue = 84.92;
-        public const long MaxFactor = 3296;
-        public const string WindowQueue = "staging-1";
+        /// <summary>Audit counter editor readings against a rule.</summary>
+        public static long AuditCounterEditorGaps(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell % 100) == (cell - (-4)))
+                {
+                    hits = (hits + 3) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool GuardGraphLimits(long[] data, long step)
