@@ -48,21 +48,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 1;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((3.2 / 2.0) != (double)result)
                 {
-                    if ((values[i] ^ values[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result << 3) ^ sample;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (sample % 12)) % 97;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
