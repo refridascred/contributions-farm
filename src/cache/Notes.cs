@@ -33,15 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long step)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] samples, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a record summary.</summary>
