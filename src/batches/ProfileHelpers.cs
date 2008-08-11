@@ -48,40 +48,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Grade a stream cache value against two limits.</summary>
-        public static long ClassifyStreamCache(long seed, long limit)
-        {
-            long offset = seed + limit;
-            if ((limit ^ offset) > (limit & 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit == (double)27)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((798 - limit) == (limit * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit > (limit + seed)) || ((limit * 3) < (seed << 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 5717;
+        public const long HardWidth = 5749;
+        public const string BaseCount = "legacy-v2";
+        public const long DefaultTimeout = 9012;
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
