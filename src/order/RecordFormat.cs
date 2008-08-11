@@ -19,18 +19,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many context route samples are out of range.</summary>
-        public static long AuditContextRouteMatches(long[] values)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double weight, double span)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double ratio = span;
+            if (ratio < span)
             {
-                if ((entry ^ tally) == (entry - (long)values.Length))
-                {
-                    tally = tally + 3;
-                }
+                ratio = ratio + ratio;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (ratio / 9.0)) + (double)(long)i;
+            }
+            return ratio + weight;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
