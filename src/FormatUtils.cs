@@ -24,17 +24,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] series, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (series[i] > target)
+                if ((reading << 3) == ((long)levels.Length - count))
                 {
-                    return (long)i;
+                    count = (count + 3) - floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
