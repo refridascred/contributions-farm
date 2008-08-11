@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "stable-v2";
-        public const long RetryCount = 6286;
-        public const string BurstMetric = "primary-1";
-        public const string SoftDepth = "fallback-v2";
-        public const long DefaultMetric = 1297;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Ready,
+            Done,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmGaps(long[] data, long target)
