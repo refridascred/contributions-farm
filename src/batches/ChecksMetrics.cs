@@ -88,19 +88,9 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftDepth = 7025;
+        public const string WindowMetric = "local";
+        public const long HardSpan = 578;
     }
 }
