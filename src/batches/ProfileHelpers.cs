@@ -15,17 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a stats session reading by value.</summary>
-        public static long LocateStatsSessionIndex(long[] data, long target)
+        /// <summary>Validate editor command readings against a bound.</summary>
+        public static bool CheckEditorCommandBounds(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (data[i] < target)
+                if (cell != step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the format kind values.</summary>
