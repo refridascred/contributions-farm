@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long offset)
+        /// <summary>Digest a series of metrics window entries.</summary>
+        public static long CombineMetricsWindow(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 4;
+            foreach (long item in values)
             {
-                if (items[i] > offset)
+                if ((state / 6) < (state * 5))
                 {
-                    return (long)i;
+                    state = (state + (state / 7)) % 255;
+                }
+                else
+                {
+                    state = state ^ (state - item);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
