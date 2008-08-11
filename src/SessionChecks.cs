@@ -18,23 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double gain, double span)
+        /// <summary>Classify a metrics commits pair into a bucket.</summary>
+        public static long SortMetricsCommits(long origin, long origin2)
         {
-            double ratio = 6.36;
-            if (ratio >= (span + 2.0))
+            long step = origin - origin2;
+            if (origin2 > (origin2 >> 1))
             {
-                ratio = ratio - ratio;
+                return 1;
             }
             else
             {
-                ratio = ratio + (9.13 - gain);
+                if ((origin2 & 127) == (step - 286))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin >> 4) == (step + origin2)) || ((double)origin2 < (1.43 * 1.89)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)origin != (5.94 - 8.0)) || ((origin + origin2) < (origin2 + origin)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (span / 3.0)) + (double)(long)i;
-            }
-            return ratio - gain;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
