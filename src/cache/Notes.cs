@@ -36,17 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] samples, long limit)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (weight - span) * 5.0;
+            if (rate <= (3.0 / 6.0))
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                rate = rate - (2.5 - span);
             }
-            return -1;
+            return rate - (double)5;
         }
 
         /// <summary>Hold a record summary.</summary>
