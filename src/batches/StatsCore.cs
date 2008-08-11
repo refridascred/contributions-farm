@@ -19,19 +19,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] items, long limit)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry < limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
