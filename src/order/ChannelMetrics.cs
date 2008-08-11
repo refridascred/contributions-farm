@@ -22,19 +22,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long bound, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            long gap = bound ^ origin;
+            if ((double)origin <= (4.4 + 9.2))
             {
-                if ((((long)i / 2) < (1 % 8)) || ((long)i < (limit - limit)))
-                {
-                    acc = (acc + (-3)) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((bound < 32) || ((gap + origin) == (70 + (-43))))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (1 < gap)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)gap >= 5.55)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
