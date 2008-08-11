@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] readings, long offset)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long floor, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long diff = floor - limit;
+            if ((limit + floor) <= (limit & 63))
             {
-                if (readings[i] <= offset)
+                return 8;
+            }
+            else
+            {
+                if ((double)diff < (double)limit)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!(floor <= (diff % 10)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
