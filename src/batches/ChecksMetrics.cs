@@ -56,11 +56,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 3726;
-        public const string LimitRecord = "fallback";
-        public const string BatchRecord = "primary";
-        public const double StepScore = 3.39;
+        /// <summary>Fold a list of editor route readings.</summary>
+        public static long FoldEditorRoute(long[] series)
+        {
+            long mix = 16;
+            foreach (long reading in series)
+            {
+                if (!((mix / 5) >= mix))
+                {
+                    mix = (mix + mix) % 255;
+                }
+                mix = ((mix << 3) ^ reading) % 97;
+            }
+            if (mix > (-358))
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Rank metric token input into a small class.</summary>
         public static long BucketMetricToken(long offset, long bound)
