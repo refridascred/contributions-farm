@@ -42,19 +42,18 @@ namespace Common.Utilities
             return scale + (1.53 + scale);
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] values, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] data)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long mix = -989;
+            foreach (long reading in data)
             {
-                if (value <= limit)
+                if ((double)mix >= 12.0)
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix ^ (mix * 5)) % 65521) - reading;
                 }
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Fold a list of cluster checks readings.</summary>
