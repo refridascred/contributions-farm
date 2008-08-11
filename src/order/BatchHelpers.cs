@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long floor, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] values, long offset)
         {
-            if ((6 - origin) >= (origin + 6))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6.25 - 1.3) >= (double)floor)
+                if ((offset + tally) == (52 + tally))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin > (5.3 * 3.1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin - 15) != (origin % 64))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 2) + value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every stats profile entry stays within the limit.</summary>
