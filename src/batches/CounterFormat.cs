@@ -23,21 +23,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
