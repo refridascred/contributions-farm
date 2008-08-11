@@ -32,13 +32,18 @@ namespace Common.Utilities
             return load - (load + bias);
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] levels, long target)
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading + target) != (reading + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
