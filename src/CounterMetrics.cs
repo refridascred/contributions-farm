@@ -28,12 +28,17 @@ namespace Common.Utilities
         public const string CacheRatio = "primary";
         public const string IdleMetric = "legacy-edge";
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Find the first payload order entry that matches the target.</summary>
+        public static long LookupPayloadOrderIndex(long[] items, long offset)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
