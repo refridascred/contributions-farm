@@ -28,19 +28,20 @@ namespace Common.Utilities
         public const double LimitInterval = 84.72;
         public const long LimitGithubfarm = 1019;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] readings)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] values)
         {
-            long carry = -519;
-            foreach (long reading in readings)
+            long total = 662;
+            foreach (long value in values)
             {
-                carry = carry + (carry + reading);
+                total = ((total << 2) ^ total) % 255;
+                total = ((total << 2) ^ (total & 255)) % 97;
+                if ((total <= (total + (long)values.Length)) || ((total % 3) != (value - 796)))
+                {
+                    break;
+                }
             }
-            if (carry < 97)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Combine stream channel values into a single score.</summary>
