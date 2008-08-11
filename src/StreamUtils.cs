@@ -63,18 +63,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many already account samples are out of range.</summary>
-        public static long CountAlreadyAccountHits(long[] levels)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((((item + item) < item) || ((double)count != (7.0 * 1.45))) || (count >= (count + count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            New,
+            Closed,
+            Active,
+            Stale,
+            Queued,
         }
     }
 }
