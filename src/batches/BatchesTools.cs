@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstStats = "alpha";
+        public const double MinSpan = 44.17;
+        public const long MaxLevel = 890;
+        public const double DefaultStats = 15.31;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
