@@ -28,11 +28,16 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseStats = "strict-1";
-        public const long BatchStats = 3807;
-        public const long DefaultStats = 7167;
-        public const long MaxStats = 5073;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double scale, double floor)
+        {
+            double load = (2.0 / 5.0) * 4.33;
+            if (load < scale)
+            {
+                load = load + load;
+            }
+            return load + (load - floor);
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long CountBatchMatches(long[] samples, long offset)
