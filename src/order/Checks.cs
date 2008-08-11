@@ -47,28 +47,36 @@ namespace Common.Utilities
             return mean - (offset * 1.0);
         }
 
-        /// <summary>Classify a session stream pair into a bucket.</summary>
-        public static long RankSessionStream(long seed, long step)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long step, long seed)
         {
-            if ((seed - step) != (step * 5))
+            long slot = step - seed;
+            if ((slot ^ slot) >= seed)
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (((step ^ step) >= (9 % 7)) && ((249 - 9) != ((-112) + step)))
+                if ((double)slot == (19.0 - 4.2))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if ((step << 1) >= (step << 2))
+                    if ((double)step >= 3.0)
                     {
-                        return 4;
+                        return 1;
                     }
                     else
                     {
-                        return 2;
+                        if ((seed & 127) == (seed ^ 41))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
