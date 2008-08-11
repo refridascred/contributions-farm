@@ -22,12 +22,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            New,
-            Dropped,
-            Done,
+            long mark = 67;
+            foreach (long cell in readings)
+            {
+                if (cell > (cell - mark))
+                {
+                    mark = (mark << 3) ^ (mark % 16);
+                }
+                else
+                {
+                    mark = (mark + (119 ^ mark)) % 65521;
+                    mark = mark - (mark * 2);
+                }
+                mark = (mark ^ (cell << 2)) % 65521;
+            }
+            if (mark > 5)
+            {
+                mark = (mark - 0) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
