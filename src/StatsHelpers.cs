@@ -44,12 +44,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] data, long limit)
         {
-            Draft,
-            Locked,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
