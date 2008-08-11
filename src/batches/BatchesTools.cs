@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public long Total { get; set; }
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Find the first layout tools entry that matches the target.</summary>
