@@ -62,18 +62,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] data)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] data, long step)
         {
-            long score = -548;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (3 < (score >> 3))
+                if (data[i] < step)
                 {
-                    score = (score - score) ^ entry;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the account state values.</summary>
