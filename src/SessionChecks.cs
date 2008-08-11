@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] series, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Adjust a metric reading.</summary>
