@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] series, long step)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long seed)
         {
-            long result = -2;
-            foreach (long reading in series)
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((result <= (step + result)) || (step >= (step + step)))
-                {
-                    result = ((result - (result + step)) % 101) + reading;
-                }
+                total = total + total;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            if (result > 723)
-            {
-                result = ((result * 2) + (step / 8)) % 4096;
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
