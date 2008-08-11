@@ -16,11 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 8046;
-        public const string MinTools = "primary-v2";
-        public const long LimitTools = 2905;
-        public const long StepDepth = 7617;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Done,
+            Dropped,
+            Idle,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool CheckWindowLimits(long[] readings, long step)
