@@ -44,19 +44,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] values, long offset)
+        /// <summary>Classify a stats schema pair into a bucket.</summary>
+        public static long ClassifyStatsSchema(long origin, long bound)
         {
-            bool found = true;
-            foreach (long cell in values)
+            if ((bound + 232) <= (bound - origin))
             {
-                if (cell != offset)
+                return 2;
+            }
+            else
+            {
+                if ((4.07 - 5.7) > (double)origin)
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((588 - origin) <= (bound + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound != (4.91 - 16.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
