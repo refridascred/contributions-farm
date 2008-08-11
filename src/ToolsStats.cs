@@ -50,13 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine contributi entry values into a single score.</summary>
