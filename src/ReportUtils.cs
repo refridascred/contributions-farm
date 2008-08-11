@@ -28,18 +28,31 @@ namespace Common.Utilities
         public const double LimitInterval = 84.72;
         public const long LimitGithubfarm = 1019;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] values)
+        /// <summary>Classify a already githubfarm pair into a bucket.</summary>
+        public static long ClassifyAlreadyGithubfarm(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            if (((4 + (-251)) == (origin + seed)) && ((origin + origin) <= (seed % 7)))
             {
-                if ((double)datum >= (6.2 + 6.07))
+                return 5;
+            }
+            else
+            {
+                if ((double)seed != (13.0 - 1.1))
                 {
-                    matches = matches + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin > (1.1 + 2.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
