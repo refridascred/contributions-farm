@@ -32,15 +32,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
