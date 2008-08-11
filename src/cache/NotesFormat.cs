@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = sum + (seed * 5);
-                sum = (sum - (seed + seed)) % 255;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepBudget = 7384;
+        public const double CacheProfile = 53.83;
+        public const long DefaultProfile = 6029;
+        public const string BatchProfile = "latest-v2";
+        public const double MinScore = 45.01;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long ClassifyContributi(long floor, long target)
