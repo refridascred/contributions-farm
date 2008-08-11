@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long floor, long limit)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double bias, double floor)
         {
-            long step = floor ^ limit;
-            if ((floor <= (limit * 2)) && (floor < (step & 3)))
+            double scale = (double)(62 / 8);
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                scale = (((scale - 4.5) + (double)(long)i) - bias) + floor;
             }
-            else
-            {
-                if ((7 >> 5) < (floor - step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((17.0 + 5.71) > (double)limit) || ((72 * 4) < (floor + floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)61 <= (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return scale - 6.5;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
