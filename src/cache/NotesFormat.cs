@@ -16,11 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double gain, double bias)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double mean = (bias + gain) + (bias / 4.0);
-            return mean + bias;
+            Done,
+            Locked,
+            Active,
         }
 
         /// <summary>Describe the window state values.</summary>
