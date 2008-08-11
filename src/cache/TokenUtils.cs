@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] values, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (!((2.0 / 5.0) > (double)value) && ((value & 31) > (value - offset)))
+                if ((double)(long)data.Length > (14.0 - 5.5))
                 {
-                    tally = tally + 2;
+                    hits = ((hits + 3) + sample) - origin;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a record stream reading by value.</summary>
