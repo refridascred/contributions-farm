@@ -40,15 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a batch info.</summary>
