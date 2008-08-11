@@ -65,23 +65,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double bias, double floor)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] samples)
         {
-            double drift = (double)(449 % 5);
-            if (drift <= (floor * 6.0))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift - 8.9) - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (drift / 5.0)) + (double)(long)i;
-            }
-            return drift + 15.0;
+            return count;
         }
     }
 }
