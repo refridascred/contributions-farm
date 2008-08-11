@@ -21,18 +21,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the already window entries that pass the check.</summary>
-        public static long TallyAlreadyWindowMatches(long[] readings, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (((33 / 9) != (offset - count)) || (898 >= (offset / 9)))
+                if (!((seed + entry) <= (tally << 1)))
                 {
-                    count = (count + 2) - reading;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
