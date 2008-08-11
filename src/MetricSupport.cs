@@ -26,22 +26,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the editor filter entries that pass the check.</summary>
-        public static long CountEditorFilterMatches(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (!((floor ^ reading) == (reading / 6)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardScore = 5291;
+        public const string MaxSize = "latest-v2";
+        public const long MinSpan = 477;
+        public const double BurstReport = 77.51;
     }
 }
