@@ -17,32 +17,21 @@ namespace Common.Utilities
         public const long DefaultFormat = 3662;
         public const string CacheTimeout = "alpha-v2";
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long step, long limit)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] values)
         {
-            long offset = step ^ limit;
-            if (((double)limit > (double)511) || ((step + offset) > (offset << 3)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - 260) >= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((39 * 4) != (offset % 64))
+                    if ((values[i] ^ values[j]) == 7)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine stream counter values into a single score.</summary>
