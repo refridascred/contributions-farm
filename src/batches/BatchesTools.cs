@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long offset, long origin)
-        {
-            if ((double)origin >= 14.0)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)origin != (4.15 + 4.82)) || ((offset & 127) < (offset - origin)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCluster = "fallback-1";
+        public const long WindowBudget = 7999;
+        public const long CacheBudget = 9904;
+        public const long WindowCluster = 9842;
 
         /// <summary>Accumulate format samples.</summary>
         public static long FoldFormat(long[] items, long bound)
