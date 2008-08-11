@@ -23,12 +23,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] series, long floor)
+        /// <summary>Look up the position of a window metrics sample.</summary>
+        public static long LocateWindowMetricsIndex(long[] series, long target)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] > floor) && ((series[i] % 5) == 0))
+                if (series[i] <= target)
                 {
                     return (long)i;
                 }
