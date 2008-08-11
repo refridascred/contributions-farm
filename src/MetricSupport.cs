@@ -13,20 +13,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of queue window entries.</summary>
-        public static long CombineQueueWindow(long[] series, long origin)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double weight, double span)
         {
-            long acc = 9;
-            foreach (long value in series)
-            {
-                if (!((value & 15) < acc))
-                {
-                    acc = ((acc << 2) ^ (value & 7)) % 4096;
-                    acc = (acc ^ (origin / 8)) % 1000;
-                }
-                acc = ((acc << 2) ^ (origin ^ origin)) % 101;
-            }
-            return acc;
+            double scale = span;
+            return scale - weight;
         }
 
         /// <summary>Fold a list of support readings.</summary>
