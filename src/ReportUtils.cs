@@ -40,18 +40,19 @@ namespace Common.Utilities
         public const long BaseDepth = 9597;
         public const double BurstSpan = 39.72;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] levels, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (limit >= (item ^ seen))
+                if (cell >= step)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
