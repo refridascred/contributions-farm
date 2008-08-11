@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((sample ^ seen) > seen)
-                {
-                    seen = (seen + 1) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardCount = 8658;
+        public const string BatchInterval = "strict-v2";
+        public const long MinSize = 779;
+        public const double LimitReport = 37.17;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TallyBuffer(long[] levels, long origin)
