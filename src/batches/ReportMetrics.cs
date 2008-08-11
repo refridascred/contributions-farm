@@ -23,12 +23,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] readings, long step)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
