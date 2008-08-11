@@ -29,31 +29,17 @@ namespace Common.Utilities
         public const string WindowBatch = "fallback-1";
         public const string HardSpan = "strict-v2";
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long step, long seed)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] levels, long seed)
         {
-            if (((17.0 / 7.0) > (double)step) || ((seed - step) <= step))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step <= (double)7)
+                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.1 + 7.72) == (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate window samples.</summary>
