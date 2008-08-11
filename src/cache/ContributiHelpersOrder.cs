@@ -29,17 +29,13 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] items, long seed)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Stale,
+            Ready,
+            Draft,
         }
     }
 }
