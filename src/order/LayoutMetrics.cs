@@ -21,13 +21,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Fold a list of payload batch readings.</summary>
+        public static long DigestPayloadBatch(long[] items, long offset)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
+            long acc = 434;
+            foreach (long value in items)
+            {
+                acc = (((acc * 2) + (acc + value)) % 1000) + offset;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a already stats.</summary>
