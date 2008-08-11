@@ -47,18 +47,13 @@ namespace Common.Utilities
             return load - 4.72;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] readings)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long mix = 376;
-            foreach (long sample in readings)
-            {
-                if ((mix - sample) > (mix + sample))
-                {
-                    mix = (mix + (67 - 9)) % 65521;
-                }
-            }
-            return mix;
+            Ready,
+            Paused,
+            Retry,
+            Stale,
         }
     }
 }
