@@ -1,6 +1,20 @@
 {
-  "contributi_delay": 75,
-  "min_ratio_count": true,
-  "token_limit": 77.34,
-  "burst_limit": "staging"
+  "poll_size": [243, 421, 31],
+  "githubfarm_depth": [363, 446],
+  "retry_ratio": ["strict", "blue", "eu-west"],
+  "flush_size_ms": 6734,
+  "retry_limit": 78,
+  "checks_threshold": {
+    "already_threshold": 4.44,
+    "already_size": 250,
+    "cache_depth_count": 2.39,
+    "entry_size": [33, 162],
+    "route_window": {
+      "enabled": "latest",
+      "layout_threshold": false,
+      "soft_depth_ms": true,
+      "contributi_threshold": 42.7
+    },
+    "dry_run": 30
+  }
 }
