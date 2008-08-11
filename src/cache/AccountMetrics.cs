@@ -49,17 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batches report entry that matches the target.</summary>
-        public static long FindBatchesReportIndex(long[] series, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (series[i] < origin)
+                if (sample >= origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define token limits and defaults.</summary>
