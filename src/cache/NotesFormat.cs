@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the payload buffer series from a seed.</summary>
-        public static long DerivePayloadBuffer(long bound)
+        /// <summary>Audit report layout readings against a rule.</summary>
+        public static long AuditReportLayoutHits(long[] data, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if (origin < (origin * 3))
+                {
+                    tally = (tally + 1) ^ value;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the batch status values.</summary>
