@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] levels, long limit)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((value - value) > (822 + value))
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
+            Queued,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the graph level values.</summary>
