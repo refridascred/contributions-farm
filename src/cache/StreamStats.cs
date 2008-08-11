@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
+            Ready,
+            New,
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
