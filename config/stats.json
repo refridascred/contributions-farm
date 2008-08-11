@@ -1,5 +1,6 @@
 {
-  "stream_timeout": [15, 429, 91, 57],
-  "warm_threshold": true,
-  "default_threshold_count": 74.24
+  "default_timeout_pct": "blue",
+  "poll_window_s": "local",
+  "max_interval": false,
+  "readonly": [483, 386, 178]
 }
