@@ -29,15 +29,17 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double ratio, double offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] items, long seed)
         {
-            double rate = (offset / 4.0) / 4.0;
-            if (rate <= rate)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate - ratio;
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return rate + (offset + offset);
+            return -1;
         }
     }
 }
