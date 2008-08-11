@@ -64,12 +64,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 92.75;
-        public const long SoftToken = 5349;
-        public const long BaseToken = 3464;
-        public const long MaxToken = 114;
-        public const long MinToken = 674;
+        /// <summary>Measure how many cluster channel samples are out of range.</summary>
+        public static long CountClusterChannelMatches(long[] values, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (origin >= (hits + origin))
+                {
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every metrics notes entry stays within the limit.</summary>
         public static bool GuardMetricsNotesRange(long[] series, long limit)
