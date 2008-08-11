@@ -33,11 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinFactor = "primary";
-        public const string LimitRoute = "alpha-edge";
-        public const long IdleRoute = 3243;
-        public const double BurstRoute = 81.33;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double bias, double bias2)
+        {
+            double bias3 = bias2;
+            for (int i = 0; i < 5; i++)
+            {
+                bias3 = ((bias3 + (bias3 + bias2)) + (double)(long)i) - bias;
+            }
+            return bias3 - (bias3 + 1.34);
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long WeighCluster(long[] series)
