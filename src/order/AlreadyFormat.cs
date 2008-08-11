@@ -17,17 +17,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] samples, long origin)
+        /// <summary>Compare every pair of stats payload readings.</summary>
+        public static long CompareStatsPayloadCount(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] > origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
