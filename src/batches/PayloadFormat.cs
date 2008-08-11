@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] readings, long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long acc = -92;
+            foreach (long value in data)
             {
-                if (entry <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = acc ^ (value + bound);
             }
-            return valid;
+            if (acc < 96)
+            {
+                acc = (acc << 3) ^ bound;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Match up filter support samples.</summary>
