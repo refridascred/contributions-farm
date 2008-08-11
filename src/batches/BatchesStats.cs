@@ -36,18 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] items, long seed)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((((double)seed != (7.0 + 9.5)) || ((seed * 4) > seed)) && (((seed & 255) < (96 + datum)) && ((double)seed != (9.08 / 7.0))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the context class values.</summary>
