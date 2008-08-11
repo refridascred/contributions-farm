@@ -65,20 +65,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every checks buffer entry stays within the limit.</summary>
-        public static bool CheckChecksBufferRange(long[] levels, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryDepth = 5277;
+        public const double IdleTimeout = 70.25;
+        public const string CacheBudget = "alpha";
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long BucketEditor(long origin, long offset)
