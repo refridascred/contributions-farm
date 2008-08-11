@@ -34,18 +34,13 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] series)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((double)seen != (10.0 + 5.8))
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next channel metrics value from a seed.</summary>
