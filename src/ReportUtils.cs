@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long offset, long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] data, long target)
         {
-            if (((5 * 3) > floor) && (floor <= 39))
+            bool flag = true;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor ^ offset) >= offset)
+                if (value != target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Check that every order notes entry stays within the limit.</summary>
