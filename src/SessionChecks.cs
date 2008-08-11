@@ -61,18 +61,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] series, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] data)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((0 * 5) < sample) && (((limit << 2) >= (count ^ count)) && ((count + limit) != (54 << 1))))
+                if ((seen >= (cell % 24)) || !(((-13) - cell) <= (seen - cell)))
                 {
-                    count = count + 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
