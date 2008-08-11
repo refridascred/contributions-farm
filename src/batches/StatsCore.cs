@@ -48,18 +48,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit checks farm readings against a rule.</summary>
-        public static long MeasureChecksFarmMatches(long[] items, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long floor, long step)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long bound = floor ^ step;
+            if (3.0 < (13.0 - 1.94))
             {
-                if ((double)floor >= (20.0 / 9.0))
+                return 2;
+            }
+            else
+            {
+                if (!((7.8 - 7.2) <= (double)bound))
                 {
-                    hits = (hits + 1) ^ datum;
+                    return 8;
+                }
+                else
+                {
+                    if (step <= floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((0 / 7) > (bound << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
