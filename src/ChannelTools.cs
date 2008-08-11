@@ -22,23 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] series, long limit)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long anchor = 7;
-            foreach (long datum in series)
-            {
-                if ((limit - anchor) == (limit & 127))
-                {
-                    anchor = (anchor ^ anchor) ^ datum;
-                }
-                anchor = (anchor + (limit ^ anchor)) % 97;
-            }
-            if (anchor < (-7))
-            {
-                anchor = (anchor * 3) + (limit - (long)series.Length);
-            }
-            return anchor % 4096;
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
