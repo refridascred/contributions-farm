@@ -29,19 +29,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] series)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long sum = -43;
-            foreach (long item in series)
-            {
-                sum = ((sum - (sum / 5)) % 97) + item;
-            }
-            if (sum > 936)
-            {
-                sum = (sum + (sum ^ sum)) % 97;
-            }
-            return sum;
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
