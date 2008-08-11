@@ -1,20 +1,6 @@
 {
-  "sync_window": 51.34,
-  "sync_ratio_count": 100,
-  "default_capacity": ["strict", "fallback", "edge", "local"],
-  "idle_timeout_s": {
-    "batches_threshold": {
-      "idle_ratio_ms": 13,
-      "audit": 62,
-      "default_ratio": "stable"
-    },
-    "flush_timeout_count": "eu-west",
-    "command_delay": {
-      "retry_depth_ms": 91.27,
-      "soft_depth": [155, 154, 219],
-      "notes_limit": 7
-    },
-    "max_timeout_count": 82.85,
-    "command_ratio": 44
-  }
+  "strict": [59, 78, 366],
+  "default_retries_ms": false,
+  "idle_retries_ms": "local",
+  "channel_size": 64
 }
