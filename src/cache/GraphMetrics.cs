@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long target, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long step)
         {
-            if (bound <= (target - bound))
+            long score = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
+                score = ((score * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((1 * 4) < (target + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound + bound) > 35) || ((bound >> 2) > 602))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((5.24 + 9.0) != (double)target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Compare every pair of graph payload readings.</summary>
