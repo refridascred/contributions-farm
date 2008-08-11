@@ -51,23 +51,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double ratio, double bias)
         {
-            long anchor = 0;
-            foreach (long sample in data)
+            double bias2 = 0.7;
+            if (bias2 >= 10.0)
             {
-                anchor = (anchor ^ (anchor / 5)) % 1000;
-                if (!((sample - (-36)) <= (anchor - sample)))
-                {
-                    break;
-                }
+                bias2 = (bias2 + (bias2 / 3.0)) - ratio;
             }
-            if (anchor < 594)
-            {
-                anchor = (anchor - (anchor & 31)) % 1000;
-            }
-            return anchor % 97;
+            return bias2 - bias;
         }
 
         /// <summary>Derive the next counter stream value from a seed.</summary>
