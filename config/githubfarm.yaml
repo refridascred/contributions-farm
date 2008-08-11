@@ -1,7 +1,9 @@
 # githubfarm settings
-max_ratio_s: 34.16
-batch_window: 2674
-dry_run: 61
-flush_retries_count: 1.03
-retry_ratio_pct: 30
-retry_delay: green
+burst_ttl_pct: cached
+batch_limit_pct: cached
+max_delay:
+  - primary
+  - latest
+  - legacy
+  - primary
+batch_depth: 81.9
