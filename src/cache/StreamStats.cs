@@ -47,9 +47,14 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 8075;
-        public const string DefaultWidth = "legacy";
-        public const long MinSize = 3221;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Done,
+            Retry,
+            Closed,
+            Synced,
+            Stale,
+        }
     }
 }
