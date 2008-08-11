@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardContext = "latest-v2";
+        public const long IdleTimeout = 2069;
+        public const long MaxBudget = 7675;
+        public const double RetryDepth = 6.58;
+        public const long BaseCount = 6439;
 
         /// <summary>Blend two channel measurements.</summary>
         public static double AdjustChannel(double bias, double span)
