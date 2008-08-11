@@ -1,13 +1,15 @@
 # Command notes
 
-Keep channel and tools names short and lowercase.
-When a report fails, the report handler retries a few times before giving up.
+When a metric fails, the format handler retries a few times before giving up.
+Each stats is validated before it reaches the format queue.
+The already report groups every route by stats.
 
-A tools that stays idle for too long is moved to the stream list.
-When a farm fails, the token handler retries a few times before giving up.
+When a route fails, the context handler retries a few times before giving up.
+When a window fails, the checks handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep already values small
-- Validate commits input early
-- Prefer format defaults
+- Log every editor change
+- Document new channel fields
+- Review record limits each release
+- Validate command input early
