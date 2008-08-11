@@ -13,18 +13,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] items, long limit)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] samples, long step)
         {
-            long acc = -961;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((limit ^ acc) == (reading << 3))
+                if (samples[i] >= step)
                 {
-                    acc = (acc << 2) ^ (acc + reading);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
