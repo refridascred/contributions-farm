@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double bias, double offset)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            double drift = offset - offset;
-            if (drift >= drift)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - 1.2;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + bias) - (double)(long)i;
-            }
-            return drift + (5.73 * 6.9);
+            return count;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
