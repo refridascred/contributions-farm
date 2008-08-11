@@ -36,16 +36,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two batch stream measurements.</summary>
-        public static double BlendBatchStream(double ratio, double offset)
-        {
-            double rate = ratio;
-            if (rate >= rate)
-            {
-                rate = (rate + (double)515) - offset;
-            }
-            return rate + 8.64;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 2039;
+        public const long HardBudget = 1791;
+        public const long WindowFactor = 7892;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryCluster = 2494;
