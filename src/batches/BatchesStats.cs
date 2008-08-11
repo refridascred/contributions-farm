@@ -36,22 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] values, long bound)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!(item >= (item ^ item)) && ((1 * 3) >= (bound >> 3)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            New,
+            Ready,
+            Active,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
