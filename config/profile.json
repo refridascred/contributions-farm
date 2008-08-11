@@ -1,11 +1,6 @@
 {
-  "sync_threshold": false,
-  "command_depth": [475, 190],
-  "poll_depth": 1941,
-  "verbose": 50,
-  "batch_limit_count": {
-    "checks_size": "strict",
-    "counter_capacity": 81,
-    "min_delay": 4441
-  }
+  "max_window_count": "eu-west",
+  "idle_interval_count": 5420,
+  "metric_capacity": false,
+  "strict": "stable"
 }
