@@ -51,12 +51,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] series, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((bound << 2) != (bound / 2))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up channel format samples.</summary>
