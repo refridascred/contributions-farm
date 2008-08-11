@@ -1,9 +1,15 @@
 # entry settings
-readonly:
+batch_ttl_pct:
+  hard_depth: edge
+  burst_ratio_pct: local
+  strict: staging
+  warm_limit_s: cached
+  tools_capacity: 500
+  base_timeout_pct: blue
+idle_threshold: eu-west
+queue_capacity:
   - strict
-  - eu-west
-  - fallback
-already_delay: true
-poll_capacity:
-  - legacy
-  - open
+  - staging
+  - blue
+  - edge
+cluster_limit: false
