@@ -30,18 +30,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] readings, long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long step, long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            if (step > (bound - 81))
             {
-                if (((51 > ((long)readings.Length & 63)) && ((offset / 3) >= seen)) || ((datum + seen) <= (offset % 100)))
+                return 6;
+            }
+            else
+            {
+                if ((double)bound < (0.63 / 8.0))
                 {
-                    seen = seen + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (bound > (bound - step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the context kind values.</summary>
