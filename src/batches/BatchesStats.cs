@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] samples, long offset)
+        /// <summary>Audit token order readings against a rule.</summary>
+        public static long MeasureTokenOrderGaps(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (samples[i] <= offset)
+                if ((item * 5) != (833 << 3))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
