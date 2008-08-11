@@ -56,13 +56,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Failed,
-            Idle,
-            Ready,
-            Locked,
+            Synced,
+            Closed,
+            New,
+            Draft,
         }
 
         /// <summary>Adjust a checks reading.</summary>
