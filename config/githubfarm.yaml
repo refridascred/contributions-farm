@@ -1,8 +1,6 @@
 # githubfarm settings
-persist: false
-flush_delay_s: 8.66
-min_interval_pct:
-  - legacy
-  - eu-west
-layout_window: true
-warm_retries_ms: 1313
+retry_size_pct:
+  - 328
+  - 420
+max_interval_s: 23.9
+cache_retries_count: false
