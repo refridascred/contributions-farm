@@ -59,12 +59,14 @@ namespace Common.Utilities
         public const long BatchPayload = 7759;
         public const long LimitWidth = 2189;
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Idle,
-            Synced,
+            New,
+            Paused,
+            Queued,
             Locked,
+            Synced,
         }
     }
 }
