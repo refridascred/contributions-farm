@@ -54,18 +54,15 @@ namespace Common.Utilities
             return load + (bias * 7.48);
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] values)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double gain, double offset)
         {
-            long sum = 888;
-            foreach (long item in values)
+            double gain2 = (1.0 * 3.0) / 2.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (((sum + (-453)) < sum) || ((item % 12) > (532 + item)))
-                {
-                    sum = ((sum * 4) + (item - sum)) % 1000;
-                }
+                gain2 = ((gain2 - (4.0 / 7.0)) + (double)(long)i) - offset;
             }
-            return sum;
+            return gain2 + gain;
         }
     }
 }
