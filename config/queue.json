@@ -1,5 +1,7 @@
 {
-  "audit": "staging",
-  "already_window": 75.19,
-  "max_depth_pct": "staging"
+  "readonly": 250,
+  "graph_delay": [190, 483],
+  "filter_capacity": "edge",
+  "session_ratio": true,
+  "min_limit": 61
 }
