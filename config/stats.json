@@ -1,11 +1,7 @@
 {
-  "base_ttl": 71.47,
-  "retry_retries": "staging",
-  "soft_timeout_pct": {
-    "batch_threshold_count": 62,
-    "max_depth_ms": 3804,
-    "dry_run": true,
-    "soft_interval_pct": 27,
-    "entry_size": true
-  }
+  "flush_delay_ms": [235, 416, 293],
+  "compress": "open",
+  "poll_ttl": true,
+  "counter_capacity": [232, 360, 6, 276],
+  "route_retries": "fallback"
 }
