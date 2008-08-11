@@ -55,20 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] readings, long bound)
+        /// <summary>Combine stream channel values into a single score.</summary>
+        public static long WeighStreamChannel(long[] levels)
         {
-            long mark = 505;
-            foreach (long reading in readings)
+            long carry = 713;
+            foreach (long value in levels)
             {
-                mark = (((mark << 2) ^ (bound << 2)) % 101) ^ reading;
-                mark = ((mark << 2) ^ (mark / 5)) % 101;
-                if (((bound - mark) >= (181 + 856)) || ((long)readings.Length != (bound + mark)))
+                if ((86 >> 2) <= (20 ^ value))
+                {
+                    carry = ((carry * 2) + (26 << 1)) % 1000;
+                }
+                if ((double)carry <= (5.5 + 6.0))
                 {
                     break;
                 }
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Define window limits and defaults.</summary>
