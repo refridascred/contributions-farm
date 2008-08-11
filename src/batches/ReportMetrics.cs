@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] items, long limit)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
