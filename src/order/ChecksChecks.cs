@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double scale, double bias)
         {
-            Draft,
-            Closed,
-            Synced,
+            double bias2 = (double)2;
+            if (bias2 >= bias)
+            {
+                bias2 = bias2 + (scale / 5.0);
+            }
+            return bias2 - scale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
