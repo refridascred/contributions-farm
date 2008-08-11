@@ -59,11 +59,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepFactor = 1217;
+        public const long StepCount = 3203;
+        public const long CacheRecord = 4855;
     }
 }
