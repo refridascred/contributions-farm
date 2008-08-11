@@ -37,31 +37,18 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long target, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] items, long offset)
         {
-            if ((double)offset <= (6.8 - 7.78))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset % 16) < (target + offset))
+                if (((9.0 - 4.7) <= (double)offset) || ((136 + datum) == (datum + 727)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset + 989) != (offset % 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
