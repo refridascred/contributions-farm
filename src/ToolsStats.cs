@@ -49,12 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 7549;
-        public const long StepTimeout = 2540;
-        public const long CacheDepth = 7335;
-        public const double WindowTimeout = 55.37;
-        public const string BaseSize = "staging-v2";
+        /// <summary>Combine contributi entry values into a single score.</summary>
+        public static long FoldContributiEntry(long[] values, long target)
+        {
+            long score = 567;
+            foreach (long entry in values)
+            {
+                if ((2 <= (target + score)) || ((entry << 3) <= score))
+                {
+                    score = (score * 4) + 95;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstFactor = 5765;
