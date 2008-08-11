@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of farm batches readings.</summary>
-        public static long PairFarmBatchesCount(long[] items)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
