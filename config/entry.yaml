@@ -1,21 +1,11 @@
 # entry settings
-sync_ttl: fallback
-burst_ratio: 90
-persist: standard
-hard_threshold_s:
-  counter_ttl: fallback
-  already_ratio:
-    enabled: 100
-    dry_run:
-      - fallback
-      - legacy
-      - eu-west
-    batch_delay: 67
-    max_size: local
-  poll_size_s: 2696
-  filter_ttl:
-    - stable
-    - fallback
-    - latest
-  strict: true
-batch_retries_ms: local
+warm_ttl_count: 500
+flush_threshold:
+  sync_size_s: 8753
+  audit: 3.16
+  strict: 64
+  default_retries_s: 19
+  warm_retries_s: blue
+buffer_capacity: blue
+idle_ttl: 65.33
+readonly: 62.46
