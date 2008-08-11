@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxInterval = "standard-1";
-        public const long DefaultChannel = 2432;
-        public const double BatchChannel = 76.17;
-        public const long DefaultSize = 6952;
-        public const long RetryChannel = 143;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long ClassifyStream(long seed, long origin)
