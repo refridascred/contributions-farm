@@ -15,13 +15,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long step)
         {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public bool Size { get; set; }
+            long state = step;
+            for (int i = 0; i < 14; i++)
+            {
+                state = state + (state ^ 5);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    state = ((state ^ (step ^ state)) % 1000) - (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Adjust a report reading.</summary>
