@@ -1,15 +1,4 @@
 # githubfarm settings
-record_depth:
-  - 323
-  - 73
-  - 286
-  - 408
-idle_timeout: stable
-retry_delay_pct:
-  - strict
-  - fallback
-persist: 8422
-buffer_threshold:
-  - eu-west
-  - stable
-idle_ttl_s: 8
+verbose: 60
+account_ratio: false
+filter_size: 73
