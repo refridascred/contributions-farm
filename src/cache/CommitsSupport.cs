@@ -65,17 +65,19 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] readings, long seed)
+        /// <summary>Check that every checks buffer entry stays within the limit.</summary>
+        public static bool CheckChecksBufferRange(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (readings[i] == seed)
+                if (datum <= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
