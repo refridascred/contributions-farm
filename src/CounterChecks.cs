@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a batches channel pair into a bucket.</summary>
-        public static long BucketBatchesChannel(long limit, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] samples)
         {
-            if ((871 < (step ^ 2)) || ((limit & 63) <= (limit ^ 59)))
+            long carry = 59;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((30 ^ step) != (step >> 5)) || ((step / 4) == (step << 3)))
+                if (((carry ^ 0) != ((-88) & 255)) && (cell <= carry))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (limit > (step & 15))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    carry = ((carry * 3) + (cell / 9)) % 1000;
                 }
             }
+            return carry;
         }
 
         /// <summary>Digest a series of metrics schema entries.</summary>
