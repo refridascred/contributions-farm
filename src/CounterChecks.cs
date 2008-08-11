@@ -44,14 +44,15 @@ namespace Common.Utilities
         public const long BurstSize = 1115;
         public const string BurstFormat = "fallback-1";
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long bound)
         {
-            Locked,
-            Dropped,
-            Synced,
-            Failed,
-            Idle,
+            long score = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a filter summary.</summary>
