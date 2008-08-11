@@ -19,10 +19,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 2876;
-        public const long LimitRoute = 4058;
-        public const long DefaultRoute = 5351;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long offset, long origin)
+        {
+            long step = offset - origin;
+            if (953 < (origin / 6))
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin >= (offset + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(offset >= (step - origin)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
