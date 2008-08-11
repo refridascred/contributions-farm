@@ -1,6 +1,13 @@
 # support settings
-queue_limit: true
-schema_timeout: 87
-hard_timeout_pct: 60
-graph_retries: standard
-hard_depth_pct: false
+profile_threshold:
+  - 321
+  - 354
+  - 38
+  - 354
+min_threshold_ms:
+  - 177
+  - 257
+  - 105
+hard_interval: 60
+commits_size: 1170
+context_size: 0.67
