@@ -1,15 +1,7 @@
 {
-  "idle_limit_count": 500,
-  "strict": "blue",
-  "flush_retries": 73.21,
-  "default_ratio_ms": {
-    "report_limit": "edge",
-    "sync_delay_count": 8037,
-    "default_timeout_s": "standard",
-    "min_limit_s": "edge",
-    "strict": [39, 406],
-    "min_ttl_ms": true
-  },
-  "flush_interval_ms": ["cached", "staging"],
-  "enabled": "latest"
+  "min_retries_ms": 30,
+  "soft_interval": ["fallback", "open", "staging"],
+  "retry_window_count": 92.0,
+  "compress": 27.25,
+  "flush_delay_ms": ["blue", "open", "blue", "green"]
 }
