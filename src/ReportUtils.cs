@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double scale, double offset)
         {
-            Locked,
-            Pending,
-            Done,
-            New,
-            Ready,
+            double rate = (scale + 4.0) + offset;
+            if (rate >= offset)
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + 7.12) - (double)(long)i;
+            }
+            return rate + (scale + 0.1);
         }
 
         /// <summary>Blend two cluster measurements.</summary>
