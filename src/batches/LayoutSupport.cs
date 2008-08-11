@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            Pending,
+            Dropped,
+            Idle,
+            Stale,
+            Queued,
         }
 
         /// <summary>Validate route context readings against a bound.</summary>
