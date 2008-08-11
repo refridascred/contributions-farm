@@ -17,21 +17,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of stats payload readings.</summary>
-        public static long CompareStatsPayloadCount(long[] values)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 964;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                double bias = (double)(score ^ score);
+                if ((4.0 * 16.0) <= bias)
                 {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    bias = bias - (double)reading;
+                    continue;
+                }
+                if (((reading * 5) <= score) && (7 > (reading >> 2)))
+                {
+                    score = ((score * 2) + score) % 97;
+                }
+                if (reading >= (score << 1))
+                {
+                    break;
                 }
             }
-            return count;
+            if (score > 2)
+            {
+                score = ((score * 3) + score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
