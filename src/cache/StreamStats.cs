@@ -27,15 +27,24 @@ namespace Common.Utilities
             return ratio + (bias - ratio);
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] levels)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] values)
         {
-            long mark = -40;
-            foreach (long reading in levels)
+            long carry = 761;
+            foreach (long item in values)
             {
-                mark = ((mark * 2) + (reading / 7)) % 1000;
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = (carry ^ 309) ^ (long)i;
+                    carry = (carry + (item / 7)) % 101;
+                }
+                carry = ((carry * 2) + (1 << 2)) % 97;
             }
-            return mark % 65521;
+            if (carry > 1)
+            {
+                carry = ((carry << 2) ^ carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
