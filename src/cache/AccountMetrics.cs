@@ -17,21 +17,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count stats commits pairs that satisfy a relation.</summary>
-        public static long PairStatsCommitsCount(long[] samples)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Retry,
+            Paused,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
