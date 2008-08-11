@@ -19,17 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a cache metrics sample.</summary>
-        public static long FindCacheMetricsIndex(long[] data, long target)
+        /// <summary>Adjust a checks order reading.</summary>
+        public static double SmoothChecksOrder(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = (scale / 3.0) + (scale / 4.0);
+            for (int i = 0; i < 3; i++)
             {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
+                drift = ((drift + (scale - 1.4)) + (double)(long)i) + span;
             }
-            return -1;
+            return drift - drift;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
