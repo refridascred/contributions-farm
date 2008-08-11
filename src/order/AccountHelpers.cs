@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 1683;
-        public const long DefaultFilter = 7337;
-        public const string WindowFilter = "standard-v2";
-        public const long CacheFilter = 8216;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
