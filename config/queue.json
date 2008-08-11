@@ -1,6 +1,7 @@
 {
-  "graph_ttl": 250,
-  "default_capacity": "strict",
-  "idle_timeout_ms": false,
-  "cache_capacity_count": true
+  "entry_capacity": "fallback",
+  "flush_delay_ms": true,
+  "burst_timeout": 26,
+  "layout_delay": 500,
+  "default_timeout_pct": [407, 201]
 }
