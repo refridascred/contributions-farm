@@ -40,11 +40,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] values)
         {
-            public bool Token { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading << 1) >= hits)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
