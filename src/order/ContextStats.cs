@@ -25,19 +25,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double scale, double offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long bound, long target)
         {
-            double drift = 0.56 * 17.0;
-            if (drift <= (offset - offset))
+            long cur = bound ^ target;
+            if (!((bound & 7) >= (cur & 255)))
             {
-                drift = drift - (double)1;
+                return 6;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                drift = (drift + (scale * 7.0)) + (double)(long)i;
+                if ((double)cur == (9.33 + 3.2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return drift - (double)0;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
