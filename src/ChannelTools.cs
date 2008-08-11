@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double bias, double offset)
-        {
-            double ratio = bias;
-            if (ratio > (ratio - offset))
-            {
-                ratio = ratio + (double)3;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (ratio * 1.4)) + (double)(long)i;
-            }
-            return ratio - (double)9;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepLevel = "stable-1";
+        public const double StepBatch = 13.1;
+        public const long MaxCount = 7687;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long IdleContributi = 7273;
