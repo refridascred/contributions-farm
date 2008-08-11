@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] samples)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (!((2.5 * 0.4) <= (double)datum))
+                if ((cell - count) <= (count + cell))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
