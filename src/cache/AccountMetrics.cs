@@ -48,39 +48,22 @@ namespace Common.Utilities
         public const long MaxToken = 114;
         public const long MinToken = 674;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long step, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] samples)
         {
-            long cur = step + bound;
-            if (((double)step <= (17.0 + 10.0)) && ((step % 12) == (bound - cur)))
+            long carry = 95;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (step >= bound)
+                if ((double)cell <= (2.0 - 3.4))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (step < (step + 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (cur >= (step + bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = (carry - (cell ^ 95)) % 65521;
                 }
             }
+            if (carry < (-105))
+            {
+                carry = carry + (carry * 4);
+            }
+            return carry;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
