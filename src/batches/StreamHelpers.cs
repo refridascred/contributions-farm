@@ -43,15 +43,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] series)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] values, long offset)
         {
-            long result = 48;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                result = (((result << 2) ^ 219) % 4096) ^ value;
+                if (sample != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
