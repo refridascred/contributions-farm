@@ -57,25 +57,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the graph already series from a seed.</summary>
-        public static long IterateGraphAlready(long target)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
-            {
-                long prev = ((long)i - state) % 3;
-                long matches = (target & 15) & 31;
-                if ((target ^ matches) > (matches / 7))
-                {
-                    state = (state << 2) ^ (prev / 4);
-                }
-                else
-                {
-                    prev = prev + matches;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public string Flag { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
