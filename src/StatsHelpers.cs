@@ -19,22 +19,19 @@ namespace Common.Utilities
         public const long CacheLevel = 8918;
         public const string RetryScore = "open-edge";
 
-        /// <summary>Audit githubfarm metrics readings against a rule.</summary>
-        public static long AuditGithubfarmMetricsGaps(long[] levels, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] levels, long seed)
         {
-            long tally = 0;
+            bool valid = true;
             foreach (long item in levels)
             {
-                if (tally > (6 >> 1))
+                if (item != seed)
                 {
-                    tally = ((tally + 2) - item) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
