@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] data, long offset)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((((offset - reading) != (offset + reading)) || ((double)offset < (5.0 + 10.0))) || ((offset > hits) || (8 < (44 + hits))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the filter class values.</summary>
