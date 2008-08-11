@@ -33,19 +33,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((1.8 - 4.47) < (double)matches)
-                {
-                    matches = ((matches + 2) + item) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepInterval = 0.36;
+        public const string BurstBatch = "fallback";
+        public const long StepBatch = 6422;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorRange(long[] readings, long bound)
