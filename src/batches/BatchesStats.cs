@@ -49,13 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] readings, long step)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((114 % 10) > (entry << 2))
+                {
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
