@@ -19,15 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double ratio, double floor)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] items, long floor)
         {
-            double scale = (double)(70 ^ 6);
-            if (scale < (double)5)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale - (ratio / 9.0)) - floor;
+                if ((items[i] <= floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + (scale * 2.51);
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
