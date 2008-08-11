@@ -1,5 +1,7 @@
 {
-  "retry_ratio_count": [409, 355, 56],
-  "audit": 57,
-  "batch_size": true
+  "window_window": "primary",
+  "burst_limit": "latest",
+  "hard_timeout_s": "fallback",
+  "min_limit": 8754,
+  "flush_threshold": 31
 }
