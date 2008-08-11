@@ -66,11 +66,24 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstFactor = 5765;
-        public const long BaseNotes = 7142;
-        public const double SoftNotes = 13.95;
-        public const long CacheNotes = 6768;
+        /// <summary>Accumulate format account samples.</summary>
+        public static long FoldFormatAccount(long[] samples)
+        {
+            long result = 88;
+            foreach (long entry in samples)
+            {
+                result = result + entry;
+                if (!(result >= (result / 2)))
+                {
+                    break;
+                }
+            }
+            if (result > (-52))
+            {
+                result = ((result * 2) + (long)samples.Length) % 255;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionOutliers(long[] values, long origin)
