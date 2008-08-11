@@ -1,11 +1,6 @@
 {
-  "base_delay_s": 65,
-  "flush_size_count": {
-    "dry_run": 40.61,
-    "cache_window_s": 250,
-    "compress": 10,
-    "burst_timeout": false,
-    "default_capacity": 82
-  },
-  "soft_threshold": ["local", "stable", "edge", "open"]
+  "strict": 48,
+  "order_threshold": 16.33,
+  "readonly": "open",
+  "burst_capacity_pct": [110, 178]
 }
