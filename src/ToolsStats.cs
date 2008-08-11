@@ -19,20 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] values, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                long matches = mix;
-                if (2.32 <= (double)matches)
+                if ((values[i] <= seed) && ((values[i] % 2) != 0))
                 {
-                    matches = matches - bound;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
