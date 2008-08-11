@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] samples, long seed)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double bias, double span)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            double rate = 9.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (entry <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                rate = (((rate + rate) + (double)(long)i) - bias) - span;
             }
-            return found;
+            return rate - (5.28 * 12.0);
         }
 
         /// <summary>Classify a tools filter pair into a bucket.</summary>
