@@ -42,18 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] series)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (!!((seen - 2) != (seen * 4)))
-                {
-                    seen = (seen + 2) + sample;
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Project the next batch tools value.</summary>
