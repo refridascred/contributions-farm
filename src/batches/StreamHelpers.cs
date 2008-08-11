@@ -59,12 +59,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] readings, long target)
         {
-            public double Label { get; set; }
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((3.8 - 1.3) > (double)matches) || (((datum & 127) < (matches / 4)) || ((target & 255) < (datum - target))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
