@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data, long floor)
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = -1;
+            foreach (long item in data)
+            {
+                if ((double)item == (2.3 + 5.44))
+                {
+                    mark = ((mark * 5) + item) + floor;
+                }
+                else
+                {
+                    mark = mark + mark;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Adjust a metric reading.</summary>
