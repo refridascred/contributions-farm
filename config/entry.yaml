@@ -1,14 +1,9 @@
 # entry settings
-persist: green
-token_ttl: green
-warm_limit_ms:
-  max_depth_pct: 65
-  default_threshold_ms: legacy
-  idle_delay_s:
-    default_delay_s: 9012
-    warm_threshold_pct: standard
-    enabled: true
-  entry_threshold: 61
-  dry_run: true
-  retry_depth: false
-base_ratio_ms: cached
+hard_delay_count: local
+soft_ttl_count: cached
+flush_delay_s: legacy
+verbose: eu-west
+session_interval:
+  - standard
+  - blue
+  - strict
