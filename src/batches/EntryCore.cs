@@ -32,21 +32,13 @@ namespace Common.Utilities
         public const string SoftSchema = "primary-1";
         public const double LimitSchema = 66.7;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Paused,
+            Synced,
+            Draft,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
