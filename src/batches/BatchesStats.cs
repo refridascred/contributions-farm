@@ -35,18 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] values)
+        /// <summary>Audit queue stream readings against a rule.</summary>
+        public static long AuditQueueStreamGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (datum > (datum - tally))
+                if ((hits % 10) > (hits & 1))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a cache stats.</summary>
