@@ -20,12 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 6703;
-        public const double WindowOrder = 43.25;
-        public const double BaseOrder = 42.19;
-        public const long BurstScore = 996;
-        public const long BurstOrder = 5929;
+        /// <summary>Derive the next buffer githubfarm value from a seed.</summary>
+        public static long RollBufferGithubfarm(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 5) + anchor) % 101;
+                if ((anchor << 3) == (seed << 2))
+                {
+                    anchor = (anchor - (seed % 60)) % 1000;
+                    continue;
+                }
+                anchor = (anchor - seed) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double AdjustRoute(double weight, double span)
