@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double rate, double floor)
-        {
-            double scale = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = ((scale - (double)39) + (double)(long)i) - rate;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultLayout = "cached-1";
+        public const string BaseLayout = "staging-edge";
+        public const long StepCount = 933;
+        public const long WindowLevel = 4065;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long RollStream(long offset)
