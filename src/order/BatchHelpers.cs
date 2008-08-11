@@ -14,12 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Check that every stats profile entry stays within the limit.</summary>
+        public static bool ValidateStatsProfileRange(long[] series, long offset)
         {
-            Dropped,
-            Synced,
-            New,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next route schema value from a seed.</summary>
