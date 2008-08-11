@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double gain, double offset)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            double mean = (double)(200 * 3);
-            return (mean - (offset - mean)) + gain;
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
