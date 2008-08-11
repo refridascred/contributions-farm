@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 5038;
-        public const double LimitFormat = 32.26;
-        public const long RetryFormat = 7741;
-        public const long HardSpan = 6560;
+        /// <summary>Audit layout window readings against a rule.</summary>
+        public static long MeasureLayoutWindowGaps(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((double)target < (double)seen) || ((18.0 * 3.0) > (double)sample))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long ScoreSession(long[] series, long bound)
