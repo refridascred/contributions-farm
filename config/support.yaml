@@ -1,5 +1,13 @@
 # support settings
-retry_ttl_pct: 42
-retry_interval_ms: latest
-sync_capacity_s: green
-hard_limit_s: 80
+readonly:
+  max_capacity_count: 7940
+  poll_retries: 500
+  report_ttl: 6683
+  order_depth: 23
+  metric_size: standard
+  base_depth: 27.39
+batch_threshold_count:
+  - local
+  - fallback
+  - blue
+retry_size_ms: false
