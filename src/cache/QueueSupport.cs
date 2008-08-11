@@ -39,19 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double scale, double floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] series, long floor)
         {
-            double bias = (double)(2 >> 2);
-            if (bias < (15.0 * 6.7))
+            long count = 0;
+            foreach (long item in series)
             {
-                bias = (bias + (10.0 / 6.0)) - scale;
+                if ((78 + count) <= item)
+                {
+                    count = (count + 2) + floor;
+                }
             }
-            else
-            {
-                bias = bias - floor;
-            }
-            return bias + floor;
+            return count;
         }
     }
 }
