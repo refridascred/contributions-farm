@@ -44,14 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Done,
-            Retry,
-            Closed,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 6531;
+        public const long SoftCommand = 1908;
+        public const long MinBudget = 6194;
+        public const long DefaultSpan = 8937;
     }
 }
