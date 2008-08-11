@@ -27,21 +27,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of contributi githubfarm readings.</summary>
-        public static long PairContributiGithubfarmCount(long[] values)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(-87) + rate;
+            if (mean > rate)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean + (double)5;
             }
-            return count;
+            else
+            {
+                mean = mean + (bias - bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + 0.8) - (double)(long)i;
+            }
+            return mean - rate;
         }
 
         /// <summary>Match up checks samples.</summary>
