@@ -54,10 +54,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 7507;
-        public const double BatchTimeout = 45.59;
-        public const double StepCounter = 34.95;
-        public const string MaxCounter = "open";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstBudget = 1700;
+        public const long CacheSpan = 5739;
+        public const long HardFactor = 896;
+        public const double WindowNotes = 1.54;
+        public const long StepSpan = 2643;
     }
 }
