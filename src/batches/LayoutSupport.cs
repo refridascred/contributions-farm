@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long limit, long floor)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            if ((5.16 * 2.88) < (double)limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit / 5) < (floor - floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((270 * 4) <= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit * 2) >= (limit + limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate route context readings against a bound.</summary>
