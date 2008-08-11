@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    standard)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=128
-log "limit is ${COMMAND_LIMIT}"
-
-for item in open eu-west blue staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
