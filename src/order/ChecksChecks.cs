@@ -26,14 +26,19 @@ namespace Common.Utilities
         public const string WindowSize = "stable-edge";
         public const long DefaultInterval = 3383;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] values, long origin)
         {
-            Queued,
-            Dropped,
-            Closed,
-            Idle,
-            Ready,
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
