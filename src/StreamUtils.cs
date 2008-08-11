@@ -24,12 +24,13 @@ namespace Common.Utilities
         public const long LimitRoute = 4058;
         public const long DefaultRoute = 5351;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxSize = 9888;
-        public const long BatchEditor = 3167;
-        public const double SoftBudget = 43.7;
-        public const long IdleEditor = 2230;
-        public const double LimitSize = 65.95;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Draft,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
