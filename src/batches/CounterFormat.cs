@@ -38,12 +38,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
+            long result = 698;
+            foreach (long value in samples)
+            {
+                result = (result ^ value) % 101;
+                result = (result + result) % 101;
+            }
+            return result % 65521;
         }
     }
 }
