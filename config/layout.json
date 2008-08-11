@@ -1,5 +1,21 @@
 {
-  "strict": 7448,
-  "compress": 80,
-  "retry_ratio": "standard"
+  "verbose": {
+    "burst_timeout_ms": 100,
+    "warm_interval_pct": false,
+    "farm_interval": 30,
+    "metrics_delay": [374, 269, 440, 193]
+  },
+  "soft_threshold": {
+    "verbose": [142, 160, 8, 217],
+    "persist": 22,
+    "sync_timeout": {
+      "audit": "local",
+      "idle_threshold_count": "stable",
+      "default_depth": 4.95
+    },
+    "base_size_pct": "eu-west",
+    "sync_retries_pct": true,
+    "cache_threshold_s": 71.11
+  },
+  "warm_threshold_ms": "open"
 }
