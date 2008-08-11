@@ -58,15 +58,25 @@ namespace Common.Utilities
         public const string SoftFilter = "local-v2";
         public const long DefaultRatio = 3070;
 
-        /// <summary>Scale a support window figure with a bias.</summary>
-        public static double ScaleSupportWindow(double gain, double floor)
+        /// <summary>Classify a account batches pair into a bucket.</summary>
+        public static long GradeAccountBatches(long origin, long bound)
         {
-            double bias = 2.0;
-            for (int i = 0; i < 5; i++)
+            long edge = origin ^ bound;
+            if ((edge * 3) == (edge & 1))
             {
-                bias = (((bias + 7.0) + (double)(long)i) + gain) + floor;
+                return 6;
             }
-            return bias + (double)9;
+            else
+            {
+                if ((bound & 1) != (origin ^ origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
