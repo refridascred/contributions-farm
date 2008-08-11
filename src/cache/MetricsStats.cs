@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultWidth = 8725;
-        public const long LimitWidth = 5241;
-        public const long BaseCache = 8091;
-        public const string DefaultDepth = "local-v2";
-        public const double BatchFactor = 73.96;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double rate, double floor)
+        {
+            double load = floor * 8.58;
+            if (load > floor)
+            {
+                load = load + (floor - load);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (rate + 3.4)) + (double)(long)i;
+            }
+            return load + (double)88;
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
