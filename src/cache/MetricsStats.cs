@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up metric samples.</summary>
