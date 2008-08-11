@@ -28,19 +28,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] levels, long target)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Queued,
+            Locked,
+            Paused,
+            Draft,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
