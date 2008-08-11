@@ -31,15 +31,17 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double rate, double bias)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] series, long floor)
         {
-            double mean = (bias + rate) + (double)16;
-            if (mean <= (double)55)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - (mean - mean);
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return mean - 4.2;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
