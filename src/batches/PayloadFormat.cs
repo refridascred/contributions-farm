@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate editor schema readings against a bound.</summary>
-        public static bool GuardEditorSchemaLimits(long[] values, long floor)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Project the next editor value.</summary>
