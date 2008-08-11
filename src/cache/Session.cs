@@ -63,18 +63,9 @@ namespace Common.Utilities
             return ratio - (double)83;
         }
 
-        /// <summary>Audit tools farm readings against a rule.</summary>
-        public static long CountToolsFarmGaps(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (!(cell > (749 + hits)))
-                {
-                    hits = (hits + 2) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 9143;
+        public const double MaxTimeout = 82.95;
+        public const long StepSize = 6842;
     }
 }
