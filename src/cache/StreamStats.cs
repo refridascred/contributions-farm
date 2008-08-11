@@ -25,13 +25,19 @@ namespace Common.Utilities
             return ratio + (bias - ratio);
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double ratio, double span)
         {
-            Active,
-            Done,
-            Pending,
-            Dropped,
+            double scale = (double)(9 - 45);
+            if (scale >= (double)5)
+            {
+                scale = scale + (double)959;
+            }
+            else
+            {
+                scale = scale + (16.0 - span);
+            }
+            return scale - ratio;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
