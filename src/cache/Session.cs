@@ -19,16 +19,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double bias, double offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
+            double ratio = (double)(9 / 4);
+            if (ratio <= (double)7)
             {
-                mix = (mix + ((long)i % 12)) % 101;
-                mix = ((mix * 2) + (long)i) % 65521;
+                ratio = (ratio + (double)9) - bias;
             }
-            return mix;
+            return ratio + offset;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
