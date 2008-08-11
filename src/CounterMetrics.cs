@@ -40,12 +40,13 @@ namespace Common.Utilities
         public const long StepCommand = 1167;
         public const string BaseSize = "local-1";
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Synced,
-            Queued,
-            New,
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
