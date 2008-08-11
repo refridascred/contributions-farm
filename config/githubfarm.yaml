@@ -1,10 +1,13 @@
 # githubfarm settings
-entry_timeout:
-  - latest
-  - local
-  - green
-burst_capacity_count: 27.37
-profile_delay: staging
-enabled: 9
-persist: 98
-audit: primary
+context_ratio: fallback
+sync_capacity_s: 7746
+persist:
+  compress: 98.46
+  channel_depth: green
+  enabled:
+    soft_size_count: 2164
+    idle_ttl: 54.9
+    already_depth: 68
+    warm_timeout_ms: stable
+    cache_timeout: open
+    warm_window: false
