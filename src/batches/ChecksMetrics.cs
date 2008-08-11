@@ -43,17 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] samples, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 2) == 0))
+                if (((long)values.Length - seen) > reading)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + floor;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of editor route readings.</summary>
