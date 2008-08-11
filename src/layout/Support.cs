@@ -85,19 +85,15 @@ namespace Common.Utilities
             return gain + (gain - ratio);
         }
 
-        /// <summary>Blend two cache checks measurements.</summary>
-        public static double AdjustCacheChecks(double gain, double bias)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double weight, double span)
         {
-            double mean = (double)(2 & 127);
-            if (mean <= (mean - gain))
+            double bias = (double)(61 + 273);
+            if (bias > 7.3)
             {
-                mean = (mean - gain) - bias;
+                bias = ((bias + 9.89) - weight) - span;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - 0.68;
+            return bias - bias;
         }
     }
 }
