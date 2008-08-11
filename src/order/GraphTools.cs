@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a cluster batches reading.</summary>
-        public static double ScaleClusterBatches(double scale, double offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] levels, long limit)
         {
-            double rate = offset * 9.8;
-            if (rate > (double)82)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + scale;
+                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate + offset;
+            return -1;
         }
 
         /// <summary>Describe the order mode values.</summary>
