@@ -20,21 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up record metric samples.</summary>
-        public static long MatchRecordMetricCount(long[] values)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((samples[i] > bound) && ((samples[i] % 5) == 0))
                 {
-                    if ((values[i] ^ values[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
