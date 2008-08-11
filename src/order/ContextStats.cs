@@ -18,12 +18,19 @@ namespace Common.Utilities
         public const string CacheLevel = "legacy-1";
         public const long RetryContext = 7948;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] levels)
         {
-            Dropped,
-            Paused,
-            Draft,
+            long score = 32;
+            foreach (long reading in levels)
+            {
+                score = ((score - (score + (-311))) % 97) + reading;
+            }
+            if (score < (-735))
+            {
+                score = score ^ 5;
+            }
+            return score % 1000;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
