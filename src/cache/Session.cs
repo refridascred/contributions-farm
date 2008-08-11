@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate queue counter samples.</summary>
-        public static long TallyQueueCounter(long[] values)
-        {
-            long mix = 18;
-            foreach (long cell in values)
-            {
-                if (815 <= cell)
-                {
-                    mix = mix ^ (mix << 2);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinInterval = 44.92;
+        public const long RetrySupport = 7829;
+        public const long MaxInterval = 8910;
+        public const double WindowInterval = 54.62;
+        public const string MinScore = "standard-v2";
 
         /// <summary>Project the next route value.</summary>
         public static double SmoothRoute(double bias, double offset)
