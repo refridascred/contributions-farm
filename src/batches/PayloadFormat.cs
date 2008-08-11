@@ -38,19 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long bound)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)(-3) > (double)bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix ^ (bound + bound)) % 1000;
+                    if ((values[i] - values[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return hits;
         }
     }
 }
