@@ -20,22 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine layout counter values into a single score.</summary>
-        public static long CombineLayoutCounter(long[] readings)
+        /// <summary>Match up record metric samples.</summary>
+        public static long MatchRecordMetricCount(long[] values)
         {
-            long result = 402;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item >> 4) >= ((long)readings.Length % 100))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result << 2) ^ result) % 255;
-                }
-                else
-                {
-                    result = (result + (long)readings.Length) % 101;
+                    if ((values[i] ^ values[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
