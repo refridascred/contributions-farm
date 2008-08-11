@@ -20,14 +20,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] samples, long floor)
         {
-            Ready,
-            Dropped,
-            Idle,
-            Paused,
-            Closed,
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
