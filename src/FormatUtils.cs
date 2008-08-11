@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the already checks entries that pass the check.</summary>
-        public static long MeasureAlreadyChecksHits(long[] levels)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long step, long floor)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            if ((3.0 < (15.0 / 5.0)) && ((step / 3) > (floor % 64)))
             {
-                if ((1.74 - 6.39) > (double)matches)
+                return 2;
+            }
+            else
+            {
+                if ((250 >= (step & 3)) && ((double)996 < (double)floor))
                 {
-                    matches = (matches + 3) - datum;
+                    return 8;
+                }
+                else
+                {
+                    if ((316 - floor) <= (2 & 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
