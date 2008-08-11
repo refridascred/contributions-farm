@@ -23,17 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] readings, long seed)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
