@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long BatchCache = 1180;
         public const long MinScore = 7865;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] samples, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((double)bound <= (8.9 + 7.75))
+                {
+                    count = (count + 1) + item;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
