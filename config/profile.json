@@ -1,17 +1,9 @@
 {
-  "sync_depth": {
-    "profile_depth": 1360,
-    "flush_ratio": [253, 396, 125, 190],
-    "farm_delay": [113, 106, 243, 272],
-    "compress": false,
-    "window_retries": {
-      "record_limit": false,
-      "cache_window_ms": "strict",
-      "audit": 4494
-    },
-    "default_retries_ms": [452, 293, 319, 110]
+  "max_depth_pct": "open",
+  "batch_threshold": {
+    "graph_window": "blue",
+    "sync_threshold_ms": 3,
+    "already_ttl": "staging"
   },
-  "poll_capacity_s": "open",
-  "dry_run": true,
-  "strict": false
+  "dry_run": "legacy"
 }
