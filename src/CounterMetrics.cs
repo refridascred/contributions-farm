@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long floor, long limit)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double scale, double bias)
         {
-            long diff = floor - limit;
-            if ((limit + floor) <= (limit & 63))
+            double gain = (double)(515 ^ 82);
+            if (gain < (bias + bias))
             {
-                return 8;
+                gain = (gain - (gain * 7.0)) + scale;
             }
-            else
-            {
-                if ((double)diff < (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(floor <= (diff % 10)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return gain + (15.0 + gain);
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
