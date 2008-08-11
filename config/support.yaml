@@ -1,24 +1,16 @@
 # support settings
-hard_retries_ms:
-  verbose:
-    - 457
-    - 266
-    - 233
-    - 58
-  support_interval: 55
-  min_depth_pct: 6068
-  retry_threshold_s: standard
-  cluster_ratio:
-    metrics_ttl: 30
-    poll_size_pct: 58
-    command_timeout: open
-    compress: staging
-    counter_threshold: legacy
-    idle_ttl_ms: 14.61
-default_retries_count: legacy
-poll_interval:
-  warm_ttl: 4
-  idle_retries_s: 100
-  sync_delay_ms: legacy
-persist: 100
-cache_limit: strict
+githubfarm_size:
+  readonly: cached
+  idle_ttl_count: 1024
+  min_ratio_count: latest
+  max_delay:
+    soft_ttl_s: true
+    persist: 7631
+    sync_window_ms: 52
+    verbose: latest
+    base_size: legacy
+  soft_delay: 1024
+buffer_size: true
+window_interval: 60
+schema_threshold: green
+sync_retries_pct: 81
