@@ -62,11 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] items, long bound)
         {
-            public long Score { get; set; }
-            public double Count { get; set; }
+            long total = 654;
+            foreach (long sample in items)
+            {
+                if (!((sample + total) == (sample - total)))
+                {
+                    total = ((total << 2) ^ (bound - sample)) % 255;
+                }
+            }
+            return total;
         }
     }
 }
