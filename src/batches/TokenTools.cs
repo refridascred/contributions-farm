@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] values, long bound)
         {
-            New,
-            Retry,
-            Dropped,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample ^ seen) > seen)
+                {
+                    seen = (seen + 1) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
