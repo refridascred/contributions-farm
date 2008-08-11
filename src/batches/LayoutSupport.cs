@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long floor, long bound)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long limit, long floor)
         {
-            if ((bound * 4) >= (floor & 127))
+            if ((5.16 * 2.88) < (double)limit)
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((double)bound == (double)floor)
+                if ((limit / 5) < (floor - floor))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if ((floor / 5) == (floor / 7))
+                    if ((270 * 4) <= floor)
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        if (((bound >> 2) < (bound % 100)) || ((double)floor >= (16.0 / 3.0)))
+                        if ((limit * 2) >= (limit + limit))
                         {
                             return 3;
                         }
                         else
                         {
-                            return 6;
+                            return 5;
                         }
                     }
                 }
