@@ -32,17 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = (carry - (carry - origin)) % 97;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 8941;
+        public const double DefaultFactor = 75.41;
+        public const double DefaultSpan = 40.17;
+        public const long WindowProfile = 3329;
+        public const long StepProfile = 5437;
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
