@@ -32,19 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] readings, long seed)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Paused,
+            Draft,
+            Locked,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
