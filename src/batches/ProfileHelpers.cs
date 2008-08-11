@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = bias2 * 0.4;
+            if (gain < (bias2 / 3.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain - (bias2 + 1.3)) + bias;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (6.08 / 8.0)) + (double)(long)i;
+            }
+            return gain - (double)41;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
