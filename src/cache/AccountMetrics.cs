@@ -57,10 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultWidth = 2053;
-        public const string MaxDepth = "alpha-1";
-        public const long BatchBudget = 2928;
-        public const long LimitMetric = 6280;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] levels, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
