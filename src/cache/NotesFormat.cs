@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Scale a account tools figure with a bias.</summary>
+        public static double BlendAccountTools(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = ratio - (ratio + offset);
+            if (gain <= (gain - offset))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain + (offset * 19.0);
             }
-            return hits;
+            else
+            {
+                gain = gain + (gain / 4.0);
+            }
+            return gain + (gain - ratio);
         }
 
         /// <summary>Describe the batch status values.</summary>
