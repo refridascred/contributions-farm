@@ -13,11 +13,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "strict-edge";
-        public const long BaseEntry = 7930;
-        public const double MaxSize = 13.0;
-        public const long HardEntry = 9573;
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MinInterval = "stable-v2";
