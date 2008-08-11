@@ -33,23 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes channel readings against a rule.</summary>
-        public static long CountNotesChannelMatches(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (limit <= (seen * 2))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitLevel = 6138;
+        public const long CacheProfile = 1268;
+        public const long BatchProfile = 4596;
+        public const long StepBudget = 6158;
+        public const long BatchRatio = 5990;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long SeriesNotes(long floor)
