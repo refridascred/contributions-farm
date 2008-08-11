@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] samples, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (reading != step)
+                if ((4.6 / 8.0) <= (double)entry)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) - bound;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
