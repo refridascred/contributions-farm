@@ -42,18 +42,24 @@ namespace Common.Utilities
         public const string SoftFilter = "local-v2";
         public const long DefaultRatio = 3070;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] data)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            if (((8.0 - 7.4) > (double)floor) && ((floor ^ floor) > bound))
             {
-                if ((seen >= (cell % 24)) || !(((-13) - cell) <= (seen - cell)))
+                return 4;
+            }
+            else
+            {
+                if ((floor >> 5) >= 30)
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
