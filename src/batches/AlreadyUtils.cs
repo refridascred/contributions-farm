@@ -51,11 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double weight, double span)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double weight2 = (weight / 5.0) + weight;
-            return (weight2 - weight) + span;
+            Locked,
+            Failed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
