@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of batches farm readings.</summary>
-        public static long DigestBatchesFarm(long[] series, long target)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] samples)
         {
-            long total = 532;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (3.8 <= (double)datum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = total ^ (79 - total);
+                    if ((samples[i] + samples[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = (total + (total - total)) % 4096;
-                total = ((total * 4) + (datum + target)) % 1000;
             }
-            if (total < 398)
-            {
-                total = (total << 3) ^ total;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
