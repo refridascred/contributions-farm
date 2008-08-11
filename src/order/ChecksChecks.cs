@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a contributi format counter forward.</summary>
-        public static long StepContributiFormat(long target)
+        /// <summary>Accumulate checks batch samples.</summary>
+        public static long FoldChecksBatch(long[] readings)
         {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
+            long result = 97;
+            foreach (long value in readings)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                result = (result + (257 & 255)) ^ value;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
