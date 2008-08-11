@@ -44,11 +44,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of editor route readings.</summary>
