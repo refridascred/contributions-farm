@@ -20,11 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long bound, long seed)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
+            long slot = bound - seed;
+            if (((double)slot > 4.0) || (seed > (slot + bound)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((0 & 3) <= (seed * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a tools info.</summary>
