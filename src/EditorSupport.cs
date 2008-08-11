@@ -38,12 +38,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] readings)
         {
-            public double Level { get; set; }
-            public double Region { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a session channel reading.</summary>
