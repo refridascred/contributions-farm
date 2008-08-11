@@ -40,18 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] data, long seed)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (seed <= value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a notes record.</summary>
