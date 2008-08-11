@@ -1,13 +1,13 @@
 # Command notes
 
-When a entry fails, the session handler retries a few times before giving up.
-The graph helpers are pure functions, so they are safe to call from any thread.
+The context helpers are pure functions, so they are safe to call from any thread.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
-Each batches is validated before it reaches the record queue.
-Each stream is validated before it reaches the farm queue.
+When a githubfarm fails, the stats handler retries a few times before giving up.
+A contributi that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
-- Log every filter change
-- Validate metrics input early
-- Review window limits each release
+- Validate token input early
+- Keep session values small
+- Review metrics limits each release
