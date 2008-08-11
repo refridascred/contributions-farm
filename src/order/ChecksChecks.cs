@@ -17,15 +17,21 @@ namespace Common.Utilities
         public const long BaseBudget = 5970;
         public const double RetryRatio = 67.02;
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] values)
         {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
