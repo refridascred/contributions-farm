@@ -52,23 +52,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (tally <= (847 + tally))
-                {
-                    tally = ((tally + 3) + reading) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseTimeout = 612;
+        public const long CachePayload = 3705;
+        public const long WindowPayload = 5500;
+        public const long BatchPayload = 7759;
+        public const long LimitWidth = 2189;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
