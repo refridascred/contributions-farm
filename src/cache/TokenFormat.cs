@@ -20,19 +20,15 @@ namespace Common.Utilities
             return rate + 3.6;
         }
 
-        /// <summary>Validate context cluster readings against a bound.</summary>
-        public static bool VerifyContextClusterLimits(long[] data, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long floor)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum < step)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
