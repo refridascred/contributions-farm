@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long state = 268;
-            foreach (long entry in readings)
-            {
-                if (((entry + state) != (8 >> 1)) || ((double)entry >= (5.24 / 2.0)))
-                {
-                    state = (state << 2) ^ (state * 3);
-                }
-            }
-            return state % 4096;
+            Retry,
+            Ready,
+            Draft,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
