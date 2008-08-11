@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] items, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (cell < step)
+                if (((double)sample == (double)count) || ((double)sample != (4.0 / 9.0)))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) + floor;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
