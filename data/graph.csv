@@ -1,8 +1,8 @@
-id,token,active,weight,count
-1,standard,975,35.57,7.24
-2,23.17,strict,750,898
-3,stable,921,968,66.97
-4,3.47,86.76,local,103
-5,17,38.26,66.2,547
-6,962,4.95,671,40.57
-7,standard,83,staging,64
+id,state,count
+1,318,736
+2,459,48.76
+3,open,cached
+4,693,eu-west
+5,221,381
+6,strict,blue
+7,6.45,74.4
