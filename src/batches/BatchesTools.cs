@@ -13,24 +13,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a githubfarm queue reading.</summary>
-        public static double AdjustGithubfarmQueue(double bias, double offset)
-        {
-            double load = (double)(3 << 2);
-            if (load <= (load + bias))
-            {
-                load = load + load;
-            }
-            else
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (load + bias);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitSize = "open";
+        public const long RetryTimeout = 975;
+        public const string LimitInterval = "alpha-1";
+        public const long LimitDepth = 872;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long MeasureBatchesGaps(long[] levels, long target)
