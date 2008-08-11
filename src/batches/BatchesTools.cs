@@ -25,16 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardStats = 41.34;
+        public const string StepStats = "latest";
+        public const double DefaultStats = 64.5;
+        public const long BatchInterval = 4268;
+        public const long MinWidth = 5780;
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double SmoothSchema(double ratio, double offset)
