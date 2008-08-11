@@ -22,12 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] values, long seed)
         {
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many already payload samples are out of range.</summary>
