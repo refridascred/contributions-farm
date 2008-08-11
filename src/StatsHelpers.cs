@@ -27,12 +27,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
-            public long Region { get; set; }
+            Paused,
+            New,
+            Pending,
+            Locked,
+            Done,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
