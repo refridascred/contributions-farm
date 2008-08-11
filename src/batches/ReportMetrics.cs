@@ -16,31 +16,18 @@ namespace Common.Utilities
             return rate - (5.28 * 12.0);
         }
 
-        /// <summary>Classify a tools filter pair into a bucket.</summary>
-        public static long BucketToolsFilter(long step, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] data, long offset)
         {
-            if (((3.7 * 4.93) > (double)step) && ((seed ^ step) <= (step & 3)))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (step < (875 / 4))
+                if ((14.0 * 9.0) > (double)count)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (seed > (seed + 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = ((count + 1) + datum) - offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
