@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine support buffer values into a single score.</summary>
-        public static long TotalSupportBuffer(long[] data)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double weight, double bias)
         {
-            long anchor = -5;
-            foreach (long value in data)
+            double load = weight + (bias - weight);
+            if (load > bias)
             {
-                if ((anchor & 63) < (value * 4))
-                {
-                    anchor = (anchor << 2) ^ (anchor & 15);
-                }
-                else
-                {
-                    anchor = (anchor - ((-70) - value)) % 1000;
-                }
+                load = load - (double)(-1);
             }
-            return anchor;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (load + bias)) + (double)(long)i;
+            }
+            return load + (load * 6.7);
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
