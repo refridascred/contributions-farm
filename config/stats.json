@@ -1,6 +1,5 @@
 {
-  "default_timeout_pct": "blue",
-  "poll_window_s": "local",
-  "max_interval": false,
-  "readonly": [483, 386, 178]
+  "retry_capacity_ms": 19.62,
+  "enabled": 97.71,
+  "readonly": true
 }
