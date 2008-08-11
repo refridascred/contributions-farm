@@ -30,11 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinInterval = "stable-v2";
-        public const double MaxContext = 31.45;
-        public const string WindowBudget = "alpha-v2";
-        public const double StepInterval = 63.78;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((29 - hits) < (265 * 2))
+                {
+                    hits = ((hits + 1) ^ cell) + bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long TallySupportGaps(long[] samples, long floor)
