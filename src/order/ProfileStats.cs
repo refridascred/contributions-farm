@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every report window entry stays within the limit.</summary>
-        public static bool CheckReportWindowLimits(long[] items, long target)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Accumulate batches samples.</summary>
