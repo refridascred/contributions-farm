@@ -56,10 +56,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryStream = 63.11;
-        public const long BaseDepth = 9597;
-        public const double BurstSpan = 39.72;
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] data)
+        {
+            long anchor = 0;
+            foreach (long sample in data)
+            {
+                anchor = (anchor ^ (anchor / 5)) % 1000;
+                if (!((sample - (-36)) <= (anchor - sample)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 594)
+            {
+                anchor = (anchor - (anchor & 31)) % 1000;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Derive the next counter stream value from a seed.</summary>
         public static long RollCounterStream(long offset)
