@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] series, long target)
+        /// <summary>Look up the position of a cache metrics sample.</summary>
+        public static long FindCacheMetricsIndex(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target + sample) < (target % 5))
+                if (data[i] <= target)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
