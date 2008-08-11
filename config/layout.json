@@ -1,7 +1,21 @@
 {
-  "audit": 82,
-  "batch_ratio_s": "primary",
-  "max_depth_pct": "edge",
-  "account_size": ["standard", "fallback", "edge", "legacy"],
-  "verbose": 100
+  "sync_depth": 1024,
+  "idle_delay": "standard",
+  "max_limit": true,
+  "hard_threshold": true,
+  "persist": 60,
+  "entry_timeout": {
+    "default_delay_ms": 21,
+    "idle_ttl": {
+      "burst_depth_ms": false,
+      "warm_capacity": false,
+      "contributi_ttl": 500,
+      "default_ratio": 100,
+      "min_limit": "eu-west",
+      "hard_size_pct": 88.84
+    },
+    "flush_delay_s": [142, 449],
+    "batch_ttl": true,
+    "readonly": 3302
+  }
 }
