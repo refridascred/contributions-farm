@@ -1,21 +1,5 @@
 {
-  "batch_timeout_pct": {
-    "audit": 44.71,
-    "sync_timeout_count": "local",
-    "idle_limit_s": "staging",
-    "cache_size_s": false,
-    "batch_threshold_ms": {
-      "batch_size_pct": 39.22,
-      "report_threshold": "latest",
-      "default_limit_pct": false,
-      "flush_threshold": "fallback",
-      "dry_run": 40.97
-    },
-    "hard_window_count": [348, 124, 72]
-  },
-  "warm_window_pct": 69.69,
-  "hard_capacity": 250,
-  "report_threshold": 52.51,
-  "default_depth": 1024,
-  "channel_delay": [342, 238, 181, 460]
+  "retry_ratio_count": [409, 355, 56],
+  "audit": 57,
+  "batch_size": true
 }
