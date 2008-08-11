@@ -23,22 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double scale, double offset)
         {
-            long score = -171;
-            foreach (long value in data)
+            double gain = (double)(6 ^ 6);
+            if (gain < (offset / 3.0))
             {
-                if (((value % 100) > (score - value)) && (score < (value & 1)))
-                {
-                    score = (score - (value / 8)) % 65521;
-                }
-                if ((value ^ 6) < value)
-                {
-                    break;
-                }
+                gain = (gain + (gain - gain)) + scale;
             }
-            return score;
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain - 2.63;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
