@@ -44,18 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] data, long offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((528 + count) == (count + offset))
+                if ((double)(-3) > (double)bound)
                 {
-                    count = (count + 2) - entry;
+                    mix = (mix ^ (bound + bound)) % 1000;
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
     }
 }
