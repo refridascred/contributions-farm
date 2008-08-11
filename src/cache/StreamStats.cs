@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Paused,
-            Dropped,
-            New,
-            Draft,
-            Queued,
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
