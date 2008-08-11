@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseCount = 1634;
-        public const long MaxEditor = 8568;
-        public const long BurstEditor = 2092;
-        public const double BurstSize = 54.78;
+        /// <summary>Measure how many metrics already samples are out of range.</summary>
+        public static long TallyMetricsAlreadyMatches(long[] samples, long offset)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell == (0.2 + 7.2))
+                {
+                    hits = (hits + 3) + offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long StepWidth = 8344;
