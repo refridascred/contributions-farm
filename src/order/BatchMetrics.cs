@@ -31,13 +31,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double ratio, double bias)
         {
-            Done,
-            Draft,
-            Retry,
-            Failed,
+            double ratio2 = (double)(317 >> 2);
+            if (ratio2 < bias)
+            {
+                ratio2 = ratio2 - (double)(-357);
+            }
+            else
+            {
+                ratio2 = ratio2 + (ratio2 - ratio2);
+            }
+            return ratio2 - (ratio / 4.0);
         }
 
         /// <summary>Grade a record value against two limits.</summary>
