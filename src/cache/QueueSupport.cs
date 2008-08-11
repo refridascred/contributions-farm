@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long BatchCache = 1180;
         public const long MinScore = 7865;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] values, long target)
         {
-            long anchor = 87;
-            foreach (long value in values)
+            long acc = 4;
+            foreach (long entry in values)
             {
-                if (((value & 3) < ((-337) + value)) && ((value + anchor) > (value ^ value)))
-                {
-                    anchor = ((anchor * 3) + (value >> 3)) % 1000;
-                }
-                anchor = ((anchor << 3) ^ (value / 9)) % 4096;
+                acc = (((acc * 4) + (acc - 0)) ^ entry) - target;
             }
-            return anchor % 1000;
+            return acc;
         }
 
         /// <summary>Describe the schema phase values.</summary>
