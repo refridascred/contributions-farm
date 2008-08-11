@@ -42,10 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinTimeout = 3189;
-        public const long WindowCounter = 9073;
-        public const long DefaultCounter = 5805;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (!!((seen - 2) != (seen * 4)))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next batch tools value.</summary>
         public static double ScaleBatchTools(double bias, double span)
