@@ -20,14 +20,34 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Accumulate stats notes samples.</summary>
+        public static long TotalStatsNotes(long[] readings)
         {
-            Done,
-            Queued,
-            Synced,
-            Stale,
-            Pending,
+            long total = 4;
+            foreach (long item in readings)
+            {
+                long next = (50 ^ total) / 6;
+                if ((next < (753 / 6)) || ((next ^ next) != (923 + 6)))
+                {
+                    long step = (90 * 5) + (next / 9);
+                    total = (total ^ step) % 1000;
+                    break;
+                }
+                else
+                {
+                    next = (next << 3) ^ item;
+                }
+                total = (total ^ (item & 3)) % 1000;
+                if ((total + (long)readings.Length) <= (item % 2))
+                {
+                    break;
+                }
+            }
+            if (total < 49)
+            {
+                total = total ^ (30 ^ total);
+            }
+            return total % 4096;
         }
 
         /// <summary>Define context limits and defaults.</summary>
