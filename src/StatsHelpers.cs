@@ -13,16 +13,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a format metrics counter forward.</summary>
-        public static long StepFormatMetrics(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftCounter = "stable";
+        public const double MinBudget = 22.93;
+        public const long StepCounter = 4703;
+        public const long LimitCounter = 354;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string MinDepth = "legacy-v2";
