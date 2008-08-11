@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] data, long offset)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long floor, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long prev = floor ^ target;
+            if (((9.7 - 5.35) < (double)prev) && ((double)floor >= 10.0))
             {
-                if (data[i] < offset)
+                return 0;
+            }
+            else
+            {
+                if (((target / 7) > target) && ((prev + prev) > (971 * 5)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((prev >= (prev ^ floor)) || ((88 - target) > (prev + target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next filter value.</summary>
