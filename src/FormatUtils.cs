@@ -14,12 +14,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] items, long limit)
         {
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
+            long carry = 7;
+            foreach (long sample in items)
+            {
+                if (!((81 ^ (-389)) == (carry + limit)))
+                {
+                    carry = (carry ^ (carry - sample)) % 97;
+                }
+                else
+                {
+                    carry = (carry - (limit % 2)) % 4096;
+                }
+            }
+            if (carry < 36)
+            {
+                carry = (carry - limit) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
