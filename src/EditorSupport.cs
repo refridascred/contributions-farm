@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a editor context pair into a bucket.</summary>
-        public static long SortEditorContext(long offset, long offset2)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] levels)
         {
-            if (((5.78 / 5.0) >= (double)offset2) && ((offset / 3) == (offset2 + offset2)))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((1.0 / 5.0) > (3.8 * 6.4))
+                if (cell < (cell & 31))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset2 >> 4) > offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((5 + offset) != (offset2 % 100))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
