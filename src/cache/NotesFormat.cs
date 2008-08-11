@@ -46,24 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long step, long step2)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            if (!((step << 3) > (286 + 84)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step * 4) > (651 + 52))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Region { get; set; }
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
