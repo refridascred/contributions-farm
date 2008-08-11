@@ -1,24 +1,7 @@
 {
-  "sync_size_count": "latest",
-  "enabled": false,
-  "metric_size": {
-    "max_retries_pct": 30,
-    "record_window": {
-      "flush_limit_s": "standard",
-      "command_timeout": 5986,
-      "retry_ttl_ms": "blue",
-      "base_limit_count": "cached",
-      "strict": 98,
-      "retry_capacity_s": "local"
-    },
-    "max_ratio": {
-      "max_capacity_s": false,
-      "buffer_ratio": 88,
-      "soft_limit": ["blue", "latest", "strict"],
-      "record_ttl": ["cached", "local", "edge", "stable"]
-    }
-  },
-  "batch_window_count": ["primary", "fallback"],
-  "retry_capacity": 1324,
-  "stream_timeout": ["latest", "green"]
+  "soft_timeout_s": 100,
+  "window_limit": "fallback",
+  "farm_capacity": false,
+  "min_limit_count": 8734,
+  "poll_size_ms": 78.2
 }
