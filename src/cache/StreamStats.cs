@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long offset)
         {
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Project the next command value.</summary>
