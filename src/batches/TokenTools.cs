@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] items, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((5.36 >= (double)floor) && ((floor + hits) > (floor / 3)))
+                if ((cell % 8) != (tally + tally))
                 {
-                    hits = (hits + 2) ^ entry;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
