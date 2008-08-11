@@ -34,22 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Derive the next route schema value from a seed.</summary>
+        public static long DeriveRouteSchema(long origin)
         {
-            long result = 858;
-            foreach (long entry in levels)
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)entry > 9.0)
+                if (!(origin >= 227))
                 {
-                    result = result - (entry + result);
+                    carry = (carry << 2) ^ ((long)i + origin);
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            if (result > 2)
-            {
-                result = result - ((-604) - result);
-            }
-            return result;
+            return carry;
         }
     }
 }
