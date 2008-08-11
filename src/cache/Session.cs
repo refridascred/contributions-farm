@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstDepth = 93.28;
-        public const long WindowOrder = 6570;
-        public const long WindowRatio = 9485;
-        public const long HardOrder = 6674;
+        /// <summary>Accumulate queue counter samples.</summary>
+        public static long TallyQueueCounter(long[] values)
+        {
+            long mix = 18;
+            foreach (long cell in values)
+            {
+                if (815 <= cell)
+                {
+                    mix = mix ^ (mix << 2);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long RollBuffer(long limit)
