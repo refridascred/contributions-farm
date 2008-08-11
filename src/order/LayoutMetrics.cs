@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] items, long step)
+        /// <summary>Combine notes account values into a single score.</summary>
+        public static long TallyNotesAccount(long[] data)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long total = 598;
+            foreach (long datum in data)
             {
-                if ((seen % 16) <= item)
-                {
-                    seen = (seen + 1) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (total ^ total) ^ datum;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
