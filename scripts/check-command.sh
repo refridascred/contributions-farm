@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+COMMAND_LIMIT=41
+log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-legacy}"
 case "${mode}" in
-    stable)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=333
-log "limit is ${COMMAND_LIMIT}"
