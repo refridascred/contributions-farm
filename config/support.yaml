@@ -1,15 +1,5 @@
 # support settings
-cache_retries_s: stable
-compress:
-  min_depth_count: 4196
-  graph_delay: 500
-  dry_run: staging
-  burst_ttl_count: 500
-min_delay: fallback
-window_window: 2.39
-hard_limit:
-  - staging
-  - blue
-  - edge
-  - cached
-max_depth_s: 39
+retry_ttl_pct: 42
+retry_interval_ms: latest
+sync_capacity_s: green
+hard_limit_s: 80
