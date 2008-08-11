@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Use stats settings to tune how often window data is refreshed.
-Each contributi is validated before it reaches the notes queue.
+Use queue settings to tune how often buffer data is refreshed.
+A metrics that stays idle for too long is moved to the profile list.
+Use commits settings to tune how often tools data is refreshed.
 
-Defaults for notes live in the config folder and can be overridden per environment.
-The window report groups every stream by batch.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+The buffer module keeps batches values in sync with the entry cache.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer record defaults
-- Document new metrics fields
-- Log every metric change
+- Prefer account defaults
+- Log every context change
+- Keep stream values small
