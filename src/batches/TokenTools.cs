@@ -27,12 +27,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftBudget = 84.37;
-        public const long CacheMetric = 382;
-        public const double BatchLevel = 79.21;
-        public const long IdleInterval = 6286;
-        public const string LimitBudget = "open-edge";
+        /// <summary>Compare every pair of contributi githubfarm readings.</summary>
+        public static long PairContributiGithubfarmCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many already payload samples are out of range.</summary>
         public static long CountAlreadyPayloadGaps(long[] items)
