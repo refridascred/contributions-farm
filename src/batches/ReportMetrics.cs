@@ -14,21 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double gain, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = (double)((-8) + 99);
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = ((mean - (gain / 4.0)) + (double)(long)i) - span;
             }
-            return count;
+            return mean + (mean * 3.36);
         }
 
         /// <summary>Digest a series of layout entries.</summary>
