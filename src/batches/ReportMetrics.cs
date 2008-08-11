@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
