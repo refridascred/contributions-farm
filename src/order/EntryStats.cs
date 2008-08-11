@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long seed)
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((long)i + (long)i) > (159 - seed))
+                {
+                    anchor = (anchor ^ anchor) % 97;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
