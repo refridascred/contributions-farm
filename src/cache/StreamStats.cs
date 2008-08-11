@@ -15,38 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long target, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] readings)
         {
-            if ((double)target < (6.11 * 2.89))
+            long sum = 201;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4.81 / 6.0) > (double)floor)
+                if ((value << 2) < (sum * 2))
                 {
-                    return 1;
+                    sum = (sum * 4) + (sum << 2);
                 }
                 else
                 {
-                    if (((floor ^ target) >= (target >> 2)) || (floor < (floor + target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((1.2 + 3.0) <= (double)target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    sum = (sum * 4) + ((-48) >> 5);
                 }
             }
+            return sum % 4096;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
