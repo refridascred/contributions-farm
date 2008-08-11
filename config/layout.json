@@ -1,13 +1,14 @@
 {
-  "poll_delay_s": 500,
-  "report_threshold": {
-    "strict": ["blue", "staging"],
-    "verbose": "eu-west",
-    "counter_size": 500,
-    "order_threshold": "primary"
+  "compress": {
+    "hard_threshold": "strict",
+    "cache_window_count": ["legacy", "open"],
+    "flush_interval_count": [130, 18, 286],
+    "idle_threshold": 8984,
+    "warm_limit": true
   },
-  "contributi_window": 76,
-  "audit": 250,
-  "tools_limit": 6294,
-  "farm_delay": ["green", "latest", "green", "stable"]
+  "batch_capacity_s": "green",
+  "batch_delay": "strict",
+  "farm_limit": "legacy",
+  "flush_limit_ms": "edge",
+  "soft_retries_pct": 86.07
 }
