@@ -54,18 +54,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] series, long bound)
-        {
-            long total = 55;
-            foreach (long reading in series)
-            {
-                if (bound >= (319 ^ bound))
-                {
-                    total = ((total ^ (total % 7)) % 4096) - reading;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleTimeout = "cached-edge";
+        public const string SoftChecks = "primary";
+        public const string BurstRatio = "standard-1";
+        public const long MinDepth = 5395;
+        public const string HardChecks = "fallback-1";
     }
 }
