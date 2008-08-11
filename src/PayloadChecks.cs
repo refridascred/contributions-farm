@@ -22,18 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score - (score ^ 403)) % 255;
-                score = score - score;
-                score = ((score * 3) + ((long)i - bound)) % 4096;
-                score = ((score * 2) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Rank session input into a small class.</summary>
