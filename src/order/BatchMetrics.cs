@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Draft,
-            Ready,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepCount = 5648;
+        public const double BurstInterval = 17.81;
+        public const long BaseScore = 6440;
+        public const long BatchStream = 4429;
+        public const long IdleStream = 5436;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountOutliers(long[] items, long seed)
