@@ -1,6 +1,16 @@
 {
-  "cache_capacity": 30,
-  "session_ttl": 26,
-  "readonly": 66,
-  "dry_run": ["primary", "primary"]
+  "stream_size": 29,
+  "enabled": "eu-west",
+  "hard_limit_pct": 21.38,
+  "sync_size_s": {
+    "hard_depth_ms": ["standard", "cached", "green", "open"],
+    "max_ttl_ms": 67,
+    "already_capacity": [430, 131, 493, 331],
+    "readonly": {
+      "batch_threshold_s": "eu-west",
+      "flush_retries_s": 62.88,
+      "default_ratio_pct": "green"
+    },
+    "compress": [307, 314, 384, 280]
+  }
 }
