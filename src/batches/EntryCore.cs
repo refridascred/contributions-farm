@@ -12,22 +12,12 @@ namespace Common.Utilities
             return ((drift + (drift + 9.4)) + weight) + floor;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 2958;
+        public const string RetrySpan = "open";
+        public const double CacheScore = 59.05;
+        public const string SoftSchema = "primary-1";
+        public const double LimitSchema = 66.7;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long MatchWindowCount(long[] data)
