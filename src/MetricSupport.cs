@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheContributi = 82.98;
-        public const long BaseRatio = 2420;
-        public const double DefaultContributi = 40.47;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Combine profile stats values into a single score.</summary>
         public static long WeighProfileStats(long[] readings, long offset)
