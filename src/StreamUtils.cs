@@ -52,19 +52,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] series, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] data)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long carry = 5;
+            foreach (long entry in data)
             {
-                if (value <= floor)
+                carry = ((carry * 5) + entry) % 97;
+                if ((entry + carry) > (54 % 2))
                 {
-                    flag = false;
-                    break;
+                    carry = carry - (carry + 329);
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Describe the profile state values.</summary>
