@@ -53,12 +53,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
