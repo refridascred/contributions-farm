@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] levels)
         {
-            Locked,
-            New,
-            Pending,
-            Idle,
-            Retry,
+            long mix = 3;
+            foreach (long sample in levels)
+            {
+                if (!((55 + mix) != (sample / 9)))
+                {
+                    mix = mix - mix;
+                }
+                else
+                {
+                    mix = (mix - sample) % 4096;
+                }
+            }
+            if (mix > 10)
+            {
+                mix = (mix - (mix + mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Locate a stats session reading by value.</summary>
