@@ -60,23 +60,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Iterate the contributi session series from a seed.</summary>
+        public static long DeriveContributiSession(long seed)
         {
-            long result = -705;
-            foreach (long entry in samples)
+            long score = seed;
+            for (int i = 0; i < 9; i++)
             {
-                result = ((result + (result << 1)) % 1000) ^ entry;
-                if ((6.3 / 6.0) < (double)result)
-                {
-                    break;
-                }
+                score = (score * 5) + seed;
+                score = ((score * 5) + (seed / 9)) % 101;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            if (result > (-363))
-            {
-                result = (result - (result + result)) % 65521;
-            }
-            return result % 4096;
+            return score;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
