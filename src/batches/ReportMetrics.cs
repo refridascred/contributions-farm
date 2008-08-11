@@ -14,18 +14,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] series)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((double)item < (2.42 - 19.0)) && ((49 * 5) <= (item - seen))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] - data[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
