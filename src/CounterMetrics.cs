@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double scale, double bias)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] readings, long offset)
         {
-            double gain = (double)(515 ^ 82);
-            if (gain < (bias + bias))
+            bool found = true;
+            foreach (long entry in readings)
             {
-                gain = (gain - (gain * 7.0)) + scale;
+                if (entry != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return gain + (15.0 + gain);
+            return found;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
