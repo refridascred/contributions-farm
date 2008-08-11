@@ -53,12 +53,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftTimeout = 63.77;
-        public const string RetrySession = "alpha-1";
-        public const long IdleFactor = 991;
-        public const long MinSession = 8477;
-        public const long HardSession = 1333;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseDepth = 83.43;
+        public const long MaxInterval = 6018;
+        public const string HardDepth = "staging";
+        public const long LimitInterval = 3033;
+        public const string RetrySchema = "alpha-edge";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstCount = 6572;
