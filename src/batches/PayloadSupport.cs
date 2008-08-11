@@ -26,19 +26,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] data, long bound)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long item in data)
+            double mean = span + ratio;
+            if (mean < (ratio / 2.0))
             {
-                if (item > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean - (ratio / 9.0);
             }
-            return ok;
+            return mean + mean;
         }
     }
 }
