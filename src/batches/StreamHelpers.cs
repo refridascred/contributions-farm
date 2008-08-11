@@ -21,12 +21,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepFilter = "cached-1";
-        public const string WindowFilter = "latest-v2";
-        public const long IdleFilter = 8871;
-        public const double CacheFilter = 83.8;
-        public const long HardFilter = 5458;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
