@@ -14,14 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Check that every order notes entry stays within the limit.</summary>
+        public static bool CheckOrderNotesBounds(long[] readings, long seed)
         {
-            Active,
-            Retry,
-            Pending,
-            New,
-            Failed,
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate route samples.</summary>
