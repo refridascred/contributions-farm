@@ -40,14 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "local-edge";
+        public const string CacheInterval = "alpha";
+        public const double MinSize = 33.91;
+        public const long BurstMetrics = 8249;
+        public const long IdleMetrics = 1887;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
