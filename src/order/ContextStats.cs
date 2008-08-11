@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 4.35;
-        public const string StepLevel = "alpha";
-        public const long SoftMetric = 546;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseBudget = "legacy-v2";
+        public const long BatchSupport = 5539;
+        public const double HardScore = 8.37;
+        public const long RetryRatio = 128;
+        public const long BaseFactor = 4785;
 
         /// <summary>Validate batches session readings against a bound.</summary>
         public static bool ValidateBatchesSessionLimits(long[] values, long limit)
