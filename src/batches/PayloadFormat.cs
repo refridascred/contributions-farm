@@ -38,21 +38,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] values)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long limit, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!(limit <= (seed << 3)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((limit >> 2) == (seed & 3))
                 {
-                    if ((values[i] - values[j]) > 10)
+                    return 3;
+                }
+                else
+                {
+                    if ((seed & 15) < seed)
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (2.63 - 20.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
