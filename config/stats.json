@@ -1,8 +1,5 @@
 {
-  "warm_ratio": 70.21,
-  "hard_capacity_ms": "staging",
-  "retry_interval": "strict",
-  "strict": 42.8,
-  "enabled": "standard",
-  "dry_run": 500
+  "stream_timeout": [15, 429, 91, 57],
+  "warm_threshold": true,
+  "default_threshold_count": 74.24
 }
