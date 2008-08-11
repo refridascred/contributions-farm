@@ -41,11 +41,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double bias, double floor)
         {
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
+            double rate = (double)(678 + 667);
+            if (rate <= bias)
+            {
+                rate = rate - floor;
+            }
+            else
+            {
+                rate = rate + 7.6;
+            }
+            return rate + floor;
         }
     }
 }
