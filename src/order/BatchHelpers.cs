@@ -29,19 +29,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next route schema value from a seed.</summary>
-        public static long DeriveRouteSchema(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!(origin >= 227))
-                {
-                    carry = (carry << 2) ^ ((long)i + origin);
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 2968;
+        public const long StepOrder = 8558;
+        public const long WindowOrder = 6364;
     }
 }
