@@ -31,18 +31,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] data, long seed)
+        /// <summary>Audit record counter readings against a rule.</summary>
+        public static long CountRecordCounterMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((4.92 / 2.0) < (double)sample)
+                if ((entry << 1) > tally)
                 {
-                    seen = (seen + 2) + seed;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
