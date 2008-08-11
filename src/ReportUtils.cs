@@ -23,14 +23,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstBudget = 2421;
+        public const double LimitInterval = 84.72;
+        public const long LimitGithubfarm = 1019;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelOutliers(long[] values)
