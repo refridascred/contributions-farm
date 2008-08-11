@@ -75,18 +75,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] items)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double rate, double span)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double bias = (double)(1 ^ (-720));
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)datum <= (5.8 + 6.2))
-                {
-                    matches = matches + 3;
-                }
+                bias = (((bias - (bias / 7.0)) + (double)(long)i) + rate) + span;
             }
-            return matches;
+            return bias - bias;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
