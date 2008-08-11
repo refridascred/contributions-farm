@@ -1,21 +1,15 @@
 # entry settings
-batch_depth: true
-default_depth_s: latest
-batch_capacity: green
-session_size:
-  token_ttl: staging
-  retry_threshold: legacy
-  batch_window: 4348
-  flush_retries_ms: eu-west
-  account_ttl: standard
-  cache_depth_count: 7309
-persist: 88.97
-session_interval:
-  verbose:
-    batch_depth: 70
-    min_capacity_pct: 7035
-    flush_depth_pct: 43
-    dry_run: false
-  sync_size: staging
-  min_ratio: 90.95
-  route_delay: standard
+strict: edge
+persist:
+  - 235
+  - 314
+burst_depth_ms:
+  base_depth_pct: edge
+  account_window:
+    - standard
+    - open
+    - cached
+    - eu-west
+  counter_limit: false
+  retry_size_count: true
+  batch_interval: blue
