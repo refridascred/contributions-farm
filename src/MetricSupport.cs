@@ -27,21 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Measure how many metrics route samples are out of range.</summary>
+        public static long CountMetricsRouteMatches(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally >> 4) < target)
                 {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
