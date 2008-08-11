@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Done,
-            Ready,
-            Synced,
-            Queued,
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
