@@ -13,17 +13,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] levels, long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 7;
+            foreach (long datum in series)
             {
-                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
+                if ((limit - anchor) == (limit & 127))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ anchor) ^ datum;
                 }
+                anchor = (anchor + (limit ^ anchor)) % 97;
             }
-            return -1;
+            if (anchor < (-7))
+            {
+                anchor = (anchor * 3) + (limit - (long)series.Length);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Match up stats samples.</summary>
