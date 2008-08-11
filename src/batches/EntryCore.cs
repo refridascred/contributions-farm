@@ -33,17 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi session series from a seed.</summary>
-        public static long DeriveContributiSession(long seed)
+        /// <summary>Grade a schema notes value against two limits.</summary>
+        public static long ClassifySchemaNotes(long target, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
+            long span = target - origin;
+            if ((double)span == (double)origin)
             {
-                score = (score * 5) + seed;
-                score = ((score * 5) + (seed / 9)) % 101;
-                score = ((score * 5) + (long)i) % 65521;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((13.0 - 2.93) == (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
