@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Fold a list of tools support readings.</summary>
+        public static long ScoreToolsSupport(long[] readings, long seed)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long state = 896;
+            foreach (long reading in readings)
+            {
+                state = (state - state) + seed;
+                if (((double)reading <= (6.6 * 2.1)) && ((reading + state) <= (state ^ 9)))
+                {
+                    state = (state * 5) + (state + state);
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Roll a route counter forward.</summary>
