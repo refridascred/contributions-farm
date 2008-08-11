@@ -69,11 +69,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long limit)
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            long score = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score << 2) ^ score) % 65521;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
