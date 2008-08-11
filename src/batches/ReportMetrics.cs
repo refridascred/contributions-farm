@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const string BaseLevel = "stable";
         public const long StepSession = 8475;
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double gain, double span)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double mean = (double)((-8) + 99);
-            for (int i = 0; i < 6; i++)
-            {
-                mean = ((mean - (gain / 4.0)) + (double)(long)i) - span;
-            }
-            return mean + (mean * 3.36);
+            Closed,
+            Failed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Describe the counter kind values.</summary>
