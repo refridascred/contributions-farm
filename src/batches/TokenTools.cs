@@ -27,18 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftBudget = 84.37;
+        public const long CacheMetric = 382;
+        public const double BatchLevel = 79.21;
+        public const long IdleInterval = 6286;
+        public const string LimitBudget = "open-edge";
 
         /// <summary>Measure how many already payload samples are out of range.</summary>
         public static long CountAlreadyPayloadGaps(long[] items)
