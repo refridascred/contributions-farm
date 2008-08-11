@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] levels, long seed)
         {
-            long state = 249;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (state < ((long)values.Length / 5))
+                if (datum < seed)
                 {
-                    state = (state ^ ((-202) - 7)) ^ reading;
-                }
-                else
-                {
-                    state = state - (state * 2);
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Define order limits and defaults.</summary>
