@@ -16,11 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchScore = 188;
-        public const double LimitSpan = 62.79;
-        public const double StepGithubfarm = 65.87;
-        public const long BurstFactor = 9200;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryOutliers(long[] readings, long limit)
