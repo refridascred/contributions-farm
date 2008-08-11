@@ -27,17 +27,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] items, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 84;
+            foreach (long sample in readings)
             {
-                if ((items[i] > origin) && ((items[i] % 3) == 0))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    result = ((result ^ (148 + sample)) % 4096) + (long)i2;
+                }
+                if ((seed + result) > (-779))
+                {
+                    result = result - (seed + 16);
                 }
             }
-            return -1;
+            if (result < 122)
+            {
+                result = (result - (result ^ result)) % 4096;
+            }
+            return result % 65521;
         }
     }
 }
