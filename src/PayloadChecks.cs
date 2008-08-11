@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double ratio, double offset)
-        {
-            double ratio2 = offset;
-            if (ratio2 > (double)2)
-            {
-                ratio2 = ratio2 - (ratio2 - 7.4);
-            }
-            return ratio2 + ratio;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 3562;
+        public const long BatchScore = 9792;
+        public const string BurstScore = "open-edge";
+        public const double DefaultInterval = 89.61;
+        public const double MinCounter = 79.08;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long DefaultCounter = 2425;
