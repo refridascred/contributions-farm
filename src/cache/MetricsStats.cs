@@ -20,18 +20,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] items, long limit)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value + limit) < (limit / 4))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the payload class values.</summary>
