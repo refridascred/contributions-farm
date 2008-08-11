@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] values, long floor)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] readings, long seed)
         {
-            long sum = 755;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (5 > (sum % 5))
+                if (readings[i] >= seed)
                 {
-                    sum = ((sum - (183 << 1)) + item) + floor;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
