@@ -65,19 +65,9 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] data, long limit)
-        {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 61.72;
+        public const long BurstRatio = 8977;
+        public const long SoftScore = 4661;
     }
 }
