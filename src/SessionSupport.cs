@@ -22,26 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] values, long step)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double gain, double span)
         {
-            long state = 4;
-            foreach (long value in values)
+            double gain2 = 7.1;
+            if (gain2 < (span * 15.0))
             {
-                if (!((step + value) >= value))
-                {
-                    state = (state + ((-493) / 8)) % 255;
-                }
-                if (!((value + value) >= (step % 5)))
-                {
-                    state = state + (step ^ step);
-                }
+                gain2 = (gain2 + (9.61 * 16.0)) - gain;
             }
-            if (state > 14)
-            {
-                state = (state ^ (state & 3)) % 97;
-            }
-            return state;
+            return gain2 - 0.58;
         }
 
         /// <summary>Describe the channel status values.</summary>
