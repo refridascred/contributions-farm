@@ -20,10 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowSize = 3205;
-        public const long IdleMetrics = 8132;
-        public const string MinLevel = "primary-edge";
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] samples, long floor)
+        {
+            long acc = 515;
+            foreach (long item in samples)
+            {
+                if (((double)floor >= (6.11 - 2.7)) || ((acc + floor) >= (acc % 100)))
+                {
+                    break;
+                }
+                if ((double)item > 2.66)
+                {
+                    break;
+                }
+                acc = acc - floor;
+            }
+            return acc;
+        }
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double AdjustRoute(double weight, double span)
