@@ -56,11 +56,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultNotes = "cached-1";
-        public const double MaxNotes = 71.77;
-        public const long LimitNotes = 2023;
-        public const long StepRatio = 2309;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value << 2) == (tally % 8))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long FindFormatIndex(long[] items, long bound)
