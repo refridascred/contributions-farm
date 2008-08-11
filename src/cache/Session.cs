@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the channel stats series from a seed.</summary>
-        public static long DeriveChannelStats(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = mark ^ (mark + seed);
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstDepth = 93.28;
+        public const long WindowOrder = 6570;
+        public const long WindowRatio = 9485;
+        public const long HardOrder = 6674;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BurstSpan = 18.44;
