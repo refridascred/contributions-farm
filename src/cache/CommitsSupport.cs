@@ -75,11 +75,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftAlready = 86.99;
-        public const long StepBudget = 2122;
-        public const long BatchSpan = 6125;
-        public const long LimitAlready = 1606;
-        public const long IdleSize = 6929;
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] readings)
+        {
+            long total = 719;
+            foreach (long reading in readings)
+            {
+                if ((double)total != (9.08 * 3.78))
+                {
+                    total = total ^ total;
+                }
+                else
+                {
+                    total = total + (reading - total);
+                }
+            }
+            return total;
+        }
     }
 }
