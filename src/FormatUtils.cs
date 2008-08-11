@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long bound, long bound2)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] data, long target)
         {
-            long diff = bound - bound2;
-            if ((diff % 64) <= (bound2 - diff))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 * 4) >= bound2)
+                if (data[i] <= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (diff < (diff >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(1.0 >= (double)bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a layout stats.</summary>
