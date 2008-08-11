@@ -13,23 +13,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] values)
-        {
-            long mark = 184;
-            foreach (long datum in values)
-            {
-                if ((long)values.Length <= 15)
-                {
-                    mark = (mark * 3) + mark;
-                }
-                if (!((long)values.Length >= datum))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "cached-1";
+        public const long LimitFarm = 8949;
+        public const long BatchWidth = 6031;
+        public const double HardFarm = 3.86;
+        public const long MinFarm = 6069;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double BurstSchema = 94.33;
