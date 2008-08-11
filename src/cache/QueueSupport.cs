@@ -25,19 +25,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] levels, long origin)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Idle,
+            Locked,
+            Queued,
         }
     }
 }
