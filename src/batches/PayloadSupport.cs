@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] values, long limit)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long score = 531;
-            foreach (long item in values)
-            {
-                if ((1.0 - 1.27) < (double)item)
-                {
-                    score = ((score + (2 << 1)) % 255) - limit;
-                }
-            }
-            return score;
+            public bool Offset { get; set; }
+            public double Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first stream batch entry that matches the target.</summary>
