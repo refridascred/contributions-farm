@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long floor, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] values)
         {
-            if (floor < (step * 2))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor * 3) == (step - step))
+                if (!(sample >= 555))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step == (6.8 / 6.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step <= (8.0 + 4.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
