@@ -19,17 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] data, long seed)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long step, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((-4) * 4) == (step % 3))
             {
-                if ((data[i] > seed) && ((data[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)target <= (double)step)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)614 > (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
