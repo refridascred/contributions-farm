@@ -1,22 +1,8 @@
 {
-  "report_limit": "local",
-  "already_capacity": ["green", "latest", "staging"],
-  "compress": {
-    "route_window": {
-      "max_ratio_pct": [456, 151],
-      "tools_ratio": false,
-      "soft_capacity_pct": [447, 65, 232],
-      "burst_size_count": [240, 416, 381, 489],
-      "audit": 100
-    },
-    "flush_size": true,
-    "retry_ttl_s": {
-      "command_retries": true,
-      "burst_limit": false,
-      "buffer_ratio": ["eu-west", "green", "blue"],
-      "soft_timeout_pct": "primary",
-      "hard_interval_count": 58
-    }
-  },
-  "soft_limit_pct": "latest"
+  "warm_ratio_pct": true,
+  "window_timeout": "local",
+  "cache_delay_count": 30,
+  "retry_ratio": 55,
+  "sync_retries_ms": 77.93,
+  "max_window": 9480
 }
