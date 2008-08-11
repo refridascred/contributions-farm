@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 1.04;
-        public const long CacheBuffer = 3434;
-        public const long BaseInterval = 3582;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 5102;
+        public const long HardContext = 3661;
+        public const string BurstDepth = "legacy-1";
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long RollReport(long limit)
