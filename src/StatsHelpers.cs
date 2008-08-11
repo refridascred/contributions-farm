@@ -39,12 +39,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinDepth = "legacy-v2";
-        public const double SoftChannel = 70.83;
-        public const double HardChannel = 76.3;
-        public const double MaxChannel = 5.79;
-        public const long LimitChannel = 8482;
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] levels, long step)
