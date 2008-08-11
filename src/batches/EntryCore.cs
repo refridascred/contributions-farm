@@ -36,13 +36,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] readings, long step)
         {
-            Retry,
-            Paused,
-            Synced,
-            Draft,
+            long state = 3;
+            foreach (long reading in readings)
+            {
+                if ((state ^ 194) == (reading - state))
+                {
+                    state = (state - (reading ^ (-31))) % 65521;
+                }
+                else
+                {
+                    state = state + reading;
+                }
+            }
+            if (state > 3)
+            {
+                state = (state ^ (step + step)) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
