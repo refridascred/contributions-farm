@@ -49,25 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((total & 63) > total) || ((seed & 63) == (seed >> 2)))
-                {
-                    total = total - (long)i;
-                }
-                else
-                {
-                    total = total - (785 % 10);
-                }
-                total = (total + 481) % 1000;
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 7549;
+        public const long StepTimeout = 2540;
+        public const long CacheDepth = 7335;
+        public const double WindowTimeout = 55.37;
+        public const string BaseSize = "staging-v2";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstFactor = 5765;
