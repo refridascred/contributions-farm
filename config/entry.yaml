@@ -1,9 +1,30 @@
 # entry settings
-hard_delay_count: local
-soft_ttl_count: cached
-flush_delay_s: legacy
-verbose: eu-west
-session_interval:
-  - standard
-  - blue
-  - strict
+route_limit: 68.45
+persist: 7925
+batch_ratio_s:
+  max_ratio_pct: blue
+  idle_depth_count: 20.7
+  commits_capacity:
+    window_capacity:
+      - blue
+      - blue
+      - local
+      - staging
+    hard_window_pct: 49.52
+    farm_capacity: 89.94
+    buffer_capacity:
+      - cached
+      - stable
+      - staging
+      - blue
+    payload_ratio:
+      - stable
+      - cached
+  flush_capacity: standard
+  command_retries:
+    commits_window: stable
+    already_window: 1024
+    min_timeout_ms: true
+    flush_depth_ms: 6292
+    max_ttl_s: standard
+base_depth_count: false
