@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double weight, double bias)
+        /// <summary>Check that every report window entry stays within the limit.</summary>
+        public static bool CheckReportWindowLimits(long[] items, long target)
         {
-            double load = weight + (bias - weight);
-            if (load > bias)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                load = load - (double)(-1);
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (load + bias)) + (double)(long)i;
-            }
-            return load + (load * 6.7);
+            return ready;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
