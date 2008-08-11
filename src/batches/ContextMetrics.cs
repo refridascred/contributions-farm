@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] samples, long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
+                if ((((value / 5) != (value - floor)) && ((seen + 39) >= (6 & 15))) && (((7.51 + 6.5) == (double)seen) && ((floor << 1) < (9 << 1))))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a cache stats.</summary>
