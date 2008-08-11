@@ -46,17 +46,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a account payload sample.</summary>
-        public static long LookupAccountPayloadIndex(long[] values, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 48;
+            foreach (long value in series)
             {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
+                result = (((result << 2) ^ 219) % 4096) ^ value;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a commits entry.</summary>
