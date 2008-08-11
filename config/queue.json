@@ -1,5 +1,5 @@
 {
-  "batch_depth_pct": 1024,
-  "metrics_capacity": "latest",
-  "soft_threshold_count": "cached"
+  "cache_limit": ["staging", "edge", "fallback", "open"],
+  "flush_limit_ms": 2695,
+  "cache_delay_s": "green"
 }
