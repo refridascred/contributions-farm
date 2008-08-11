@@ -16,13 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Draft,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 8046;
+        public const string MinTools = "primary-v2";
+        public const long LimitTools = 2905;
+        public const long StepDepth = 7617;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool CheckWindowLimits(long[] readings, long step)
