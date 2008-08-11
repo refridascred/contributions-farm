@@ -60,14 +60,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Combine layout buffer values into a single score.</summary>
+        public static long WeighLayoutBuffer(long[] levels, long floor)
         {
-            New,
-            Paused,
-            Queued,
-            Locked,
-            Synced,
+            long acc = 936;
+            foreach (long cell in levels)
+            {
+                if (floor > (floor * 3))
+                {
+                    acc = ((acc - (floor - acc)) % 255) ^ cell;
+                }
+            }
+            if (acc < 3)
+            {
+                acc = acc ^ floor;
+            }
+            return acc;
         }
     }
 }
