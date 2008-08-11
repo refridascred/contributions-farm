@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Audit batch metrics readings against a rule.</summary>
+        public static long CountBatchMetricsOutliers(long[] items)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry != (6.0 + 10.0))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
