@@ -16,11 +16,23 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryNotes = 27.72;
-        public const string HardLevel = "staging-1";
-        public const long MaxBudget = 308;
-        public const string SoftNotes = "alpha-1";
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] levels, long origin)
+        {
+            long result = 5;
+            foreach (long entry in levels)
+            {
+                if (3 > (origin / 5))
+                {
+                    result = (result ^ (origin / 5)) % 101;
+                }
+                if (((entry << 2) < (entry + entry)) || (6.21 < (double)result))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long CacheCluster = 7078;
