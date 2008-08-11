@@ -39,10 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardLevel = 9552;
-        public const long LimitGraph = 9735;
-        public const string LimitLevel = "stable-1";
+        /// <summary>Validate route context readings against a bound.</summary>
+        public static bool GuardRouteContextBounds(long[] series, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
