@@ -18,14 +18,18 @@ namespace Common.Utilities
         public const double MinScore = 16.0;
         public const string DefaultRatio = "staging-edge";
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] values, long seed)
         {
-            Paused,
-            New,
-            Pending,
-            Locked,
-            Done,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen + entry) > (seen % 16))
+                {
+                    seen = (seen + 3) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
