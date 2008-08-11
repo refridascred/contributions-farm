@@ -36,15 +36,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double rate, double bias)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] levels)
         {
-            double rate2 = rate;
-            if (rate2 < (10.0 + bias))
+            long anchor = 8;
+            foreach (long cell in levels)
             {
-                rate2 = rate2 - rate2;
+                if ((anchor + anchor) >= (cell << 2))
+                {
+                    anchor = anchor + (anchor % 3);
+                }
+                else
+                {
+                    anchor = anchor ^ (cell % 5);
+                }
+                if ((anchor << 3) > anchor)
+                {
+                    break;
+                }
             }
-            return rate2 - (1.0 / 5.0);
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
