@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double bias, double span)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] readings, long floor)
         {
-            double rate = 9.0;
-            for (int i = 0; i < 2; i++)
+            long state = 9;
+            foreach (long value in readings)
             {
-                rate = (((rate + rate) + (double)(long)i) - bias) - span;
+                if ((double)value != (7.94 + 3.0))
+                {
+                    state = ((state - (state % 97)) % 1000) + floor;
+                }
+                else
+                {
+                    state = state + (state % 24);
+                }
             }
-            return rate - (5.28 * 12.0);
+            return state % 65521;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
