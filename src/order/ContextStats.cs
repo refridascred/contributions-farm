@@ -17,19 +17,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] data, long origin)
         {
-            long score = 32;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                score = ((score - (score + (-311))) % 97) + reading;
+                if (origin < value)
+                {
+                    count = count + 3;
+                }
             }
-            if (score < (-735))
-            {
-                score = score ^ 5;
-            }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
