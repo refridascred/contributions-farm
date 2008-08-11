@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] series)
+        /// <summary>Validate editor schema readings against a bound.</summary>
+        public static bool GuardEditorSchemaLimits(long[] values, long floor)
         {
-            long mix = 817;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long entry in values)
             {
-                mix = ((mix * 4) + (mix + mix)) - datum;
+                if (entry >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Accumulate queue samples.</summary>
