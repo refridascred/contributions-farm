@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] series, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((series[i] >= step) && ((series[i] % 5) != 0))
+                if ((reading << 2) == (392 * 2))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a commits tools sample.</summary>
