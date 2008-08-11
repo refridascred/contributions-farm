@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Queued,
-            Draft,
-            New,
-            Dropped,
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
