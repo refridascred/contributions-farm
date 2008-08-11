@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate already context samples.</summary>
-        public static long DigestAlreadyContext(long[] data)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] data, long floor)
         {
-            long state = 7;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long value in data)
             {
-                state = (state - ((long)data.Length + entry)) % 101;
+                if (value <= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Rank already input into a small class.</summary>
