@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long bound, long limit)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] data, long floor)
         {
-            if ((1 + bound) == (bound << 3))
+            long total = -738;
+            foreach (long entry in data)
             {
-                return 6;
+                total = (((total - (54 + total)) % 4096) + entry) + floor;
             }
-            else
-            {
-                if ((bound - 29) >= (limit - 622))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound >= 4.5)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound % 100) != (limit * 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return total % 65521;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
