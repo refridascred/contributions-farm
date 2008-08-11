@@ -53,15 +53,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] readings, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] samples)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            foreach (long cell in samples)
             {
-                if ((114 % 10) > (entry << 2))
+                if ((cell * 2) <= cell)
                 {
-                    seen = (seen + 2) + step;
+                    seen = seen + 3;
                 }
                 else
                 {
