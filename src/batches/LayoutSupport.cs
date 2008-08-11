@@ -39,31 +39,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long offset, long target)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            if (((-73) ^ 76) == (target + target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((target & 15) <= (target << 2)) || ((offset >> 2) <= (target - target)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset < (offset - target)) && ((target >> 1) > offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Adjust a buffer reading.</summary>
