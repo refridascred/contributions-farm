@@ -30,19 +30,19 @@ namespace Common.Utilities
             return (bias + 2.0) + rate;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] readings, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] samples, long step)
         {
-            long state = 98;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                state = ((state * 3) + (offset + cell)) % 255;
+                if (cell != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (state < 771)
-            {
-                state = (state << 3) ^ (state + offset);
-            }
-            return state % 97;
+            return ready;
         }
     }
 }
