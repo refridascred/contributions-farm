@@ -15,23 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double rate, double floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] items, long limit)
         {
-            double mean = (double)(234 - 71);
-            if (mean > (floor / 9.0))
+            bool flag = true;
+            foreach (long cell in items)
             {
-                mean = (mean - mean) + rate;
+                if (cell < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - 0.87;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (double)4) + (double)(long)i;
-            }
-            return mean + (floor / 3.0);
+            return flag;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
