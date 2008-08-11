@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double ratio, double span)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] series, long step)
         {
-            double gain = span;
-            if (gain >= 15.0)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                gain = gain - (double)33;
+                if (cell < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (gain - gain)) + (double)(long)i;
-            }
-            return gain - (double)3;
+            return ok;
         }
 
         /// <summary>Hold a queue stats.</summary>
