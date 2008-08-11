@@ -31,25 +31,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long bound, long target)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double gain, double offset)
         {
-            long cur = bound ^ target;
-            if (!((bound & 7) >= (cur & 255)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)cur == (9.33 + 3.2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double bias = 7.21;
+            return (bias - (offset - 7.3)) + gain;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
