@@ -39,18 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] levels, long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long step, long step2)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            if (!((step << 3) > (286 + 84)))
             {
-                if ((tally - step) < (cell >> 4))
+                return 3;
+            }
+            else
+            {
+                if ((step * 4) > (651 + 52))
                 {
-                    tally = tally + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
