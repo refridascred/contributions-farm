@@ -1,9 +1,12 @@
 {
-  "max_depth_pct": "open",
-  "batch_threshold": {
-    "graph_window": "blue",
-    "sync_threshold_ms": 3,
-    "already_ttl": "staging"
+  "min_capacity": false,
+  "default_timeout_s": {
+    "max_ratio": "standard",
+    "flush_capacity": 6963,
+    "persist": true,
+    "max_capacity_count": 17,
+    "soft_ratio_ms": "legacy",
+    "min_limit_ms": 500
   },
-  "dry_run": "legacy"
+  "readonly": "stable"
 }
