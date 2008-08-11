@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
+            Retry,
+            Dropped,
+            Closed,
+            Idle,
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
