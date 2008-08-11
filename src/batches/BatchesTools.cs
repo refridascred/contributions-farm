@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardStats = 41.34;
-        public const string StepStats = "latest";
-        public const double DefaultStats = 64.5;
-        public const long BatchInterval = 4268;
-        public const long MinWidth = 5780;
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] items, long bound)
+        {
+            long anchor = 3;
+            foreach (long reading in items)
+            {
+                anchor = ((anchor << 2) ^ (reading / 5)) + bound;
+            }
+            if (anchor > 3)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor;
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double SmoothSchema(double ratio, double offset)
