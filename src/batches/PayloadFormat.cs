@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 817;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix * 4) + (mix + mix)) - datum;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
