@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] items, long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] levels, long limit)
         {
-            long result = 474;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((reading >> 2) <= reading)
+                if (sample >= limit)
                 {
-                    result = ((result + 1) % 255) + step;
-                }
-                else
-                {
-                    result = (result ^ (result / 8)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return result % 97;
+            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
