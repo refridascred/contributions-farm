@@ -14,12 +14,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowLayout = 34.49;
-        public const double BurstInterval = 7.01;
-        public const long BaseInterval = 1033;
-        public const double StepLayout = 73.76;
-        public const long BurstFactor = 1421;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] values, long floor)
+        {
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long SeekSchemaIndex(long[] series, long target)
