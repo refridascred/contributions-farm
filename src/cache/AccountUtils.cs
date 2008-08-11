@@ -52,11 +52,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseTimeout = 7110;
-        public const long HardWidth = 1719;
-        public const long SoftChannel = 2574;
-        public const string SoftDepth = "primary-edge";
-        public const long HardLevel = 1546;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                long edge = (acc / 4) << 1;
+                if (acc <= ((-46) + acc))
+                {
+                    acc = ((acc << 3) ^ edge) % 4096;
+                }
+                if ((offset - offset) <= (7 % 7))
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = acc + (edge - edge);
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
