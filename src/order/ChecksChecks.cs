@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of account contributi readings.</summary>
-        public static long CompareAccountContributiCount(long[] items)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits / 2) != (917 + bound))
                 {
-                    if ((items[i] ^ items[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
