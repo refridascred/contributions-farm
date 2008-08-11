@@ -25,38 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a record token pair into a bucket.</summary>
-        public static long RankRecordToken(long target, long bound)
+        /// <summary>Project the next window graph value.</summary>
+        public static double BlendWindowGraph(double gain, double offset)
         {
-            if ((bound - bound) > (25 + target))
+            double weight = offset - (double)5;
+            if (weight > (double)77)
             {
-                return 8;
+                weight = weight + (offset / 9.0);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((target + bound) < target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound - 5) > ((-973) << 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((3.0 / 3.0) >= (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                weight = weight - (double)(long)i;
             }
+            return weight - (gain / 8.0);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
