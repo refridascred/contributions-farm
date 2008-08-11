@@ -15,11 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstSchema = "open-1";
-        public const long LimitCount = 9757;
-        public const long IdleSchema = 4347;
-        public const long StepSchema = 8779;
+        /// <summary>Compare every pair of entry editor readings.</summary>
+        public static long PairEntryEditorCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long OverlapProfileCount(long[] values)
