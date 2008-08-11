@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] items)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long offset, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((target - offset) < (9 + offset))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((target - offset) <= offset))
                 {
-                    if ((items[i] + items[j]) != 18)
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + offset) <= target)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((((-5) ^ target) >= target) || ((target + offset) >= (54 ^ target)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of report layout readings.</summary>
