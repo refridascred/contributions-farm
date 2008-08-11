@@ -45,14 +45,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] readings)
         {
-            Dropped,
-            Draft,
-            New,
-            Paused,
-            Active,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (!(item >= (item - item)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
