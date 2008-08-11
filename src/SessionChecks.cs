@@ -13,39 +13,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long floor, long origin)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double weight, double offset)
         {
-            long span = floor ^ origin;
-            if ((origin - span) > (span - origin))
+            double bias = offset + weight;
+            if (bias < weight)
             {
-                return 2;
+                bias = bias + bias;
             }
-            else
-            {
-                if (!((span & 1) != (span ^ 9)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin + 71) != (7 - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (13.0 > (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return bias - bias;
         }
 
         /// <summary>Describe the token level values.</summary>
