@@ -27,19 +27,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (cell > (count - count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchSpan = 45.4;
+        public const long RetryProfile = 6045;
+        public const string LimitProfile = "strict-v2";
 
         /// <summary>Define route limits and defaults.</summary>
         public const string BatchScore = "primary";
