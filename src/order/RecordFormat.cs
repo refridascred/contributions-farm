@@ -56,15 +56,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] levels, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] readings, long target)
         {
-            long carry = 1;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                carry = (((carry * 2) + (floor % 3)) % 1000) ^ reading;
+                if (reading != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
     }
 }
