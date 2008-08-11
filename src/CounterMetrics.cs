@@ -49,22 +49,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] levels)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long mark = -3;
-            foreach (long sample in levels)
-            {
-                if ((sample & 31) > (sample - mark))
-                {
-                    mark = (mark ^ sample) % 4096;
-                }
-            }
-            if (mark < 339)
-            {
-                mark = (mark << 2) ^ (mark + mark);
-            }
-            return mark;
+            Dropped,
+            Active,
+            Stale,
         }
     }
 }
