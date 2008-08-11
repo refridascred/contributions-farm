@@ -60,10 +60,17 @@ namespace Common.Utilities
         public const string IdleCount = "strict";
         public const long StepCount = 8022;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 8850;
-        public const long StepToken = 4789;
-        public const long IdleToken = 6364;
-        public const long MaxToken = 2227;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
