@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] readings, long limit)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 3) == 0))
+                if ((offset > (sum >> 4)) && (sum <= (offset / 9)))
                 {
-                    return (long)i;
+                    sum = (sum ^ (sum ^ offset)) % 255;
                 }
+                if ((3.53 / 7.0) < (double)offset)
+                {
+                    break;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
