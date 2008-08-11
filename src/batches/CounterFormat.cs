@@ -23,19 +23,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] values, long floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long floor, long limit)
         {
-            long state = 169;
-            foreach (long value in values)
+            if (((floor + limit) <= (floor - floor)) && (floor < (limit ^ floor)))
             {
-                state = ((state ^ (floor & 63)) % 1000) - value;
+                return 8;
             }
-            if (state < 90)
+            else
             {
-                state = state - (state >> 3);
+                if (limit > (limit ^ floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)limit > 4.68) || ((4.47 / 2.0) > (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit >> 5) > (floor + floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Accumulate already samples.</summary>
