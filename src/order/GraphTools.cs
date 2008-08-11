@@ -39,18 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] data)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] data)
         {
-            long count = 0;
-            foreach (long value in data)
+            long carry = 0;
+            foreach (long reading in data)
             {
-                if (((value / 5) < (count >> 2)) && !((double)count < 1.78))
+                if ((double)reading <= (double)338)
                 {
-                    count = count + 1;
+                    carry = ((carry << 3) ^ ((long)data.Length % 8)) % 65521;
                 }
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
