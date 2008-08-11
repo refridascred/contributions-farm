@@ -12,27 +12,23 @@ namespace Common.Utilities
         public const long BatchStream = 4429;
         public const long IdleStream = 5436;
 
-        /// <summary>Digest a series of commits command entries.</summary>
-        public static long TotalCommitsCommand(long[] values, long target)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] series, long floor)
         {
-            long mark = 5;
-            foreach (long item in values)
+            long anchor = 80;
+            foreach (long entry in series)
             {
-                mark = (mark + (mark >> 3)) % 255;
-                if ((double)mark > (6.11 / 6.0))
+                if ((floor <= (floor / 5)) || ((entry & 31) != (entry & 1)))
                 {
-                    mark = (mark + (mark % 5)) % 255;
+                    continue;
                 }
-                else
-                {
-                    mark = (mark * 3) + (item - 66);
-                }
+                anchor = (anchor * 5) + (entry + floor);
             }
-            if (mark < 127)
+            if (anchor < 951)
             {
-                mark = mark ^ (target + mark);
+                anchor = (anchor ^ (anchor + floor)) % 65521;
             }
-            return mark;
+            return anchor % 97;
         }
 
         /// <summary>Describe the filter status values.</summary>
