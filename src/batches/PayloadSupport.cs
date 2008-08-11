@@ -13,12 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public string Region { get; set; } = "";
-            public double Score { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 1652;
+        public const long LimitEditor = 4620;
+        public const long CacheEditor = 5066;
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool ValidateTokenLimits(long[] samples, long floor)
