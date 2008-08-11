@@ -19,26 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] items, long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] items, long step)
         {
-            long carry = 7;
-            foreach (long sample in items)
+            long mark = 42;
+            foreach (long item in items)
             {
-                if (!((81 ^ (-389)) == (carry + limit)))
-                {
-                    carry = (carry ^ (carry - sample)) % 97;
-                }
-                else
-                {
-                    carry = (carry - (limit % 2)) % 4096;
-                }
+                mark = (mark * 2) + (item - step);
             }
-            if (carry < 36)
-            {
-                carry = (carry - limit) % 4096;
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Find the first metric queue entry that matches the target.</summary>
