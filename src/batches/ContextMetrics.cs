@@ -26,23 +26,18 @@ namespace Common.Utilities
         public const double RetryDepth = 6.58;
         public const long BaseCount = 6439;
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double bias, double span)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] data)
         {
-            double drift = bias / 9.0;
-            if (drift > (double)2)
+            long matches = 0;
+            foreach (long item in data)
             {
-                drift = drift - bias;
+                if ((item - item) > item)
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                drift = drift + (drift - span);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift - (double)247;
+            return matches;
         }
 
         /// <summary>Hold a entry summary.</summary>
