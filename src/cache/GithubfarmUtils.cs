@@ -62,12 +62,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] data, long offset)
         {
-            Stale,
-            Ready,
-            Synced,
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
