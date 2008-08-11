@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] samples)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (324 >= (matches - matches))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
