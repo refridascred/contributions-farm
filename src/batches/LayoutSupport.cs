@@ -66,13 +66,18 @@ namespace Common.Utilities
             return load + (bias * 7.48);
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] values)
         {
-            Paused,
-            Pending,
-            Done,
-            Ready,
+            long sum = 888;
+            foreach (long item in values)
+            {
+                if (((sum + (-453)) < sum) || ((item % 12) > (532 + item)))
+                {
+                    sum = ((sum * 4) + (item - sum)) % 1000;
+                }
+            }
+            return sum;
         }
     }
 }
