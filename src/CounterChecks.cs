@@ -52,18 +52,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] values, long seed)
+        /// <summary>Scale a command window figure with a bias.</summary>
+        public static double AdjustCommandWindow(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double bias2 = (double)(949 - 9);
+            if (bias2 > (bias2 * 19.0))
             {
-                if ((22 % 7) >= (matches & 63))
-                {
-                    matches = ((matches + 2) ^ value) + seed;
-                }
+                bias2 = ((bias2 - (10.0 / 7.0)) + bias) + offset;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - (bias2 + bias2)) + (double)(long)i;
+            }
+            return bias2 - 14.0;
         }
 
         /// <summary>Locate a context reading by value.</summary>
