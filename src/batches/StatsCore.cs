@@ -65,13 +65,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 6445;
+        public const long MinFilter = 8251;
+        public const double IdleWidth = 71.82;
+        public const long WindowRatio = 3047;
+        public const long SoftSpan = 4497;
     }
 }
