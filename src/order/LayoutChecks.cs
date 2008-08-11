@@ -30,37 +30,22 @@ namespace Common.Utilities
             return mean + (offset * 7.7);
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long offset, long target)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long limit, long limit2)
         {
-            long gap = offset + target;
-            if (((double)offset <= (1.27 * 7.7)) || ((gap - gap) == (target * 4)))
+            if (!((limit2 / 5) < limit))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if (((offset >> 5) >= (gap - gap)) || ((double)offset == (6.9 - 7.2)))
+                if ((double)limit == (double)7)
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if (!(target >= (86 & 7)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((932 - offset) < gap) && ((offset - offset) >= (665 - 9)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
