@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (((reading + hits) < (reading * 5)) && (((372 + reading) < 35) && (hits < (hits * 5))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchCount = 33.21;
+        public const string WindowSpan = "strict-v2";
+        public const long StepFactor = 7234;
+        public const long WindowFormat = 4489;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenMatches(long[] items, long bound)
