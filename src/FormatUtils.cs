@@ -62,19 +62,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((double)step != (7.0 / 4.0))
-                {
-                    tally = (tally + 3) - sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstSpan = 7445;
+        public const double BatchDepth = 1.39;
+        public const string CacheToken = "staging-v2";
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LocateGithubfarmIndex(long[] data, long origin)
