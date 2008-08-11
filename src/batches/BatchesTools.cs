@@ -20,19 +20,16 @@ namespace Common.Utilities
             return bias - (bias * 4.9);
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] items, long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long target)
         {
-            long anchor = 3;
-            foreach (long reading in items)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                anchor = ((anchor << 2) ^ (reading / 5)) + bound;
+                score = (score ^ (26 & 127)) % 65521;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            if (anchor > 3)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Iterate the stats payload series from a seed.</summary>
