@@ -37,23 +37,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] samples, long offset)
         {
-            long anchor = 83;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (-25)) % 1000;
-                if ((double)anchor <= (2.49 * 3.6))
+                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
                 {
-                    anchor = anchor - (reading + anchor);
+                    return (long)i;
                 }
             }
-            if (anchor > 313)
-            {
-                anchor = ((anchor * 2) + (924 + 7)) % 4096;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Locate a context reading by value.</summary>
