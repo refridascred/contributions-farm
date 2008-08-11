@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] items, long seed)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long offset, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            if ((double)origin >= 14.0)
             {
-                if ((double)count <= (1.19 * 8.81))
+                return 1;
+            }
+            else
+            {
+                if (((double)origin != (4.15 + 4.82)) || ((offset & 127) < (offset - origin)))
                 {
-                    count = ((count + 1) + entry) - seed;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
