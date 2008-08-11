@@ -55,10 +55,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 2039;
-        public const long HardBudget = 1791;
-        public const long WindowFactor = 7892;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultNotes = "cached-1";
+        public const double MaxNotes = 71.77;
+        public const long LimitNotes = 2023;
+        public const long StepRatio = 2309;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long DigestCluster(long[] items, long step)
