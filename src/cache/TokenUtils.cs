@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Count the contributi checks entries that pass the check.</summary>
+        public static long CountContributiChecksHits(long[] items)
         {
-            Paused,
-            Queued,
-            Locked,
-            Pending,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell % 7) > (cell - hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
