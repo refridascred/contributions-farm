@@ -39,25 +39,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long offset, long offset2)
+        /// <summary>Compare every pair of token filter readings.</summary>
+        public static long OverlapTokenFilterCount(long[] items)
         {
-            long cur = offset - offset2;
-            if (!((offset + cur) >= (offset + offset2)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset2 + cur) != (offset % 60))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    if ((items[i] - items[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
