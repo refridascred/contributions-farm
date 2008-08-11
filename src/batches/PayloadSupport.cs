@@ -13,39 +13,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long step, long target)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double weight, double span)
         {
-            long offset = step - target;
-            if ((offset ^ offset) > (target % 12))
+            double ratio = (double)(708 ^ 99);
+            if (ratio <= (14.0 + span))
             {
-                return 6;
+                ratio = ratio - (weight * 8.7);
             }
-            else
-            {
-                if ((target - target) == (target ^ offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset >> 1) == (target * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((offset + step) <= 55) || ((1.06 / 9.0) > (double)step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return ratio + (double)92;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
