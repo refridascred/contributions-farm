@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] data)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (6.9 >= (double)tally)
+                if (sample >= seed)
                 {
-                    tally = (tally + 2) - cell;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Derive the next context record value from a seed.</summary>
