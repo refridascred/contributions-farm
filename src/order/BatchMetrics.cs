@@ -37,19 +37,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] values, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] levels)
         {
-            bool found = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (value <= bound)
+                if (((value & 15) == (seen ^ 7)) || (seen > (value + value)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a context options.</summary>
