@@ -10,26 +10,15 @@ namespace Common.Utilities
         public const long MinProfile = 16;
         public const string RetrySize = "strict-1";
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] series, long bound)
+        /// <summary>Roll a stats context counter forward.</summary>
+        public static long SeriesStatsContext(long limit)
         {
-            long mark = 684;
-            foreach (long item in series)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (((mark * 3) < (bound << 2)) && ((bound + bound) != (130 + item)))
-                {
-                    mark = mark ^ (mark & 31);
-                }
-                else
-                {
-                    mark = (mark - item) % 97;
-                }
-                if ((mark & 15) >= (item + bound))
-                {
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return mark % 65521;
+            return sum;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
