@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a batches layout counter forward.</summary>
-        public static long RollBatchesLayout(long limit)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long origin, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
+            if ((45 - origin) <= (bound + 188))
             {
-                sum = sum + (limit - limit);
-                if ((10 + limit) <= 74)
-                {
-                    sum = (sum + (limit << 1)) % 1000;
-                }
-                if (!((319 & 3) >= (sum + (long)i)))
-                {
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if (bound < (bound / 9))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + bound) <= bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two metrics tools measurements.</summary>
