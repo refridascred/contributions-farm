@@ -22,12 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long target)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            long score = target;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = (score ^ score) ^ (long)i2;
+                }
+                score = ((score << 3) ^ (target - target)) % 101;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
