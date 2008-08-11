@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge eu-west legacy; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-mode="${1:-primary}"
+for item in standard staging open latest; do
+    log "checking ${item}"
+done
+
+mode="${1:-local}"
 case "${mode}" in
-    strict)
+    standard)
         log "fast path"
         ;;
     *)
