@@ -19,30 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((((long)i + (long)i) > (score - offset)) && (((long)i & 31) <= (score << 1)))
-                {
-                    score = score + 563;
-                    score = (score ^ ((long)i + score)) % 97;
-                }
-                if (((long)i - score) <= score)
-                {
-                    score = score ^ score;
-                    continue;
-                }
-                if (((long)i + score) < score)
-                {
-                    score = (score << 3) ^ (offset + offset);
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 65521;
+                acc = acc + acc;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Hold a schema info.</summary>
