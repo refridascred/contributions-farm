@@ -53,24 +53,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long seed, long floor)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            if ((3 / 7) != (floor ^ seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((7.3 - 9.43) <= (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Active,
+            Retry,
+            Draft,
+            Done,
         }
     }
 }
