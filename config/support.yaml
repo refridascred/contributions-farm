@@ -1,10 +1,12 @@
 # support settings
-poll_size_ms: false
-editor_ratio: 1938
-sync_retries_count: true
-graph_interval: 1024
-warm_capacity:
-  - blue
-  - strict
-  - latest
-  - staging
+default_interval_ms: cached
+hard_size_count:
+  sync_ratio_count:
+    - legacy
+    - cached
+    - local
+  persist:
+    - 474
+    - 31
+  burst_window_count: eu-west
+idle_timeout_ms: standard
