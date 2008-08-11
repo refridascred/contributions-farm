@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] items, long bound)
+        /// <summary>Derive the next route format value from a seed.</summary>
+        public static long RollRouteFormat(long offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((reading << 2) == (392 * 2))
-                {
-                    matches = (matches + 3) - bound;
-                }
+                sum = (sum + sum) % 4096;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Look up the position of a commits tools sample.</summary>
