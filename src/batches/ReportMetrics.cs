@@ -47,18 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] items, long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item / 6) > (seen + 34))
+                if ((readings[i] == origin) && ((readings[i] % 3) == 0))
                 {
-                    seen = (seen + 1) + limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
