@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] samples)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long acc = -9;
-            foreach (long item in samples)
-            {
-                acc = ((acc * 2) + (52 - item)) % 255;
-            }
-            if (acc < 15)
-            {
-                acc = acc + (acc << 2);
-            }
-            return acc;
+            Closed,
+            Synced,
+            Pending,
+            New,
+            Draft,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
