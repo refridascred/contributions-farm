@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseLevel = "alpha-1";
-        public const string BurstBudget = "cached-1";
-        public const string IdleGithubfarm = "local";
-        public const long BatchGithubfarm = 362;
-        public const long CacheGithubfarm = 1926;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepCount = 8687;
+        public const long IdleContributi = 1144;
+        public const double RetryContributi = 91.61;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long WeighPayload(long[] levels)
