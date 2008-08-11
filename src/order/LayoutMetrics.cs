@@ -23,18 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] items)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double rate, double span)
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((71 / 2) >= entry)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double bias = (span * 18.0) * 9.9;
+            return (bias + 2.0) + rate;
         }
 
         /// <summary>Fold a list of record readings.</summary>
