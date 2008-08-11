@@ -13,15 +13,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] series, long bound)
+        /// <summary>Roll a context cache counter forward.</summary>
+        public static long StepContextCache(long offset)
         {
-            long mark = 269;
-            foreach (long value in series)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark + 362) - value) - bound;
+                state = state - (state << 3);
+                state = ((state * 5) + (long)i) % 101;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Derive the next route schema value from a seed.</summary>
