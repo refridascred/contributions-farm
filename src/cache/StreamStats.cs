@@ -34,18 +34,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((6.18 + 18.0) > (double)datum)
-                {
-                    hits = (hits + 1) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 8075;
+        public const string DefaultWidth = "legacy";
+        public const long MinSize = 3221;
     }
 }
