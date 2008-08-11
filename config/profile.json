@@ -1,16 +1,11 @@
 {
-  "poll_size": ["staging", "primary"],
-  "buffer_delay": "cached",
-  "default_delay": {
-    "retry_ttl": [92, 94, 206, 486],
-    "cache_depth_pct": 10.97,
-    "route_interval": [392, 51, 34, 21],
-    "strict": {
-      "default_threshold": "standard",
-      "layout_depth": [298, 397],
-      "burst_size_pct": 87
-    },
-    "queue_delay": 8751
-  },
-  "poll_limit": [450, 471]
+  "githubfarm_ratio": 100,
+  "soft_delay": 100,
+  "burst_ratio": 23.02,
+  "report_timeout": [210, 447, 33, 378],
+  "profile_capacity": {
+    "stats_retries": [23, 104, 292, 39],
+    "dry_run": ["primary", "legacy", "strict"],
+    "entry_interval": ["local", "stable", "standard"]
+  }
 }
