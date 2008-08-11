@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] readings, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (!((5.6 - 0.93) <= (double)sample) || !((limit % 3) > (matches >> 1)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate session samples.</summary>
