@@ -28,15 +28,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a window record reading.</summary>
-        public static double ProjectWindowRecord(double weight, double span)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double scale = (span / 7.0) - span;
-            if (scale <= (double)472)
-            {
-                scale = scale + (span + weight);
-            }
-            return scale + (scale * 13.0);
+            Stale,
+            Synced,
+            Retry,
+            Pending,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
