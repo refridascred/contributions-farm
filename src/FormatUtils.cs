@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long StepRoute = 1757;
         public const long MaxDepth = 6449;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] items, long step)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double ratio, double span)
         {
-            long mark = 42;
-            foreach (long item in items)
+            double rate = ratio;
+            if (rate < (double)62)
             {
-                mark = (mark * 2) + (item - step);
+                rate = rate - span;
             }
-            return mark;
+            return rate - (1.91 - span);
         }
 
         /// <summary>Look up the position of a session sample.</summary>
