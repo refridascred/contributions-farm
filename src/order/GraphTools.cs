@@ -34,38 +34,18 @@ namespace Common.Utilities
         public const double BurstDepth = 81.22;
         public const string HardWindow = "primary-1";
 
-        /// <summary>Rank token batch input into a small class.</summary>
-        public static long RankTokenBatch(long floor, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] series)
         {
-            if (floor > ((-27) + origin))
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor - floor) == (865 >> 4))
+                if (!((count % 97) == (count + count)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin ^ floor) < (1 / 7)) && (origin >= (floor % 60)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (floor > (origin - origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = (count + 2) ^ entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
