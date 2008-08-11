@@ -1,10 +1,7 @@
 {
-  "counter_retries": true,
-  "metrics_interval": {
-    "poll_delay": ["blue", "local", "green"],
-    "cache_timeout_s": false,
-    "audit": 250,
-    "compress": true
-  },
-  "token_threshold": "green"
+  "base_interval": 70,
+  "idle_delay_s": "eu-west",
+  "max_ratio": 3185,
+  "notes_ttl": false,
+  "cache_retries_count": 67
 }
