@@ -29,17 +29,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] series, long target)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Done,
+            Synced,
+            Queued,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
