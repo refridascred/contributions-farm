@@ -56,18 +56,17 @@ namespace Common.Utilities
         public const long RetryFilter = 715;
         public const double DefaultFactor = 39.95;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] levels, long floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading - 4) <= (floor - (long)levels.Length))
+                if (data[i] <= seed)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
