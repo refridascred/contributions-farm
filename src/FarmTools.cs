@@ -26,13 +26,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Classify a farm report pair into a bucket.</summary>
+        public static long GradeFarmReport(long seed, long offset)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            long edge = seed ^ offset;
+            if ((double)offset != (5.4 - 0.5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset & 127) < (edge + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
