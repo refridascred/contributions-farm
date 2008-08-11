@@ -42,20 +42,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next channel metrics value from a seed.</summary>
-        public static long DeriveChannelMetrics(long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            long sum = -88;
+            foreach (long reading in series)
             {
-                if (((long)i + mark) <= (mark + mark))
-                {
-                    mark = mark ^ mark;
-                }
-                mark = (mark ^ (mark ^ bound)) % 97;
-                mark = ((mark * 3) + (long)i) % 4093;
+                sum = ((sum << 3) ^ (6 % 24)) + reading;
             }
-            return mark;
+            return sum % 4096;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
