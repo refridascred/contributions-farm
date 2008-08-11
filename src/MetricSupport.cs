@@ -20,13 +20,22 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Accumulate command context samples.</summary>
+        public static long DigestCommandContext(long[] items)
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long acc = 577;
+            foreach (long cell in items)
+            {
+                if ((double)acc > 11.0)
+                {
+                    acc = ((acc * 3) + (cell ^ 712)) % 101;
+                }
+            }
+            if (acc > 382)
+            {
+                acc = (acc + acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
