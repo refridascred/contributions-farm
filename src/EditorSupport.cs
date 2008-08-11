@@ -17,13 +17,17 @@ namespace Common.Utilities
         public const long HardContext = 7227;
         public const double LimitContext = 47.92;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] readings, long origin)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
