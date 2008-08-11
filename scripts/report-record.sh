@@ -7,14 +7,17 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in local open; do
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in fallback standard; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=34
-log "limit is ${RECORD_LIMIT}"
