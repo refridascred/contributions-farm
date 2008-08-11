@@ -69,38 +69,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a schema batches pair into a bucket.</summary>
-        public static long GradeSchemaBatches(long target, long seed)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] series, long bound)
         {
-            if (((seed - seed) > target) && ((seed - 0) > ((-361) % 97)))
+            long mix = 172;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (3.0 >= (double)seed)
+                if ((mix << 3) < (datum / 8))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed >= (1.68 - 16.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target & 3) >= (target % 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mix = mix - bound;
                 }
             }
+            if (mix > 447)
+            {
+                mix = (mix ^ (bound + bound)) % 4096;
+            }
+            return mix % 97;
         }
     }
 }
