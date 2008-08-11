@@ -1,9 +1,8 @@
 {
-  "cache_size_pct": ["eu-west", "stable"],
-  "burst_retries_ms": {
-    "readonly": "latest",
-    "strict": ["stable", "fallback"],
-    "enabled": 250
-  },
-  "account_retries": 93
+  "burst_ttl": 24,
+  "dry_run": [436, 331],
+  "audit": 5225,
+  "cache_delay": 21,
+  "queue_timeout": 7,
+  "batch_retries_s": 1024
 }
