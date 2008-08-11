@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 5102;
-        public const long HardContext = 3661;
-        public const string BurstDepth = "legacy-1";
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TallyFilter(long[] data, long bound)
