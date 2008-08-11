@@ -36,23 +36,39 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] levels)
+        /// <summary>Rank channel format input into a small class.</summary>
+        public static long RankChannelFormat(long bound, long bound2)
         {
-            long mix = 0;
-            foreach (long item in levels)
+            long cur = bound + bound2;
+            if (((9.8 * 14.0) <= (double)cur) || (bound2 >= (bound % 2)))
             {
-                if ((double)item > (2.23 * 20.0))
+                return 1;
+            }
+            else
+            {
+                if (((66 * 2) > (cur / 6)) || ((double)bound >= (8.57 - 6.0)))
                 {
-                    mix = (mix - 6) % 4096;
-                    continue;
+                    return 2;
                 }
-                if ((double)item != (4.7 + 0.7))
+                else
                 {
-                    mix = ((mix << 2) ^ (mix + mix)) % 255;
+                    if (!((97 ^ cur) == (cur + (-524))))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)cur < 2.0)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
