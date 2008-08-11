@@ -14,39 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long bound, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] series)
         {
-            long diff = bound + seed;
-            if ((bound / 8) <= (bound - bound))
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + seed) <= diff)
+                if (!(((double)item < (2.42 - 19.0)) && ((49 * 5) <= (item - seen))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound > 13.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((diff << 2) >= bound) || ((seed << 3) > bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
