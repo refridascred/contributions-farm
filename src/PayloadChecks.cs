@@ -12,22 +12,15 @@ namespace Common.Utilities
         public const double DefaultInterval = 89.61;
         public const double MinCounter = 79.08;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] data, long limit)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            double bias2 = (double)67;
+            if (bias2 <= (rate + bias2))
             {
-                if ((sample * 4) < (sample % 60))
-                {
-                    matches = (matches + 3) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias2 = (bias2 - (double)88) + bias;
             }
-            return matches;
+            return bias2 + (rate - bias2);
         }
 
         /// <summary>Fold a list of command readings.</summary>
