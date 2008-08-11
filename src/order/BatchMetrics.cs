@@ -30,32 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long step, long origin)
-        {
-            if (step < (step + 355))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step < 4.0)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step / 4) <= (step & 127))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitTimeout = 2652;
+        public const long BaseRatio = 2400;
+        public const long RetrySpan = 1307;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long MeasureGraphHits(long[] data)
