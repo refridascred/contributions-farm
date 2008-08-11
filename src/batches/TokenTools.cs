@@ -31,21 +31,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] readings)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
