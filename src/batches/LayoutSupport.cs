@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate channel batches readings against a bound.</summary>
-        public static bool ValidateChannelBatchesLimits(long[] samples, long offset)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Idle,
+            Failed,
         }
 
         /// <summary>Validate route context readings against a bound.</summary>
