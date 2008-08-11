@@ -52,20 +52,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Scale a command window figure with a bias.</summary>
-        public static double AdjustCommandWindow(double bias, double offset)
-        {
-            double bias2 = (double)(949 - 9);
-            if (bias2 > (bias2 * 19.0))
-            {
-                bias2 = ((bias2 - (10.0 / 7.0)) + bias) + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - (bias2 + bias2)) + (double)(long)i;
-            }
-            return bias2 - 14.0;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowFarm = "legacy-edge";
+        public const double BaseScore = 48.53;
+        public const long SoftFarm = 9184;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long SeekContextIndex(long[] series, long offset)
