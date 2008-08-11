@@ -1,10 +1,5 @@
 # entry settings
-stats_retries: 68.87
-readonly: 30
-batch_delay_ms:
-  audit: standard
-  burst_interval_ms: true
-  readonly: 1024
-  max_limit: 2155
-metrics_limit: false
-dry_run: true
+compress: false
+readonly: 49.59
+warm_threshold: 21.29
+persist: 22.97
