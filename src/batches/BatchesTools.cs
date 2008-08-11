@@ -29,13 +29,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
