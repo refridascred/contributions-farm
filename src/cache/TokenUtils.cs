@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi checks entries that pass the check.</summary>
-        public static long CountContributiChecksHits(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((cell % 7) > (cell - hits))
+                if (floor <= (tally << 2))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
