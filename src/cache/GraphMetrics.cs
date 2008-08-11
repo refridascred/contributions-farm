@@ -31,19 +31,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double gain, double floor)
+        /// <summary>Audit notes channel readings against a rule.</summary>
+        public static long CountNotesChannelMatches(long[] readings, long limit)
         {
-            double gain2 = 12.0;
-            if (gain2 < (gain * 8.0))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                gain2 = gain2 + (gain + gain2);
+                if (limit <= (seen * 2))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (gain2 / 7.0);
-            }
-            return gain2 - (floor + floor);
+            return seen;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
