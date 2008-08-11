@@ -20,23 +20,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a buffer metric reading.</summary>
-        public static double ProjectBufferMetric(double bias, double span)
-        {
-            double rate = span;
-            if (rate < bias)
-            {
-                rate = rate + rate;
-            }
-            else
-            {
-                rate = rate - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (bias - span)) - (double)(long)i;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 2529;
+        public const long MaxLevel = 9668;
+        public const string StepCounter = "legacy-v2";
+        public const long MinInterval = 746;
+        public const long HardDepth = 6049;
     }
 }
