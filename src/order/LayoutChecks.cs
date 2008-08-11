@@ -62,24 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long limit, long target)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            if (47 >= (target << 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit + target) >= 73)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
