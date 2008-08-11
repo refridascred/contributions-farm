@@ -36,19 +36,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] levels, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (value < origin)
+                if ((tally + tally) == (reading >> 2))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) - offset;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Count token farm pairs that satisfy a relation.</summary>
