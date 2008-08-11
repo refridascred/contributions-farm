@@ -41,18 +41,12 @@ namespace Common.Utilities
         public const string BatchContributi = "latest-edge";
         public const long BaseContributi = 5573;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] values)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long state = 655;
-            foreach (long value in values)
-            {
-                if ((1.06 > (double)(long)values.Length) || ((value - state) == (state & 15)))
-                {
-                    state = ((state * 5) + (state % 10)) % 1000;
-                }
-            }
-            return state % 4096;
+            Retry,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
