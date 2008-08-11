@@ -26,19 +26,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double ratio, double offset)
+        /// <summary>Iterate the stats payload series from a seed.</summary>
+        public static long SeriesStatsPayload(long seed)
         {
-            double scale = (double)(4 / 7);
-            if (scale >= scale)
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                scale = (scale - scale) - offset;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (ratio / 7.0)) + (double)(long)i;
-            }
-            return scale + 3.94;
+            return mix;
         }
     }
 }
