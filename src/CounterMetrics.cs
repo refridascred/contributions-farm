@@ -58,9 +58,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinAccount = 44.49;
-        public const double StepLevel = 67.58;
-        public const long StepAccount = 7149;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
