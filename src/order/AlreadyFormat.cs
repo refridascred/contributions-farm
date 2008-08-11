@@ -55,14 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Synced,
-            Dropped,
-            Idle,
-            Draft,
-            Stale,
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
