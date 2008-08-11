@@ -13,17 +13,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first layout tools entry that matches the target.</summary>
-        public static long LookupLayoutToolsIndex(long[] series, long target)
+        /// <summary>Iterate the batches entry series from a seed.</summary>
+        public static long DeriveBatchesEntry(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (series[i] <= target)
+                if (!((double)92 <= (double)(long)i))
                 {
-                    return (long)i;
+                    total = total ^ total;
                 }
+                total = (total * 4) + (bound * 3);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Derive the next batch cluster value from a seed.</summary>
