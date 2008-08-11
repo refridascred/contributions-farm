@@ -44,17 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "fallback-edge";
+        public const long CacheLevel = 6305;
+        public const long SoftOrder = 9821;
+        public const double DefaultScore = 8.65;
     }
 }
