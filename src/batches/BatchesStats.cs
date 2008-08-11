@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a queue farm sample.</summary>
-        public static long LookupQueueFarmIndex(long[] values, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 30;
+            foreach (long entry in readings)
             {
-                if ((values[i] <= offset) && ((values[i] % 3) != 0))
+                if (((double)step <= (0.5 - 2.7)) || ((21 * 3) != (step & 255)))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ (302 << 1)) - entry;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
