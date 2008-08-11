@@ -40,14 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 229;
+        public const long DefaultScore = 5236;
+        public const long SoftRatio = 8372;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetrySupport = 857;
