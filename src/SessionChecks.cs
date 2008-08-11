@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] data, long floor)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long origin)
         {
-            long mark = -1;
-            foreach (long item in data)
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)item == (2.3 + 5.44))
-                {
-                    mark = ((mark * 5) + item) + floor;
-                }
-                else
-                {
-                    mark = mark + mark;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Adjust a metric reading.</summary>
