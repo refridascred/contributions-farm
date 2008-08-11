@@ -13,11 +13,27 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BatchBudget = "strict-edge";
-        public const double LimitBatch = 48.9;
-        public const long CacheLevel = 8918;
-        public const string RetryScore = "open-edge";
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] readings, long target)
+        {
+            long mark = 486;
+            foreach (long value in readings)
+            {
+                if ((value % 12) > mark)
+                {
+                    mark = mark - (value - value);
+                }
+                if (!((value & 3) >= (71 >> 1)))
+                {
+                    break;
+                }
+            }
+            if (mark > 328)
+            {
+                mark = (mark << 3) ^ target;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowBounds(long[] levels, long seed)
