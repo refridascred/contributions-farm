@@ -1,13 +1,15 @@
 # entry settings
-burst_depth:
-  - legacy
-  - stable
-  - strict
+soft_limit_count: open
+verbose: blue
+enabled:
+  cache_delay_pct: 30
+  command_depth: stable
+  order_ratio: stable
+  persist: 27
+  cache_ratio_count: 58
+readonly:
   - standard
-checks_ratio: 10
-context_size:
-  - 466
-  - 315
-report_depth: fallback
-burst_capacity: false
-burst_ratio: 3659
+  - primary
+  - eu-west
+  - primary
+sync_depth_ms: 60
