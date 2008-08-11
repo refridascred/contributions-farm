@@ -47,13 +47,9 @@ namespace Common.Utilities
             return load - 4.72;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Ready,
-            Paused,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinAccount = 44.49;
+        public const double StepLevel = 67.58;
+        public const long StepAccount = 7149;
     }
 }
