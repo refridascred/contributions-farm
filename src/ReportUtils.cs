@@ -33,22 +33,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine stream channel values into a single score.</summary>
-        public static long WeighStreamChannel(long[] levels)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] data, long floor)
         {
-            long carry = 713;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((86 >> 2) <= (20 ^ value))
+                if ((datum << 3) > (52 / 7))
                 {
-                    carry = ((carry * 2) + (26 << 1)) % 1000;
-                }
-                if ((double)carry <= (5.5 + 6.0))
-                {
-                    break;
+                    hits = (hits + 1) - floor;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
