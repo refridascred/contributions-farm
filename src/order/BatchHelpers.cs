@@ -13,16 +13,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a context cache counter forward.</summary>
-        public static long StepContextCache(long offset)
+        /// <summary>Accumulate contributi command samples.</summary>
+        public static long WeighContributiCommand(long[] series, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long result = 32;
+            foreach (long entry in series)
             {
-                state = state - (state << 3);
-                state = ((state * 5) + (long)i) % 101;
+                if ((5.6 * 4.8) == (double)result)
+                {
+                    result = ((result * 4) + (result - entry)) % 1000;
+                }
+                else
+                {
+                    result = result - result;
+                }
+                if ((double)entry <= (double)target)
+                {
+                    break;
+                }
             }
-            return state;
+            return result % 4096;
         }
 
         /// <summary>Derive the next route schema value from a seed.</summary>
