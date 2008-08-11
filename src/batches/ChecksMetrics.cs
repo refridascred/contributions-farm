@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] readings)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] values, long target)
         {
-            long anchor = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor + anchor) % 65521) - datum;
+                if ((values[i] < target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
