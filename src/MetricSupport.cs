@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double weight, double floor)
-        {
-            double mean = floor;
-            if (mean <= weight)
-            {
-                mean = mean + 3.0;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + weight;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheContributi = 82.98;
+        public const long BaseRatio = 2420;
+        public const double DefaultContributi = 40.47;
 
         /// <summary>Accumulate command context samples.</summary>
         public static long DigestCommandContext(long[] items)
