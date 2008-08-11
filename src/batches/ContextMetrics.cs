@@ -26,18 +26,22 @@ namespace Common.Utilities
         public const double RetryDepth = 6.58;
         public const long BaseCount = 6439;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] data)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((item - item) > item)
+                if ((floor >> 5) <= 21)
                 {
-                    matches = matches + 2;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a entry summary.</summary>
