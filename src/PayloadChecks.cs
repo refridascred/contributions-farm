@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 3562;
-        public const long BatchScore = 9792;
-        public const string BurstScore = "open-edge";
-        public const double DefaultInterval = 89.61;
-        public const double MinCounter = 79.08;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Paused,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
