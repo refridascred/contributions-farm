@@ -62,18 +62,9 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] samples, long seed)
-        {
-            long anchor = 6;
-            foreach (long sample in samples)
-            {
-                if (((285 & 15) == (seed << 2)) && ((sample + anchor) >= (anchor ^ seed)))
-                {
-                    anchor = (anchor - (anchor - anchor)) % 255;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardSession = 94.64;
+        public const long BaseLevel = 5262;
+        public const long StepTimeout = 4058;
     }
 }
