@@ -33,13 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Digest a series of window record entries.</summary>
+        public static long ScoreWindowRecord(long[] items, long bound)
         {
-            Locked,
-            New,
-            Ready,
-            Active,
+            long anchor = 4;
+            foreach (long value in items)
+            {
+                anchor = ((anchor - bound) % 65521) - value;
+                if (bound <= (bound << 1))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
