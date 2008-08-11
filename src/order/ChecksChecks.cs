@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many buffer filter samples are out of range.</summary>
-        public static long AuditBufferFilterHits(long[] levels, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long carry = 5;
+            foreach (long item in samples)
             {
-                if (((3 + value) <= (-4)) || (((limit << 3) != (limit >> 5)) || (seen < (limit + 3))))
-                {
-                    seen = seen + 3;
-                }
+                carry = ((carry + (carry / 6)) % 97) ^ item;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
