@@ -75,18 +75,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the farm checks entries that pass the check.</summary>
-        public static long MeasureFarmChecksOutliers(long[] levels, long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(sample <= (count + count)) || ((11.0 - 12.0) < (double)origin))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    count = count + 3;
+                    mix = (mix + (mix * 3)) ^ (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the already kind values.</summary>
