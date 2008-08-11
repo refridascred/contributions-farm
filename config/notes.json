@@ -1,16 +1,15 @@
 {
-  "batch_ttl_count": {
-    "flush_ratio": false,
-    "max_threshold_count": 11.76,
-    "batch_capacity": true,
-    "dry_run": 16,
-    "base_limit": {
-      "soft_ttl_s": "blue",
-      "max_ratio_ms": "strict",
-      "cache_ratio": 5.55
-    }
+  "audit": false,
+  "profile_size": "stable",
+  "hard_limit": {
+    "dry_run": true,
+    "soft_limit_count": "edge",
+    "persist": 47,
+    "sync_ratio_pct": 16,
+    "audit": "green",
+    "cache_timeout": "legacy"
   },
-  "queue_limit": true,
-  "tools_threshold": true,
-  "strict": "standard"
+  "batch_capacity_count": [129, 139, 404, 404],
+  "batch_delay": false,
+  "contributi_ratio": "blue"
 }
