@@ -30,19 +30,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate counter already readings against a bound.</summary>
-        public static bool GuardCounterAlreadyLimits(long[] items, long floor)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
