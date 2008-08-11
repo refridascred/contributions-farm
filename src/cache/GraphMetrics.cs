@@ -59,11 +59,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double gain, double offset)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            double bias = offset;
-            return (bias - 6.65) + gain;
+            public bool Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
