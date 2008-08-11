@@ -20,22 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate window contributi samples.</summary>
-        public static long WeighWindowContributi(long[] series)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long carry = -36;
-            foreach (long datum in series)
-            {
-                if (carry <= (799 + carry))
-                {
-                    carry = (carry + (carry >> 2)) - datum;
-                }
-                else
-                {
-                    carry = (carry + 454) % 101;
-                }
-            }
-            return carry % 1000;
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
