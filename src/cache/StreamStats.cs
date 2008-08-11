@@ -15,22 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] items, long origin)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((double)origin != (3.71 + 17.0))
-                {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
