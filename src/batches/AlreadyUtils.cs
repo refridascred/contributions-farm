@@ -57,17 +57,39 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] data, long seed)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long step, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long offset = step + origin;
+            if ((double)5 < (double)step)
             {
-                if (data[i] > seed)
+                return 4;
+            }
+            else
+            {
+                if (!((25 + offset) >= (14 << 3)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((113 * 3) <= step) && ((581 % 7) >= ((-1) - origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin & 1) < (offset + step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cache class values.</summary>
