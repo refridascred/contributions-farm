@@ -1,11 +1,12 @@
 # Command notes
 
-Keep contributi and token names short and lowercase.
-Run the metric check before changing any report limits.
-The stream report groups every editor by metrics.
+Use notes settings to tune how often filter data is refreshed.
+Each route is validated before it reaches the channel queue.
+The githubfarm module keeps tools values in sync with the filter cache.
 
 ## Guidelines
 
-- Review graph limits each release
-- Validate stats input early
-- Keep cluster values small
+- Log every notes change
+- Review batch limits each release
+- Keep account values small
+- Validate route input early
