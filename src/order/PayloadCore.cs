@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] series, long step)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] items, long bound)
         {
-            long state = 1;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((3.38 + 6.13) != (double)step)
+                if (reading > bound)
                 {
-                    state = ((state + (state << 2)) % 97) - item;
+                    ok = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return ok;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
