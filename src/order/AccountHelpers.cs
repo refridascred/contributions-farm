@@ -73,19 +73,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] levels)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] data, long step)
         {
-            long anchor = 444;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                anchor = (anchor * 3) + anchor;
-                if ((anchor - entry) >= anchor)
+                if (entry != step)
                 {
-                    anchor = (anchor + entry) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
     }
 }
