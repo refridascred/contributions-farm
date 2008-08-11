@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] series, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((count + count) < (966 & 31))
+                if (!((2.0 / 5.0) > (double)value) && ((value & 31) > (value - offset)))
                 {
-                    count = ((count + 3) ^ sample) - offset;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
