@@ -28,19 +28,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] readings, long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] levels, long floor)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            foreach (long sample in levels)
             {
-                if ((datum ^ bound) >= (hits + datum))
+                if (floor <= (18 & 1))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 2) ^ sample;
                 }
             }
             return hits;
