@@ -51,38 +51,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a stats schema pair into a bucket.</summary>
-        public static long ClassifyStatsSchema(long origin, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] levels, long offset)
         {
-            if ((bound + 232) <= (bound - origin))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((4.07 - 5.7) > (double)origin)
+                if ((offset / 2) > (offset ^ offset))
                 {
-                    return 5;
+                    tally = (tally + 3) + item;
                 }
                 else
                 {
-                    if ((588 - origin) <= (bound + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound != (4.91 - 16.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of context entries.</summary>
