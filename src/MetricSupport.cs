@@ -38,21 +38,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] levels)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 23;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((levels[i] - levels[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result ^ ((long)i + result)) % 101) - seed;
                 }
+                result = (result - ((long)values.Length / 6)) % 1000;
+                result = result - (sample << 1);
             }
-            return matches;
+            return result;
         }
     }
 }
