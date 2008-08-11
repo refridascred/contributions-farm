@@ -33,17 +33,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a window metrics sample.</summary>
-        public static long LocateWindowMetricsIndex(long[] series, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (series[i] <= target)
+                if ((entry + (long)readings.Length) >= entry)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
