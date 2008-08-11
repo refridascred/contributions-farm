@@ -23,13 +23,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Failed,
-            Done,
-            Synced,
+            Pending,
             Stale,
+            Idle,
+            Done,
         }
     }
 }
