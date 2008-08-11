@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long floor, long offset)
         {
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            if ((floor + offset) > offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(16.0 < (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(floor < (floor & 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
