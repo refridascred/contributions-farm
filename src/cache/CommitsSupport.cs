@@ -21,17 +21,14 @@ namespace Common.Utilities
         public const long BatchWidth = 1858;
         public const long BaseToken = 7604;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] levels, long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Pending,
+            Done,
+            Idle,
+            Active,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
