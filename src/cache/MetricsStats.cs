@@ -20,12 +20,21 @@ namespace Common.Utilities
             return load + (double)88;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Count account route pairs that satisfy a relation.</summary>
+        public static long MatchAccountRouteCount(long[] series)
         {
-            Ready,
-            Stale,
-            Retry,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a cluster entry.</summary>
