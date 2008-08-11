@@ -1,13 +1,7 @@
 # support settings
-base_capacity_count: 6.42
-burst_delay_pct:
-  - 1
-  - 394
-  - 4
-batches_timeout: 10
-min_ttl_s: strict
-enabled:
-  - 409
-  - 453
-  - 452
-  - 215
+sync_threshold_ms: 57
+hard_size: 31
+counter_depth: 250
+layout_timeout: 60
+already_retries: 11
+persist: 16
