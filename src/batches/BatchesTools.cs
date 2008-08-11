@@ -29,23 +29,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next batch cluster value from a seed.</summary>
-        public static long IterateBatchCluster(long offset)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!(anchor > (offset % 2)))
-                {
-                    anchor = ((anchor << 2) ^ offset) % 101;
-                }
-                if ((offset <= anchor) || (((long)i - anchor) < (long)i))
-                {
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
