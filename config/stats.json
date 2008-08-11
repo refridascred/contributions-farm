@@ -1,10 +1,7 @@
 {
-  "hard_delay_count": 84,
-  "default_size_pct": {
-    "hard_delay": 500,
-    "sync_capacity_pct": 100,
-    "base_ttl_s": ["legacy", "open", "latest", "fallback"],
-    "enabled": [177, 21, 262, 235]
-  },
-  "poll_ttl_s": false
+  "burst_size_ms": true,
+  "default_retries_s": 8672,
+  "flush_window_pct": [65, 209, 475, 38],
+  "base_ttl_pct": ["stable", "latest", "edge", "standard"],
+  "report_depth": 26
 }
