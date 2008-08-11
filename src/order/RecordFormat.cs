@@ -33,10 +33,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepInterval = 0.36;
-        public const string BurstBatch = "fallback";
-        public const long StepBatch = 6422;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorRange(long[] readings, long bound)
