@@ -35,14 +35,12 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Closed,
-            Idle,
-            Pending,
-            Synced,
-            Queued,
+            public double Flag { get; set; }
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
