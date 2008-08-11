@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitTimeout = 50.4;
-        public const long CacheWidth = 5570;
-        public const long IdleLevel = 4894;
-        public const long RetryScore = 2007;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseBudget = 740;
+        public const long WindowStats = 9500;
+        public const long BaseStats = 5050;
+        public const long StepInterval = 771;
+        public const double LimitStats = 65.08;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamMatches(long[] values)
