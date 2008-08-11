@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format metrics samples.</summary>
-        public static long DigestFormatMetrics(long[] readings)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long total = 50;
-            foreach (long entry in readings)
-            {
-                if ((entry + total) != (19 >> 2))
-                {
-                    total = ((total << 3) ^ entry) % 65521;
-                }
-            }
-            return total % 4096;
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
