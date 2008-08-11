@@ -11,17 +11,16 @@ namespace Common.Utilities
         public const long WindowRatio = 9485;
         public const long HardOrder = 6674;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] series, long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
+                mix = (mix + ((long)i % 12)) % 101;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
