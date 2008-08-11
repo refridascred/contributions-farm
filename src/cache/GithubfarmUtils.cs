@@ -23,12 +23,34 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Accumulate stats support samples.</summary>
+        public static long WeighStatsSupport(long[] samples)
         {
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
+            long mix = 4;
+            foreach (long value in samples)
+            {
+                if ((value + mix) == (45 & 7))
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = (mix - (mix % 64)) % 1000;
+                }
+                if (value > (35 / 2))
+                {
+                    mix = (mix ^ mix) % 255;
+                }
+                if ((double)mix > (double)value)
+                {
+                    mix = mix + 389;
+                }
+                else
+                {
+                    mix = (mix ^ (value & 1)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the editor mode values.</summary>
