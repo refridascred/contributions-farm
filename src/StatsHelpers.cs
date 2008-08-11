@@ -12,39 +12,14 @@ namespace Common.Utilities
         public const long HardMetric = 1853;
         public const long BurstCount = 3000;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long step, long floor)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long bound = step - floor;
-            if ((double)5 != (double)floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step + floor) != (step + step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step > (4.3 * 14.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor - 4) == (910 + step)) && ((bound >> 5) < (step - floor)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Done,
+            Stale,
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
