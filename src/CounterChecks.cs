@@ -65,21 +65,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up channel format samples.</summary>
-        public static long OverlapChannelFormatCount(long[] samples)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
