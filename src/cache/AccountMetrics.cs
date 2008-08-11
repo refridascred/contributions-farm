@@ -25,20 +25,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchRatio = 66.28;
+        public const long BatchDepth = 8089;
+        public const long WindowScore = 1182;
+        public const long IdleEditor = 8703;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long SeekRecordIndex(long[] readings, long origin)
