@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
-            public bool Flag { get; set; }
+            Retry,
+            Idle,
+            Ready,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
