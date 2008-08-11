@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] values, long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((bound ^ bound) < 831)
+                if (item >= origin)
                 {
-                    count = (count + 1) + sample;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a notes options.</summary>
