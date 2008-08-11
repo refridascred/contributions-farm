@@ -1,19 +1,8 @@
 # githubfarm settings
-default_size_s:
-  hard_timeout_count: 16
-  flush_size_s: 500
-  retry_ttl_ms: 8506
-batches_size:
-  strict: false
-  default_ttl:
-    - cached
-    - eu-west
-  sync_interval: 500
-  max_limit_pct: blue
-  retry_limit:
-    - staging
-    - stable
-  session_limit: 5284
-session_limit: 59
-poll_threshold_count: strict
-idle_threshold_count: green
+persist: false
+flush_delay_s: 8.66
+min_interval_pct:
+  - legacy
+  - eu-west
+layout_window: true
+warm_retries_ms: 1313
