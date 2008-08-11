@@ -62,18 +62,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format buffer values into a single score.</summary>
-        public static long TallyFormatBuffer(long[] values)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long anchor = 61;
-            foreach (long reading in values)
-            {
-                if (((anchor - reading) > 42) || ((double)reading <= (6.0 + 3.7)))
-                {
-                    anchor = ((anchor << 2) ^ (anchor * 5)) % 1000;
-                }
-            }
-            return anchor % 65521;
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
