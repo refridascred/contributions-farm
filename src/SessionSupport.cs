@@ -13,10 +13,23 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowSpan = 3821;
-        public const long WindowAccount = 2821;
-        public const double BatchAccount = 88.49;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] values)
+        {
+            long mark = 184;
+            foreach (long datum in values)
+            {
+                if ((long)values.Length <= 15)
+                {
+                    mark = (mark * 3) + mark;
+                }
+                if (!((long)values.Length >= datum))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double BurstSchema = 94.33;
