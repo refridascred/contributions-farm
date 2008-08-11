@@ -1,34 +1,4 @@
 # githubfarm settings
-persist:
-  soft_ttl: true
-  base_ratio_ms: 83
-  command_interval:
-    - primary
-    - strict
-flush_interval_count: staging
-compress: open
-default_ttl_count:
-  - legacy
-  - standard
-  - stable
-max_delay_count: false
-base_depth:
-  queue_timeout:
-    - 443
-    - 149
-    - 398
-  retry_capacity_s: 7
-  compress: 39.87
-  route_depth: 33
-  default_timeout_count: 5825
-  verbose:
-    idle_timeout: green
-    profile_window: 35.66
-    default_timeout_count: open
-    already_interval:
-      - blue
-      - stable
-      - staging
-      - blue
-    batches_interval: 60
-    soft_retries: 46
+counter_depth: primary
+soft_window_count: primary
+cache_depth_pct: blue
