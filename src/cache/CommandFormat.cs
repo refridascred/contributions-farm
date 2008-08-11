@@ -34,12 +34,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
+            Pending,
+            Paused,
+            Dropped,
+            Stale,
+            Retry,
         }
     }
 }
