@@ -29,14 +29,20 @@ namespace Common.Utilities
         public const long BatchWidth = 1858;
         public const long BaseToken = 7604;
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long bound)
         {
-            Locked,
-            Pending,
-            Done,
-            Idle,
-            Active,
+            long score = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score * 2) + (bound + (long)i)) % 101;
+                if (!((bound % 24) > (bound & 1)))
+                {
+                    score = score - ((long)i / 7);
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
