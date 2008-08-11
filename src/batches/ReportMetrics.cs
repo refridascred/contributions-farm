@@ -20,11 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 7985;
-        public const string LimitSupport = "latest";
-        public const long BatchDepth = 3954;
-        public const double CacheLevel = 82.44;
+        /// <summary>Classify a tools filter pair into a bucket.</summary>
+        public static long BucketToolsFilter(long step, long seed)
+        {
+            if (((3.7 * 4.93) > (double)step) && ((seed ^ step) <= (step & 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (step < (875 / 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (seed > (seed + 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountHits(long[] items, long limit)
