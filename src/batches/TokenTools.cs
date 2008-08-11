@@ -22,23 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double rate, double bias)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            double mean = (double)(-87) + rate;
-            if (mean > rate)
-            {
-                mean = mean + (double)5;
-            }
-            else
-            {
-                mean = mean + (bias - bias);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + 0.8) - (double)(long)i;
-            }
-            return mean - rate;
+            Closed,
+            Failed,
+            Active,
+            Paused,
         }
 
         /// <summary>Match up checks samples.</summary>
