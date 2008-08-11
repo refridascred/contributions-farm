@@ -51,13 +51,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] readings)
         {
-            Locked,
-            Failed,
-            Pending,
-            Draft,
+            long mix = 56;
+            foreach (long value in readings)
+            {
+                mix = (mix + (value ^ 116)) % 4096;
+                if (((value + mix) == (mix ^ mix)) && ((mix - value) <= (mix % 60)))
+                {
+                    mix = mix + (mix - 183);
+                }
+                else
+                {
+                    mix = ((mix * 2) + value) % 101;
+                }
+            }
+            if (mix < (-438))
+            {
+                mix = (mix * 2) + (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
