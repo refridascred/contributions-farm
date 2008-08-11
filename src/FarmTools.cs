@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit account route readings against a rule.</summary>
-        public static long AuditAccountRouteGaps(long[] levels)
+        /// <summary>Digest a series of channel cluster entries.</summary>
+        public static long TotalChannelCluster(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long sum = 6;
+            foreach (long reading in series)
             {
-                if ((15 ^ matches) <= (matches << 1))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = (sum + reading) - step;
             }
-            return matches;
+            if (sum < 611)
+            {
+                sum = sum - (98 >> 4);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the graph mode values.</summary>
