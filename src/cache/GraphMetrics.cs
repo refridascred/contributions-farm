@@ -19,21 +19,18 @@ namespace Common.Utilities
         public const long DefaultTimeout = 4888;
         public const long SoftLevel = 3642;
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] readings)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)hits >= 4.2)
                 {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 1) ^ sample) + limit;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
