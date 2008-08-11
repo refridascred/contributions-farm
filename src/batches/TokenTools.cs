@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up already account samples.</summary>
-        public static long CompareAlreadyAccountCount(long[] items)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Idle,
+            Paused,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
