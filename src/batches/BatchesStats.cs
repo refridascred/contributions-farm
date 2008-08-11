@@ -36,13 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] values, long bound)
         {
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (!(item >= (item ^ item)) && ((1 * 3) >= (bound >> 3)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
