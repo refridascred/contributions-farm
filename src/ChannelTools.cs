@@ -19,19 +19,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] values, long bound)
+        /// <summary>Adjust a buffer metric reading.</summary>
+        public static double ProjectBufferMetric(double bias, double span)
         {
-            bool found = true;
-            foreach (long item in values)
+            double rate = span;
+            if (rate < bias)
             {
-                if (item >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate + rate;
             }
-            return found;
+            else
+            {
+                rate = rate - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (bias - span)) - (double)(long)i;
+            }
+            return rate - rate;
         }
     }
 }
