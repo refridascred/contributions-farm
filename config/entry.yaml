@@ -1,15 +1,14 @@
 # entry settings
-strict: edge
-persist:
-  - 235
-  - 314
-burst_depth_ms:
-  base_depth_pct: edge
-  account_window:
-    - standard
-    - open
-    - cached
-    - eu-west
-  counter_limit: false
-  retry_size_count: true
-  batch_interval: blue
+default_depth: primary
+verbose: false
+cache_threshold: 11
+default_threshold_s:
+  default_capacity_count: green
+  tools_threshold: 87.47
+  verbose: false
+  burst_threshold_count: 72
+  poll_timeout:
+    session_timeout: 53
+    min_capacity: 56
+    max_timeout_s: true
+window_ratio: primary
