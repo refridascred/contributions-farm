@@ -1,15 +1,16 @@
 # support settings
-base_timeout_s:
-  - 450
-  - 13
-batches_depth: 71.13
-audit: blue
-hard_capacity:
-  checks_ttl: 8556
-  sync_ratio_pct:
-    - 466
-    - 348
-    - 64
-  support_timeout: 19
-  burst_capacity: 5999
-sync_depth_pct: stable
+persist: fallback
+sync_threshold_pct:
+  default_size: false
+  warm_ratio_ms:
+    - 244
+    - 328
+    - 29
+  audit: fallback
+  max_delay: 5
+retry_capacity_s: cached
+soft_retries_ms:
+  - latest
+  - staging
+  - cached
+sync_limit_s: 56.39
