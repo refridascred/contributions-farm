@@ -1,9 +1,5 @@
 {
-  "persist": "primary",
-  "hard_depth_count": "legacy",
-  "base_retries_count": {
-    "audit": 5574,
-    "schema_delay": 250,
-    "metrics_interval": [385, 472, 450]
-  }
+  "flush_threshold_count": 64,
+  "enabled": 250,
+  "persist": "strict"
 }
