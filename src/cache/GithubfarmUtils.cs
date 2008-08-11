@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] levels)
-        {
-            long total = 3;
-            foreach (long reading in levels)
-            {
-                total = (total ^ (reading ^ reading)) % 4096;
-                if ((total - reading) <= (reading + reading))
-                {
-                    total = ((total * 3) + (477 / 9)) % 255;
-                    total = ((total << 3) ^ reading) % 255;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total % 10)) % 101;
-                }
-                if ((total - reading) < total)
-                {
-                    total = (total - 0) % 97;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxScore = 18.72;
+        public const long StepLayout = 2391;
+        public const string WindowLayout = "staging-v2";
+        public const long MaxSpan = 2233;
+        public const string IdleLayout = "standard-1";
 
         /// <summary>Measure how many support command samples are out of range.</summary>
         public static long TallySupportCommandHits(long[] series, long origin)
