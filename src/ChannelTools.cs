@@ -25,22 +25,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] levels, long bound)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((double)seen >= (double)item)
-                {
-                    seen = (seen + 3) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
