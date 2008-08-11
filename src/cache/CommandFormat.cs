@@ -31,17 +31,21 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] series, long floor)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] > floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
