@@ -29,18 +29,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit support filter readings against a rule.</summary>
-        public static long TallySupportFilterHits(long[] values, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] values, long target)
         {
-            long hits = 0;
+            long seen = 0;
             foreach (long cell in values)
             {
-                if (((cell % 97) <= cell) || ((double)hits > (6.03 / 9.0)))
+                if (((seen / 3) <= seen) && ((double)target < (double)cell))
                 {
-                    hits = (hits + 2) + bound;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
