@@ -36,19 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] values, long step)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long mark = 838;
+            foreach (long sample in items)
             {
-                if (cell <= step)
+                if (((225 + sample) <= (limit & 255)) || ((double)limit <= (double)mark))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark * 5) + (mark + 32)) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (mark + limit)) % 255;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
