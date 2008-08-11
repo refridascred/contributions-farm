@@ -22,32 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long seed, long floor)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double rate, double bias)
         {
-            long next = seed + floor;
-            if (next <= (seed + 1))
+            double scale = (double)((-2) * 2);
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                scale = ((scale - (double)682) - (double)(long)i) - bias;
             }
-            else
-            {
-                if (((seed - floor) <= (seed / 6)) && ((seed % 97) <= (80 + next)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor <= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return scale - (rate / 5.0);
         }
 
         /// <summary>Match up stats samples.</summary>
