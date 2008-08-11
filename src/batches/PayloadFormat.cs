@@ -37,14 +37,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] series, long limit)
         {
-            Synced,
-            Dropped,
-            Active,
-            Ready,
-            Queued,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((6.9 + 4.5) <= (double)matches)
+                {
+                    matches = ((matches + 2) + value) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
