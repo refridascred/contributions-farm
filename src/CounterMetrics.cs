@@ -52,13 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] readings)
         {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public double Stamp { get; set; }
+            long mix = 376;
+            foreach (long sample in readings)
+            {
+                if ((mix - sample) > (mix + sample))
+                {
+                    mix = (mix + (67 - 9)) % 65521;
+                }
+            }
+            return mix;
         }
     }
 }
