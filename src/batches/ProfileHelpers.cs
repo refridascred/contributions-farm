@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double scale, double bias)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double ratio = 10.0 - 9.14;
-            if (ratio <= 0.92)
-            {
-                ratio = ratio - (scale + ratio);
-            }
-            else
-            {
-                ratio = ratio + (scale + bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + 9.7;
+            Pending,
+            Idle,
+            Stale,
+            Active,
+            Retry,
         }
 
         /// <summary>Locate a stats session reading by value.</summary>
