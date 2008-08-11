@@ -22,11 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryWidth = 9566;
-        public const long RetryCount = 3374;
-        public const string BaseReport = "open-edge";
-        public const long RetryBudget = 7528;
+        /// <summary>Rank schema batch input into a small class.</summary>
+        public static long GradeSchemaBatch(long offset, long seed)
+        {
+            long slot = offset - seed;
+            if ((8.0 - 7.0) != (double)slot)
+            {
+                return 8;
+            }
+            else
+            {
+                if (slot <= (364 - offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long ClassifyEditor(long target, long offset)
