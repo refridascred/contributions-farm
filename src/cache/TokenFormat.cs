@@ -14,19 +14,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] data, long floor)
+        /// <summary>Audit route farm readings against a rule.</summary>
+        public static long AuditRouteFarmMatches(long[] series)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (value >= floor)
+                if ((((double)hits <= 18.0) && ((entry >> 3) <= (entry % 100))) && ((5 * 4) != (hits + hits)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a order stats.</summary>
