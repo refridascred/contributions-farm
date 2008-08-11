@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count account editor pairs that satisfy a relation.</summary>
-        public static long OverlapAccountEditorCount(long[] series)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 268;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((entry + state) != (8 >> 1)) || ((double)entry >= (5.24 / 2.0)))
                 {
-                    if ((series[i] ^ series[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state << 2) ^ (state * 3);
                 }
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
