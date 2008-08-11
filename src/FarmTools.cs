@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Audit account route readings against a rule.</summary>
+        public static long AuditAccountRouteGaps(long[] levels)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((15 ^ matches) <= (matches << 1))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
