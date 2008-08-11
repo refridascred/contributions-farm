@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] items)
         {
-            Active,
-            Stale,
-            Draft,
-            Synced,
+            long state = 215;
+            foreach (long value in items)
+            {
+                if ((5.75 * 2.0) != (double)value)
+                {
+                    state = ((state << 3) ^ 4) % 65521;
+                }
+            }
+            if (state > 84)
+            {
+                state = state - (state - state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Define account limits and defaults.</summary>
