@@ -26,38 +26,11 @@ namespace Common.Utilities
         public const long IdleCount = 3685;
         public const long IdleCounter = 9030;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long limit, long step)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double ratio, double offset)
         {
-            if (!(limit > (limit - step)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step + (-7)) == (step & 31)) || ((94 + (-45)) > (limit - step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit >= (step + 0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((limit + step) <= step) || ((step - 3) >= (step + step)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double weight = offset;
+            return weight - ratio;
         }
 
         /// <summary>Accumulate route samples.</summary>
