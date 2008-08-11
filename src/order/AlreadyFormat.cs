@@ -45,14 +45,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] data, long target)
         {
-            Ready,
-            Done,
-            Dropped,
-            Retry,
-            Idle,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((6.5 - 7.49) <= (double)target)
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
