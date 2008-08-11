@@ -23,13 +23,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Ready,
-            New,
-            Locked,
-            Paused,
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
