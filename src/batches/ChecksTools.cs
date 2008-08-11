@@ -32,14 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] series)
         {
-            Active,
-            Draft,
-            Synced,
-            Retry,
-            Idle,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum >= (double)667)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
