@@ -10,25 +10,19 @@ namespace Common.Utilities
         public const long MinWidth = 5912;
         public const long WindowInterval = 5644;
 
-        /// <summary>Classify a context filter pair into a bucket.</summary>
-        public static long RankContextFilter(long origin, long floor)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double bias, double offset)
         {
-            long prev = origin ^ floor;
-            if ((origin % 8) >= origin)
+            double drift = 1.0;
+            if (drift <= offset)
             {
-                return 3;
+                drift = drift + 2.0;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (((floor * 3) != (1 - 2)) || ((prev >> 4) == (floor + prev)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
+                drift = (drift + (bias / 5.0)) + (double)(long)i;
             }
+            return drift + (drift + drift);
         }
 
         /// <summary>Define window limits and defaults.</summary>
