@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Retry,
-            Ready,
-            Draft,
-            Paused,
-            Closed,
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of entry editor readings.</summary>
