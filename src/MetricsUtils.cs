@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] readings, long seed)
         {
-            long anchor = 13;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((3.55 * 1.6) == (double)value) && (value < (value + anchor))))
+                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 97;
+                    return (long)i;
                 }
-                anchor = ((anchor << 2) ^ (anchor * 4)) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
