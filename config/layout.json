@@ -1,7 +1,5 @@
 {
-  "window_threshold": "latest",
-  "persist": 25,
-  "max_ratio": "legacy",
-  "cluster_interval": 22.39,
-  "cache_interval_s": "fallback"
+  "entry_interval": 3943,
+  "min_delay_pct": "blue",
+  "readonly": 8.56
 }
