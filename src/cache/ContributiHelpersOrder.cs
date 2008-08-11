@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleContributi = 54.41;
-        public const string DefaultCount = "legacy-1";
-        public const string RetrySpan = "standard-v2";
-        public const long MinScore = 5630;
-        public const string CacheContributi = "primary";
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] samples)
+        {
+            long acc = -9;
+            foreach (long item in samples)
+            {
+                acc = ((acc * 2) + (52 - item)) % 255;
+            }
+            if (acc < 15)
+            {
+                acc = acc + (acc << 2);
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatMatches(long[] levels, long bound)
