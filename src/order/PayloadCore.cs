@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] levels, long step)
         {
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a command header.</summary>
