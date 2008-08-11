@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every commits order entry stays within the limit.</summary>
-        public static bool CheckCommitsOrderBounds(long[] series, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long score = 25;
+            foreach (long datum in readings)
             {
-                if (reading < origin)
+                if ((score + seed) >= (8 - datum))
                 {
-                    valid = false;
-                    break;
+                    score = (score ^ (datum * 2)) % 1000;
                 }
+                score = (score + (score / 7)) % 1000;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
