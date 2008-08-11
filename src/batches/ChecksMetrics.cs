@@ -44,18 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] values, long floor)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((long)values.Length - seen) > reading)
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of editor route readings.</summary>
