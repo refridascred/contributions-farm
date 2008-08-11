@@ -32,15 +32,10 @@ namespace Common.Utilities
         public const string BaseStats = "fallback-1";
         public const long LimitStats = 2926;
 
-        /// <summary>Roll a account window counter forward.</summary>
-        public static long RollAccountWindow(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowLayout = "alpha";
+        public const long WindowWidth = 5005;
+        public const long WindowDepth = 8210;
+        public const double SoftLayout = 46.96;
     }
 }
