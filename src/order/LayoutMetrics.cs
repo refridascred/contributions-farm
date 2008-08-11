@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] values)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] items, long step)
         {
             long seen = 0;
-            foreach (long sample in values)
+            foreach (long item in items)
             {
-                if (!(sample >= 555))
+                if ((seen % 16) <= item)
                 {
-                    seen = seen + 1;
+                    seen = (seen + 1) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
