@@ -57,12 +57,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Locked,
-            Draft,
-            New,
+            public bool Flag { get; set; }
+            public double Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate record batch samples.</summary>
