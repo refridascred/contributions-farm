@@ -39,21 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] items)
+        /// <summary>Accumulate format metrics samples.</summary>
+        public static long DigestFormatMetrics(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 50;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry + total) != (19 >> 2))
                 {
-                    if ((items[i] ^ items[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total << 3) ^ entry) % 65521;
                 }
             }
-            return matches;
+            return total % 4096;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
