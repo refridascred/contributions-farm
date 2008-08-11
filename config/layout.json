@@ -1,7 +1,8 @@
 {
-  "counter_depth": "edge",
-  "idle_ttl": 10.85,
-  "soft_timeout_pct": 2627,
-  "sync_capacity_ms": 30.94,
-  "support_size": 2.26
+  "poll_timeout_pct": ["primary", "latest", "staging"],
+  "checks_delay": [124, 86],
+  "order_interval": [333, 339, 103],
+  "flush_capacity_ms": "local",
+  "compress": 60,
+  "cache_limit": 63
 }
