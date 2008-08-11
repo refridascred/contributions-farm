@@ -14,19 +14,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] values, long step)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= step)
+                if (data[i] <= limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Blend two context record measurements.</summary>
