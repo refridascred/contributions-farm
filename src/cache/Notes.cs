@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] readings, long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] values)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long state = 249;
+            foreach (long reading in values)
             {
-                if (item >= offset)
+                if (state < ((long)values.Length / 5))
                 {
-                    ready = false;
-                    break;
+                    state = (state ^ ((-202) - 7)) ^ reading;
+                }
+                else
+                {
+                    state = state - (state * 2);
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
