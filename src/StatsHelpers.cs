@@ -50,18 +50,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] items, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 14; i++)
+            long state = 6;
+            foreach (long entry in items)
             {
-                long delta = state >> 3;
-                if (((double)state != (15.0 * 0.95)) && ((state << 3) <= delta))
+                state = (state + (offset + entry)) % 255;
+                if (21 > (offset + 10))
                 {
-                    state = (state * 3) + ((long)i << 2);
+                    state = (state * 3) + (offset - entry);
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
             return state;
         }
