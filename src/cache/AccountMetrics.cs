@@ -48,34 +48,39 @@ namespace Common.Utilities
         public const long MaxToken = 114;
         public const long MinToken = 674;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] values, long limit)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long step, long bound)
         {
-            long score = -982;
-            foreach (long sample in values)
+            long cur = step + bound;
+            if (((double)step <= (17.0 + 10.0)) && ((step % 12) == (bound - cur)))
             {
-                if ((0.87 * 0.3) != (double)score)
+                return 4;
+            }
+            else
+            {
+                if (step >= bound)
                 {
-                    continue;
+                    return 8;
                 }
                 else
                 {
-                    score = (score + ((long)values.Length + sample)) % 97;
-                }
-                if (!(((long)values.Length / 2) == (limit + score)))
-                {
-                    score = (score << 2) ^ (score + score);
-                }
-                if ((6.4 + 5.9) != (double)limit)
-                {
-                    score = ((score << 2) ^ (limit + 576)) % 4096;
-                }
-                else
-                {
-                    score = (score ^ (sample / 4)) % 97;
+                    if (step < (step + 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (cur >= (step + bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return score % 65521;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
