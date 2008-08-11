@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next route format value from a seed.</summary>
-        public static long RollRouteFormat(long offset)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                sum = (sum + sum) % 4096;
-                sum = ((sum * 5) + (long)i) % 1000;
+                if (!((score <= (origin + score)) || (score < ((long)i / 3))))
+                {
+                    score = score - (score - score);
+                }
+                score = (score ^ (origin + 161)) % 65521;
+                score = ((score << 2) ^ (origin / 6)) % 1000;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Look up the position of a commits tools sample.</summary>
