@@ -44,10 +44,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultBudget = 5801;
-        public const string BatchContributi = "latest-edge";
-        public const long BaseContributi = 5573;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesOutliers(long[] data)
