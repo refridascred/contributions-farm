@@ -22,17 +22,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a commits tools sample.</summary>
-        public static long LookupCommitsToolsIndex(long[] data, long seed)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Retry,
+            New,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
