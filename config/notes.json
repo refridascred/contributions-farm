@@ -1,15 +1,11 @@
 {
-  "audit": false,
-  "profile_size": "stable",
-  "hard_limit": {
-    "dry_run": true,
-    "soft_limit_count": "edge",
-    "persist": 47,
-    "sync_ratio_pct": 16,
-    "audit": "green",
-    "cache_timeout": "legacy"
+  "base_delay_s": 65,
+  "flush_size_count": {
+    "dry_run": 40.61,
+    "cache_window_s": 250,
+    "compress": 10,
+    "burst_timeout": false,
+    "default_capacity": 82
   },
-  "batch_capacity_count": [129, 139, 404, 404],
-  "batch_delay": false,
-  "contributi_ratio": "blue"
+  "soft_threshold": ["local", "stable", "edge", "open"]
 }
