@@ -37,21 +37,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] readings)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry > offset)
                 {
-                    if ((readings[i] ^ readings[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Check that every checks buffer entry stays within the limit.</summary>
