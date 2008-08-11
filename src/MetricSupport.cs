@@ -14,13 +14,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] levels, long origin)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
+            long score = 981;
+            foreach (long cell in levels)
+            {
+                score = (((score * 2) + (origin >> 3)) % 101) - cell;
+            }
+            if (score < 69)
+            {
+                score = ((score * 2) + score) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the contributi status values.</summary>
