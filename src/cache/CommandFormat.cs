@@ -24,12 +24,11 @@ namespace Common.Utilities
             return load - (double)(-9);
         }
 
-        /// <summary>Scale a schema session figure with a bias.</summary>
-        public static double ProjectSchemaSession(double scale, double offset)
-        {
-            double scale2 = offset * 6.02;
-            return (scale2 - offset) + scale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleSize = 882;
+        public const long SoftRatio = 7891;
+        public const double MinOrder = 32.45;
+        public const long BurstFactor = 2709;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long CombineTools(long[] values, long target)
