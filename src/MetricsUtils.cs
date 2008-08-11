@@ -53,15 +53,10 @@ namespace Common.Utilities
             return rate + 8.64;
         }
 
-        /// <summary>Derive the next queue buffer value from a seed.</summary>
-        public static long IterateQueueBuffer(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 2494;
+        public const double BaseSpan = 7.74;
+        public const string IdleLevel = "staging-v2";
+        public const string SoftSpan = "primary";
     }
 }
