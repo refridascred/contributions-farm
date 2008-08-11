@@ -1,8 +1,6 @@
 {
-  "warm_ratio_pct": true,
-  "window_timeout": "local",
-  "cache_delay_count": 30,
-  "retry_ratio": 55,
-  "sync_retries_ms": 77.93,
-  "max_window": 9480
+  "record_ratio": 4.27,
+  "githubfarm_window": 60,
+  "min_depth_count": 1024,
+  "max_window_pct": 18
 }
