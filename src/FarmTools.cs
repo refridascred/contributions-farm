@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] samples)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] readings, long offset)
         {
-            long state = 17;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((state * 4) < ((-61) * 3))
+                if ((offset / 3) > ((-5) / 6))
                 {
-                    state = (((state << 3) ^ (state << 2)) % 4096) - entry;
-                }
-                if (state <= (692 << 1))
-                {
-                    break;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
