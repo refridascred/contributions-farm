@@ -55,22 +55,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] series, long bound)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long target, long seed)
         {
-            long mix = 172;
-            foreach (long datum in series)
+            long diff = target ^ seed;
+            if (seed < (target + 10))
             {
-                if ((mix << 3) < (datum / 8))
+                return 6;
+            }
+            else
+            {
+                if ((seed - target) < (seed << 2))
                 {
-                    mix = mix - bound;
+                    return 2;
+                }
+                else
+                {
+                    if (diff > (seed + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target < diff)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (mix > 447)
-            {
-                mix = (mix ^ (bound + bound)) % 4096;
-            }
-            return mix % 97;
         }
     }
 }
