@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stats profile entry stays within the limit.</summary>
-        public static bool ValidateStatsProfileRange(long[] series, long offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Limit { get; set; }
+            public double Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
