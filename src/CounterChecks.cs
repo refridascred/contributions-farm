@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const long MinProfile = 16;
         public const string RetrySize = "strict-1";
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] levels, long target)
         {
-            Dropped,
-            Ready,
-            Draft,
-            Done,
-            Paused,
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
