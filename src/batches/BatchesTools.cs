@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Retry,
-            Active,
-            Dropped,
+            public long Weight { get; set; }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
