@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] data, long target)
-        {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxInterval = "standard-1";
+        public const long DefaultChannel = 2432;
+        public const double BatchChannel = 76.17;
+        public const long DefaultSize = 6952;
+        public const long RetryChannel = 143;
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long ClassifyStream(long seed, long origin)
