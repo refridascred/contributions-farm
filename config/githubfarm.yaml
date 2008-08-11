@@ -1,12 +1,4 @@
 # githubfarm settings
-max_ttl: 97
-batch_ttl: fallback
-record_size: 30
-strict: 672
-cache_timeout:
-  persist: true
-  hard_size: 90.12
-  batch_depth: local
-  min_threshold_count: stable
-  support_ttl: 5579
-poll_window_count: 68.7
+min_window_s: 68
+poll_limit: 7.21
+audit: 11.69
