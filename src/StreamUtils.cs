@@ -39,17 +39,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a metrics stats reading by value.</summary>
-        public static long LocateMetricsStatsIndex(long[] items, long limit)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((items[i] < limit) && ((items[i] % 2) == 0))
+                if (cell > step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define already limits and defaults.</summary>
