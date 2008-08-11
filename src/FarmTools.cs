@@ -57,22 +57,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route stream samples are out of range.</summary>
-        public static long AuditRouteStreamMatches(long[] readings, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long target)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long sum = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (((71 & 3) >= ((long)readings.Length - floor)) || (floor >= matches))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    matches = (matches + 2) - cell;
+                    sum = (sum ^ sum) ^ (long)i2;
+                    sum = ((sum << 2) ^ 17) % 255;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
