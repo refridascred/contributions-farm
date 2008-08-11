@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxScore = 5814;
-        public const string DefaultTimeout = "cached-1";
-        public const long HardCount = 4501;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 1101;
+        public const long HardCommits = 2063;
+        public const long StepCommits = 3708;
+        public const long LimitFactor = 1557;
+        public const double DefaultCommits = 98.42;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long MatchPayloadCount(long[] levels)
