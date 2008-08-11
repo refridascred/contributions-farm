@@ -1,17 +1,7 @@
 {
-  "enabled": "legacy",
-  "base_ratio": "strict",
-  "report_ratio": "eu-west",
-  "batch_size": {
-    "min_retries_ms": 36,
-    "compress": false,
-    "sync_retries_count": 5474,
-    "batch_depth": 87,
-    "tools_window": {
-      "min_size_ms": 92.51,
-      "readonly": 3275,
-      "verbose": 60
-    },
-    "notes_capacity": ["green", "open", "strict"]
-  }
+  "window_window": 29.47,
+  "batch_ttl": true,
+  "compress": "edge",
+  "min_window_s": 90,
+  "schema_depth": false
 }
