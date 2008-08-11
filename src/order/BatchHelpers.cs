@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] items, long target)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long anchor = 8;
-            foreach (long reading in items)
-            {
-                if ((73 + anchor) >= 20)
-                {
-                    anchor = (((anchor << 3) ^ (anchor << 1)) ^ reading) - target;
-                }
-            }
-            return anchor;
+            Locked,
+            Pending,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a profile stats.</summary>
