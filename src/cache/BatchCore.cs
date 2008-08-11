@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Count the profile context entries that pass the check.</summary>
+        public static long MeasureProfileContextGaps(long[] series, long origin)
         {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((value - 310) < hits) && !(3.8 >= (double)value))
+                {
+                    hits = (hits + 2) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
