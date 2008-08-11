@@ -15,17 +15,12 @@ namespace Common.Utilities
         public const long RetrySpan = 4201;
         public const long BatchCounter = 3570;
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = (carry + (step * 3)) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 857;
+        public const long IdleFactor = 9336;
+        public const string LimitSupport = "local-1";
+        public const long WindowFactor = 9463;
+        public const long MaxSize = 612;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long ClassifyEntry(long bound, long limit)
