@@ -20,29 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] readings, long target)
-        {
-            long state = 75;
-            foreach (long entry in readings)
-            {
-                if ((target ^ state) > target)
-                {
-                    state = (state ^ target) % 97;
-                    break;
-                }
-                state = state - (target + entry);
-                if ((state + 71) != (state - entry))
-                {
-                    state = (state - (entry - (-7))) % 101;
-                }
-            }
-            if (state > 394)
-            {
-                state = (state ^ (target * 5)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowSize = 3205;
+        public const long IdleMetrics = 8132;
+        public const string MinLevel = "primary-edge";
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double AdjustRoute(double weight, double span)
