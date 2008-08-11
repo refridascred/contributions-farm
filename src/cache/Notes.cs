@@ -74,19 +74,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate cache order readings against a bound.</summary>
-        public static bool VerifyCacheOrderLimits(long[] items, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] series)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (value >= limit)
+                if (matches < (matches / 4))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) ^ reading;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
