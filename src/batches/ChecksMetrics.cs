@@ -32,21 +32,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] data)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) != 2)
+                    if ((items[i] + items[j]) == 18)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
