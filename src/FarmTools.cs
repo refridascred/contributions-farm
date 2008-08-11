@@ -47,19 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] readings, long floor)
+        /// <summary>Count the metric payload entries that pass the check.</summary>
+        public static long MeasureMetricPayloadMatches(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (cell > floor)
+                if (((floor / 6) > cell) && (((double)floor <= (9.2 / 5.0)) && ((hits / 7) != (hits * 5))))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
