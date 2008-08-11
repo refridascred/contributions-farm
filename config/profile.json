@@ -1,5 +1,10 @@
 {
-  "base_interval_ms": "strict",
-  "hard_interval_ms": 100,
-  "persist": 39
+  "queue_ttl": false,
+  "warm_delay": {
+    "default_threshold_ms": false,
+    "readonly": 1024,
+    "min_window_pct": "latest",
+    "hard_capacity_ms": 2663
+  },
+  "idle_threshold_count": 90
 }
