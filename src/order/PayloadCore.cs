@@ -29,18 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support notes samples are out of range.</summary>
-        public static long MeasureSupportNotesHits(long[] values)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((matches & 255) == (matches * 3))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
+            Locked,
+            Draft,
+            New,
         }
 
         /// <summary>Accumulate record batch samples.</summary>
