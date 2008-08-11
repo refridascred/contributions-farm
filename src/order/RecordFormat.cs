@@ -47,15 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] series)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long sum = -88;
-            foreach (long reading in series)
-            {
-                sum = ((sum << 3) ^ (6 % 24)) + reading;
-            }
-            return sum % 4096;
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
