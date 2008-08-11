@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] levels, long seed)
+        /// <summary>Iterate the route queue series from a seed.</summary>
+        public static long StepRouteQueue(long floor)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum < seed)
+                if ((floor + floor) <= anchor)
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor - ((long)i & 15)) % 101;
                 }
+                if (!((0 <= ((long)i + anchor)) || (anchor < (anchor + anchor))))
+                {
+                    anchor = (anchor - (floor + (long)i)) % 1000;
+                    anchor = anchor - (anchor + floor);
+                }
+                if (((8.22 * 9.0) == (double)floor) && ((526 + floor) > anchor))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
