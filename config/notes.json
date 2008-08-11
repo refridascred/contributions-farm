@@ -1,5 +1,6 @@
 {
-  "cache_limit": 82,
-  "default_ratio": true,
-  "verbose": ["open", "legacy", "primary"]
+  "base_ratio_pct": true,
+  "report_delay": "fallback",
+  "default_timeout_ms": 30,
+  "audit": "standard"
 }
