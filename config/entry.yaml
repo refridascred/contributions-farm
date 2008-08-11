@@ -1,5 +1,11 @@
 # entry settings
-compress: false
-readonly: 49.59
-warm_threshold: 21.29
-persist: 22.97
+cache_ttl_s: false
+warm_window:
+  - green
+  - standard
+min_size_count:
+  - blue
+  - green
+retry_window: 3.62
+base_depth_pct: false
+burst_limit: 78
