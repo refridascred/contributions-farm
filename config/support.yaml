@@ -1,27 +1,4 @@
 # support settings
-persist:
-  - 499
-  - 192
-  - 71
-  - 442
-poll_limit_count: false
-burst_ttl_pct: 75.02
-idle_depth: false
-batch_timeout_count:
-  cluster_interval:
-    - 374
-    - 98
-    - 174
-  min_ratio_ms:
-    readonly: 43
-    flush_threshold_ms: 88.6
-    warm_timeout_pct: open
-    metric_window: edge
-    strict: 10
-  sync_limit_pct: cached
-  poll_depth_count:
-    max_timeout_pct: false
-    poll_retries_s: 49.62
-    batch_window: latest
-    sync_delay_ms: 7032
-    soft_size_count: false
+audit: 0.11
+persist: false
+cache_retries_s: false
