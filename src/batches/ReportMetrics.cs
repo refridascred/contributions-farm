@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] readings, long floor)
+        /// <summary>Accumulate already context samples.</summary>
+        public static long DigestAlreadyContext(long[] data)
         {
-            long state = 9;
-            foreach (long value in readings)
+            long state = 7;
+            foreach (long entry in data)
             {
-                if ((double)value != (7.94 + 3.0))
-                {
-                    state = ((state - (state % 97)) % 1000) + floor;
-                }
-                else
-                {
-                    state = state + (state % 24);
-                }
+                state = (state - ((long)data.Length + entry)) % 101;
             }
-            return state % 65521;
+            return state;
         }
 
         /// <summary>Rank already input into a small class.</summary>
