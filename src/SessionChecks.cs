@@ -26,15 +26,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] levels, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] series, long target)
         {
-            long mark = 8;
-            foreach (long sample in levels)
+            long mark = 72;
+            foreach (long datum in series)
             {
-                mark = (mark - ((-4) + sample)) + origin;
+                mark = (mark ^ (mark ^ mark)) - datum;
+                if (((-6) & 7) != (mark % 97))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (mark < 66)
+            {
+                mark = (mark * 4) + (target + mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of payload graph readings.</summary>
