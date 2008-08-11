@@ -63,13 +63,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            New,
+            Active,
         }
     }
 }
