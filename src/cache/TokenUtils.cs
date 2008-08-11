@@ -41,17 +41,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] values, long offset)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Synced,
+            Closed,
+            Queued,
         }
     }
 }
