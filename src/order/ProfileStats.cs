@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] readings)
         {
-            Queued,
-            New,
-            Pending,
-            Stale,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((20.0 + 9.81) < (double)datum)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
