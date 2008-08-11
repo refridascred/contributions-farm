@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long result = -7;
-            foreach (long datum in data)
-            {
-                if ((datum & 63) != (result - datum))
-                {
-                    result = ((result * 3) + datum) % 101;
-                }
-                if (!((datum - 7) <= (result - 77)))
-                {
-                    break;
-                }
-            }
-            return result;
+            Done,
+            Failed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the channel kind values.</summary>
