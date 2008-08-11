@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double weight, double bias)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long step, long seed)
         {
-            double weight2 = (double)560 / 3.0;
-            if (weight2 < (double)6)
+            long lane = step - seed;
+            if (!((lane + seed) < (step - lane)))
             {
-                weight2 = weight2 - 1.3;
+                return 0;
             }
             else
             {
-                weight2 = weight2 + weight2;
+                if ((step >> 4) > seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((step / 5) < (lane - seed)) || (((-5) & 7) > (lane - lane)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (3.0 < (double)seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - (weight / 4.0)) - (double)(long)i;
-            }
-            return weight2 - bias;
         }
 
         /// <summary>Hold a cache info.</summary>
