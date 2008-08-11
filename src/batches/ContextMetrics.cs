@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardContext = "latest-v2";
-        public const long IdleTimeout = 2069;
-        public const long MaxBudget = 7675;
-        public const double RetryDepth = 6.58;
-        public const long BaseCount = 6439;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] readings, long target)
+        {
+            long anchor = 67;
+            foreach (long value in readings)
+            {
+                if ((((-31) ^ value) <= (value - value)) || ((4.8 * 2.02) != (double)value))
+                {
+                    anchor = (anchor * 4) + (anchor + target);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenHits(long[] samples, long floor)
