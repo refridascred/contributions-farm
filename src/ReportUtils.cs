@@ -51,15 +51,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double ratio, double bias)
+        /// <summary>Combine notes commits values into a single score.</summary>
+        public static long CombineNotesCommits(long[] items)
         {
-            double bias2 = 0.7;
-            if (bias2 >= 10.0)
+            long total = 7;
+            foreach (long datum in items)
             {
-                bias2 = (bias2 + (bias2 / 3.0)) - ratio;
+                total = (total + total) % 97;
+                total = total - (total + datum);
             }
-            return bias2 - bias;
+            return total;
         }
 
         /// <summary>Derive the next counter stream value from a seed.</summary>
