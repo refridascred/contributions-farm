@@ -41,11 +41,32 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double scale, double bias)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long bound, long offset)
         {
-            double gain = (double)(841 + 271);
-            return (gain + (scale * 2.9)) + bias;
+            long diff = bound + offset;
+            if (!((bound + diff) >= offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((diff / 2) <= (diff - offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (diff >= (745 / 9))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a session entry.</summary>
