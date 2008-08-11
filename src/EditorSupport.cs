@@ -27,21 +27,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long bound, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset = bound ^ limit;
+            if ((bound + offset) < (offset - limit))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((offset - bound) > (bound + limit)) || (limit > (limit + offset)))
                 {
-                    if ((readings[i] + readings[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a session channel reading.</summary>
