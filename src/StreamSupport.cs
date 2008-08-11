@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Failed,
-            Stale,
-            Paused,
+            Queued,
+            Draft,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the record mode values.</summary>
