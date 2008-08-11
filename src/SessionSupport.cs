@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long limit, long origin)
         {
-            public bool Stamp { get; set; }
-            public bool Label { get; set; }
-            public double Size { get; set; }
-            public long Offset { get; set; }
+            long bound = limit - origin;
+            if (limit <= origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound != (7.72 * 3.8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound <= (bound ^ bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate cache samples.</summary>
