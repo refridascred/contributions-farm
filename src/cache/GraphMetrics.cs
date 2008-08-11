@@ -47,17 +47,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Derive the next layout buffer value from a seed.</summary>
+        public static long StepLayoutBuffer(long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                long lane = offset;
-                mix = (mix + (lane + (long)i)) % 101;
-                mix = ((mix * 4) + (long)i) % 97;
+                if (!(step >= (acc / 2)))
+                {
+                    acc = (acc + acc) % 4096;
+                    acc = (acc - step) % 101;
+                }
+                else
+                {
+                    acc = acc + step;
+                }
+                if (!(((acc * 2) < 83) || ((long)i <= (acc + step))))
+                {
+                    acc = (acc + (step - step)) % 97;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mix;
+            return acc;
         }
     }
 }
