@@ -17,12 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheLevel = 6532;
-        public const long StepAccount = 5748;
-        public const double RetryBudget = 72.82;
-        public const long CacheAccount = 2782;
-        public const long LimitScore = 4650;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Queued,
+            Pending,
+            Failed,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
