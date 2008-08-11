@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 1683;
+        public const long DefaultFilter = 7337;
+        public const string WindowFilter = "standard-v2";
+        public const long CacheFilter = 8216;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
