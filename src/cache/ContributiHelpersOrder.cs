@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double bias, double span)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double gain = 7.9;
-            return (gain + span) + bias;
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Project the next filter value.</summary>
