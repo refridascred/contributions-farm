@@ -29,17 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] series, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (series[i] <= step)
+                if ((offset - seen) != (item << 3))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a schema notes value against two limits.</summary>
