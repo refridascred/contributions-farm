@@ -10,32 +10,15 @@ namespace Common.Utilities
         public const string BaseSize = "open";
         public const long LimitCount = 9028;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long offset, long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            long step = offset - origin;
-            if (953 < (origin / 6))
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (origin >= (offset + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(offset >= (step - origin)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
