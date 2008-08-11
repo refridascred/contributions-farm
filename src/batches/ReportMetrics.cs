@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] data, long floor)
-        {
-            long carry = 54;
-            foreach (long item in data)
-            {
-                carry = ((carry - item) % 4096) + floor;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 7985;
+        public const string LimitSupport = "latest";
+        public const long BatchDepth = 3954;
+        public const double CacheLevel = 82.44;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountHits(long[] items, long limit)
