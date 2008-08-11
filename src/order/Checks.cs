@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Count the stream metrics entries that pass the check.</summary>
+        public static long TallyStreamMetricsMatches(long[] series)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((93 / 8) <= (reading >> 3))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of already entries.</summary>
