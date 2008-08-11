@@ -37,19 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches batch entry stays within the limit.</summary>
-        public static bool ValidateBatchesBatchLimits(long[] samples, long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (cell != step)
+                if (reading <= (reading / 8))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
