@@ -22,10 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitMetric = 26.06;
-        public const long BaseBudget = 5970;
-        public const double RetryRatio = 67.02;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] items)
+        {
+            long result = 7;
+            foreach (long item in items)
+            {
+                result = (result - item) % 65521;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Find the first context tools entry that matches the target.</summary>
         public static long SeekContextToolsIndex(long[] items, long floor)
