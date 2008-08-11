@@ -50,18 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] items)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((double)item != (double)7)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Closed,
+            Paused,
+            New,
+            Active,
         }
     }
 }
