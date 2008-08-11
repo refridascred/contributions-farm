@@ -14,18 +14,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleDepth = 36.77;
+        public const double HardQueue = 84.92;
+        public const long MaxFactor = 3296;
+        public const string WindowQueue = "staging-1";
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool GuardGraphLimits(long[] data, long step)
