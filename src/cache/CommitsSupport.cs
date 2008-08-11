@@ -29,12 +29,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long floor)
         {
-            Synced,
-            Idle,
-            Closed,
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((8.0 + 8.23) < (double)anchor)
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor - (floor % 7)) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
