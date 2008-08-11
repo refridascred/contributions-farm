@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 7667;
+        public const long HardGithubfarm = 5654;
+        public const string DefaultInterval = "stable-v2";
+        public const double BatchLevel = 91.95;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long PairStatsCount(long[] levels)
