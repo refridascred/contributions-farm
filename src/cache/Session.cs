@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinInterval = 44.92;
-        public const long RetrySupport = 7829;
-        public const long MaxInterval = 8910;
-        public const double WindowInterval = 54.62;
-        public const string MinScore = "standard-v2";
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string CacheFactor = "local-edge";
