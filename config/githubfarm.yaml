@@ -1,8 +1,7 @@
 # githubfarm settings
-githubfarm_capacity: false
-poll_threshold:
-  - stable
-  - staging
-  - blue
-default_interval: eu-west
-cache_delay_ms: 250
+graph_delay: stable
+soft_interval: 77.7
+window_capacity: 9.36
+sync_depth: 73
+cache_limit_s: 57.83
+readonly: true
