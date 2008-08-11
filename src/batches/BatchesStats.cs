@@ -33,19 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window record entries.</summary>
-        public static long ScoreWindowRecord(long[] items, long bound)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long anchor = 4;
-            foreach (long value in items)
-            {
-                anchor = ((anchor - bound) % 65521) - value;
-                if (bound <= (bound << 1))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Stale,
+            Idle,
+            Ready,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
