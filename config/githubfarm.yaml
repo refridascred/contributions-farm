@@ -1,17 +1,30 @@
 # githubfarm settings
-flush_retries: 100
-sync_capacity_pct:
-  cache_limit_ms: 38.95
-  cache_size_s: edge
-  idle_window: cached
-cache_capacity:
-  readonly:
-    batches_depth: 74
-    batch_depth: 87.61
-    default_size: 23.2
-    soft_threshold_ms: 41.13
-    audit: 100
-    flush_threshold_ms: cached
-  retry_ratio_count: 12.2
-  compress: 17.34
-min_ratio: blue
+idle_ttl_ms: 1024
+channel_retries:
+  hard_depth:
+    - 305
+    - 30
+    - 408
+  notes_depth:
+    batch_timeout_s:
+      - edge
+      - latest
+      - eu-west
+    max_window_pct:
+      - cached
+      - staging
+      - cached
+    max_timeout_pct:
+      - legacy
+      - staging
+    enabled:
+      - 372
+      - 294
+      - 299
+      - 254
+    max_retries_s: fallback
+    retry_ttl_pct: 21
+  default_depth_ms: 30
+  strict: fallback
+  persist: open
+tools_retries: 17.57
