@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryEditor = "strict";
+        public const long StepFactor = 1996;
+        public const string HardRatio = "cached-edge";
 
         /// <summary>Compare every pair of entry editor readings.</summary>
         public static long PairEntryEditorCount(long[] samples)
