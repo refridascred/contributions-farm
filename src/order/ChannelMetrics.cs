@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const double DefaultWindow = 43.96;
         public const long HardWindow = 7541;
 
-        /// <summary>Roll a counter farm counter forward.</summary>
-        public static long IterateCounterFarm(long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] values)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            long result = 69;
+            foreach (long datum in values)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if (((79 - 70) <= (result + datum)) || ((double)datum == (5.69 + 6.6)))
+                {
+                    result = (result + result) % 4096;
+                }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
