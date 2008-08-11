@@ -61,17 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score - (floor + (long)i)) % 255;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 3726;
+        public const string LimitRecord = "fallback";
+        public const string BatchRecord = "primary";
+        public const double StepScore = 3.39;
 
         /// <summary>Roll a layout metrics counter forward.</summary>
         public static long StepLayoutMetrics(long bound)
