@@ -1,9 +1,16 @@
 {
-  "hard_depth_pct": ["open", "green", "stable"],
-  "compress": {
-    "burst_window_ms": 62.34,
-    "warm_capacity_s": 2874,
-    "cache_depth_count": [163, 479, 428, 112]
+  "poll_size": ["staging", "primary"],
+  "buffer_delay": "cached",
+  "default_delay": {
+    "retry_ttl": [92, 94, 206, 486],
+    "cache_depth_pct": 10.97,
+    "route_interval": [392, 51, 34, 21],
+    "strict": {
+      "default_threshold": "standard",
+      "layout_depth": [298, 397],
+      "burst_size_pct": 87
+    },
+    "queue_delay": 8751
   },
-  "readonly": false
+  "poll_limit": [450, 471]
 }
