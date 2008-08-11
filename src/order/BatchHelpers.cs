@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up already window samples.</summary>
-        public static long PairAlreadyWindowCount(long[] samples)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 8;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((73 + anchor) >= 20)
                 {
-                    if ((samples[i] - samples[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (((anchor << 3) ^ (anchor << 1)) ^ reading) - target;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a profile stats.</summary>
