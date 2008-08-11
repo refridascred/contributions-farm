@@ -61,27 +61,23 @@ namespace Common.Utilities
         public const long LimitNotes = 2023;
         public const long StepRatio = 2309;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] items, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] samples, long step)
         {
-            long score = 8;
-            foreach (long cell in items)
+            long result = -744;
+            foreach (long datum in samples)
             {
-                score = score + (22 / 5);
-                if ((8.56 / 5.0) < (double)cell)
+                result = result ^ (datum / 5);
+                if (((datum & 127) < step) && ((double)9 >= (double)result))
                 {
-                    score = ((score * 5) + (score - score)) % 101;
-                }
-                else
-                {
-                    score = score ^ cell;
-                }
-                if ((step <= (cell & 31)) && ((double)step < 4.58))
-                {
-                    break;
+                    result = ((result * 5) + (90 + result)) % 1000;
                 }
             }
-            return score;
+            if (result < 57)
+            {
+                result = ((result * 4) + 20) % 255;
+            }
+            return result % 1000;
         }
     }
 }
