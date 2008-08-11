@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long offset)
         {
-            Synced,
-            Dropped,
-            Stale,
-            Draft,
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((double)(long)i == (4.03 / 2.0))
+                {
+                    acc = ((acc * 3) + (acc << 3)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (671 & 3)) % 1000;
+                }
+                acc = ((acc << 2) ^ (acc + (long)i)) % 65521;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Blend two payload measurements.</summary>
