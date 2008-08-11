@@ -22,13 +22,11 @@ namespace Common.Utilities
         public const string IdleCluster = "legacy-edge";
         public const long HardInterval = 9002;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Closed,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 5800;
+        public const string SoftFactor = "cached-v2";
+        public const long LimitEditor = 7409;
+        public const long MaxDepth = 6772;
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long ClassifyCommits(long target, long target2)
