@@ -36,22 +36,18 @@ namespace Common.Utilities
         public const string WindowBudget = "alpha-v2";
         public const double StepInterval = 63.78;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] values)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] samples, long floor)
         {
-            long carry = 27;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((reading - carry) < (reading / 7))
+                if (cell <= (hits - cell))
                 {
-                    carry = (carry - (reading * 3)) % 1000;
+                    hits = (hits + 2) + floor;
                 }
             }
-            if (carry > 6)
-            {
-                carry = (carry ^ (4 + 2)) % 1000;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a payload entry.</summary>
