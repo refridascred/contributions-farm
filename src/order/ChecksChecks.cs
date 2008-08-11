@@ -22,27 +22,12 @@ namespace Common.Utilities
         public const string WindowSize = "stable-edge";
         public const long DefaultInterval = 3383;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] samples, long seed)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long total = 1;
-            foreach (long sample in samples)
-            {
-                total = total - (seed / 6);
-                if ((sample >> 4) < (total * 4))
-                {
-                    total = (total ^ (sample << 1)) % 255;
-                }
-                else
-                {
-                    total = (total ^ (total - seed)) % 101;
-                }
-                if ((sample / 2) > (total % 7))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
