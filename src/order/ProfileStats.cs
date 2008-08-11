@@ -14,39 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a command commits pair into a bucket.</summary>
-        public static long SortCommandCommits(long target, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] samples, long limit)
         {
-            long span = target + floor;
-            if ((target < (217 + floor)) || ((target + 5) >= (floor - 803)))
+            long mark = 8;
+            foreach (long cell in samples)
             {
-                return 3;
+                mark = ((mark + (cell + 65)) % 255) + limit;
             }
-            else
-            {
-                if ((floor + floor) < span)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(floor > (target / 6)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((8.33 - 0.71) < (double)span)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
