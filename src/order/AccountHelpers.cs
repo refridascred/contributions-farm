@@ -23,21 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] items, long floor)
         {
-            long matches = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] >= floor)
                 {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
