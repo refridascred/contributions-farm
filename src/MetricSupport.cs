@@ -29,10 +29,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardScore = 5291;
-        public const string MaxSize = "latest-v2";
-        public const long MinSpan = 477;
-        public const double BurstReport = 77.51;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
