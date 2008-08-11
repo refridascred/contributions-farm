@@ -49,19 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double bias, double span)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            double gain = 1.0;
-            if (gain >= span)
-            {
-                gain = (gain - (2.0 / 3.0)) + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - 2.0) + (double)(long)i;
-            }
-            return gain - (double)7;
+            Queued,
+            Paused,
+            Synced,
+            Dropped,
         }
     }
 }
