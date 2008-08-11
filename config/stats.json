@@ -1,16 +1,5 @@
 {
-  "poll_depth": 53,
-  "sync_depth_s": {
-    "strict": 43.93,
-    "default_limit": 100,
-    "warm_window_ms": {
-      "cache_depth": "green",
-      "audit": "cached",
-      "idle_limit_ms": false,
-      "max_ratio": "open"
-    },
-    "flush_retries": ["standard", "staging"]
-  },
-  "idle_ttl": 45.77,
-  "warm_limit_pct": [129, 436, 360, 199]
+  "persist": false,
+  "compress": 100,
+  "flush_limit_ms": "staging"
 }
