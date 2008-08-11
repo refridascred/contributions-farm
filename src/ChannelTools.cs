@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftScore = 6381;
-        public const long SoftWindow = 6779;
-        public const long HardCount = 3641;
-        public const long CacheWindow = 9510;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
