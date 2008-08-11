@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double weight, double bias)
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
+            double weight2 = (double)560 / 3.0;
+            if (weight2 < (double)6)
             {
-                long cur = sum;
-                if ((cur + (long)i) > sum)
-                {
-                    cur = (cur * 5) + (origin >> 3);
-                    cur = ((cur * 2) + (origin << 3)) % 1000;
-                }
-                if (((long)i < ((long)i - sum)) && ((0.6 - 4.8) != (double)(long)i))
-                {
-                    cur = cur + ((long)i << 1);
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                weight2 = weight2 - 1.3;
             }
-            return sum;
+            else
+            {
+                weight2 = weight2 + weight2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - (weight / 4.0)) - (double)(long)i;
+            }
+            return weight2 - bias;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
