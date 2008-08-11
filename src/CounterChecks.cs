@@ -15,24 +15,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of metrics schema entries.</summary>
-        public static long DigestMetricsSchema(long[] data)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] series, long bound)
         {
-            long anchor = 9;
-            foreach (long cell in data)
+            long mark = 684;
+            foreach (long item in series)
             {
-                if (anchor > (cell - 53))
+                if (((mark * 3) < (bound << 2)) && ((bound + bound) != (130 + item)))
                 {
-                    anchor = ((anchor << 3) ^ ((long)data.Length * 2)) % 101;
+                    mark = mark ^ (mark & 31);
+                }
+                else
+                {
+                    mark = (mark - item) % 97;
+                }
+                if ((mark & 15) >= (item + bound))
+                {
                     break;
                 }
-                anchor = (anchor ^ (anchor + anchor)) % 65521;
             }
-            if (anchor > 7)
-            {
-                anchor = (anchor * 4) + (long)data.Length;
-            }
-            return anchor % 4096;
+            return mark % 65521;
         }
 
         /// <summary>Accumulate stream samples.</summary>
