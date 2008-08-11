@@ -65,12 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double gain, double offset)
         {
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
-            public string Flag { get; set; } = "";
+            double load = gain;
+            if (load <= (load + load))
+            {
+                load = (load + 0.25) + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + load;
         }
     }
 }
