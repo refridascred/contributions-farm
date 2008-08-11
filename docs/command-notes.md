@@ -1,16 +1,13 @@
 # Command notes
 
-Use route settings to tune how often buffer data is refreshed.
-Use record settings to tune how often stream data is refreshed.
-The payload module keeps stats values in sync with the context cache.
+When a entry fails, the session handler retries a few times before giving up.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
-The buffer report groups every metrics by channel.
-Keep graph and contributi names short and lowercase.
-Keep payload and filter names short and lowercase.
+Each batches is validated before it reaches the record queue.
+Each stream is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Keep layout values small
-- Validate context input early
-- Log every notes change
-- Prefer token defaults
+- Log every filter change
+- Validate metrics input early
+- Review window limits each release
