@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Stale,
-            Draft,
-            Active,
+            Pending,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
