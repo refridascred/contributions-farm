@@ -1,8 +1,13 @@
 {
-  "warm_timeout": 2567,
-  "support_threshold": "green",
-  "cache_ratio_count": 6116,
-  "readonly": "standard",
-  "batch_retries": false,
-  "flush_capacity": ["eu-west", "legacy", "cached"]
+  "order_ttl": false,
+  "min_threshold_s": {
+    "graph_delay": 87,
+    "warm_ratio_pct": [79, 71, 35],
+    "checks_limit": "strict",
+    "channel_threshold": "strict",
+    "order_retries": "staging"
+  },
+  "flush_interval_s": 4054,
+  "cache_delay": true,
+  "max_timeout": ["staging", "fallback"]
 }
