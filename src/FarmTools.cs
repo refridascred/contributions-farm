@@ -34,38 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long floor, long bound)
+        /// <summary>Check that every batches batch entry stays within the limit.</summary>
+        public static bool ValidateBatchesBatchLimits(long[] samples, long step)
         {
-            if ((14.0 - 3.5) < (double)bound)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor > (floor + floor))
+                if (cell != step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor >= 9.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (1.1 >= (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
