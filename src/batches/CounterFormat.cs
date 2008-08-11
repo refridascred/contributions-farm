@@ -19,15 +19,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double gain, double offset)
-        {
-            double drift = (double)(88 - 8);
-            if (drift > (offset - drift))
-            {
-                drift = (drift - (double)2) + gain;
-            }
-            return drift - (double)73;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 4368;
+        public const long WindowAccount = 7748;
+        public const double RetryLevel = 1.65;
+        public const long BurstAccount = 277;
     }
 }
