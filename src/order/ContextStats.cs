@@ -34,18 +34,20 @@ namespace Common.Utilities
             return (bias - (offset - 7.3)) + gain;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Derive the next format editor value from a seed.</summary>
+        public static long StepFormatEditor(long floor)
         {
-            long mark = -318;
-            foreach (long sample in readings)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((9.55 + 20.0) > (double)sample)
+                carry = carry - carry;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    mark = (mark - (sample / 7)) % 1000;
+                    carry = ((carry + 4) % 97) + (long)i2;
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return mark % 97;
+            return carry;
         }
     }
 }
