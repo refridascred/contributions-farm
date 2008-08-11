@@ -13,12 +13,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleFarm = "cached-1";
-        public const long LimitFarm = 8949;
-        public const long BatchWidth = 6031;
-        public const double HardFarm = 3.86;
-        public const long MinFarm = 6069;
+        /// <summary>Blend two context route measurements.</summary>
+        public static double AdjustContextRoute(double rate, double bias)
+        {
+            double mean = (double)(37 % 64);
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean - 2.77) - (double)(long)i) - bias;
+            }
+            return mean - rate;
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
