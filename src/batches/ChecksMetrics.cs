@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Audit format commits readings against a rule.</summary>
+        public static long CountFormatCommitsGaps(long[] samples)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((1 / 5) < count)
+                {
+                    count = (count + 1) - value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
