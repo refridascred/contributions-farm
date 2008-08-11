@@ -1,7 +1,5 @@
 {
-  "base_limit_ms": 44,
-  "idle_window": ["open", "local"],
-  "flush_interval_count": false,
-  "min_threshold": "eu-west",
-  "base_retries_count": true
+  "batch_depth_pct": 1024,
+  "metrics_capacity": "latest",
+  "soft_threshold_count": "cached"
 }
