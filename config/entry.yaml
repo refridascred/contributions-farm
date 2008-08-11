@@ -1,21 +1,21 @@
 # entry settings
-idle_size_pct:
-  - blue
-  - eu-west
-  - strict
-  - latest
-warm_delay_pct: 1693
-verbose:
-  notes_depth:
-    - fallback
-    - legacy
-    - edge
-    - strict
-  verbose: green
-  audit:
-    schema_ttl:
-      - local
-      - open
-    readonly: eu-west
-    dry_run: false
-base_limit: primary
+default_interval_s: edge
+persist: staging
+enabled:
+  sync_capacity_s:
+    cache_delay: 34.44
+    enabled: stable
+    audit: false
+  hard_window: 30
+  cluster_retries:
+    default_retries: 1360
+    verbose:
+      - 59
+      - 87
+    soft_limit_count: edge
+    sync_ttl_ms:
+      - edge
+      - green
+      - standard
+  audit: 20
+  warm_threshold_ms: 9432
