@@ -57,20 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = (sum ^ sum) ^ (long)i2;
-                    sum = ((sum << 2) ^ 17) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public long Label { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
