@@ -1,12 +1,7 @@
 {
-  "batch_limit_ms": "green",
-  "queue_delay": "edge",
-  "graph_limit": {
-    "strict": "stable",
-    "queue_delay": 18.12,
-    "sync_interval": "primary",
-    "idle_window_ms": true,
-    "counter_timeout": 86.89
-  },
-  "warm_ratio_count": [169, 191, 293]
+  "retry_size": 20.07,
+  "poll_limit_count": false,
+  "entry_depth": "strict",
+  "persist": "edge",
+  "hard_threshold": "fallback"
 }
