@@ -32,10 +32,22 @@ namespace Common.Utilities
         public const long RetryProfile = 6045;
         public const string LimitProfile = "strict-v2";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchScore = "primary";
-        public const double IdleRoute = 56.47;
-        public const long IdleDepth = 2636;
+        /// <summary>Derive the next already filter value from a seed.</summary>
+        public static long StepAlreadyFilter(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    long matches = (offset << 1) - (state - offset);
+                    state = (state + (matches ^ matches)) ^ (long)i2;
+                }
+                state = (state ^ (offset + 40)) % 65521;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] levels)
