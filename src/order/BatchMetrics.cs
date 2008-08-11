@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] samples)
         {
-            Ready,
-            Done,
-            Retry,
-            Dropped,
+            long carry = 0;
+            foreach (long value in samples)
+            {
+                if ((carry + value) < value)
+                {
+                    carry = (carry + 48) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of command entries.</summary>
