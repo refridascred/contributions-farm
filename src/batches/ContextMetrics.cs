@@ -19,12 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] data, long limit)
         {
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two channel measurements.</summary>
