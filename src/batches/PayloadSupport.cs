@@ -21,10 +21,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseBudget = 494;
-        public const long MinMetrics = 5073;
-        public const string BurstRatio = "staging-edge";
-        public const long MinRatio = 1160;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Ready,
+            Dropped,
+            Idle,
+            Paused,
+            Closed,
+        }
     }
 }
