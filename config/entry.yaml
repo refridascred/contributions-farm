@@ -1,20 +1,4 @@
 # entry settings
-burst_delay_s:
-  readonly: 87.9
-  batch_depth: blue
-  channel_limit: 553
-  default_interval:
-    - open
-    - blue
-burst_delay_count: 7497
-stats_size: legacy
-route_ratio: 52.33
-format_threshold:
-  - local
-  - edge
-  - local
-strict:
-  contributi_ratio: 90
-  strict: 45.59
-  base_retries_count: 60
-  already_delay: 9331
+sync_size: 60
+default_threshold: 9
+default_retries: cached
