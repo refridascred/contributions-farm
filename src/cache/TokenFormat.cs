@@ -15,18 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] items, long target)
+        /// <summary>Find the first channel support entry that matches the target.</summary>
+        public static long LookupChannelSupportIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (target < value)
+                if ((values[i] >= offset) && ((values[i] % 5) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
