@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] values, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((step % 3) >= hits)
+                if ((seen / 7) > seen)
                 {
-                    hits = (hits + 3) + cell;
+                    seen = ((seen + 1) + item) - step;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
