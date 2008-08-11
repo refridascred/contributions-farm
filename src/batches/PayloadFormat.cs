@@ -26,23 +26,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long offset, long offset2)
+        /// <summary>Grade a order channel value against two limits.</summary>
+        public static long BucketOrderChannel(long floor, long origin)
         {
-            long offset3 = offset - offset2;
-            if (!((offset ^ offset) >= (offset3 + offset)))
+            long step = floor ^ origin;
+            if (((origin * 3) < floor) || (36 > (floor - step)))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((offset3 << 3) > (offset3 % 64))
+                if (((origin / 5) > (origin << 2)) && ((floor - origin) == (floor >> 2)))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    return 5;
+                    if ((floor + 6) > (4 % 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
