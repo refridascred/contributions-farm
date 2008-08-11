@@ -39,32 +39,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long bound, long bound2)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] data)
         {
-            long delta = bound - bound2;
-            if ((bound2 + delta) > bound)
+            long mark = 9;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(bound < (bound2 / 8)))
+                if ((entry + 828) < (entry + entry))
                 {
-                    return 5;
+                    mark = (mark - 760) % 101;
                 }
                 else
                 {
-                    if ((bound2 & 31) < (delta / 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mark = (mark + mark) % 65521;
                 }
             }
+            return mark;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
