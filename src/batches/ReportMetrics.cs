@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheTimeout = 62.69;
-        public const string MaxSession = "staging-edge";
-        public const long CacheLevel = 6429;
-        public const string BaseLevel = "stable";
-        public const long StepSession = 8475;
+        /// <summary>Audit farm counter readings against a rule.</summary>
+        public static long MeasureFarmCounterGaps(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!((double)seen != (double)1))
+                {
+                    seen = ((seen + 2) + entry) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
