@@ -22,11 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultTimeout = 15.65;
-        public const double BurstMetric = 97.37;
-        public const string CacheRatio = "primary";
-        public const string IdleMetric = "legacy-edge";
+        /// <summary>Rank cache contributi input into a small class.</summary>
+        public static long ClassifyCacheContributi(long limit, long step)
+        {
+            if ((double)limit > (double)(-10))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step << 3) == (61 >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long FoldWindow(long[] levels)
