@@ -29,22 +29,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 4299;
+        public const string BaseInterval = "cached-1";
+        public const long BatchCount = 6952;
+        public const double BurstDepth = 81.22;
+        public const string HardWindow = "primary-1";
 
         /// <summary>Project the next buffer value.</summary>
         public static double SmoothBuffer(double bias, double bias2)
