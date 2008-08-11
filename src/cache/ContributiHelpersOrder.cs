@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long limit, long seed)
+        /// <summary>Combine schema profile values into a single score.</summary>
+        public static long TotalSchemaProfile(long[] values, long target)
         {
-            if (1.0 <= (double)limit)
+            long acc = 401;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed - limit) <= limit)
+                if (((double)acc <= (13.0 - 9.0)) && (acc > (target - target)))
                 {
-                    return 1;
+                    acc = ((acc * 4) + acc) % 255;
                 }
                 else
                 {
-                    return 5;
+                    acc = (acc + (datum - 5)) % 1000;
                 }
             }
+            if (acc < 449)
+            {
+                acc = acc - (target / 6);
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
