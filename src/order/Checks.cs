@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] series, long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (series[i] == origin)
+                if (!((entry + 127) > (entry % 100)) && ((entry + entry) > (entry + 492)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a queue stats.</summary>
