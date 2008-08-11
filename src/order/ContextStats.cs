@@ -12,11 +12,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleLevel = 3663;
-        public const long IdleScore = 2703;
-        public const long WindowGithubfarm = 443;
-        public const long HardGithubfarm = 160;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardSpan = 6873;
+        public const long CacheCount = 7296;
+        public const string CacheLevel = "legacy-1";
+        public const long RetryContext = 7948;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
