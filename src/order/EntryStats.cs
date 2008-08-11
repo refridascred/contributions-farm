@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long seed)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] levels)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)i + (long)i) > (159 - seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor ^ anchor) % 97;
+                    if ((levels[i] - levels[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
