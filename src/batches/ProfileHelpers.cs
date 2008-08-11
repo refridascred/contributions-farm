@@ -37,13 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double gain, double offset)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
+            double load = gain;
+            if (load < offset)
+            {
+                load = load + (double)0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + offset;
         }
 
         /// <summary>Define window limits and defaults.</summary>
