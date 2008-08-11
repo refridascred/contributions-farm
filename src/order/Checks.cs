@@ -55,13 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] items)
         {
-            Dropped,
-            Ready,
-            Idle,
-            Retry,
+            long carry = 477;
+            foreach (long item in items)
+            {
+                carry = (carry + item) % 4096;
+            }
+            if (carry < 203)
+            {
+                carry = (carry << 2) ^ 2;
+            }
+            return carry % 65521;
         }
     }
 }
