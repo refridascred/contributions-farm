@@ -1,14 +1,7 @@
 {
-  "audit": {
-    "hard_size_s": true,
-    "audit": 6764,
-    "soft_depth_s": "strict",
-    "cache_ratio_pct": 250
-  },
-  "profile_delay": {
-    "stream_interval": "blue",
-    "burst_limit_s": "latest",
-    "enabled": true
-  },
-  "poll_depth_ms": "staging"
+  "idle_window_ms": "standard",
+  "warm_ratio_ms": "stable",
+  "retry_depth_s": "strict",
+  "hard_interval_ms": "staging",
+  "warm_size": 82.22
 }
