@@ -1,11 +1,6 @@
 # entry settings
-warm_ttl_count: 500
-flush_threshold:
-  sync_size_s: 8753
-  audit: 3.16
-  strict: 64
-  default_retries_s: 19
-  warm_retries_s: blue
-buffer_capacity: blue
-idle_ttl: 65.33
-readonly: 62.46
+batch_delay: 79
+soft_ratio_ms: 500
+sync_capacity:
+  - strict
+  - green
