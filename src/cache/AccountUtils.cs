@@ -35,18 +35,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] readings)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seen - seen) < seen)
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
     }
 }
