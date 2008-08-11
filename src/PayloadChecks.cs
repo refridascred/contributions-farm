@@ -75,14 +75,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double weight, double span)
         {
-            Active,
-            Retry,
-            Paused,
-            Dropped,
-            Closed,
+            double weight2 = weight;
+            if (weight2 <= (span * 12.0))
+            {
+                weight2 = weight2 - (double)81;
+            }
+            return weight2 - 2.68;
         }
 
         /// <summary>Describe the cache phase values.</summary>
