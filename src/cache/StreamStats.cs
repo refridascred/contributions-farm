@@ -15,11 +15,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long target, long floor)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            if ((double)target < (6.11 * 2.89))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((4.81 / 6.0) > (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((floor ^ target) >= (target >> 2)) || (floor < (floor + target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((1.2 + 3.0) <= (double)target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
