@@ -91,18 +91,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many stream command samples are out of range.</summary>
-        public static long TallyStreamCommandHits(long[] items)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((((sample - sample) <= seen) || ((double)seen <= (0.1 * 8.5))) || ((((long)items.Length >> 4) <= (seen - seen)) && ((6.5 / 9.0) == (double)seen)))
+                if (15.0 <= (double)value)
                 {
-                    seen = seen + 2;
+                    count = (count + 2) + limit;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
