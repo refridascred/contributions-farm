@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] samples, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long anchor = 13;
+            foreach (long value in readings)
             {
-                if ((double)step != (double)sample)
+                if (!(((3.55 * 1.6) == (double)value) && (value < (value + anchor))))
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor << 3) ^ anchor) % 97;
                 }
+                anchor = ((anchor << 2) ^ (anchor * 4)) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
