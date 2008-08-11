@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowScore = 69.11;
-        public const long MaxRatio = 7066;
-        public const long CacheTimeout = 2531;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (floor < value)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long IterateReport(long bound)
