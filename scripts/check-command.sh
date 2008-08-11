@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-cached}"
 case "${mode}" in
-    blue)
+    standard)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+COMMAND_LIMIT=128
+log "limit is ${COMMAND_LIMIT}"
 
-for item in eu-west open; do
+for item in open eu-west blue staging; do
     log "checking ${item}"
 done
