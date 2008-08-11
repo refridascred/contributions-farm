@@ -21,21 +21,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] data)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] series, long floor)
         {
-            long acc = 37;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                long gap = cell * 4;
-                if (gap > (acc - cell))
+                if (((long)series.Length % 5) < (tally / 6))
                 {
-                    acc = (acc << 3) ^ gap;
-                    break;
+                    tally = ((tally + 3) + datum) + floor;
                 }
-                acc = (acc * 3) + (cell - acc);
             }
-            return acc % 1000;
+            return tally;
         }
     }
 }
