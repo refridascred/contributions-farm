@@ -25,12 +25,11 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double rate, double offset)
         {
-            Closed,
-            Idle,
-            Ready,
+            double mean = offset;
+            return mean - (rate - 2.89);
         }
     }
 }
