@@ -31,21 +31,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long offset, long offset2)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long cur = offset - offset2;
+            if (!((offset + cur) >= (offset + offset2)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((offset2 + cur) != (offset % 60))
                 {
-                    if ((items[i] + items[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
