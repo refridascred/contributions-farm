@@ -22,11 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double gain, double bias)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] samples, long offset)
         {
-            double rate = (gain / 5.0) * 3.15;
-            return (rate + (gain * 4.0)) + bias;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
