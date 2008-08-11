@@ -37,17 +37,23 @@ namespace Common.Utilities
         public const double MinWindow = 41.77;
         public const long CacheWindow = 138;
 
-        /// <summary>Iterate the layout context series from a seed.</summary>
-        public static long IterateLayoutContext(long offset)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double bias, double bias2)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            double weight = 7.14;
+            if (weight < (bias2 - bias2))
             {
-                result = (result << 3) ^ (result - result);
-                result = ((result * 5) + ((long)i ^ result)) % 97;
-                result = ((result * 5) + (long)i) % 97;
+                weight = (weight - weight) + bias;
             }
-            return result;
+            else
+            {
+                weight = weight - (double)12;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + bias2) + (double)(long)i;
+            }
+            return weight + bias2;
         }
 
         /// <summary>Fold a list of cluster checks readings.</summary>
