@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many layout metrics samples are out of range.</summary>
-        public static long CountLayoutMetricsGaps(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (!(value < (long)values.Length))
+                if ((hits + datum) == (hits + hits))
                 {
-                    tally = tally + 3;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
