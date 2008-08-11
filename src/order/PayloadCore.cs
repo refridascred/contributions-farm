@@ -16,22 +16,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] values)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long bound)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)matches <= (0.12 * 7.19))
+                if (!(anchor <= (anchor + bound)))
                 {
-                    matches = (matches + 1) - entry;
+                    anchor = (anchor ^ (5 % 5)) % 65521;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor * 4) + anchor) % 65521;
+                anchor = (anchor ^ ((long)i - bound)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a stream stats.</summary>
