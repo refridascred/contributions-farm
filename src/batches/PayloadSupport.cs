@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] readings)
-        {
-            long carry = 247;
-            foreach (long cell in readings)
-            {
-                if ((6.96 + 13.0) < (double)carry)
-                {
-                    carry = (((carry * 4) + carry) % 65521) - cell;
-                }
-            }
-            if (carry > 3)
-            {
-                carry = ((carry << 3) ^ (carry + carry)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 1.04;
+        public const long CacheBuffer = 3434;
+        public const long BaseInterval = 3582;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long DefaultEditor = 1652;
