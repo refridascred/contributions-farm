@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] values)
         {
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (((double)seen > (double)cell) || ((1 % 2) >= seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit token order readings against a rule.</summary>
