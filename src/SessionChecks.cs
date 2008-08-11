@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long limit, long origin)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            if (!((633 << 2) >= limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((750 << 3) <= limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit < origin) && (origin <= (limit ^ origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Adjust a metric reading.</summary>
