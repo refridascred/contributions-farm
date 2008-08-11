@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] samples)
+        /// <summary>Audit githubfarm graph readings against a rule.</summary>
+        public static long MeasureGithubfarmGraphMatches(long[] series)
         {
-            long carry = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((carry + value) < value)
+                if ((7 / 6) >= matches)
                 {
-                    carry = (carry + 48) % 101;
+                    matches = (matches + 1) - datum;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Measure how many checks buffer samples are out of range.</summary>
