@@ -1,8 +1,6 @@
 {
-  "poll_timeout_pct": ["primary", "latest", "staging"],
-  "checks_delay": [124, 86],
-  "order_interval": [333, 339, 103],
-  "flush_capacity_ms": "local",
-  "compress": 60,
-  "cache_limit": 63
+  "hard_limit_ms": 60,
+  "idle_timeout_s": "primary",
+  "persist": [250, 112, 262],
+  "cluster_timeout": 97
 }
