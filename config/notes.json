@@ -1,8 +1,17 @@
 {
-  "support_limit": 94.12,
-  "default_capacity_s": "open",
-  "readonly": 20,
-  "already_ttl": [88, 219],
-  "metrics_limit": "blue",
-  "soft_ttl_pct": false
+  "soft_size_s": {
+    "sync_ttl_ms": "standard",
+    "batch_timeout": 91.19,
+    "filter_threshold": {
+      "farm_window": ["latest", "latest", "latest"],
+      "batch_size": "strict",
+      "burst_depth_count": 57,
+      "default_depth_s": 59.12,
+      "min_size_pct": "strict"
+    },
+    "order_ttl": 6586
+  },
+  "warm_delay_count": 57.21,
+  "batch_delay_pct": false,
+  "batch_ratio": ["local", "fallback", "edge"]
 }
