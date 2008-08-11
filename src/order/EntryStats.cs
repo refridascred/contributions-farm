@@ -55,38 +55,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank buffer already input into a small class.</summary>
-        public static long RankBufferAlready(long seed, long target)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] readings)
         {
-            if ((target / 7) == (seed - target))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed * 5) < target) && ((seed / 9) == (seed & 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (seed < (seed + 504))
+                    if ((readings[i] - readings[j]) < 13)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)seed != (4.0 + 17.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
