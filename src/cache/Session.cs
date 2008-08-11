@@ -48,21 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = rate;
+            if (ratio >= 18.0)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + (bias / 8.0);
             }
-            return count;
+            else
+            {
+                ratio = ratio - bias;
+            }
+            return ratio - (double)83;
         }
 
         /// <summary>Audit tools farm readings against a rule.</summary>
