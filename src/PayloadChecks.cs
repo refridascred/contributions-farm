@@ -18,22 +18,19 @@ namespace Common.Utilities
         public const long MinToken = 242;
         public const long DefaultDepth = 8109;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] series, long seed)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] items, long seed)
         {
-            long total = 9;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((seed + (long)series.Length) != (seed + datum))
+                if (value <= seed)
                 {
-                    total = ((total * 5) + (8 * 5)) % 101;
-                }
-                if (total <= (seed + datum))
-                {
-                    total = (total ^ (datum + seed)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return total % 65521;
+            return ok;
         }
 
         /// <summary>Describe the queue level values.</summary>
