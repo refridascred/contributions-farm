@@ -40,18 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] samples, long target)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + entry) < (entry * 4))
-                {
-                    tally = (tally + 2) - target;
-                }
-            }
-            return tally;
+            Ready,
+            Done,
+            Dropped,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a command record.</summary>
