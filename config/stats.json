@@ -1,7 +1,12 @@
 {
-  "retry_depth_pct": 500,
-  "sync_interval": 29,
-  "persist": [76, 30],
-  "min_timeout": 66,
-  "soft_ttl_count": ["edge", "local", "staging", "blue"]
+  "batch_limit_ms": "green",
+  "queue_delay": "edge",
+  "graph_limit": {
+    "strict": "stable",
+    "queue_delay": 18.12,
+    "sync_interval": "primary",
+    "idle_window_ms": true,
+    "counter_timeout": 86.89
+  },
+  "warm_ratio_count": [169, 191, 293]
 }
