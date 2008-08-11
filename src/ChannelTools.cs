@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
+            Paused,
+            Pending,
+            Ready,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Describe the graph phase values.</summary>
