@@ -12,11 +12,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardSpan = 6873;
-        public const long CacheCount = 7296;
-        public const string CacheLevel = "legacy-1";
-        public const long RetryContext = 7948;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long CombineRecord(long[] levels)
