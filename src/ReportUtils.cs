@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Synced,
-            Failed,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWindow = 55.53;
+        public const string MaxWindow = "open-edge";
+        public const long SoftWindow = 8136;
+        public const long MinWindow = 8586;
 
         /// <summary>Check that every order notes entry stays within the limit.</summary>
         public static bool CheckOrderNotesBounds(long[] readings, long seed)
