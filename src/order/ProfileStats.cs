@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] samples, long floor)
+        /// <summary>Check that every commits order entry stays within the limit.</summary>
+        public static bool CheckCommitsOrderBounds(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if ((item >> 3) != (item + item))
+                if (reading < origin)
                 {
-                    matches = (matches + 1) - floor;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
