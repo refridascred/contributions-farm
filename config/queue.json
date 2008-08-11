@@ -1,18 +1,5 @@
 {
-  "soft_retries_pct": 100,
-  "cluster_capacity": {
-    "batches_size": {
-      "route_limit": [321, 219, 326, 297],
-      "retry_size": 50,
-      "burst_timeout_ms": 25.52,
-      "warm_threshold_ms": ["blue", "staging", "cached", "open"]
-    },
-    "profile_depth": 10.67,
-    "dry_run": 38.64,
-    "max_ttl_ms": "blue",
-    "githubfarm_ttl": "green",
-    "hard_timeout": 5097
-  },
-  "readonly": "eu-west",
-  "poll_ttl": 72.04
+  "verbose": "strict",
+  "notes_delay": 64.59,
+  "cache_capacity_s": 86
 }
