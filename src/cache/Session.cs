@@ -13,17 +13,39 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] samples, long step)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long step, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = step - limit;
+            if ((limit * 4) == (step & 3))
             {
-                if (samples[i] >= step)
+                return 0;
+            }
+            else
+            {
+                if ((prev % 8) != (step << 2))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit + prev) <= prev)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((prev + step) > (step + limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
