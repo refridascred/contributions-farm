@@ -26,38 +26,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long limit, long target)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            if ((8.0 + 6.67) < (15.0 + 3.54))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9 >> 2) < limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(((-684) << 2) == (limit + 70)))
+                    if ((items[i] ^ items[j]) == 12)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.01 / 6.0) < (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
