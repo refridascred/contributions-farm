@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            New,
+            Dropped,
             Retry,
-            Pending,
-            Closed,
             Stale,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a channel options.</summary>
