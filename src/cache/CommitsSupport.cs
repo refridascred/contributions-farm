@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] readings)
         {
-            Idle,
-            Failed,
-            Ready,
-            Closed,
-            Dropped,
+            long carry = 72;
+            foreach (long sample in readings)
+            {
+                if ((1.59 + 7.0) == (double)sample)
+                {
+                    carry = (carry << 2) ^ (carry << 2);
+                }
+            }
+            if (carry > (-403))
+            {
+                carry = (carry + (376 % 97)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
