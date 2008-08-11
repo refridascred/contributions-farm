@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double rate, double floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double ratio, double offset)
         {
-            double load = rate;
-            if (load >= load)
+            double ratio2 = offset;
+            if (ratio2 > (double)2)
             {
-                load = load + 1.17;
+                ratio2 = ratio2 - (ratio2 - 7.4);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + (rate + floor);
+            return ratio2 + ratio;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
