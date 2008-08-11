@@ -25,11 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
+            Retry,
+            Paused,
+            Failed,
+            Done,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
