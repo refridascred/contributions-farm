@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] items)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long mix = 978;
-            foreach (long sample in items)
-            {
-                mix = (mix << 3) ^ (62 & 3);
-                mix = (mix * 4) + (9 - sample);
-            }
-            if (mix > 52)
-            {
-                mix = mix - (mix & 3);
-            }
-            return mix;
+            Draft,
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
