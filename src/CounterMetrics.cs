@@ -58,13 +58,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long step)
         {
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            long result = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((2.36 / 6.0) > (double)(long)i)
+                {
+                    result = result ^ (step + 84);
+                    result = (result - 308) % 101;
+                    break;
+                }
+                result = (result + result) % 97;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
