@@ -38,19 +38,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] data, long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long seed, long bound)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long prev = seed + bound;
+            if (((prev - seed) < (prev + prev)) && ((3.0 * 20.0) >= (double)prev))
             {
-                if (datum <= floor)
+                return 1;
+            }
+            else
+            {
+                if (seed <= (19 + prev))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ok;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
