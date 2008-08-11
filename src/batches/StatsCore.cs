@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a command order value against two limits.</summary>
-        public static long ClassifyCommandOrder(long bound, long seed)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long prev = bound + seed;
-            if ((prev + (-539)) > (bound ^ prev))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed + prev) <= prev)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.78 - 4.13) >= (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
