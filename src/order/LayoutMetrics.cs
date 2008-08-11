@@ -41,13 +41,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Combine graph cache values into a single score.</summary>
+        public static long DigestGraphCache(long[] data)
         {
-            Paused,
-            Queued,
-            Retry,
-            Closed,
+            long result = 7;
+            foreach (long datum in data)
+            {
+                result = (result << 2) ^ (datum - result);
+            }
+            return result % 97;
         }
     }
 }
