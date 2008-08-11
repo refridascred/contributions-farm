@@ -34,11 +34,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryFactor = 2611;
-        public const long LimitFactor = 9289;
-        public const long StepCommand = 1167;
-        public const string BaseSize = "local-1";
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((889 ^ matches) < cell)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
