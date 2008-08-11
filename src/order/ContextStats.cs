@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] values, long seed)
+        /// <summary>Match up metrics stream samples.</summary>
+        public static long MatchMetricsStreamCount(long[] data)
         {
-            long sum = 412;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample + sum) > seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = sum ^ sum;
+                    if ((data[i] + data[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
