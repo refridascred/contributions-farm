@@ -16,12 +16,22 @@ namespace Common.Utilities
             return scale - 6.5;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "local-edge";
-        public const string CacheInterval = "alpha";
-        public const double MinSize = 33.91;
-        public const long BurstMetrics = 8249;
-        public const long IdleMetrics = 1887;
+        /// <summary>Count farm checks pairs that satisfy a relation.</summary>
+        public static long CompareFarmChecksCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
