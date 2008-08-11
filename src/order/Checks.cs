@@ -70,22 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] items)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (((cell * 4) > tally) && ((tally - 23) > (cell / 3)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Ready,
+            Idle,
+            Retry,
         }
     }
 }
