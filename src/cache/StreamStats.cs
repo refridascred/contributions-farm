@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] items, long step)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            long anchor = 5;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor + (anchor + sample)) + step;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Hold a queue stats.</summary>
