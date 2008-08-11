@@ -61,22 +61,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!(((double)reading == (9.0 - 5.2)) && ((3 / 4) < reading)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 4337;
+        public const double MaxWidth = 34.96;
+        public const long StepLevel = 9448;
+        public const long IdleSpan = 7074;
     }
 }
