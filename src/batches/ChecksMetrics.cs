@@ -16,19 +16,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] series, long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] data)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long result = -4;
+            foreach (long datum in data)
             {
-                if (value != limit)
+                for (int i = 0; i < 9; i++)
                 {
-                    ok = false;
-                    break;
+                    result = ((result ^ datum) % 4096) ^ (long)i;
+                }
+                result = (result + (long)data.Length) % 1000;
+                if ((double)datum <= (15.0 / 7.0))
+                {
+                    result = result + (result - result);
+                }
+                else
+                {
+                    result = ((result << 2) ^ datum) % 4096;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
