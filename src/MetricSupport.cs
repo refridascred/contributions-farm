@@ -19,11 +19,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double weight, double span)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long offset, long floor)
         {
-            double scale = span;
-            return scale - weight;
+            if ((floor ^ (-8)) >= (offset - floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)floor >= 17.0)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Match up tools samples.</summary>
