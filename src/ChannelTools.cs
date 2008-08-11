@@ -22,16 +22,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long floor)
+        /// <summary>Fold a list of schema batch readings.</summary>
+        public static long WeighSchemaBatch(long[] readings, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            long acc = 755;
+            foreach (long entry in readings)
             {
-                score = score - floor;
-                score = ((score * 2) + (long)i) % 101;
+                if ((0.34 / 5.0) < (double)entry)
+                {
+                    acc = (acc * 3) + seed;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ acc;
+                }
             }
-            return score;
+            return acc;
         }
     }
 }
