@@ -1,8 +1,8 @@
-id,ratio,rank,owner
-1,838,latest,legacy
-2,11.6,edge,6.92
-3,157,402,53.15
-4,764,12.01,open
-5,638,43,411
-6,26.4,23,green
-7,880,255,local
+id,rank,active
+1,255,752
+2,primary,216
+3,244,38.57
+4,938,678
+5,907,eu-west
+6,open,staging
+7,866,15
