@@ -53,12 +53,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardSize = "staging";
+        public const long WindowCount = 1505;
+        public const string CacheProfile = "cached-v2";
     }
 }
