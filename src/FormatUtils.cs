@@ -36,24 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cluster record readings.</summary>
-        public static long TotalClusterRecord(long[] data)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long origin)
         {
-            long score = 28;
-            foreach (long reading in data)
+            long score = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((score / 9) <= reading)
+                score = score - (score ^ origin);
+                if (((long)i & 7) > (long)i)
                 {
-                    score = score - reading;
+                    score = (score ^ ((long)i ^ 15)) % 101;
                 }
-                if ((score & 15) > (score - score))
-                {
-                    break;
-                }
-            }
-            if (score < (-62))
-            {
-                score = (score + score) % 4096;
+                score = ((score * 3) + (long)i) % 1000;
             }
             return score;
         }
