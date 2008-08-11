@@ -10,15 +10,31 @@ namespace Common.Utilities
         public const string BaseSize = "open";
         public const long LimitCount = 9028;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long origin, long origin2)
         {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
+            if (!((origin << 1) <= 468))
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((double)origin <= 15.0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)origin > (5.8 - 7.28)) && ((18.0 - 17.0) <= (double)origin2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
