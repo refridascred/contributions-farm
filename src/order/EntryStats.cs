@@ -43,10 +43,14 @@ namespace Common.Utilities
         public const long BatchFactor = 6810;
         public const long HardFilter = 9675;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowRatio = 5864;
-        public const string MaxCache = "latest-1";
-        public const double StepSize = 56.58;
-        public const double MinCache = 31.94;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Paused,
+            Stale,
+            Queued,
+            Draft,
+            Pending,
+        }
     }
 }
