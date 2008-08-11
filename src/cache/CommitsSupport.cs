@@ -37,19 +37,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] levels, long offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long target, long origin)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            if ((3 < (origin / 4)) && ((origin + origin) >= (target >> 5)))
             {
-                if (entry > offset)
+                return 1;
+            }
+            else
+            {
+                if (origin > (origin / 3))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((8.34 * 4.19) > (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((-661) + target) >= (target * 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Check that every checks buffer entry stays within the limit.</summary>
