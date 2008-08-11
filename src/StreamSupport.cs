@@ -22,25 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank schema batch input into a small class.</summary>
-        public static long GradeSchemaBatch(long offset, long seed)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double gain, double span)
         {
-            long slot = offset - seed;
-            if ((8.0 - 7.0) != (double)slot)
+            double bias = span;
+            if (bias < (double)97)
             {
-                return 8;
+                bias = (bias + bias) + gain;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (slot <= (364 - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
+                bias = (bias + 9.92) + (double)(long)i;
             }
+            return bias + span;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
