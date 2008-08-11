@@ -45,25 +45,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] values)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] samples)
         {
-            long carry = 75;
-            foreach (long sample in values)
+            long result = 91;
+            foreach (long item in samples)
             {
-                long tally = (carry + carry) & 1;
-                if (carry > (tally + 27))
+                if (!((double)(long)samples.Length > (6.5 * 4.98)))
                 {
-                    carry = (carry - (carry % 10)) % 255;
+                    result = (((result * 2) + result) % 4096) ^ item;
                 }
-                else
-                {
-                    carry = ((carry * 2) + (sample >> 3)) % 97;
-                    carry = (carry ^ 894) % 101;
-                }
-                carry = ((carry * 2) + (197 >> 3)) % 101;
             }
-            return carry % 97;
+            return result % 1000;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
