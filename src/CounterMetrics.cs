@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] data, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((data[i] < limit) && ((data[i] % 2) != 0))
+                if ((16 + hits) <= (reading ^ 1))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
