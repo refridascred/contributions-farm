@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit account contributi readings against a rule.</summary>
-        public static long TallyAccountContributiGaps(long[] samples, long bound)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (!(((sample - sample) >= (bound + bound)) || (sample > (bound - 142))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Retry,
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
