@@ -25,11 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstStats = "alpha";
-        public const double MinSpan = 44.17;
-        public const long MaxLevel = 890;
-        public const double DefaultStats = 15.31;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double SmoothSchema(double ratio, double offset)
