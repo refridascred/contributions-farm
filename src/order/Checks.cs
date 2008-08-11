@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 1066;
+        public const string WindowBudget = "primary-v2";
+        public const long MaxMetrics = 9923;
+        public const string IdleMetrics = "stable";
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
