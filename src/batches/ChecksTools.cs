@@ -30,31 +30,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long seed, long origin)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            if ((origin - 5) >= seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + (-145)) <= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed % 5) < (8 & 15)) && ((seed ^ origin) > (seed + origin)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a session entry.</summary>
