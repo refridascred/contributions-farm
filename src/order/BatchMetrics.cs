@@ -57,18 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter account entries that pass the check.</summary>
-        public static long TallyFilterAccountOutliers(long[] levels)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((entry * 4) >= (entry % 24))
+                if ((hits - 594) == (hits - 753))
                 {
-                    seen = seen + 2;
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a context options.</summary>
