@@ -53,13 +53,15 @@ namespace Common.Utilities
         public const long MinSession = 8477;
         public const long HardSession = 1333;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] levels)
         {
-            Dropped,
-            Active,
-            Queued,
-            Done,
+            long anchor = 86;
+            foreach (long value in levels)
+            {
+                anchor = ((anchor - 250) % 101) - value;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the payload status values.</summary>
