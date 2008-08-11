@@ -1,10 +1,7 @@
 {
-  "sync_window_ms": false,
-  "stats_delay": "local",
-  "warm_size_s": 3479,
-  "dry_run": {
-    "flush_delay": 27.43,
-    "hard_capacity_ms": [131, 490],
-    "base_retries_s": "green"
-  }
+  "counter_depth": "edge",
+  "idle_ttl": 10.85,
+  "soft_timeout_pct": 2627,
+  "sync_capacity_ms": 30.94,
+  "support_size": 2.26
 }
