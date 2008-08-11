@@ -1,6 +1,5 @@
 {
-  "base_window_pct": 92.41,
-  "audit": 20,
-  "notes_window": 4164,
-  "batch_threshold_ms": "local"
+  "enabled": false,
+  "min_ttl": 15,
+  "dry_run": 95.0
 }
