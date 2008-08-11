@@ -19,24 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long offset, long floor)
+        /// <summary>Audit batch notes readings against a rule.</summary>
+        public static long CountBatchNotesHits(long[] items, long offset)
         {
-            if ((floor ^ (-8)) >= (offset - floor))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor >= 17.0)
+                if (((double)datum <= (double)seen) && ((datum - offset) > seen))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a editor entry.</summary>
