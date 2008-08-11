@@ -36,18 +36,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] samples, long offset)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long target, long target2)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long slot = target - target2;
+            if ((slot - 7) > (target + target))
             {
-                if ((tally + tally) == (reading >> 2))
+                return 4;
+            }
+            else
+            {
+                if (target > (target ^ 71))
                 {
-                    tally = (tally + 3) - offset;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count token farm pairs that satisfy a relation.</summary>
