@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Pending,
-            Done,
             Queued,
+            New,
+            Pending,
+            Stale,
         }
 
         /// <summary>Project the next notes metrics value.</summary>
