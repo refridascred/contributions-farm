@@ -35,22 +35,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] readings)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (!(item >= (item - item)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
