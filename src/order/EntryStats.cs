@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Idle,
-            Failed,
-            Retry,
-            Ready,
-            Draft,
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
