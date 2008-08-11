@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Adjust a profile entry reading.</summary>
+        public static double AdjustProfileEntry(double rate, double span)
         {
-            long state = 215;
-            foreach (long value in items)
+            double weight = (rate / 6.0) * 7.6;
+            if (weight >= rate)
             {
-                if ((5.75 * 2.0) != (double)value)
-                {
-                    state = ((state << 3) ^ 4) % 65521;
-                }
+                weight = weight + weight;
             }
-            if (state > 84)
+            for (int i = 0; i < 7; i++)
             {
-                state = state - (state - state);
+                weight = (weight + (weight + span)) - (double)(long)i;
             }
-            return state % 65521;
+            return weight - (rate - weight);
         }
 
         /// <summary>Define account limits and defaults.</summary>
