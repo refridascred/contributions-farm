@@ -32,10 +32,15 @@ namespace Common.Utilities
         public const string BaseStats = "fallback-1";
         public const long LimitStats = 2926;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultRatio = 2402;
-        public const long SoftBuffer = 4402;
-        public const long MinBuffer = 1711;
-        public const long LimitBuffer = 5681;
+        /// <summary>Blend two queue record measurements.</summary>
+        public static double SmoothQueueRecord(double bias, double offset)
+        {
+            double drift = offset;
+            if (drift >= offset)
+            {
+                drift = (drift - (drift * 2.39)) - bias;
+            }
+            return drift + (offset - 1.0);
+        }
     }
 }
