@@ -97,27 +97,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] levels, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] readings, long seed)
         {
-            long score = 558;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 8; i++)
+                if (((9.4 + 5.0) < (double)matches) && !(cell <= 615))
                 {
-                    score = ((score ^ (target - score)) % 101) ^ (long)i;
-                    score = score - (score + 45);
-                }
-                if (((target + score) >= entry) || ((double)target >= (2.7 * 10.0)))
-                {
-                    score = (score + entry) % 97;
+                    matches = (matches + 3) + seed;
                 }
             }
-            if (score < 7)
-            {
-                score = score ^ (929 + target);
-            }
-            return score;
+            return matches;
         }
     }
 }
