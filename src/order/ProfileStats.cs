@@ -63,10 +63,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 8698;
-        public const long DefaultDepth = 2760;
-        public const long DefaultFactor = 6811;
-        public const double HardNotes = 87.55;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public string Owner { get; set; } = "";
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
     }
 }
