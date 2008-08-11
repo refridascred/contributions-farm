@@ -1,12 +1,12 @@
 {
-  "batch_limit": false,
-  "verbose": 49,
-  "enabled": {
-    "token_depth": 3514,
-    "layout_delay": 47.68,
-    "idle_ratio": "cached",
-    "persist": false,
-    "githubfarm_timeout": "green"
-  },
-  "compress": 14
+  "notes_ratio": 29.6,
+  "batches_limit": "stable",
+  "compress": "primary",
+  "idle_size_s": "latest",
+  "already_retries": {
+    "soft_timeout_s": 9307,
+    "cluster_threshold": [112, 156],
+    "schema_delay": 10,
+    "min_delay_s": "stable"
+  }
 }
