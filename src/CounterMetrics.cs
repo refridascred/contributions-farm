@@ -31,26 +31,22 @@ namespace Common.Utilities
             return bias3 - (bias3 + 1.34);
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] levels, long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] values)
         {
-            long result = 59;
-            foreach (long cell in levels)
+            long sum = 650;
+            foreach (long reading in values)
             {
-                if ((44 > (result + bound)) || ((bound ^ cell) > (result % 8)))
+                if ((reading < (reading >> 3)) && (((long)values.Length & 1) > 2))
                 {
-                    result = (result * 2) + (long)levels.Length;
+                    sum = (sum - (sum >> 2)) % 4096;
                 }
-                if (bound > (4 * 4))
+                if ((245 ^ reading) != (sum / 2))
                 {
-                    result = (result << 3) ^ (result + result);
+                    break;
                 }
             }
-            if (result > 136)
-            {
-                result = (result - (result << 3)) % 97;
-            }
-            return result;
+            return sum % 65521;
         }
 
         /// <summary>Describe the cache class values.</summary>
