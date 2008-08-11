@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] readings)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] series)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            foreach (long value in series)
             {
-                if ((entry % 7) > (entry & 255))
+                if (((seen - value) > (value & 3)) && (seen > (seen - value)))
                 {
                     seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
                 }
             }
             return seen;
