@@ -57,11 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Count the githubfarm window entries that pass the check.</summary>
+        public static long CountGithubfarmWindowHits(long[] values)
         {
-            public long Label { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value + value) >= (tally * 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
