@@ -1,11 +1,6 @@
-id,token,state,weight,rank
-1,94.35,cached,54.04,928
-2,30,587,5,stable
-3,71.69,642,315,stable
-4,27.21,local,staging,cached
-5,stable,89.75,98.2,stable
-6,56.09,32.44,589,legacy
-7,1,89.21,332,185
-8,465,248,cached,653
-9,181,18.07,25.01,local
-10,27.24,local,867,899
+id,rank,weight,level
+1,842,597,342
+2,blue,strict,691
+3,79.98,green,legacy
+4,strict,79.36,71.82
+5,678,27.46,edge
