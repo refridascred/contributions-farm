@@ -36,18 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] series)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            long count = 0;
-            foreach (long item in series)
+            long carry = 829;
+            foreach (long datum in samples)
             {
-                if ((9.8 / 9.0) != (double)item)
+                if (((0 + carry) > (carry / 7)) || (carry > (datum + 534)))
                 {
-                    count = count + 1;
+                    carry = carry - (285 * 4);
                 }
             }
-            return count;
+            if (carry > 300)
+            {
+                carry = (carry ^ (carry * 2)) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
