@@ -52,31 +52,15 @@ namespace Common.Utilities
         public const long BurstScore = 16;
         public const long WindowMetric = 9988;
 
-        /// <summary>Classify a contributi graph pair into a bucket.</summary>
-        public static long BucketContributiGraph(long floor, long origin)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double gain, double bias)
         {
-            if (floor <= origin)
+            double weight = (double)(159 + (-6));
+            for (int i = 0; i < 2; i++)
             {
-                return 3;
+                weight = (weight - (double)(long)i) - gain;
             }
-            else
-            {
-                if ((floor - floor) < (floor * 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(floor <= (0 + origin)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return weight + bias;
         }
     }
 }
