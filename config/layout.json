@@ -1,6 +1,11 @@
 {
-  "strict": [59, 78, 366],
-  "default_retries_ms": false,
-  "idle_retries_ms": "local",
-  "channel_size": 64
+  "verbose": 44.46,
+  "warm_size_ms": 100,
+  "sync_threshold_ms": {
+    "session_window": 61,
+    "soft_limit_count": 4317,
+    "already_delay": "open",
+    "contributi_delay": false,
+    "cache_limit": 3
+  }
 }
