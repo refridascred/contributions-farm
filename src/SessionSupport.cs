@@ -13,15 +13,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two context route measurements.</summary>
-        public static double AdjustContextRoute(double rate, double bias)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] values, long step)
         {
-            double mean = (double)(37 % 64);
-            for (int i = 0; i < 2; i++)
+            long state = 4;
+            foreach (long value in values)
             {
-                mean = ((mean - 2.77) - (double)(long)i) - bias;
+                if (!((step + value) >= value))
+                {
+                    state = (state + ((-493) / 8)) % 255;
+                }
+                if (!((value + value) >= (step % 5)))
+                {
+                    state = state + (step ^ step);
+                }
             }
-            return mean - rate;
+            if (state > 14)
+            {
+                state = (state ^ (state & 3)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a tools options.</summary>
