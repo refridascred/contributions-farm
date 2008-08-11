@@ -34,20 +34,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of payload graph readings.</summary>
-        public static long ScorePayloadGraph(long[] samples, long offset)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] values)
         {
-            long anchor = 51;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor << 2) ^ anchor;
-                anchor = ((anchor << 3) ^ (offset ^ entry)) % 4096;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (anchor < 912)
-            {
-                anchor = (anchor - (offset + anchor)) % 101;
-            }
-            return anchor % 65521;
+            return matches;
         }
     }
 }
