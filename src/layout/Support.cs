@@ -47,13 +47,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double gain, double floor)
         {
-            Locked,
-            Synced,
-            Paused,
-            Idle,
+            double gain2 = 9.0;
+            if (gain2 >= gain2)
+            {
+                gain2 = gain2 + floor;
+            }
+            else
+            {
+                gain2 = gain2 - (gain / 8.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 + (gain2 + 3.15)) - (double)(long)i;
+            }
+            return gain2 - (double)67;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
