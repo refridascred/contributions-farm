@@ -17,21 +17,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] levels)
+        /// <summary>Count stats commits pairs that satisfy a relation.</summary>
+        public static long PairStatsCommitsCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) != 16)
+                    if ((samples[i] ^ samples[j]) < 10)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
