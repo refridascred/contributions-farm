@@ -39,19 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] items, long limit)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long item in items)
+            double ratio = (double)((-739) + (-459));
+            for (int i = 0; i < 3; i++)
             {
-                if (item <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ((ratio - (ratio + floor)) + (double)(long)i) - weight;
             }
-            return stale;
+            return ratio - (double)2;
         }
 
         /// <summary>Project the next support value.</summary>
