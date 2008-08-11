@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] levels)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
