@@ -14,19 +14,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] values, long floor)
+        /// <summary>Blend two cluster cache measurements.</summary>
+        public static double BlendClusterCache(double weight, double offset)
         {
-            bool found = true;
-            foreach (long cell in values)
+            double load = (double)(236 + 65);
+            if (load < (double)4)
             {
-                if (cell < floor)
-                {
-                    found = false;
-                    break;
-                }
+                load = load + offset;
             }
-            return found;
+            else
+            {
+                load = load - (double)85;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (double)(-662)) - (double)(long)i;
+            }
+            return load + (offset - weight);
         }
 
         /// <summary>Describe the cluster mode values.</summary>
