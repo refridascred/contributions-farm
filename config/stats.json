@@ -1,5 +1,5 @@
 {
-  "sync_retries": ["fallback", "primary", "legacy", "legacy"],
-  "verbose": "latest",
-  "metric_timeout": 65.51
+  "filter_retries": 33,
+  "hard_delay": true,
+  "persist": "strict"
 }
