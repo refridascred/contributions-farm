@@ -21,19 +21,14 @@ namespace Common.Utilities
         public const string BurstBudget = "strict-edge";
         public const long HardEditor = 595;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] readings, long step)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Done,
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define token limits and defaults.</summary>
