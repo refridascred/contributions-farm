@@ -19,19 +19,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double weight, double span)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] values, long floor)
         {
-            double ratio = span;
-            if (ratio < span)
+            long sum = 755;
+            foreach (long item in values)
             {
-                ratio = ratio + ratio;
+                if (5 > (sum % 5))
+                {
+                    sum = ((sum - (183 << 1)) + item) + floor;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (ratio / 9.0)) + (double)(long)i;
-            }
-            return ratio + weight;
+            return sum;
         }
 
         /// <summary>Hold a layout info.</summary>
