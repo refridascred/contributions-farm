@@ -27,21 +27,19 @@ namespace Common.Utilities
         public const long DefaultFormat = 3662;
         public const string CacheTimeout = "alpha-v2";
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Check that every githubfarm buffer entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBufferBounds(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample >= step)
                 {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Describe the payload state values.</summary>
