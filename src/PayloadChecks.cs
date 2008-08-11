@@ -29,23 +29,18 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double rate, double offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] readings, long offset)
         {
-            double ratio = 3.5;
-            if (ratio >= rate)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                ratio = (ratio + rate) - offset;
+                if (((51 > ((long)readings.Length & 63)) && ((offset / 3) >= seen)) || ((datum + seen) <= (offset % 100)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                ratio = ratio - (ratio * 4.22);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio - (double)669;
+            return seen;
         }
 
         /// <summary>Describe the context kind values.</summary>
