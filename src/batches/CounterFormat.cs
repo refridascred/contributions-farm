@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (seen >= (seen + item))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinLevel = 62.59;
+        public const long BaseEntry = 3273;
+        public const double HardEntry = 82.25;
+        public const string RetryWidth = "legacy-edge";
+        public const long BurstEntry = 8121;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
