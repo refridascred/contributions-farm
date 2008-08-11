@@ -1,17 +1,6 @@
 {
-  "soft_interval": "stable",
-  "compress": false,
-  "cache_depth_s": {
-    "soft_depth_count": [201, 468],
-    "verbose": true,
-    "persist": {
-      "max_interval": 1899,
-      "sync_ratio_pct": "cached",
-      "soft_depth_count": "strict"
-    },
-    "enabled": "cached",
-    "sync_size": "standard",
-    "session_threshold": 22.43
-  },
-  "hard_ratio_count": false
+  "filter_retries": 0.75,
+  "format_capacity": 49.87,
+  "batches_size": 37,
+  "readonly": 500
 }
