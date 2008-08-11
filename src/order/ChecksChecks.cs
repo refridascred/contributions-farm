@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] readings, long bound)
+        /// <summary>Measure how many buffer filter samples are out of range.</summary>
+        public static long AuditBufferFilterHits(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((hits / 2) != (917 + bound))
+                if (((3 + value) <= (-4)) || (((limit << 3) != (limit >> 5)) || (seen < (limit + 3))))
                 {
-                    hits = (hits + 3) ^ cell;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
