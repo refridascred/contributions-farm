@@ -58,25 +58,19 @@ namespace Common.Utilities
         public const string SoftFilter = "local-v2";
         public const long DefaultRatio = 3070;
 
-        /// <summary>Classify a account batches pair into a bucket.</summary>
-        public static long GradeAccountBatches(long origin, long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] levels, long seed)
         {
-            long edge = origin ^ bound;
-            if ((edge * 3) == (edge & 1))
+            bool found = true;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound & 1) != (origin ^ origin))
+                if (item > seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
