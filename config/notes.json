@@ -1,18 +1,16 @@
 {
-  "min_depth": 47,
-  "verbose": [435, 357, 73, 361],
-  "editor_ratio": true,
-  "burst_interval_pct": {
-    "record_capacity": 30,
-    "default_timeout_count": {
-      "queue_capacity": "local",
-      "retry_ttl_s": "stable",
-      "payload_threshold": "open",
-      "hard_retries_ms": 5411
-    },
-    "strict": "latest",
-    "notes_threshold": 1024,
-    "persist": "standard"
+  "batch_ttl_count": {
+    "flush_ratio": false,
+    "max_threshold_count": 11.76,
+    "batch_capacity": true,
+    "dry_run": 16,
+    "base_limit": {
+      "soft_ttl_s": "blue",
+      "max_ratio_ms": "strict",
+      "cache_ratio": 5.55
+    }
   },
-  "min_capacity_s": 3.17
+  "queue_limit": true,
+  "tools_threshold": true,
+  "strict": "standard"
 }
