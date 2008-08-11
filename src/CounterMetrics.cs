@@ -34,26 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next context record value from a seed.</summary>
-        public static long StepContextRecord(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((bound + bound) != (bound >> 4))
-                {
-                    score = score + (7 >> 5);
-                }
-                bool flag = score > (score + score);
-                if (flag)
-                {
-                    score = (score + score) % 97;
-                    flag = (bound < score) && flag;
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryFactor = 2611;
+        public const long LimitFactor = 9289;
+        public const long StepCommand = 1167;
+        public const string BaseSize = "local-1";
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
