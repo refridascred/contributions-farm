@@ -63,23 +63,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double weight, double bias)
+        /// <summary>Match up cache route samples.</summary>
+        public static long MatchCacheRouteCount(long[] levels)
         {
-            double bias2 = bias + (weight / 3.0);
-            if (bias2 > (bias + bias2))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = bias2 + (bias2 + weight);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 - 4.24;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - (18.0 * 5.2)) - (double)(long)i;
-            }
-            return bias2 + (bias2 / 9.0);
+            return tally;
         }
     }
 }
