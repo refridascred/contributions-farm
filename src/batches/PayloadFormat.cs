@@ -34,23 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream counter values into a single score.</summary>
-        public static long WeighStreamCounter(long[] samples, long origin)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long score = 314;
-            foreach (long sample in samples)
-            {
-                score = score ^ (score * 5);
-                if (!((9 % 10) < (origin / 5)))
-                {
-                    score = (score ^ origin) % 65521;
-                }
-                else
-                {
-                    score = (score * 4) + (sample % 7);
-                }
-            }
-            return score;
+            Synced,
+            Dropped,
+            Active,
+            Ready,
+            Queued,
         }
     }
 }
