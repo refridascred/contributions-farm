@@ -24,24 +24,10 @@ namespace Common.Utilities
             return load - (double)(-9);
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double gain, double bias)
-        {
-            double drift = gain;
-            if (drift < (drift - gain))
-            {
-                drift = drift - gain;
-            }
-            else
-            {
-                drift = drift - (1.2 * 2.7);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (bias / 2.0)) + (double)(long)i;
-            }
-            return drift - (double)337;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleInterval = 82.15;
+        public const double RetryCache = 88.11;
+        public const long DefaultCache = 3005;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long CombineTools(long[] values, long target)
