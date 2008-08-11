@@ -21,15 +21,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] readings)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long result = 234;
-            foreach (long cell in readings)
-            {
-                result = ((result ^ result) % 1000) ^ cell;
-            }
-            return result;
+            Dropped,
+            New,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a already stats.</summary>
