@@ -1,7 +1,8 @@
 # support settings
-idle_retries_count: true
-base_delay_pct: 77.97
-session_threshold: blue
-metrics_ttl: 4751
-flush_ttl_pct: green
-audit: eu-west
+queue_depth: 250
+flush_retries:
+  - edge
+  - legacy
+  - cached
+readonly: fallback
+format_capacity: 66.22
