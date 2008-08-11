@@ -69,13 +69,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long origin, long offset)
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long offset2 = origin ^ offset;
+            if ((double)offset <= 2.0)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset2 >> 3) <= (origin << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - offset2) == (origin ^ 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((9.05 / 4.0) < (double)offset2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
