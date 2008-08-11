@@ -17,38 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long bound, long origin)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            if ((824 - bound) <= origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((696 + 4) < (bound >> 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin - bound) == (bound - (-2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a metric record.</summary>
