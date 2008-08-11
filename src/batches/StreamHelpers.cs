@@ -53,12 +53,14 @@ namespace Common.Utilities
         public const long MinSession = 8477;
         public const long HardSession = 1333;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCluster = "strict-edge";
-        public const long BaseLevel = 1890;
-        public const string MinCluster = "latest-v2";
-        public const long LimitCluster = 8720;
-        public const string IdleLevel = "cached-v2";
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Dropped,
+            Active,
+            Queued,
+            Done,
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
