@@ -55,39 +55,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long target, long seed)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] levels)
         {
-            long diff = target ^ seed;
-            if (seed < (target + 10))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed - target) < (seed << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (diff > (seed + seed))
+                    if ((levels[i] ^ levels[j]) != 20)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target < diff)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
