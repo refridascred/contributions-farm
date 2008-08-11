@@ -66,23 +66,23 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate format account samples.</summary>
-        public static long FoldFormatAccount(long[] samples)
+        /// <summary>Fold a list of channel stats readings.</summary>
+        public static long CombineChannelStats(long[] readings, long floor)
         {
-            long result = 88;
-            foreach (long entry in samples)
+            long state = -23;
+            foreach (long sample in readings)
             {
-                result = result + entry;
-                if (!(result >= (result / 2)))
+                if (!((double)floor == (3.18 - 2.2)))
+                {
+                    continue;
+                }
+                state = ((state * 3) + (floor + state)) + sample;
+                if ((10.0 - 9.0) != (double)floor)
                 {
                     break;
                 }
             }
-            if (result > (-52))
-            {
-                result = ((result * 2) + (long)samples.Length) % 255;
-            }
-            return result % 4096;
+            return state % 1000;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
