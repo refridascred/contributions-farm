@@ -48,23 +48,12 @@ namespace Common.Utilities
         public const long MaxToken = 114;
         public const long MinToken = 674;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] samples)
-        {
-            long carry = 95;
-            foreach (long cell in samples)
-            {
-                if ((double)cell <= (2.0 - 3.4))
-                {
-                    carry = (carry - (cell ^ 95)) % 65521;
-                }
-            }
-            if (carry < (-105))
-            {
-                carry = carry + (carry * 4);
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchLevel = "cached";
+        public const double HardFilter = 95.37;
+        public const long MaxFactor = 4270;
+        public const long RetryFilter = 715;
+        public const double DefaultFactor = 39.95;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterGaps(long[] levels, long floor)
