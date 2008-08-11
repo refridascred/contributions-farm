@@ -65,19 +65,21 @@ namespace Common.Utilities
             return weight + bias2;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double gain, double offset)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] data)
         {
-            double ratio = gain;
-            if (ratio > gain)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio + ratio) - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + 4.0) + (double)(long)i;
-            }
-            return ratio - (5.14 - gain);
+            return tally;
         }
     }
 }
