@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Failed,
-            Stale,
-            Active,
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a profile stats.</summary>
