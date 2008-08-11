@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] levels, long origin)
+        /// <summary>Roll a commits report counter forward.</summary>
+        public static long IterateCommitsReport(long seed)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Describe the filter class values.</summary>
