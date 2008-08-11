@@ -69,10 +69,27 @@ namespace Common.Utilities
         public const long HardBudget = 1791;
         public const long WindowFactor = 7892;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 2494;
-        public const double BaseSpan = 7.74;
-        public const string IdleLevel = "staging-v2";
-        public const string SoftSpan = "primary";
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] items, long step)
+        {
+            long score = 8;
+            foreach (long cell in items)
+            {
+                score = score + (22 / 5);
+                if ((8.56 / 5.0) < (double)cell)
+                {
+                    score = ((score * 5) + (score - score)) % 101;
+                }
+                else
+                {
+                    score = score ^ cell;
+                }
+                if ((step <= (cell & 31)) && ((double)step < 4.58))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
     }
 }
