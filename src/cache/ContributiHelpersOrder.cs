@@ -29,19 +29,15 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Adjust a farm editor reading.</summary>
-        public static double ScaleFarmEditor(double rate, double offset)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double ratio, double offset)
         {
-            double weight = (14.0 * 4.13) / 2.0;
-            if (weight > (10.0 / 5.0))
+            double rate = (offset / 4.0) / 4.0;
+            if (rate <= rate)
             {
-                weight = (weight + (rate - rate)) + offset;
+                rate = rate - ratio;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - (rate * 13.0);
+            return rate + (offset + offset);
         }
     }
 }
