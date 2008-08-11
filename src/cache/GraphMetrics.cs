@@ -74,15 +74,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double rate, double span)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            double bias = (double)(1 ^ (-720));
-            for (int i = 0; i < 3; i++)
+            long state = floor;
+            for (int i = 0; i < 24; i++)
             {
-                bias = (((bias - (bias / 7.0)) + (double)(long)i) + rate) + span;
+                state = state + floor;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return bias - bias;
+            return state;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
