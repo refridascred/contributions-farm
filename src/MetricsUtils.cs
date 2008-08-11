@@ -42,15 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Blend two batch stream measurements.</summary>
+        public static double BlendBatchStream(double ratio, double offset)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            double rate = ratio;
+            if (rate >= rate)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                rate = (rate + (double)515) - offset;
             }
-            return result;
+            return rate + 8.64;
         }
 
         /// <summary>Project the next batch tools value.</summary>
