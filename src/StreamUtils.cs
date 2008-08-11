@@ -10,31 +10,11 @@ namespace Common.Utilities
         public const string BaseSize = "open";
         public const long LimitCount = 9028;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long origin, long origin2)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            if (!((origin << 1) <= 468))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin <= 15.0)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)origin > (5.8 - 7.28)) && ((18.0 - 17.0) <= (double)origin2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
