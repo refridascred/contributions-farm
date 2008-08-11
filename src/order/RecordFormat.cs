@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] data, long offset)
+        /// <summary>Measure how many layout metrics samples are out of range.</summary>
+        public static long CountLayoutMetricsGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (hits < datum)
+                if (!(value < (long)values.Length))
                 {
-                    hits = (hits + 1) + offset;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
