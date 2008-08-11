@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 1195;
-        public const long MaxDepth = 3321;
-        public const long RetryMetrics = 6991;
-        public const double DefaultSpan = 53.68;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] values)
+        {
+            long anchor = 67;
+            foreach (long reading in values)
+            {
+                anchor = ((anchor << 2) ^ (reading ^ anchor)) % 65521;
+                if (((anchor >> 3) != (33 * 5)) || ((664 << 1) > (reading ^ reading)))
+                {
+                    anchor = (anchor << 2) ^ (reading - anchor);
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (reading << 1);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long RollToken(long step)
