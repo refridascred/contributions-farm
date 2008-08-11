@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long origin, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] samples)
         {
-            if ((45 - origin) <= (bound + 188))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound < (bound / 9))
+                if (324 >= (matches - matches))
                 {
-                    return 7;
+                    matches = (matches + 3) ^ reading;
                 }
                 else
                 {
-                    if ((bound + bound) <= bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank layout command input into a small class.</summary>
