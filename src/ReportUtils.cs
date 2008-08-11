@@ -50,16 +50,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine notes commits values into a single score.</summary>
-        public static long CombineNotesCommits(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] data, long bound)
         {
-            long total = 7;
-            foreach (long datum in items)
+            long acc = 8;
+            foreach (long entry in data)
             {
-                total = (total + total) % 97;
-                total = total - (total + datum);
+                for (int i = 0; i < 7; i++)
+                {
+                    acc = ((acc * 2) + (long)i) % 4096;
+                }
+                acc = acc - (bound ^ entry);
+                if ((18.0 * 6.56) == (double)bound)
+                {
+                    break;
+                }
             }
-            return total;
+            if (acc > 7)
+            {
+                acc = ((acc * 4) + (acc ^ 97)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next counter stream value from a seed.</summary>
