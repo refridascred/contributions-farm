@@ -14,15 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] samples, long limit)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] readings, long bound)
         {
-            long mark = 8;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark + (cell + 65)) % 255) + limit;
+                if ((readings[i] <= bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
