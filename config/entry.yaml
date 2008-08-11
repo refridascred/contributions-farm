@@ -1,6 +1,13 @@
 # entry settings
-hard_ttl: 58
-sync_threshold_pct: strict
-min_retries_s: 59.0
-readonly: open
-max_limit_pct: 6666
+burst_depth:
+  - legacy
+  - stable
+  - strict
+  - standard
+checks_ratio: 10
+context_size:
+  - 466
+  - 315
+report_depth: fallback
+burst_capacity: false
+burst_ratio: 3659
