@@ -32,18 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] series)
+        /// <summary>Compare every pair of channel checks readings.</summary>
+        public static long CompareChannelChecksCount(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)datum >= (double)667)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((data[i] + data[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
