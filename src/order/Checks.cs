@@ -35,39 +35,18 @@ namespace Common.Utilities
         public const long MinBudget = 2087;
         public const long WindowWidth = 5287;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long step, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] samples)
         {
-            long slot = step - seed;
-            if ((slot ^ slot) >= seed)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)slot == (19.0 - 4.2))
+                if ((value - 98) > (matches + matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step >= 3.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed & 127) == (seed ^ 41))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
