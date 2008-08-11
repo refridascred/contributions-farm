@@ -22,21 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the route filter series from a seed.</summary>
-        public static long DeriveRouteFilter(long floor)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double gain, double bias)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = mix ^ (mix & 15);
-                if (((long)i & 1) <= (mix ^ mix))
-                {
-                    mix = mix + (floor - (long)i);
-                }
-                mix = (mix * 5) + (floor - mix);
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            double rate = (gain / 5.0) * 3.15;
+            return (rate + (gain * 4.0)) + bias;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
