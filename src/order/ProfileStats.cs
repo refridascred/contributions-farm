@@ -24,19 +24,24 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] data)
+        /// <summary>Grade a stats notes value against two limits.</summary>
+        public static long RankStatsNotes(long seed, long origin)
         {
-            long anchor = 89;
-            foreach (long entry in data)
+            if (((origin & 255) != (97 - origin)) || ((double)seed > 3.64))
             {
-                anchor = (anchor + (entry + entry)) % 101;
+                return 6;
             }
-            if (anchor < 1)
+            else
             {
-                anchor = anchor - (anchor - anchor);
+                if (2 > seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return anchor;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
