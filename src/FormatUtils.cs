@@ -62,12 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Fold a list of record farm readings.</summary>
+        public static long CombineRecordFarm(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long total = 10;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    total = (total - (reading << 2)) ^ (long)i;
+                }
+                total = (total + (reading ^ reading)) % 4096;
+            }
+            return total;
         }
     }
 }
