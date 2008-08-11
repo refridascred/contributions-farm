@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
