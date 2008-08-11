@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] values, long bound)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= bound)
+                if (levels[i] < floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
