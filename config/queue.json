@@ -1,5 +1,14 @@
 {
-  "enabled": false,
-  "min_ttl": 15,
-  "dry_run": 95.0
+  "audit": {
+    "hard_size_s": true,
+    "audit": 6764,
+    "soft_depth_s": "strict",
+    "cache_ratio_pct": 250
+  },
+  "profile_delay": {
+    "stream_interval": "blue",
+    "burst_limit_s": "latest",
+    "enabled": true
+  },
+  "poll_depth_ms": "staging"
 }
