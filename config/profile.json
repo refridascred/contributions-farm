@@ -1,7 +1,8 @@
 {
-  "warm_retries_pct": false,
-  "min_depth_count": "blue",
-  "min_depth": 26.22,
-  "notes_interval": 2073,
-  "enabled": 250
+  "persist": ["green", "fallback", "standard"],
+  "base_delay_count": ["eu-west", "eu-west", "local"],
+  "compress": 18.53,
+  "enabled": "fallback",
+  "base_timeout_count": "strict",
+  "channel_interval": true
 }
