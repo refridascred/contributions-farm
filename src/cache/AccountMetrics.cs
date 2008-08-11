@@ -62,10 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxTimeout = 7247;
-        public const long MaxChannel = 9770;
-        public const double SoftChannel = 79.28;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] data)
+        {
+            long score = -548;
+            foreach (long entry in data)
+            {
+                if (3 < (score >> 3))
+                {
+                    score = (score - score) ^ entry;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
