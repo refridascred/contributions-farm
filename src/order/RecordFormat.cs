@@ -33,13 +33,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] levels, long target)
         {
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((1.8 - 4.47) < (double)matches)
+                {
+                    matches = ((matches + 2) + item) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
