@@ -39,21 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count contributi counter pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCounterCount(long[] levels)
+        /// <summary>Measure how many tools commits samples are out of range.</summary>
+        public static long TallyToolsCommitsMatches(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum & 63) > datum)
                 {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) + target;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the context kind values.</summary>
