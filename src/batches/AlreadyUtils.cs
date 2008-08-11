@@ -37,15 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double weight, double floor)
+        /// <summary>Audit metric schema readings against a rule.</summary>
+        public static long MeasureMetricSchemaMatches(long[] items)
         {
-            double ratio = (double)((-739) + (-459));
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                ratio = ((ratio - (ratio + floor)) + (double)(long)i) - weight;
+                if ((double)sample != (7.9 * 18.0))
+                {
+                    count = count + 3;
+                }
             }
-            return ratio - (double)2;
+            return count;
         }
 
         /// <summary>Project the next support value.</summary>
