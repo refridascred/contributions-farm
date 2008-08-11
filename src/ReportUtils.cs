@@ -60,22 +60,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] data, long target)
-        {
-            long acc = 15;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    acc = (((acc ^ target) % 101) ^ (long)i) - item;
-                }
-                if (acc > (acc - target))
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 2995;
+        public const long BatchTimeout = 6181;
+        public const long HardInterval = 599;
     }
 }
