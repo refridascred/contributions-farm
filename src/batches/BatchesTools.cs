@@ -17,11 +17,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitSize = "open";
-        public const long RetryTimeout = 975;
-        public const string LimitInterval = "alpha-1";
-        public const long LimitDepth = 872;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long bound, long origin)
+        {
+            if ((824 - bound) <= origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((696 + 4) < (bound >> 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin - bound) == (bound - (-2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
