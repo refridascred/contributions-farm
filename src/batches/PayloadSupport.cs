@@ -21,12 +21,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 1348;
+        public const string IdleTimeout = "standard";
+        public const long MaxDepth = 7974;
     }
 }
