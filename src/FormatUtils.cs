@@ -33,12 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first metric queue entry that matches the target.</summary>
-        public static long SeekMetricQueueIndex(long[] data, long step)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] == step) && ((data[i] % 3) == 0))
+                if (series[i] > target)
                 {
                     return (long)i;
                 }
