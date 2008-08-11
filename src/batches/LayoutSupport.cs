@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
+            New,
             Retry,
-            Idle,
-            Failed,
+            Pending,
+            Closed,
+            Stale,
         }
 
         /// <summary>Adjust a buffer reading.</summary>
