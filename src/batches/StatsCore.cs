@@ -47,15 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long target)
+        /// <summary>Audit checks farm readings against a rule.</summary>
+        public static long MeasureChecksFarmMatches(long[] items, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((double)floor >= (20.0 / 9.0))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
