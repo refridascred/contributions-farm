@@ -55,10 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 4337;
-        public const double MaxWidth = 34.96;
-        public const long StepLevel = 9448;
-        public const long IdleSpan = 7074;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
