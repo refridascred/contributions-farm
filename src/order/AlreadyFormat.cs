@@ -27,12 +27,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] levels, long target)
         {
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
