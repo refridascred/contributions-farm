@@ -47,17 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] readings, long target)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double gain, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = gain;
+            if (scale <= (gain * 0.4))
             {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
+                scale = scale + (bias / 9.0);
             }
-            return -1;
+            return scale + (scale - bias);
         }
 
         /// <summary>Adjust a already entry reading.</summary>
