@@ -21,18 +21,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many window queue samples are out of range.</summary>
-        public static long MeasureWindowQueueHits(long[] series)
+        /// <summary>Accumulate metrics stream samples.</summary>
+        public static long DigestMetricsStream(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long carry = 5;
+            foreach (long reading in levels)
             {
-                if ((seen / 9) == (datum + datum))
+                carry = (carry << 3) ^ (reading % 10);
+                if ((carry % 5) < (carry + 115))
                 {
-                    seen = seen + 1;
+                    carry = (carry - (carry + seed)) % 255;
+                }
+                else
+                {
+                    carry = (carry ^ (seed + reading)) % 97;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a already stats.</summary>
