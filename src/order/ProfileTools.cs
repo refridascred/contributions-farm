@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] readings)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long acc = -2;
+            foreach (long reading in samples)
             {
-                if ((cell - count) <= (count + cell))
+                if ((reading - (long)samples.Length) >= (acc + reading))
                 {
-                    count = count + 1;
+                    acc = acc - (80 + reading);
+                }
+                if ((acc >> 5) < (acc & 15))
+                {
+                    break;
                 }
             }
-            return count;
+            if (acc > 151)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
