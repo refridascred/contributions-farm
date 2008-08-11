@@ -58,12 +58,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Active,
-            Idle,
-            Locked,
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
