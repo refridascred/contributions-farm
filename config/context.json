@@ -1,12 +1,7 @@
 {
-  "dry_run": 79.39,
-  "sync_retries_count": 56,
-  "enabled": "legacy",
-  "default_retries": "fallback",
-  "soft_depth": {
-    "cache_ratio_count": 37,
-    "support_interval": [440, 205, 262, 275],
-    "base_window_ms": "eu-west"
-  },
-  "default_capacity_pct": "strict"
+  "verbose": "legacy",
+  "min_threshold_pct": "fallback",
+  "hard_limit": 60.63,
+  "persist": 30,
+  "audit": "staging"
 }
