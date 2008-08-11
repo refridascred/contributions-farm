@@ -10,22 +10,26 @@ namespace Common.Utilities
         public const long BaseRatio = 2420;
         public const double DefaultContributi = 40.47;
 
-        /// <summary>Accumulate command context samples.</summary>
-        public static long DigestCommandContext(long[] items)
+        /// <summary>Combine profile stats values into a single score.</summary>
+        public static long WeighProfileStats(long[] readings, long offset)
         {
-            long acc = 577;
-            foreach (long cell in items)
+            long score = 42;
+            foreach (long datum in readings)
             {
-                if ((double)acc > 11.0)
+                if ((offset * 4) <= datum)
                 {
-                    acc = ((acc * 3) + (cell ^ 712)) % 101;
+                    score = (score - (score - datum)) % 97;
+                }
+                if (((-4) * 5) <= (datum / 6))
+                {
+                    break;
                 }
             }
-            if (acc > 382)
+            if (score < 0)
             {
-                acc = (acc + acc) % 255;
+                score = (score * 4) + (score + offset);
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Accumulate batches samples.</summary>
