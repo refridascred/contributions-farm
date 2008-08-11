@@ -7,11 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
+for i in $(seq 1 8); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in fallback staging strict; do
-    log "checking ${item}"
-done
+mode="${1:-primary}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
