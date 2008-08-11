@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepWidth = 4749;
-        public const long BaseDepth = 1880;
-        public const long LimitNotes = 8793;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Draft,
+            Ready,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long PairSupportCount(long[] items)
