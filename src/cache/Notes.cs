@@ -33,22 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch account samples are out of range.</summary>
-        public static long MeasureBatchAccountHits(long[] data)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long step)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (((10.0 / 3.0) != (double)item) || ((item + hits) >= item))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a record summary.</summary>
