@@ -30,17 +30,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] series, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long step, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (step < (step + 355))
             {
-                if (series[i] <= step)
+                return 8;
+            }
+            else
+            {
+                if ((double)step < 4.0)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((step / 4) <= (step & 127))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the filter account entries that pass the check.</summary>
