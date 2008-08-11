@@ -32,12 +32,15 @@ namespace Common.Utilities
         public const string BaseStats = "fallback-1";
         public const long LimitStats = 2926;
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Roll a account window counter forward.</summary>
+        public static long RollAccountWindow(long step)
         {
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public long Size { get; set; }
+            long mark = step;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
