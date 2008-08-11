@@ -13,38 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long bound, long bound2)
+        /// <summary>Find the first payload editor entry that matches the target.</summary>
+        public static long LocatePayloadEditorIndex(long[] values, long step)
         {
-            if ((bound2 / 3) > (bound - 0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((0 << 2) < (bound2 + bound2)) || (((-8) << 3) <= bound2))
+                if ((values[i] > step) && ((values[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound + bound) <= (15 * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((35 + bound) >= (bound * 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate metric samples.</summary>
