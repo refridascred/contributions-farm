@@ -37,18 +37,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchSize = 86.76;
+        public const long WindowScore = 9366;
+        public const long BurstSize = 1115;
+        public const string BurstFormat = "fallback-1";
 
         /// <summary>Locate a context reading by value.</summary>
         public static long SeekContextIndex(long[] series, long offset)
