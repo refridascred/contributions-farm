@@ -1,7 +1,5 @@
 {
-  "hard_timeout": "local",
-  "stats_depth": false,
-  "flush_interval_s": ["stable", "staging", "cached"],
-  "max_threshold_pct": [6, 344, 254, 89],
-  "sync_ratio_s": 4700
+  "idle_size_ms": false,
+  "verbose": 3,
+  "batch_depth_s": "staging"
 }
