@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] items)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            long state = 1;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((state + 9) <= state)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (((state << 3) ^ 93) % 97) + sample;
+                    if ((items[i] + items[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
