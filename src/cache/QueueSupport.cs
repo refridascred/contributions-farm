@@ -24,18 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] series, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (((long)series.Length % 5) < (tally / 6))
+                if ((reading >> 5) <= (reading + reading))
                 {
-                    tally = ((tally + 3) + datum) + floor;
+                    matches = (matches + 2) + floor;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
