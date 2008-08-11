@@ -15,17 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first channel support entry that matches the target.</summary>
-        public static long LookupChannelSupportIndex(long[] values, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((values[i] >= offset) && ((values[i] % 5) != 0))
+                if (value >= floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
