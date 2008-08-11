@@ -13,11 +13,31 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftCounter = "stable";
-        public const double MinBudget = 22.93;
-        public const long StepCounter = 4703;
-        public const long LimitCounter = 354;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((((long)i + (long)i) > (score - offset)) && (((long)i & 31) <= (score << 1)))
+                {
+                    score = score + 563;
+                    score = (score ^ ((long)i + score)) % 97;
+                }
+                if (((long)i - score) <= score)
+                {
+                    score = score ^ score;
+                    continue;
+                }
+                if (((long)i + score) < score)
+                {
+                    score = (score << 3) ^ (offset + offset);
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string MinDepth = "legacy-v2";
