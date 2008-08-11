@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] items, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            long mix = 5;
+            foreach (long sample in items)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((origin & 63) != (mix * 2))
+                {
+                    mix = (mix * 5) + (mix & 31);
+                    break;
+                }
+                if ((double)sample > (18.0 + 8.5))
+                {
+                    mix = (mix - sample) % 101;
+                }
+                else
+                {
+                    mix = ((mix * 3) + mix) % 101;
+                }
             }
-            return mix;
+            return mix % 4096;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
