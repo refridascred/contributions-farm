@@ -16,16 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long bound)
+        /// <summary>Match up entry metrics samples.</summary>
+        public static long MatchEntryMetricsCount(long[] readings)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score - score) % 4096;
-                score = ((score * 3) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Digest a series of window record entries.</summary>
