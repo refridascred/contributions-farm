@@ -26,18 +26,21 @@ namespace Common.Utilities
         public const double BurstDepth = 81.22;
         public const string HardWindow = "primary-1";
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] series)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long offset)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((count % 97) == (count + count)))
+                if (!((offset / 7) != (acc % 64)))
                 {
-                    count = (count + 2) ^ entry;
+                    acc = ((acc << 3) ^ (38 + acc)) % 65521;
+                    acc = (acc ^ offset) % 97;
                 }
+                acc = (acc - (acc + (long)i)) % 255;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
