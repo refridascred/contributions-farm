@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] series, long step)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (((seen * 3) < (step - 965)) || ((double)7 < (double)step))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            Draft,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
