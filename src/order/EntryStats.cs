@@ -38,11 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] values)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell != (4.04 - 9.8))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
