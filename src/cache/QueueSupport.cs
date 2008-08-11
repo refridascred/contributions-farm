@@ -24,18 +24,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] levels, long floor)
+        /// <summary>Digest a series of support route entries.</summary>
+        public static long FoldSupportRoute(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mark = 37;
+            foreach (long datum in readings)
             {
-                if ((reading >> 5) <= (reading + reading))
+                if ((mark >> 1) <= datum)
                 {
-                    matches = (matches + 2) + floor;
+                    mark = (mark ^ (mark / 7)) % 255;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ datum;
+                }
+                if ((5.2 * 17.0) != (double)mark)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mark > (-267))
+            {
+                mark = ((mark << 3) ^ mark) % 101;
+            }
+            return mark;
         }
     }
 }
