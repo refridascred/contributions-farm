@@ -29,27 +29,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Find the first batches report entry that matches the target.</summary>
+        public static long FindBatchesReportIndex(long[] series, long origin)
         {
-            long score = 622;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score << 3) ^ (9 * 4)) % 97;
-                if (!((double)item >= (4.1 + 7.2)))
+                if (series[i] < origin)
                 {
-                    score = (score + score) % 97;
-                }
-                else
-                {
-                    score = ((score << 2) ^ ((-9) + score)) % 255;
+                    return (long)i;
                 }
             }
-            if (score < 285)
-            {
-                score = (score + (score % 7)) % 255;
-            }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
