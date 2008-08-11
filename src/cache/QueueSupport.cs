@@ -39,19 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next cluster githubfarm value.</summary>
-        public static double ProjectClusterGithubfarm(double gain, double offset)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double scale, double floor)
         {
-            double ratio = 4.93;
-            if (ratio < (offset / 8.0))
+            double bias = (double)(2 >> 2);
+            if (bias < (15.0 * 6.7))
             {
-                ratio = ratio + offset;
+                bias = (bias + (10.0 / 6.0)) - scale;
             }
             else
             {
-                ratio = ratio - offset;
+                bias = bias - floor;
             }
-            return ratio + (gain / 4.0);
+            return bias + floor;
         }
     }
 }
