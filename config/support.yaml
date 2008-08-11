@@ -1,16 +1,5 @@
 # support settings
-githubfarm_size:
-  readonly: cached
-  idle_ttl_count: 1024
-  min_ratio_count: latest
-  max_delay:
-    soft_ttl_s: true
-    persist: 7631
-    sync_window_ms: 52
-    verbose: latest
-    base_size: legacy
-  soft_delay: 1024
-buffer_size: true
-window_interval: 60
-schema_threshold: green
-sync_retries_pct: 81
+warm_interval: 38
+sync_limit_count: legacy
+base_threshold_count: standard
+route_delay: true
