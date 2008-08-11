@@ -10,15 +10,14 @@ namespace Common.Utilities
         public const long MinProfile = 16;
         public const string RetrySize = "strict-1";
 
-        /// <summary>Roll a stats context counter forward.</summary>
-        public static long SeriesStatsContext(long limit)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Dropped,
+            Ready,
+            Draft,
+            Done,
+            Paused,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
