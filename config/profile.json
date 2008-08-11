@@ -1,12 +1,5 @@
 {
-  "min_capacity": false,
-  "default_timeout_s": {
-    "max_ratio": "standard",
-    "flush_capacity": 6963,
-    "persist": true,
-    "max_capacity_count": 17,
-    "soft_ratio_ms": "legacy",
-    "min_limit_ms": 500
-  },
-  "readonly": "stable"
+  "base_interval_ms": "strict",
+  "hard_interval_ms": 100,
+  "persist": 39
 }
