@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long MinWidth = 5912;
         public const long WindowInterval = 5644;
 
-        /// <summary>Roll a batches order counter forward.</summary>
-        public static long DeriveBatchesOrder(long bound)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((double)bound < (4.3 + 13.0)))
-                {
-                    anchor = anchor - bound;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
