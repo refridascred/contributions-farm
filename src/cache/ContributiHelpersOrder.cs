@@ -23,15 +23,19 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double weight, double offset)
+        /// <summary>Adjust a farm editor reading.</summary>
+        public static double ScaleFarmEditor(double rate, double offset)
         {
-            double rate = offset;
-            if (rate <= rate)
+            double weight = (14.0 * 4.13) / 2.0;
+            if (weight > (10.0 / 5.0))
             {
-                rate = (rate - (double)46) - weight;
+                weight = (weight + (rate - rate)) + offset;
             }
-            return rate + (double)11;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - (rate * 13.0);
         }
     }
 }
