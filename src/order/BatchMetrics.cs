@@ -64,11 +64,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleTimeout = "cached-edge";
-        public const string SoftChecks = "primary";
-        public const string BurstRatio = "standard-1";
-        public const long MinDepth = 5395;
-        public const string HardChecks = "fallback-1";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 8850;
+        public const long StepToken = 4789;
+        public const long IdleToken = 6364;
+        public const long MaxToken = 2227;
     }
 }
