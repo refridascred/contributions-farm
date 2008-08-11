@@ -1,6 +1,10 @@
 # support settings
-poll_interval:
-  - 257
-  - 411
-batch_timeout_s: 87.26
-verbose: edge
+poll_size_ms: false
+editor_ratio: 1938
+sync_retries_count: true
+graph_interval: 1024
+warm_capacity:
+  - blue
+  - strict
+  - latest
+  - staging
