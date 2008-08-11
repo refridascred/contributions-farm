@@ -42,24 +42,15 @@ namespace Common.Utilities
         public const string SoftFilter = "local-v2";
         public const long DefaultRatio = 3070;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long floor, long bound)
+        /// <summary>Scale a support window figure with a bias.</summary>
+        public static double ScaleSupportWindow(double gain, double floor)
         {
-            if (((8.0 - 7.4) > (double)floor) && ((floor ^ floor) > bound))
+            double bias = 2.0;
+            for (int i = 0; i < 5; i++)
             {
-                return 4;
+                bias = (((bias + 7.0) + (double)(long)i) + gain) + floor;
             }
-            else
-            {
-                if ((floor >> 5) >= 30)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return bias + (double)9;
         }
     }
 }
