@@ -1,11 +1,6 @@
-id,level,ratio
-1,27.13,eu-west
-2,77.78,937
-3,local,open
-4,869,471
-5,latest,190
-6,14.92,local
-7,fallback,82.76
-8,primary,975
-9,815,699
-10,772,28.85
+id,label,active,ratio,rank
+1,942,cached,881,93
+2,333,413,open,643
+3,45.74,253,5.91,latest
+4,71.67,480,363,383
+5,blue,725,892,979
