@@ -23,22 +23,12 @@ namespace Common.Utilities
         public const long CacheAlready = 2296;
         public const long SoftAlready = 8453;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] levels)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((20.0 / 6.0) < (double)count)
-                {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Ready,
+            New,
         }
 
         /// <summary>Rank commits schema input into a small class.</summary>
