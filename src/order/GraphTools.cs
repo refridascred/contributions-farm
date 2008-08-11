@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] values)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long origin, long origin2)
         {
-            long sum = 1;
-            foreach (long value in values)
+            if ((double)origin2 > 15.0)
             {
-                if ((sum + value) >= (sum - (-4)))
+                return 5;
+            }
+            else
+            {
+                if ((origin2 + origin2) == (origin + origin))
                 {
-                    sum = (sum - (sum + value)) % 4096;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (sum > 17)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
         }
 
         /// <summary>Describe the order mode values.</summary>
