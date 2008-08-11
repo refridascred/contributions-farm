@@ -73,10 +73,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 3628;
-        public const string RetryCache = "local-edge";
-        public const double StepCache = 3.16;
-        public const long DefaultCache = 2440;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] levels)
+        {
+            long anchor = 444;
+            foreach (long entry in levels)
+            {
+                anchor = (anchor * 3) + anchor;
+                if ((anchor - entry) >= anchor)
+                {
+                    anchor = (anchor + entry) % 255;
+                }
+            }
+            return anchor;
+        }
     }
 }
