@@ -65,15 +65,17 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long limit)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] readings, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
