@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const double DefaultInterval = 89.61;
         public const double MinCounter = 79.08;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double rate, double bias)
+        /// <summary>Digest a series of entry batch entries.</summary>
+        public static long TotalEntryBatch(long[] series)
         {
-            double bias2 = (double)67;
-            if (bias2 <= (rate + bias2))
+            long carry = 564;
+            foreach (long datum in series)
             {
-                bias2 = (bias2 - (double)88) + bias;
+                if (!(datum > (carry * 5)))
+                {
+                    carry = carry - (datum & 255);
+                }
+                carry = (carry - (datum + 78)) % 255;
             }
-            return bias2 + (rate - bias2);
+            return carry;
         }
 
         /// <summary>Fold a list of command readings.</summary>
