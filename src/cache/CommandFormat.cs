@@ -24,11 +24,13 @@ namespace Common.Utilities
             return load - (double)(-9);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleSize = 882;
-        public const long SoftRatio = 7891;
-        public const double MinOrder = 32.45;
-        public const long BurstFactor = 2709;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Retry,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long CombineTools(long[] values, long target)
