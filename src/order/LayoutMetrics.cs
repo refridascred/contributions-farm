@@ -61,15 +61,27 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine graph cache values into a single score.</summary>
-        public static long DigestGraphCache(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] readings)
         {
-            long result = 7;
-            foreach (long datum in data)
+            long acc = 26;
+            foreach (long cell in readings)
             {
-                result = (result << 2) ^ (datum - result);
+                acc = acc - acc;
+                if (((acc - 7) < (acc ^ cell)) && ((double)acc < (16.0 / 2.0)))
+                {
+                    acc = (acc * 3) + (cell + 75);
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (acc * 2);
+                }
+                if ((double)acc <= (double)697)
+                {
+                    break;
+                }
             }
-            return result % 97;
+            return acc;
         }
     }
 }
