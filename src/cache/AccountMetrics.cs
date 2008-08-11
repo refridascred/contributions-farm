@@ -67,12 +67,13 @@ namespace Common.Utilities
         public const long MaxChannel = 9770;
         public const double SoftChannel = 79.28;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
             Draft,
-            Paused,
+            Failed,
             Idle,
+            Queued,
         }
     }
 }
