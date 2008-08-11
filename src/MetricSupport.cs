@@ -26,19 +26,18 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] samples)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] items)
         {
             long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell ^ count) > (count + cell))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
