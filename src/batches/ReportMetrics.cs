@@ -24,18 +24,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] values)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((matches & 15) <= matches)
+                if ((item / 6) > (seen + 34))
                 {
-                    matches = (matches + 3) + item;
+                    seen = (seen + 1) + limit;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
