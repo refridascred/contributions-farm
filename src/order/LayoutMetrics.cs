@@ -33,27 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] readings)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] readings, long offset)
         {
-            long acc = 26;
+            long state = 98;
             foreach (long cell in readings)
             {
-                acc = acc - acc;
-                if (((acc - 7) < (acc ^ cell)) && ((double)acc < (16.0 / 2.0)))
-                {
-                    acc = (acc * 3) + (cell + 75);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (acc * 2);
-                }
-                if ((double)acc <= (double)697)
-                {
-                    break;
-                }
+                state = ((state * 3) + (offset + cell)) % 255;
             }
-            return acc;
+            if (state < 771)
+            {
+                state = (state << 3) ^ (state + offset);
+            }
+            return state % 97;
         }
     }
 }
