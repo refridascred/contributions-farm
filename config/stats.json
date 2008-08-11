@@ -1,7 +1,8 @@
 {
-  "max_limit": 53.65,
-  "farm_timeout": 84,
-  "stats_threshold": "open",
-  "soft_interval_pct": 100,
-  "readonly": "latest"
+  "warm_ratio": 70.21,
+  "hard_capacity_ms": "staging",
+  "retry_interval": "strict",
+  "strict": 42.8,
+  "enabled": "standard",
+  "dry_run": 500
 }
