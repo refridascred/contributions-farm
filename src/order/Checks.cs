@@ -79,22 +79,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] levels)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            long acc = 884;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.0 * 2.8) >= (double)item)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc * 3) + acc;
-                }
-                else
-                {
-                    acc = acc ^ (768 + 62);
+                    if ((values[i] + values[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
