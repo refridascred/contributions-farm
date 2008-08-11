@@ -1,30 +1,6 @@
 # githubfarm settings
-idle_ttl_ms: 1024
-channel_retries:
-  hard_depth:
-    - 305
-    - 30
-    - 408
-  notes_depth:
-    batch_timeout_s:
-      - edge
-      - latest
-      - eu-west
-    max_window_pct:
-      - cached
-      - staging
-      - cached
-    max_timeout_pct:
-      - legacy
-      - staging
-    enabled:
-      - 372
-      - 294
-      - 299
-      - 254
-    max_retries_s: fallback
-    retry_ttl_pct: 21
-  default_depth_ms: 30
-  strict: fallback
-  persist: open
-tools_retries: 17.57
+cache_window_count: local
+cache_interval: 28
+poll_retries_s: 28.05
+soft_timeout: true
+readonly: 67.27
