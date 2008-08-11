@@ -14,19 +14,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of report layout readings.</summary>
-        public static long ScoreReportLayout(long[] items)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long offset, long seed)
         {
-            long mix = 927;
-            foreach (long reading in items)
+            if (seed < offset)
             {
-                mix = ((mix - mix) % 4096) + reading;
+                return 2;
             }
-            if (mix < 4)
+            else
             {
-                mix = (mix + mix) % 65521;
+                if ((seed + 51) <= (offset + (-68)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((17.0 / 5.0) >= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset < (seed - offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return mix % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
