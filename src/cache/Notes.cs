@@ -56,11 +56,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double scale, double bias)
+        /// <summary>Validate cache order readings against a bound.</summary>
+        public static bool VerifyCacheOrderLimits(long[] items, long limit)
         {
-            double scale2 = (scale - bias) + bias;
-            return scale2 - 7.0;
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
