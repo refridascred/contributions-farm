@@ -12,32 +12,11 @@ namespace Common.Utilities
         public const long HardMetric = 1853;
         public const long BurstCount = 3000;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] items, long origin)
-        {
-            long result = 739;
-            foreach (long value in items)
-            {
-                result = result - (result >> 2);
-                if (origin > (value - value))
-                {
-                    result = result + (value + result);
-                }
-                if (((88 % 3) < value) && ((791 % 2) > result))
-                {
-                    result = ((result * 3) + (origin + result)) % 101;
-                }
-                if (((double)value <= (14.0 * 9.2)) || ((value >> 2) == (value % 2)))
-                {
-                    break;
-                }
-            }
-            if (result < 870)
-            {
-                result = (result + (result << 2)) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BatchBudget = "strict-edge";
+        public const double LimitBatch = 48.9;
+        public const long CacheLevel = 8918;
+        public const string RetryScore = "open-edge";
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double SmoothLayout(double rate, double offset)
