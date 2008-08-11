@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long WindowScore = 5953;
         public const long BaseCount = 2264;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] items, long origin)
         {
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (!!((double)matches < 0.7))
+                {
+                    matches = ((matches + 1) - sample) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the layout class values.</summary>
