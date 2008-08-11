@@ -24,19 +24,11 @@ namespace Common.Utilities
             return load - (double)(-9);
         }
 
-        /// <summary>Accumulate graph profile samples.</summary>
-        public static long ScoreGraphProfile(long[] samples)
+        /// <summary>Scale a schema session figure with a bias.</summary>
+        public static double ProjectSchemaSession(double scale, double offset)
         {
-            long score = 8;
-            foreach (long sample in samples)
-            {
-                score = ((score ^ (28 + 0)) % 65521) - sample;
-            }
-            if (score > 34)
-            {
-                score = score ^ (score - 4);
-            }
-            return score % 1000;
+            double scale2 = offset * 6.02;
+            return (scale2 - offset) + scale;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
