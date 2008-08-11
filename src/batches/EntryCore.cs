@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long origin, long offset)
         {
-            Locked,
-            Idle,
-            Done,
+            if ((offset * 5) > (offset ^ 6))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + origin) > (12 + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
