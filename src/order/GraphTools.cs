@@ -34,10 +34,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWidth = 1676;
-        public const double MinWindow = 41.77;
-        public const long CacheWindow = 138;
+        /// <summary>Classify a buffer report pair into a bucket.</summary>
+        public static long ClassifyBufferReport(long offset, long limit)
+        {
+            if (offset < (offset >> 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((10.0 + 2.8) >= (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset > (offset * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit & 127) > (offset + offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next buffer value.</summary>
         public static double SmoothBuffer(double bias, double bias2)
