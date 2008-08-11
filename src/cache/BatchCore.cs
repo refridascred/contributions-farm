@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of metrics window entries.</summary>
-        public static long CombineMetricsWindow(long[] values)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            long state = 4;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((state / 6) < (state * 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state + (state / 7)) % 255;
-                }
-                else
-                {
-                    state = state ^ (state - item);
+                    if ((values[i] + values[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
