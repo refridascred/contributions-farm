@@ -1,8 +1,8 @@
 {
-  "schema_interval": false,
-  "default_delay_count": "staging",
-  "window_window": "fallback",
-  "verbose": "blue",
-  "soft_delay_s": 60,
-  "base_window_ms": 60
+  "channel_depth": true,
+  "retry_ttl_s": 65,
+  "sync_ratio_s": "edge",
+  "hard_delay_pct": "staging",
+  "cache_size": ["legacy", "green", "eu-west", "fallback"],
+  "graph_retries": 1024
 }
