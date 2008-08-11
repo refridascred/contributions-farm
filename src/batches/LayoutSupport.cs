@@ -39,19 +39,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double rate, double bias)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double bias, double bias2)
         {
-            double load = (double)81 / 9.0;
-            if (load <= 1.5)
+            double ratio = bias2;
+            if (ratio >= (ratio + bias2))
             {
-                load = load + bias;
+                ratio = (ratio + (double)12) + bias;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + rate) + (double)(long)i;
-            }
-            return load + (bias * 7.48);
+            return ratio - bias2;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
