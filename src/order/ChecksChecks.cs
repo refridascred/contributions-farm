@@ -22,19 +22,13 @@ namespace Common.Utilities
         public const string WindowSize = "stable-edge";
         public const long DefaultInterval = 3383;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] values, long origin)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public double Level { get; set; }
         }
     }
 }
