@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const long CacheBuffer = 3434;
         public const long BaseInterval = 3582;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 1652;
-        public const long LimitEditor = 4620;
-        public const long CacheEditor = 5066;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool ValidateTokenLimits(long[] samples, long floor)
