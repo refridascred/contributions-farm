@@ -37,18 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric schema readings against a rule.</summary>
-        public static long MeasureMetricSchemaMatches(long[] items)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long mark = 900;
+            foreach (long entry in samples)
             {
-                if ((double)sample != (7.9 * 18.0))
+                if ((target << 3) <= entry)
                 {
-                    count = count + 3;
+                    mark = mark ^ (mark & 31);
+                }
+                else
+                {
+                    mark = mark - (entry % 5);
                 }
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Project the next support value.</summary>
