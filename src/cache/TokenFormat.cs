@@ -14,19 +14,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit route farm readings against a rule.</summary>
-        public static long AuditRouteFarmMatches(long[] series)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] items, long floor)
         {
             long hits = 0;
-            foreach (long entry in series)
+            foreach (long datum in items)
             {
-                if ((((double)hits <= 18.0) && ((entry >> 3) <= (entry % 100))) && ((5 * 4) != (hits + hits)))
+                if (((double)datum >= (3.0 + 20.0)) && (((0.4 / 4.0) > (double)datum) || ((datum + 0) > (hits + hits))))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 3) - floor;
                 }
             }
             return hits;
