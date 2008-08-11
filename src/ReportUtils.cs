@@ -20,19 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every order notes entry stays within the limit.</summary>
-        public static bool CheckOrderNotesBounds(long[] readings, long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long seed, long origin)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            if ((seed / 2) != (seed - origin))
             {
-                if (datum != seed)
+                return 7;
+            }
+            else
+            {
+                if ((origin - origin) < origin)
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate route samples.</summary>
