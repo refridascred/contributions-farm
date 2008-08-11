@@ -57,13 +57,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Draft,
-            Failed,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultWidth = 2053;
+        public const string MaxDepth = "alpha-1";
+        public const long BatchBudget = 2928;
+        public const long LimitMetric = 6280;
     }
 }
