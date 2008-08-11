@@ -1,24 +1,5 @@
 {
-  "githubfarm_window": {
-    "compress": "eu-west",
-    "batch_limit": 3974,
-    "command_limit": 63.19,
-    "cache_retries": 100,
-    "sync_capacity": "strict"
-  },
-  "batch_retries": true,
-  "burst_interval_ms": 95,
-  "enabled": {
-    "idle_window": true,
-    "flush_delay_s": 64,
-    "notes_capacity": {
-      "cache_ttl": 85.8,
-      "flush_window": [227, 201, 389],
-      "persist": "legacy",
-      "contributi_capacity": 59.96,
-      "retry_size_pct": true,
-      "max_ttl_pct": "strict"
-    }
-  },
-  "max_retries": "latest"
+  "batch_capacity_count": 30.96,
+  "cluster_ttl": 15.73,
+  "max_limit_pct": "strict"
 }
