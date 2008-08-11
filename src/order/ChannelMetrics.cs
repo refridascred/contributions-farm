@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] items, long limit)
         {
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry <= (limit + entry)) || ((51 << 2) <= (0 ^ entry)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
