@@ -39,12 +39,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long origin, long target)
         {
-            Locked,
-            Failed,
-            Stale,
+            if (((origin + 91) <= (origin + target)) && ((double)origin == (double)756))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((origin + origin) <= (target / 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin == (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
