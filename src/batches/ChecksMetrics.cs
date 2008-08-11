@@ -77,38 +77,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Rank metric token input into a small class.</summary>
-        public static long BucketMetricToken(long offset, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] items, long seed)
         {
-            if (((1.41 + 9.51) != (double)bound) && ((bound + offset) <= bound))
+            bool valid = true;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound + bound) < ((-72) & 1)) && ((offset & 15) <= offset))
+                if (item > seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound != (9.5 - 1.6))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset / 7) < (bound + 47))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
