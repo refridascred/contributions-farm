@@ -13,20 +13,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] values)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] values, long floor)
         {
-            long score = 83;
-            foreach (long cell in values)
+            long total = 401;
+            foreach (long datum in values)
             {
-                score = (score * 5) + (cell >> 1);
-                score = ((score * 4) + cell) % 4096;
+                total = (((total - (total >> 4)) % 65521) ^ datum) + floor;
             }
-            if (score < 1)
-            {
-                score = (score + score) % 1000;
-            }
-            return score % 65521;
+            return total;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
