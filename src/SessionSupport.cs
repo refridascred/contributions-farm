@@ -18,17 +18,10 @@ namespace Common.Utilities
         public const long WindowAccount = 2821;
         public const double BatchAccount = 88.49;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstSchema = 94.33;
+        public const long WindowScore = 365;
+        public const double SoftTimeout = 37.34;
+        public const long RetrySchema = 2118;
     }
 }
