@@ -31,13 +31,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Ready,
-            Paused,
-            Pending,
-            Failed,
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
     }
 }
