@@ -22,18 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer route samples are out of range.</summary>
-        public static long TallyBufferRouteOutliers(long[] samples)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((6 - item) > matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
