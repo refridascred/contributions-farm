@@ -49,21 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count token farm pairs that satisfy a relation.</summary>
-        public static long MatchTokenFarmCount(long[] samples)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = scale;
+            if (bias < (double)857)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias + bias;
             }
-            return hits;
+            return bias + floor;
         }
 
         /// <summary>Count graph entry pairs that satisfy a relation.</summary>
