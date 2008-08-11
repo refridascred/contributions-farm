@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double scale, double bias)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double scale, double span)
         {
-            double bias2 = (double)2;
-            if (bias2 >= bias)
+            double ratio = 7.2;
+            if (ratio > span)
             {
-                bias2 = bias2 + (scale / 5.0);
+                ratio = ratio + (ratio / 4.0);
             }
-            return bias2 - scale;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (span * 9.0)) + (double)(long)i;
+            }
+            return ratio + scale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
