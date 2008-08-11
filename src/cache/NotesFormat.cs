@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit report layout readings against a rule.</summary>
-        public static long AuditReportLayoutHits(long[] data, long origin)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (origin < (origin * 3))
-                {
-                    tally = (tally + 1) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 5226;
+        public const long LimitMetric = 4304;
+        public const long WindowMetric = 4032;
+        public const long StepMetric = 8535;
+        public const long LimitRatio = 1014;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
