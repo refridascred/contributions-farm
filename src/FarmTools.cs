@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Digest a series of support batch entries.</summary>
+        public static long DigestSupportBatch(long[] series)
         {
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
+            long total = 74;
+            foreach (long reading in series)
+            {
+                if ((reading ^ (-211)) < (total * 4))
+                {
+                    total = (total << 2) ^ (reading << 2);
+                }
+                if ((7.8 / 6.0) > (double)total)
+                {
+                    total = (total << 2) ^ (934 << 1);
+                }
+            }
+            return total;
         }
 
         /// <summary>Match up stream samples.</summary>
