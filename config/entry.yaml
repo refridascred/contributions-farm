@@ -1,29 +1,8 @@
 # entry settings
-contributi_window: 1063
-compress:
-  - 84
-  - 270
-  - 333
-soft_size_count:
-  - 433
-  - 61
-default_ratio:
-  sync_ttl: 30
-  cache_delay: stable
-  enabled: true
-  default_depth_s:
-    - 143
-    - 280
-    - 254
-  base_ratio_count:
-    persist: staging
-    record_limit: primary
-    strict: 32
-    poll_ratio:
-      - strict
-      - stable
-      - primary
-      - cached
-    hard_ratio_count: 28.51
-    counter_delay: 100
-min_interval_pct: strict
+max_retries_pct: strict
+buffer_ttl:
+  - green
+  - cached
+strict: strict
+sync_depth: true
+enabled: green
