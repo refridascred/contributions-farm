@@ -34,13 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Queued,
-            Paused,
-            Draft,
-            Locked,
+            public string Label { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
