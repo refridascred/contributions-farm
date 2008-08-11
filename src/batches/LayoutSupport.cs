@@ -44,12 +44,14 @@ namespace Common.Utilities
         public const long LimitGraph = 9735;
         public const string LimitLevel = "stable-1";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 5981;
-        public const long IdleDepth = 1616;
-        public const long IdleToken = 1268;
-        public const string BurstCount = "latest";
-        public const long LimitRatio = 4026;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ScaleChecks(double rate, double bias)
