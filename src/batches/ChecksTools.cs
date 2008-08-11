@@ -30,21 +30,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of channel checks readings.</summary>
-        public static long CompareChannelChecksCount(long[] data)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long seed, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((origin - 5) >= seed)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((seed + (-145)) <= seed)
                 {
-                    if ((data[i] + data[j]) < 18)
+                    return 0;
+                }
+                else
+                {
+                    if (((seed % 5) < (8 & 15)) && ((seed ^ origin) > (seed + origin)))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
