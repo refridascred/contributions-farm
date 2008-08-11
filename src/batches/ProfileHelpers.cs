@@ -75,9 +75,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseGithubfarm = 61.72;
-        public const long BurstRatio = 8977;
-        public const long SoftScore = 4661;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((double)bound > 8.7) || (datum > (53 * 4)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
