@@ -63,14 +63,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Count the farm checks entries that pass the check.</summary>
+        public static long MeasureFarmChecksOutliers(long[] levels, long origin)
         {
-            Dropped,
-            Pending,
-            Queued,
-            Active,
-            Done,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (!(sample <= (count + count)) || ((11.0 - 12.0) < (double)origin))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
