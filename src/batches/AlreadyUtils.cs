@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] levels, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long floor, long step)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            if ((3.3 + 8.07) == (double)floor)
             {
-                if (value < limit)
+                return 2;
+            }
+            else
+            {
+                if (step >= floor)
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)step > (8.0 + 13.0)) || ((6.27 * 7.46) > (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((91 >> 2) <= (floor % 24))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
