@@ -1,11 +1,39 @@
 # githubfarm settings
-report_retries: 23.78
-cache_window_ms: green
-enabled:
-  retry_threshold: green
-  already_timeout:
-    - 196
-    - 367
-  cache_limit_count: 11.29
-  flush_depth: 76.6
-dry_run: 533
+audit:
+  - edge
+  - stable
+  - fallback
+  - blue
+flush_size:
+  idle_retries_pct: open
+  order_window: 47.88
+  burst_threshold:
+    readonly: 1147
+    base_retries_count:
+      - 361
+      - 373
+      - 25
+      - 172
+    base_retries: 7.94
+    sync_interval_count: false
+    verbose: stable
+    warm_ttl_ms: standard
+  account_limit: stable
+verbose: cached
+stream_delay:
+  burst_threshold: 76
+  burst_ratio: false
+  enabled: open
+  base_window_count: local
+  verbose: stable
+record_ttl: 87.69
+default_capacity_s:
+  max_size: false
+  burst_depth_pct: true
+  max_delay_count: 30
+  burst_delay_ms:
+    - 335
+    - 326
+    - 119
+  window_timeout: true
+  sync_limit: 89.93
