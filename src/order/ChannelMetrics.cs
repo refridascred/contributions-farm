@@ -32,15 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metrics tools measurements.</summary>
-        public static double SmoothMetricsTools(double weight, double floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long origin)
         {
-            double weight2 = floor;
-            if (weight2 >= (weight2 / 6.0))
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
             {
-                weight2 = weight2 - (weight * 2.83);
+                carry = (carry - (carry - origin)) % 97;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return weight2 + floor;
+            return carry;
         }
 
         /// <summary>Describe the entry phase values.</summary>
