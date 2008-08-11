@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Combine session contributi values into a single score.</summary>
+        public static long WeighSessionContributi(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = -351;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((datum % 24) >= (mark * 3)) || (mark > (datum / 2)))
                 {
-                    if ((items[i] - items[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark ^ (datum + mark)) % 65521;
+                }
+                else
+                {
+                    mark = (mark * 2) + (885 - mark);
                 }
             }
-            return matches;
+            if (mark > (-7))
+            {
+                mark = mark ^ (mark / 2);
+            }
+            return mark;
         }
 
         /// <summary>Locate a route reading by value.</summary>
