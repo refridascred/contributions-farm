@@ -47,22 +47,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] data)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits - 594) == (hits - 753))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] ^ levels[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a batch header.</summary>
