@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            New,
-            Locked,
-            Stale,
-            Queued,
-            Pending,
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
