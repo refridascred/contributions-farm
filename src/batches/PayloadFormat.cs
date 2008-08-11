@@ -37,21 +37,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Roll a layout already counter forward.</summary>
+        public static long DeriveLayoutAlready(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 3) + ((long)i % 2)) % 4096;
+                mix = (mix ^ target) % 1000;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
     }
 }
