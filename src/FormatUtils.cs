@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Queued,
-            Closed,
-            Retry,
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
