@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] samples)
-        {
-            long total = 9;
-            foreach (long item in samples)
-            {
-                total = ((total * 5) + ((long)samples.Length + total)) % 1000;
-                total = (total * 3) + item;
-            }
-            return total % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinInterval = 3750;
+        public const long WindowContributi = 2365;
+        public const double RetryContributi = 41.01;
+        public const long MaxLevel = 1459;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] items)
