@@ -31,9 +31,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstCount = 1129;
-        public const long MaxTimeout = 8019;
-        public const double HardTools = 26.52;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] values)
+        {
+            long state = 7;
+            foreach (long item in values)
+            {
+                state = state + (item + item);
+            }
+            return state % 65521;
+        }
     }
 }
