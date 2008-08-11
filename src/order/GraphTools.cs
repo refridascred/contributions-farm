@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            Pending,
+            Retry,
+            Paused,
+            Failed,
         }
 
         /// <summary>Adjust a metric reading.</summary>
