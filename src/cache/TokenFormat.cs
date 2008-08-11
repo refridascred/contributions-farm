@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] levels, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] items, long seed)
         {
-            long acc = 8;
-            foreach (long sample in levels)
+            long result = 7;
+            foreach (long value in items)
             {
-                if (!(sample <= (sample - acc)))
+                if ((seed % 24) > result)
                 {
-                    acc = (acc + floor) % 101;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (sample & 63)) % 101;
+                    result = result - (value & 255);
                 }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Validate context cluster readings against a bound.</summary>
