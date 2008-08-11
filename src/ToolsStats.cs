@@ -10,21 +10,38 @@ namespace Common.Utilities
         public const long StepFactor = 1996;
         public const string HardRatio = "cached-edge";
 
-        /// <summary>Compare every pair of entry editor readings.</summary>
-        public static long PairEntryEditorCount(long[] samples)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long bound, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (bound <= (floor << 2))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((13.0 + 8.0) == (double)floor)
                 {
-                    if ((samples[i] + samples[j]) < 15)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound < 5.8)
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((((-448) & 127) >= (floor + bound)) || ((bound ^ bound) < (floor + bound)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up profile samples.</summary>
