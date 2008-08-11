@@ -1,18 +1,14 @@
 # entry settings
-verbose: true
-batch_size:
-  - 266
-  - 329
-  - 85
-  - 492
-entry_interval: 19.14
-base_size_s:
-  dry_run: 1840
-  already_ttl: true
-  default_window_ms: 250
-  payload_threshold:
-    base_ttl_ms: 100
-    githubfarm_ttl: 28.64
-    max_size_ms: stable
-    editor_ratio: 31.44
-retry_capacity: 18.44
+persist: green
+token_ttl: green
+warm_limit_ms:
+  max_depth_pct: 65
+  default_threshold_ms: legacy
+  idle_delay_s:
+    default_delay_s: 9012
+    warm_threshold_pct: standard
+    enabled: true
+  entry_threshold: 61
+  dry_run: true
+  retry_depth: false
+base_ratio_ms: cached
