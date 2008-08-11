@@ -49,12 +49,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 3450;
-        public const long StepCluster = 2997;
-        public const double HardCluster = 21.88;
-        public const double SoftSpan = 6.82;
-        public const long CacheWidth = 3299;
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MaxTimeout = 7247;
