@@ -1,8 +1,24 @@
 # entry settings
-hard_limit_s: standard
-window_ttl: 54
-hard_capacity_ms:
-  - 63
-  - 4
-base_retries_s: false
-strict: 30
+hard_size: edge
+stream_delay:
+  poll_delay_count: standard
+  max_size: legacy
+  strict: cached
+  session_depth:
+    editor_capacity: eu-west
+    support_size:
+      - 177
+      - 166
+      - 165
+      - 306
+    queue_timeout: fallback
+    idle_ttl_s: true
+    readonly: true
+  batch_window: 69.38
+  support_delay: 86
+flush_threshold_pct: 95.51
+soft_interval_count:
+  - strict
+  - cached
+  - staging
+default_size: primary
