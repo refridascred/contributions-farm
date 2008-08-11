@@ -22,18 +22,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] data, long origin)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long seed, long floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long next = seed + floor;
+            if (next <= (seed + 1))
             {
-                if ((double)(long)data.Length > (14.0 - 5.5))
+                return 0;
+            }
+            else
+            {
+                if (((seed - floor) <= (seed / 6)) && ((seed % 97) <= (80 + next)))
                 {
-                    hits = ((hits + 3) + sample) - origin;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor <= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up stats samples.</summary>
