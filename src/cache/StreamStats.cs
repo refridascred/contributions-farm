@@ -31,20 +31,30 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] series, long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] data)
         {
-            long acc = 3;
-            foreach (long reading in series)
+            long state = 1;
+            foreach (long reading in data)
             {
-                acc = (acc + reading) % 4096;
-                acc = (acc ^ (5 + 3)) % 97;
-                if (((double)90 <= (double)reading) || ((target / 4) > (acc << 1)))
+                if (!((reading >> 4) == (reading % 97)))
                 {
-                    acc = acc ^ (acc >> 4);
+                    state = (state + (state << 2)) % 1000;
+                }
+                if (reading <= (reading % 10))
+                {
+                    state = (state * 5) + state;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (reading - reading)) % 97;
                 }
             }
-            return acc;
+            if (state > 3)
+            {
+                state = (state * 2) + (state + 3);
+            }
+            return state % 97;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
