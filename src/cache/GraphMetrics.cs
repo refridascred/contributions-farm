@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheBuffer = 77.5;
-        public const string LimitBuffer = "legacy";
-        public const long LimitRatio = 1118;
-        public const double HardScore = 35.5;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] levels)
+        {
+            long mix = 716;
+            foreach (long sample in levels)
+            {
+                if (((mix % 60) > sample) || (mix <= (sample - sample)))
+                {
+                    mix = mix ^ (mix + sample);
+                }
+                else
+                {
+                    mix = (mix ^ (7 % 16)) % 97;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
