@@ -24,10 +24,20 @@ namespace Common.Utilities
             return load - (double)(-9);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleInterval = 82.15;
-        public const double RetryCache = 88.11;
-        public const long DefaultCache = 3005;
+        /// <summary>Accumulate graph profile samples.</summary>
+        public static long ScoreGraphProfile(long[] samples)
+        {
+            long score = 8;
+            foreach (long sample in samples)
+            {
+                score = ((score ^ (28 + 0)) % 65521) - sample;
+            }
+            if (score > 34)
+            {
+                score = score ^ (score - 4);
+            }
+            return score % 1000;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long CombineTools(long[] values, long target)
