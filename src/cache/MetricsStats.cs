@@ -61,15 +61,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Roll a stream cluster counter forward.</summary>
-        public static long StepStreamCluster(long floor)
+        /// <summary>Audit session record readings against a rule.</summary>
+        public static long MeasureSessionRecordGaps(long[] samples, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((387 + step) <= (seen - entry))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
