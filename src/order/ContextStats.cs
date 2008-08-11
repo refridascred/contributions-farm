@@ -33,19 +33,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] series, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (sample < origin)
+                if (item >= (count % 8))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
