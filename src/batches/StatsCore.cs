@@ -23,30 +23,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate token order samples.</summary>
-        public static long WeighTokenOrder(long[] data)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] series, long floor)
         {
-            long carry = 10;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                if ((series[i] > floor) && ((series[i] % 5) == 0))
                 {
-                    carry = ((carry << 3) ^ ((long)i + 881)) % 97;
-                }
-                if ((2.73 / 8.0) <= (double)datum)
-                {
-                    carry = (carry ^ (46 / 3)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ (datum >> 4)) % 101;
+                    return (long)i;
                 }
             }
-            if (carry < 668)
-            {
-                carry = ((carry * 3) + (carry * 5)) % 65521;
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
