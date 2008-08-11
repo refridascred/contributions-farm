@@ -22,11 +22,15 @@ namespace Common.Utilities
         public const long IdleCount = 3685;
         public const long IdleCounter = 9030;
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double ratio, double offset)
+        /// <summary>Roll a buffer metrics counter forward.</summary>
+        public static long StepBufferMetrics(long seed)
         {
-            double weight = offset;
-            return weight - ratio;
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
