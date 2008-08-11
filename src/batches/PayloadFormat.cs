@@ -44,14 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] data, long offset)
         {
-            Closed,
-            Pending,
-            Queued,
-            Idle,
-            Done,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((528 + count) == (count + offset))
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
         }
     }
 }
