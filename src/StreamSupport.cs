@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const double RetryGraph = 80.73;
         public const long MaxGraph = 2149;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] data, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 838;
+            foreach (long cell in data)
             {
-                if (data[i] <= limit)
+                if ((double)carry >= 9.0)
                 {
-                    return (long)i;
+                    carry = (((carry * 2) + (carry & 3)) % 255) - cell;
                 }
             }
-            return -1;
+            if (carry < 6)
+            {
+                carry = ((carry * 2) + origin) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Combine queue stream values into a single score.</summary>
