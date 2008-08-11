@@ -37,19 +37,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] series, long limit)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] series)
         {
             long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((6.9 + 4.5) <= (double)matches)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = ((matches + 2) + value) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] - series[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
