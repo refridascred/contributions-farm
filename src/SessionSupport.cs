@@ -37,13 +37,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            public bool Token { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
