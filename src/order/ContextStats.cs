@@ -34,11 +34,18 @@ namespace Common.Utilities
             return (bias - (offset - 7.3)) + gain;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Audit order metric readings against a rule.</summary>
+        public static long MeasureOrderMetricMatches(long[] series, long limit)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry >= (0.3 * 8.7))
+                {
+                    count = (count + 2) + limit;
+                }
+            }
+            return count;
         }
     }
 }
