@@ -32,20 +32,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] values, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] data)
         {
-            long result = 23;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result ^ ((long)i + result)) % 101) - seed;
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = (result - ((long)values.Length / 6)) % 1000;
-                result = result - (sample << 1);
             }
-            return result;
+            return hits;
         }
     }
 }
