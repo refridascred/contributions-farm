@@ -1,6 +1,8 @@
 # entry settings
-batch_delay: 79
-soft_ratio_ms: 500
-sync_capacity:
-  - strict
-  - green
+hard_limit_s: standard
+window_ttl: 54
+hard_capacity_ms:
+  - 63
+  - 4
+base_retries_s: false
+strict: 30
