@@ -1,7 +1,15 @@
 {
-  "idle_window_ms": "standard",
-  "warm_ratio_ms": "stable",
-  "retry_depth_s": "strict",
-  "hard_interval_ms": "staging",
-  "warm_size": 82.22
+  "batch_retries_ms": "legacy",
+  "poll_window_ms": "edge",
+  "checks_timeout": ["staging", "primary", "legacy"],
+  "poll_ratio_count": {
+    "audit": false,
+    "batch_depth": [134, 102],
+    "flush_limit": 12.55,
+    "persist": false,
+    "min_depth_pct": ["latest", "cached", "cached", "blue"],
+    "idle_timeout_s": true
+  },
+  "idle_depth_pct": "staging",
+  "max_size_pct": 5789
 }
