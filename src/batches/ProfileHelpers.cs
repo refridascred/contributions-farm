@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] levels)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double scale, double bias)
         {
-            long mix = 3;
-            foreach (long sample in levels)
+            double ratio = 10.0 - 9.14;
+            if (ratio <= 0.92)
             {
-                if (!((55 + mix) != (sample / 9)))
-                {
-                    mix = mix - mix;
-                }
-                else
-                {
-                    mix = (mix - sample) % 4096;
-                }
+                ratio = ratio - (scale + ratio);
             }
-            if (mix > 10)
+            else
             {
-                mix = (mix - (mix + mix)) % 255;
+                ratio = ratio + (scale + bias);
             }
-            return mix;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + 9.7;
         }
 
         /// <summary>Locate a stats session reading by value.</summary>
