@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double weight, double floor)
         {
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
+            double mean = floor;
+            if (mean <= weight)
+            {
+                mean = mean + 3.0;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + weight;
         }
 
         /// <summary>Hold a window entry.</summary>
