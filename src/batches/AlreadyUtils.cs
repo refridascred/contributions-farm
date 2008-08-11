@@ -39,19 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] items, long limit)
         {
-            long carry = 6;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long item in items)
             {
-                carry = (((carry * 5) + carry) % 97) - cell;
+                if (item <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (carry < 2)
-            {
-                carry = (carry ^ (carry << 1)) % 101;
-            }
-            return carry % 4096;
+            return stale;
         }
 
         /// <summary>Project the next support value.</summary>
