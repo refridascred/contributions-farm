@@ -22,24 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long bound, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long seed)
         {
-            if ((bound / 4) > limit)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 6;
+                sum = (sum + (seed ^ sum)) % 1000;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)bound < (20.0 * 10.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Count the editor filter entries that pass the check.</summary>
