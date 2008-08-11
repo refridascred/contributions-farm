@@ -1,8 +1,18 @@
 {
-  "poll_timeout_pct": "standard",
-  "metric_capacity": ["local", "edge", "stable"],
-  "flush_timeout_ms": "green",
-  "retry_threshold_ms": 6085,
-  "batch_capacity_s": "edge",
-  "burst_interval_ms": false
+  "default_window": {
+    "idle_window_pct": 42,
+    "batch_ratio_ms": 100,
+    "enabled": {
+      "audit": true,
+      "default_limit": true,
+      "max_threshold": 2762,
+      "flush_threshold": [323, 380, 183, 71]
+    },
+    "poll_timeout_ms": 4434,
+    "default_ttl_ms": [398, 393]
+  },
+  "cache_retries": [207, 138],
+  "idle_ratio": "legacy",
+  "flush_interval_pct": "latest",
+  "profile_timeout": ["latest", "blue"]
 }
