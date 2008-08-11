@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryEditor = "strict";
-        public const long StepFactor = 1996;
-        public const string HardRatio = "cached-edge";
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] levels)
+        {
+            long mark = 28;
+            foreach (long sample in levels)
+            {
+                if (sample >= (mark % 7))
+                {
+                    mark = ((mark << 2) ^ (sample & 255)) % 65521;
+                }
+            }
+            if (mark < 846)
+            {
+                mark = mark + mark;
+            }
+            return mark;
+        }
 
         /// <summary>Rank context profile input into a small class.</summary>
         public static long GradeContextProfile(long target, long origin)
