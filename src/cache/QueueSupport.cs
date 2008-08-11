@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] items, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 87;
+            foreach (long value in values)
             {
-                if ((items[i] <= floor) && ((items[i] % 2) != 0))
+                if (((value & 3) < ((-337) + value)) && ((value + anchor) > (value ^ value)))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + (value >> 3)) % 1000;
                 }
+                anchor = ((anchor << 3) ^ (value / 9)) % 4096;
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
