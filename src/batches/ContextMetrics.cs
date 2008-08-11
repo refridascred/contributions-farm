@@ -22,18 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] readings, long target)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            long anchor = 67;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((-31) ^ value) <= (value - value)) || ((4.8 * 2.02) != (double)value))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor * 4) + (anchor + target);
+                    if ((series[i] ^ series[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
