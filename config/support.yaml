@@ -1,6 +1,13 @@
 # support settings
-min_limit_count: 60.6
-burst_retries_pct: eu-west
-warm_threshold_count:
-  - 58
-  - 203
+base_capacity_count: 6.42
+burst_delay_pct:
+  - 1
+  - 394
+  - 4
+batches_timeout: 10
+min_ttl_s: strict
+enabled:
+  - 409
+  - 453
+  - 452
+  - 215
