@@ -60,24 +60,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] values, long offset)
-        {
-            long carry = 721;
-            foreach (long reading in values)
-            {
-                carry = ((carry ^ (7 * 5)) % 4096) + reading;
-                if ((51 < (offset >> 3)) || (((long)values.Length + offset) < (6 + offset)))
-                {
-                    carry = carry - (596 << 2);
-                }
-            }
-            if (carry > 237)
-            {
-                carry = ((carry * 2) + (carry >> 2)) % 255;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstFactor = 5765;
+        public const long BaseNotes = 7142;
+        public const double SoftNotes = 13.95;
+        public const long CacheNotes = 6768;
 
         /// <summary>Match up editor samples.</summary>
         public static long CompareEditorCount(long[] samples)
