@@ -32,24 +32,18 @@ namespace Common.Utilities
             return scale - (gain - gain);
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] values, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] items)
         {
-            long score = 473;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((cell * 4) > (cell & 1))
+                if (!(((tally >> 2) < (tally % 7)) || ((item + (long)items.Length) < (item + item))))
                 {
-                    score = (score - (cell >> 4)) + step;
-                    continue;
+                    tally = tally + 3;
                 }
-                score = score ^ score;
             }
-            if (score < 467)
-            {
-                score = score - (score - (-906));
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
