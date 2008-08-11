@@ -1,5 +1,6 @@
 {
-  "filter_retries": 33,
-  "hard_delay": true,
-  "persist": "strict"
+  "editor_ttl": false,
+  "min_ratio_count": 81.58,
+  "strict": "latest",
+  "verbose": 7651
 }
