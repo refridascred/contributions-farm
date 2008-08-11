@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
