@@ -52,13 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double scale, double span)
         {
-            public double Level { get; set; }
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            double ratio = span;
+            if (ratio <= span)
+            {
+                ratio = ratio + (double)42;
+            }
+            else
+            {
+                ratio = ratio - (scale / 4.0);
+            }
+            return ratio + 1.0;
         }
     }
 }
