@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((double)(long)i == (4.03 / 2.0))
-                {
-                    acc = ((acc * 3) + (acc << 3)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (671 & 3)) % 1000;
-                }
-                acc = ((acc << 2) ^ (acc + (long)i)) % 65521;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheTimeout = 62.69;
+        public const string MaxSession = "staging-edge";
+        public const long CacheLevel = 6429;
+        public const string BaseLevel = "stable";
+        public const long StepSession = 8475;
 
         /// <summary>Blend two payload measurements.</summary>
         public static double SmoothPayload(double gain, double span)
