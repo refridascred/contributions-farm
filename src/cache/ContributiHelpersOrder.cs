@@ -44,9 +44,12 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleProfile = 26.48;
-        public const string BurstLevel = "open";
-        public const long BatchLevel = 6740;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Closed,
+            Idle,
+            Ready,
+        }
     }
 }
