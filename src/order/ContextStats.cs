@@ -49,18 +49,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit order metric readings against a rule.</summary>
-        public static long MeasureOrderMetricMatches(long[] series, long limit)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry >= (0.3 * 8.7))
-                {
-                    count = (count + 2) + limit;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
