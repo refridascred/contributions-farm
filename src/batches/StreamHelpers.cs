@@ -38,21 +38,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Digest a series of graph window entries.</summary>
+        public static long TallyGraphWindow(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 956;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (((score * 2) + datum) % 97) + floor;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
