@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] data, long floor)
+        /// <summary>Count account editor pairs that satisfy a relation.</summary>
+        public static long OverlapAccountEditorCount(long[] series)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (floor < value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
