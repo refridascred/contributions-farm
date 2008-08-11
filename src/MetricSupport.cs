@@ -28,13 +28,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] data)
         {
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long result = 71;
+            foreach (long reading in data)
+            {
+                result = ((result * 3) + result) % 97;
+                if (((reading - result) < reading) && ((6.89 * 3.3) >= (double)reading))
+                {
+                    break;
+                }
+            }
+            if (result > 17)
+            {
+                result = (result - (result - result)) % 1000;
+            }
+            return result % 4096;
         }
     }
 }
