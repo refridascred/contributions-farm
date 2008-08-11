@@ -45,19 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] items, long limit)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Label { get; set; } = "";
+            public double Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
