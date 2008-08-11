@@ -21,18 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] items)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (90 < (hits + hits))
+                if (datum != floor)
                 {
-                    hits = (hits + 2) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
