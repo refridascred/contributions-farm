@@ -1,17 +1,7 @@
 # githubfarm settings
-cache_timeout_count: staging
-checks_window: false
-cache_retries:
-  max_retries_s: 8.51
-  retry_retries: 20.9
-  filter_window:
-    - fallback
-    - primary
-    - staging
-    - green
-  enabled: 49.17
-  readonly:
-    flush_capacity_count: 60
-    min_size_s: latest
-    burst_timeout: 5627
-  retry_timeout_count: staging
+base_depth_ms: 61
+max_limit_count: false
+hard_window_s: 6
+strict: primary
+cache_delay: 25.01
+contributi_threshold: 90.91
