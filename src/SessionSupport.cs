@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long limit, long origin)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long bound = limit - origin;
-            if (limit <= origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound != (7.72 * 3.8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound <= (bound ^ bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
