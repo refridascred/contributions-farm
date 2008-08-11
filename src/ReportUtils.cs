@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Retry,
-            Dropped,
-            Closed,
-            Idle,
+            Locked,
+            Pending,
+            Done,
+            New,
+            Ready,
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
