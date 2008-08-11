@@ -42,22 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] samples, long offset)
+        /// <summary>Blend two stream cache measurements.</summary>
+        public static double ScaleStreamCache(double rate, double span)
         {
-            long acc = 1;
-            foreach (long value in samples)
+            double mean = rate;
+            if (mean < mean)
             {
-                if ((4.0 - 19.0) < (double)value)
-                {
-                    acc = ((acc * 4) + (value >> 4)) + offset;
-                }
+                mean = (mean + rate) - span;
             }
-            if (acc > 37)
+            else
             {
-                acc = acc + acc;
+                mean = mean - 9.2;
             }
-            return acc % 97;
+            return mean - (double)659;
         }
     }
 }
