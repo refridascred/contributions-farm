@@ -39,12 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] levels, long bound)
         {
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((seen << 3) > entry) || ((entry - bound) < entry))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit notes channel readings against a rule.</summary>
