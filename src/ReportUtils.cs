@@ -15,24 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long seed, long origin)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double rate, double floor)
         {
-            if ((seed / 2) != (seed - origin))
+            double mean = floor * 6.2;
+            for (int i = 0; i < 3; i++)
             {
-                return 7;
+                mean = ((mean + (floor + floor)) + (double)(long)i) - rate;
             }
-            else
-            {
-                if ((origin - origin) < origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mean - 7.5;
         }
 
         /// <summary>Accumulate route samples.</summary>
