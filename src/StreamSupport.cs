@@ -29,18 +29,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] values, long target)
+        /// <summary>Audit profile session readings against a rule.</summary>
+        public static long AuditProfileSessionOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (((seen / 3) <= seen) && ((double)target < (double)cell))
+                if ((441 & 3) >= hits)
                 {
-                    seen = seen + 2;
+                    hits = (hits + 2) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
