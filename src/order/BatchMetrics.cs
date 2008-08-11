@@ -37,22 +37,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] levels)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (((value & 15) == (seen ^ 7)) || (seen > (value + value)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a context options.</summary>
