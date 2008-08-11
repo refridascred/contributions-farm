@@ -37,38 +37,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long target, long origin)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long target)
         {
-            if ((3 < (origin / 4)) && ((origin + origin) >= (target >> 5)))
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin > (origin / 3))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 6;
+                    sum = ((sum ^ (sum % 7)) % 1000) - (long)i2;
                 }
-                else
-                {
-                    if ((8.34 * 4.19) > (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((-661) + target) >= (target * 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                long cur = (target + sum) + (1 + 155);
+                sum = (sum - (sum + cur)) % 65521;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Check that every checks buffer entry stays within the limit.</summary>
