@@ -1,5 +1,33 @@
 # entry settings
-verbose: legacy
-flush_threshold_s: 1024
-batch_capacity: 7601
-report_window: 250
+cache_size:
+  min_ratio_count: 34.24
+  hard_window_s: open
+  flush_timeout_s:
+    enabled: false
+    retry_timeout: 680
+    batch_size_pct: 60
+    batch_ratio: true
+    default_delay: blue
+  warm_limit_s: true
+default_timeout_s:
+  base_ttl_ms: 7800
+  default_capacity_ms: edge
+  hard_threshold_pct:
+    batch_limit: 83
+    readonly: 1795
+    burst_limit_count: local
+    record_interval: 6747
+  burst_capacity_s:
+    idle_retries:
+      - cached
+      - strict
+      - cached
+      - local
+    session_size: stable
+    metrics_ttl: true
+sync_window:
+  - stable
+  - open
+  - legacy
+  - fallback
+compress: primary
