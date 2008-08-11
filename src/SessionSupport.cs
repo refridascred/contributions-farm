@@ -28,15 +28,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next metrics schema value from a seed.</summary>
-        public static long SeriesMetricsSchema(long offset)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double scale, double floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
+            double weight = floor;
+            if (weight <= weight)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                weight = weight - (scale / 8.0);
             }
-            return anchor;
+            else
+            {
+                weight = weight + 7.45;
+            }
+            return weight - (double)31;
         }
     }
 }
