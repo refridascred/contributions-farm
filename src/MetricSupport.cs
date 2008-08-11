@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Measure how many route context samples are out of range.</summary>
+        public static long AuditRouteContextMatches(long[] items, long limit)
         {
-            public string Level { get; set; } = "";
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (limit >= (hits + hits))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate graph samples.</summary>
