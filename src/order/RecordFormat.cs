@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public bool Region { get; set; }
-            public double Rank { get; set; }
-            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
