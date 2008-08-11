@@ -15,15 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double ratio, double span)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            double rate = ratio;
-            if (rate < (double)62)
-            {
-                rate = rate - span;
-            }
-            return rate - (1.91 - span);
+            Done,
+            Retry,
+            Queued,
+            New,
         }
 
         /// <summary>Look up the position of a session sample.</summary>
