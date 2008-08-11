@@ -14,25 +14,19 @@ namespace Common.Utilities
         }
 
         /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] readings, long target)
+        public static long CombineContext(long[] values)
         {
-            long mark = 486;
-            foreach (long value in readings)
+            long score = 83;
+            foreach (long cell in values)
             {
-                if ((value % 12) > mark)
-                {
-                    mark = mark - (value - value);
-                }
-                if (!((value & 3) >= (71 >> 1)))
-                {
-                    break;
-                }
+                score = (score * 5) + (cell >> 1);
+                score = ((score * 4) + cell) % 4096;
             }
-            if (mark > 328)
+            if (score < 1)
             {
-                mark = (mark << 3) ^ target;
+                score = (score + score) % 1000;
             }
-            return mark;
+            return score % 65521;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
