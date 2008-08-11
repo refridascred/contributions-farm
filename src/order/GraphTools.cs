@@ -32,21 +32,18 @@ namespace Common.Utilities
         public const double BurstDepth = 81.22;
         public const string HardWindow = "primary-1";
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (!((offset / 7) != (acc % 64)))
+                if (((value / 5) < (count >> 2)) && !((double)count < 1.78))
                 {
-                    acc = ((acc << 3) ^ (38 + acc)) % 65521;
-                    acc = (acc ^ offset) % 97;
+                    count = count + 1;
                 }
-                acc = (acc - (acc + (long)i)) % 255;
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
