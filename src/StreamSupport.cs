@@ -21,21 +21,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] samples)
+        /// <summary>Audit editor buffer readings against a rule.</summary>
+        public static long TallyEditorBufferHits(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)matches == (7.35 * 3.24))
                 {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = ((matches + 3) ^ item) - seed;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
