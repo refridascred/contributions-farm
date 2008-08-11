@@ -19,25 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long bound, long target)
-        {
-            if (bound >= (126 >> 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target > 3.0)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 2876;
+        public const long LimitRoute = 4058;
+        public const long DefaultRoute = 5351;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double SmoothProfile(double rate, double span)
