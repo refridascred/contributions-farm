@@ -42,18 +42,38 @@ namespace Common.Utilities
             return (bias - (offset - 7.3)) + gain;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] data, long limit)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long origin, long target)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if (!((double)origin >= 9.68))
             {
-                if ((item / 5) != (hits - item))
+                return 4;
+            }
+            else
+            {
+                if ((target - 94) > (target - target))
                 {
-                    hits = (hits + 3) + limit;
+                    return 1;
+                }
+                else
+                {
+                    if (target <= (origin + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((8 / 7) < (origin - 216))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
