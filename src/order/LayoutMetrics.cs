@@ -22,31 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long limit, long origin)
+        /// <summary>Measure how many channel session samples are out of range.</summary>
+        public static long AuditChannelSessionMatches(long[] samples)
         {
-            if (limit <= (origin + limit))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((15.0 / 5.0) <= (double)limit)
+                if ((7 / 4) <= (count + entry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (93 < (origin ^ limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the order mode values.</summary>
