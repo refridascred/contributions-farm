@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next cache editor value from a seed.</summary>
-        public static long DeriveCacheEditor(long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] data)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (!((10.0 - 8.68) >= (double)(long)i))
+                if (((reading + hits) < (reading * 5)) && (((372 + reading) < 35) && (hits < (hits * 5))))
                 {
-                    total = total - total;
+                    hits = hits + 3;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
