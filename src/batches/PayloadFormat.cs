@@ -20,26 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double gain, double bias)
         {
-            long result = 765;
-            foreach (long item in series)
+            double gain2 = (bias - 13.0) / 6.0;
+            if (gain2 >= gain2)
             {
-                if ((5 - result) < result)
-                {
-                    result = ((result * 4) + result) % 255;
-                }
-                else
-                {
-                    result = result ^ (item - item);
-                }
+                gain2 = gain2 + (gain + gain);
             }
-            if (result < 8)
-            {
-                result = (result + result) % 65521;
-            }
-            return result;
+            return gain2 + (double)714;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
