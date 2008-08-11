@@ -17,26 +17,18 @@ namespace Common.Utilities
         public const long CacheAlready = 2296;
         public const long SoftAlready = 8453;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] series)
         {
-            long result = 473;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((19 >> 5) < result)
+                if (sample <= (tally & 63))
                 {
-                    result = ((result - (3 + 717)) % 97) ^ sample;
-                }
-                if ((result ^ 58) > (71 - result))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (result < 2)
-            {
-                result = ((result * 5) + (result * 2)) % 4096;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Rank commits schema input into a small class.</summary>
