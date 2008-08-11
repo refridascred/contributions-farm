@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 1554;
-        public const double IdleStats = 19.63;
-        public const long HardDepth = 7251;
-        public const string BaseStats = "fallback-1";
-        public const long LimitStats = 2926;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] items)
+        {
+            long result = 4;
+            foreach (long reading in items)
+            {
+                if ((reading / 7) <= (58 * 2))
+                {
+                    result = result ^ (reading & 127);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Blend two queue record measurements.</summary>
         public static double SmoothQueueRecord(double bias, double offset)
