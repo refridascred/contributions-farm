@@ -1,6 +1,18 @@
 {
-  "layout_timeout": 250,
-  "already_delay": 30,
-  "sync_timeout_pct": 250,
-  "persist": 58.83
+  "min_delay": 48.04,
+  "default_retries": 5192,
+  "githubfarm_capacity": 7199,
+  "strict": {
+    "hard_threshold_pct": "eu-west",
+    "flush_retries": ["local", "local", "primary", "primary"],
+    "max_depth_count": "staging",
+    "poll_timeout_count": 250,
+    "default_interval_ms": false
+  },
+  "audit": {
+    "checks_retries": "eu-west",
+    "hard_depth_count": 64.96,
+    "strict": true,
+    "warm_depth_count": 56
+  }
 }
