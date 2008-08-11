@@ -23,11 +23,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 8296;
-        public const string MaxFactor = "stable-v2";
-        public const string DefaultOrder = "alpha-edge";
-        public const long RetryOrder = 5600;
-        public const long BurstOrder = 7918;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Paused,
+            Failed,
+            Draft,
+            Queued,
+        }
     }
 }
