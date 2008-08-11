@@ -1,12 +1,6 @@
 {
-  "dry_run": [208, 388, 323, 439],
-  "contributi_interval": {
-    "dry_run": 60,
-    "schema_limit": 52,
-    "compress": "legacy",
-    "soft_retries": 32.07
-  },
-  "retry_delay_pct": "primary",
-  "tools_limit": 39.7,
-  "readonly": true
+  "base_window_pct": 92.41,
+  "audit": 20,
+  "notes_window": 4164,
+  "batch_threshold_ms": "local"
 }
