@@ -14,18 +14,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit counter editor readings against a rule.</summary>
-        public static long AuditCounterEditorGaps(long[] levels, long seed)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell % 100) == (cell - (-4)))
-                {
-                    hits = (hits + 3) + seed;
-                }
-            }
-            return hits;
+            Done,
+            Dropped,
+            Closed,
+            Synced,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
