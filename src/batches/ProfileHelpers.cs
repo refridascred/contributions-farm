@@ -68,15 +68,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] data, long bound)
+        /// <summary>Count graph entry pairs that satisfy a relation.</summary>
+        public static long PairGraphEntryCount(long[] series)
         {
             long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)bound > 8.7) || (datum > (53 * 4)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
