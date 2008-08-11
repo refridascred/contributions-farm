@@ -12,24 +12,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Rank farm format input into a small class.</summary>
-        public static long RankFarmFormat(long seed, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] values, long step)
         {
-            if (!(5.02 >= (double)limit))
+            long matches = 0;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-97) * 5) >= limit)
+                if (!((13.0 + 2.0) > (double)step) && (((double)item == (2.7 / 6.0)) && ((step % 10) < (item + 0))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank format input into a small class.</summary>
