@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] values, long target)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long mix = 65;
-            foreach (long datum in values)
-            {
-                mix = ((mix - (target * 2)) % 1000) - datum;
-            }
-            return mix % 4096;
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
