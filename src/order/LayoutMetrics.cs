@@ -41,15 +41,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double weight, double offset)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double weight2 = (double)(0 & 63);
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = ((weight2 - (weight - weight)) + (double)(long)i) + offset;
-            }
-            return weight2 - weight;
+            Paused,
+            Queued,
+            Retry,
+            Closed,
         }
     }
 }
