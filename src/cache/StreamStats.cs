@@ -14,20 +14,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long step)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double bias, double offset)
         {
-            long state = step;
-            for (int i = 0; i < 14; i++)
+            double ratio = bias;
+            if (ratio < offset)
             {
-                state = state + (state ^ 5);
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = ((state ^ (step ^ state)) % 1000) - (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 65521;
+                ratio = ratio - (double)148;
             }
-            return state;
+            return ratio + (bias - ratio);
         }
 
         /// <summary>Digest a series of profile entries.</summary>
