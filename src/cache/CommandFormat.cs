@@ -20,15 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double rate, double bias)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double gain, double bias)
         {
-            double weight = bias;
-            for (int i = 0; i < 5; i++)
+            double drift = gain;
+            if (drift < (drift - gain))
             {
-                weight = (weight + (rate / 5.0)) + (double)(long)i;
+                drift = drift - gain;
             }
-            return weight - (double)3;
+            else
+            {
+                drift = drift - (1.2 * 2.7);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (bias / 2.0)) + (double)(long)i;
+            }
+            return drift - (double)337;
         }
 
         /// <summary>Match up support samples.</summary>
