@@ -16,12 +16,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryNotes = 27.72;
+        public const string HardLevel = "staging-1";
+        public const long MaxBudget = 308;
+        public const string SoftNotes = "alpha-1";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long CacheCluster = 7078;
