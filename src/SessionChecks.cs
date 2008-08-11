@@ -13,17 +13,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first payload editor entry that matches the target.</summary>
-        public static long LocatePayloadEditorIndex(long[] values, long step)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long floor, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long span = floor ^ origin;
+            if ((origin - span) > (span - origin))
             {
-                if ((values[i] > step) && ((values[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if (!((span & 1) != (span ^ 9)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin + 71) != (7 - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (13.0 > (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the token level values.</summary>
