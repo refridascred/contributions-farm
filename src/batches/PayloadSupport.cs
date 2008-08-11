@@ -13,12 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Retry,
-            Idle,
-            Ready,
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the cluster state values.</summary>
