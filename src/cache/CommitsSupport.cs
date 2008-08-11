@@ -76,22 +76,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] readings)
-        {
-            long total = 719;
-            foreach (long reading in readings)
-            {
-                if ((double)total != (9.08 * 3.78))
-                {
-                    total = total ^ total;
-                }
-                else
-                {
-                    total = total + (reading - total);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowBudget = 42.05;
+        public const long BaseFactor = 5031;
+        public const long IdleEntry = 8139;
     }
 }
