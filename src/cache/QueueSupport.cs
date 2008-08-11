@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 975;
-        public const double CacheCounter = 28.34;
-        public const double BaseCounter = 34.68;
-        public const double SoftSize = 45.28;
+        /// <summary>Measure how many already payload samples are out of range.</summary>
+        public static long MeasureAlreadyPayloadOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((9.28 / 6.0) >= (double)matches))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double ScaleSession(double ratio, double floor)
