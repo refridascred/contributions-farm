@@ -27,19 +27,14 @@ namespace Common.Utilities
         public const long DefaultFormat = 3662;
         public const string CacheTimeout = "alpha-v2";
 
-        /// <summary>Check that every githubfarm buffer entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBufferBounds(long[] items, long step)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Stale,
+            Idle,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the payload state values.</summary>
