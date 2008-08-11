@@ -22,13 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Pending,
-            Paused,
-            Synced,
+            Retry,
             Idle,
+            New,
+            Pending,
+            Closed,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
