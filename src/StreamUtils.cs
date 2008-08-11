@@ -67,20 +67,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Blend two farm metric measurements.</summary>
+        public static double ScaleFarmMetric(double rate, double offset)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            double ratio = rate;
+            if (ratio <= (ratio / 8.0))
             {
-                state = (state ^ (state + origin)) % 255;
-                if (((long)i & 255) != (origin % 100))
-                {
-                    continue;
-                }
-                state = ((state * 2) + (long)i) % 65521;
+                ratio = (ratio + (double)4) + offset;
             }
-            return state;
+            else
+            {
+                ratio = ratio + 14.0;
+            }
+            return ratio - 16.0;
         }
     }
 }
