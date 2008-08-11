@@ -34,13 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] samples, long target)
         {
-            public string Size { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + entry) < (entry * 4))
+                {
+                    tally = (tally + 2) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batch info.</summary>
