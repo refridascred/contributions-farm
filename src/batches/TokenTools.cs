@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine session contributi values into a single score.</summary>
-        public static long WeighSessionContributi(long[] items)
+        /// <summary>Match up already account samples.</summary>
+        public static long CompareAlreadyAccountCount(long[] items)
         {
-            long mark = -351;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((datum % 24) >= (mark * 3)) || (mark > (datum / 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark ^ (datum + mark)) % 65521;
-                }
-                else
-                {
-                    mark = (mark * 2) + (885 - mark);
+                    if ((items[i] - items[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark > (-7))
-            {
-                mark = mark ^ (mark / 2);
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Adjust a route reading.</summary>
