@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] items, long bound)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
