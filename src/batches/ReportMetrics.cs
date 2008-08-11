@@ -58,9 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepWidth = 74.56;
-        public const long DefaultSize = 4342;
-        public const long StepScore = 5673;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)origin != (7.0 / 7.0))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
+        }
     }
 }
