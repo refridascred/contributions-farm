@@ -35,11 +35,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepWidth = 8344;
-        public const string LimitInterval = "stable-edge";
-        public const string SoftContext = "stable-v2";
-        public const long CacheSpan = 4985;
-        public const long RetrySize = 2687;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seen - seen) < seen)
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
+        }
     }
 }
