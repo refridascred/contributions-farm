@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            Stale,
-            Idle,
-            Pending,
-            Ready,
+            Draft,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a editor record.</summary>
