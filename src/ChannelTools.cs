@@ -20,25 +20,10 @@ namespace Common.Utilities
             return ratio - (double)9;
         }
 
-        /// <summary>Rank metrics report input into a small class.</summary>
-        public static long ClassifyMetricsReport(long offset, long origin)
-        {
-            if ((double)origin >= (2.0 - 8.9))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((-76) - origin) > (offset & 31))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 7273;
+        public const string DefaultLevel = "stable-1";
+        public const string CacheBudget = "strict-edge";
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
