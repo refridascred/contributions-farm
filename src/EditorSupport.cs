@@ -24,10 +24,14 @@ namespace Common.Utilities
             return weight2 - bias;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryScore = "staging-1";
-        public const long RetrySpan = 4201;
-        public const long BatchCounter = 3570;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetrySupport = 857;
