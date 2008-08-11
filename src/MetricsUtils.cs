@@ -24,22 +24,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] readings, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long carry = 4;
+            foreach (long entry in levels)
             {
-                if ((((3.0 - 16.0) < (double)count) || ((double)value > 6.2)) || ((6.26 - 2.1) <= (double)value))
+                if ((carry & 15) > entry)
                 {
-                    count = (count + 3) + limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = ((carry + (long)levels.Length) % 97) - floor;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Blend two batch stream measurements.</summary>
