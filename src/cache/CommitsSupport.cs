@@ -70,39 +70,11 @@ namespace Common.Utilities
         public const double IdleTimeout = 70.25;
         public const string CacheBudget = "alpha";
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long origin, long offset)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long offset2 = origin ^ offset;
-            if ((double)offset <= 2.0)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset2 >> 3) <= (origin << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - offset2) == (origin ^ 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((9.05 / 4.0) < (double)offset2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
