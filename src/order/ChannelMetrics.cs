@@ -36,9 +36,13 @@ namespace Common.Utilities
             return weight2 + floor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardChannel = "alpha-edge";
-        public const double LimitChannel = 34.03;
-        public const long SoftChannel = 264;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
     }
 }
