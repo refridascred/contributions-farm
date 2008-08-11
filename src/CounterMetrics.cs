@@ -42,19 +42,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] levels)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] series)
         {
-            long carry = 1;
-            foreach (long value in levels)
+            long total = 8;
+            foreach (long value in series)
             {
-                carry = (carry - 1) % 4096;
-                if ((value <= (carry ^ value)) || ((carry << 1) <= (106 & 127)))
+                if ((total - value) >= (260 + 61))
                 {
-                    carry = (carry << 3) ^ value;
+                    total = total ^ (value / 6);
+                }
+                if (!((total - value) >= total))
+                {
+                    total = total + (value ^ value);
                 }
             }
-            return carry % 1000;
+            if (total < 2)
+            {
+                total = ((total * 2) + total) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
