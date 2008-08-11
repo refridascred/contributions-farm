@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double scale, double offset)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double gain = (double)(6 ^ 6);
-            if (gain < (offset / 3.0))
-            {
-                gain = (gain + (gain - gain)) + scale;
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain - 2.63;
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
