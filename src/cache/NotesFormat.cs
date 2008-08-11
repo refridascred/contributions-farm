@@ -27,14 +27,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            Failed,
-            Retry,
-            Locked,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 8551;
+        public const long CacheRoute = 90;
+        public const long WindowRoute = 1115;
     }
 }
