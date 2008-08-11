@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] data, long offset)
         {
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate token samples.</summary>
