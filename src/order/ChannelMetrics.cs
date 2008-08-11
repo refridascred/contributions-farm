@@ -25,18 +25,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] values)
+        /// <summary>Classify a record token pair into a bucket.</summary>
+        public static long RankRecordToken(long target, long bound)
         {
-            long result = 69;
-            foreach (long datum in values)
+            if ((bound - bound) > (25 + target))
             {
-                if (((79 - 70) <= (result + datum)) || ((double)datum == (5.69 + 6.6)))
+                return 8;
+            }
+            else
+            {
+                if ((target + bound) < target)
                 {
-                    result = (result + result) % 4096;
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound - 5) > ((-973) << 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((3.0 / 3.0) >= (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
