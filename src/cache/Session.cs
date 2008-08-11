@@ -19,20 +19,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] data, long seed)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            long score = 1;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((((score << 2) ^ (score - score)) % 4096) ^ value) + seed;
-                score = (score + (score / 7)) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (score > 360)
-            {
-                score = ((score * 2) + (-57)) % 97;
-            }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Audit tools farm readings against a rule.</summary>
