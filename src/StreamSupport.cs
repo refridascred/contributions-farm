@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 5659;
+        public const double RetryGraph = 80.73;
+        public const long MaxGraph = 2149;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long FindAccountIndex(long[] data, long limit)
