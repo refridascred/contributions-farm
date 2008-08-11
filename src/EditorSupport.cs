@@ -36,25 +36,17 @@ namespace Common.Utilities
         public const long WindowFactor = 9463;
         public const long MaxSize = 612;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long bound, long limit)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] readings, long limit)
         {
-            long offset = bound ^ limit;
-            if ((bound + offset) < (offset - limit))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset - bound) > (bound + limit)) || (limit > (limit + offset)))
+                if ((readings[i] > limit) && ((readings[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a session channel reading.</summary>
