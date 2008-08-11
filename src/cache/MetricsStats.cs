@@ -28,13 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Stale,
-            Locked,
-            Done,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftBuffer = "cached-edge";
+        public const double BaseInterval = 61.38;
+        public const long WindowFactor = 3851;
+        public const string RetryBuffer = "local";
 
         /// <summary>Accumulate batches stats samples.</summary>
         public static long WeighBatchesStats(long[] levels)
