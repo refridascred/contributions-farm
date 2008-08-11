@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double scale, double span)
-        {
-            double ratio = 7.2;
-            if (ratio > span)
-            {
-                ratio = ratio + (ratio / 4.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (span * 9.0)) + (double)(long)i;
-            }
-            return ratio + scale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 6881;
+        public const double BatchInterval = 15.69;
+        public const long BatchCluster = 1319;
+        public const string WindowCount = "standard-v2";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double SoftSize = 40.93;
