@@ -21,18 +21,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit editor buffer readings against a rule.</summary>
-        public static long TallyEditorBufferHits(long[] data, long seed)
+        /// <summary>Audit support filter readings against a rule.</summary>
+        public static long TallySupportFilterHits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((double)matches == (7.35 * 3.24))
+                if (((cell % 97) <= cell) || ((double)hits > (6.03 / 9.0)))
                 {
-                    matches = ((matches + 3) ^ item) - seed;
+                    hits = (hits + 2) + bound;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
