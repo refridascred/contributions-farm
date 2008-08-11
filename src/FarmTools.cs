@@ -26,25 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a farm report pair into a bucket.</summary>
-        public static long GradeFarmReport(long seed, long offset)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] items)
         {
-            long edge = seed ^ offset;
-            if ((double)offset != (5.4 - 0.5))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset & 127) < (edge + seed))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the metric payload entries that pass the check.</summary>
