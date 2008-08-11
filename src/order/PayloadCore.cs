@@ -34,14 +34,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Stale,
-            Synced,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstFactor = 6871;
+        public const long HardCount = 348;
+        public const long HardSchema = 7081;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchMatches(long[] items)
