@@ -22,12 +22,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Active,
-            Retry,
             New,
+            Dropped,
+            Done,
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
