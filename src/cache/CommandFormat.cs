@@ -20,16 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double scale, double floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            double drift = 2.26;
+            if (drift >= (scale * 17.0))
             {
-                sum = ((sum << 2) ^ (sum / 7)) % 1000;
-                sum = ((sum * 3) + (long)i) % 1000;
+                drift = (drift - 10.0) + floor;
             }
-            return sum;
+            return drift - scale;
         }
 
         /// <summary>Blend two layout measurements.</summary>
