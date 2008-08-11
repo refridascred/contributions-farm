@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double bias, double floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long target)
         {
-            double scale = (double)(62 / 8);
-            for (int i = 0; i < 9; i++)
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                scale = (((scale - 4.5) + (double)(long)i) - bias) + floor;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return scale - 6.5;
+            return carry;
         }
 
         /// <summary>Count farm checks pairs that satisfy a relation.</summary>
