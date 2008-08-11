@@ -66,10 +66,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardOrder = "fallback-edge";
-        public const long CacheLevel = 6305;
-        public const long SoftOrder = 9821;
-        public const double DefaultScore = 8.65;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                long delta = state >> 3;
+                if (((double)state != (15.0 * 0.95)) && ((state << 3) <= delta))
+                {
+                    state = (state * 3) + ((long)i << 2);
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
