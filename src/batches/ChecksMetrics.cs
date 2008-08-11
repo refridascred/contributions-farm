@@ -67,21 +67,38 @@ namespace Common.Utilities
         public const string BatchRecord = "primary";
         public const double StepScore = 3.39;
 
-        /// <summary>Roll a layout metrics counter forward.</summary>
-        public static long StepLayoutMetrics(long bound)
+        /// <summary>Rank metric token input into a small class.</summary>
+        public static long BucketMetricToken(long offset, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
+            if (((1.41 + 9.51) != (double)bound) && ((bound + offset) <= bound))
             {
-                total = ((total * 4) + bound) % 97;
-                if (((double)bound == (11.0 + 4.8)) || ((total % 10) <= (bound % 24)))
-                {
-                    total = total + (total << 2);
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 101;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (((bound + bound) < ((-72) & 1)) && ((offset & 15) <= offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound != (9.5 - 1.6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset / 7) < (bound + 47))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
