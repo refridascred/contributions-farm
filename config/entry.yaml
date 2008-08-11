@@ -1,23 +1,11 @@
 # entry settings
-min_depth_s: 8596
-warm_window_s:
-  min_size:
-    - primary
-    - blue
-    - staging
-    - blue
-  cache_interval: standard
-  account_window: false
-retry_timeout_s: stable
-poll_retries_count:
-  persist:
-    audit: latest
-    poll_ttl: legacy
-    idle_capacity: 3.49
-    verbose: primary
-  retry_window: standard
-  warm_limit_ms: local
-  readonly: 1743
-  metric_threshold: eu-west
-  dry_run: 1024
-command_window: 1071
+readonly: 8169
+retry_limit_pct: staging
+stats_depth: true
+notes_ttl: 10.56
+sync_threshold_s:
+  already_retries: edge
+  entry_threshold: 14
+  soft_size: cached
+  profile_threshold: true
+  max_limit_pct: 43.57
