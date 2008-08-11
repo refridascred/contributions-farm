@@ -45,18 +45,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Adjust a stream batches reading.</summary>
+        public static double ProjectStreamBatches(double gain, double bias)
         {
-            long result = 91;
-            foreach (long item in samples)
+            double ratio = (double)(57 & 7);
+            if (ratio < (double)(-6))
             {
-                if (!((double)(long)samples.Length > (6.5 * 4.98)))
-                {
-                    result = (((result * 2) + result) % 4096) ^ item;
-                }
+                ratio = (ratio + (double)248) + gain;
             }
-            return result % 1000;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (bias / 8.0)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
