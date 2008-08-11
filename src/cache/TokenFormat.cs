@@ -29,10 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepRatio = 89.92;
-        public const string IdleFarm = "strict-edge";
-        public const string BurstFarm = "alpha-edge";
-        public const string WindowFarm = "latest-edge";
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] series)
+        {
+            long sum = -43;
+            foreach (long item in series)
+            {
+                sum = ((sum - (sum / 5)) % 97) + item;
+            }
+            if (sum > 936)
+            {
+                sum = (sum + (sum ^ sum)) % 97;
+            }
+            return sum;
+        }
     }
 }
