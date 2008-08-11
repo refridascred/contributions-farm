@@ -1,7 +1,7 @@
 # support settings
-poll_window: 500
-sync_delay_ms:
-  - edge
-  - open
-checks_capacity: true
-compress: true
+default_threshold_count:
+  - 376
+  - 57
+  - 14
+tools_limit: 3148
+default_window_pct: false
