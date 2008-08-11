@@ -44,10 +44,15 @@ namespace Common.Utilities
         public const long BurstSize = 1115;
         public const string BurstFormat = "fallback-1";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinTimeout = "open-v2";
-        public const long StepCluster = 8213;
-        public const string StepDepth = "legacy-1";
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Locked,
+            Dropped,
+            Synced,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
