@@ -45,14 +45,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchScore = "primary";
+        public const double IdleRoute = 56.47;
+        public const long IdleDepth = 2636;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] levels)
