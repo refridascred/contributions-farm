@@ -61,21 +61,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] readings)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score - (floor + (long)i)) % 255;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Roll a layout metrics counter forward.</summary>
