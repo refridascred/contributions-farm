@@ -62,18 +62,19 @@ namespace Common.Utilities
         public const double SoftNotes = 13.95;
         public const long CacheNotes = 6768;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] values, long origin)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((-110) >= (origin + value)) || ((tally * 2) > (tally >> 4))) || ((value - tally) >= (tally / 5)))
                 {
-                    if ((samples[i] - samples[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
