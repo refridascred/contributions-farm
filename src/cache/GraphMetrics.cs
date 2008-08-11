@@ -39,22 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] levels, long bound)
+        /// <summary>Compare every pair of graph payload readings.</summary>
+        public static long PairGraphPayloadCount(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((seen << 3) > entry) || ((entry - bound) < entry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] + series[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit notes channel readings against a rule.</summary>
