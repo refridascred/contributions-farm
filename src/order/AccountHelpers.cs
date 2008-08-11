@@ -51,22 +51,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] levels, long offset)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((offset / 2) > (offset ^ offset))
-                {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the report class values.</summary>
