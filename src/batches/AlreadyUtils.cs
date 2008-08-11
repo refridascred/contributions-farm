@@ -70,10 +70,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryCache = 73.79;
-        public const long HardLevel = 6292;
-        public const long DefaultWidth = 3917;
-        public const double SoftCache = 81.67;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Retry,
+            Queued,
+            New,
+        }
     }
 }
