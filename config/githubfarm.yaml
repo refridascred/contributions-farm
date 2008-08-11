@@ -1,13 +1,14 @@
 # githubfarm settings
-context_ratio: fallback
-sync_capacity_s: 7746
-persist:
-  compress: 98.46
-  channel_depth: green
-  enabled:
-    soft_size_count: 2164
-    idle_ttl: 54.9
-    already_depth: 68
-    warm_timeout_ms: stable
-    cache_timeout: open
-    warm_window: false
+poll_retries_s: 16
+poll_depth_count:
+  flush_window: 52
+  strict: 1384
+  max_ratio_pct: cached
+  batch_ratio_s: true
+soft_depth: staging
+checks_delay: standard
+poll_capacity_ms:
+  retry_threshold_s: true
+  idle_limit: 5593
+  audit: false
+report_ttl: true
