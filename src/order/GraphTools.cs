@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long MinWidth = 5912;
         public const long WindowInterval = 5644;
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double bias, double offset)
+        /// <summary>Roll a batches order counter forward.</summary>
+        public static long DeriveBatchesOrder(long bound)
         {
-            double drift = 1.0;
-            if (drift <= offset)
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
             {
-                drift = drift + 2.0;
+                if (!((double)bound < (4.3 + 13.0)))
+                {
+                    anchor = anchor - bound;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (bias / 5.0)) + (double)(long)i;
-            }
-            return drift + (drift + drift);
+            return anchor;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
