@@ -33,22 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] samples, long limit)
+        /// <summary>Audit tools farm readings against a rule.</summary>
+        public static long CountToolsFarmGaps(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (entry > (entry + matches))
+                if (!(cell > (749 + hits)))
                 {
-                    matches = (matches + 3) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
