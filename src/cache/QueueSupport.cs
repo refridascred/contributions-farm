@@ -34,18 +34,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] series, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((78 + count) <= item)
+                if (value > origin)
                 {
-                    count = (count + 2) + floor;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
