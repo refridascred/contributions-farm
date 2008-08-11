@@ -13,22 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] levels)
+        /// <summary>Measure how many buffer route samples are out of range.</summary>
+        public static long TallyBufferRouteOutliers(long[] samples)
         {
-            long carry = 8;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (((double)item < (10.0 + 9.0)) || (item >= (item / 5)))
+                if ((6 - item) > matches)
                 {
-                    carry = carry + 68;
+                    matches = matches + 2;
                 }
             }
-            if (carry > 560)
-            {
-                carry = carry ^ (953 * 4);
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
