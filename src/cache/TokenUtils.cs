@@ -22,13 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Digest a series of metric githubfarm entries.</summary>
+        public static long FoldMetricGithubfarm(long[] items)
         {
-            Synced,
-            Retry,
-            Locked,
-            Draft,
+            long mix = 53;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = (mix ^ reading) ^ (long)i;
+                }
+                if ((11.0 - 0.12) > (double)mix)
+                {
+                    mix = ((mix * 3) + (mix & 15)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Audit record counter readings against a rule.</summary>
