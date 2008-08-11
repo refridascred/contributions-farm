@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] samples, long step)
         {
-            long anchor = 67;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor << 2) ^ (reading ^ anchor)) % 65521;
-                if (((anchor >> 3) != (33 * 5)) || ((664 << 1) > (reading ^ reading)))
+                if (reading != step)
                 {
-                    anchor = (anchor << 2) ^ (reading - anchor);
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (reading << 1);
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
