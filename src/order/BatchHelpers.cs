@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Locked,
-            Dropped,
-            Synced,
+            Paused,
+            Done,
+            Stale,
+            Pending,
         }
 
         /// <summary>Describe the batches class values.</summary>
