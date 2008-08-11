@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((seen / 7) > seen)
-                {
-                    seen = ((seen + 1) + item) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxRatio = 2424;
+        public const string BaseSize = "open";
+        public const long LimitCount = 9028;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long RankOrder(long offset, long origin)
