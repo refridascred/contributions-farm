@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] values, long step)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long acc = 731;
-            foreach (long reading in values)
-            {
-                if ((step & 15) > (step + 4))
-                {
-                    acc = ((acc - (836 % 24)) % 101) + reading;
-                }
-            }
-            return acc;
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many already payload samples are out of range.</summary>
