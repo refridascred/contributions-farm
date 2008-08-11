@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] values)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Failed,
+            New,
+            Done,
+            Ready,
         }
 
         /// <summary>Digest a series of metrics schema entries.</summary>
