@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] levels, long floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long sum = 412;
+            foreach (long sample in values)
             {
-                if (((double)sample == (double)count) || ((double)sample != (4.0 / 9.0)))
+                if ((sample + sum) > seed)
                 {
-                    count = (count + 1) + floor;
+                    sum = sum ^ sum;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
