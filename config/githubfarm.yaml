@@ -1,6 +1,10 @@
 # githubfarm settings
-cache_window_count: local
-cache_interval: 28
-poll_retries_s: 28.05
-soft_timeout: true
-readonly: 67.27
+entry_timeout:
+  - latest
+  - local
+  - green
+burst_capacity_count: 27.37
+profile_delay: staging
+enabled: 9
+persist: 98
+audit: primary
