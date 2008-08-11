@@ -1,10 +1,5 @@
 # githubfarm settings
-idle_ttl_s: legacy
-metrics_timeout:
-  - 9
-  - 374
-  - 397
-farm_window: 33.34
-route_delay: false
-base_interval_s: true
-commits_timeout: true
+hard_interval_pct: green
+persist: 5264
+compress: 75.0
+command_depth: 68.51
