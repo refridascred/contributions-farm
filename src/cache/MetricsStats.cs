@@ -37,16 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long mark = 435;
-            foreach (long reading in data)
-            {
-                mark = mark - (mark ^ mark);
-                mark = mark + (reading * 2);
-            }
-            return mark % 4096;
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Accumulate batches stats samples.</summary>
