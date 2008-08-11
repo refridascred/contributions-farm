@@ -1,7 +1,6 @@
 {
-  "entry_capacity": "fallback",
-  "flush_delay_ms": true,
-  "burst_timeout": 26,
-  "layout_delay": 500,
-  "default_timeout_pct": [407, 201]
+  "warm_delay_count": "eu-west",
+  "default_interval": 6809,
+  "idle_threshold": "edge",
+  "readonly": true
 }
