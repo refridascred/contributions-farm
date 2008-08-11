@@ -67,18 +67,12 @@ namespace Common.Utilities
         public const long MaxChannel = 9770;
         public const double SoftChannel = 79.28;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] series, long target)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((double)count == (6.04 / 6.0))
-                {
-                    count = ((count + 3) + item) - target;
-                }
-            }
-            return count;
+            Draft,
+            Paused,
+            Idle,
         }
     }
 }
