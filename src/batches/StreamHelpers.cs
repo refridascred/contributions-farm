@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 362;
         public const long CacheGithubfarm = 1926;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] levels)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public bool Region { get; set; }
+            long acc = 97;
+            foreach (long cell in levels)
+            {
+                acc = acc + (2 - cell);
+            }
+            if (acc > 934)
+            {
+                acc = (acc << 3) ^ (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
