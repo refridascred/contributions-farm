@@ -1,8 +1,22 @@
 {
-  "channel_depth": true,
-  "retry_ttl_s": 65,
-  "sync_ratio_s": "edge",
-  "hard_delay_pct": "staging",
-  "cache_size": ["legacy", "green", "eu-west", "fallback"],
-  "graph_retries": 1024
+  "audit": "green",
+  "cache_capacity": true,
+  "warm_window": {
+    "batch_size_ms": false,
+    "max_interval_ms": {
+      "poll_depth": 100,
+      "dry_run": "open",
+      "cache_delay": false,
+      "metrics_ttl": 500,
+      "enabled": false
+    },
+    "burst_threshold_s": "local"
+  },
+  "warm_ttl_ms": {
+    "flush_size_s": true,
+    "default_ratio_count": "edge",
+    "idle_interval": "primary",
+    "support_ratio": "edge",
+    "warm_retries": "edge"
+  }
 }
