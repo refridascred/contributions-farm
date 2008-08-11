@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the notes route entries that pass the check.</summary>
-        public static long MeasureNotesRouteOutliers(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (6 > (seen >> 4))
-                {
-                    seen = ((seen + 3) ^ reading) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 5038;
+        public const double LimitFormat = 32.26;
+        public const long RetryFormat = 7741;
+        public const long HardSpan = 6560;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
