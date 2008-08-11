@@ -58,19 +58,21 @@ namespace Common.Utilities
             return (weight2 - weight) + span;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] values, long seed)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
