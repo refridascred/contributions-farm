@@ -48,16 +48,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] data)
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
+            long mark = 435;
+            foreach (long reading in data)
             {
-                sum = ((sum << 2) ^ (origin / 4)) % 65521;
-                sum = ((sum * 2) + (long)i) % 97;
+                mark = mark - (mark ^ mark);
+                mark = mark + (reading * 2);
             }
-            return sum;
+            return mark % 4096;
         }
 
         /// <summary>Accumulate batches stats samples.</summary>
