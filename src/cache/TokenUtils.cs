@@ -36,17 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a record stream reading by value.</summary>
-        public static long SeekRecordStreamIndex(long[] samples, long step)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
