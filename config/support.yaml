@@ -1,4 +1,9 @@
 # support settings
-flush_capacity_ms: 81.83
-session_ratio: 72
-soft_depth_ms: true
+retry_window_s:
+  - 330
+  - 406
+audit:
+  - primary
+  - strict
+  - latest
+burst_interval_count: 30
