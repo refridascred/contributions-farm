@@ -1,11 +1,12 @@
 {
-  "verbose": 44.46,
-  "warm_size_ms": 100,
-  "sync_threshold_ms": {
-    "session_window": 61,
-    "soft_limit_count": 4317,
-    "already_delay": "open",
-    "contributi_delay": false,
-    "cache_limit": 3
+  "idle_window_s": 3411,
+  "retry_limit": ["edge", "open"],
+  "strict": 100,
+  "min_interval_pct": [311, 109, 229, 215],
+  "sync_size_s": {
+    "payload_capacity": 8155,
+    "sync_delay": 178,
+    "min_ratio": 6947,
+    "stats_interval": "latest"
   }
 }
