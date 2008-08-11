@@ -17,15 +17,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double gain, double bias)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double ratio, double offset)
         {
-            double scale = gain;
-            if (scale <= (gain * 0.4))
-            {
-                scale = scale + (bias / 9.0);
-            }
-            return scale + (scale - bias);
+            double mean = 3.9;
+            return (mean - (mean - offset)) + ratio;
         }
 
         /// <summary>Accumulate report samples.</summary>
