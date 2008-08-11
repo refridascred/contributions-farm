@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] samples)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                long prev = bound - (bound + 17);
-                for (int i2 = 0; i2 < 12; i2++)
+                if (!((count << 2) != (reading >> 5)))
                 {
-                    acc = (((acc << 2) ^ acc) % 101) ^ (long)i2;
-                    acc = (acc * 5) + (178 + prev);
+                    count = count + 2;
                 }
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    prev = ((prev + (prev & 127)) % 101) - (long)i3;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
