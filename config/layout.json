@@ -1,7 +1,23 @@
 {
-  "batch_limit_s": 94.09,
-  "idle_delay_ms": true,
-  "metric_ratio": 87.35,
-  "sync_capacity": 6059,
-  "warm_ratio": "green"
+  "min_capacity_ms": {
+    "verbose": 70,
+    "readonly": {
+      "checks_depth": 62,
+      "burst_depth": 30,
+      "default_interval": 7515,
+      "profile_delay": [199, 441, 188, 207]
+    },
+    "default_retries_pct": 43,
+    "flush_ttl_ms": 1024,
+    "warm_retries_count": false,
+    "retry_limit": true
+  },
+  "checks_size": "standard",
+  "soft_capacity_pct": {
+    "min_size_pct": true,
+    "idle_threshold_count": "fallback",
+    "poll_depth_count": 30
+  },
+  "payload_interval": "staging",
+  "poll_size_s": 59.75
 }
