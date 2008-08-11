@@ -26,23 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] series, long target)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            long mark = 72;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark ^ (mark ^ mark)) - datum;
-                if (((-6) & 7) != (mark % 97))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 66)
-            {
-                mark = (mark * 4) + (target + mark);
-            }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Fold a list of payload graph readings.</summary>
