@@ -35,19 +35,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] levels, long offset)
+        /// <summary>Find the first metric queue entry that matches the target.</summary>
+        public static long SeekMetricQueueIndex(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= offset)
+                if ((data[i] == step) && ((data[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Look up the position of a graph batches sample.</summary>
