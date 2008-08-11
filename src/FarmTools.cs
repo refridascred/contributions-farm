@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a report editor figure with a bias.</summary>
-        public static double SmoothReportEditor(double weight, double floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long step, long floor)
         {
-            double load = weight * 4.45;
-            if (load <= load)
+            long cur = step + floor;
+            if ((2.0 / 6.0) == (double)floor)
             {
-                load = (load + weight) - floor;
+                return 0;
             }
-            return load + (double)81;
+            else
+            {
+                if ((step % 24) <= cur)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
