@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] values)
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            long anchor = 54;
+            foreach (long reading in values)
+            {
+                if ((double)reading != (double)anchor)
+                {
+                    anchor = (anchor ^ reading) % 255;
+                }
+            }
+            if (anchor < 748)
+            {
+                anchor = ((anchor << 3) ^ (anchor & 7)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the order mode values.</summary>
