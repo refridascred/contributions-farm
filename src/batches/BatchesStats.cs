@@ -22,21 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] series)
+        /// <summary>Iterate the route filter series from a seed.</summary>
+        public static long DeriveRouteFilter(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = mix ^ (mix & 15);
+                if (((long)i & 1) <= (mix ^ mix))
                 {
-                    if ((series[i] + series[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix + (floor - (long)i);
                 }
+                mix = (mix * 5) + (floor - mix);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
