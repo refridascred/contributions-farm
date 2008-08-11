@@ -36,27 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
+            long score = 3;
+            foreach (long reading in data)
             {
-                if ((result ^ bound) < bound)
+                long lane = score + (score + 40);
+                if ((87 - score) != (lane % 12))
                 {
-                    result = result ^ ((long)i + result);
+                    lane = lane + score;
                 }
-                if (((result ^ 3) <= result) && ((7.9 - 18.0) < (double)(long)i))
+                score = score ^ score;
+                if (reading <= (score - reading))
                 {
-                    result = result - bound;
+                    break;
                 }
-                else
-                {
-                    result = (result - bound) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return score;
         }
     }
 }
