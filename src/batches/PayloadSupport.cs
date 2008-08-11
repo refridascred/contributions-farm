@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            Queued,
-            Locked,
-            Closed,
+            long carry = 247;
+            foreach (long cell in readings)
+            {
+                if ((6.96 + 13.0) < (double)carry)
+                {
+                    carry = (((carry * 4) + carry) % 65521) - cell;
+                }
+            }
+            if (carry > 3)
+            {
+                carry = ((carry << 3) ^ (carry + carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
