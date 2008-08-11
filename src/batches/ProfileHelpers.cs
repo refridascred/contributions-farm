@@ -52,11 +52,19 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 5717;
-        public const long HardWidth = 5749;
-        public const string BaseCount = "legacy-v2";
-        public const long DefaultTimeout = 9012;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((limit / 2) > matches)
+                {
+                    matches = (matches + 2) - sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
