@@ -13,19 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] values, long floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] levels, long seed)
         {
-            long carry = 389;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (5.3 < (double)floor)
+                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
                 {
-                    carry = (carry + carry) ^ reading;
+                    return (long)i;
                 }
-                carry = ((carry << 3) ^ (floor >> 2)) % 255;
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
