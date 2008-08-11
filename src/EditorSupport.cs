@@ -24,18 +24,16 @@ namespace Common.Utilities
         public const long RetrySpan = 4201;
         public const long BatchCounter = 3570;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] items)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long carry = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((reading + reading) >= ((-90) ^ tally))
-                {
-                    tally = tally + 3;
-                }
+                carry = (carry + (step * 3)) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Match up context samples.</summary>
