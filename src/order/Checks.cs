@@ -27,11 +27,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 1390;
-        public const long WindowOrder = 7744;
-        public const long MinBudget = 2087;
-        public const long WindowWidth = 5287;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] data, long offset)
+        {
+            long score = 28;
+            foreach (long cell in data)
+            {
+                score = (score - (offset + score)) - cell;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long CountContributiHits(long[] samples)
