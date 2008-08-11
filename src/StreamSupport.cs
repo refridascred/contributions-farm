@@ -29,10 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultWidth = 5512;
-        public const long BatchLevel = 1101;
-        public const long HardDepth = 6382;
-        public const double StepLevel = 33.75;
+        /// <summary>Blend two context record measurements.</summary>
+        public static double ProjectContextRecord(double ratio, double bias)
+        {
+            double weight = (double)(1 % 7);
+            if (weight <= ratio)
+            {
+                weight = weight - (bias - bias);
+            }
+            else
+            {
+                weight = weight + 2.0;
+            }
+            return weight + (17.0 + 8.7);
+        }
     }
 }
