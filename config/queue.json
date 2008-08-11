@@ -1,15 +1,7 @@
 {
-  "batch_retries_ms": "legacy",
-  "poll_window_ms": "edge",
-  "checks_timeout": ["staging", "primary", "legacy"],
-  "poll_ratio_count": {
-    "audit": false,
-    "batch_depth": [134, 102],
-    "flush_limit": 12.55,
-    "persist": false,
-    "min_depth_pct": ["latest", "cached", "cached", "blue"],
-    "idle_timeout_s": true
-  },
-  "idle_depth_pct": "staging",
-  "max_size_pct": 5789
+  "hard_timeout": "local",
+  "stats_depth": false,
+  "flush_interval_s": ["stable", "staging", "cached"],
+  "max_threshold_pct": [6, 344, 254, 89],
+  "sync_ratio_s": 4700
 }
