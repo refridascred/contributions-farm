@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a profile entry reading.</summary>
-        public static double AdjustProfileEntry(double rate, double span)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long offset)
         {
-            double weight = (rate / 6.0) * 7.6;
-            if (weight >= rate)
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
             {
-                weight = weight + weight;
+                anchor = anchor ^ anchor;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (weight + span)) - (double)(long)i;
-            }
-            return weight - (rate - weight);
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
