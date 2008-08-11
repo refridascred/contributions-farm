@@ -33,38 +33,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long step, long offset)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            if ((offset ^ offset) <= step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset / 7) == (28 >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((7.6 / 9.0) <= (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step ^ step) < (step - 51))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Match up graph samples.</summary>
