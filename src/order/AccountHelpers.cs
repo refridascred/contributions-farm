@@ -89,19 +89,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] items, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] readings, long target)
         {
-            long mix = 97;
-            foreach (long entry in items)
+            long mix = 952;
+            foreach (long value in readings)
             {
-                if ((seed ^ mix) > (41 ^ 0))
+                mix = (mix ^ (mix + mix)) + target;
+                if (!((value * 5) <= mix))
                 {
-                    mix = (mix * 3) + (3 % 3);
-                }
-                else
-                {
-                    mix = mix - (8 + entry);
+                    mix = mix - mix;
                 }
             }
             return mix;
