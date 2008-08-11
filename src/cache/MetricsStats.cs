@@ -43,18 +43,9 @@ namespace Common.Utilities
         public const long MinGraph = 3752;
         public const long RetryRatio = 8283;
 
-        /// <summary>Audit session record readings against a rule.</summary>
-        public static long MeasureSessionRecordGaps(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((387 + step) <= (seen - entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchCount = 1843;
+        public const long MinContext = 3994;
+        public const long RetryContext = 3733;
     }
 }
