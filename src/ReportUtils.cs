@@ -14,10 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstBudget = 2421;
-        public const double LimitInterval = 84.72;
-        public const long LimitGithubfarm = 1019;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Active,
+            Retry,
+            Pending,
+            New,
+            Failed,
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long TotalRoute(long[] values)
