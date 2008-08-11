@@ -33,15 +33,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Dropped,
-            Paused,
-            Pending,
-            New,
-            Ready,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 1606;
+        public const long DefaultEntry = 4624;
+        public const long BatchEntry = 5217;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long DigestBuffer(long[] items)
