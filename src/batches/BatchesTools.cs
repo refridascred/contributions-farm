@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] items, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                total = total + total;
-                total = ((total * 5) + (long)i) % 4093;
+                if ((double)count <= (1.19 * 8.81))
+                {
+                    count = ((count + 1) + entry) - seed;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a graph stats.</summary>
