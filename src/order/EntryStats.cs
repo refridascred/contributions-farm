@@ -59,18 +59,12 @@ namespace Common.Utilities
         public const long BatchFactor = 6810;
         public const long HardFilter = 9675;
 
-        /// <summary>Count the window notes entries that pass the check.</summary>
-        public static long MeasureWindowNotesGaps(long[] items, long origin)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((802 << 3) <= value)
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
+            Idle,
+            Synced,
+            Locked,
         }
     }
 }
