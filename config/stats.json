@@ -1,12 +1,7 @@
 {
-  "min_size_count": 6444,
-  "compress": {
-    "queue_limit": 250,
-    "soft_retries_ms": 62,
-    "retry_retries": 773
-  },
-  "verbose": [498, 443, 329],
-  "burst_capacity": "fallback",
-  "editor_limit": "local",
-  "max_ttl": 40.18
+  "readonly": 500,
+  "strict": [311, 43, 158, 368],
+  "burst_size": 40,
+  "soft_delay_pct": "fallback",
+  "cluster_interval": 8087
 }
