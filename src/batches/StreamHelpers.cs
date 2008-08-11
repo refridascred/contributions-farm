@@ -53,16 +53,10 @@ namespace Common.Utilities
         public const long MinSession = 8477;
         public const long HardSession = 1333;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] levels)
-        {
-            long anchor = 86;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor - 250) % 101) - value;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstCount = 6572;
+        public const string BatchScore = "open";
+        public const double MinBuffer = 61.61;
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
