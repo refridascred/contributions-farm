@@ -12,19 +12,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] items, long step)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long acc = 35;
-            foreach (long value in items)
-            {
-                acc = (((acc << 2) ^ (776 ^ step)) % 1000) ^ value;
-            }
-            if (acc > (-1))
-            {
-                acc = ((acc * 2) + (step - acc)) % 1000;
-            }
-            return acc % 4096;
+            Draft,
+            Done,
+            New,
+            Active,
         }
 
         /// <summary>Match up filter support samples.</summary>
