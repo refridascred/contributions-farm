@@ -29,32 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a order channel value against two limits.</summary>
-        public static long BucketOrderChannel(long floor, long origin)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long step = floor ^ origin;
-            if (((origin * 3) < floor) || (36 > (floor - step)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin / 5) > (origin << 2)) && ((floor - origin) == (floor >> 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor + 6) > (4 % 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Active,
+            Idle,
+            Failed,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
