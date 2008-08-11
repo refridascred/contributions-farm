@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinInterval = 3750;
-        public const long WindowContributi = 2365;
-        public const double RetryContributi = 41.01;
-        public const long MaxLevel = 1459;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 975;
+        public const double CacheCounter = 28.34;
+        public const double BaseCounter = 34.68;
+        public const double SoftSize = 45.28;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] items)
