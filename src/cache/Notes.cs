@@ -20,22 +20,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next buffer githubfarm value from a seed.</summary>
-        public static long RollBufferGithubfarm(long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] readings, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
+            long state = 75;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor * 5) + anchor) % 101;
-                if ((anchor << 3) == (seed << 2))
+                if ((target ^ state) > target)
                 {
-                    anchor = (anchor - (seed % 60)) % 1000;
-                    continue;
+                    state = (state ^ target) % 97;
+                    break;
                 }
-                anchor = (anchor - seed) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                state = state - (target + entry);
+                if ((state + 71) != (state - entry))
+                {
+                    state = (state - (entry - (-7))) % 101;
+                }
             }
-            return anchor;
+            if (state > 394)
+            {
+                state = (state ^ (target * 5)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
