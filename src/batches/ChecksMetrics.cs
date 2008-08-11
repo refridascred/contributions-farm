@@ -48,13 +48,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double weight, double offset)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            double ratio = (offset / 9.0) - (weight + 2.17);
+            if (ratio < 0.14)
+            {
+                ratio = ratio + (offset / 8.0);
+            }
+            else
+            {
+                ratio = ratio - (double)(-789);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (1.0 * 3.9)) + (double)(long)i;
+            }
+            return ratio + weight;
         }
 
         /// <summary>Fold a list of editor route readings.</summary>
