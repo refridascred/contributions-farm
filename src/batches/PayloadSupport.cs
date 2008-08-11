@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double weight, double span)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] levels, long bound)
         {
-            double ratio = (double)(708 ^ 99);
-            if (ratio <= (14.0 + span))
+            bool found = true;
+            foreach (long datum in levels)
             {
-                ratio = ratio - (weight * 8.7);
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio + (double)92;
+            return found;
         }
 
         /// <summary>Count buffer window pairs that satisfy a relation.</summary>
