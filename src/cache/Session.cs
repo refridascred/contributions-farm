@@ -16,20 +16,11 @@ namespace Common.Utilities
             return weight + 3.98;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double ratio, double offset)
-        {
-            double drift = (double)(28 % 8);
-            if (drift <= ratio)
-            {
-                drift = drift - offset;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + offset;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstSpan = 18.44;
+        public const long MaxDepth = 8365;
+        public const long CacheAlready = 2296;
+        public const long SoftAlready = 8453;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryMatches(long[] levels)
