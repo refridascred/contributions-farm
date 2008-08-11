@@ -1,7 +1,8 @@
 {
-  "soft_timeout_s": 100,
-  "window_limit": "fallback",
-  "farm_capacity": false,
-  "min_limit_count": 8734,
-  "poll_size_ms": 78.2
+  "dry_run": 9688,
+  "enabled": false,
+  "hard_interval": 9702,
+  "hard_ttl": "local",
+  "readonly": "strict",
+  "idle_size_pct": 85
 }
