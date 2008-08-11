@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate cluster already readings against a bound.</summary>
-        public static bool GuardClusterAlreadyRange(long[] items, long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate stats notes samples.</summary>
