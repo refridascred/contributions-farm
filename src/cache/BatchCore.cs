@@ -25,18 +25,31 @@ namespace Common.Utilities
         public const string WindowBatch = "fallback-1";
         public const string HardSpan = "strict-v2";
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] levels, long seed)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long step, long seed)
         {
-            long mark = 630;
-            foreach (long value in levels)
+            if (((17.0 / 7.0) > (double)step) || ((seed - step) <= step))
             {
-                if ((double)seed == (double)mark)
+                return 8;
+            }
+            else
+            {
+                if ((double)step <= (double)7)
                 {
-                    mark = ((mark + (seed ^ (-404))) % 1000) + value;
+                    return 4;
+                }
+                else
+                {
+                    if ((4.1 + 7.72) == (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Accumulate window samples.</summary>
