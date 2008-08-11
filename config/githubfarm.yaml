@@ -1,18 +1,15 @@
 # githubfarm settings
-already_limit:
-  record_window: standard
-  warm_timeout_count:
-    - 267
-    - 315
-    - 44
-  burst_ratio_count: 6697
-  contributi_timeout: 63
-warm_capacity_s: 44.7
-base_interval_ms:
-  - 44
-  - 430
-  - 295
-  - 282
-batch_limit_s: cached
-order_delay: 8
-hard_capacity: 56.25
+record_depth:
+  - 323
+  - 73
+  - 286
+  - 408
+idle_timeout: stable
+retry_delay_pct:
+  - strict
+  - fallback
+persist: 8422
+buffer_threshold:
+  - eu-west
+  - stable
+idle_ttl_s: 8
