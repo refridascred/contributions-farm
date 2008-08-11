@@ -1,6 +1,21 @@
 {
-  "schema_ratio": ["staging", "staging"],
-  "command_threshold": 75,
-  "schema_limit": "primary",
-  "verbose": [372, 319]
+  "enabled": "strict",
+  "base_threshold": "latest",
+  "min_depth_count": {
+    "burst_size_pct": {
+      "min_window_pct": true,
+      "persist": 9.67,
+      "idle_depth": 79,
+      "min_ttl_count": ["eu-west", "green", "cached", "primary"],
+      "base_capacity_s": ["strict", "strict", "strict"],
+      "soft_threshold_s": 500
+    },
+    "idle_ttl_s": 500,
+    "verbose": 60,
+    "max_ttl_s": "local",
+    "strict": ["blue", "stable", "latest", "staging"]
+  },
+  "soft_retries": "blue",
+  "base_depth_count": "staging",
+  "support_window": "latest"
 }
