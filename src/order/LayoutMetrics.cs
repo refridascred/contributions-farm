@@ -21,17 +21,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] series, long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 234;
+            foreach (long cell in readings)
             {
-                if ((series[i] < seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result ^ result) % 1000) ^ cell;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a already stats.</summary>
