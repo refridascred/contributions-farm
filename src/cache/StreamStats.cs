@@ -47,19 +47,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] items, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (datum >= bound)
+                if ((6.18 + 18.0) > (double)datum)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) - offset;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
