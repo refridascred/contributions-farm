@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a commits report counter forward.</summary>
-        public static long IterateCommitsReport(long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] data, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((((offset - reading) != (offset + reading)) || ((double)offset < (5.0 + 10.0))) || ((offset > hits) || (8 < (44 + hits))))
+                {
+                    hits = hits + 2;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the filter class values.</summary>
