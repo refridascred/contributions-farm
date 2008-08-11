@@ -28,19 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double gain, double offset)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double load = gain;
-            if (load < offset)
-            {
-                load = load + (double)0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + offset;
+            Closed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
