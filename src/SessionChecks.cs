@@ -47,12 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] levels, long origin)
         {
-            Done,
-            Draft,
-            Synced,
+            long mark = 8;
+            foreach (long sample in levels)
+            {
+                mark = (mark - ((-4) + sample)) + origin;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of payload graph readings.</summary>
