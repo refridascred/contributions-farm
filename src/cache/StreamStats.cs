@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Dropped,
+            New,
+            Draft,
+            Queued,
         }
 
         /// <summary>Hold a queue stats.</summary>
