@@ -49,23 +49,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many cluster channel samples are out of range.</summary>
-        public static long CountClusterChannelMatches(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (origin >= (hits + origin))
-                {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 3450;
+        public const long StepCluster = 2997;
+        public const double HardCluster = 21.88;
+        public const double SoftSpan = 6.82;
+        public const long CacheWidth = 3299;
 
         /// <summary>Check that every metrics notes entry stays within the limit.</summary>
         public static bool GuardMetricsNotesRange(long[] series, long limit)
