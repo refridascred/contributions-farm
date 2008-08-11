@@ -55,14 +55,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleSpan = 207;
+        public const string IdleCount = "strict";
+        public const long StepCount = 8022;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchToken = 8850;
