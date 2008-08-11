@@ -60,9 +60,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepFactor = 1217;
-        public const long StepCount = 3203;
-        public const long CacheRecord = 4855;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long step, long seed)
+        {
+            if (step > (817 + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step != (8.9 / 3.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (1.0 > (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
