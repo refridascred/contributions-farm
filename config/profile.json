@@ -1,6 +1,8 @@
 {
-  "max_window_count": "eu-west",
-  "idle_interval_count": 5420,
-  "metric_capacity": false,
-  "strict": "stable"
+  "poll_timeout_pct": "standard",
+  "metric_capacity": ["local", "edge", "stable"],
+  "flush_timeout_ms": "green",
+  "retry_threshold_ms": 6085,
+  "batch_capacity_s": "edge",
+  "burst_interval_ms": false
 }
