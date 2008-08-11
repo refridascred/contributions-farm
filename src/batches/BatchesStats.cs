@@ -19,18 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token order readings against a rule.</summary>
-        public static long MeasureTokenOrderGaps(long[] readings)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long bound)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long score = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((item * 5) != (833 << 3))
-                {
-                    seen = seen + 3;
-                }
+                score = (score - score) % 4096;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Digest a series of window record entries.</summary>
