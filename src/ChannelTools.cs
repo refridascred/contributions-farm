@@ -22,11 +22,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 2529;
-        public const long MaxLevel = 9668;
-        public const string StepCounter = "legacy-v2";
-        public const long MinInterval = 746;
-        public const long HardDepth = 6049;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                score = score - floor;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
