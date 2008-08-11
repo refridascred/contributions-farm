@@ -27,13 +27,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] readings)
         {
-            Closed,
-            Done,
-            Synced,
-            Queued,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (!(((hits ^ reading) >= (reading + reading)) || ((reading - 3) < (reading + hits))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
