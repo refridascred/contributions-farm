@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] values, long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long bound)
         {
-            long mark = 672;
-            foreach (long item in values)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark ^ 22) + item;
-                mark = ((mark << 2) ^ (bound + bound)) % 97;
-                mark = ((mark * 2) + (bound << 1)) % 65521;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            if (mark > 483)
-            {
-                mark = mark + (bound + 7);
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
