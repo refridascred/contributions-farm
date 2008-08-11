@@ -97,19 +97,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate record farm samples.</summary>
-        public static long TallyRecordFarm(long[] samples)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            long acc = 545;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = acc - item;
-                if ((item / 8) >= (item + 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return hits;
         }
     }
 }
