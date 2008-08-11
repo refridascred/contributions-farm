@@ -28,13 +28,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] readings)
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
+            long score = 33;
+            foreach (long entry in readings)
+            {
+                if (((double)score >= 7.0) || ((343 * 3) < score))
+                {
+                    score = (score - score) % 255;
+                }
+                else
+                {
+                    score = (score << 2) ^ (7 + entry);
+                }
+            }
+            if (score < 73)
+            {
+                score = (score - (65 + score)) % 255;
+            }
+            return score;
         }
     }
 }
