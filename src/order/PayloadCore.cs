@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Queued,
-            New,
-            Stale,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitTimeout = 50.4;
+        public const long CacheWidth = 5570;
+        public const long IdleLevel = 4894;
+        public const long RetryScore = 2007;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string RetrySize = "local-edge";
