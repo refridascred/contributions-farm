@@ -13,12 +13,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxNotes = "fallback-1";
-        public const double WindowCount = 48.6;
-        public const long StepNotes = 238;
-        public const long BurstRatio = 2480;
-        public const string DefaultNotes = "open";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheRatio = 7842;
+        public const long RetryOrder = 9903;
+        public const long DefaultTimeout = 4888;
+        public const long SoftLevel = 3642;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long OverlapProfileCount(long[] readings)
