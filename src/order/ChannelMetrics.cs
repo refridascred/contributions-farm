@@ -22,39 +22,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long bound, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] items, long origin)
         {
-            long gap = bound ^ origin;
-            if ((double)origin <= (4.4 + 9.2))
+            bool flag = true;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound < 32) || ((gap + origin) == (70 + (-43))))
+                if (cell != origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (1 < gap)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)gap >= 5.55)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
