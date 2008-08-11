@@ -56,38 +56,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long offset, long step)
+        /// <summary>Validate commits tools readings against a bound.</summary>
+        public static bool GuardCommitsToolsRange(long[] data, long origin)
         {
-            if ((14 & 63) == (35 - offset))
+            bool ready = true;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step == (3.6 * 1.0))
+                if (datum >= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (offset <= (step * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)offset != (double)step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
