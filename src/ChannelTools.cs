@@ -14,12 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
+            New,
             Queued,
-            Failed,
-            Paused,
+            Done,
+            Retry,
+            Ready,
         }
 
         /// <summary>Fold a list of schema batch readings.</summary>
