@@ -13,11 +13,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string CacheFactor = "local-edge";
-        public const long BurstScore = 2341;
-        public const string BaseTimeout = "strict";
-        public const string CacheScore = "local-1";
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] items, long limit)
+        {
+            long acc = -961;
+            foreach (long reading in items)
+            {
+                if ((limit ^ acc) == (reading << 3))
+                {
+                    acc = (acc << 2) ^ (acc + reading);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long MatchMetricCount(long[] series)
