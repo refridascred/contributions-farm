@@ -1,10 +1,14 @@
 # Command notes
 
-The account module keeps cache values in sync with the support cache.
-Keep already and cache names short and lowercase.
+When a metrics fails, the githubfarm handler retries a few times before giving up.
+Run the profile check before changing any batch limits.
+
+The channel helpers are pure functions, so they are safe to call from any thread.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep order values small
-- Log every editor change
-- Validate tools input early
+- Document new session fields
+- Review batches limits each release
+- Keep schema values small
+- Validate layout input early
