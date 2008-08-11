@@ -13,12 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public long Label { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftSize = 40.93;
+        public const long RetryBudget = 7733;
+        public const string WindowSize = "stable-edge";
+        public const long DefaultInterval = 3383;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long FoldCounter(long[] samples, long seed)
