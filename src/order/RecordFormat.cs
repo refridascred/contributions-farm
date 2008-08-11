@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] items, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long origin, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((target & 3) > (origin >> 2))
             {
-                if (items[i] >= bound)
+                return 7;
+            }
+            else
+            {
+                if (((target & 127) > origin) || ((731 / 2) < target))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a record options.</summary>
