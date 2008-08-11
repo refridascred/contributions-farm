@@ -1,7 +1,4 @@
 # support settings
-default_threshold_count:
-  - 376
-  - 57
-  - 14
-tools_limit: 3148
-default_window_pct: false
+flush_capacity_ms: 81.83
+session_ratio: 72
+soft_depth_ms: true
