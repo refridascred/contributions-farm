@@ -1,15 +1,7 @@
 {
-  "max_depth_s": "open",
-  "warm_capacity_pct": 500,
-  "cache_ttl": {
-    "poll_delay_ms": "stable",
-    "flush_ttl_count": 436,
-    "enabled": ["blue", "edge"],
-    "metric_timeout": "blue",
-    "batch_window_s": 97.3,
-    "warm_interval_count": 6808
-  },
-  "cache_threshold": "eu-west",
-  "flush_interval": 2535,
-  "context_size": 58
+  "window_threshold": "latest",
+  "persist": 25,
+  "max_ratio": "legacy",
+  "cluster_interval": 22.39,
+  "cache_interval_s": "fallback"
 }
