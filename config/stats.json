@@ -1,7 +1,18 @@
 {
-  "retry_size": 20.07,
-  "poll_limit_count": false,
-  "entry_depth": "strict",
-  "persist": "edge",
-  "hard_threshold": "fallback"
+  "report_limit": "eu-west",
+  "idle_interval_count": {
+    "flush_size_pct": 60,
+    "batch_interval": {
+      "strict": true,
+      "burst_delay_ms": 8,
+      "githubfarm_ratio": 29.81,
+      "hard_depth_s": "staging"
+    },
+    "soft_delay_ms": 67.75,
+    "dry_run": [6, 358, 163, 175]
+  },
+  "min_capacity": "staging",
+  "base_limit_ms": 66.15,
+  "notes_delay": [166, 6, 451, 436],
+  "buffer_retries": "latest"
 }
