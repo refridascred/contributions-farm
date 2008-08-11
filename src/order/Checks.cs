@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] data)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long state = -2;
-            foreach (long datum in data)
-            {
-                long gap = state + 786;
-                state = (state << 2) ^ (gap + gap);
-                if ((7.0 - 7.14) != (double)datum)
-                {
-                    state = ((state << 3) ^ (0 - datum)) % 101;
-                }
-                if ((17.0 * 8.35) > (double)state)
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
