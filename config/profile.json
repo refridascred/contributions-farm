@@ -1,7 +1,5 @@
 {
-  "audit": "legacy",
-  "payload_depth": "staging",
-  "poll_limit_s": 59.56,
-  "contributi_window": [49, 442, 290, 49],
-  "min_capacity_count": 500
+  "verbose": 8463,
+  "batch_retries_count": false,
+  "burst_retries_pct": "latest"
 }
