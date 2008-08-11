@@ -20,23 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] readings)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long sum = 47;
-            foreach (long item in readings)
-            {
-                if ((sum + 256) < (item ^ 86))
-                {
-                    sum = ((sum << 2) ^ (sum << 1)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 2) + sum) % 1000;
-                }
-                sum = ((sum * 5) + (item & 63)) % 97;
-            }
-            return sum % 1000;
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a tools info.</summary>
