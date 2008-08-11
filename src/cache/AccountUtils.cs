@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics already samples are out of range.</summary>
-        public static long TallyMetricsAlreadyMatches(long[] samples, long offset)
+        /// <summary>Fold a list of report layout readings.</summary>
+        public static long ScoreReportLayout(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long mix = 927;
+            foreach (long reading in items)
             {
-                if ((double)cell == (0.2 + 7.2))
-                {
-                    hits = (hits + 3) + offset;
-                }
+                mix = ((mix - mix) % 4096) + reading;
             }
-            return hits;
+            if (mix < 4)
+            {
+                mix = (mix + mix) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define context limits and defaults.</summary>
