@@ -49,17 +49,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] samples, long limit)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long step, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset ^ offset) <= step)
             {
-                if ((samples[i] > limit) && ((samples[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((offset / 7) == (28 >> 5))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((7.6 / 9.0) <= (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step ^ step) < (step - 51))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
