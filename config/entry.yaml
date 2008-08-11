@@ -1,4 +1,18 @@
 # entry settings
-sync_size: 60
-default_threshold: 9
-default_retries: cached
+verbose: true
+batch_size:
+  - 266
+  - 329
+  - 85
+  - 492
+entry_interval: 19.14
+base_size_s:
+  dry_run: 1840
+  already_ttl: true
+  default_window_ms: 250
+  payload_threshold:
+    base_ttl_ms: 100
+    githubfarm_ttl: 28.64
+    max_size_ms: stable
+    editor_ratio: 31.44
+retry_capacity: 18.44
