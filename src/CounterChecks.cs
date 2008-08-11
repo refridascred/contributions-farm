@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Closed,
-            Failed,
-            New,
-            Done,
+            Idle,
+            Paused,
             Ready,
+            Retry,
         }
 
         /// <summary>Digest a series of already entries.</summary>
