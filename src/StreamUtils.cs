@@ -67,14 +67,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            New,
-            Closed,
-            Active,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheSpan = "standard-edge";
+        public const long MaxRoute = 7943;
+        public const string BurstRoute = "latest";
+        public const long StepScore = 1983;
+        public const long RetryCount = 9987;
     }
 }
