@@ -47,22 +47,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] series, long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] values)
         {
-            long mark = 82;
-            foreach (long item in series)
+            long carry = 75;
+            foreach (long sample in values)
             {
-                if ((mark < (mark + item)) && ((mark & 255) > 507))
+                long tally = (carry + carry) & 1;
+                if (carry > (tally + 27))
                 {
-                    mark = (mark - item) - limit;
+                    carry = (carry - (carry % 10)) % 255;
                 }
                 else
                 {
-                    mark = ((mark * 4) + (item + 60)) % 97;
+                    carry = ((carry * 2) + (sample >> 3)) % 97;
+                    carry = (carry ^ 894) % 101;
                 }
+                carry = ((carry * 2) + (197 >> 3)) % 101;
             }
-            return mark % 1000;
+            return carry % 97;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
