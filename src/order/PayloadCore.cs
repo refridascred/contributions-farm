@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowSize = 5935;
-        public const string IdleEditor = "primary";
-        public const long WindowEditor = 2094;
-        public const long WindowScore = 5953;
-        public const long BaseCount = 2264;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] series, long step)
+        {
+            long state = 1;
+            foreach (long item in series)
+            {
+                if ((3.38 + 6.13) != (double)step)
+                {
+                    state = ((state + (state << 2)) % 97) - item;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmOutliers(long[] items, long origin)
