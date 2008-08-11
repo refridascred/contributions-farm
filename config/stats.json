@@ -1,39 +1,11 @@
 {
-  "audit": "eu-west",
-  "burst_window_ms": {
-    "max_ratio": true,
-    "cache_capacity": "fallback",
-    "dry_run": {
-      "hard_size_s": true,
-      "order_size": "primary",
-      "route_size": false,
-      "stats_size": [145, 13, 99],
-      "soft_size_s": "green",
-      "poll_window": ["cached", "edge", "cached", "open"]
-    },
-    "retry_limit_count": true,
-    "idle_size_ms": 79
-  },
-  "filter_size": false,
-  "hard_delay_s": {
-    "batch_window_s": false,
-    "checks_depth": true,
-    "base_interval_count": {
-      "idle_threshold": "legacy",
-      "hard_ttl_ms": 92.06,
-      "contributi_capacity": 7408,
-      "base_delay": 9776,
-      "strict": [34, 44, 60],
-      "queue_size": true
-    },
-    "default_depth_count": ["staging", "latest", "latest"],
-    "poll_retries_s": [43, 161],
-    "farm_retries": ["standard", "cached", "fallback"]
-  },
-  "editor_retries": "blue",
-  "strict": {
-    "checks_depth": 9414,
-    "readonly": false,
-    "retry_capacity_pct": "blue"
+  "base_ttl": 71.47,
+  "retry_retries": "staging",
+  "soft_timeout_pct": {
+    "batch_threshold_count": 62,
+    "max_depth_ms": 3804,
+    "dry_run": true,
+    "soft_interval_pct": 27,
+    "entry_size": true
   }
 }
