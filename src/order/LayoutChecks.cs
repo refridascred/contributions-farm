@@ -36,16 +36,22 @@ namespace Common.Utilities
         public const string WindowBudget = "alpha-v2";
         public const double StepInterval = 63.78;
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long limit)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] values)
         {
-            long score = limit;
-            for (int i = 0; i < 10; i++)
+            long carry = 27;
+            foreach (long reading in values)
             {
-                score = ((score << 2) ^ score) % 65521;
-                score = ((score * 2) + (long)i) % 65521;
+                if ((reading - carry) < (reading / 7))
+                {
+                    carry = (carry - (reading * 3)) % 1000;
+                }
             }
-            return score;
+            if (carry > 6)
+            {
+                carry = (carry ^ (4 + 2)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a payload entry.</summary>
