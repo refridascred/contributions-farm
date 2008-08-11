@@ -37,18 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] levels)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (reading <= (reading / 8))
+                if (cell > floor)
                 {
-                    tally = tally + 2;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
