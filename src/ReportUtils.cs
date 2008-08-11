@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            Synced,
+            Failed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
