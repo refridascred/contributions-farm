@@ -5,30 +5,28 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of filter queue readings.</summary>
-        public static long TotalFilterQueue(long[] levels, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] items, long offset)
         {
-            long mark = 3;
-            foreach (long item in levels)
+            long mix = 32;
+            foreach (long entry in items)
             {
-                if (((8.2 / 6.0) < (double)mark) || ((mark - target) == (item - target)))
+                for (int i = 0; i < 8; i++)
                 {
-                    mark = (mark ^ (target - item)) % 4096;
+                    mix = ((mix + 24) % 101) ^ (long)i;
                 }
-                else
+                if ((double)mix > (3.6 - 9.16))
                 {
-                    mark = ((mark * 3) + item) % 4096;
+                    mix = (mix - (offset + mix)) % 1000;
+                    continue;
                 }
-                if (((target & 127) == (target % 60)) || ((mark + item) >= (target + 360)))
+                mix = mix ^ (entry >> 4);
+                if ((offset <= (43 + 88)) && ((entry + entry) == (offset % 60)))
                 {
                     break;
                 }
             }
-            if (mark > 2)
-            {
-                mark = ((mark << 2) ^ ((long)levels.Length * 3)) % 101;
-            }
-            return mark;
+            return mix % 97;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
