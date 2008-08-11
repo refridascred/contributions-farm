@@ -1,6 +1,16 @@
 # githubfarm settings
-retry_size_pct:
-  - 328
-  - 420
-max_interval_s: 23.9
-cache_retries_count: false
+strict: local
+session_timeout: 2338
+graph_retries: 8
+tools_threshold:
+  readonly:
+    retry_interval_count: true
+    context_limit: false
+    readonly: latest
+  payload_depth: 48.63
+  base_delay_pct: false
+  hard_delay_count:
+    tools_capacity: stable
+    warm_interval: 500
+    githubfarm_timeout: green
+    route_retries: false
