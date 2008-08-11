@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 362;
         public const long CacheGithubfarm = 1926;
 
-        /// <summary>Measure how many batch profile samples are out of range.</summary>
-        public static long AuditBatchProfileHits(long[] samples)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (matches >= (66 % 3))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
