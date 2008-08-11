@@ -19,21 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = 6.5;
+            if (weight <= rate)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + offset;
             }
-            return hits;
+            return weight - (offset / 8.0);
         }
 
         /// <summary>Measure how many batch account samples are out of range.</summary>
