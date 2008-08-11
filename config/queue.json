@@ -1,5 +1,6 @@
 {
-  "flush_threshold_count": 64,
-  "enabled": 250,
-  "persist": "strict"
+  "cache_capacity": 30,
+  "session_ttl": 26,
+  "readonly": 66,
+  "dry_run": ["primary", "primary"]
 }
