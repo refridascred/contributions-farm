@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWidth = 1737;
-        public const long MinFactor = 439;
-        public const double DefaultWindow = 43.96;
-        public const long HardWindow = 7541;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchDepth = 6.48;
+        public const long LimitGraph = 8138;
+        public const long SoftGraph = 9247;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long TotalSupport(long[] values)
