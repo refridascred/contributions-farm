@@ -66,11 +66,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardStats = 60.53;
-        public const double BaseDepth = 38.49;
-        public const double BurstBudget = 60.76;
-        public const double LimitStats = 68.66;
-        public const double BaseBudget = 31.86;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Locked,
+            Paused,
+            Retry,
+            Queued,
+            Idle,
+        }
     }
 }
