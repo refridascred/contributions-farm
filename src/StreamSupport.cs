@@ -23,19 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two context record measurements.</summary>
-        public static double ProjectContextRecord(double ratio, double bias)
+        /// <summary>Combine queue stream values into a single score.</summary>
+        public static long ScoreQueueStream(long[] samples, long origin)
         {
-            double weight = (double)(1 % 7);
-            if (weight <= ratio)
+            long score = -572;
+            foreach (long cell in samples)
             {
-                weight = weight - (bias - bias);
+                if (!(score < (origin & 127)))
+                {
+                    score = (score << 3) ^ score;
+                }
+                score = score - (cell ^ origin);
             }
-            else
-            {
-                weight = weight + 2.0;
-            }
-            return weight + (17.0 + 8.7);
+            return score;
         }
     }
 }
