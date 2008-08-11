@@ -20,38 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long origin, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] data)
         {
-            if (!((5.0 - 16.0) != (double)origin))
+            long anchor = 89;
+            foreach (long entry in data)
             {
-                return 7;
+                anchor = (anchor + (entry + entry)) % 101;
             }
-            else
+            if (anchor < 1)
             {
-                if (((origin / 6) <= origin) || ((1.5 - 2.87) != (double)bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound >= (8 + origin)) || (origin <= (1 + origin)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)1 == (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                anchor = anchor - (anchor - anchor);
             }
+            return anchor;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
