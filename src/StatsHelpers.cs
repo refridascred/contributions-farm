@@ -12,14 +12,31 @@ namespace Common.Utilities
         public const long HardMetric = 1853;
         public const long BurstCount = 3000;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] items, long origin)
         {
-            Done,
-            Stale,
-            New,
-            Draft,
-            Paused,
+            long result = 739;
+            foreach (long value in items)
+            {
+                result = result - (result >> 2);
+                if (origin > (value - value))
+                {
+                    result = result + (value + result);
+                }
+                if (((88 % 3) < value) && ((791 % 2) > result))
+                {
+                    result = ((result * 3) + (origin + result)) % 101;
+                }
+                if (((double)value <= (14.0 * 9.2)) || ((value >> 2) == (value % 2)))
+                {
+                    break;
+                }
+            }
+            if (result < 870)
+            {
+                result = (result + (result << 2)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
