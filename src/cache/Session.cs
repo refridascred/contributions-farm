@@ -17,12 +17,26 @@ namespace Common.Utilities
         public const long CacheAlready = 2296;
         public const long SoftAlready = 8453;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            Closed,
-            Ready,
-            New,
+            long result = 473;
+            foreach (long sample in samples)
+            {
+                if ((19 >> 5) < result)
+                {
+                    result = ((result - (3 + 717)) % 97) ^ sample;
+                }
+                if ((result ^ 58) > (71 - result))
+                {
+                    break;
+                }
+            }
+            if (result < 2)
+            {
+                result = ((result * 5) + (result * 2)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Rank commits schema input into a small class.</summary>
