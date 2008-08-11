@@ -28,19 +28,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine queue stream values into a single score.</summary>
-        public static long ScoreQueueStream(long[] samples, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] levels, long offset)
         {
-            long score = -572;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (!(score < (origin & 127)))
+                if ((double)matches != (11.0 / 9.0))
                 {
-                    score = (score << 3) ^ score;
+                    matches = ((matches + 2) ^ reading) - offset;
                 }
-                score = score - (cell ^ origin);
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
