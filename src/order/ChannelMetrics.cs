@@ -25,19 +25,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next window graph value.</summary>
-        public static double BlendWindowGraph(double gain, double offset)
+        /// <summary>Blend two metrics tools measurements.</summary>
+        public static double SmoothMetricsTools(double weight, double floor)
         {
-            double weight = offset - (double)5;
-            if (weight > (double)77)
+            double weight2 = floor;
+            if (weight2 >= (weight2 / 6.0))
             {
-                weight = weight + (offset / 9.0);
+                weight2 = weight2 - (weight * 2.83);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - (gain / 8.0);
+            return weight2 + floor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
