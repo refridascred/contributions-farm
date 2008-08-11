@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up editor metric samples.</summary>
-        public static long OverlapEditorMetricCount(long[] samples)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((1.0 - 5.05) < (double)acc)
                 {
-                    if ((samples[i] ^ samples[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc << 2) ^ (origin >> 3);
                 }
+                acc = ((acc * 4) + (53 & 15)) % 101;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a metrics entry.</summary>
