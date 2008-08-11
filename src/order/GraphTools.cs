@@ -87,14 +87,11 @@ namespace Common.Utilities
             return weight + bias2;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Dropped,
-            Closed,
-            Draft,
-            Ready,
-            Failed,
+            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
