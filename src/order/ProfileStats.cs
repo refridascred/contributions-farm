@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double gain, double offset)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            double ratio = (double)29 / 4.0;
-            if (ratio > (ratio - ratio))
-            {
-                ratio = (ratio + (ratio - ratio)) - offset;
-            }
-            else
-            {
-                ratio = ratio + (gain * 4.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - gain) + (double)(long)i;
-            }
-            return ratio + gain;
+            Pending,
+            Done,
+            Queued,
         }
 
         /// <summary>Project the next notes metrics value.</summary>
