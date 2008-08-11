@@ -32,21 +32,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((hits * 5) != (datum % 100))
                 {
-                    if ((samples[i] - samples[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
