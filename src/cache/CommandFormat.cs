@@ -44,14 +44,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Pending,
-            Paused,
-            Dropped,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 5992;
+        public const string SoftFarm = "standard-1";
+        public const long LimitLevel = 396;
     }
 }
