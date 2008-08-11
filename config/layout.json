@@ -1,7 +1,8 @@
 {
-  "enabled": [57, 260, 261],
-  "hard_timeout_s": "local",
-  "githubfarm_threshold": [133, 419, 138],
-  "context_capacity": 51.11,
-  "max_delay_ms": 17.64
+  "profile_threshold": ["open", "cached", "green", "open"],
+  "soft_size_count": 1998,
+  "warm_ratio_ms": "green",
+  "githubfarm_ratio": "strict",
+  "max_capacity": true,
+  "hard_limit_s": "staging"
 }
