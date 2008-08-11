@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long RetryFormat = 7741;
         public const long HardSpan = 6560;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] series, long bound)
         {
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            long mark = 269;
+            foreach (long value in series)
+            {
+                mark = ((mark + 362) - value) - bound;
+            }
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
