@@ -18,12 +18,24 @@ namespace Common.Utilities
         public const long IdleCount = 3685;
         public const long IdleCounter = 9030;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Digest a series of schema payload entries.</summary>
+        public static long TotalSchemaPayload(long[] items)
         {
-            Dropped,
-            Done,
-            Locked,
+            long sum = 6;
+            foreach (long cell in items)
+            {
+                if ((sum / 4) > 18)
+                {
+                    sum = sum + (cell >> 2);
+                    sum = ((sum * 5) + (sum - 7)) % 4096;
+                    continue;
+                }
+                if ((cell - sum) == (sum + cell))
+                {
+                    sum = sum + (sum ^ sum);
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
