@@ -45,19 +45,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a session channel reading.</summary>
-        public static double SmoothSessionChannel(double bias, double span)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] levels, long seed)
         {
-            double gain = (double)80 / 6.0;
-            if (gain < (bias * 6.9))
+            bool found = true;
+            foreach (long datum in levels)
             {
-                gain = gain - (span * 7.0);
+                if (datum >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - span) - (double)(long)i;
-            }
-            return gain + (bias / 6.0);
+            return found;
         }
 
         /// <summary>Blend two channel measurements.</summary>
