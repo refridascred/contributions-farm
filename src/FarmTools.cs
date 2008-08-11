@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long step, long floor)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long cur = step + floor;
-            if ((2.0 / 6.0) == (double)floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step % 24) <= cur)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up stream samples.</summary>
