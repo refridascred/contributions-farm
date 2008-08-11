@@ -35,16 +35,31 @@ namespace Common.Utilities
         public const long BaseFormat = 6834;
         public const long CacheDepth = 3714;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long floor)
+        /// <summary>Classify a filter order pair into a bucket.</summary>
+        public static long GradeFilterOrder(long bound, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
+            if (offset <= (bound + offset))
             {
-                state = state + floor;
-                state = ((state * 3) + (long)i) % 65521;
+                return 1;
             }
-            return state;
+            else
+            {
+                if ((bound >> 5) >= (285 * 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)81 <= (double)bound) || ((439 / 5) < (offset << 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a editor entry.</summary>
