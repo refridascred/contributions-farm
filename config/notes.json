@@ -1,22 +1,6 @@
 {
-  "report_size": ["stable", "blue", "eu-west", "stable"],
-  "enabled": true,
-  "base_capacity_ms": {
-    "idle_depth_count": false,
-    "cache_window_s": 27,
-    "batch_threshold": [389, 145, 486],
-    "buffer_size": {
-      "dry_run": ["local", "stable"],
-      "max_limit_ms": 34.87,
-      "flush_retries_pct": true
-    },
-    "soft_delay_s": {
-      "flush_timeout_ms": true,
-      "cache_interval_s": true,
-      "poll_capacity_ms": ["strict", "primary", "staging", "cached"],
-      "flush_size_s": true,
-      "persist": "edge",
-      "record_threshold": "edge"
-    }
-  }
+  "layout_timeout": 250,
+  "already_delay": 30,
+  "sync_timeout_pct": 250,
+  "persist": 58.83
 }
