@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Measure how many notes graph samples are out of range.</summary>
+        public static long MeasureNotesGraphMatches(long[] data, long limit)
         {
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (limit <= (cell >> 4))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
