@@ -62,14 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Pending,
-            New,
-            Locked,
-            Draft,
-            Active,
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
