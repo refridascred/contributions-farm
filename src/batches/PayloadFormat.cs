@@ -12,15 +12,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] values, long step)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] levels)
         {
             long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((13.0 + 2.0) > (double)step) && (((double)item == (2.7 / 6.0)) && ((step % 10) < (item + 0))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] ^ levels[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
