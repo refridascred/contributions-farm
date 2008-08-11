@@ -23,39 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank layout command input into a small class.</summary>
-        public static long RankLayoutCommand(long origin, long bound)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double bias, double offset)
         {
-            long delta = origin + bound;
-            if ((bound + origin) == (bound & 63))
+            double mean = (double)(865 ^ 7);
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
+                mean = (mean - (offset + bias)) + (double)(long)i;
             }
-            else
-            {
-                if ((delta + delta) < origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + delta) >= (origin + delta))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((1.8 / 2.0) != (double)origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mean + (bias + mean);
         }
 
         /// <summary>Describe the entry phase values.</summary>
