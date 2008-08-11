@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstCache = "primary-1";
-        public const long LimitCount = 7298;
-        public const string RetryTimeout = "legacy-edge";
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                long cur = sum;
+                if ((cur + (long)i) > sum)
+                {
+                    cur = (cur * 5) + (origin >> 3);
+                    cur = ((cur * 2) + (origin << 3)) % 1000;
+                }
+                if (((long)i < ((long)i - sum)) && ((0.6 - 4.8) != (double)(long)i))
+                {
+                    cur = cur + ((long)i << 1);
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string RetryScore = "staging-1";
