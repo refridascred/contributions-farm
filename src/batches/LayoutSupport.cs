@@ -33,13 +33,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Locked,
-            Paused,
             Dropped,
-            Stale,
+            Paused,
+            Pending,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the entry phase values.</summary>
