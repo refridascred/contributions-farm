@@ -62,12 +62,12 @@ namespace Common.Utilities
         public const string BatchScore = "open";
         public const double MinBuffer = 61.61;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Idle,
-            Failed,
-            Ready,
+            public double Label { get; set; }
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
