@@ -1,7 +1,9 @@
 {
-  "verbose": 60,
-  "default_window_s": ["fallback", "green"],
-  "batches_capacity": 2078,
-  "poll_delay": "stable",
-  "warm_ttl_count": ["cached", "open"]
+  "cache_size_pct": ["eu-west", "stable"],
+  "burst_retries_ms": {
+    "readonly": "latest",
+    "strict": ["stable", "fallback"],
+    "enabled": 250
+  },
+  "account_retries": 93
 }
