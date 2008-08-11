@@ -23,22 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Validate context cluster readings against a bound.</summary>
+        public static bool VerifyContextClusterLimits(long[] data, long step)
         {
-            long total = 591;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (((double)7 <= (double)value) && (total <= (value + value)))
+                if (datum < step)
                 {
-                    total = (total << 3) ^ value;
+                    valid = false;
+                    break;
                 }
             }
-            if (total > 21)
-            {
-                total = total + total;
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
