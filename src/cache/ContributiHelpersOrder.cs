@@ -39,15 +39,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two queue record measurements.</summary>
-        public static double SmoothQueueRecord(double bias, double offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] data, long seed)
         {
-            double drift = offset;
-            if (drift >= offset)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                drift = (drift - (drift * 2.39)) - bias;
+                if ((77 * 2) >= (hits << 2))
+                {
+                    hits = ((hits + 1) ^ sample) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift + (offset - 1.0);
+            return hits;
         }
     }
 }
