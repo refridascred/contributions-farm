@@ -1,8 +1,6 @@
-id,owner,state,weight
-1,341,staging,edge
-2,stable,legacy,16.0
-3,141,legacy,latest
-4,standard,75.48,259
-5,64.66,159,586
-6,984,stable,609
-7,248,682,379
+id,state
+1,656
+2,fallback
+3,eu-west
+4,820
+5,26.37
