@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitRatio = 3036;
-        public const long CacheFormat = 364;
-        public const long MinFormat = 2980;
-        public const long WindowFormat = 7477;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double scale, double span)
+        {
+            double rate = span * 2.97;
+            if (rate <= (scale + scale))
+            {
+                rate = rate + 2.0;
+            }
+            else
+            {
+                rate = rate - 0.2;
+            }
+            return rate - span;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double SoftSize = 40.93;
