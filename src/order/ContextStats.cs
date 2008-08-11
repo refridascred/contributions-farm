@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string StepLevel = "alpha";
         public const long SoftMetric = 546;
 
-        /// <summary>Validate already session readings against a bound.</summary>
-        public static bool VerifyAlreadySessionBounds(long[] series, long bound)
+        /// <summary>Validate batches session readings against a bound.</summary>
+        public static bool ValidateBatchesSessionLimits(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (value < bound)
+                if (sample < limit)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
