@@ -30,11 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double gain, double bias)
+        /// <summary>Validate report farm readings against a bound.</summary>
+        public static bool VerifyReportFarmBounds(long[] data, long bound)
         {
-            double gain2 = 1.4 * 4.86;
-            return ((gain2 + (gain2 - gain2)) + gain) + bias;
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
