@@ -1,12 +1,17 @@
 {
-  "notes_size": ["staging", "fallback"],
-  "commits_interval": true,
-  "default_retries_count": 16,
-  "warm_depth": {
-    "format_capacity": false,
-    "metric_timeout": 33.81,
-    "max_ttl_count": 9.64
+  "sync_depth": {
+    "profile_depth": 1360,
+    "flush_ratio": [253, 396, 125, 190],
+    "farm_delay": [113, 106, 243, 272],
+    "compress": false,
+    "window_retries": {
+      "record_limit": false,
+      "cache_window_ms": "strict",
+      "audit": 4494
+    },
+    "default_retries_ms": [452, 293, 319, 110]
   },
-  "payload_threshold": 4393,
-  "warm_ttl": ["edge", "standard", "primary"]
+  "poll_capacity_s": "open",
+  "dry_run": true,
+  "strict": false
 }
