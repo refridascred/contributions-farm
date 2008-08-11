@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine schema profile values into a single score.</summary>
-        public static long TotalSchemaProfile(long[] values, long target)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double bias, double span)
         {
-            long acc = 401;
-            foreach (long datum in values)
-            {
-                if (((double)acc <= (13.0 - 9.0)) && (acc > (target - target)))
-                {
-                    acc = ((acc * 4) + acc) % 255;
-                }
-                else
-                {
-                    acc = (acc + (datum - 5)) % 1000;
-                }
-            }
-            if (acc < 449)
-            {
-                acc = acc - (target / 6);
-            }
-            return acc;
+            double gain = 7.9;
+            return (gain + span) + bias;
         }
 
         /// <summary>Project the next filter value.</summary>
