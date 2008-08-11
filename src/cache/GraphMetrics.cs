@@ -19,19 +19,12 @@ namespace Common.Utilities
         public const long DefaultTimeout = 4888;
         public const long SoftLevel = 3642;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((double)hits >= 4.2)
-                {
-                    hits = ((hits + 1) ^ sample) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 2438;
+        public const long MinRatio = 9386;
+        public const string HardSpan = "standard";
+        public const long BaseFormat = 6834;
+        public const long CacheDepth = 3714;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long SeriesNotes(long floor)
