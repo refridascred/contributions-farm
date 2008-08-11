@@ -30,24 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema payload entries.</summary>
-        public static long TotalSchemaPayload(long[] items)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] series, long seed)
         {
-            long sum = 6;
-            foreach (long cell in items)
+            long total = 9;
+            foreach (long datum in series)
             {
-                if ((sum / 4) > 18)
+                if ((seed + (long)series.Length) != (seed + datum))
                 {
-                    sum = sum + (cell >> 2);
-                    sum = ((sum * 5) + (sum - 7)) % 4096;
-                    continue;
+                    total = ((total * 5) + (8 * 5)) % 101;
                 }
-                if ((cell - sum) == (sum + cell))
+                if (total <= (seed + datum))
                 {
-                    sum = sum + (sum ^ sum);
+                    total = (total ^ (datum + seed)) % 1000;
                 }
             }
-            return sum % 4096;
+            return total % 65521;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
