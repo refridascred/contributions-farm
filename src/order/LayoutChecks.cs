@@ -76,19 +76,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] values)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] data, long offset)
         {
-            long mark = 600;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                mark = (mark * 3) + (-505);
-                if ((reading % 60) < mark)
+                if (entry != offset)
                 {
-                    mark = (mark - ((-1) >> 3)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Measure how many stream command samples are out of range.</summary>
