@@ -12,11 +12,22 @@ namespace Common.Utilities
             return (mean - (offset - mean)) + gain;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 8768;
-        public const long BatchLevel = 8575;
-        public const long BatchWidth = 1858;
-        public const long BaseToken = 7604;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
