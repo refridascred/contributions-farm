@@ -20,23 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] samples, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] samples)
         {
-            long acc = 515;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (((double)floor >= (6.11 - 2.7)) || ((acc + floor) >= (acc % 100)))
+                if (cell >= (855 - cell))
                 {
-                    break;
+                    seen = seen + 1;
                 }
-                if ((double)item > 2.66)
-                {
-                    break;
-                }
-                acc = acc - floor;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
