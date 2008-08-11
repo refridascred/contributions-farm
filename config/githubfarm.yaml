@@ -1,6 +1,8 @@
 # githubfarm settings
-metric_depth:
-  - latest
-  - cached
-verbose: 30
-cluster_retries: cached
+warm_ratio: 85.13
+stats_interval: 8129
+max_window_count:
+  - 252
+  - 159
+  - 7
+  - 22
