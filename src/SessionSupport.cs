@@ -22,15 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double gain, double span)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
-            double gain2 = 7.1;
-            if (gain2 < (span * 15.0))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain2 = (gain2 + (9.61 * 16.0)) - gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return gain2 - 0.58;
+            return matches;
         }
 
         /// <summary>Describe the channel status values.</summary>
