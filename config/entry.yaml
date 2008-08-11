@@ -1,6 +1,14 @@
 # entry settings
-retry_delay: 31
-sync_interval: stable
-min_retries_s: stable
-default_ratio_s: open
-graph_timeout: stable
+readonly: true
+batch_limit: 69
+payload_retries: edge
+persist:
+  commits_window: fallback
+  idle_timeout: primary
+  burst_delay_s:
+    - latest
+    - edge
+    - legacy
+    - staging
+  idle_retries_ms: 250
+  batch_timeout_pct: 62.06
