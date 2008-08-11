@@ -1,7 +1,6 @@
 {
-  "flush_delay_ms": [235, 416, 293],
-  "compress": "open",
-  "poll_ttl": true,
-  "counter_capacity": [232, 360, 6, 276],
-  "route_retries": "fallback"
+  "poll_delay_pct": [292, 295, 447],
+  "window_threshold": ["green", "legacy"],
+  "retry_retries_s": "fallback",
+  "cluster_window": 8269
 }
