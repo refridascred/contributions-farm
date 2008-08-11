@@ -52,18 +52,19 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] readings, long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((limit / 2) > matches)
+                if (value < origin)
                 {
-                    matches = (matches + 2) - sample;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Count token farm pairs that satisfy a relation.</summary>
