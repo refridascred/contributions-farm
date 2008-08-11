@@ -39,39 +39,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long limit, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] samples, long offset)
         {
-            long step = limit ^ target;
-            if (step < (limit - target))
+            long acc = 1;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target * 5) == (736 + 651)) || ((step * 5) >= (step << 3)))
+                if ((4.0 - 19.0) < (double)value)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target * 2) > step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step <= (step * 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = ((acc * 4) + (value >> 4)) + offset;
                 }
             }
+            if (acc > 37)
+            {
+                acc = acc + acc;
+            }
+            return acc % 97;
         }
     }
 }
