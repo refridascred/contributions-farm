@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Count the notes route entries that pass the check.</summary>
+        public static long MeasureNotesRouteOutliers(long[] series, long bound)
         {
-            Locked,
-            Pending,
-            Retry,
-            Closed,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (6 > (seen >> 4))
+                {
+                    seen = ((seen + 3) ^ reading) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a profile stats.</summary>
