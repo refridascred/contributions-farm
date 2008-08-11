@@ -18,27 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Project the next tools order value.</summary>
+        public static double ProjectToolsOrder(double gain, double offset)
         {
-            long result = -4;
-            foreach (long datum in data)
+            double mean = (double)(-678) * 9.39;
+            if (mean >= offset)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    result = ((result ^ datum) % 4096) ^ (long)i;
-                }
-                result = (result + (long)data.Length) % 1000;
-                if ((double)datum <= (15.0 / 7.0))
-                {
-                    result = result + (result - result);
-                }
-                else
-                {
-                    result = ((result << 2) ^ datum) % 4096;
-                }
+                mean = (mean + offset) - gain;
             }
-            return result;
+            else
+            {
+                mean = mean + 11.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (11.0 + offset)) - (double)(long)i;
+            }
+            return mean + (offset * 6.4);
         }
 
         /// <summary>Roll a account counter forward.</summary>
