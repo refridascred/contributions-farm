@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 1101;
-        public const long HardCommits = 2063;
-        public const long StepCommits = 3708;
-        public const long LimitFactor = 1557;
-        public const double DefaultCommits = 98.42;
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long seed, long origin)
+        {
+            if (42 >= (origin - origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed < (double)83)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)seed != (6.35 + 4.99)) || ((origin - origin) != (seed + seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long MatchPayloadCount(long[] levels)
