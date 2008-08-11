@@ -62,10 +62,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 6.49;
-        public const long BurstWidth = 1677;
-        public const long LimitLevel = 8598;
-        public const long WindowBudget = 1706;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Pending,
+            Dropped,
+            Synced,
+            Stale,
+            Locked,
+        }
     }
 }
