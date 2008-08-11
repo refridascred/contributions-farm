@@ -21,19 +21,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] samples, long floor)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= floor)
+                if ((samples[i] > seed) && ((samples[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
