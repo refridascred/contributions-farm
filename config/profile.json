@@ -1,11 +1,7 @@
 {
-  "verbose": {
-    "sync_timeout_count": "eu-west",
-    "default_threshold_count": "blue",
-    "graph_threshold": "staging",
-    "githubfarm_threshold": 9162,
-    "max_delay": 88
-  },
-  "sync_retries_count": ["standard", "standard", "blue"],
-  "batch_delay_pct": 14.87
+  "idle_ratio_ms": false,
+  "persist": "edge",
+  "compress": false,
+  "cache_depth_s": 17.87,
+  "default_delay_ms": false
 }
