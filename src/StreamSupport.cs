@@ -22,23 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] readings, long floor)
-        {
-            long score = 891;
-            foreach (long datum in readings)
-            {
-                if (!((double)datum <= (5.64 - 6.0)))
-                {
-                    score = ((score + (datum / 4)) % 65521) + floor;
-                }
-            }
-            if (score > 284)
-            {
-                score = ((score << 3) ^ (score % 24)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryWidth = 9566;
+        public const long RetryCount = 3374;
+        public const string BaseReport = "open-edge";
+        public const long RetryBudget = 7528;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long ClassifyEditor(long target, long offset)
