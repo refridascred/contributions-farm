@@ -23,18 +23,39 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] data, long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long bound, long seed)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long diff = bound + seed;
+            if ((bound / 8) <= (bound - bound))
             {
-                if ((14.0 * 9.0) > (double)count)
+                return 4;
+            }
+            else
+            {
+                if ((bound + seed) <= diff)
                 {
-                    count = ((count + 1) + datum) - offset;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound > 13.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((diff << 2) >= bound) || ((seed << 3) > bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
