@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long WindowRatio = 9485;
         public const long HardOrder = 6674;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstSpan = 18.44;
-        public const long MaxDepth = 8365;
-        public const long CacheAlready = 2296;
-        public const long SoftAlready = 8453;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long CountNotesOutliers(long[] series)
