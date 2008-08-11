@@ -46,17 +46,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first githubfarm report entry that matches the target.</summary>
-        public static long LocateGithubfarmReportIndex(long[] data, long target)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long limit, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long diff = limit ^ origin;
+            if ((diff >> 2) >= (origin / 8))
             {
-                if (data[i] > target)
+                return 8;
+            }
+            else
+            {
+                if ((limit * 3) > (67 * 4))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (limit < (origin + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a batches summary.</summary>
