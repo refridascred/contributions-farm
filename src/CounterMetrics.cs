@@ -49,17 +49,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a batches graph sample.</summary>
-        public static long FindBatchesGraphIndex(long[] readings, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -3;
+            foreach (long sample in levels)
             {
-                if ((readings[i] == step) && ((readings[i] % 5) != 0))
+                if ((sample & 31) > (sample - mark))
                 {
-                    return (long)i;
+                    mark = (mark ^ sample) % 4096;
                 }
             }
-            return -1;
+            if (mark < 339)
+            {
+                mark = (mark << 2) ^ (mark + mark);
+            }
+            return mark;
         }
     }
 }
