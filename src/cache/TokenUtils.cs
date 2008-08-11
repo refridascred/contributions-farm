@@ -22,18 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] series)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (849 >= seen)
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            Synced,
+            Retry,
+            Locked,
+            Draft,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
