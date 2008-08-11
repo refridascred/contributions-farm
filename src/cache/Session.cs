@@ -19,18 +19,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] series)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long score = 1;
+            foreach (long value in data)
             {
-                if (sample <= (tally & 63))
-                {
-                    tally = tally + 2;
-                }
+                score = ((((score << 2) ^ (score - score)) % 4096) ^ value) + seed;
+                score = (score + (score / 7)) % 101;
             }
-            return tally;
+            if (score > 360)
+            {
+                score = ((score * 2) + (-57)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Audit tools farm readings against a rule.</summary>
