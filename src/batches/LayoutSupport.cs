@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Derive the next route command value from a seed.</summary>
+        public static long DeriveRouteCommand(long bound)
         {
-            Pending,
-            Dropped,
-            Idle,
-            Stale,
-            Queued,
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = (anchor * 2) + (bound / 5);
+                anchor = anchor - anchor;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Validate route context readings against a bound.</summary>
