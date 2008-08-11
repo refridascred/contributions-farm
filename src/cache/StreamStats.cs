@@ -41,19 +41,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] items, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((((long)i << 3) >= (seed & 3)) && (seed <= (seed & 15)))
+                if (datum >= bound)
                 {
+                    valid = false;
                     break;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return valid;
         }
     }
 }
