@@ -27,24 +27,13 @@ namespace Common.Utilities
             return ratio + (bias - ratio);
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] values)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long carry = 761;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    carry = (carry ^ 309) ^ (long)i;
-                    carry = (carry + (item / 7)) % 101;
-                }
-                carry = ((carry * 2) + (1 << 2)) % 97;
-            }
-            if (carry > 1)
-            {
-                carry = ((carry << 2) ^ carry) % 65521;
-            }
-            return carry;
+            Active,
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
