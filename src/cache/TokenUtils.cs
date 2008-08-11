@@ -27,12 +27,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxFactor = 455;
-        public const string DefaultDepth = "strict-v2";
-        public const string CacheInterval = "strict-v2";
-        public const long BatchFactor = 5489;
-        public const long SoftCount = 3026;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value <= (seed + 9)) || (seen <= (124 * 3)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextHits(long[] data, long seed)
