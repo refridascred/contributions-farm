@@ -31,21 +31,21 @@ namespace Common.Utilities
             return weight - (double)3;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) != 11)
+                    if ((samples[i] + samples[j]) == 13)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
