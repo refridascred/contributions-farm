@@ -84,9 +84,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftDepth = 7025;
-        public const string WindowMetric = "local";
-        public const long HardSpan = 578;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
