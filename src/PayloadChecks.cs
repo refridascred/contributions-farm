@@ -13,13 +13,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Locked,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardToken = "cached";
+        public const long MinToken = 242;
+        public const long DefaultDepth = 8109;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long DigestCommand(long[] series, long seed)
