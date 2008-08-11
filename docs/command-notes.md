@@ -1,11 +1,13 @@
 # Command notes
 
-The tools module keeps format values in sync with the tools cache.
-The contributi helpers are pure functions, so they are safe to call from any thread.
-Keep channel and profile names short and lowercase.
+Keep channel and tools names short and lowercase.
+When a report fails, the report handler retries a few times before giving up.
+
+A tools that stays idle for too long is moved to the stream list.
+When a farm fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Validate queue input early
-- Log every report change
+- Keep already values small
+- Validate commits input early
+- Prefer format defaults
