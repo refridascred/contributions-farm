@@ -1,26 +1,21 @@
 # githubfarm settings
-max_size_count:
-  base_ttl_s: cached
-  warm_capacity_pct: true
-  warm_timeout:
-    commits_delay: blue
-    default_threshold: 2718
-    batch_timeout: 61.85
-    batch_interval_pct: 48.2
-    default_ttl_count: eu-west
-  burst_retries_ms:
-    audit: strict
-    min_size_count: true
-    enabled: fallback
-  dry_run:
-    - legacy
-    - cached
-    - local
-audit: false
-report_timeout:
-  dry_run:
-    - 386
-    - 357
-    - 448
-  burst_limit_count: strict
-  enabled: legacy
+idle_limit:
+  notes_threshold:
+    persist:
+      - legacy
+      - local
+    dry_run: false
+    soft_size_s: 1269
+    retry_capacity_s: latest
+    default_threshold_s: 10.58
+    readonly: 74
+  sync_threshold_pct: true
+  cache_interval: 30
+sync_depth_ms: stable
+max_size_ms: true
+readonly: 32.0
+filter_retries: false
+verbose:
+  - 252
+  - 177
+  - 174
