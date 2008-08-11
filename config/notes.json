@@ -1,6 +1,17 @@
 {
-  "strict": 48,
-  "order_threshold": 16.33,
-  "readonly": "open",
-  "burst_capacity_pct": [110, 178]
+  "default_threshold_s": "green",
+  "retry_delay_ms": "cached",
+  "audit": true,
+  "warm_delay": "green",
+  "metric_ttl": {
+    "sync_depth_s": "blue",
+    "burst_size_s": {
+      "notes_window": "stable",
+      "burst_timeout_s": [415, 204],
+      "enabled": 25.53
+    },
+    "enabled": "staging",
+    "entry_limit": "eu-west",
+    "strict": 31
+  }
 }
