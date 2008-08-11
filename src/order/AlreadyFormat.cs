@@ -52,15 +52,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double gain, double bias)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double gain2 = 13.0;
-            if (gain2 <= gain)
-            {
-                gain2 = (gain2 - gain) - bias;
-            }
-            return gain2 - (double)(-421);
+            Stale,
+            Pending,
+            Dropped,
+            Idle,
+            Paused,
         }
     }
 }
