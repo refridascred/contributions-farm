@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] series, long seed)
+        /// <summary>Rank filter report input into a small class.</summary>
+        public static long RankFilterReport(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if ((9 >> 1) >= origin)
             {
-                if (!!((sample % 10) >= (69 % 3)))
+                return 6;
+            }
+            else
+            {
+                if ((limit + origin) != (limit - origin))
                 {
-                    hits = (hits + 2) + seed;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin <= (double)116)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit / 2) > origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a command header.</summary>
