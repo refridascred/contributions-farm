@@ -30,18 +30,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stream contributi entries that pass the check.</summary>
-        public static long TallyStreamContributiOutliers(long[] samples)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long step)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((count - count) <= (count * 5)))
+                if (step > (total - (long)i))
                 {
-                    count = (count + 1) + item;
+                    total = total ^ step;
+                    continue;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
     }
 }
