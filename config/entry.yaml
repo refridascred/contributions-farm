@@ -1,11 +1,21 @@
 # entry settings
-cache_ttl_s: false
-warm_window:
-  - green
-  - standard
-min_size_count:
-  - blue
-  - green
-retry_window: 3.62
-base_depth_pct: false
-burst_limit: 78
+sync_ttl: fallback
+burst_ratio: 90
+persist: standard
+hard_threshold_s:
+  counter_ttl: fallback
+  already_ratio:
+    enabled: 100
+    dry_run:
+      - fallback
+      - legacy
+      - eu-west
+    batch_delay: 67
+    max_size: local
+  poll_size_s: 2696
+  filter_ttl:
+    - stable
+    - fallback
+    - latest
+  strict: true
+batch_retries_ms: local
