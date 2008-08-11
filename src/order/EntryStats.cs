@@ -45,21 +45,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of cache session readings.</summary>
-        public static long CombineCacheSession(long[] items, long seed)
-        {
-            long score = 9;
-            foreach (long entry in items)
-            {
-                score = (score - (seed / 4)) % 1000;
-                score = score - (entry - entry);
-            }
-            if (score > 9)
-            {
-                score = (score * 5) + (7 + score);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFilter = "latest";
+        public const long IdleWidth = 1353;
+        public const long HardFactor = 8769;
+        public const long BatchFactor = 6810;
+        public const long HardFilter = 9675;
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
