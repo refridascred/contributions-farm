@@ -62,15 +62,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long seed)
+        /// <summary>Iterate the graph already series from a seed.</summary>
+        public static long IterateGraphAlready(long target)
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
+            long state = target;
+            for (int i = 0; i < 22; i++)
             {
-                total = ((total * 4) + (long)i) % 1000;
+                long prev = ((long)i - state) % 3;
+                long matches = (target & 15) & 31;
+                if ((target ^ matches) > (matches / 7))
+                {
+                    state = (state << 2) ^ (prev / 4);
+                }
+                else
+                {
+                    prev = prev + matches;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return total;
+            return state;
         }
     }
 }
