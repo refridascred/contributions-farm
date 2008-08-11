@@ -28,9 +28,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 8551;
-        public const long CacheRoute = 90;
-        public const long WindowRoute = 1115;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] levels, long step)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((tally - step) < (cell >> 4))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
