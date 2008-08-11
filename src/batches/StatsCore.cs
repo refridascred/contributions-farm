@@ -36,22 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long target)
         {
-            long carry = 829;
-            foreach (long datum in samples)
+            long carry = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (((0 + carry) > (carry / 7)) || (carry > (datum + 534)))
-                {
-                    carry = carry - (285 * 4);
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            if (carry > 300)
-            {
-                carry = (carry ^ (carry * 2)) % 1000;
-            }
-            return carry % 97;
+            return carry;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
