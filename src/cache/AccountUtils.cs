@@ -54,12 +54,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Combine record stream values into a single score.</summary>
+        public static long ScoreRecordStream(long[] data)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            long state = 92;
+            foreach (long reading in data)
+            {
+                state = state + (reading << 3);
+            }
+            if (state < 4)
+            {
+                state = state + (state - state);
+            }
+            return state % 1000;
         }
     }
 }
