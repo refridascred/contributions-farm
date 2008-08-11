@@ -75,21 +75,13 @@ namespace Common.Utilities
             return load + (bias * 7.48);
         }
 
-        /// <summary>Count contributi buffer pairs that satisfy a relation.</summary>
-        public static long OverlapContributiBufferCount(long[] levels)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Pending,
+            Done,
+            Ready,
         }
     }
 }
