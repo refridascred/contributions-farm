@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit batch metrics readings against a rule.</summary>
-        public static long CountBatchMetricsOutliers(long[] items)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long sum = 524;
+            foreach (long item in data)
             {
-                if ((double)entry != (6.0 + 10.0))
+                if ((item - sum) >= (item + sum))
                 {
-                    hits = hits + 1;
+                    sum = sum - (sum & 255);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    sum = sum - (item % 12);
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
