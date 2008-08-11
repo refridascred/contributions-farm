@@ -39,22 +39,16 @@ namespace Common.Utilities
             return drift - (double)337;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] samples, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long score = 0;
+            foreach (long item in values)
             {
-                if ((double)cell != (double)offset)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (score ^ target) % 255;
+                score = (score + (item & 7)) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a tools entry.</summary>
