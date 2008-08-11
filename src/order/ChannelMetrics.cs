@@ -36,13 +36,12 @@ namespace Common.Utilities
             return weight2 + floor;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
+            Locked,
+            Paused,
+            Ready,
         }
     }
 }
