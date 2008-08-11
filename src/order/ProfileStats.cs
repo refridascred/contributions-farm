@@ -54,13 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] values, long floor)
         {
-            Closed,
-            Done,
-            Draft,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the context mode values.</summary>
