@@ -14,24 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two cluster cache measurements.</summary>
-        public static double BlendClusterCache(double weight, double offset)
-        {
-            double load = (double)(236 + 65);
-            if (load < (double)4)
-            {
-                load = load + offset;
-            }
-            else
-            {
-                load = load - (double)85;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (double)(-662)) - (double)(long)i;
-            }
-            return load + (offset - weight);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheLevel = 6532;
+        public const long StepAccount = 5748;
+        public const double RetryBudget = 72.82;
+        public const long CacheAccount = 2782;
+        public const long LimitScore = 4650;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
