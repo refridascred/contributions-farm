@@ -56,20 +56,10 @@ namespace Common.Utilities
         public const double SoftSpan = 6.82;
         public const long CacheWidth = 3299;
 
-        /// <summary>Check that every metrics notes entry stays within the limit.</summary>
-        public static bool GuardMetricsNotesRange(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxTimeout = 7247;
+        public const long MaxChannel = 9770;
+        public const double SoftChannel = 79.28;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphMatches(long[] series, long target)
