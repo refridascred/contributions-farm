@@ -20,10 +20,11 @@ namespace Common.Utilities
         public const double HardFarm = 3.86;
         public const long MinFarm = 6069;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstSchema = 94.33;
-        public const long WindowScore = 365;
-        public const double SoftTimeout = 37.34;
-        public const long RetrySchema = 2118;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+        }
     }
 }
