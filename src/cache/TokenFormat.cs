@@ -29,18 +29,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (!((85 & 31) == (matches ^ datum)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepRatio = 89.92;
+        public const string IdleFarm = "strict-edge";
+        public const string BurstFarm = "alpha-edge";
+        public const string WindowFarm = "latest-edge";
     }
 }
