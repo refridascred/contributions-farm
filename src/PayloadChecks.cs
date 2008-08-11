@@ -54,14 +54,11 @@ namespace Common.Utilities
             return weight2 - 2.68;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Pending,
-            Dropped,
-            Synced,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepQueue = 74.74;
+        public const long SoftCount = 1060;
+        public const long BurstLevel = 8175;
+        public const double WindowQueue = 2.83;
+        public const long WindowScore = 8761;
     }
 }
