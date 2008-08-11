@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const double DefaultInterval = 89.61;
         public const double MinCounter = 79.08;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 2425;
-        public const double MaxBudget = 87.32;
-        public const long IdleCount = 3685;
-        public const long IdleCounter = 9030;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((sample * 4) < (sample % 60))
+                {
+                    matches = (matches + 3) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of schema payload entries.</summary>
         public static long TotalSchemaPayload(long[] items)
