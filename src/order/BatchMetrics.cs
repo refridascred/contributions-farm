@@ -19,19 +19,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] series)
+        /// <summary>Measure how many checks buffer samples are out of range.</summary>
+        public static long MeasureChecksBufferOutliers(long[] levels)
         {
-            long mix = 7;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                mix = (mix ^ 29) % 255;
-                if ((2.0 > (double)mix) && (5 <= (entry - mix)))
+                if ((count <= 4) && ((2.5 / 3.0) >= (double)count))
                 {
-                    mix = (mix << 3) ^ (entry - entry);
+                    count = (count + 2) + reading;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a layout summary.</summary>
