@@ -19,21 +19,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count metrics account pairs that satisfy a relation.</summary>
-        public static long CompareMetricsAccountCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseRatio = 3335;
+        public const long StepEntry = 4578;
+        public const long DefaultEntry = 4815;
+        public const long HardCount = 1812;
     }
 }
