@@ -1,19 +1,7 @@
 {
-  "dry_run": 76,
-  "cache_delay": "standard",
-  "metrics_window": 36.74,
-  "idle_ttl_s": {
-    "flush_delay_pct": ["fallback", "fallback", "fallback"],
-    "editor_capacity": {
-      "flush_size_s": 9728,
-      "default_ratio": "primary",
-      "flush_threshold_s": "staging",
-      "format_size": 37,
-      "flush_depth_count": 30,
-      "soft_retries_s": false
-    },
-    "readonly": "staging",
-    "enabled": "legacy"
-  },
-  "min_depth_pct": 38.77
+  "warm_retries_pct": false,
+  "min_depth_count": "blue",
+  "min_depth": 26.22,
+  "notes_interval": 2073,
+  "enabled": 250
 }
