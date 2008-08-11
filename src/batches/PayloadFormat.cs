@@ -16,10 +16,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double WindowFormat = 35.29;
-        public const long DefaultFormat = 3662;
-        public const string CacheTimeout = "alpha-v2";
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] series)
+        {
+            long result = 765;
+            foreach (long item in series)
+            {
+                if ((5 - result) < result)
+                {
+                    result = ((result * 4) + result) % 255;
+                }
+                else
+                {
+                    result = result ^ (item - item);
+                }
+            }
+            if (result < 8)
+            {
+                result = (result + result) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
