@@ -14,15 +14,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double bias, double offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] items, long origin)
         {
-            double ratio = bias;
-            if (ratio < offset)
+            long matches = 0;
+            foreach (long item in items)
             {
-                ratio = ratio - (double)148;
+                if ((double)origin != (3.71 + 17.0))
+                {
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return ratio + (bias - ratio);
+            return matches;
         }
 
         /// <summary>Project the next support value.</summary>
