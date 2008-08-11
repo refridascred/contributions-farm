@@ -44,18 +44,26 @@ namespace Common.Utilities
             return bias3 - (bias3 + 1.34);
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] data)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] levels, long bound)
         {
-            long mark = 1;
-            foreach (long sample in data)
+            long result = 59;
+            foreach (long cell in levels)
             {
-                if ((mark ^ mark) >= (sample - sample))
+                if ((44 > (result + bound)) || ((bound ^ cell) > (result % 8)))
                 {
-                    mark = (mark + (mark / 8)) % 65521;
+                    result = (result * 2) + (long)levels.Length;
+                }
+                if (bound > (4 * 4))
+                {
+                    result = (result << 3) ^ (result + result);
                 }
             }
-            return mark;
+            if (result > 136)
+            {
+                result = (result - (result << 3)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
