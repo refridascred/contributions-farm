@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepBudget = 7384;
-        public const double CacheProfile = 53.83;
-        public const long DefaultProfile = 6029;
-        public const string BatchProfile = "latest-v2";
-        public const double MinScore = 45.01;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (!((entry << 1) <= seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long ClassifyContributi(long floor, long target)
