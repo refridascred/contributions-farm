@@ -1,18 +1,6 @@
 {
-  "soft_size_s": "staging",
-  "burst_window": "local",
-  "base_interval_ms": {
-    "warm_interval": true,
-    "graph_ratio": true,
-    "compress": false
-  },
-  "compress": {
-    "strict": ["standard", "latest", "latest"],
-    "min_delay": "stable",
-    "sync_size_ms": 9.63,
-    "audit": ["edge", "fallback", "latest", "staging"],
-    "cluster_retries": 74.25
-  },
-  "sync_limit": [500, 212, 312, 448],
-  "flush_window": "fallback"
+  "min_timeout": "primary",
+  "contributi_ttl": 23.74,
+  "report_retries": 75,
+  "flush_window_s": "fallback"
 }
