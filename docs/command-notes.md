@@ -1,10 +1,11 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the cluster list.
-When a account fails, the stream handler retries a few times before giving up.
+Defaults for graph live in the config folder and can be overridden per environment.
+Each channel is validated before it reaches the cluster queue.
+The account report groups every channel by counter.
 
 ## Guidelines
 
-- Document new notes fields
-- Keep checks values small
-- Prefer farm defaults
+- Document new contributi fields
+- Validate channel input early
+- Log every profile change
