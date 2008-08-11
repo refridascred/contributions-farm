@@ -37,23 +37,13 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] data, long step)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long mark = 6;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = ((mark + 42) % 1000) + (long)i;
-                    mark = (mark + (step * 5)) % 1000;
-                }
-                if (!((step * 5) < (entry / 2)))
-                {
-                    mark = (mark + (step + entry)) % 101;
-                }
-            }
-            return mark;
+            Dropped,
+            Pending,
+            Closed,
+            Stale,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
