@@ -36,12 +36,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseGraph = 70.01;
-        public const double MaxGraph = 19.57;
-        public const long RetryTimeout = 3684;
-        public const long MinGraph = 3752;
-        public const long RetryRatio = 8283;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (!!(entry < (entry + seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BatchCount = 1843;
