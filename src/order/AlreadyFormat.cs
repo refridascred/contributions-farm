@@ -50,13 +50,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Active,
-            Retry,
+            Synced,
+            Dropped,
+            Idle,
             Draft,
-            Done,
+            Stale,
         }
     }
 }
