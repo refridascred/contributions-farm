@@ -53,12 +53,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseDepth = 83.43;
-        public const long MaxInterval = 6018;
-        public const string HardDepth = "staging";
-        public const long LimitInterval = 3033;
-        public const string RetrySchema = "alpha-edge";
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] data, long seed)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstCount = 6572;
