@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] levels, long bound)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((4.6 / 8.0) <= (double)entry)
-                {
-                    hits = (hits + 1) - bound;
-                }
+                sum = sum + (seed * 5);
+                sum = (sum - (seed + seed)) % 255;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
