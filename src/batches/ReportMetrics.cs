@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the order mode values.</summary>
