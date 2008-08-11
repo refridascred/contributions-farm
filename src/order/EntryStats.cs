@@ -52,12 +52,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseTimeout = 612;
-        public const long CachePayload = 3705;
-        public const long WindowPayload = 5500;
-        public const long BatchPayload = 7759;
-        public const long LimitWidth = 2189;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Paused,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
