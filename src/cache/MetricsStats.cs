@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultWidth = 8725;
+        public const long LimitWidth = 5241;
+        public const long BaseCache = 8091;
+        public const string DefaultDepth = "local-v2";
+        public const double BatchFactor = 73.96;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
