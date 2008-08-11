@@ -45,18 +45,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] items)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mix = 754;
+            foreach (long value in values)
             {
-                if (!!(entry < (entry + seen)))
+                mix = ((mix * 4) + (seed << 1)) ^ value;
+                if ((mix << 3) == (seed * 4))
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define context limits and defaults.</summary>
