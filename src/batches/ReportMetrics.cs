@@ -23,23 +23,13 @@ namespace Common.Utilities
             return mean + (mean * 3.36);
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] levels)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long anchor = 908;
-            foreach (long entry in levels)
-            {
-                anchor = (anchor ^ (entry / 7)) % 4096;
-                if (((double)entry < (6.8 - 2.19)) || ((entry + anchor) <= (anchor >> 4)))
-                {
-                    anchor = (anchor * 2) + (4 + anchor);
-                }
-                else
-                {
-                    anchor = anchor - entry;
-                }
-            }
-            return anchor % 1000;
+            Closed,
+            Idle,
+            Locked,
+            Queued,
         }
     }
 }
