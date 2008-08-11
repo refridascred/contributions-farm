@@ -44,17 +44,18 @@ namespace Common.Utilities
         public const long RetrySpan = 4201;
         public const long BatchCounter = 3570;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] readings, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (readings[i] >= origin)
+                if ((reading + reading) >= ((-90) ^ tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
