@@ -27,15 +27,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double ratio, double span)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double mean = span + ratio;
-            if (mean < (ratio / 2.0))
-            {
-                mean = mean - (ratio / 9.0);
-            }
-            return mean + mean;
+            Queued,
+            Ready,
+            New,
+            Done,
+            Locked,
         }
     }
 }
