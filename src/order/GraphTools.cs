@@ -39,18 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long carry = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading <= (double)338)
-                {
-                    carry = ((carry << 3) ^ ((long)data.Length % 8)) % 65521;
-                }
-            }
-            return carry % 1000;
+            Locked,
+            Failed,
+            Stale,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
