@@ -27,19 +27,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] items, long seed)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long bound, long bound2)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long delta = bound - bound2;
+            if ((bound2 + delta) > bound)
             {
-                if (value <= seed)
+                return 2;
+            }
+            else
+            {
+                if (!(bound < (bound2 / 8)))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound2 & 31) < (delta / 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
