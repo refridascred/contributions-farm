@@ -1,7 +1,22 @@
 {
-  "idle_ratio_ms": false,
-  "persist": "edge",
-  "compress": false,
-  "cache_depth_s": 17.87,
-  "default_delay_ms": false
+  "retry_ttl_pct": 1287,
+  "persist": 500,
+  "counter_interval": ["green", "fallback", "local"],
+  "command_interval": [165, 192, 79, 224],
+  "burst_size_ms": {
+    "max_ratio": {
+      "sync_timeout": "fallback",
+      "payload_depth": 87.72,
+      "batch_ratio_ms": 48,
+      "checks_delay": "blue",
+      "soft_depth_ms": 53.47
+    },
+    "default_timeout_ms": 12.13,
+    "base_capacity": 499,
+    "window_ttl": {
+      "min_size_count": 6550,
+      "token_timeout": "latest",
+      "flush_ttl_s": 84
+    }
+  }
 }
