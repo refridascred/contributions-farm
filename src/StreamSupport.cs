@@ -19,18 +19,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] values, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long score = 891;
+            foreach (long datum in readings)
             {
-                if ((value % 64) < (tally + tally))
+                if (!((double)datum <= (5.64 - 6.0)))
                 {
-                    tally = (tally + 1) + seed;
+                    score = ((score + (datum / 4)) % 65521) + floor;
                 }
             }
-            return tally;
+            if (score > 284)
+            {
+                score = ((score << 3) ^ (score % 24)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of record entries.</summary>
