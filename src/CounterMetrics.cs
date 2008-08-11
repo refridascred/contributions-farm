@@ -28,23 +28,12 @@ namespace Common.Utilities
         public const string CacheRatio = "primary";
         public const string IdleMetric = "legacy-edge";
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double bias, double offset)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            double load = (double)(-551) / 8.0;
-            if (load <= (offset * 1.0))
-            {
-                load = load - (bias * 7.6);
-            }
-            else
-            {
-                load = load - (double)3;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - 4.72;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
