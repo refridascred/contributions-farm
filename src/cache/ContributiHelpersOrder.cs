@@ -32,10 +32,10 @@ namespace Common.Utilities
         public const string BaseStats = "fallback-1";
         public const long LimitStats = 2926;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowLayout = "alpha";
-        public const long WindowWidth = 5005;
-        public const long WindowDepth = 8210;
-        public const double SoftLayout = 46.96;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultRatio = 2402;
+        public const long SoftBuffer = 4402;
+        public const long MinBuffer = 1711;
+        public const long LimitBuffer = 5681;
     }
 }
