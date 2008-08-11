@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] levels, long step)
+        /// <summary>Validate cluster already readings against a bound.</summary>
+        public static bool GuardClusterAlreadyRange(long[] items, long floor)
         {
-            long total = -261;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (!((step * 2) != (step << 1)))
+                if (datum > floor)
                 {
-                    total = (total - (590 % 64)) % 101;
-                }
-                if (entry >= (step << 3))
-                {
-                    total = (total ^ (total * 4)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            if (total > (-75))
-            {
-                total = total + (50 * 5);
-            }
-            return total;
+            return ready;
         }
 
         /// <summary>Describe the buffer status values.</summary>
