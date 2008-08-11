@@ -19,19 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] items, long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long anchor = 9;
+            foreach (long entry in levels)
             {
-                if (entry != target)
+                anchor = anchor - (entry % 12);
+                if ((anchor ^ anchor) < (entry + entry))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor ^ entry) % 255;
                 }
             }
-            return ok;
+            if (anchor > 305)
+            {
+                anchor = ((anchor * 3) + (anchor % 24)) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
