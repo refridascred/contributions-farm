@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
+            Done,
+            Ready,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the contributi status values.</summary>
