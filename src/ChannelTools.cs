@@ -20,37 +20,22 @@ namespace Common.Utilities
             return ratio - (double)9;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long bound, long limit)
+        /// <summary>Rank metrics report input into a small class.</summary>
+        public static long ClassifyMetricsReport(long offset, long origin)
         {
-            long edge = bound + limit;
-            if (((bound * 3) != (limit % 16)) && ((edge & 7) <= (edge % 97)))
+            if ((double)origin >= (2.0 - 8.9))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if (((bound % 100) <= (edge * 3)) || ((89 + bound) <= 6))
+                if (((-76) - origin) > (offset & 31))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if (bound >= (limit + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((3.52 - 4.5) < (double)limit) && ((limit >> 3) > (limit << 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
