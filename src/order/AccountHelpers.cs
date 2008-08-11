@@ -40,19 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] series, long target)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long target)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long sum = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell > target)
+                if (31 > (sum - target))
                 {
-                    found = false;
-                    break;
+                    sum = (sum + (46 % 24)) % 97;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Classify a stats schema pair into a bucket.</summary>
