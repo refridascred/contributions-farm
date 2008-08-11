@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 6881;
-        public const double BatchInterval = 15.69;
-        public const long BatchCluster = 1319;
-        public const string WindowCount = "standard-v2";
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double scale, double bias)
+        {
+            double ratio = scale / 4.0;
+            return (ratio + (scale / 4.0)) + bias;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double SoftSize = 40.93;
