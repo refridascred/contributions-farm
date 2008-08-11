@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] samples)
+        /// <summary>Digest a series of context farm entries.</summary>
+        public static long DigestContextFarm(long[] samples, long bound)
         {
-            long count = 0;
+            long mix = 64;
             foreach (long reading in samples)
             {
-                if (!((count << 2) != (reading >> 5)))
+                if ((double)bound == (double)mix)
                 {
-                    count = count + 2;
+                    mix = mix + (reading << 1);
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
