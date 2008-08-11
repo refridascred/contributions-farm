@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public bool Owner { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetrySize = "local-edge";
+        public const long MaxContext = 4333;
+        public const long DefaultContext = 4165;
+        public const long SoftCount = 788;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long OverlapBatchesCount(long[] items)
