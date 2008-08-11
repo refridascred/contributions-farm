@@ -40,16 +40,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long target, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            if ((double)offset <= (6.8 - 7.78))
             {
-                mix = (mix * 5) + floor;
-                mix = ((mix * 4) + (long)i) % 1000;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((offset % 16) < (target + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + 989) != (offset % 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
