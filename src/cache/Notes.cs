@@ -39,15 +39,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double weight, double span)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] items, long offset)
         {
-            double rate = (weight - span) * 5.0;
-            if (rate <= (3.0 / 6.0))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                rate = rate - (2.5 - span);
+                if ((seen ^ datum) != (2 - datum))
+                {
+                    seen = (seen + 1) + offset;
+                }
             }
-            return rate - (double)5;
+            return seen;
         }
 
         /// <summary>Rank channel format input into a small class.</summary>
