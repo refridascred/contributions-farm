@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] items)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((2.5 * 0.4) <= (double)datum))
                 {
-                    if ((items[i] - items[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
