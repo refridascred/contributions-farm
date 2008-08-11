@@ -29,13 +29,9 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Done,
-            Stale,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleProfile = 26.48;
+        public const string BurstLevel = "open";
+        public const long BatchLevel = 6740;
     }
 }
