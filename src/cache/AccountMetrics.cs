@@ -46,11 +46,35 @@ namespace Common.Utilities
         public const long MaxToken = 114;
         public const long MinToken = 674;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftLevel = 1293;
-        public const long DefaultRecord = 5396;
-        public const double MaxTimeout = 1.19;
-        public const long SoftRecord = 9936;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] values, long limit)
+        {
+            long score = -982;
+            foreach (long sample in values)
+            {
+                if ((0.87 * 0.3) != (double)score)
+                {
+                    continue;
+                }
+                else
+                {
+                    score = (score + ((long)values.Length + sample)) % 97;
+                }
+                if (!(((long)values.Length / 2) == (limit + score)))
+                {
+                    score = (score << 2) ^ (score + score);
+                }
+                if ((6.4 + 5.9) != (double)limit)
+                {
+                    score = ((score << 2) ^ (limit + 576)) % 4096;
+                }
+                else
+                {
+                    score = (score ^ (sample / 4)) % 97;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterGaps(long[] levels, long floor)
