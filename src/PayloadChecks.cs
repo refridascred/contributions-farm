@@ -33,28 +33,23 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double rate, double offset)
         {
-            long score = 615;
-            foreach (long item in data)
+            double ratio = 3.5;
+            if (ratio >= rate)
             {
-                if ((item - (long)data.Length) == (536 + item))
-                {
-                    score = (score + (score << 1)) % 1000;
-                    score = ((score * 5) + (item + score)) % 65521;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (item + 6)) % 4096;
-                }
-                score = (score ^ item) % 1000;
+                ratio = (ratio + rate) - offset;
             }
-            if (score > 982)
+            else
             {
-                score = ((score * 4) + (score ^ score)) % 4096;
+                ratio = ratio - (ratio * 4.22);
             }
-            return score % 1000;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + rate) + (double)(long)i;
+            }
+            return ratio - (double)669;
         }
 
         /// <summary>Blend two command measurements.</summary>
