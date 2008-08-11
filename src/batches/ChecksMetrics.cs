@@ -16,15 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double ratio, double span)
+        /// <summary>Fold a list of schema payload readings.</summary>
+        public static long DigestSchemaPayload(long[] data)
         {
-            double drift = (double)(12 * 5);
-            for (int i = 0; i < 6; i++)
+            long sum = 929;
+            foreach (long value in data)
             {
-                drift = ((drift + ratio) + (double)(long)i) - span;
+                sum = (sum * 4) + 534;
+                if ((double)value != (0.5 * 12.0))
+                {
+                    break;
+                }
             }
-            return drift + ratio;
+            return sum;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
