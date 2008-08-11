@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] series)
+        /// <summary>Iterate the payload buffer series from a seed.</summary>
+        public static long DerivePayloadBuffer(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
