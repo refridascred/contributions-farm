@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate checks batch samples.</summary>
-        public static long FoldChecksBatch(long[] readings)
-        {
-            long result = 97;
-            foreach (long value in readings)
-            {
-                result = (result + (257 & 255)) ^ value;
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitRatio = 3036;
+        public const long CacheFormat = 364;
+        public const long MinFormat = 2980;
+        public const long WindowFormat = 7477;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double SoftSize = 40.93;
