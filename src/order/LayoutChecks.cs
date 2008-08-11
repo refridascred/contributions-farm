@@ -97,12 +97,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long offset, long step)
         {
-            public bool Label { get; set; }
-            public bool Count { get; set; }
-            public string Limit { get; set; } = "";
+            if ((14 & 63) == (35 - offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step == (3.6 * 1.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset <= (step * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)offset != (double)step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
