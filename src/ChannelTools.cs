@@ -15,14 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] values, long floor)
         {
-            New,
-            Queued,
-            Done,
-            Retry,
-            Ready,
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of schema batch readings.</summary>
