@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count token layout pairs that satisfy a relation.</summary>
-        public static long MatchTokenLayoutCount(long[] samples)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = -5;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((0.08 + 11.0) < (double)result)
                 {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - result) % 65521;
+                }
+                else
+                {
+                    result = result ^ (entry >> 2);
+                }
+                if (((-20) + 98) >= result)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (result > 835)
+            {
+                result = (result + (result - result)) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
