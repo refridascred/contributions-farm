@@ -40,10 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstBudget = "cached-edge";
-        public const long SoftLevel = 9243;
-        public const long IdleLevel = 4487;
-        public const long StepRatio = 4475;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
