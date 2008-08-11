@@ -31,17 +31,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a layout already counter forward.</summary>
-        public static long DeriveLayoutAlready(long target)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 3) + ((long)i % 2)) % 4096;
-                mix = (mix ^ target) % 1000;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Stale,
+            Idle,
+            Retry,
+            Done,
         }
     }
 }
