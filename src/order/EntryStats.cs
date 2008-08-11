@@ -19,23 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] levels)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] series, long target)
         {
-            long anchor = 9;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                anchor = anchor - (entry % 12);
-                if ((anchor ^ anchor) < (entry + entry))
+                if ((target + sample) < (target % 5))
                 {
-                    anchor = (anchor ^ entry) % 255;
+                    matches = matches + 3;
                 }
             }
-            if (anchor > 305)
-            {
-                anchor = ((anchor * 3) + (anchor % 24)) % 255;
-            }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
