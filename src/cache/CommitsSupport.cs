@@ -46,23 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stream batches reading.</summary>
-        public static double ProjectStreamBatches(double gain, double bias)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            double ratio = (double)(57 & 7);
-            if (ratio < (double)(-6))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio + (double)248) + gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (bias / 8.0)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return matches;
         }
 
         /// <summary>Check that every checks buffer entry stays within the limit.</summary>
