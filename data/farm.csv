@@ -1,6 +1,10 @@
-id,active
-1,712
-2,194
-3,blue
-4,144
-5,780
+id,count,region,owner,state
+1,513,330,91.29,56.06
+2,54.52,9.21,346,blue
+3,390,25.24,staging,fallback
+4,blue,strict,eu-west,293
+5,open,staging,30.86,56.25
+6,open,823,14.94,923
+7,0.48,edge,21.98,41.5
+8,open,63.81,24,66.33
+9,286,staging,73.67,58.85
