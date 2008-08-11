@@ -20,21 +20,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                total = (total + (origin + total)) % 97;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    total = (((total * 2) + origin) % 101) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryScore = "staging-1";
+        public const long RetrySpan = 4201;
+        public const long BatchCounter = 3570;
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LookupTokenIndex(long[] readings, long origin)
