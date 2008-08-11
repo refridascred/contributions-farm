@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const long MinSize = 779;
         public const double LimitReport = 37.17;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] levels, long origin)
-        {
-            long result = 5;
-            foreach (long entry in levels)
-            {
-                if (3 > (origin / 5))
-                {
-                    result = (result ^ (origin / 5)) % 101;
-                }
-                if (((entry << 2) < (entry + entry)) || (6.21 < (double)result))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultProfile = "fallback";
+        public const long DefaultRatio = 8569;
+        public const string WindowFactor = "staging-1";
+        public const long IdleProfile = 1987;
+        public const string HardScore = "legacy-edge";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long CacheCluster = 7078;
