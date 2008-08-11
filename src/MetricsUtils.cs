@@ -16,15 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Done,
-            Dropped,
-            Idle,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 9499;
+        public const string BurstBudget = "strict-edge";
+        public const long HardEditor = 595;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool CheckWindowLimits(long[] readings, long step)
