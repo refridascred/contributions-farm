@@ -69,19 +69,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stream cache measurements.</summary>
-        public static double ScaleStreamCache(double rate, double span)
+        /// <summary>Classify a schema batches pair into a bucket.</summary>
+        public static long GradeSchemaBatches(long target, long seed)
         {
-            double mean = rate;
-            if (mean < mean)
+            if (((seed - seed) > target) && ((seed - 0) > ((-361) % 97)))
             {
-                mean = (mean + rate) - span;
+                return 6;
             }
             else
             {
-                mean = mean - 9.2;
+                if (3.0 >= (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed >= (1.68 - 16.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target & 3) >= (target % 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return mean - (double)659;
         }
     }
 }
