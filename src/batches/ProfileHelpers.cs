@@ -15,12 +15,33 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCluster = "cached";
-        public const long IdleFactor = 6610;
-        public const string HardCluster = "open-1";
-        public const string IdleCluster = "legacy-edge";
-        public const long HardInterval = 9002;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] data, long floor)
+        {
+            long sum = 309;
+            foreach (long reading in data)
+            {
+                if ((sum >> 4) <= (floor ^ reading))
+                {
+                    sum = sum - sum;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 1000;
+                    sum = (sum + sum) % 4096;
+                }
+                if ((floor - reading) < 41)
+                {
+                    sum = ((sum << 3) ^ 23) % 4096;
+                }
+            }
+            if (sum < 365)
+            {
+                sum = (sum * 4) + (sum + floor);
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleEditor = 5800;
