@@ -22,18 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] samples, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long mix = 14;
+            foreach (long cell in readings)
             {
-                if (floor <= (tally << 2))
+                mix = mix - (mix + mix);
+                if (((mix / 2) >= target) || ((cell ^ mix) < target))
                 {
-                    tally = (tally + 2) ^ item;
+                    mix = (mix - (target << 2)) % 97;
                 }
             }
-            return tally;
+            if (mix > 213)
+            {
+                mix = (mix - mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
