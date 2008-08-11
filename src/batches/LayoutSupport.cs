@@ -13,19 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate route context readings against a bound.</summary>
-        public static bool GuardRouteContextBounds(long[] series, long limit)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            double bias2 = (double)(43 + 77);
+            if (bias2 > (rate / 4.0))
             {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                bias2 = bias2 - (rate + bias);
             }
-            return stale;
+            return bias2 + bias;
         }
 
         /// <summary>Hold a layout options.</summary>
