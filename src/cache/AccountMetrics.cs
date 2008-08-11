@@ -69,12 +69,20 @@ namespace Common.Utilities
         public const long MaxToken = 114;
         public const long MinToken = 674;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchLevel = "cached";
-        public const double HardFilter = 95.37;
-        public const long MaxFactor = 4270;
-        public const long RetryFilter = 715;
-        public const double DefaultFactor = 39.95;
+        /// <summary>Check that every metrics notes entry stays within the limit.</summary>
+        public static bool GuardMetricsNotesRange(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphMatches(long[] series, long target)
