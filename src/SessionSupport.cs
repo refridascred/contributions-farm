@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
+            Active,
             Pending,
-            Dropped,
-            Failed,
+            Retry,
+            Locked,
+            Draft,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
