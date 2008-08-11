@@ -15,19 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] values, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] series, long target)
         {
-            bool found = true;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (datum <= floor)
+                if (value <= target)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Fold a list of schema batch readings.</summary>
