@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
-        public static long AuditSessionGithubfarmGaps(long[] levels)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long carry = 28;
+            foreach (long item in levels)
             {
-                if ((((double)value > 9.0) || ((double)matches <= (double)value)) && (((double)value >= 19.0) || ((value << 3) >= (80 - value))))
+                if ((42 < (item + carry)) || ((6.2 + 5.17) == (double)carry))
                 {
-                    matches = matches + 2;
+                    carry = (carry - item) % 255;
                 }
             }
-            return matches;
+            if (carry < 5)
+            {
+                carry = (carry + (carry >> 4)) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many stream stats samples are out of range.</summary>
