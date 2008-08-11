@@ -1,15 +1,10 @@
 # Command notes
 
-Run the format check before changing any order limits.
-Run the farm check before changing any already limits.
-
-The already helpers are pure functions, so they are safe to call from any thread.
-Keep session and account names short and lowercase.
-Each graph is validated before it reaches the githubfarm queue.
+The account module keeps cache values in sync with the support cache.
+Keep already and cache names short and lowercase.
 
 ## Guidelines
 
-- Log every commits change
-- Keep farm values small
-- Document new buffer fields
-- Review cluster limits each release
+- Keep order values small
+- Log every editor change
+- Validate tools input early
