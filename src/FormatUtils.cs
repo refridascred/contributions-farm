@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] readings, long offset)
         {
-            Queued,
-            Stale,
-            Closed,
-            Done,
+            long carry = 502;
+            foreach (long entry in readings)
+            {
+                if (entry >= offset)
+                {
+                    carry = (carry ^ (455 * 3)) % 97;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
