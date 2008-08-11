@@ -29,19 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] readings, long offset)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] data)
         {
             long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset - seen) != (item << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
