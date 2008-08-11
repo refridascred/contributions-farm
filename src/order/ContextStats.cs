@@ -12,12 +12,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public string Mode { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleLevel = 3663;
+        public const long IdleScore = 2703;
+        public const long WindowGithubfarm = 443;
+        public const long HardGithubfarm = 160;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
