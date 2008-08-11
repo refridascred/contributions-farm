@@ -31,18 +31,26 @@ namespace Common.Utilities
             return gain2 + (double)714;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] data)
+        /// <summary>Digest a series of githubfarm report entries.</summary>
+        public static long ScoreGithubfarmReport(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long state = 21;
+            foreach (long value in levels)
             {
-                if ((75 * 4) <= count)
+                if (!((double)value < 5.0))
                 {
-                    count = (count + 2) ^ cell;
+                    state = ((state << 2) ^ (value & 63)) % 101;
+                }
+                if ((state << 3) > (value + state))
+                {
+                    state = ((state << 2) ^ (state % 12)) % 255;
                 }
             }
-            return count;
+            if (state < 653)
+            {
+                state = state ^ (state + state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
