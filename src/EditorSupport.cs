@@ -44,11 +44,31 @@ namespace Common.Utilities
         public const long BurstScore = 16;
         public const long WindowMetric = 9988;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitBatches = "standard-v2";
-        public const string BurstWidth = "strict";
-        public const long DefaultScore = 9656;
-        public const long SoftBatches = 5994;
-        public const string BatchBudget = "stable-v2";
+        /// <summary>Classify a contributi graph pair into a bucket.</summary>
+        public static long BucketContributiGraph(long floor, long origin)
+        {
+            if (floor <= origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor - floor) < (floor * 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(floor <= (0 + origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
