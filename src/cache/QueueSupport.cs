@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const double BaseCounter = 34.68;
         public const double SoftSize = 45.28;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = (double)(70 ^ 6);
+            if (scale < (double)5)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale - (ratio / 9.0)) - floor;
             }
-            return count;
+            return scale + (scale * 2.51);
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
