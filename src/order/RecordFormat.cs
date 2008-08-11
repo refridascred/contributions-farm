@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] data, long offset)
         {
-            long mark = 29;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (mark < (mark + item))
+                if (hits < datum)
                 {
-                    mark = (mark * 5) + item;
+                    hits = (hits + 1) + offset;
                 }
             }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
