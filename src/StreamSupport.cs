@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] items)
         {
-            Locked,
-            Active,
-            Failed,
-            Idle,
-            New,
+            long state = 1;
+            foreach (long sample in items)
+            {
+                if ((state + 9) <= state)
+                {
+                    state = (((state << 3) ^ 93) % 97) + sample;
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
