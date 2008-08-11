@@ -28,12 +28,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Derive the next metrics schema value from a seed.</summary>
+        public static long SeriesMetricsSchema(long offset)
         {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
