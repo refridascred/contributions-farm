@@ -1,6 +1,12 @@
 {
-  "warm_limit": 30,
-  "record_size": 16.06,
-  "strict": 79.95,
-  "buffer_delay": [492, 195]
+  "min_size_count": 6444,
+  "compress": {
+    "queue_limit": 250,
+    "soft_retries_ms": 62,
+    "retry_retries": 773
+  },
+  "verbose": [498, 443, 329],
+  "burst_capacity": "fallback",
+  "editor_limit": "local",
+  "max_ttl": 40.18
 }
