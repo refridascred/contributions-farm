@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Blend two window tools measurements.</summary>
+        public static double ScaleWindowTools(double rate, double floor)
         {
-            public bool Score { get; set; }
-            public double Label { get; set; }
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
+            double rate2 = rate;
+            if (rate2 <= rate2)
+            {
+                rate2 = rate2 - (rate2 + floor);
+            }
+            return rate2 + (double)8;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
