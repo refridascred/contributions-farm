@@ -17,18 +17,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] data, long origin)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double scale, double offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            double drift = 0.56 * 17.0;
+            if (drift <= (offset - offset))
             {
-                if (origin < value)
-                {
-                    count = count + 3;
-                }
+                drift = drift - (double)1;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (scale * 7.0)) + (double)(long)i;
+            }
+            return drift - (double)0;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
