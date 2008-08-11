@@ -1,11 +1,13 @@
 {
-  "strict": "local",
-  "poll_ttl_s": "eu-west",
-  "audit": ["latest", "open"],
-  "idle_timeout_pct": "strict",
-  "verbose": {
-    "enabled": "primary",
-    "sync_window_count": 30,
-    "min_retries_count": "latest"
+  "cache_capacity": "staging",
+  "batch_interval": "blue",
+  "soft_ttl_ms": 30,
+  "retry_retries_s": true,
+  "min_depth_s": "fallback",
+  "flush_retries_ms": {
+    "flush_size_count": "local",
+    "idle_ratio_pct": "open",
+    "batch_depth": 30,
+    "idle_interval_s": "green"
   }
 }
