@@ -32,10 +32,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitTimeout = 2652;
-        public const long BaseRatio = 2400;
-        public const long RetrySpan = 1307;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long MeasureGraphHits(long[] data)
