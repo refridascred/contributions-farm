@@ -1,5 +1,19 @@
 {
-  "verbose": 8463,
-  "batch_retries_count": false,
-  "burst_retries_pct": "latest"
+  "idle_size_pct": "latest",
+  "layout_size": 58,
+  "readonly": true,
+  "poll_timeout_ms": {
+    "enabled": 6,
+    "max_limit": "blue",
+    "hard_limit_count": "latest",
+    "account_threshold": "edge",
+    "filter_threshold": {
+      "min_limit": 2674,
+      "soft_limit_pct": 30,
+      "command_retries": [109, 445],
+      "enabled": 44,
+      "poll_retries_count": false
+    },
+    "dry_run": 67.91
+  }
 }
