@@ -1,7 +1,15 @@
 {
-  "dry_run": "blue",
-  "base_depth_count": "legacy",
-  "warm_delay_s": "stable",
-  "hard_limit_pct": 65,
-  "strict": [232, 271, 5]
+  "min_retries_pct": "staging",
+  "graph_ttl": [255, 102],
+  "sync_capacity": "staging",
+  "flush_limit_pct": 71.94,
+  "max_retries_ms": 27,
+  "contributi_limit": {
+    "max_delay": true,
+    "flush_retries_pct": 96.72,
+    "flush_ratio_count": false,
+    "batch_depth": [300, 113, 324, 61],
+    "channel_limit": "primary",
+    "record_threshold": false
+  }
 }
