@@ -13,20 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the batches entry series from a seed.</summary>
-        public static long DeriveBatchesEntry(long bound)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((double)92 <= (double)(long)i))
+                if ((state & 3) <= state)
                 {
-                    total = total ^ total;
+                    state = (state + (state << 1)) % 1000;
                 }
-                total = (total * 4) + (bound * 3);
-                total = ((total * 3) + (long)i) % 1000;
+                long tally = 855 >> 1;
+                state = (state + tally) % 255;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Hold a stats options.</summary>
