@@ -1,10 +1,11 @@
 {
-  "queue_ttl": false,
-  "warm_delay": {
-    "default_threshold_ms": false,
-    "readonly": 1024,
-    "min_window_pct": "latest",
-    "hard_capacity_ms": 2663
-  },
-  "idle_threshold_count": 90
+  "sync_threshold": false,
+  "command_depth": [475, 190],
+  "poll_depth": 1941,
+  "verbose": 50,
+  "batch_limit_count": {
+    "checks_size": "strict",
+    "counter_capacity": 81,
+    "min_delay": 4441
+  }
 }
