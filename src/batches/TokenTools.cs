@@ -22,13 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long target, long bound)
         {
-            Closed,
-            Failed,
-            Active,
-            Paused,
+            if ((target + bound) >= (target - 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(7.55 > (double)bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((8.17 / 7.0) >= (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a window options.</summary>
