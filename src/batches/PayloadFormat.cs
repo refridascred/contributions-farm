@@ -38,14 +38,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] data)
         {
-            Paused,
-            Stale,
-            Idle,
-            Failed,
-            Closed,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((75 * 4) <= count)
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
