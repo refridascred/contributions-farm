@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchDepth = 6.48;
-        public const long LimitGraph = 8138;
-        public const long SoftGraph = 9247;
+        /// <summary>Compare every pair of githubfarm filter readings.</summary>
+        public static long PairGithubfarmFilterCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long TotalSupport(long[] values)
