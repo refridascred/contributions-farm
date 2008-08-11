@@ -1,16 +1,7 @@
 # support settings
-persist: fallback
-sync_threshold_pct:
-  default_size: false
-  warm_ratio_ms:
-    - 244
-    - 328
-    - 29
-  audit: fallback
-  max_delay: 5
-retry_capacity_s: cached
-soft_retries_ms:
-  - latest
-  - staging
-  - cached
-sync_limit_s: 56.39
+idle_retries_count: true
+base_delay_pct: 77.97
+session_threshold: blue
+metrics_ttl: 4751
+flush_ttl_pct: green
+audit: eu-west
