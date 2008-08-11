@@ -50,20 +50,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long origin)
+        /// <summary>Look up the position of a graph batches sample.</summary>
+        public static long LocateGraphBatchesIndex(long[] items, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = score - (score ^ origin);
-                if (((long)i & 7) > (long)i)
+                if ((items[i] <= limit) && ((items[i] % 3) == 0))
                 {
-                    score = (score ^ ((long)i ^ 15)) % 101;
+                    return (long)i;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
