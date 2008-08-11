@@ -1,5 +1,7 @@
 {
-  "warm_depth_s": 74.59,
-  "soft_threshold_count": "blue",
-  "poll_retries_count": true
+  "account_threshold": 90.32,
+  "batch_retries_count": 2103,
+  "persist": ["edge", "latest", "edge"],
+  "retry_window_pct": 84.16,
+  "editor_limit": "cached"
 }
