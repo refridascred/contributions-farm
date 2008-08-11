@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const double WindowInterval = 54.62;
         public const string MinScore = "standard-v2";
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double bias, double offset)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double ratio = (double)(9 / 4);
-            if (ratio <= (double)7)
-            {
-                ratio = (ratio + (double)9) - bias;
-            }
-            return ratio + offset;
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
