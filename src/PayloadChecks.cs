@@ -22,15 +22,12 @@ namespace Common.Utilities
         public const long IdleCount = 3685;
         public const long IdleCounter = 9030;
 
-        /// <summary>Roll a buffer metrics counter forward.</summary>
-        public static long StepBufferMetrics(long seed)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            Dropped,
+            Done,
+            Locked,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
