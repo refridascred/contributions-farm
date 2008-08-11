@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] series)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (9 < value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the queue level values.</summary>
