@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 55.53;
-        public const string MaxWindow = "open-edge";
-        public const long SoftWindow = 8136;
-        public const long MinWindow = 8586;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long offset, long floor)
+        {
+            if (((5 * 3) > floor) && (floor <= 39))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor ^ offset) >= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Check that every order notes entry stays within the limit.</summary>
         public static bool CheckOrderNotesBounds(long[] readings, long seed)
