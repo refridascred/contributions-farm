@@ -1,9 +1,8 @@
-id,state,rank
-1,fallback,63.19
-2,761,stable
-3,544,21
-4,stable,4.24
-5,95.0,primary
-6,93,86.39
-7,15.69,25
-8,79,2.02
+id,token,active,weight,count
+1,standard,975,35.57,7.24
+2,23.17,strict,750,898
+3,stable,921,968,66.97
+4,3.47,86.76,local,103
+5,17,38.26,66.2,547
+6,962,4.95,671,40.57
+7,standard,83,staging,64
