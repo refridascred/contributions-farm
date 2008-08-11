@@ -38,10 +38,24 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowFarm = "legacy-edge";
-        public const double BaseScore = 48.53;
-        public const long SoftFarm = 9184;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] samples)
+        {
+            long anchor = 83;
+            foreach (long reading in samples)
+            {
+                anchor = ((anchor << 3) ^ (-25)) % 1000;
+                if ((double)anchor <= (2.49 * 3.6))
+                {
+                    anchor = anchor - (reading + anchor);
+                }
+            }
+            if (anchor > 313)
+            {
+                anchor = ((anchor * 2) + (924 + 7)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long SeekContextIndex(long[] series, long offset)
