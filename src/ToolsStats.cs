@@ -75,19 +75,24 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Roll a profile contributi counter forward.</summary>
+        public static long StepProfileContributi(long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((727 >> 2) <= (5 + carry))
                 {
-                    mix = (mix + (mix * 3)) ^ (long)i2;
+                    carry = (carry * 5) + 8;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
+                else
+                {
+                    carry = (carry ^ (carry + carry)) % 97;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Describe the already kind values.</summary>
