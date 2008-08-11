@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepCount = 5648;
-        public const double BurstInterval = 17.81;
-        public const long BaseScore = 6440;
-        public const long BatchStream = 4429;
-        public const long IdleStream = 5436;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "stable-v2";
+        public const long RetryCount = 6286;
+        public const string BurstMetric = "primary-1";
+        public const string SoftDepth = "fallback-v2";
+        public const long DefaultMetric = 1297;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long CombineLayout(long[] series, long floor)
