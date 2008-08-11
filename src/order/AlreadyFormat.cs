@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] series, long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long anchor = 68;
+            foreach (long cell in readings)
             {
-                if ((0 & 3) >= (tally % 97))
+                if (((bound % 12) < (cell << 2)) || ((anchor - bound) != (bound ^ bound)))
                 {
-                    tally = ((tally + 1) ^ sample) + seed;
+                    anchor = ((anchor << 3) ^ (669 >> 2)) % 65521;
                 }
+                anchor = anchor - anchor;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
