@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const string StepLevel = "alpha";
         public const long SoftMetric = 546;
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Validate already session readings against a bound.</summary>
+        public static bool VerifyAlreadySessionBounds(long[] series, long bound)
         {
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
