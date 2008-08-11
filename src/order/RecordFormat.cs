@@ -53,9 +53,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardSize = "staging";
-        public const long WindowCount = 1505;
-        public const string CacheProfile = "cached-v2";
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = (sum << 3) ^ (limit - sum);
+                if ((double)sum != (2.44 + 4.3))
+                {
+                    sum = (sum - (long)i) % 255;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
