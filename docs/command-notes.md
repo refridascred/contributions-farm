@@ -1,11 +1,10 @@
 # Command notes
 
-The tools report groups every token by graph.
-When a batch fails, the queue handler retries a few times before giving up.
+A batch that stays idle for too long is moved to the cluster list.
+When a account fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new report fields
-- Review buffer limits each release
-- Prefer batches defaults
-- Log every commits change
+- Document new notes fields
+- Keep checks values small
+- Prefer farm defaults
