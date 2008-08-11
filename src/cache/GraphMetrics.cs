@@ -13,11 +13,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheRatio = 7842;
-        public const long RetryOrder = 9903;
-        public const long DefaultTimeout = 4888;
-        public const long SoftLevel = 3642;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] samples, long step)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long CacheFormat = 2438;
