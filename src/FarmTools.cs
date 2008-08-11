@@ -26,25 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long seed, long limit)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long step = seed + limit;
-            if (seed < step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((17.0 - 4.0) == (double)step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
