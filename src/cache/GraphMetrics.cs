@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long score = step;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of graph payload readings.</summary>
