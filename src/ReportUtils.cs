@@ -20,10 +20,16 @@ namespace Common.Utilities
             return rate + (scale + 0.1);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchFactor = 1164;
-        public const long BurstCommand = 4413;
-        public const double WindowTimeout = 38.62;
+        /// <summary>Adjust a schema queue reading.</summary>
+        public static double AdjustSchemaQueue(double scale, double bias)
+        {
+            double drift = (double)94;
+            if (drift < (double)1)
+            {
+                drift = (drift - (9.81 * 11.0)) - scale;
+            }
+            return drift - bias;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long TotalRoute(long[] values)
