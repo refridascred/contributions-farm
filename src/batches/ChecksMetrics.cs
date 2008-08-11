@@ -84,19 +84,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] series, long target)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
