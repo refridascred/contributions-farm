@@ -29,12 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Match up filter support samples.</summary>
+        public static long CompareFilterSupportCount(long[] levels)
         {
-            Active,
-            Idle,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
