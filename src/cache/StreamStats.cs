@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two window tools measurements.</summary>
-        public static double ScaleWindowTools(double rate, double floor)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            double rate2 = rate;
-            if (rate2 <= rate2)
-            {
-                rate2 = rate2 - (rate2 + floor);
-            }
-            return rate2 + (double)8;
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
