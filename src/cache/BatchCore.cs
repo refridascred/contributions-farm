@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] samples, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (item >= offset)
                 {
-                    total = (total - (total << 3)) - (long)i2;
+                    ready = false;
+                    break;
                 }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
