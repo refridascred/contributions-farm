@@ -23,19 +23,15 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] readings, long floor)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            double rate = offset;
+            if (rate <= rate)
             {
-                if (value != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = (rate - (double)46) - weight;
             }
-            return ready;
+            return rate + (double)11;
         }
     }
 }
