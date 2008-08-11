@@ -36,12 +36,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] samples, long seed)
         {
-            Synced,
-            Draft,
-            Failed,
+            long sum = 28;
+            foreach (long reading in samples)
+            {
+                if (!((seed << 3) > (790 + (long)samples.Length)))
+                {
+                    sum = ((sum << 2) ^ (seed - sum)) ^ reading;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Audit session record readings against a rule.</summary>
