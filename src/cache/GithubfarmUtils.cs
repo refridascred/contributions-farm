@@ -36,11 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] data, long floor)
         {
-            public double Owner { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((827 - 186) >= (floor - tally))
+                {
+                    tally = (tally + 1) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank support input into a small class.</summary>
