@@ -13,16 +13,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                acc = acc + acc;
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (9 < value)
+                {
+                    count = count + 2;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a schema info.</summary>
