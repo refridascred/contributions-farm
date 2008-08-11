@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 6758;
-        public const double CacheWindow = 48.42;
-        public const long BurstWindow = 6992;
-        public const long RetryRatio = 9886;
-        public const double BatchWindow = 65.42;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                long prev = bound - (bound + 17);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = (((acc << 2) ^ acc) % 101) ^ (long)i2;
+                    acc = (acc * 5) + (178 + prev);
+                }
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    prev = ((prev + (prev & 127)) % 101) - (long)i3;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
