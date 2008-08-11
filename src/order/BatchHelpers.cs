@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit layout window readings against a rule.</summary>
-        public static long MeasureLayoutWindowGaps(long[] values, long target)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (((double)target < (double)seen) || ((18.0 * 3.0) > (double)sample))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Accumulate session samples.</summary>
