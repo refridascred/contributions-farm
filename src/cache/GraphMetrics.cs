@@ -20,11 +20,22 @@ namespace Common.Utilities
         public const long BurstRatio = 2480;
         public const string DefaultNotes = "open";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinCount = 65.44;
-        public const long MaxRecord = 1012;
-        public const long CacheRecord = 9071;
-        public const long DefaultSpan = 7171;
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long SeriesNotes(long floor)
