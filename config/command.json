@@ -1,7 +1,18 @@
 {
-  "warm_interval_pct": [148, 134, 354],
-  "base_ttl": 97.94,
-  "enabled": "fallback",
-  "stream_timeout": 94.19,
-  "readonly": "legacy"
+  "verbose": 44.4,
+  "editor_ratio": 7.25,
+  "stream_depth": {
+    "idle_ttl_ms": 6569,
+    "soft_limit_ms": "cached",
+    "audit": 89,
+    "sync_delay_s": {
+      "batch_size": 5771,
+      "booking_ratio": 31.93,
+      "retry_interval": false,
+      "schema_timeout": 100,
+      "support_depth": 12,
+      "dry_run": true
+    }
+  },
+  "poll_interval_s": 77
 }
