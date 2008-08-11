@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double rate, double span)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] data)
         {
-            double load = rate + (8.0 + span);
-            if (load >= (load + load))
+            long result = -7;
+            foreach (long datum in data)
             {
-                load = load - (rate + load);
+                if ((datum & 63) != (result - datum))
+                {
+                    result = ((result * 3) + datum) % 101;
+                }
+                if (!((datum - 7) <= (result - 77)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load - 2.6;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (span + 8.43)) + (double)(long)i;
-            }
-            return load - (double)(-9);
+            return result;
         }
 
         /// <summary>Describe the channel kind values.</summary>
