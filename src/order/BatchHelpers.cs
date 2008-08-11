@@ -13,26 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate contributi command samples.</summary>
-        public static long WeighContributiCommand(long[] series, long target)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long result = 32;
-            foreach (long entry in series)
-            {
-                if ((5.6 * 4.8) == (double)result)
-                {
-                    result = ((result * 4) + (result - entry)) % 1000;
-                }
-                else
-                {
-                    result = result - result;
-                }
-                if ((double)entry <= (double)target)
-                {
-                    break;
-                }
-            }
-            return result % 4096;
+            Dropped,
+            Synced,
+            New,
         }
 
         /// <summary>Derive the next route schema value from a seed.</summary>
