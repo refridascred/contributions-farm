@@ -13,15 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] levels)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] series, long limit)
         {
-            long carry = 5;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                carry = ((carry * 5) + carry) ^ item;
+                if (sample > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
