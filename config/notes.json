@@ -1,7 +1,6 @@
 {
-  "base_interval": 70,
-  "idle_delay_s": "eu-west",
-  "max_ratio": 3185,
-  "notes_ttl": false,
-  "cache_retries_count": 67
+  "audit": "stable",
+  "max_size_count": 45,
+  "flush_retries_ms": 42.56,
+  "verbose": 60
 }
