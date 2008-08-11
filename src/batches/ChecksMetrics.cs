@@ -16,14 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double ratio, double span)
         {
-            Retry,
-            Idle,
-            New,
-            Pending,
-            Closed,
+            double drift = (double)(12 * 5);
+            for (int i = 0; i < 6; i++)
+            {
+                drift = ((drift + ratio) + (double)(long)i) - span;
+            }
+            return drift + ratio;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
