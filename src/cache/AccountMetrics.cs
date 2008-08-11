@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long seed, long origin)
+        /// <summary>Combine queue cache values into a single score.</summary>
+        public static long WeighQueueCache(long[] samples, long seed)
         {
-            if (42 >= (origin - origin))
+            long result = -52;
+            foreach (long cell in samples)
             {
-                return 7;
+                result = (result * 3) + (seed - cell);
+                result = (result + (seed / 9)) % 255;
             }
-            else
-            {
-                if ((double)seed < (double)83)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)seed != (6.35 + 4.99)) || ((origin - origin) != (seed + seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return result % 65521;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
