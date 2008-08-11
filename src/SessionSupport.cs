@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public long Score { get; set; }
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Label { get; set; }
+            public double Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
