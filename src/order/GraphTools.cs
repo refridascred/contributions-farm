@@ -25,12 +25,19 @@ namespace Common.Utilities
             return drift + (drift + drift);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 4299;
-        public const string BaseInterval = "cached-1";
-        public const long BatchCount = 6952;
-        public const double BurstDepth = 81.22;
-        public const string HardWindow = "primary-1";
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (entry < (entry >> 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueMatches(long[] data)
