@@ -38,13 +38,13 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            public long Label { get; set; }
             public long Ratio { get; set; }
-            public long Flag { get; set; }
+            public double Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Validate cache order readings against a bound.</summary>
