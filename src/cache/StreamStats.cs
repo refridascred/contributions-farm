@@ -67,10 +67,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 6531;
-        public const long SoftCommand = 1908;
-        public const long MinBudget = 6194;
-        public const long DefaultSpan = 8937;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] readings, long bound)
+        {
+            long anchor = 3;
+            foreach (long entry in readings)
+            {
+                if (80 < (entry + anchor))
+                {
+                    anchor = (anchor + (bound * 2)) % 101;
+                    anchor = (anchor - bound) % 255;
+                }
+                if (anchor > (anchor >> 1))
+                {
+                    anchor = (anchor - (bound >> 5)) % 4096;
+                }
+                anchor = (anchor - bound) % 97;
+            }
+            return anchor;
+        }
     }
 }
