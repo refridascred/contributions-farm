@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] data, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] items, long step)
         {
-            long acc = -92;
-            foreach (long value in data)
+            long acc = 35;
+            foreach (long value in items)
             {
-                acc = acc ^ (value + bound);
+                acc = (((acc << 2) ^ (776 ^ step)) % 1000) ^ value;
             }
-            if (acc < 96)
+            if (acc > (-1))
             {
-                acc = (acc << 3) ^ bound;
+                acc = ((acc * 2) + (step - acc)) % 1000;
             }
-            return acc % 1000;
+            return acc % 4096;
         }
 
         /// <summary>Match up filter support samples.</summary>
