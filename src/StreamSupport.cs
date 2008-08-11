@@ -15,16 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next entry metric value from a seed.</summary>
-        public static long RollEntryMetric(long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] values, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                state = state + state;
-                state = ((state * 2) + (long)i) % 4093;
+                if ((value % 64) < (tally + tally))
+                {
+                    tally = (tally + 1) + seed;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Digest a series of record entries.</summary>
