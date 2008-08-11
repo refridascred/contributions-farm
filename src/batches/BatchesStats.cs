@@ -43,18 +43,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] series)
+        /// <summary>Rank cluster route input into a small class.</summary>
+        public static long BucketClusterRoute(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            if ((7.27 - 6.1) < (double)limit)
             {
-                if ((value & 31) < (value + value))
+                return 5;
+            }
+            else
+            {
+                if ((double)floor >= (7.16 * 20.0))
                 {
-                    hits = hits + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor << 3) <= (floor % 24))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor + limit) >= limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
