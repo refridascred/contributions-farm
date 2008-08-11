@@ -89,12 +89,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] items, long seed)
         {
-            New,
-            Pending,
-            Failed,
+            long mix = 97;
+            foreach (long entry in items)
+            {
+                if ((seed ^ mix) > (41 ^ 0))
+                {
+                    mix = (mix * 3) + (3 % 3);
+                }
+                else
+                {
+                    mix = mix - (8 + entry);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
