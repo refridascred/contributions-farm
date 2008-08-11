@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double scale, double bias)
+        /// <summary>Roll a contributi format counter forward.</summary>
+        public static long StepContributiFormat(long target)
         {
-            double ratio = scale / 4.0;
-            return (ratio + (scale / 4.0)) + bias;
+            long acc = target;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
