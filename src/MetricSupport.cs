@@ -22,18 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch notes readings against a rule.</summary>
-        public static long CountBatchNotesHits(long[] items, long offset)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long bound, long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            if ((bound / 4) > limit)
             {
-                if (((double)datum <= (double)seen) && ((datum - offset) > seen))
+                return 6;
+            }
+            else
+            {
+                if ((double)bound < (20.0 * 10.0))
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the editor filter entries that pass the check.</summary>
