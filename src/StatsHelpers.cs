@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many notes graph samples are out of range.</summary>
-        public static long MeasureNotesGraphMatches(long[] data, long limit)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (limit <= (cell >> 4))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
