@@ -30,22 +30,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of schema batch readings.</summary>
-        public static long WeighSchemaBatch(long[] readings, long seed)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            long acc = 755;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0.34 / 5.0) < (double)entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc * 3) + seed;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ acc;
+                    if ((values[i] ^ values[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
