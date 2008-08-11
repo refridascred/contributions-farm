@@ -34,19 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] levels, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (cell != seed)
+                if ((entry - tally) == (tally ^ entry))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
