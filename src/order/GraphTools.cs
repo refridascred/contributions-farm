@@ -10,13 +10,25 @@ namespace Common.Utilities
         public const long MinWidth = 5912;
         public const long WindowInterval = 5644;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Classify a context filter pair into a bucket.</summary>
+        public static long RankContextFilter(long origin, long floor)
         {
-            Pending,
-            Retry,
-            Paused,
-            Failed,
+            long prev = origin ^ floor;
+            if ((origin % 8) >= origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((floor * 3) != (1 - 2)) || ((prev >> 4) == (floor + prev)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
