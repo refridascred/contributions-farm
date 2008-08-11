@@ -1,15 +1,4 @@
 # entry settings
-batch_ttl_pct:
-  hard_depth: edge
-  burst_ratio_pct: local
-  strict: staging
-  warm_limit_s: cached
-  tools_capacity: 500
-  base_timeout_pct: blue
-idle_threshold: eu-west
-queue_capacity:
-  - strict
-  - staging
-  - blue
-  - edge
-cluster_limit: false
+min_window_pct: 1024
+retry_ratio_ms: true
+persist: primary
