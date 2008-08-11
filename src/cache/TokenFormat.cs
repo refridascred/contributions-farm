@@ -30,15 +30,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                if (!((85 & 31) == (matches ^ datum)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
