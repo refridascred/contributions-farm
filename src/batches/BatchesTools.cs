@@ -29,18 +29,13 @@ namespace Common.Utilities
         public const string LimitInterval = "alpha-1";
         public const long LimitDepth = 872;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] levels, long target)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + target) != (reading + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
