@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long origin, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            if ((target & 3) > (origin >> 2))
+            long mark = 29;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target & 127) > origin) || ((731 / 2) < target))
+                if (mark < (mark + item))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    mark = (mark * 5) + item;
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
