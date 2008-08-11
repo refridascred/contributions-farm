@@ -1,21 +1,12 @@
 # githubfarm settings
-report_interval:
-  poll_size_ms:
-    audit: stable
-    compress: 30
-    sync_interval_pct: cached
-    max_retries_pct: false
-    enabled: latest
-  githubfarm_ratio: 2044
-  batch_window: 30
-  window_capacity:
-    - 418
-    - 89
-    - 281
-  soft_retries_pct: 100
-  persist: standard
-base_retries: 30
-counter_ratio: fallback
-persist: 97.92
-verbose: 8220
-batch_retries: 30
+batches_delay:
+  - 49
+  - 43
+base_delay: 1024
+min_ttl: true
+burst_capacity_pct:
+  - 101
+  - 187
+  - 44
+  - 379
+default_depth_s: blue
