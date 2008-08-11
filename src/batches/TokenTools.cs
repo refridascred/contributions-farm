@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] data)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell % 8) != (tally + tally))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] - items[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a format entry.</summary>
