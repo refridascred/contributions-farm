@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long result = -5;
-            foreach (long entry in samples)
-            {
-                if ((0.08 + 11.0) < (double)result)
-                {
-                    result = (result - result) % 65521;
-                }
-                else
-                {
-                    result = result ^ (entry >> 2);
-                }
-                if (((-20) + 98) >= result)
-                {
-                    break;
-                }
-            }
-            if (result > 835)
-            {
-                result = (result + (result - result)) % 4096;
-            }
-            return result % 65521;
+            Dropped,
+            Retry,
+            Paused,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
