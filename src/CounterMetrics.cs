@@ -44,26 +44,18 @@ namespace Common.Utilities
             return bias3 - (bias3 + 1.34);
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] series)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] data)
         {
-            long total = 8;
-            foreach (long value in series)
+            long mark = 1;
+            foreach (long sample in data)
             {
-                if ((total - value) >= (260 + 61))
+                if ((mark ^ mark) >= (sample - sample))
                 {
-                    total = total ^ (value / 6);
-                }
-                if (!((total - value) >= total))
-                {
-                    total = total + (value ^ value);
+                    mark = (mark + (mark / 8)) % 65521;
                 }
             }
-            if (total < 2)
-            {
-                total = ((total * 2) + total) % 1000;
-            }
-            return total % 97;
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
