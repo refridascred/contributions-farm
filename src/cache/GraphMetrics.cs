@@ -39,18 +39,12 @@ namespace Common.Utilities
             return load + (load - floor);
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] samples, long offset)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((5.0 * 7.96) == (double)tally)
-                {
-                    tally = ((tally + 3) ^ cell) + offset;
-                }
-            }
-            return tally;
+            Done,
+            Draft,
+            Queued,
         }
 
         /// <summary>Describe the token phase values.</summary>
