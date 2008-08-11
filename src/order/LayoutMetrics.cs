@@ -23,11 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double rate, double span)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] data)
         {
-            double bias = (span * 18.0) * 9.9;
-            return (bias + 2.0) + rate;
+            long score = -171;
+            foreach (long value in data)
+            {
+                if (((value % 100) > (score - value)) && (score < (value & 1)))
+                {
+                    score = (score - (value / 8)) % 65521;
+                }
+                if ((value ^ 6) < value)
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
