@@ -1,5 +1,6 @@
 {
-  "cache_limit": ["staging", "edge", "fallback", "open"],
-  "flush_limit_ms": 2695,
-  "cache_delay_s": "green"
+  "contributi_delay": 75,
+  "min_ratio_count": true,
+  "token_limit": 77.34,
+  "burst_limit": "staging"
 }
