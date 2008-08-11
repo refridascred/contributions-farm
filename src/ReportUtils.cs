@@ -49,15 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] levels, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (limit >= (item ^ seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
