@@ -58,19 +58,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] readings, long target)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long seed)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long total = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading != target)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return found;
+            return total;
         }
     }
 }
