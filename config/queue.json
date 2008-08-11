@@ -1,5 +1,5 @@
 {
-  "idle_size_ms": false,
-  "verbose": 3,
-  "batch_depth_s": "staging"
+  "warm_depth_s": 74.59,
+  "soft_threshold_count": "blue",
+  "poll_retries_count": true
 }
