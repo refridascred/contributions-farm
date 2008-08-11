@@ -1,8 +1,15 @@
 # support settings
-queue_depth: 250
-flush_retries:
+cache_retries_s: stable
+compress:
+  min_depth_count: 4196
+  graph_delay: 500
+  dry_run: staging
+  burst_ttl_count: 500
+min_delay: fallback
+window_window: 2.39
+hard_limit:
+  - staging
+  - blue
   - edge
-  - legacy
   - cached
-readonly: fallback
-format_capacity: 66.22
+max_depth_s: 39
