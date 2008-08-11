@@ -1,7 +1,7 @@
 {
-  "window_window": "primary",
-  "burst_limit": "latest",
-  "hard_timeout_s": "fallback",
-  "min_limit": 8754,
-  "flush_threshold": 31
+  "max_limit": 53.65,
+  "farm_timeout": 84,
+  "stats_threshold": "open",
+  "soft_interval_pct": 100,
+  "readonly": "latest"
 }
