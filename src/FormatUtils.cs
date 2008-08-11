@@ -15,13 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long offset)
         {
-            Done,
-            Retry,
-            Queued,
-            New,
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if (offset >= (offset % 10))
+                {
+                    acc = ((acc << 3) ^ (long)i) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Count the account support entries that pass the check.</summary>
