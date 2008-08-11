@@ -45,13 +45,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Ready,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryBudget = 65.95;
+        public const double CacheChannel = 33.81;
+        public const long CacheLevel = 3815;
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long DeriveNotes(long limit)
