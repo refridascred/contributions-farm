@@ -26,18 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a command commits reading by value.</summary>
-        public static long LookupCommandCommitsIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepFilter = "cached-1";
+        public const string WindowFilter = "latest-v2";
+        public const long IdleFilter = 8871;
+        public const double CacheFilter = 83.8;
+        public const long HardFilter = 5458;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
