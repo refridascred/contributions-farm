@@ -37,22 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] samples, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] items)
         {
-            long mark = 900;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((target << 3) <= entry)
+                if ((datum ^ datum) > datum)
                 {
-                    mark = mark ^ (mark & 31);
-                }
-                else
-                {
-                    mark = mark - (entry % 5);
+                    hits = hits + 2;
                 }
             }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Project the next support value.</summary>
