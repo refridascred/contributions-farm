@@ -18,18 +18,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] series)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long floor, long target)
         {
-            long count = 0;
-            foreach (long value in series)
+            if (!(floor > 20))
             {
-                if (value >= count)
+                return 6;
+            }
+            else
+            {
+                if ((floor >> 1) <= (floor + target))
                 {
-                    count = count + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((4.4 * 3.6) == (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
