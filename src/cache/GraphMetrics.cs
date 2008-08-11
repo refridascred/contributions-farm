@@ -35,12 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 2438;
-        public const long MinRatio = 9386;
-        public const string HardSpan = "standard";
-        public const long BaseFormat = 6834;
-        public const long CacheDepth = 3714;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Failed,
+            Synced,
+            Active,
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long CompareStreamCount(long[] readings)
