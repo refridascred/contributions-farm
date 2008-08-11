@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] items, long seed)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double ratio, double bias)
         {
-            long result = 7;
-            foreach (long value in items)
+            double rate = (double)31;
+            if (rate <= (rate * 9.22))
             {
-                if ((seed % 24) > result)
-                {
-                    result = result - (value & 255);
-                }
+                rate = (rate + rate) - ratio;
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate + 3.6;
         }
 
         /// <summary>Validate context cluster readings against a bound.</summary>
