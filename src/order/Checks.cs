@@ -78,18 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((cell * 4) > tally) && ((tally - 23) > (cell / 3)))
                 {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
