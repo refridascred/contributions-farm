@@ -37,22 +37,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] data)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double load = (double)(-551) / 8.0;
+            if (load <= (offset * 1.0))
             {
-                if ((889 ^ matches) < cell)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = load - (bias * 7.6);
             }
-            return matches;
+            else
+            {
+                load = load - (double)3;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - 4.72;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
