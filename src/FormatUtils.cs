@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleTimeout = 9552;
-        public const long RetryWidth = 313;
-        public const double IdleFactor = 18.2;
-        public const long StepRoute = 1757;
-        public const long MaxDepth = 6449;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Failed,
+            Draft,
+            Pending,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double ratio, double span)
