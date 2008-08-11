@@ -26,13 +26,15 @@ namespace Common.Utilities
         public const string WindowSize = "stable-edge";
         public const long DefaultInterval = 3383;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long offset)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public double Level { get; set; }
+            long score = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
