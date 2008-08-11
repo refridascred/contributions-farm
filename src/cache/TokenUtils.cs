@@ -20,12 +20,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxFactor = 455;
+        public const string DefaultDepth = "strict-v2";
+        public const string CacheInterval = "strict-v2";
+        public const long BatchFactor = 5489;
+        public const long SoftCount = 3026;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextHits(long[] data, long seed)
