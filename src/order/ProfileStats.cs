@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] readings, long seed)
+        /// <summary>Combine support buffer values into a single score.</summary>
+        public static long TotalSupportBuffer(long[] data)
         {
-            long score = 25;
-            foreach (long datum in readings)
+            long anchor = -5;
+            foreach (long value in data)
             {
-                if ((score + seed) >= (8 - datum))
+                if ((anchor & 63) < (value * 4))
                 {
-                    score = (score ^ (datum * 2)) % 1000;
+                    anchor = (anchor << 2) ^ (anchor & 15);
                 }
-                score = (score + (score / 7)) % 1000;
+                else
+                {
+                    anchor = (anchor - ((-70) - value)) % 1000;
+                }
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
