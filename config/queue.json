@@ -1,7 +1,21 @@
 {
-  "account_threshold": 90.32,
-  "batch_retries_count": 2103,
-  "persist": ["edge", "latest", "edge"],
-  "retry_window_pct": 84.16,
-  "editor_limit": "cached"
+  "enabled": 3037,
+  "strict": {
+    "layout_interval": "open",
+    "flush_window": {
+      "already_timeout": [354, 255, 167],
+      "default_ttl_count": "edge",
+      "base_size_s": 1024,
+      "cache_ratio": "staging",
+      "layout_depth": [403, 478]
+    },
+    "tools_size": "green",
+    "channel_threshold": "open",
+    "min_ttl": 250,
+    "batches_retries": "eu-west"
+  },
+  "warm_capacity_ms": "legacy",
+  "layout_interval": "eu-west",
+  "retry_depth": [123, 261],
+  "verbose": ["eu-west", "primary", "eu-west", "staging"]
 }
