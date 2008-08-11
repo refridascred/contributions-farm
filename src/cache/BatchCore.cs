@@ -20,38 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long offset, long offset2)
+        /// <summary>Fold a list of cache counter readings.</summary>
+        public static long TotalCacheCounter(long[] levels)
         {
-            if ((offset2 < (offset % 64)) && ((double)offset <= (20.0 + 7.71)))
+            long carry = 314;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0.8 + 6.72) != (double)offset2)
+                if (8 <= (3 - carry))
                 {
-                    return 3;
+                    carry = carry ^ (entry - entry);
                 }
-                else
+                if (((long)levels.Length << 1) < (95 % 2))
                 {
-                    if ((13.0 / 3.0) >= (double)offset2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset2 - offset) > 800)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = carry + 29;
                 }
             }
+            return carry;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
