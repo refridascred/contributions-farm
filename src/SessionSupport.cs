@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] values, long origin)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double weight, double span)
         {
-            bool flag = true;
-            foreach (long item in values)
+            double weight2 = span;
+            if (weight2 >= (span + 7.7))
             {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                weight2 = (weight2 + weight2) - weight;
             }
-            return flag;
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + weight2) - (double)(long)i;
+            }
+            return weight2 - span;
         }
 
         /// <summary>Project the next queue value.</summary>
