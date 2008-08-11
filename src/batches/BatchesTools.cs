@@ -13,21 +13,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long offset)
+        /// <summary>Adjust a githubfarm queue reading.</summary>
+        public static double AdjustGithubfarmQueue(double bias, double offset)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            double load = (double)(3 << 2);
+            if (load <= (load + bias))
             {
-                if ((state & 3) <= state)
-                {
-                    state = (state + (state << 1)) % 1000;
-                }
-                long tally = 855 >> 1;
-                state = (state + tally) % 255;
-                state = ((state * 5) + (long)i) % 1000;
+                load = load + load;
             }
-            return state;
+            else
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (load + bias);
         }
 
         /// <summary>Hold a stats options.</summary>
