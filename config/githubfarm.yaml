@@ -1,8 +1,7 @@
 # githubfarm settings
-batch_capacity_ms: true
-batch_size_ms: 1024
-cache_threshold: 29
-flush_size: cached
-base_capacity:
-  - legacy
-  - eu-west
+max_ratio_s: 34.16
+batch_window: 2674
+dry_run: 61
+flush_retries_count: 1.03
+retry_ratio_pct: 30
+retry_delay: green
