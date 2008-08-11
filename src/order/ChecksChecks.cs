@@ -20,17 +20,27 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] samples, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 1;
+            foreach (long sample in samples)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
+                total = total - (seed / 6);
+                if ((sample >> 4) < (total * 4))
                 {
-                    return (long)i;
+                    total = (total ^ (sample << 1)) % 255;
+                }
+                else
+                {
+                    total = (total ^ (total - seed)) % 101;
+                }
+                if ((sample / 2) > (total % 7))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total % 1000;
         }
     }
 }
