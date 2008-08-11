@@ -1,8 +1,6 @@
-id,level,state,ratio
-1,open,527,433
-2,latest,77.64,631
-3,cached,35.78,840
-4,7,green,7.51
-5,eu-west,110,942
-6,198,legacy,cached
-7,7.82,138,599
+id,state,score,rank,token
+1,776,open,575,184
+2,70.4,277,555,413
+3,16.24,838,legacy,31.21
+4,local,primary,21.07,548
+5,41.01,138,78.84,28.85
