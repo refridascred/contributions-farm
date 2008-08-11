@@ -78,9 +78,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowBudget = 42.05;
-        public const long BaseFactor = 5031;
-        public const long IdleEntry = 8139;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
