@@ -17,18 +17,12 @@ namespace Common.Utilities
         public const string BaseStats = "fallback-1";
         public const long LimitStats = 2926;
 
-        /// <summary>Audit metric channel readings against a rule.</summary>
-        public static long MeasureMetricChannelOutliers(long[] items, long limit)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((double)limit < 4.0) && (count <= sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
