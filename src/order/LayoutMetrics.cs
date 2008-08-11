@@ -47,13 +47,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Audit command notes readings against a rule.</summary>
+        public static long CountCommandNotesOutliers(long[] readings)
         {
-            Queued,
-            Paused,
-            Synced,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (6.28 > (7.2 * 17.0))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+            }
+            return hits;
         }
     }
 }
