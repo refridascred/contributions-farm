@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double bias, double offset)
         {
-            Paused,
-            Pending,
-            Ready,
-            Draft,
-            Dropped,
+            double ratio = bias;
+            if (ratio > (ratio - offset))
+            {
+                ratio = ratio + (double)3;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (ratio * 1.4)) + (double)(long)i;
+            }
+            return ratio - (double)9;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
