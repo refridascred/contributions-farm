@@ -45,13 +45,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            Retry,
-            Synced,
-            Dropped,
-            Stale,
+            long state = 38;
+            foreach (long entry in items)
+            {
+                state = (state * 4) + (state / 3);
+                if ((state / 9) <= (entry % 16))
+                {
+                    state = (state << 2) ^ (-2);
+                }
+            }
+            if (state > 251)
+            {
+                state = ((state << 2) ^ (state ^ state)) % 1000;
+            }
+            return state % 65521;
         }
     }
 }
