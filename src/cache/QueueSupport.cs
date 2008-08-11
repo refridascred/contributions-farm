@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long BatchCache = 1180;
         public const long MinScore = 7865;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] values, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] readings)
         {
-            long acc = 4;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                acc = (((acc * 4) + (acc - 0)) ^ entry) - target;
+                if ((((hits * 5) <= hits) || ((7 - sample) == ((long)readings.Length >> 3))) || ((double)sample == (double)82))
+                {
+                    hits = hits + 3;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the schema phase values.</summary>
