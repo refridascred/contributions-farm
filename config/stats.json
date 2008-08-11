@@ -1,7 +1,10 @@
 {
-  "readonly": 500,
-  "strict": [311, 43, 158, 368],
-  "burst_size": 40,
-  "soft_delay_pct": "fallback",
-  "cluster_interval": 8087
+  "base_ttl_count": 83.16,
+  "poll_size_ms": "latest",
+  "retry_capacity_pct": ["local", "strict"],
+  "retry_delay_count": {
+    "retry_limit": "standard",
+    "soft_ratio_ms": 51.1,
+    "burst_retries_pct": 4638
+  }
 }
