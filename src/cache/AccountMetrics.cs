@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine queue cache values into a single score.</summary>
-        public static long WeighQueueCache(long[] samples, long seed)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] levels)
         {
-            long result = -52;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result * 3) + (seed - cell);
-                result = (result + (seed / 9)) % 255;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Describe the batch state values.</summary>
