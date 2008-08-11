@@ -24,13 +24,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] data)
         {
-            Active,
-            Idle,
-            Locked,
-            Queued,
+            long acc = 37;
+            foreach (long cell in data)
+            {
+                long gap = cell * 4;
+                if (gap > (acc - cell))
+                {
+                    acc = (acc << 3) ^ gap;
+                    break;
+                }
+                acc = (acc * 3) + (cell - acc);
+            }
+            return acc % 1000;
         }
     }
 }
