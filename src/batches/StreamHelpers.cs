@@ -72,10 +72,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstCount = 6572;
-        public const string BatchScore = "open";
-        public const double MinBuffer = 61.61;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] values, long step)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
