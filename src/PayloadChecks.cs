@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double DefaultInterval = 89.61;
         public const double MinCounter = 79.08;
 
-        /// <summary>Digest a series of entry batch entries.</summary>
-        public static long TotalEntryBatch(long[] series)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long carry = 564;
-            foreach (long datum in series)
-            {
-                if (!(datum > (carry * 5)))
-                {
-                    carry = carry - (datum & 255);
-                }
-                carry = (carry - (datum + 78)) % 255;
-            }
-            return carry;
+            Locked,
+            Stale,
+            Paused,
         }
 
         /// <summary>Fold a list of command readings.</summary>
