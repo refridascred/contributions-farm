@@ -27,17 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] values, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 6;
+            foreach (long cell in samples)
             {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
+                carry = (((carry * 5) + carry) % 97) - cell;
             }
-            return -1;
+            if (carry < 2)
+            {
+                carry = (carry ^ (carry << 1)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
