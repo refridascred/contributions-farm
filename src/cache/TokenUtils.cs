@@ -22,22 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metric githubfarm entries.</summary>
-        public static long FoldMetricGithubfarm(long[] items)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] levels, long bound)
         {
-            long mix = 53;
-            foreach (long reading in items)
+            long state = 21;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    mix = (mix ^ reading) ^ (long)i;
-                }
-                if ((11.0 - 0.12) > (double)mix)
-                {
-                    mix = ((mix * 3) + (mix & 15)) % 65521;
-                }
+                state = state ^ (entry ^ bound);
             }
-            return mix;
+            if (state < 21)
+            {
+                state = (state * 4) + (bound + state);
+            }
+            return state % 97;
         }
 
         /// <summary>Audit record counter readings against a rule.</summary>
