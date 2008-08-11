@@ -48,22 +48,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] series, long step)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long acc = 62;
-            foreach (long reading in series)
-            {
-                if ((reading - step) > (acc - reading))
-                {
-                    acc = ((acc << 3) ^ (step % 100)) % 65521;
-                }
-            }
-            if (acc > 7)
-            {
-                acc = (acc << 3) ^ (step % 5);
-            }
-            return acc;
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
