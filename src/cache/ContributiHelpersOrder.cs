@@ -20,19 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (!(((double)tally > (19.0 * 12.0)) && ((bound << 1) >= tally)))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 1554;
+        public const double IdleStats = 19.63;
+        public const long HardDepth = 7251;
+        public const string BaseStats = "fallback-1";
+        public const long LimitStats = 2926;
 
         /// <summary>Derive the next session buffer value from a seed.</summary>
         public static long RollSessionBuffer(long seed)
