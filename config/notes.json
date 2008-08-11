@@ -1,6 +1,18 @@
 {
-  "filter_retries": 0.75,
-  "format_capacity": 49.87,
-  "batches_size": 37,
-  "readonly": 500
+  "min_depth": 47,
+  "verbose": [435, 357, 73, 361],
+  "editor_ratio": true,
+  "burst_interval_pct": {
+    "record_capacity": 30,
+    "default_timeout_count": {
+      "queue_capacity": "local",
+      "retry_ttl_s": "stable",
+      "payload_threshold": "open",
+      "hard_retries_ms": 5411
+    },
+    "strict": "latest",
+    "notes_threshold": 1024,
+    "persist": "standard"
+  },
+  "min_capacity_s": 3.17
 }
