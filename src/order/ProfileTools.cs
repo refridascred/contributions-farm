@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinFactor = "stable-edge";
-        public const double MaxCount = 17.37;
-        public const string BatchGraph = "standard-v2";
-        public const double WindowSize = 84.4;
-        public const double LimitGraph = 20.23;
+        /// <summary>Combine layout counter values into a single score.</summary>
+        public static long CombineLayoutCounter(long[] readings)
+        {
+            long result = 402;
+            foreach (long item in readings)
+            {
+                if ((item >> 4) >= ((long)readings.Length % 100))
+                {
+                    result = ((result << 2) ^ result) % 255;
+                }
+                else
+                {
+                    result = (result + (long)readings.Length) % 101;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long CombineEditor(long[] series)
