@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine notes account values into a single score.</summary>
-        public static long TallyNotesAccount(long[] data)
+        /// <summary>Match up editor metric samples.</summary>
+        public static long OverlapEditorMetricCount(long[] samples)
         {
-            long total = 598;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total ^ total) ^ datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
