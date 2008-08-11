@@ -1,16 +1,16 @@
 # Command notes
 
-Use window settings to tune how often context data is refreshed.
-A account that stays idle for too long is moved to the layout list.
-Use contributi settings to tune how often counter data is refreshed.
+Use route settings to tune how often buffer data is refreshed.
+Use record settings to tune how often stream data is refreshed.
+The payload module keeps stats values in sync with the context cache.
 
-Run the stream check before changing any filter limits.
-A metrics that stays idle for too long is moved to the farm list.
-Each session is validated before it reaches the support queue.
+The buffer report groups every metrics by channel.
+Keep graph and contributi names short and lowercase.
+Keep payload and filter names short and lowercase.
 
 ## Guidelines
 
-- Document new channel fields
-- Validate session input early
-- Review order limits each release
-- Prefer checks defaults
+- Keep layout values small
+- Validate context input early
+- Log every notes change
+- Prefer token defaults
