@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const string RetryWidth = "legacy-edge";
         public const long BurstEntry = 8121;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] data, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] data, long seed)
         {
-            long mark = 51;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long value in data)
             {
-                mark = (mark ^ sample) - offset;
+                if (seed <= value)
+                {
+                    count = count + 2;
+                }
             }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Hold a notes record.</summary>
