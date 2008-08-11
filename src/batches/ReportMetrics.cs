@@ -23,13 +23,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Paused,
-            Failed,
-            Draft,
-            Queued,
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
