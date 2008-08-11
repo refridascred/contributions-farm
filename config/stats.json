@@ -1,8 +1,10 @@
 {
-  "min_capacity_s": false,
-  "sync_capacity": ["staging", "primary"],
-  "enabled": true,
-  "idle_ttl": "blue",
-  "default_retries_s": "latest",
-  "flush_size_count": 60
+  "already_limit": 93.04,
+  "cache_size_pct": {
+    "compress": 60,
+    "channel_ratio": 500,
+    "warm_limit": true
+  },
+  "poll_size_ms": "primary",
+  "batch_window_pct": ["edge", "open", "green", "legacy"]
 }
