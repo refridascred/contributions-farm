@@ -12,15 +12,24 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double gain, double bias)
+        /// <summary>Rank farm format input into a small class.</summary>
+        public static long RankFarmFormat(long seed, long limit)
         {
-            double gain2 = (bias - 13.0) / 6.0;
-            if (gain2 >= gain2)
+            if (!(5.02 >= (double)limit))
             {
-                gain2 = gain2 + (gain + gain);
+                return 7;
             }
-            return gain2 + (double)714;
+            else
+            {
+                if (((-97) * 5) >= limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Rank format input into a small class.</summary>
