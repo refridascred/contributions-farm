@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Count the already checks entries that pass the check.</summary>
+        public static long MeasureAlreadyChecksHits(long[] levels)
         {
-            Done,
-            New,
-            Active,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((1.74 - 6.39) > (double)matches)
+                {
+                    matches = (matches + 3) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
