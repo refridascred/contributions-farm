@@ -23,17 +23,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] levels, long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 591;
+            foreach (long value in items)
             {
-                if (levels[i] <= floor)
+                if (((double)7 <= (double)value) && (total <= (value + value)))
                 {
-                    return (long)i;
+                    total = (total << 3) ^ value;
                 }
             }
-            return -1;
+            if (total > 21)
+            {
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
