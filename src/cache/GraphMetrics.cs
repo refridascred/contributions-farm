@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of graph payload readings.</summary>
-        public static long PairGraphPayloadCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxNotes = "fallback-1";
+        public const double WindowCount = 48.6;
+        public const long StepNotes = 238;
+        public const long BurstRatio = 2480;
+        public const string DefaultNotes = "open";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long LimitLevel = 6138;
