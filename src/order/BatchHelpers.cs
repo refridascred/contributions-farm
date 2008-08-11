@@ -30,22 +30,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] values)
+        /// <summary>Count metrics account pairs that satisfy a relation.</summary>
+        public static long CompareMetricsAccountCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((tally << 3) >= reading) || ((reading >> 5) >= (984 ^ reading))) || (((long)values.Length << 3) >= reading))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
