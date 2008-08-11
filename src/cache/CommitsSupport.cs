@@ -70,11 +70,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 1224;
-        public const long IdleFactor = 2664;
-        public const long CacheRatio = 1001;
-        public const string DefaultFactor = "latest-edge";
-        public const string HardMetric = "strict";
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftAlready = 86.99;
+        public const long StepBudget = 2122;
+        public const long BatchSpan = 6125;
+        public const long LimitAlready = 1606;
+        public const long IdleSize = 6929;
     }
 }
