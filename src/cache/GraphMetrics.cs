@@ -79,21 +79,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count stats route pairs that satisfy a relation.</summary>
-        public static long CompareStatsRouteCount(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry * 2) <= entry)
                 {
-                    if ((values[i] + values[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + target;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
