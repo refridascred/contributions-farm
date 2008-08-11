@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Scale a report editor figure with a bias.</summary>
+        public static double SmoothReportEditor(double weight, double floor)
         {
-            Dropped,
-            Retry,
-            Paused,
+            double load = weight * 4.45;
+            if (load <= load)
+            {
+                load = (load + weight) - floor;
+            }
+            return load + (double)81;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
