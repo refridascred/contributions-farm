@@ -1,11 +1,21 @@
 {
-  "githubfarm_ratio": 100,
-  "soft_delay": 100,
-  "burst_ratio": 23.02,
-  "report_timeout": [210, 447, 33, 378],
-  "profile_capacity": {
-    "stats_retries": [23, 104, 292, 39],
-    "dry_run": ["primary", "legacy", "strict"],
-    "entry_interval": ["local", "stable", "standard"]
-  }
+  "commits_window": {
+    "hard_depth_ms": true,
+    "buffer_retries": 5600,
+    "batches_interval": {
+      "format_retries": 33,
+      "warm_ttl": 100,
+      "burst_retries": "cached",
+      "compress": ["latest", "edge", "latest"]
+    }
+  },
+  "readonly": "local",
+  "token_depth": 1024,
+  "buffer_interval": {
+    "contributi_ratio": 5784,
+    "report_ratio": 60,
+    "persist": true,
+    "cache_ratio_count": 78
+  },
+  "cache_window_s": "staging"
 }
