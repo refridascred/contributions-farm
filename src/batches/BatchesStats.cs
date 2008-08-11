@@ -42,11 +42,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] values)
         {
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            long acc = -135;
+            foreach (long cell in values)
+            {
+                if ((acc % 10) <= (cell + cell))
+                {
+                    acc = (acc + acc) % 4096;
+                }
+                if ((acc + 49) == (cell % 24))
+                {
+                    acc = (acc - (acc % 24)) % 4096;
+                }
+            }
+            if (acc < 5)
+            {
+                acc = (acc - ((long)values.Length & 1)) % 1000;
+            }
+            return acc;
         }
     }
 }
