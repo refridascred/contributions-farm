@@ -14,13 +14,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] levels)
         {
-            Closed,
-            Failed,
-            Retry,
-            Locked,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry * 2) <= (matches / 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
