@@ -48,15 +48,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double gain, double offset)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            double gain2 = (1.0 * 3.0) / 2.0;
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = ((gain2 - (4.0 / 7.0)) + (double)(long)i) - offset;
-            }
-            return gain2 + gain;
+            Retry,
+            Synced,
+            Dropped,
+            Stale,
         }
     }
 }
