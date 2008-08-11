@@ -30,19 +30,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate report farm readings against a bound.</summary>
-        public static bool VerifyReportFarmBounds(long[] data, long bound)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long mark = -40;
+            foreach (long reading in levels)
             {
-                if (item < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 2) + (reading / 7)) % 1000;
             }
-            return flag;
+            return mark % 65521;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
