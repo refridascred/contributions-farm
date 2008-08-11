@@ -48,39 +48,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank channel format input into a small class.</summary>
-        public static long RankChannelFormat(long bound, long bound2)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long cur = bound + bound2;
-            if (((9.8 * 14.0) <= (double)cur) || (bound2 >= (bound % 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((66 * 2) > (cur / 6)) || ((double)bound >= (8.57 - 6.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((97 ^ cur) == (cur + (-524))))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)cur < 2.0)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Compare every pair of command token readings.</summary>
