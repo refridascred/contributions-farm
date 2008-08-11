@@ -61,20 +61,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleTimeout = 78.02;
+        public const long StepMetrics = 1912;
+        public const long CacheMetrics = 7427;
+        public const long IdleWidth = 9493;
+        public const long SoftBudget = 9464;
 
         /// <summary>Look up the position of a tools cache sample.</summary>
         public static long LocateToolsCacheIndex(long[] values, long origin)
