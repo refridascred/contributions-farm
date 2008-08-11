@@ -29,19 +29,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Combine record stream values into a single score.</summary>
-        public static long ScoreRecordStream(long[] data)
-        {
-            long state = 92;
-            foreach (long reading in data)
-            {
-                state = state + (reading << 3);
-            }
-            if (state < 4)
-            {
-                state = state + (state - state);
-            }
-            return state % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseTimeout = 7110;
+        public const long HardWidth = 1719;
+        public const long SoftChannel = 2574;
+        public const string SoftDepth = "primary-edge";
+        public const long HardLevel = 1546;
     }
 }
