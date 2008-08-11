@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinLevel = 62.59;
-        public const long BaseEntry = 3273;
-        public const double HardEntry = 82.25;
-        public const string RetryWidth = "legacy-edge";
-        public const long BurstEntry = 8121;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long floor, long limit)
+        {
+            long step = floor ^ limit;
+            if ((floor <= (limit * 2)) && (floor < (step & 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((7 >> 5) < (floor - step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((17.0 + 5.71) > (double)limit) || ((72 * 4) < (floor + floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)61 <= (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long CountSessionGaps(long[] data, long seed)
