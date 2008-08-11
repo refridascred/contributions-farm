@@ -61,14 +61,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Stale,
-            Pending,
-            Dropped,
-            Idle,
-            Paused,
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
