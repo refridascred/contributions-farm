@@ -28,13 +28,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Closed,
-            Idle,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 8296;
+        public const string MaxFactor = "stable-v2";
+        public const string DefaultOrder = "alpha-edge";
+        public const long RetryOrder = 5600;
+        public const long BurstOrder = 7918;
     }
 }
