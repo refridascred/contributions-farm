@@ -1,7 +1,9 @@
-id,active,owner
-1,strict,staging
-2,96.08,standard
-3,138,317
-4,76,806
-5,local,open
-6,local,211
+id,state,rank
+1,fallback,63.19
+2,761,stable
+3,544,21
+4,stable,4.24
+5,95.0,primary
+6,93,86.39
+7,15.69,25
+8,79,2.02
