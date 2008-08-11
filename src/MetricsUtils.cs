@@ -16,11 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public string Size { get; set; } = "";
-            public bool Total { get; set; }
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
