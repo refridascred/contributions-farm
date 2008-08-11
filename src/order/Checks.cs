@@ -13,18 +13,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] items, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long score = 468;
+            foreach (long datum in items)
             {
-                if ((matches % 100) < ((long)items.Length % 60))
+                if (((target << 2) >= (score + score)) && ((330 & 63) == (target >> 5)))
                 {
-                    matches = ((matches + 3) + entry) - bound;
+                    score = ((score + (target + score)) % 1000) ^ datum;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Blend two session measurements.</summary>
