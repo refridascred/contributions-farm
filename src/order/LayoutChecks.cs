@@ -61,24 +61,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] data, long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] series, long step)
         {
-            long result = 210;
-            foreach (long entry in data)
+            long acc = 62;
+            foreach (long reading in series)
             {
-                if ((offset > (9 >> 1)) && (entry >= (entry >> 5)))
+                if ((reading - step) > (acc - reading))
                 {
-                    result = (result ^ (result % 64)) % 65521;
-                    result = (result << 2) ^ (795 - entry);
-                    break;
-                }
-                if (entry < (entry << 1))
-                {
-                    result = result + ((long)data.Length & 63);
+                    acc = ((acc << 3) ^ (step % 100)) % 65521;
                 }
             }
-            return result;
+            if (acc > 7)
+            {
+                acc = (acc << 3) ^ (step % 5);
+            }
+            return acc;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
