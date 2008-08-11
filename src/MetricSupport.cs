@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric contributi entries that pass the check.</summary>
-        public static long AuditMetricContributiOutliers(long[] series)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample != (double)matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
