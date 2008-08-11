@@ -59,9 +59,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 2995;
-        public const long BatchTimeout = 6181;
-        public const long HardInterval = 599;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
