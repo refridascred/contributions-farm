@@ -1,25 +1,10 @@
 # entry settings
-max_delay:
-  audit:
-    burst_window_pct: eu-west
-    audit: 1024
-    stream_timeout:
-      - 170
-      - 363
-    warm_capacity_pct: 15.12
-    soft_ratio:
-      - eu-west
-      - fallback
-      - cached
-    stream_interval: edge
-  metric_delay: eu-west
-  max_ratio: fallback
-  warm_capacity_count: 500
-compress: 250
-min_depth: latest
-batch_capacity_s:
-  - 27
-  - 500
-  - 270
-  - 460
-sync_depth_s: cached
+stats_retries: 68.87
+readonly: 30
+batch_delay_ms:
+  audit: standard
+  burst_interval_ms: true
+  readonly: 1024
+  max_limit: 2155
+metrics_limit: false
+dry_run: true
