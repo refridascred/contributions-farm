@@ -15,21 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = mark + (origin ^ 2);
-                if (((56 + mark) == (mark - mark)) && ((mark % 12) == (origin & 63)))
-                {
-                    mark = mark ^ origin;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCluster = "cached";
+        public const long IdleFactor = 6610;
+        public const string HardCluster = "open-1";
+        public const string IdleCluster = "legacy-edge";
+        public const long HardInterval = 9002;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
