@@ -34,19 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double ratio, double span)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] samples, long limit)
         {
-            double scale = (double)(9 - 45);
-            if (scale >= (double)5)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + (double)959;
+                if ((samples[i] > limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (16.0 - span);
-            }
-            return scale - ratio;
+            return -1;
         }
 
         /// <summary>Describe the notes status values.</summary>
