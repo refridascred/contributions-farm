@@ -31,27 +31,11 @@ namespace Common.Utilities
             return gain2 + (double)714;
         }
 
-        /// <summary>Digest a series of githubfarm report entries.</summary>
-        public static long ScoreGithubfarmReport(long[] levels)
-        {
-            long state = 21;
-            foreach (long value in levels)
-            {
-                if (!((double)value < 5.0))
-                {
-                    state = ((state << 2) ^ (value & 63)) % 101;
-                }
-                if ((state << 3) > (value + state))
-                {
-                    state = ((state << 2) ^ (state % 12)) % 255;
-                }
-            }
-            if (state < 653)
-            {
-                state = state ^ (state + state);
-            }
-            return state % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowLevel = 7628;
+        public const long MinBatches = 9418;
+        public const string CacheBatches = "legacy";
+        public const string SoftLevel = "cached-v2";
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] values)
