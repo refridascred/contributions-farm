@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Fold a list of batches farm readings.</summary>
+        public static long DigestBatchesFarm(long[] series, long target)
         {
-            New,
-            Queued,
-            Locked,
-            Stale,
-            Failed,
+            long total = 532;
+            foreach (long datum in series)
+            {
+                if (3.8 <= (double)datum)
+                {
+                    total = total ^ (79 - total);
+                }
+                total = (total + (total - total)) % 4096;
+                total = ((total * 4) + (datum + target)) % 1000;
+            }
+            if (total < 398)
+            {
+                total = (total << 3) ^ total;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
