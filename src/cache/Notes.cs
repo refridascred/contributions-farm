@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit window already readings against a rule.</summary>
-        public static long CountWindowAlreadyMatches(long[] levels, long origin)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((seen - seen) >= (739 >> 4)))
-                {
-                    seen = ((seen + 1) - reading) - origin;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
