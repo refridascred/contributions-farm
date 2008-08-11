@@ -26,13 +26,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Done,
-            Pending,
-            Draft,
-            Queued,
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a window metrics sample.</summary>
