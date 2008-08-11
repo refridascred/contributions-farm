@@ -47,13 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] readings, long seed)
         {
-            public string Offset { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of payload graph readings.</summary>
