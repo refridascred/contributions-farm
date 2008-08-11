@@ -23,22 +23,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many metrics route samples are out of range.</summary>
-        public static long CountMetricsRouteMatches(long[] samples, long target)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((tally >> 4) < target)
-                {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            Synced,
+            Stale,
         }
     }
 }
