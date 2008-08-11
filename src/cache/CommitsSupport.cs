@@ -70,22 +70,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (((reading % 3) < bound) || ((bound >> 2) >= (bound >> 3)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 1224;
+        public const long IdleFactor = 2664;
+        public const long CacheRatio = 1001;
+        public const string DefaultFactor = "latest-edge";
+        public const string HardMetric = "strict";
     }
 }
