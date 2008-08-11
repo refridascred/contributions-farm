@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] values)
+        /// <summary>Audit account contributi readings against a rule.</summary>
+        public static long TallyAccountContributiGaps(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (((double)seen > (double)cell) || ((1 % 2) >= seen))
+                if (!(((sample - sample) >= (bound + bound)) || (sample > (bound - 142))))
                 {
-                    seen = seen + 2;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
