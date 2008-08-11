@@ -29,38 +29,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a buffer report pair into a bucket.</summary>
-        public static long ClassifyBufferReport(long offset, long limit)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            if (offset < (offset >> 3))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((10.0 + 2.8) >= (double)limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset > (offset * 2))
+                    if ((samples[i] - samples[j]) != 2)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit & 127) > (offset + offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next buffer value.</summary>
