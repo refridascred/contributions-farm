@@ -36,18 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit queue stream readings against a rule.</summary>
-        public static long AuditQueueStreamGaps(long[] items)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((hits % 10) > (hits & 1))
+                if ((entry * 2) > count)
                 {
-                    hits = (hits + 2) + sample;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
