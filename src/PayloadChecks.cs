@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] series)
         {
-            Paused,
-            Idle,
-            Draft,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
