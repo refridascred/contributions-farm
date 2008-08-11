@@ -1,9 +1,11 @@
 {
-  "max_delay_pct": true,
-  "base_interval_pct": {
-    "min_limit": 98.14,
-    "schema_interval": ["fallback", "open", "primary", "cached"],
-    "retry_window_s": 2850
+  "checks_retries": {
+    "payload_delay": "green",
+    "min_capacity": "legacy",
+    "audit": true,
+    "base_depth_count": "standard"
   },
-  "hard_retries_s": 1999
+  "notes_window": ["legacy", "green"],
+  "flush_timeout": "standard",
+  "burst_ttl_pct": 1342
 }
