@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const long RetryMetrics = 6991;
         public const double DefaultSpan = 53.68;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowScore = 821;
-        public const double StepEntry = 78.58;
-        public const double MinEntry = 15.58;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!(((long)i & 7) == (carry & 1)))
+                {
+                    carry = (carry - (carry - carry)) % 97;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyOutliers(long[] levels, long step)
