@@ -49,12 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstBudget = "cached-edge";
+        public const long SoftLevel = 9243;
+        public const long IdleLevel = 4487;
+        public const long StepRatio = 4475;
     }
 }
