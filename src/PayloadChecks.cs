@@ -52,19 +52,14 @@ namespace Common.Utilities
             return ratio - (double)669;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double bias, double bias2)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            double load = (bias2 - 0.3) - (double)3;
-            if (load < bias)
-            {
-                load = load - 4.63;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (double)(-3)) + (double)(long)i;
-            }
-            return load + bias2;
+            Active,
+            Retry,
+            Paused,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
