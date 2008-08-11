@@ -36,23 +36,38 @@ namespace Common.Utilities
         public const double BurstDepth = 81.22;
         public const string HardWindow = "primary-1";
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double bias, double bias2)
+        /// <summary>Rank token batch input into a small class.</summary>
+        public static long RankTokenBatch(long floor, long origin)
         {
-            double weight = 7.14;
-            if (weight < (bias2 - bias2))
+            if (floor > ((-27) + origin))
             {
-                weight = (weight - weight) + bias;
+                return 7;
             }
             else
             {
-                weight = weight - (double)12;
+                if ((floor - floor) == (865 >> 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((origin ^ floor) < (1 / 7)) && (origin >= (floor % 60)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (floor > (origin - origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + bias2) + (double)(long)i;
-            }
-            return weight + bias2;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
