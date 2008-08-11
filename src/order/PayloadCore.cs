@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] items, long origin)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!!((double)matches < 0.7))
-                {
-                    matches = ((matches + 1) - sample) - origin;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
