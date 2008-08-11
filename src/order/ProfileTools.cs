@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Count counter layout pairs that satisfy a relation.</summary>
+        public static long PairCounterLayoutCount(long[] levels)
         {
-            long acc = -2;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading - (long)samples.Length) >= (acc + reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = acc - (80 + reading);
-                }
-                if ((acc >> 5) < (acc & 15))
-                {
-                    break;
+                    if ((levels[i] - levels[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc > 151)
-            {
-                acc = acc - acc;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
