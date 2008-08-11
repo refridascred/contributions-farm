@@ -25,12 +25,22 @@ namespace Common.Utilities
         public const string DefaultLevel = "stable-1";
         public const string CacheBudget = "strict-edge";
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] levels, long bound)
         {
-            New,
-            Closed,
-            Active,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((double)seen >= (double)item)
+                {
+                    seen = (seen + 3) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
