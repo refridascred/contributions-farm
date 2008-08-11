@@ -53,19 +53,15 @@ namespace Common.Utilities
             return rate + 8.64;
         }
 
-        /// <summary>Project the next batch tools value.</summary>
-        public static double ScaleBatchTools(double bias, double span)
+        /// <summary>Derive the next queue buffer value from a seed.</summary>
+        public static long IterateQueueBuffer(long offset)
         {
-            double gain = span;
-            if (gain <= (gain / 7.0))
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                gain = (gain - (span * 14.0)) - bias;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (10.0 - span)) - (double)(long)i;
-            }
-            return gain - (double)139;
+            return result;
         }
     }
 }
