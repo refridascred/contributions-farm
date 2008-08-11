@@ -27,14 +27,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Queued,
-            Ready,
-            New,
-            Done,
-            Locked,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseBudget = 494;
+        public const long MinMetrics = 5073;
+        public const string BurstRatio = "staging-edge";
+        public const long MinRatio = 1160;
     }
 }
