@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit entry profile readings against a rule.</summary>
-        public static long MeasureEntryProfileHits(long[] data)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((seen + 930) > (item & 7)) && (((item - seen) < (seen & 7)) && (seen > (item + item))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit batch notes readings against a rule.</summary>
