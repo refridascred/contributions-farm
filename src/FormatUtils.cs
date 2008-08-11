@@ -36,26 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] levels)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] data)
         {
-            long anchor = 8;
-            foreach (long cell in levels)
+            long mark = 89;
+            foreach (long item in data)
             {
-                if ((anchor + anchor) >= (cell << 2))
+                if ((double)item >= 1.8)
                 {
-                    anchor = anchor + (anchor % 3);
-                }
-                else
-                {
-                    anchor = anchor ^ (cell % 5);
-                }
-                if ((anchor << 3) > anchor)
-                {
-                    break;
+                    mark = mark + (item + item);
                 }
             }
-            return anchor % 65521;
+            if (mark > 44)
+            {
+                mark = (mark << 2) ^ 1;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
