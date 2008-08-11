@@ -54,11 +54,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstBudget = 1700;
-        public const long CacheSpan = 5739;
-        public const long HardFactor = 896;
-        public const double WindowNotes = 1.54;
-        public const long StepSpan = 2643;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
     }
 }
