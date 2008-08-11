@@ -22,25 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cache contributi input into a small class.</summary>
-        public static long ClassifyCacheContributi(long limit, long step)
-        {
-            if ((double)limit > (double)(-10))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step << 3) == (61 >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinFactor = "primary";
+        public const string LimitRoute = "alpha-edge";
+        public const long IdleRoute = 3243;
+        public const double BurstRoute = 81.33;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long WeighCluster(long[] series)
