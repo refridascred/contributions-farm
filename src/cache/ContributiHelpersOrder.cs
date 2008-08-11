@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate batches token samples.</summary>
-        public static long ScoreBatchesToken(long[] data)
-        {
-            long score = 1;
-            foreach (long sample in data)
-            {
-                score = (score ^ (sample + sample)) % 1000;
-            }
-            if (score > 961)
-            {
-                score = (score + (149 / 2)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 3673;
+        public const long StepFarm = 321;
+        public const string CacheRatio = "fallback";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardStats = 1554;
