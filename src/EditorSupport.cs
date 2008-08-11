@@ -80,15 +80,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double gain, double bias)
+        /// <summary>Look up the position of a tools cache sample.</summary>
+        public static long LocateToolsCacheIndex(long[] values, long origin)
         {
-            double weight = (double)(159 + (-6));
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = (weight - (double)(long)i) - gain;
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return weight + bias;
+            return -1;
         }
     }
 }
