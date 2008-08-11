@@ -39,26 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] readings, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] data)
         {
-            long result = 53;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((value % 7) >= (result / 5))
+                if ((double)hits <= (9.21 + 1.0))
                 {
-                    result = ((result << 2) ^ result) % 4096;
+                    hits = (hits + 2) ^ datum;
                 }
-                if ((double)value > (double)floor)
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (result < (-137))
-            {
-                result = ((result << 2) ^ floor) % 255;
-            }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
