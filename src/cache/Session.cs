@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const double WindowInterval = 54.62;
         public const string MinScore = "standard-v2";
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string CacheFactor = "local-edge";
+        public const long BurstScore = 2341;
+        public const string BaseTimeout = "strict";
+        public const string CacheScore = "local-1";
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long MatchMetricCount(long[] series)
