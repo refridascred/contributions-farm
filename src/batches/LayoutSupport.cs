@@ -15,15 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double rate, double bias)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            double bias2 = (double)(43 + 77);
-            if (bias2 > (rate / 4.0))
-            {
-                bias2 = bias2 - (rate + bias);
-            }
-            return bias2 + bias;
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a layout options.</summary>
