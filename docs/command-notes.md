@@ -1,14 +1,16 @@
 # Command notes
 
-When a metrics fails, the githubfarm handler retries a few times before giving up.
-Run the profile check before changing any batch limits.
+The stream module keeps checks values in sync with the report cache.
+Keep profile and format names short and lowercase.
+The githubfarm report groups every stream by buffer.
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-The already helpers are pure functions, so they are safe to call from any thread.
+The stats module keeps command values in sync with the report cache.
+Run the support check before changing any support limits.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new session fields
-- Review batches limits each release
-- Keep schema values small
-- Validate layout input early
+- Keep metrics values small
+- Prefer record defaults
+- Document new entry fields
+- Validate farm input early
