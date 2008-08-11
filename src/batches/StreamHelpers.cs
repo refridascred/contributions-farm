@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((offset > (sum >> 4)) && (sum <= (offset / 9)))
-                {
-                    sum = (sum ^ (sum ^ offset)) % 255;
-                }
-                if ((3.53 / 7.0) < (double)offset)
-                {
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseLevel = "alpha-1";
+        public const string BurstBudget = "cached-1";
+        public const string IdleGithubfarm = "local";
+        public const long BatchGithubfarm = 362;
+        public const long CacheGithubfarm = 1926;
 
         /// <summary>Measure how many batch profile samples are out of range.</summary>
         public static long AuditBatchProfileHits(long[] samples)
