@@ -89,18 +89,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] data)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (((double)(long)data.Length >= 6.51) && ((7 * 2) >= seen))
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
+            New,
+            Pending,
+            Failed,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
