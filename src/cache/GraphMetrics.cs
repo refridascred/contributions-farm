@@ -42,31 +42,21 @@ namespace Common.Utilities
         public const long BaseFormat = 6834;
         public const long CacheDepth = 3714;
 
-        /// <summary>Classify a filter order pair into a bucket.</summary>
-        public static long GradeFilterOrder(long bound, long offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] readings)
         {
-            if (offset <= (bound + offset))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound >> 5) >= (285 * 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)81 <= (double)bound) || ((439 / 5) < (offset << 3)))
+                    if ((readings[i] + readings[j]) == 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
