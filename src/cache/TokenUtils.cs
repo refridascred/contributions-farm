@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double scale, double bias)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] items, long seed)
         {
-            double weight = 10.0;
-            if (weight > scale)
+            long acc = -6;
+            foreach (long sample in items)
             {
-                weight = (weight - 1.7) + bias;
+                if ((acc >> 1) <= ((long)items.Length % 24))
+                {
+                    acc = (acc - (226 - 958)) ^ sample;
+                }
+                else
+                {
+                    acc = acc + (seed & 127);
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (acc < 652)
             {
-                weight = (weight + (9.34 * 16.0)) + (double)(long)i;
+                acc = ((acc * 2) + (acc << 3)) % 255;
             }
-            return weight + weight;
+            return acc % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
