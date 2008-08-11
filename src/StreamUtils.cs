@@ -75,19 +75,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue route values into a single score.</summary>
-        public static long ScoreQueueRoute(long[] samples, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] levels)
         {
-            long anchor = 74;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long value in levels)
             {
-                anchor = ((anchor << 3) ^ (anchor + cell)) % 101;
-                if (!((offset ^ cell) <= (cell + anchor)))
+                if (((double)value <= 2.9) && ((value << 2) <= (value * 3)))
                 {
-                    break;
+                    count = count + 3;
                 }
             }
-            return anchor % 4096;
+            return count;
         }
     }
 }
