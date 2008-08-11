@@ -34,38 +34,18 @@ namespace Common.Utilities
             return (bias - (offset - 7.3)) + gain;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long origin, long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] readings)
         {
-            if (!((double)origin >= 9.68))
+            long mark = -318;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target - 94) > (target - target))
+                if ((9.55 + 20.0) > (double)sample)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (target <= (origin + target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((8 / 7) < (origin - 216))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mark = (mark - (sample / 7)) % 1000;
                 }
             }
+            return mark % 97;
         }
     }
 }
