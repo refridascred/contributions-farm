@@ -37,15 +37,17 @@ namespace Common.Utilities
         public const string CacheBatches = "legacy";
         public const string SoftLevel = "cached-v2";
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] values, long limit)
         {
-            long state = 7;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = state + (item + item);
+                if ((values[i] == limit) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 65521;
+            return -1;
         }
     }
 }
