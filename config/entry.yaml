@@ -1,21 +1,29 @@
 # entry settings
-default_interval_s: edge
-persist: staging
-enabled:
-  sync_capacity_s:
-    cache_delay: 34.44
-    enabled: stable
-    audit: false
-  hard_window: 30
-  cluster_retries:
-    default_retries: 1360
-    verbose:
-      - 59
-      - 87
-    soft_limit_count: edge
-    sync_ttl_ms:
-      - edge
-      - green
-      - standard
-  audit: 20
-  warm_threshold_ms: 9432
+contributi_window: 1063
+compress:
+  - 84
+  - 270
+  - 333
+soft_size_count:
+  - 433
+  - 61
+default_ratio:
+  sync_ttl: 30
+  cache_delay: stable
+  enabled: true
+  default_depth_s:
+    - 143
+    - 280
+    - 254
+  base_ratio_count:
+    persist: staging
+    record_limit: primary
+    strict: 32
+    poll_ratio:
+      - strict
+      - stable
+      - primary
+      - cached
+    hard_ratio_count: 28.51
+    counter_delay: 100
+min_interval_pct: strict
