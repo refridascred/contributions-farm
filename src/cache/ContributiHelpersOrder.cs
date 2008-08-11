@@ -27,18 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] items)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double ratio, double span)
         {
-            long result = 4;
-            foreach (long reading in items)
+            double bias = ratio;
+            for (int i = 0; i < 4; i++)
             {
-                if ((reading / 7) <= (58 * 2))
-                {
-                    result = result ^ (reading & 127);
-                }
+                bias = (bias + (bias - bias)) + (double)(long)i;
             }
-            return result;
+            return bias - span;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
