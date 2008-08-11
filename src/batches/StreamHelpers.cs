@@ -36,15 +36,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many stream stats samples are out of range.</summary>
-        public static long TallyStreamStatsOutliers(long[] samples, long origin)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] data)
         {
             long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.36 - 7.7) >= (double)origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 3) - sample;
+                    if ((data[i] - data[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
