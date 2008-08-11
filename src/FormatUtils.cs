@@ -48,22 +48,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] data)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long limit, long floor)
         {
-            long mark = 89;
-            foreach (long item in data)
+            long diff = limit + floor;
+            if ((double)limit <= (15.0 / 6.0))
             {
-                if ((double)item >= 1.8)
+                return 1;
+            }
+            else
+            {
+                if (!((diff + 1) < (8 + 347)))
                 {
-                    mark = mark + (item + item);
+                    return 5;
+                }
+                else
+                {
+                    if (((floor / 6) > (2 + floor)) && ((double)limit == (3.0 * 3.7)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor + floor) >= (628 * 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (mark > 44)
-            {
-                mark = (mark << 2) ^ 1;
-            }
-            return mark;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
