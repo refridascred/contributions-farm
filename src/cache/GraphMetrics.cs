@@ -35,13 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Failed,
-            Synced,
-            Active,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseStats = "strict-1";
+        public const long BatchStats = 3807;
+        public const long DefaultStats = 7167;
+        public const long MaxStats = 5073;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long CompareStreamCount(long[] readings)
