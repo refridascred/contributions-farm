@@ -57,12 +57,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] samples)
         {
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next channel value.</summary>
