@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public string Owner { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 556;
+        public const string WindowScore = "stable-edge";
+        public const double IdleCache = 34.34;
+        public const long DefaultCache = 2989;
+        public const double BurstSize = 36.35;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ProjectLayout(double weight, double span)
