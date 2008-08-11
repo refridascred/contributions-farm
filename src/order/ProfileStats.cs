@@ -24,24 +24,15 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Grade a stats notes value against two limits.</summary>
-        public static long RankStatsNotes(long seed, long origin)
+        /// <summary>Project the next notes metrics value.</summary>
+        public static double ProjectNotesMetrics(double scale, double floor)
         {
-            if (((origin & 255) != (97 - origin)) || ((double)seed > 3.64))
+            double ratio = floor;
+            if (ratio <= ratio)
             {
-                return 6;
+                ratio = ratio + scale;
             }
-            else
-            {
-                if (2 > seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return ratio - (double)6;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
