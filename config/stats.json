@@ -1,5 +1,11 @@
 {
-  "warm_limit": 15.9,
-  "cache_ratio_pct": false,
-  "persist": "staging"
+  "strict": "local",
+  "poll_ttl_s": "eu-west",
+  "audit": ["latest", "open"],
+  "idle_timeout_pct": "strict",
+  "verbose": {
+    "enabled": "primary",
+    "sync_window_count": 30,
+    "min_retries_count": "latest"
+  }
 }
