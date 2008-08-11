@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] data)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] series)
         {
-            long anchor = 1;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long value in series)
             {
-                anchor = ((anchor - 101) % 65521) ^ item;
+                if (value >= count)
+                {
+                    count = count + 2;
+                }
             }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
