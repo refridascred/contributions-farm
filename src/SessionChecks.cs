@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] values, long target)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Synced,
+            Draft,
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
