@@ -1,15 +1,6 @@
 # entry settings
-soft_limit_count: open
-verbose: blue
-enabled:
-  cache_delay_pct: 30
-  command_depth: stable
-  order_ratio: stable
-  persist: 27
-  cache_ratio_count: 58
-readonly:
-  - standard
-  - primary
-  - eu-west
-  - primary
-sync_depth_ms: 60
+strict: 30
+persist: false
+account_delay: false
+base_timeout_pct: fallback
+warm_limit_s: 43
