@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of tools support readings.</summary>
-        public static long ScoreToolsSupport(long[] readings, long seed)
+        /// <summary>Classify a editor context pair into a bucket.</summary>
+        public static long SortEditorContext(long offset, long offset2)
         {
-            long state = 896;
-            foreach (long reading in readings)
+            if (((5.78 / 5.0) >= (double)offset2) && ((offset / 3) == (offset2 + offset2)))
             {
-                state = (state - state) + seed;
-                if (((double)reading <= (6.6 * 2.1)) && ((reading + state) <= (state ^ 9)))
+                return 0;
+            }
+            else
+            {
+                if ((1.0 / 5.0) > (3.8 * 6.4))
                 {
-                    state = (state * 5) + (state + state);
+                    return 1;
+                }
+                else
+                {
+                    if ((offset2 >> 4) > offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((5 + offset) != (offset2 % 100))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
