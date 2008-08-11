@@ -37,24 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank commits schema input into a small class.</summary>
-        public static long RankCommitsSchema(long origin, long origin2)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] samples, long limit)
         {
-            if (origin <= (origin2 & 7))
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((4.0 - 5.2) != (double)origin) && ((double)origin > (5.4 / 5.0)))
+                if (entry > (entry + matches))
                 {
-                    return 5;
+                    matches = (matches + 3) + limit;
                 }
                 else
                 {
-                    return 1;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
