@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] readings, long step)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] data)
         {
-            long mark = 30;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)step <= (0.5 - 2.7)) || ((21 * 3) != (step & 255)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (302 << 1)) - entry;
+                    if ((data[i] - data[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
