@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] readings, long bound)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long anchor = 68;
-            foreach (long cell in readings)
-            {
-                if (((bound % 12) < (cell << 2)) || ((anchor - bound) != (bound ^ bound)))
-                {
-                    anchor = ((anchor << 3) ^ (669 >> 2)) % 65521;
-                }
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            Active,
+            Stale,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
