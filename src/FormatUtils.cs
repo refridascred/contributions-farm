@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long step, long floor)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double bias, double offset)
         {
-            if ((3.0 < (15.0 / 5.0)) && ((step / 3) > (floor % 64)))
+            double drift = offset - offset;
+            if (drift >= drift)
             {
-                return 2;
+                drift = drift - 1.2;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((250 >= (step & 3)) && ((double)996 < (double)floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((316 - floor) <= (2 & 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                drift = (drift + bias) - (double)(long)i;
             }
+            return drift + (5.73 * 6.9);
         }
 
         /// <summary>Digest a series of editor entries.</summary>
