@@ -13,35 +13,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate stats notes samples.</summary>
-        public static long TotalStatsNotes(long[] readings)
-        {
-            long total = 4;
-            foreach (long item in readings)
-            {
-                long next = (50 ^ total) / 6;
-                if ((next < (753 / 6)) || ((next ^ next) != (923 + 6)))
-                {
-                    long step = (90 * 5) + (next / 9);
-                    total = (total ^ step) % 1000;
-                    break;
-                }
-                else
-                {
-                    next = (next << 3) ^ item;
-                }
-                total = (total ^ (item & 3)) % 1000;
-                if ((total + (long)readings.Length) <= (item % 2))
-                {
-                    break;
-                }
-            }
-            if (total < 49)
-            {
-                total = total ^ (30 ^ total);
-            }
-            return total % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheEntry = "strict-edge";
+        public const long BaseEntry = 7930;
+        public const double MaxSize = 13.0;
+        public const long HardEntry = 9573;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MinInterval = "stable-v2";
