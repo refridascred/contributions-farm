@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] data, long offset)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next filter value.</summary>
