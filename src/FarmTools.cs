@@ -40,18 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric payload entries that pass the check.</summary>
-        public static long MeasureMetricPayloadMatches(long[] data, long floor)
+        /// <summary>Measure how many route stream samples are out of range.</summary>
+        public static long AuditRouteStreamMatches(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (((floor / 6) > cell) && (((double)floor <= (9.2 / 5.0)) && ((hits / 7) != (hits * 5))))
+                if (((71 & 3) >= ((long)readings.Length - floor)) || (floor >= matches))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 2) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
