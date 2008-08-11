@@ -68,19 +68,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] series)
         {
             long seen = 0;
-            foreach (long value in samples)
+            foreach (long datum in series)
             {
-                if ((double)seen > (8.5 + 11.0))
+                if ((datum / 4) > datum)
                 {
-                    seen = (seen + 1) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
