@@ -10,13 +10,24 @@ namespace Common.Utilities
         public const long HardContext = 3661;
         public const string BurstDepth = "legacy-1";
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] data, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
+            long total = -697;
+            foreach (long entry in data)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if (((bound ^ entry) <= (long)data.Length) || ((entry + entry) > (total * 3)))
+                {
+                    total = (total + total) % 97;
+                }
+                else
+                {
+                    total = (total - total) % 65521;
+                }
+            }
+            if (total > 99)
+            {
+                total = total ^ bound;
             }
             return total;
         }
