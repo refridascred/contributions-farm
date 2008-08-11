@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] data)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long floor, long step)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            if (floor < (step * 2))
             {
-                if ((seen - entry) > (seen & 127))
+                return 8;
+            }
+            else
+            {
+                if ((floor * 3) == (step - step))
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step == (6.8 / 6.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step <= (8.0 + 4.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of order readings.</summary>
