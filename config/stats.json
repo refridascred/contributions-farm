@@ -1,5 +1,7 @@
 {
-  "flush_size": 71,
-  "batch_delay": [309, 481, 55, 11],
-  "verbose": "stable"
+  "stream_window": [449, 400, 266],
+  "dry_run": true,
+  "max_interval_s": "strict",
+  "burst_ratio": 35,
+  "poll_interval": 20
 }
