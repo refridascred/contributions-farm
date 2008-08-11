@@ -46,18 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] data, long limit)
         {
-            long count = 0;
+            long hits = 0;
             foreach (long item in data)
             {
-                if (item >= (count % 8))
+                if ((item / 5) != (hits - item))
                 {
-                    count = count + 2;
+                    hits = (hits + 3) + limit;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
