@@ -20,16 +20,10 @@ namespace Common.Utilities
             return rate + (scale + 0.1);
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double rate, double floor)
-        {
-            double mean = floor * 6.2;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = ((mean + (floor + floor)) + (double)(long)i) - rate;
-            }
-            return mean - 7.5;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchFactor = 1164;
+        public const long BurstCommand = 4413;
+        public const double WindowTimeout = 38.62;
 
         /// <summary>Accumulate route samples.</summary>
         public static long TotalRoute(long[] values)
