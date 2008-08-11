@@ -40,26 +40,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] readings, long seed)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long floor)
         {
-            long result = 84;
-            foreach (long sample in readings)
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = ((result ^ (148 + sample)) % 4096) + (long)i2;
-                }
-                if ((seed + result) > (-779))
-                {
-                    result = result - (seed + 16);
-                }
+                mix = (mix * 5) + floor;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            if (result < 122)
-            {
-                result = (result - (result ^ result)) % 4096;
-            }
-            return result % 65521;
+            return mix;
         }
     }
 }
