@@ -1,10 +1,5 @@
 # entry settings
-verbose:
-  - 406
-  - 253
-  - 268
-  - 444
-session_ttl: true
-cache_delay: 15.48
-base_capacity_count: 834
-counter_ttl: 37.69
+warm_limit_count: fallback
+hard_timeout_s: 60
+support_depth: true
+record_timeout: stable
