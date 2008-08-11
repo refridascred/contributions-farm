@@ -14,34 +14,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate stats support samples.</summary>
-        public static long WeighStatsSupport(long[] samples)
+        /// <summary>Match up cluster batches samples.</summary>
+        public static long MatchClusterBatchesCount(long[] readings)
         {
-            long mix = 4;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value + mix) == (45 & 7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix - (mix % 64)) % 1000;
-                }
-                if (value > (35 / 2))
-                {
-                    mix = (mix ^ mix) % 255;
-                }
-                if ((double)mix > (double)value)
-                {
-                    mix = mix + 389;
-                }
-                else
-                {
-                    mix = (mix ^ (value & 1)) % 65521;
+                    if ((readings[i] + readings[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a cluster options.</summary>
