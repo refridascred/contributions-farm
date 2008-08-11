@@ -49,21 +49,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 6;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark + 42) % 1000) + (long)i;
+                    mark = (mark + (step * 5)) % 1000;
+                }
+                if (!((step * 5) < (entry / 2)))
+                {
+                    mark = (mark + (step + entry)) % 101;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
