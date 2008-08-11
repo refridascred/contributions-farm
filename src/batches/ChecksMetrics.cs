@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format commits readings against a rule.</summary>
-        public static long CountFormatCommitsGaps(long[] samples)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((1 / 5) < count)
-                {
-                    count = (count + 1) - value;
-                }
-            }
-            return count;
+            Pending,
+            Paused,
+            Synced,
+            Idle,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
