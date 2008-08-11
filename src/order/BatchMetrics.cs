@@ -44,13 +44,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long bound, long bound2)
         {
-            Stale,
-            Done,
-            Pending,
-            Idle,
+            long offset = bound - bound2;
+            if ((double)bound < 16.0)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound2 + bound) < (offset + bound2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a context options.</summary>
