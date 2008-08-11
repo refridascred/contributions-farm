@@ -55,21 +55,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
