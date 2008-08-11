@@ -23,38 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long floor, long seed)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            if ((double)seed < (7.96 / 8.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed > (3.4 * 6.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((11.0 - 14.0) >= (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor + seed) < floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Dropped,
+            Ready,
+            Closed,
+            Synced,
         }
 
         /// <summary>Count the githubfarm window entries that pass the check.</summary>
