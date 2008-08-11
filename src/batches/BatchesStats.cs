@@ -43,38 +43,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cluster route input into a small class.</summary>
-        public static long BucketClusterRoute(long floor, long limit)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            if ((7.27 - 6.1) < (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor >= (7.16 * 20.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor << 3) <= (floor % 24))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor + limit) >= limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            New,
+            Paused,
+            Active,
         }
     }
 }
