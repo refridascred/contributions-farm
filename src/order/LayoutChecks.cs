@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] readings, long seed)
         {
-            Stale,
-            Paused,
-            Closed,
+            long sum = 53;
+            foreach (long item in readings)
+            {
+                sum = ((sum ^ (sum + seed)) % 97) + item;
+            }
+            if (sum < (-5))
+            {
+                sum = (sum + (76 << 2)) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
