@@ -49,12 +49,18 @@ namespace Common.Utilities
         public const string BatchContributi = "latest-edge";
         public const long BaseContributi = 5573;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] data)
         {
-            Retry,
-            Synced,
-            Closed,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (((double)(long)data.Length >= 6.51) && ((7 * 2) >= seen))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
