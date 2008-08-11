@@ -34,20 +34,21 @@ namespace Common.Utilities
             return (bias - (offset - 7.3)) + gain;
         }
 
-        /// <summary>Derive the next format editor value from a seed.</summary>
-        public static long StepFormatEditor(long floor)
+        /// <summary>Count queue record pairs that satisfy a relation.</summary>
+        public static long PairQueueRecordCount(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry - carry;
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry + 4) % 97) + (long)i2;
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return matches;
         }
     }
 }
