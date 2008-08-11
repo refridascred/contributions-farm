@@ -52,15 +52,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] levels, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (tally <= (847 + tally))
+                {
+                    tally = ((tally + 3) + reading) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the batch phase values.</summary>
