@@ -36,22 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] readings, long target)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] values, long step)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((sample & 63) >= (sample % 8))
+                if (cell <= step)
                 {
-                    count = (count + 3) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
