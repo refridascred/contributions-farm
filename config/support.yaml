@@ -1,4 +1,15 @@
 # support settings
-audit: 0.11
-persist: false
-cache_retries_s: false
+base_timeout_s:
+  - 450
+  - 13
+batches_depth: 71.13
+audit: blue
+hard_capacity:
+  checks_ttl: 8556
+  sync_ratio_pct:
+    - 466
+    - 348
+    - 64
+  support_timeout: 19
+  burst_capacity: 5999
+sync_depth_pct: stable
