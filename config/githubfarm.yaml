@@ -1,5 +1,10 @@
 # githubfarm settings
-hard_interval_pct: green
-persist: 5264
-compress: 75.0
-command_depth: 68.51
+base_ttl_pct: 7515
+enabled: legacy
+channel_ttl: stable
+batch_retries: 100
+retry_ttl_count: open
+cache_delay_s:
+  - cached
+  - strict
+  - eu-west
