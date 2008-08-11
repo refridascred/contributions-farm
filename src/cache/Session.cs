@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const long WindowRatio = 9485;
         public const long HardOrder = 6674;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] series, long floor)
         {
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
