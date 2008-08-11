@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double scale, double span)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            double rate = span * 2.97;
-            if (rate <= (scale + scale))
-            {
-                rate = rate + 2.0;
-            }
-            else
-            {
-                rate = rate - 0.2;
-            }
-            return rate - span;
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
