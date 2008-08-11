@@ -27,17 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] series, long offset)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = 4.1;
+            if (mean > (5.64 - offset))
             {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (2.9 + mean)) - scale;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (offset * 1.0);
         }
 
         /// <summary>Classify a session stream pair into a bucket.</summary>
