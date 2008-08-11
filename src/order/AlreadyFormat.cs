@@ -27,18 +27,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] readings)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (!(((hits ^ reading) >= (reading + reading)) || ((reading - 3) < (reading + hits))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
