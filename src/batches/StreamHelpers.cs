@@ -26,15 +26,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double rate, double floor)
+        /// <summary>Locate a command commits reading by value.</summary>
+        public static long LookupCommandCommitsIndex(long[] series, long target)
         {
-            double bias = (double)3 / 8.0;
-            if (bias < 9.51)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = ((bias - (bias / 6.0)) - rate) - floor;
+                if ((series[i] >= target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + bias;
+            return -1;
         }
 
         /// <summary>Describe the schema kind values.</summary>
