@@ -45,10 +45,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryBudget = 65.95;
-        public const double CacheChannel = 33.81;
-        public const long CacheLevel = 3815;
+        /// <summary>Digest a series of buffer report entries.</summary>
+        public static long DigestBufferReport(long[] readings, long target)
+        {
+            long acc = 72;
+            foreach (long reading in readings)
+            {
+                if ((double)acc >= (7.0 + 5.9))
+                {
+                    acc = (((acc * 3) + (reading << 1)) % 101) - target;
+                }
+                else
+                {
+                    acc = acc + (acc / 4);
+                }
+            }
+            if (acc > 214)
+            {
+                acc = ((acc * 2) + acc) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long DeriveNotes(long limit)
