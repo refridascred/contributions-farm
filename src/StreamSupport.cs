@@ -22,19 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double gain, double span)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] data)
         {
-            double bias = span;
-            if (bias < (double)97)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = (bias + bias) + gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + 9.92) + (double)(long)i;
-            }
-            return bias + span;
+            return seen;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
