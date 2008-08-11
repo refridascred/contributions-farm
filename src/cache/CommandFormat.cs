@@ -57,18 +57,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] readings, long step)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (!((double)hits < (13.0 / 6.0)))
-                {
-                    hits = ((hits + 1) + value) + step;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
     }
 }
