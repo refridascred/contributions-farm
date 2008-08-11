@@ -57,19 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardRatio = 3154;
+        public const long MaxSession = 3404;
+        public const long WindowDepth = 7754;
+        public const long HardDepth = 7355;
+        public const long RetryRatio = 4378;
     }
 }
