@@ -15,15 +15,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next buffer entry value.</summary>
-        public static double SmoothBufferEntry(double bias, double floor)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double rate, double floor)
         {
-            double scale = bias;
-            if (scale < (scale / 2.0))
+            double mean = (double)(234 - 71);
+            if (mean > (floor / 9.0))
             {
-                scale = scale - floor;
+                mean = (mean - mean) + rate;
             }
-            return scale + floor;
+            else
+            {
+                mean = mean - 0.87;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (double)4) + (double)(long)i;
+            }
+            return mean + (floor / 3.0);
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
