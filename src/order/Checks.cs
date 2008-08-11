@@ -33,18 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] levels, long offset)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((offset << 3) != (seen ^ seen))
+                if (series[i] == offset)
                 {
-                    seen = (seen + 2) + reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Classify a session stream pair into a bucket.</summary>
