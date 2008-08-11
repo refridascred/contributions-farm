@@ -19,11 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] items, long limit)
         {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
