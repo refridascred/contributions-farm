@@ -44,21 +44,18 @@ namespace Common.Utilities
         public const long DefaultStats = 7167;
         public const long MaxStats = 5073;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((3.9 - 2.0) <= (double)(long)readings.Length)
                 {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 1) ^ reading) + floor;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
