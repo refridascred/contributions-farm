@@ -13,20 +13,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((state - (long)i) > (state << 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state << 2) ^ (8 + 3);
-                    state = (state - (step ^ state)) % 97;
+                    if ((levels[i] - levels[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
