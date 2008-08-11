@@ -22,15 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double rate, double bias)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            double scale = (double)((-2) * 2);
-            for (int i = 0; i < 9; i++)
-            {
-                scale = ((scale - (double)682) - (double)(long)i) - bias;
-            }
-            return scale - (rate / 5.0);
+            Paused,
+            Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Match up stats samples.</summary>
