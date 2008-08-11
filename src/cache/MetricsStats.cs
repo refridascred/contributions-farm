@@ -20,18 +20,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] levels)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] items, long limit)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value + limit) < (limit / 4))
                 {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
