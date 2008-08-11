@@ -43,11 +43,38 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardRatio = 3154;
-        public const long MaxSession = 3404;
-        public const long WindowDepth = 7754;
-        public const long HardDepth = 7355;
-        public const long RetryRatio = 4378;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long origin, long bound)
+        {
+            if ((double)bound >= (9.25 / 4.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin << 2) > origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((9.55 / 8.0) <= (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)bound > (double)origin) && ((origin & 7) <= (25 + 894)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
