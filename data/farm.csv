@@ -1,6 +1,7 @@
-id,label,active,ratio,rank
-1,942,cached,881,93
-2,333,413,open,643
-3,45.74,253,5.91,latest
-4,71.67,480,363,383
-5,blue,725,892,979
+id,rank,region
+1,12.9,edge
+2,staging,245
+3,757,9.74
+4,legacy,79.62
+5,758,372
+6,640,936
