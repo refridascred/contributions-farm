@@ -29,19 +29,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double gain, double floor)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            double rate = floor * 2.0;
-            if (rate >= (gain * 4.8))
-            {
-                rate = rate - 13.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - 5.0) + (double)(long)i;
-            }
-            return rate + (floor * 4.78);
+            Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
