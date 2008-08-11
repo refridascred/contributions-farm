@@ -22,14 +22,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long limit)
         {
-            Closed,
-            Queued,
-            Paused,
-            Idle,
-            Stale,
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((((long)i / 2) < (1 % 8)) || ((long)i < (limit - limit)))
+                {
+                    acc = (acc + (-3)) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
