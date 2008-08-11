@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double gain, double offset)
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
+            double ratio = (double)29 / 4.0;
+            if (ratio > (ratio - ratio))
+            {
+                ratio = (ratio + (ratio - ratio)) - offset;
+            }
+            else
+            {
+                ratio = ratio + (gain * 4.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - gain) + (double)(long)i;
+            }
+            return ratio + gain;
         }
 
         /// <summary>Accumulate batches samples.</summary>
