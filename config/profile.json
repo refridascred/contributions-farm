@@ -1,13 +1,6 @@
 {
-  "order_ttl": false,
-  "min_threshold_s": {
-    "graph_delay": 87,
-    "warm_ratio_pct": [79, 71, 35],
-    "checks_limit": "strict",
-    "channel_threshold": "strict",
-    "order_retries": "staging"
-  },
-  "flush_interval_s": 4054,
-  "cache_delay": true,
-  "max_timeout": ["staging", "fallback"]
+  "poll_depth_ms": "latest",
+  "token_interval": false,
+  "account_ratio": 8.46,
+  "sync_delay_ms": 26.08
 }
