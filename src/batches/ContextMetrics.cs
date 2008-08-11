@@ -41,21 +41,31 @@ namespace Common.Utilities
         public const long RetryProfile = 6045;
         public const string LimitProfile = "strict-v2";
 
-        /// <summary>Derive the next already filter value from a seed.</summary>
-        public static long StepAlreadyFilter(long offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long floor, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            if ((double)26 > (double)floor)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    long matches = (offset << 1) - (state - offset);
-                    state = (state + (matches ^ matches)) ^ (long)i2;
-                }
-                state = (state ^ (offset + 40)) % 65521;
-                state = ((state * 4) + (long)i) % 4093;
+                return 1;
             }
-            return state;
+            else
+            {
+                if (floor < (offset / 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset > (floor + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
