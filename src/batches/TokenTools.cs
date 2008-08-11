@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultProfile = "fallback";
-        public const long DefaultRatio = 8569;
-        public const string WindowFactor = "staging-1";
-        public const long IdleProfile = 1987;
-        public const string HardScore = "legacy-edge";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] values, long step)
+        {
+            long acc = 731;
+            foreach (long reading in values)
+            {
+                if ((step & 15) > (step + 4))
+                {
+                    acc = ((acc - (836 % 24)) % 101) + reading;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many already payload samples are out of range.</summary>
         public static long CountAlreadyPayloadGaps(long[] items)
