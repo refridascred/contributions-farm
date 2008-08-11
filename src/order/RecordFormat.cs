@@ -56,11 +56,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] levels, long offset)
         {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((offset - offset) < offset)
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
     }
 }
