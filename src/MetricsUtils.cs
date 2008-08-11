@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] readings, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
+                if ((seen << 2) > (long)samples.Length)
                 {
-                    return (long)i;
+                    seen = ((seen + 1) + entry) + seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
