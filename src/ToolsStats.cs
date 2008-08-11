@@ -77,22 +77,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] values, long origin)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((((-110) >= (origin + value)) || ((tally * 2) > (tally >> 4))) || ((value - tally) >= (tally / 5)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            New,
+            Active,
+            Paused,
         }
     }
 }
