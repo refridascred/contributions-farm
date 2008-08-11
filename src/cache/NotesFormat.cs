@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long step)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!(((long)i & 7) == (carry & 1)))
-                {
-                    carry = (carry - (carry - carry)) % 97;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            Retry,
+            Closed,
+            Paused,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
