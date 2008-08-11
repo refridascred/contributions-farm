@@ -31,14 +31,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Draft,
-            New,
-            Active,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstCount = 1129;
+        public const long MaxTimeout = 8019;
+        public const double HardTools = 26.52;
     }
 }
