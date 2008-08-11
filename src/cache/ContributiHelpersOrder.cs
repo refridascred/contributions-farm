@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] values, long limit)
         {
-            Active,
-            Done,
-            Closed,
-            Locked,
+            long mix = 982;
+            foreach (long entry in values)
+            {
+                if (((entry * 3) == (limit + limit)) && ((16 >> 5) != (limit + limit)))
+                {
+                    mix = mix + (entry % 60);
+                }
+                else
+                {
+                    mix = (mix - (limit + 2)) % 101;
+                }
+                if ((6.9 * 9.72) == (double)entry)
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Project the next filter value.</summary>
