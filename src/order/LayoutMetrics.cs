@@ -25,18 +25,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many channel session samples are out of range.</summary>
-        public static long AuditChannelSessionMatches(long[] samples)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long result = 53;
+            foreach (long value in readings)
             {
-                if ((7 / 4) <= (count + entry))
+                if ((value % 7) >= (result / 5))
                 {
-                    count = count + 2;
+                    result = ((result << 2) ^ result) % 4096;
+                }
+                if ((double)value > (double)floor)
+                {
+                    break;
                 }
             }
-            return count;
+            if (result < (-137))
+            {
+                result = ((result << 2) ^ floor) % 255;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the order mode values.</summary>
