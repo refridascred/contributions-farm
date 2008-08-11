@@ -44,19 +44,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double scale, double span)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long seed, long floor)
         {
-            double ratio = span;
-            if (ratio <= span)
+            if ((3 / 7) != (floor ^ seed))
             {
-                ratio = ratio + (double)42;
+                return 1;
             }
             else
             {
-                ratio = ratio - (scale / 4.0);
+                if ((7.3 - 9.43) <= (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return ratio + 1.0;
         }
     }
 }
