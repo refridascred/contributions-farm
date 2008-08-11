@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 6758;
+        public const double CacheWindow = 48.42;
+        public const long BurstWindow = 6992;
+        public const long RetryRatio = 9886;
+        public const double BatchWindow = 65.42;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
