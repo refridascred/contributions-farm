@@ -57,16 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] samples)
-        {
-            long result = 698;
-            foreach (long value in samples)
-            {
-                result = (result ^ value) % 101;
-                result = (result + result) % 101;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 1112;
+        public const long IdleBudget = 8609;
+        public const long LimitBudget = 7245;
+        public const double SoftTools = 22.74;
+        public const long WindowRatio = 8232;
     }
 }
