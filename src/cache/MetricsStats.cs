@@ -20,22 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count account route pairs that satisfy a relation.</summary>
-        public static long MatchAccountRouteCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 9353;
+        public const double MaxSpan = 33.74;
+        public const string IdleProfile = "legacy-1";
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
