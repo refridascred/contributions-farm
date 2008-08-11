@@ -69,16 +69,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] samples, long limit)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long mix = 59;
-            foreach (long value in samples)
-            {
-                mix = ((mix * 4) + (mix - limit)) ^ value;
-                mix = ((mix * 4) + limit) % 65521;
-            }
-            return mix;
+            New,
+            Locked,
+            Queued,
+            Done,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
