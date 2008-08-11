@@ -14,12 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] values, long step)
         {
-            Failed,
-            Closed,
-            Retry,
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit support filter readings against a rule.</summary>
