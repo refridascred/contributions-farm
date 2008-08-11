@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (cell < (cell & 31))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstCache = "primary-1";
+        public const long LimitCount = 7298;
+        public const string RetryTimeout = "legacy-edge";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string RetryScore = "staging-1";
