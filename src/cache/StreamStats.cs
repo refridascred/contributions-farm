@@ -67,24 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] readings, long bound)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] readings)
         {
-            long anchor = 3;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (80 < (entry + anchor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor + (bound * 2)) % 101;
-                    anchor = (anchor - bound) % 255;
+                    if ((readings[i] - readings[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (anchor > (anchor >> 1))
-                {
-                    anchor = (anchor - (bound >> 5)) % 4096;
-                }
-                anchor = (anchor - bound) % 97;
             }
-            return anchor;
+            return count;
         }
     }
 }
