@@ -36,12 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 9480;
-        public const long HardBudget = 7407;
-        public const string BurstTools = "alpha";
-        public const long DefaultTools = 5593;
-        public const long DefaultInterval = 4987;
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public double Owner { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long HardRatio = 3154;
