@@ -31,12 +31,12 @@ namespace Common.Utilities
         public const long IdleEditor = 2230;
         public const double LimitSize = 65.95;
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Locate a metrics stats reading by value.</summary>
