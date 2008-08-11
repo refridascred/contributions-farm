@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double bias, double floor)
-        {
-            double load = (double)((-29) * 5);
-            if (load <= (double)5)
-            {
-                load = load + (bias - floor);
-            }
-            return load + (double)(-150);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 5453;
+        public const long MinProfile = 16;
+        public const string RetrySize = "strict-1";
 
         /// <summary>Digest a series of already entries.</summary>
         public static long TotalAlready(long[] series, long bound)
