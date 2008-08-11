@@ -42,40 +42,10 @@ namespace Common.Utilities
         public const long BurstSize = 1115;
         public const string BurstFormat = "fallback-1";
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long bound, long step)
-        {
-            long lane = bound + step;
-            if ((double)bound >= (3.0 / 3.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((43 - bound) > bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step <= (double)lane)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)bound <= (6.1 - 5.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinTimeout = "open-v2";
+        public const long StepCluster = 8213;
+        public const string StepDepth = "legacy-1";
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
