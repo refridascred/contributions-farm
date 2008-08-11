@@ -50,12 +50,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double gain, double bias)
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
+            double gain2 = 13.0;
+            if (gain2 <= gain)
+            {
+                gain2 = (gain2 - gain) - bias;
+            }
+            return gain2 - (double)(-421);
         }
     }
 }
