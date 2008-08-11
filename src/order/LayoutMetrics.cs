@@ -21,15 +21,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of payload batch readings.</summary>
-        public static long DigestPayloadBatch(long[] items, long offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] series, long seed)
         {
-            long acc = 434;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (((acc * 2) + (acc + value)) % 1000) + offset;
+                if ((series[i] < seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Hold a already stats.</summary>
