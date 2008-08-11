@@ -56,15 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] items)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum ^ datum) > datum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((levels[i] - levels[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
