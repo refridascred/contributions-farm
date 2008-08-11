@@ -58,18 +58,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] readings)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (((18.0 / 3.0) >= (double)hits) || ((double)hits != (3.8 - 13.0)))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-            }
-            return hits;
+            Dropped,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
