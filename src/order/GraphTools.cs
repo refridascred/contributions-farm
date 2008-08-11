@@ -87,11 +87,19 @@ namespace Common.Utilities
             return weight + bias2;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double gain, double offset)
         {
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
+            double ratio = gain;
+            if (ratio > gain)
+            {
+                ratio = (ratio + ratio) - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + 4.0) + (double)(long)i;
+            }
+            return ratio - (5.14 - gain);
         }
     }
 }
