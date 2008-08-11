@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const string RetryWidth = "legacy-edge";
         public const long BurstEntry = 8121;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] levels)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] data, long offset)
         {
-            long anchor = 8;
-            foreach (long reading in levels)
+            long mark = 51;
+            foreach (long sample in data)
             {
-                anchor = (anchor - anchor) + reading;
+                mark = (mark ^ sample) - offset;
             }
-            return anchor % 65521;
+            return mark % 65521;
         }
 
         /// <summary>Describe the cluster level values.</summary>
