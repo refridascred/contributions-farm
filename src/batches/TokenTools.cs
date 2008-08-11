@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardCount = 8658;
-        public const string BatchInterval = "strict-v2";
-        public const long MinSize = 779;
-        public const double LimitReport = 37.17;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((5.36 >= (double)floor) && ((floor + hits) > (floor / 3)))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string DefaultProfile = "fallback";
