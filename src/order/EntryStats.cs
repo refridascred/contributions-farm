@@ -52,13 +52,10 @@ namespace Common.Utilities
         public const long BatchFactor = 6810;
         public const long HardFilter = 9675;
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowRatio = 5864;
+        public const string MaxCache = "latest-1";
+        public const double StepSize = 56.58;
+        public const double MinCache = 31.94;
     }
 }
