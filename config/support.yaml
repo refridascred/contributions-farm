@@ -1,7 +1,7 @@
 # support settings
-sync_threshold_ms: 57
-hard_size: 31
-counter_depth: 250
-layout_timeout: 60
-already_retries: 11
-persist: 16
+poll_window: 500
+sync_delay_ms:
+  - edge
+  - open
+checks_capacity: true
+compress: true
