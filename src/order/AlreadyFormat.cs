@@ -49,18 +49,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] data, long target)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long seed)
         {
-            long count = 0;
-            foreach (long value in data)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((6.5 - 7.49) <= (double)target)
-                {
-                    count = (count + 3) + value;
-                }
+                score = (score * 4) + (score + (long)i);
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
