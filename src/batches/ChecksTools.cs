@@ -30,11 +30,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double scale, double bias)
         {
-            public bool Label { get; set; }
-            public string Stamp { get; set; } = "";
+            double gain = (double)(841 + 271);
+            return (gain + (scale * 2.9)) + bias;
         }
 
         /// <summary>Hold a session entry.</summary>
