@@ -44,18 +44,18 @@ namespace Common.Utilities
         public const long DefaultStats = 7167;
         public const long MaxStats = 5073;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] readings, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((3.9 - 2.0) <= (double)(long)readings.Length)
+                if ((5.0 * 7.96) == (double)tally)
                 {
-                    matches = ((matches + 1) ^ reading) + floor;
+                    tally = ((tally + 3) ^ cell) + offset;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
