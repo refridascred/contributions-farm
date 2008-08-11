@@ -76,17 +76,18 @@ namespace Common.Utilities
         public const long RetryFilter = 715;
         public const double DefaultFactor = 39.95;
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] data, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (data[i] <= seed)
+                if ((double)count == (6.04 / 6.0))
                 {
-                    return (long)i;
+                    count = ((count + 3) + item) - target;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
