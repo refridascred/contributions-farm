@@ -20,19 +20,39 @@ namespace Common.Utilities
             return ratio - (double)9;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] series, long target)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long bound, long limit)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long edge = bound + limit;
+            if (((bound * 3) != (limit % 16)) && ((edge & 7) <= (edge % 97)))
             {
-                if (value <= target)
+                return 7;
+            }
+            else
+            {
+                if (((bound % 100) <= (edge * 3)) || ((89 + bound) <= 6))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (bound >= (limit + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((3.52 - 4.5) < (double)limit) && ((limit >> 3) > (limit << 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Match up stream samples.</summary>
