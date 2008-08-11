@@ -26,20 +26,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long step)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (step > (total - (long)i))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = total ^ step;
-                    continue;
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return hits;
         }
     }
 }
