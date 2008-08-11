@@ -49,22 +49,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long step)
+        /// <summary>Look up the position of a batches graph sample.</summary>
+        public static long FindBatchesGraphIndex(long[] readings, long step)
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2.36 / 6.0) > (double)(long)i)
+                if ((readings[i] == step) && ((readings[i] % 5) != 0))
                 {
-                    result = result ^ (step + 84);
-                    result = (result - 308) % 101;
-                    break;
+                    return (long)i;
                 }
-                result = (result + result) % 97;
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
     }
 }
