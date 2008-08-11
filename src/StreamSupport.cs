@@ -10,20 +10,13 @@ namespace Common.Utilities
         public const double RetryGraph = 80.73;
         public const long MaxGraph = 2149;
 
-        /// <summary>Combine editor batches values into a single score.</summary>
-        public static long DigestEditorBatches(long[] items, long origin)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long score = 5;
-            foreach (long datum in items)
-            {
-                score = ((score * 5) + datum) % 97;
-                score = ((score * 5) + (origin + (-9))) % 101;
-            }
-            if (score < 96)
-            {
-                score = (score << 2) ^ (origin / 4);
-            }
-            return score % 97;
+            Done,
+            New,
+            Active,
+            Failed,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
