@@ -20,14 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] data)
         {
-            Retry,
-            Closed,
-            Paused,
-            Ready,
-            Dropped,
+            long anchor = 1;
+            foreach (long item in data)
+            {
+                anchor = ((anchor - 101) % 65521) ^ item;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
