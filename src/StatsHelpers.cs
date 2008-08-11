@@ -43,10 +43,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 8365;
-        public const long BurstTimeout = 730;
-        public const long DefaultSupport = 4798;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxCount = 612;
+        public const long SoftRecord = 3814;
+        public const long StepRecord = 2219;
 
         /// <summary>Count the counter support entries that pass the check.</summary>
         public static long MeasureCounterSupportMatches(long[] samples, long offset)
