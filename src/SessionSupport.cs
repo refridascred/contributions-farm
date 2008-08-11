@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next support payload value from a seed.</summary>
-        public static long IterateSupportPayload(long seed)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = state + ((long)i + state);
-                state = ((state * 3) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
