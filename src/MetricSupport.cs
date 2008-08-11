@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] levels, long origin)
+        /// <summary>Check that every token metrics entry stays within the limit.</summary>
+        public static bool VerifyTokenMetricsBounds(long[] values, long offset)
         {
-            long score = 981;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                score = (((score * 2) + (origin >> 3)) % 101) - cell;
+                if (reading >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (score < 69)
-            {
-                score = ((score * 2) + score) % 1000;
-            }
-            return score % 1000;
+            return ready;
         }
 
         /// <summary>Describe the contributi status values.</summary>
