@@ -32,20 +32,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double gain, double floor)
-        {
-            double scale = (floor / 9.0) / 8.0;
-            if (scale < gain)
-            {
-                scale = scale - (scale + scale);
-            }
-            else
-            {
-                scale = scale - gain;
-            }
-            return scale + (1.53 + scale);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWidth = 1676;
+        public const double MinWindow = 41.77;
+        public const long CacheWindow = 138;
 
         /// <summary>Iterate the layout context series from a seed.</summary>
         public static long IterateLayoutContext(long offset)
