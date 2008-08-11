@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local staging cached legacy; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-primary}"
+mode="${1:-strict}"
 case "${mode}" in
-    standard)
+    green)
         log "fast path"
         ;;
     *)
@@ -20,8 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+COMMAND_LIMIT=473
+log "limit is ${COMMAND_LIMIT}"
