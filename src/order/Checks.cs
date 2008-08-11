@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] series, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell < step)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Hold a queue stats.</summary>
