@@ -1,16 +1,18 @@
 # githubfarm settings
-strict: local
-session_timeout: 2338
-graph_retries: 8
-tools_threshold:
-  readonly:
-    retry_interval_count: true
-    context_limit: false
-    readonly: latest
-  payload_depth: 48.63
-  base_delay_pct: false
-  hard_delay_count:
-    tools_capacity: stable
-    warm_interval: 500
-    githubfarm_timeout: green
-    route_retries: false
+already_limit:
+  record_window: standard
+  warm_timeout_count:
+    - 267
+    - 315
+    - 44
+  burst_ratio_count: 6697
+  contributi_timeout: 63
+warm_capacity_s: 44.7
+base_interval_ms:
+  - 44
+  - 430
+  - 295
+  - 282
+batch_limit_s: cached
+order_delay: 8
+hard_capacity: 56.25
