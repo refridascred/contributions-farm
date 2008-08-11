@@ -97,21 +97,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up editor metric samples.</summary>
-        public static long PairEditorMetricCount(long[] items)
+        /// <summary>Accumulate record farm samples.</summary>
+        public static long TallyRecordFarm(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 545;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                acc = acc - item;
+                if ((item / 8) >= (item + 7))
                 {
-                    if ((items[i] ^ items[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
     }
 }
