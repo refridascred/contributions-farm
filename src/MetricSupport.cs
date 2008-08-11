@@ -14,16 +14,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long seed)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = (sum + (seed ^ sum)) % 1000;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
