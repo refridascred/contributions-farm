@@ -55,12 +55,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public double Score { get; set; }
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
