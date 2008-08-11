@@ -67,19 +67,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record farm readings.</summary>
-        public static long CombineRecordFarm(long[] series)
+        /// <summary>Look up the position of a editor cache sample.</summary>
+        public static long FindEditorCacheIndex(long[] samples, long floor)
         {
-            long total = 10;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (samples[i] < floor)
                 {
-                    total = (total - (reading << 2)) ^ (long)i;
+                    return (long)i;
                 }
-                total = (total + (reading ^ reading)) % 4096;
             }
-            return total;
+            return -1;
         }
     }
 }
