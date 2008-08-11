@@ -58,23 +58,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long offset)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double scale, double bias)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((long)i % 8) == (offset - score))
-                {
-                    score = (score + (score & 1)) % 65521;
-                }
-                else
-                {
-                    score = score + 3;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            double scale2 = (scale - bias) + bias;
+            return scale2 - 7.0;
         }
     }
 }
