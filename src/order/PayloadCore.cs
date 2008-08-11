@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] series, long floor)
-        {
-            long sum = 4;
-            foreach (long sample in series)
-            {
-                sum = (sum ^ (floor + sample)) % 255;
-            }
-            if (sum > 862)
-            {
-                sum = ((sum << 2) ^ (floor << 1)) % 255;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowSize = 5935;
+        public const string IdleEditor = "primary";
+        public const long WindowEditor = 2094;
+        public const long WindowScore = 5953;
+        public const long BaseCount = 2264;
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
