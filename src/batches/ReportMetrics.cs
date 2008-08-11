@@ -14,18 +14,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] levels)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry * 2) <= (matches / 3))
+                if ((items[i] < bound) && ((items[i] % 5) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
