@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] items, long origin)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long mix = 7;
-            foreach (long cell in items)
-            {
-                mix = ((((mix << 3) ^ mix) % 97) + cell) + origin;
-            }
-            return mix;
+            public bool Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
