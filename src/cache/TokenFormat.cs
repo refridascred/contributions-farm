@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] levels, long floor)
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public string Level { get; set; } = "";
+            long acc = 8;
+            foreach (long sample in levels)
+            {
+                if (!(sample <= (sample - acc)))
+                {
+                    acc = (acc + floor) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (sample & 63)) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
