@@ -18,11 +18,18 @@ namespace Common.Utilities
         public const long IdleProfile = 1987;
         public const string HardScore = "legacy-edge";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 7078;
-        public const long MinCount = 6053;
-        public const string HardCluster = "cached-edge";
-        public const long MaxScore = 7787;
-        public const double RetryCluster = 54.24;
+        /// <summary>Measure how many already payload samples are out of range.</summary>
+        public static long CountAlreadyPayloadGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((datum & 255) > hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
