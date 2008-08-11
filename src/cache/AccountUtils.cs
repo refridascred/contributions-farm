@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a counter schema reading by value.</summary>
-        public static long SeekCounterSchemaIndex(long[] items, long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((items[i] <= target) && ((items[i] % 3) != 0))
+                if (datum < origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
