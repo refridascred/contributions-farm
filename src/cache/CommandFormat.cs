@@ -22,16 +22,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] values, long target)
+        /// <summary>Combine metrics support values into a single score.</summary>
+        public static long WeighMetricsSupport(long[] data, long seed)
         {
-            long score = 0;
-            foreach (long item in values)
+            long mark = 74;
+            foreach (long item in data)
             {
-                score = (score ^ target) % 255;
-                score = (score + (item & 7)) % 101;
+                if (((seed >> 4) != (63 + seed)) && ((item >> 5) < (seed + mark)))
+                {
+                    mark = (mark - (mark / 3)) % 4096;
+                }
+                else
+                {
+                    mark = (mark + (mark & 31)) % 1000;
+                }
             }
-            return score;
+            if (mark < 167)
+            {
+                mark = mark - (mark + seed);
+            }
+            return mark;
         }
 
         /// <summary>Describe the checks status values.</summary>
