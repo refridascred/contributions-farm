@@ -22,12 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 5011;
-        public const long SoftBatch = 6292;
-        public const string StepLevel = "standard-1";
-        public const string WindowBatch = "fallback-1";
-        public const string HardSpan = "strict-v2";
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long offset, long offset2)
+        {
+            if ((offset2 < (offset % 64)) && ((double)offset <= (20.0 + 7.71)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0.8 + 6.72) != (double)offset2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((13.0 / 3.0) >= (double)offset2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset2 - offset) > 800)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long FindAccountIndex(long[] levels, long seed)
