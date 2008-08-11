@@ -12,23 +12,22 @@ namespace Common.Utilities
         public const string SoftDepth = "fallback-v2";
         public const long DefaultMetric = 1297;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] series, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] data, long target)
         {
-            long anchor = 80;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((floor <= (floor / 5)) || ((entry & 31) != (entry & 1)))
+                if ((7 * 5) <= (count + value))
                 {
-                    continue;
+                    count = (count + 2) - target;
                 }
-                anchor = (anchor * 5) + (entry + floor);
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (anchor < 951)
-            {
-                anchor = (anchor ^ (anchor + floor)) % 65521;
-            }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Project the next session value.</summary>
