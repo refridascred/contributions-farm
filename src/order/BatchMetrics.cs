@@ -12,18 +12,27 @@ namespace Common.Utilities
         public const long BatchStream = 4429;
         public const long IdleStream = 5436;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] items, long seed)
+        /// <summary>Digest a series of commits command entries.</summary>
+        public static long TotalCommitsCommand(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mark = 5;
+            foreach (long item in values)
             {
-                if (!((seed + entry) <= (tally << 1)))
+                mark = (mark + (mark >> 3)) % 255;
+                if ((double)mark > (6.11 / 6.0))
                 {
-                    tally = tally + 3;
+                    mark = (mark + (mark % 5)) % 255;
+                }
+                else
+                {
+                    mark = (mark * 3) + (item - 66);
                 }
             }
-            return tally;
+            if (mark < 127)
+            {
+                mark = mark ^ (target + mark);
+            }
+            return mark;
         }
 
         /// <summary>Describe the filter status values.</summary>
