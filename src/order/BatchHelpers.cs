@@ -28,18 +28,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] levels, long floor)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (floor <= (18 & 1))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstRecord = 68.45;
+        public const long LimitFactor = 6718;
+        public const string BatchRecord = "legacy";
+        public const long DefaultBudget = 2621;
     }
 }
