@@ -38,11 +38,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchSize = 86.76;
-        public const long WindowScore = 9366;
-        public const long BurstSize = 1115;
-        public const string BurstFormat = "fallback-1";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (90 < (hits + hits))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long IterateStats(long bound)
