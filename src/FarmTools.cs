@@ -40,10 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepEntry = 76.02;
-        public const long MaxWidth = 5828;
-        public const string HardEntry = "strict-edge";
-        public const string BatchScore = "latest-edge";
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long floor, long bound)
+        {
+            if ((14.0 - 3.5) < (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor > (floor + floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor >= 9.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (1.1 >= (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
