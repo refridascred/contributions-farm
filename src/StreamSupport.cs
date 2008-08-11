@@ -29,22 +29,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit profile session readings against a rule.</summary>
-        public static long AuditProfileSessionOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((441 & 3) >= hits)
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultWidth = 5512;
+        public const long BatchLevel = 1101;
+        public const long HardDepth = 6382;
+        public const double StepLevel = 33.75;
     }
 }
