@@ -30,19 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double ratio, double bias)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] series, long step)
         {
-            double ratio2 = (double)(317 >> 2);
-            if (ratio2 < bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio2 = ratio2 - (double)(-357);
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (ratio2 - ratio2);
-            }
-            return ratio2 - (ratio / 4.0);
+            return -1;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
