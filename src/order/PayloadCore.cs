@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank filter report input into a small class.</summary>
-        public static long RankFilterReport(long limit, long origin)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            if ((9 >> 1) >= origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit + origin) != (limit - origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin <= (double)116)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit / 2) > origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Queued,
+            New,
+            Stale,
+            Done,
         }
 
         /// <summary>Define context limits and defaults.</summary>
