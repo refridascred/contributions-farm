@@ -85,14 +85,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] samples, long limit)
         {
-            Synced,
-            Closed,
-            Pending,
-            Done,
-            Locked,
+            long mix = 59;
+            foreach (long value in samples)
+            {
+                mix = ((mix * 4) + (mix - limit)) ^ value;
+                mix = ((mix * 4) + limit) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
