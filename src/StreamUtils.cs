@@ -55,12 +55,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Adjust a already entry reading.</summary>
+        public static double SmoothAlreadyEntry(double gain, double span)
         {
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
-            public long Offset { get; set; }
+            double load = (double)(23 + 34);
+            if (load >= (double)(-9))
+            {
+                load = load - (span + gain);
+            }
+            return load - span;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
