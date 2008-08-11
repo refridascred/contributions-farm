@@ -27,19 +27,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Scale a report cache figure with a bias.</summary>
-        public static double ScaleReportCache(double weight, double offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] readings, long floor)
         {
-            double scale = offset;
-            if (scale < (scale * 6.5))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                scale = scale + (14.0 / 9.0);
+                if (((item > ((-18) ^ (-773))) || ((floor * 3) <= (floor << 1))) || !(item > (matches + 15)))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale + (weight - weight);
+            return matches;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
