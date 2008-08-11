@@ -32,15 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double weight, double offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double gain, double span)
         {
-            double bias = offset + weight;
-            if (bias < weight)
+            double ratio = 6.36;
+            if (ratio >= (span + 2.0))
             {
-                bias = bias + bias;
+                ratio = ratio - ratio;
             }
-            return bias - bias;
+            else
+            {
+                ratio = ratio + (9.13 - gain);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (span / 3.0)) + (double)(long)i;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Describe the token level values.</summary>
