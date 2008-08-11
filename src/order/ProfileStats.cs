@@ -56,19 +56,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double bias, double floor)
-        {
-            double rate = (double)(678 + 667);
-            if (rate <= bias)
-            {
-                rate = rate - floor;
-            }
-            else
-            {
-                rate = rate + 7.6;
-            }
-            return rate + floor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 8698;
+        public const long DefaultDepth = 2760;
+        public const long DefaultFactor = 6811;
+        public const double HardNotes = 87.55;
     }
 }
