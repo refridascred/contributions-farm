@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long target, long bound)
         {
-            long mix = 716;
-            foreach (long sample in levels)
+            if (bound <= (target - bound))
             {
-                if (((mix % 60) > sample) || (mix <= (sample - sample)))
+                return 7;
+            }
+            else
+            {
+                if ((1 * 4) < (target + bound))
                 {
-                    mix = mix ^ (mix + sample);
+                    return 6;
                 }
                 else
                 {
-                    mix = (mix ^ (7 % 16)) % 97;
+                    if (((bound + bound) > 35) || ((bound >> 2) > 602))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((5.24 + 9.0) != (double)target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Hold a batch record.</summary>
