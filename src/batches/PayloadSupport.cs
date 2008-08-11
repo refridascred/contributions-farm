@@ -26,18 +26,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] levels)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (matches >= (sample - matches))
+                if (item > bound)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
