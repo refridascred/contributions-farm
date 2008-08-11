@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] levels, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] series, long offset)
         {
-            long state = 21;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long sample in series)
             {
-                state = state ^ (entry ^ bound);
+                if ((count + count) < (966 & 31))
+                {
+                    count = ((count + 3) ^ sample) - offset;
+                }
             }
-            if (state < 21)
-            {
-                state = (state * 4) + (bound + state);
-            }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Audit record counter readings against a rule.</summary>
