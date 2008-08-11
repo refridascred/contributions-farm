@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate batches session readings against a bound.</summary>
-        public static bool ValidateBatchesSessionLimits(long[] values, long limit)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (sample < limit)
+                if (reading >= offset)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Blend two token measurements.</summary>
