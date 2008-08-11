@@ -1,8 +1,9 @@
-id,weight,active
-1,standard,689
-2,1.55,889
-3,605,223
-4,green,959
-5,primary,515
-6,673,fallback
-7,latest,874
+id,ratio,region
+1,primary,273
+2,91.99,505
+3,37.43,768
+4,22.12,63.7
+5,255,40.47
+6,strict,eu-west
+7,629,cached
+8,76.37,cached
