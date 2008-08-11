@@ -15,11 +15,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 5687;
-        public const double IdleContributi = 74.85;
-        public const long CacheCount = 968;
-        public const long MinInterval = 907;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = mark + (origin ^ 2);
+                if (((56 + mark) == (mark - mark)) && ((mark % 12) == (origin & 63)))
+                {
+                    mark = mark ^ origin;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
