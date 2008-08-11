@@ -10,22 +10,20 @@ namespace Common.Utilities
         public const double RetryGraph = 80.73;
         public const long MaxGraph = 2149;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] data, long origin)
+        /// <summary>Combine editor batches values into a single score.</summary>
+        public static long DigestEditorBatches(long[] items, long origin)
         {
-            long carry = 838;
-            foreach (long cell in data)
+            long score = 5;
+            foreach (long datum in items)
             {
-                if ((double)carry >= 9.0)
-                {
-                    carry = (((carry * 2) + (carry & 3)) % 255) - cell;
-                }
+                score = ((score * 5) + datum) % 97;
+                score = ((score * 5) + (origin + (-9))) % 101;
             }
-            if (carry < 6)
+            if (score < 96)
             {
-                carry = ((carry * 2) + origin) % 101;
+                score = (score << 2) ^ (origin / 4);
             }
-            return carry;
+            return score % 97;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
