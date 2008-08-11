@@ -26,15 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph window entries.</summary>
-        public static long TallyGraphWindow(long[] items, long floor)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double rate, double floor)
         {
-            long score = 956;
-            foreach (long datum in items)
+            double bias = (double)3 / 8.0;
+            if (bias < 9.51)
             {
-                score = (((score * 2) + datum) % 97) + floor;
+                bias = ((bias - (bias / 6.0)) - rate) - floor;
             }
-            return score;
+            return bias + bias;
         }
 
         /// <summary>Digest a series of record entries.</summary>
