@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double bias, double bias2)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            double gain = bias2 * 0.4;
-            if (gain < (bias2 / 3.0))
-            {
-                gain = (gain - (bias2 + 1.3)) + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (6.08 / 8.0)) + (double)(long)i;
-            }
-            return gain - (double)41;
+            Locked,
+            New,
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
