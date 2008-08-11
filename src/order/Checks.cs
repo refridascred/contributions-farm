@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 1518;
-        public const double SoftScore = 25.96;
-        public const double MinContext = 18.62;
-        public const long HardContext = 9783;
-        public const double BurstScore = 24.07;
+        /// <summary>Derive the next cache editor value from a seed.</summary>
+        public static long DeriveCacheEditor(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((10.0 - 8.68) >= (double)(long)i))
+                {
+                    total = total - total;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenMatches(long[] items, long bound)
