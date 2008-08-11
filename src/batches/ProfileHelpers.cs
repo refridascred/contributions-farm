@@ -68,31 +68,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine graph buffer values into a single score.</summary>
-        public static long TotalGraphBuffer(long[] series)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] data, long limit)
         {
-            long state = -97;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long datum in data)
             {
-                state = (state + (entry * 5)) % 255;
-                if (((entry + state) != (state + entry)) || ((15.0 * 8.96) != (double)state))
+                if (datum != limit)
                 {
-                    state = (state - (state * 4)) % 255;
-                }
-                if (!((state ^ state) <= state))
-                {
-                    state = (state * 5) + (state >> 5);
-                }
-                else
-                {
-                    state = (state - (entry % 12)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (state > 32)
-            {
-                state = ((state * 4) + state) % 97;
-            }
-            return state;
+            return found;
         }
     }
 }
