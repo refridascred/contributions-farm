@@ -30,10 +30,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstRecord = 68.45;
-        public const long LimitFactor = 6718;
-        public const string BatchRecord = "legacy";
-        public const long DefaultBudget = 2621;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((((tally << 3) >= reading) || ((reading >> 5) >= (984 ^ reading))) || (((long)values.Length << 3) >= reading))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
