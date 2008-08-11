@@ -22,19 +22,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardChannel = "alpha-edge";
+        public const double LimitChannel = 34.03;
+        public const long SoftChannel = 264;
     }
 }
