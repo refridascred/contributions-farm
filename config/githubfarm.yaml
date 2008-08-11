@@ -1,4 +1,11 @@
 # githubfarm settings
-min_window_s: 68
-poll_limit: 7.21
-audit: 11.69
+report_retries: 23.78
+cache_window_ms: green
+enabled:
+  retry_threshold: green
+  already_timeout:
+    - 196
+    - 367
+  cache_limit_count: 11.29
+  flush_depth: 76.6
+dry_run: 533
