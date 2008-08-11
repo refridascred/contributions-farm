@@ -1,8 +1,11 @@
 {
-  "persist": ["green", "fallback", "standard"],
-  "base_delay_count": ["eu-west", "eu-west", "local"],
-  "compress": 18.53,
-  "enabled": "fallback",
-  "base_timeout_count": "strict",
-  "channel_interval": true
+  "verbose": {
+    "sync_timeout_count": "eu-west",
+    "default_threshold_count": "blue",
+    "graph_threshold": "staging",
+    "githubfarm_threshold": 9162,
+    "max_delay": 88
+  },
+  "sync_retries_count": ["standard", "standard", "blue"],
+  "batch_delay_pct": 14.87
 }
