@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (!(4.1 < (double)offset))
+                if ((seen - entry) > (seen & 127))
                 {
-                    carry = carry + (offset + offset);
-                    carry = carry - ((long)i << 2);
+                    seen = seen + 1;
                 }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = (((carry * 2) + carry) % 65521) + (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Fold a list of order readings.</summary>
