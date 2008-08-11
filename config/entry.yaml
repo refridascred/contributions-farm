@@ -1,6 +1,10 @@
 # entry settings
-cache_retries_count: 92.4
-metric_depth: 3100
-hard_capacity_pct: 250
-verbose: 4106
-already_depth: false
+verbose:
+  - 406
+  - 253
+  - 268
+  - 444
+session_ttl: true
+cache_delay: 15.48
+base_capacity_count: 834
+counter_ttl: 37.69
