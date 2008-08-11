@@ -57,17 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] data, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((data[i] >= floor) && ((data[i] % 5) == 0))
+                if (!((double)hits < (13.0 / 6.0)))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + value) + step;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
