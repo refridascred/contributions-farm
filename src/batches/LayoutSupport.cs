@@ -75,11 +75,21 @@ namespace Common.Utilities
             return load + (bias * 7.48);
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Count contributi buffer pairs that satisfy a relation.</summary>
+        public static long OverlapContributiBufferCount(long[] levels)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
