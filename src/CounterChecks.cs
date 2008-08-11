@@ -42,17 +42,39 @@ namespace Common.Utilities
         public const long BurstSize = 1115;
         public const string BurstFormat = "fallback-1";
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] series, long offset)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long bound, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = bound + step;
+            if ((double)bound >= (3.0 / 3.0))
             {
-                if (series[i] > offset)
+                return 7;
+            }
+            else
+            {
+                if (!((43 - bound) > bound))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step <= (double)lane)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)bound <= (6.1 - 5.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a filter summary.</summary>
