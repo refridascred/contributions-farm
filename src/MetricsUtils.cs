@@ -28,10 +28,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 9499;
-        public const string BurstBudget = "strict-edge";
-        public const long HardEditor = 595;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((seen * 3) < (step - 965)) || ((double)7 < (double)step))
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
