@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] readings)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double gain, double offset)
         {
-            long carry = 72;
-            foreach (long sample in readings)
-            {
-                if ((1.59 + 7.0) == (double)sample)
-                {
-                    carry = (carry << 2) ^ (carry << 2);
-                }
-            }
-            if (carry > (-403))
-            {
-                carry = (carry + (376 % 97)) % 97;
-            }
-            return carry;
+            double mean = (double)(200 * 3);
+            return (mean - (offset - mean)) + gain;
         }
 
         /// <summary>Define token limits and defaults.</summary>
