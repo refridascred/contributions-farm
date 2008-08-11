@@ -14,17 +14,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] readings, long floor)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > floor) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many metrics route samples are out of range.</summary>
