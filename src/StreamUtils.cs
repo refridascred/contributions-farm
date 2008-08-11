@@ -52,14 +52,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Done,
-            Stale,
-            Draft,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 1570;
+        public const long BaseFactor = 8657;
+        public const double MaxAlready = 53.87;
+        public const double DefaultRatio = 47.32;
     }
 }
