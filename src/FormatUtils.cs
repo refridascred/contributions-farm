@@ -36,17 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a graph batches sample.</summary>
-        public static long LocateGraphBatchesIndex(long[] items, long limit)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate2 = rate;
+            if (rate2 < (10.0 + bias))
             {
-                if ((items[i] <= limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 - rate2;
             }
-            return -1;
+            return rate2 - (1.0 / 5.0);
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
