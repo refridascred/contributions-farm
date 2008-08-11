@@ -31,13 +31,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long offset, long target)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
+            if (!((double)offset >= (5.63 + 17.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset < (offset ^ target)) || (1 > (offset >> 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((offset + target) <= (target & 127)) && ((offset + target) != (offset + 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
