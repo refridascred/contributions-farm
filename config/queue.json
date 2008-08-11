@@ -1,15 +1,7 @@
 {
-  "burst_ttl_s": "fallback",
-  "audit": [153, 339, 5, 101],
-  "retry_interval_ms": "legacy",
-  "base_retries_pct": true,
-  "soft_capacity_pct": true,
-  "persist": {
-    "metric_timeout": 2500,
-    "retry_timeout_s": true,
-    "cache_window_pct": 1024,
-    "context_delay": 58.8,
-    "min_window": 1024,
-    "cache_ttl": 35.45
-  }
+  "batch_ttl_s": [258, 332, 438, 98],
+  "compress": ["staging", "blue"],
+  "soft_size_count": 30,
+  "flush_capacity_ms": "fallback",
+  "burst_depth": 2490
 }
