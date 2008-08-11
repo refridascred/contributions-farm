@@ -18,19 +18,17 @@ namespace Common.Utilities
         public const long WindowAccount = 2821;
         public const double BatchAccount = 88.49;
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double scale, double floor)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long target)
         {
-            double weight = floor;
-            if (weight <= weight)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - (scale / 8.0);
+                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + 7.45;
-            }
-            return weight - (double)31;
+            return -1;
         }
     }
 }
