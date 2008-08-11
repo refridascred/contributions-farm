@@ -1,6 +1,17 @@
 {
-  "min_timeout": "primary",
-  "contributi_ttl": 23.74,
-  "report_retries": 75,
-  "flush_window_s": "fallback"
+  "enabled": "legacy",
+  "base_ratio": "strict",
+  "report_ratio": "eu-west",
+  "batch_size": {
+    "min_retries_ms": 36,
+    "compress": false,
+    "sync_retries_count": 5474,
+    "batch_depth": 87,
+    "tools_window": {
+      "min_size_ms": 92.51,
+      "readonly": 3275,
+      "verbose": 60
+    },
+    "notes_capacity": ["green", "open", "strict"]
+  }
 }
