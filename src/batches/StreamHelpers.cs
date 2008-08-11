@@ -59,18 +59,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] readings, long target)
+        /// <summary>Count the queue graph entries that pass the check.</summary>
+        public static long CountQueueGraphHits(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (((3.8 - 1.3) > (double)matches) || (((datum & 127) < (matches / 4)) || ((target & 255) < (datum - target))))
+                if ((item - count) > (2 & 127))
                 {
-                    matches = matches + 3;
+                    count = (count + 1) - offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
