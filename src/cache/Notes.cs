@@ -54,16 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] values)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long sum = 3;
-            foreach (long item in values)
-            {
-                sum = (sum + item) % 4096;
-                sum = (sum - (item * 2)) % 1000;
-            }
-            return sum % 65521;
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Adjust a profile reading.</summary>
