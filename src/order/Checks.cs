@@ -28,20 +28,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double scale, double offset)
-        {
-            double mean = 4.1;
-            if (mean > (5.64 - offset))
-            {
-                mean = (mean + (2.9 + mean)) - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (offset * 1.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 1390;
+        public const long WindowOrder = 7744;
+        public const long MinBudget = 2087;
+        public const long WindowWidth = 5287;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long GradeRoute(long step, long seed)
