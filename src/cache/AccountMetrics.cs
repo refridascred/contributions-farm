@@ -29,16 +29,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next layout metrics value from a seed.</summary>
-        public static long DeriveLayoutMetrics(long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            long score = 622;
+            foreach (long item in data)
             {
-                total = (total << 3) ^ total;
-                total = ((total * 5) + (long)i) % 101;
+                score = ((score << 3) ^ (9 * 4)) % 97;
+                if (!((double)item >= (4.1 + 7.2)))
+                {
+                    score = (score + score) % 97;
+                }
+                else
+                {
+                    score = ((score << 2) ^ ((-9) + score)) % 255;
+                }
             }
-            return total;
+            if (score < 285)
+            {
+                score = (score + (score % 7)) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
