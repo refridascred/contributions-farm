@@ -1,7 +1,7 @@
 {
-  "strict": "strict",
-  "stream_depth": [405, 275, 431, 33],
-  "base_size_s": true,
-  "batch_ratio_ms": ["standard", "eu-west", "open"],
-  "idle_ttl_pct": 12.89
+  "enabled": [57, 260, 261],
+  "hard_timeout_s": "local",
+  "githubfarm_threshold": [133, 419, 138],
+  "context_capacity": 51.11,
+  "max_delay_ms": 17.64
 }
