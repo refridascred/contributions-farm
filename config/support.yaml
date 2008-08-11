@@ -1,13 +1,13 @@
 # support settings
-readonly:
-  max_capacity_count: 7940
-  poll_retries: 500
-  report_ttl: 6683
-  order_depth: 23
-  metric_size: standard
-  base_depth: 27.39
-batch_threshold_count:
-  - local
-  - fallback
+compress:
   - blue
-retry_size_ms: false
+  - green
+min_retries_count:
+  - 225
+  - 461
+  - 465
+route_size: 45
+batch_ttl_pct:
+  - staging
+  - primary
+flush_retries_pct: staging
