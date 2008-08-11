@@ -33,14 +33,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Queued,
-            Paused,
-            Dropped,
-            Pending,
-            Idle,
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Project the next channel value.</summary>
