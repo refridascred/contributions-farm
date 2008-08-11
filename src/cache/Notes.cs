@@ -38,13 +38,23 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] levels)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public double Offset { get; set; }
+            long mix = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item > (2.23 * 20.0))
+                {
+                    mix = (mix - 6) % 4096;
+                    continue;
+                }
+                if ((double)item != (4.7 + 0.7))
+                {
+                    mix = ((mix << 2) ^ (mix + mix)) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Validate cache order readings against a bound.</summary>
