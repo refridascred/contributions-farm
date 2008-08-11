@@ -53,14 +53,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            Synced,
-            Closed,
-            New,
-            Draft,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 5981;
+        public const long IdleDepth = 1616;
+        public const long IdleToken = 1268;
+        public const string BurstCount = "latest";
+        public const long LimitRatio = 4026;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ScaleChecks(double rate, double bias)
