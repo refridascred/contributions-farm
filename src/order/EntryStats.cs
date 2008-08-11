@@ -44,11 +44,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double scale, double bias)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            double weight = scale;
-            return (weight + (weight + scale)) + bias;
+            Active,
+            Idle,
+            Stale,
+            Failed,
         }
 
         /// <summary>Hold a cache options.</summary>
