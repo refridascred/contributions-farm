@@ -36,18 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] readings)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((entry * 2) > count)
+                if ((((double)seed != (7.0 + 9.5)) || ((seed * 4) > seed)) && (((seed & 255) < (96 + datum)) && ((double)seed != (9.08 / 7.0))))
                 {
-                    count = count + 2;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the context class values.</summary>
