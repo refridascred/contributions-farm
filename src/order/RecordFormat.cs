@@ -56,18 +56,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] levels, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long carry = 1;
+            foreach (long reading in levels)
             {
-                if ((offset - offset) < offset)
-                {
-                    tally = (tally + 1) ^ sample;
-                }
+                carry = (((carry * 2) + (floor % 3)) % 1000) ^ reading;
             }
-            return tally;
+            return carry;
         }
     }
 }
