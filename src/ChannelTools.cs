@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepLevel = "stable-1";
-        public const double StepBatch = 13.1;
-        public const long MaxCount = 7687;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Queued,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long DigestBatches(long[] values, long floor)
