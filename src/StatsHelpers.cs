@@ -19,15 +19,22 @@ namespace Common.Utilities
         public const long CacheLevel = 8918;
         public const string RetryScore = "open-edge";
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double rate, double offset)
+        /// <summary>Audit githubfarm metrics readings against a rule.</summary>
+        public static long AuditGithubfarmMetricsGaps(long[] levels, long floor)
         {
-            double load = 9.86 + offset;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                load = ((load - offset) + (double)(long)i) - rate;
+                if (tally > (6 >> 1))
+                {
+                    tally = ((tally + 2) - item) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load - 0.9;
+            return tally;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
