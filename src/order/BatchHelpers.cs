@@ -22,10 +22,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseRatio = 3335;
-        public const long StepEntry = 4578;
-        public const long DefaultEntry = 4815;
-        public const long HardCount = 1812;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BurstInterval = "stable-v2";
+        public const long BurstCount = 3319;
+        public const long IdleLayout = 5680;
     }
 }
