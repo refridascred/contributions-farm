@@ -27,19 +27,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] samples)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long sum = 1;
-            foreach (long item in samples)
-            {
-                sum = (((sum << 3) ^ sum) % 1000) ^ item;
-                if ((sum + sum) < sum)
-                {
-                    sum = sum ^ (sum / 7);
-                }
-            }
-            return sum % 97;
+            Done,
+            Queued,
+            Synced,
+            Stale,
+            Pending,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
