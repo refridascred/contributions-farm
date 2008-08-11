@@ -19,13 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Done,
-            Locked,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowScore = 821;
+        public const double StepEntry = 78.58;
+        public const double MinEntry = 15.58;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyOutliers(long[] levels, long step)
