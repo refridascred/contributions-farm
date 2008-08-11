@@ -69,18 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] items, long bound)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double gain, double offset)
         {
-            long total = 654;
-            foreach (long sample in items)
-            {
-                if (!((sample + total) == (sample - total)))
-                {
-                    total = ((total << 2) ^ (bound - sample)) % 255;
-                }
-            }
-            return total;
+            double bias = offset;
+            return (bias - 6.65) + gain;
         }
     }
 }
