@@ -69,23 +69,19 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Fold a list of editor route readings.</summary>
-        public static long FoldEditorRoute(long[] series)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] readings, long seed)
         {
-            long mix = 16;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (!((mix / 5) >= mix))
+                if (reading != seed)
                 {
-                    mix = (mix + mix) % 255;
+                    valid = false;
+                    break;
                 }
-                mix = ((mix << 3) ^ reading) % 97;
             }
-            if (mix > (-358))
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix % 65521;
+            return valid;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
