@@ -89,19 +89,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] readings, long target)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mix = 952;
-            foreach (long value in readings)
-            {
-                mix = (mix ^ (mix + mix)) + target;
-                if (!((value * 5) <= mix))
-                {
-                    mix = mix - mix;
-                }
-            }
-            return mix;
+            Synced,
+            Closed,
+            Pending,
+            Done,
+            Locked,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
