@@ -1,6 +1,10 @@
 # githubfarm settings
-default_interval_s: 47.44
-max_delay: 69.35
-warm_ratio_s: strict
-strict: strict
-soft_delay_pct: 62.46
+idle_ttl_s: legacy
+metrics_timeout:
+  - 9
+  - 374
+  - 397
+farm_window: 33.34
+route_delay: false
+base_interval_s: true
+commits_timeout: true
