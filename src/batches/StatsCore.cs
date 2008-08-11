@@ -19,21 +19,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = 0.73;
+            if (weight >= 5.1)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight + (double)917;
             }
-            return seen;
+            else
+            {
+                weight = weight - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + ratio) + (double)(long)i;
+            }
+            return weight + (span / 9.0);
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
