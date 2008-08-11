@@ -56,23 +56,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of channel stats readings.</summary>
-        public static long CombineChannelStats(long[] readings, long floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long state = -23;
-            foreach (long sample in readings)
-            {
-                if (!((double)floor == (3.18 - 2.2)))
-                {
-                    continue;
-                }
-                state = ((state * 3) + (floor + state)) + sample;
-                if ((10.0 - 9.0) != (double)floor)
-                {
-                    break;
-                }
-            }
-            return state % 1000;
+            Dropped,
+            Pending,
+            Queued,
+            Active,
+            Done,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
