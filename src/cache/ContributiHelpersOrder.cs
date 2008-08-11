@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const string BaseStats = "fallback-1";
         public const long LimitStats = 2926;
 
-        /// <summary>Derive the next session buffer value from a seed.</summary>
-        public static long RollSessionBuffer(long seed)
+        /// <summary>Audit metric channel readings against a rule.</summary>
+        public static long MeasureMetricChannelOutliers(long[] items, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (!((state * 3) >= state))
+                if (((double)limit < 4.0) && (count <= sample))
                 {
-                    state = state + (seed - 9);
+                    count = count + 1;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return count;
         }
     }
 }
