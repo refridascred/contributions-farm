@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 5659;
-        public const double RetryGraph = 80.73;
-        public const long MaxGraph = 2149;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (((count & 255) > value) || ((count << 1) < count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
