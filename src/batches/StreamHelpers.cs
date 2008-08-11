@@ -53,24 +53,12 @@ namespace Common.Utilities
         public const long MinSession = 8477;
         public const long HardSession = 1333;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double weight, double offset)
-        {
-            double weight2 = offset;
-            if (weight2 < (weight + weight))
-            {
-                weight2 = weight2 - weight2;
-            }
-            else
-            {
-                weight2 = weight2 + (weight2 * 7.4);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + weight) + (double)(long)i;
-            }
-            return weight2 + offset;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCluster = "strict-edge";
+        public const long BaseLevel = 1890;
+        public const string MinCluster = "latest-v2";
+        public const long LimitCluster = 8720;
+        public const string IdleLevel = "cached-v2";
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long OverlapBufferCount(long[] values)
