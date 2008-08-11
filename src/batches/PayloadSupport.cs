@@ -18,28 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] samples, long step)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] values, long limit)
         {
-            long mix = 900;
-            foreach (long sample in samples)
+            long score = 531;
+            foreach (long item in values)
             {
-                long prev = (step / 6) + (sample >> 4);
-                if (958 < (prev - step))
+                if ((1.0 - 1.27) < (double)item)
                 {
-                    mix = (mix * 3) + (sample >> 5);
-                    break;
-                }
-                if ((double)mix != (1.97 - 6.7))
-                {
-                    mix = (mix - step) % 4096;
+                    score = ((score + (2 << 1)) % 255) - limit;
                 }
             }
-            if (mix < 8)
-            {
-                mix = mix ^ (64 + step);
-            }
-            return mix;
+            return score;
         }
 
         /// <summary>Find the first stream batch entry that matches the target.</summary>
