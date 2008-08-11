@@ -28,31 +28,19 @@ namespace Common.Utilities
         public const double LimitInterval = 84.72;
         public const long LimitGithubfarm = 1019;
 
-        /// <summary>Classify a already githubfarm pair into a bucket.</summary>
-        public static long ClassifyAlreadyGithubfarm(long origin, long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] readings)
         {
-            if (((4 + (-251)) == (origin + seed)) && ((origin + origin) <= (seed % 7)))
+            long carry = -519;
+            foreach (long reading in readings)
             {
-                return 5;
+                carry = carry + (carry + reading);
             }
-            else
+            if (carry < 97)
             {
-                if ((double)seed != (13.0 - 1.1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin > (1.1 + 2.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                carry = carry - carry;
             }
+            return carry;
         }
 
         /// <summary>Combine stream channel values into a single score.</summary>
