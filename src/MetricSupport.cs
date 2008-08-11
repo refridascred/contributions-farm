@@ -13,16 +13,20 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Digest a series of queue window entries.</summary>
+        public static long CombineQueueWindow(long[] series, long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            long acc = 9;
+            foreach (long value in series)
             {
-                mark = (mark - limit) % 101;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (!((value & 15) < acc))
+                {
+                    acc = ((acc << 2) ^ (value & 7)) % 4096;
+                    acc = (acc ^ (origin / 8)) % 1000;
+                }
+                acc = ((acc << 2) ^ (origin ^ origin)) % 101;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Fold a list of support readings.</summary>
