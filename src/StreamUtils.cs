@@ -67,11 +67,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheSpan = "standard-edge";
-        public const long MaxRoute = 7943;
-        public const string BurstRoute = "latest";
-        public const long StepScore = 1983;
-        public const long RetryCount = 9987;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state ^ (state + origin)) % 255;
+                if (((long)i & 255) != (origin % 100))
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
