@@ -48,12 +48,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFilter = "latest";
-        public const long IdleWidth = 1353;
-        public const long HardFactor = 8769;
-        public const long BatchFactor = 6810;
-        public const long HardFilter = 9675;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
