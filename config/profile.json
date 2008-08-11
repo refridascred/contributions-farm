@@ -1,21 +1,19 @@
 {
-  "commits_window": {
-    "hard_depth_ms": true,
-    "buffer_retries": 5600,
-    "batches_interval": {
-      "format_retries": 33,
-      "warm_ttl": 100,
-      "burst_retries": "cached",
-      "compress": ["latest", "edge", "latest"]
-    }
+  "dry_run": 76,
+  "cache_delay": "standard",
+  "metrics_window": 36.74,
+  "idle_ttl_s": {
+    "flush_delay_pct": ["fallback", "fallback", "fallback"],
+    "editor_capacity": {
+      "flush_size_s": 9728,
+      "default_ratio": "primary",
+      "flush_threshold_s": "staging",
+      "format_size": 37,
+      "flush_depth_count": 30,
+      "soft_retries_s": false
+    },
+    "readonly": "staging",
+    "enabled": "legacy"
   },
-  "readonly": "local",
-  "token_depth": 1024,
-  "buffer_interval": {
-    "contributi_ratio": 5784,
-    "report_ratio": 60,
-    "persist": true,
-    "cache_ratio_count": 78
-  },
-  "cache_window_s": "staging"
+  "min_depth_pct": 38.77
 }
