@@ -36,11 +36,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseTimeout = 41.06;
-        public const long BurstFactor = 2448;
-        public const string SoftFactor = "staging-1";
-        public const long SoftSize = 7707;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Queued,
+            Paused,
+            Dropped,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double SmoothChannel(double weight, double span)
