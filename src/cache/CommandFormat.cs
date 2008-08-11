@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] values, long seed)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double rate, double span)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            double load = rate + (8.0 + span);
+            if (load >= (load + load))
             {
-                if (sample != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load - (rate + load);
             }
-            return ready;
+            else
+            {
+                load = load - 2.6;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (span + 8.43)) + (double)(long)i;
+            }
+            return load - (double)(-9);
         }
 
         /// <summary>Project the next profile value.</summary>
