@@ -55,22 +55,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine layout buffer values into a single score.</summary>
-        public static long WeighLayoutBuffer(long[] levels, long floor)
+        /// <summary>Rank buffer already input into a small class.</summary>
+        public static long RankBufferAlready(long seed, long target)
         {
-            long acc = 936;
-            foreach (long cell in levels)
+            if ((target / 7) == (seed - target))
             {
-                if (floor > (floor * 3))
+                return 8;
+            }
+            else
+            {
+                if (((seed * 5) < target) && ((seed / 9) == (seed & 3)))
                 {
-                    acc = ((acc - (floor - acc)) % 255) ^ cell;
+                    return 1;
+                }
+                else
+                {
+                    if (seed < (seed + 504))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)seed != (4.0 + 17.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (acc < 3)
-            {
-                acc = acc ^ floor;
-            }
-            return acc;
         }
     }
 }
