@@ -38,32 +38,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long step, long bound)
-        {
-            if (step > (bound - 81))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound < (0.63 / 8.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (bound > (bound - step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseTimeout = 41.06;
+        public const long BurstFactor = 2448;
+        public const string SoftFactor = "staging-1";
+        public const long SoftSize = 7707;
 
         /// <summary>Project the next channel value.</summary>
         public static double SmoothChannel(double weight, double span)
