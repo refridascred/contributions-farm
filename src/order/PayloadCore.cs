@@ -17,21 +17,18 @@ namespace Common.Utilities
         public const long DefaultContext = 4165;
         public const long SoftCount = 788;
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] items)
+        /// <summary>Measure how many support notes samples are out of range.</summary>
+        public static long MeasureSupportNotesHits(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches & 255) == (matches * 3))
                 {
-                    if ((items[i] ^ items[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) + sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
