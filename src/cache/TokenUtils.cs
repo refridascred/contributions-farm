@@ -27,19 +27,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] items, long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] series)
         {
             long seen = 0;
-            foreach (long value in items)
+            foreach (long datum in series)
             {
-                if ((value <= (seed + 9)) || (seen <= (124 * 3)))
+                if (849 >= seen)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 3) + datum;
                 }
             }
             return seen;
