@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] samples)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((count & 255) > value) || ((count << 1) < count))
+                if (samples[i] > seed)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
