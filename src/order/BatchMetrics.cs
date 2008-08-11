@@ -54,10 +54,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleSpan = 207;
-        public const string IdleCount = "strict";
-        public const long StepCount = 8022;
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] levels, long bound)
+        {
+            long mark = 6;
+            foreach (long cell in levels)
+            {
+                mark = (mark ^ (cell << 1)) % 4096;
+                for (int i = 0; i < 5; i++)
+                {
+                    mark = (((mark * 3) + (cell - 5)) % 65521) - (long)i;
+                }
+                mark = (mark << 2) ^ (mark + 0);
+            }
+            if (mark < 8)
+            {
+                mark = ((mark << 2) ^ bound) % 1000;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LookupWindowIndex(long[] items, long seed)
