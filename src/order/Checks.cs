@@ -27,15 +27,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] data, long offset)
+        /// <summary>Scale a report cache figure with a bias.</summary>
+        public static double ScaleReportCache(double weight, double offset)
         {
-            long score = 28;
-            foreach (long cell in data)
+            double scale = offset;
+            if (scale < (scale * 6.5))
             {
-                score = (score - (offset + score)) - cell;
+                scale = scale + (14.0 / 9.0);
             }
-            return score % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale + (weight - weight);
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
