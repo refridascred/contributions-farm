@@ -35,19 +35,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((datum << 3) > (52 / 7))
-                {
-                    hits = (hits + 1) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryStream = 63.11;
+        public const long BaseDepth = 9597;
+        public const double BurstSpan = 39.72;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksOutliers(long[] levels, long limit)
