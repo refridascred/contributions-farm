@@ -16,21 +16,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long floor, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)seed < (7.96 / 8.0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)seed > (3.4 * 6.0))
                 {
-                    if ((items[i] + items[j]) < 20)
+                    return 6;
+                }
+                else
+                {
+                    if ((11.0 - 14.0) >= (double)seed)
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor + seed) < floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many route stream samples are out of range.</summary>
