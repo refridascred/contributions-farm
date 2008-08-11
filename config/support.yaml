@@ -1,9 +1,9 @@
 # support settings
-retry_window_s:
-  - 330
-  - 406
-audit:
-  - primary
-  - strict
-  - latest
-burst_interval_count: 30
+cache_delay_s: 8003
+enabled: 5904
+dry_run: local
+cache_capacity_pct:
+  - edge
+  - standard
+  - staging
+base_size_pct: 28.31
