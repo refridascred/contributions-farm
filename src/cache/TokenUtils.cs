@@ -36,24 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] data)
+        /// <summary>Locate a record stream reading by value.</summary>
+        public static long SeekRecordStreamIndex(long[] samples, long step)
         {
-            long score = 3;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                long lane = score + (score + 40);
-                if ((87 - score) != (lane % 12))
+                if (samples[i] == step)
                 {
-                    lane = lane + score;
-                }
-                score = score ^ score;
-                if (reading <= (score - reading))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
