@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] items, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((entry <= (limit + entry)) || ((51 << 2) <= (0 ^ entry)))
+                if ((0 / 3) != (matches + 37))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 1) + datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
