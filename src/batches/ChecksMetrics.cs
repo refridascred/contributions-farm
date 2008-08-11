@@ -39,21 +39,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of token filter readings.</summary>
-        public static long OverlapTokenFilterCount(long[] items)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (acc - (bound + bound)) % 4096;
+                acc = acc + bound;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
