@@ -75,18 +75,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] levels)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((double)value <= 2.9) && ((value << 2) <= (value * 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Stale,
+            Draft,
+            Closed,
+            Synced,
         }
     }
 }
