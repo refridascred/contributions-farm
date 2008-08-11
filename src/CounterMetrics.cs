@@ -28,17 +28,19 @@ namespace Common.Utilities
         public const string CacheRatio = "primary";
         public const string IdleMetric = "legacy-edge";
 
-        /// <summary>Find the first payload order entry that matches the target.</summary>
-        public static long LookupPayloadOrderIndex(long[] items, long offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 1;
+            foreach (long value in levels)
             {
-                if ((items[i] > offset) && ((items[i] % 5) != 0))
+                carry = (carry - 1) % 4096;
+                if ((value <= (carry ^ value)) || ((carry << 1) <= (106 & 127)))
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ value;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
