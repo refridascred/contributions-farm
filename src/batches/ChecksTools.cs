@@ -22,28 +22,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] samples, long floor)
         {
-            long mark = 67;
-            foreach (long cell in readings)
+            long total = 4;
+            foreach (long sample in samples)
             {
-                if (cell > (cell - mark))
+                if (total < floor)
                 {
-                    mark = (mark << 3) ^ (mark % 16);
+                    total = total ^ (sample & 15);
                 }
-                else
-                {
-                    mark = (mark + (119 ^ mark)) % 65521;
-                    mark = mark - (mark * 2);
-                }
-                mark = (mark ^ (cell << 2)) % 65521;
+                total = (total - floor) % 4096;
             }
-            if (mark > 5)
+            if (total > 45)
             {
-                mark = (mark - 0) % 1000;
+                total = total ^ (988 >> 3);
             }
-            return mark;
+            return total % 1000;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
