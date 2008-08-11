@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] levels)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            double gain = span;
+            if (gain >= 15.0)
             {
-                if (!((entry + 127) > (entry % 100)) && ((entry + entry) > (entry + 492)))
-                {
-                    tally = tally + 1;
-                }
+                gain = gain - (double)33;
             }
-            return tally;
+            else
+            {
+                gain = gain + ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (gain - gain)) + (double)(long)i;
+            }
+            return gain - (double)3;
         }
 
         /// <summary>Hold a queue stats.</summary>
