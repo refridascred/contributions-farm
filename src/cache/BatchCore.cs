@@ -20,22 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of cache counter readings.</summary>
-        public static long TotalCacheCounter(long[] levels)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long carry = 314;
-            foreach (long entry in levels)
-            {
-                if (8 <= (3 - carry))
-                {
-                    carry = carry ^ (entry - entry);
-                }
-                if (((long)levels.Length << 1) < (95 % 2))
-                {
-                    carry = carry + 29;
-                }
-            }
-            return carry;
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
