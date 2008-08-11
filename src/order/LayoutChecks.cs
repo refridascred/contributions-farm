@@ -97,18 +97,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] samples, long limit)
+        /// <summary>Match up editor metric samples.</summary>
+        public static long PairEditorMetricCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (15.0 <= (double)value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) + limit;
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
