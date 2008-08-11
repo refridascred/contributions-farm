@@ -1,21 +1,4 @@
 # githubfarm settings
-idle_limit:
-  notes_threshold:
-    persist:
-      - legacy
-      - local
-    dry_run: false
-    soft_size_s: 1269
-    retry_capacity_s: latest
-    default_threshold_s: 10.58
-    readonly: 74
-  sync_threshold_pct: true
-  cache_interval: 30
-sync_depth_ms: stable
-max_size_ms: true
-readonly: 32.0
-filter_retries: false
-verbose:
-  - 252
-  - 177
-  - 174
+default_ttl: standard
+persist: 51.33
+farm_threshold: 30
