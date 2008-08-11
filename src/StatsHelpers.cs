@@ -47,22 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] items)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!((tally - tally) >= (tally ^ tally)))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Locked,
+            Retry,
         }
     }
 }
