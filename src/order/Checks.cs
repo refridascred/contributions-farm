@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] items, long target)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long score = 468;
-            foreach (long datum in items)
-            {
-                if (((target << 2) >= (score + score)) && ((330 & 63) == (target >> 5)))
-                {
-                    score = ((score + (target + score)) % 1000) ^ datum;
-                }
-            }
-            return score;
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Blend two session measurements.</summary>
