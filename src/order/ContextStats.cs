@@ -27,11 +27,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double gain, double offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] values, long seed)
         {
-            double bias = 7.21;
-            return (bias - (offset - 7.3)) + gain;
+            long sum = 48;
+            foreach (long sample in values)
+            {
+                if ((double)sum != (0.79 - 8.65))
+                {
+                    sum = (sum << 3) ^ (sum + seed);
+                }
+                if (sample < (5 - seed))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Audit order metric readings against a rule.</summary>
