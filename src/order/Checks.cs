@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 1066;
-        public const string WindowBudget = "primary-v2";
-        public const long MaxMetrics = 9923;
-        public const string IdleMetrics = "stable";
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
