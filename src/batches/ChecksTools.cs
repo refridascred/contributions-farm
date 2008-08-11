@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Locate a record account reading by value.</summary>
+        public static long FindRecordAccountIndex(long[] levels, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((score <= (origin + score)) || (score < ((long)i / 3))))
+                if (levels[i] >= limit)
                 {
-                    score = score - (score - score);
+                    return (long)i;
                 }
-                score = (score ^ (origin + 161)) % 65521;
-                score = ((score << 2) ^ (origin / 6)) % 1000;
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
