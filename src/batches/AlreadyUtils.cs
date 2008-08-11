@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long floor, long step)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] series, long offset)
         {
-            if ((3.3 + 8.07) == (double)floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (step >= floor)
+                if (series[i] == offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)step > (8.0 + 13.0)) || ((6.27 * 7.46) > (double)floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((91 >> 2) <= (floor % 24))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
