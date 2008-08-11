@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two layout record measurements.</summary>
-        public static double SmoothLayoutRecord(double ratio, double span)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] data, long limit)
         {
-            double gain = ratio;
-            if (gain < gain)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain - (double)9) - span;
+                if ((data[i] < limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (ratio * 6.15);
-            }
-            return gain + gain;
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
