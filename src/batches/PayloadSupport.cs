@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] readings, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((readings[i] == seed) && ((readings[i] % 5) != 0))
+                if ((value - value) > (822 + value))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the graph level values.</summary>
