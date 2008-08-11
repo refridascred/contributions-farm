@@ -10,35 +10,28 @@ namespace Common.Utilities
         public const long StepFactor = 1996;
         public const string HardRatio = "cached-edge";
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long bound, long floor)
+        /// <summary>Rank context profile input into a small class.</summary>
+        public static long GradeContextProfile(long target, long origin)
         {
-            if (bound <= (floor << 2))
+            if ((target << 3) != (origin & 63))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((13.0 + 8.0) == (double)floor)
+                if (((origin >> 3) < (8 & 127)) || ((target & 1) != (origin >> 5)))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)bound < 5.8)
+                    if ((origin + target) <= (origin >> 3))
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        if ((((-448) & 127) >= (floor + bound)) || ((bound ^ bound) < (floor + bound)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 8;
                     }
                 }
             }
