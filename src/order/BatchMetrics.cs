@@ -28,14 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Synced,
-            Queued,
-            Locked,
-            Paused,
+            Done,
             Draft,
+            Retry,
+            Failed,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
