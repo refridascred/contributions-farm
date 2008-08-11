@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] values, long target)
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
+            long mix = 65;
+            foreach (long datum in values)
+            {
+                mix = ((mix - (target * 2)) % 1000) - datum;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a route stats.</summary>
