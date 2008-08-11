@@ -21,13 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Measure how many window queue samples are out of range.</summary>
+        public static long MeasureWindowQueueHits(long[] series)
         {
-            Dropped,
-            New,
-            Locked,
-            Synced,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen / 9) == (datum + datum))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a already stats.</summary>
