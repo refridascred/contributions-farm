@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] items, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] samples, long step)
         {
-            long mix = 5;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((origin & 63) != (mix * 2))
+                if ((double)step != (double)sample)
                 {
-                    mix = (mix * 5) + (mix & 31);
-                    break;
-                }
-                if ((double)sample > (18.0 + 8.5))
-                {
-                    mix = (mix - sample) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 3) + mix) % 101;
+                    hits = hits + 3;
                 }
             }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
