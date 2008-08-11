@@ -46,25 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a schema notes value against two limits.</summary>
-        public static long ClassifySchemaNotes(long target, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] readings)
         {
-            long span = target - origin;
-            if ((double)span == (double)origin)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((13.0 - 2.93) == (double)origin)
+                if (((18.0 / 3.0) >= (double)hits) || ((double)hits != (3.8 - 13.0)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    hits = (hits + 3) ^ value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
