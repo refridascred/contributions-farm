@@ -23,22 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support command samples are out of range.</summary>
-        public static long TallySupportCommandHits(long[] series, long origin)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches / 7) != (matches % 2))
-                {
-                    matches = ((matches + 3) + cell) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the editor mode values.</summary>
