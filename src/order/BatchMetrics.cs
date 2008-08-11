@@ -43,25 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long bound, long bound2)
+        /// <summary>Count the filter account entries that pass the check.</summary>
+        public static long TallyFilterAccountOutliers(long[] levels)
         {
-            long offset = bound - bound2;
-            if ((double)bound < 16.0)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((bound2 + bound) < (offset + bound2)))
+                if ((entry * 4) >= (entry % 24))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a context options.</summary>
