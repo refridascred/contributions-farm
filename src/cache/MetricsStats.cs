@@ -27,11 +27,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftBuffer = "cached-edge";
-        public const double BaseInterval = 61.38;
-        public const long WindowFactor = 3851;
-        public const string RetryBuffer = "local";
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate batches stats samples.</summary>
         public static long WeighBatchesStats(long[] levels)
