@@ -26,10 +26,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 4368;
-        public const long WindowAccount = 7748;
-        public const double RetryLevel = 1.65;
-        public const long BurstAccount = 277;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Pending,
+            Synced,
+            Retry,
+            Stale,
+        }
     }
 }
