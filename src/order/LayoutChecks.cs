@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] levels, long step)
         {
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
+            long total = -261;
+            foreach (long entry in levels)
+            {
+                if (!((step * 2) != (step << 1)))
+                {
+                    total = (total - (590 % 64)) % 101;
+                }
+                if (entry >= (step << 3))
+                {
+                    total = (total ^ (total * 4)) % 1000;
+                }
+            }
+            if (total > (-75))
+            {
+                total = total + (50 * 5);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
