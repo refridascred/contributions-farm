@@ -24,22 +24,21 @@ namespace Common.Utilities
             return ratio + (double)92;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] readings)
+        /// <summary>Count buffer window pairs that satisfy a relation.</summary>
+        public static long OverlapBufferWindowCount(long[] items)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= (item + tally))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
