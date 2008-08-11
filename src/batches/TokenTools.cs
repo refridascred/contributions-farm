@@ -44,18 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already payload samples are out of range.</summary>
-        public static long CountAlreadyPayloadGaps(long[] items)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum & 255) > hits)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((readings[i] + readings[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
