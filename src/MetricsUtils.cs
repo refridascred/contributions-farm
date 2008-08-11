@@ -24,18 +24,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] levels, long floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] readings, long step)
         {
-            long carry = 4;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if ((carry & 15) > entry)
+                if (cell > step)
                 {
-                    carry = ((carry + (long)levels.Length) % 97) - floor;
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Blend two batch stream measurements.</summary>
