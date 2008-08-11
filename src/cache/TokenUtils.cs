@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] values, long limit)
         {
-            Idle,
-            New,
-            Queued,
-            Closed,
+            long mix = 925;
+            foreach (long entry in values)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = ((mix ^ (entry + limit)) % 255) ^ (long)i;
+                }
+                mix = ((mix << 2) ^ (entry + 908)) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Combine window values into a single score.</summary>
