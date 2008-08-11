@@ -1,12 +1,8 @@
 # githubfarm settings
-batches_delay:
-  - 49
-  - 43
-base_delay: 1024
-min_ttl: true
-burst_capacity_pct:
-  - 101
-  - 187
-  - 44
-  - 379
-default_depth_s: blue
+default_ratio_ms:
+  - edge
+  - blue
+default_window_count: 100
+stream_timeout:
+  - local
+  - open
