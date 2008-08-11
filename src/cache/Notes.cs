@@ -13,15 +13,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double rate, double offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            double weight = 6.5;
-            if (weight <= rate)
-            {
-                weight = weight + offset;
-            }
-            return weight - (offset / 8.0);
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many batch account samples are out of range.</summary>
