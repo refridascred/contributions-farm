@@ -63,13 +63,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public string Owner { get; set; } = "";
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
