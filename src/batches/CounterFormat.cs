@@ -16,21 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count farm checks pairs that satisfy a relation.</summary>
-        public static long CompareFarmChecksCount(long[] levels)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 169;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state ^ (floor & 63)) % 1000) - value;
             }
-            return seen;
+            if (state < 90)
+            {
+                state = state - (state >> 3);
+            }
+            return state;
         }
 
         /// <summary>Hold a notes record.</summary>
