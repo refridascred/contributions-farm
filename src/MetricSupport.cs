@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 556;
-        public const string WindowScore = "stable-edge";
-        public const double IdleCache = 34.34;
-        public const long DefaultCache = 2989;
-        public const double BurstSize = 36.35;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] samples, long offset)
+        {
+            long anchor = 41;
+            foreach (long item in samples)
+            {
+                if ((offset << 2) != (offset - item))
+                {
+                    anchor = (anchor * 4) + (item << 1);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ProjectLayout(double weight, double span)
