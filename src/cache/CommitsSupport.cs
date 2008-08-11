@@ -29,21 +29,12 @@ namespace Common.Utilities
         public const long BatchWidth = 1858;
         public const long BaseToken = 7604;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Idle,
+            Closed,
         }
 
         /// <summary>Match up metric samples.</summary>
