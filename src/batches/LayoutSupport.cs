@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next route command value from a seed.</summary>
-        public static long DeriveRouteCommand(long bound)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor * 2) + (bound / 5);
-                anchor = anchor - anchor;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Validate route context readings against a bound.</summary>
