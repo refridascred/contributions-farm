@@ -1,10 +1,7 @@
 {
-  "strict": [318, 233, 1, 138],
-  "context_ratio": {
-    "hard_threshold_s": true,
-    "poll_threshold": 62,
-    "warm_retries_s": true
-  },
-  "max_interval": false,
-  "cache_limit_s": 500
+  "entry_ratio": "green",
+  "poll_window_s": 69,
+  "readonly": 7150,
+  "warm_ratio": "stable",
+  "burst_depth_count": 96.02
 }
