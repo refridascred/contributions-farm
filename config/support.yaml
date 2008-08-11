@@ -1,13 +1,6 @@
 # support settings
-compress:
-  - blue
-  - green
-min_retries_count:
-  - 225
-  - 461
-  - 465
-route_size: 45
-batch_ttl_pct:
-  - staging
-  - primary
-flush_retries_pct: staging
+queue_limit: true
+schema_timeout: 87
+hard_timeout_pct: 60
+graph_retries: standard
+hard_depth_pct: false
