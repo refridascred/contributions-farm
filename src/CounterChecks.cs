@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 5453;
-        public const long MinProfile = 16;
-        public const string RetrySize = "strict-1";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitSize = 743;
+        public const long StepTimeout = 5070;
+        public const long SoftMetrics = 9701;
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyLimits(long[] levels, long target)
