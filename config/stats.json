@@ -1,10 +1,7 @@
 {
-  "already_limit": 93.04,
-  "cache_size_pct": {
-    "compress": 60,
-    "channel_ratio": 500,
-    "warm_limit": true
-  },
-  "poll_size_ms": "primary",
-  "batch_window_pct": ["edge", "open", "green", "legacy"]
+  "dry_run": "blue",
+  "base_depth_count": "legacy",
+  "warm_delay_s": "stable",
+  "hard_limit_pct": 65,
+  "strict": [232, 271, 5]
 }
