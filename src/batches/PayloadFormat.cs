@@ -31,11 +31,26 @@ namespace Common.Utilities
             return gain2 + (double)714;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowLevel = 7628;
-        public const long MinBatches = 9418;
-        public const string CacheBatches = "legacy";
-        public const string SoftLevel = "cached-v2";
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long offset, long offset2)
+        {
+            long offset3 = offset - offset2;
+            if (!((offset ^ offset) >= (offset3 + offset)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset3 << 3) > (offset3 % 64))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] readings)
