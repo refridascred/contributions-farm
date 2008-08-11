@@ -1,9 +1,6 @@
 # support settings
-contributi_capacity: 18.67
-batch_timeout_count:
-  - local
-  - primary
-max_timeout: primary
-enabled: 1024
-soft_delay_count: 3361
-sync_timeout_count: 1357
+min_limit_count: 60.6
+burst_retries_pct: eu-west
+warm_threshold_count:
+  - 58
+  - 203
