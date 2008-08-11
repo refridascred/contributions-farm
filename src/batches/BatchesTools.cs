@@ -31,13 +31,19 @@ namespace Common.Utilities
         public const long MaxLevel = 890;
         public const double DefaultStats = 15.31;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double ratio, double offset)
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
+            double scale = (double)(4 / 7);
+            if (scale >= scale)
+            {
+                scale = (scale - scale) - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (ratio / 7.0)) + (double)(long)i;
+            }
+            return scale + 3.94;
         }
     }
 }
