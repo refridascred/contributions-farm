@@ -34,21 +34,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((0 * 5) < sample) && (((limit << 2) >= (count ^ count)) && ((count + limit) != (54 << 1))))
                 {
-                    if ((values[i] - values[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
