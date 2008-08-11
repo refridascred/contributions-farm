@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseBudget = "legacy-v2";
-        public const long BatchSupport = 5539;
-        public const double HardScore = 8.37;
-        public const long RetryRatio = 128;
-        public const long BaseFactor = 4785;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] items)
+        {
+            long state = 32;
+            foreach (long entry in items)
+            {
+                state = (state + (entry * 3)) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Validate batches session readings against a bound.</summary>
         public static bool ValidateBatchesSessionLimits(long[] values, long limit)
