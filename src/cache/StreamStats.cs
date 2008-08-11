@@ -33,11 +33,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Count queue checks pairs that satisfy a relation.</summary>
+        public static long CompareQueueChecksCount(long[] levels)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up graph samples.</summary>
