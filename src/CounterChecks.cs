@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double bias, double floor)
         {
-            Idle,
-            Paused,
-            Ready,
-            Retry,
+            double load = (double)((-29) * 5);
+            if (load <= (double)5)
+            {
+                load = load + (bias - floor);
+            }
+            return load + (double)(-150);
         }
 
         /// <summary>Digest a series of already entries.</summary>
