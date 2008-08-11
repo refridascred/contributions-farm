@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a account tools figure with a bias.</summary>
-        public static double BlendAccountTools(double ratio, double offset)
+        /// <summary>Audit window contributi readings against a rule.</summary>
+        public static long CountWindowContributiGaps(long[] data)
         {
-            double gain = ratio - (ratio + offset);
-            if (gain <= (gain - offset))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                gain = gain + (offset * 19.0);
+                if ((sample << 1) != (hits + sample))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                gain = gain + (gain / 4.0);
-            }
-            return gain + (gain - ratio);
+            return hits;
         }
 
         /// <summary>Describe the batch status values.</summary>
