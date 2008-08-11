@@ -75,10 +75,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 1570;
-        public const long BaseFactor = 8657;
-        public const double MaxAlready = 53.87;
-        public const double DefaultRatio = 47.32;
+        /// <summary>Measure how many already account samples are out of range.</summary>
+        public static long CountAlreadyAccountHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((((item + item) < item) || ((double)count != (7.0 * 1.45))) || (count >= (count + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
