@@ -1,8 +1,26 @@
 # githubfarm settings
-warm_ratio: 85.13
-stats_interval: 8129
-max_window_count:
-  - 252
-  - 159
-  - 7
-  - 22
+max_size_count:
+  base_ttl_s: cached
+  warm_capacity_pct: true
+  warm_timeout:
+    commits_delay: blue
+    default_threshold: 2718
+    batch_timeout: 61.85
+    batch_interval_pct: 48.2
+    default_ttl_count: eu-west
+  burst_retries_ms:
+    audit: strict
+    min_size_count: true
+    enabled: fallback
+  dry_run:
+    - legacy
+    - cached
+    - local
+audit: false
+report_timeout:
+  dry_run:
+    - 386
+    - 357
+    - 448
+  burst_limit_count: strict
+  enabled: legacy
