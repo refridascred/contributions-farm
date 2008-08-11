@@ -1,11 +1,21 @@
 # entry settings
-readonly: 8169
-retry_limit_pct: staging
-stats_depth: true
-notes_ttl: 10.56
-sync_threshold_s:
-  already_retries: edge
-  entry_threshold: 14
-  soft_size: cached
-  profile_threshold: true
-  max_limit_pct: 43.57
+idle_size_pct:
+  - blue
+  - eu-west
+  - strict
+  - latest
+warm_delay_pct: 1693
+verbose:
+  notes_depth:
+    - fallback
+    - legacy
+    - edge
+    - strict
+  verbose: green
+  audit:
+    schema_ttl:
+      - local
+      - open
+    readonly: eu-west
+    dry_run: false
+base_limit: primary
