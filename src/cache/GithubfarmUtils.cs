@@ -52,13 +52,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] items, long seed)
         {
-            Done,
-            Active,
-            Idle,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
