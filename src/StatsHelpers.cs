@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowRatio = 2518;
-        public const long MaxBudget = 4847;
-        public const long WindowMetric = 73;
-        public const long HardMetric = 1853;
-        public const long BurstCount = 3000;
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string BatchBudget = "strict-edge";
