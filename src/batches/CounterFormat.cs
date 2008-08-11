@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] data)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (seen >= (seen + item))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batch entry.</summary>
