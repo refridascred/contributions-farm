@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long origin, long origin2)
+        /// <summary>Adjust a cluster batches reading.</summary>
+        public static double ScaleClusterBatches(double scale, double offset)
         {
-            if ((double)origin2 > 15.0)
+            double rate = offset * 9.8;
+            if (rate > (double)82)
             {
-                return 5;
+                rate = rate + scale;
             }
             else
             {
-                if ((origin2 + origin2) == (origin + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
+                rate = rate + rate;
             }
+            return rate + offset;
         }
 
         /// <summary>Describe the order mode values.</summary>
