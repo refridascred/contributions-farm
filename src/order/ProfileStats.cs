@@ -20,28 +20,35 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long step, long target)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long origin, long bound)
         {
-            if (((-4) * 4) == (step % 3))
+            if (!((5.0 - 16.0) != (double)origin))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((double)target <= (double)step)
+                if (((origin / 6) <= origin) || ((1.5 - 2.87) != (double)bound))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)614 > (double)step)
+                    if ((bound >= (8 + origin)) || (origin <= (1 + origin)))
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        return 8;
+                        if ((double)1 == (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
