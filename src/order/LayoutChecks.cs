@@ -77,23 +77,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next layout counter value.</summary>
-        public static double BlendLayoutCounter(double weight, double bias)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] data, long offset)
         {
-            double scale = (double)(5 - 8);
-            if (scale < bias)
+            long result = 210;
+            foreach (long entry in data)
             {
-                scale = scale - bias;
+                if ((offset > (9 >> 1)) && (entry >= (entry >> 5)))
+                {
+                    result = (result ^ (result % 64)) % 65521;
+                    result = (result << 2) ^ (795 - entry);
+                    break;
+                }
+                if (entry < (entry << 1))
+                {
+                    result = result + ((long)data.Length & 63);
+                }
             }
-            else
-            {
-                scale = scale - (double)769;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + weight) + (double)(long)i;
-            }
-            return scale + (weight * 0.1);
+            return result;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
