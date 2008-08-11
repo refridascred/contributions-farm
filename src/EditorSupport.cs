@@ -46,11 +46,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "alpha";
-        public const double LimitWidth = 12.59;
-        public const long BurstScore = 16;
-        public const long WindowMetric = 9988;
+        /// <summary>Adjust a session channel reading.</summary>
+        public static double SmoothSessionChannel(double bias, double span)
+        {
+            double gain = (double)80 / 6.0;
+            if (gain < (bias * 6.9))
+            {
+                gain = gain - (span * 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - span) - (double)(long)i;
+            }
+            return gain + (bias / 6.0);
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double AdjustChannel(double gain, double bias)
