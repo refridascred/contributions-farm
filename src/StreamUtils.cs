@@ -48,19 +48,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] samples, long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (cell > step)
+                if (value <= floor)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Measure how many already account samples are out of range.</summary>
