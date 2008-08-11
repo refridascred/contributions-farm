@@ -37,25 +37,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long limit, long limit2)
-        {
-            if (!((limit2 / 5) < limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit == (double)7)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinInterval = "stable-v2";
+        public const double MaxContext = 31.45;
+        public const string WindowBudget = "alpha-v2";
+        public const double StepInterval = 63.78;
 
         /// <summary>Roll a format counter forward.</summary>
         public static long IterateFormat(long limit)
