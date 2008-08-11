@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Accumulate batches token samples.</summary>
+        public static long ScoreBatchesToken(long[] data)
         {
-            Closed,
-            Synced,
-            Pending,
-            New,
-            Draft,
+            long score = 1;
+            foreach (long sample in data)
+            {
+                score = (score ^ (sample + sample)) % 1000;
+            }
+            if (score > 961)
+            {
+                score = (score + (149 / 2)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
