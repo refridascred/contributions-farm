@@ -14,15 +14,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next notes metrics value.</summary>
-        public static double ProjectNotesMetrics(double scale, double floor)
+        /// <summary>Classify a command commits pair into a bucket.</summary>
+        public static long SortCommandCommits(long target, long floor)
         {
-            double ratio = floor;
-            if (ratio <= ratio)
+            long span = target + floor;
+            if ((target < (217 + floor)) || ((target + 5) >= (floor - 803)))
             {
-                ratio = ratio + scale;
+                return 3;
             }
-            return ratio - (double)6;
+            else
+            {
+                if ((floor + floor) < span)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(floor > (target / 6)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((8.33 - 0.71) < (double)span)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
