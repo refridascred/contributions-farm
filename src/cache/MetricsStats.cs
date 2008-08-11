@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double rate, double floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] series, long origin)
         {
-            double load = floor * 8.58;
-            if (load > floor)
+            bool stale = true;
+            foreach (long value in series)
             {
-                load = load + (floor - load);
+                if (value <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (rate + 3.4)) + (double)(long)i;
-            }
-            return load + (double)88;
+            return stale;
         }
 
         /// <summary>Count account route pairs that satisfy a relation.</summary>
