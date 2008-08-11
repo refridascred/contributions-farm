@@ -39,22 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] data, long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((77 * 2) >= (hits << 2))
+                if (value != floor)
                 {
-                    hits = ((hits + 1) ^ sample) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
