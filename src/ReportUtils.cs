@@ -61,19 +61,16 @@ namespace Common.Utilities
         public const long BaseDepth = 9597;
         public const double BurstSpan = 39.72;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] levels, long step)
+        /// <summary>Derive the next counter stream value from a seed.</summary>
+        public static long RollCounterStream(long offset)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score << 2) ^ score) % 255;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
     }
 }
