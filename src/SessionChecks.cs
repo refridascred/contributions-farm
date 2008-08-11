@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long limit, long origin)
         {
-            Paused,
-            Synced,
-            Draft,
+            if (!((633 << 2) >= limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((750 << 3) <= limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit < origin) && (origin <= (limit ^ origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two window measurements.</summary>
