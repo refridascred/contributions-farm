@@ -1,15 +1,13 @@
 {
-  "counter_size": {
-    "default_limit_s": false,
-    "default_size": {
-      "default_depth_ms": true,
-      "enabled": "latest",
-      "batch_limit": 250
-    },
-    "audit": 77.73
+  "poll_delay_s": 500,
+  "report_threshold": {
+    "strict": ["blue", "staging"],
+    "verbose": "eu-west",
+    "counter_size": 500,
+    "order_threshold": "primary"
   },
-  "warm_depth": 44.43,
-  "cache_ttl": 250,
-  "session_timeout": 9903,
-  "readonly": false
+  "contributi_window": 76,
+  "audit": 250,
+  "tools_limit": 6294,
+  "farm_delay": ["green", "latest", "green", "stable"]
 }
