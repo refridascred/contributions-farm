@@ -37,13 +37,10 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public double Flag { get; set; }
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 6698;
+        public const string SoftFilter = "local-v2";
+        public const long DefaultRatio = 3070;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutGaps(long[] data)
