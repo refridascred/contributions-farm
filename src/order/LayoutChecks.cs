@@ -81,19 +81,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] data, long offset)
+        /// <summary>Project the next layout counter value.</summary>
+        public static double BlendLayoutCounter(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            double scale = (double)(5 - 8);
+            if (scale < bias)
             {
-                if (entry != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale - bias;
             }
-            return stale;
+            else
+            {
+                scale = scale - (double)769;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + weight) + (double)(long)i;
+            }
+            return scale + (weight * 0.1);
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
