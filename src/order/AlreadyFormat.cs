@@ -17,14 +17,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] samples, long origin)
         {
-            Retry,
-            Done,
-            New,
-            Synced,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
