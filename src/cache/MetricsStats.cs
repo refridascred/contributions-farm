@@ -34,20 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches stats samples.</summary>
-        public static long WeighBatchesStats(long[] levels)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long state = 14;
-            foreach (long value in levels)
-            {
-                state = (state + (state + state)) % 1000;
-                state = (state - (value % 24)) % 255;
-            }
-            if (state < 9)
-            {
-                state = ((state * 5) + 290) % 4096;
-            }
-            return state % 4096;
+            Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Audit session record readings against a rule.</summary>
