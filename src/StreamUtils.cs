@@ -48,15 +48,24 @@ namespace Common.Utilities
             return scale + (scale - bias);
         }
 
-        /// <summary>Adjust a already entry reading.</summary>
-        public static double SmoothAlreadyEntry(double gain, double span)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] values, long step)
         {
-            double load = (double)(23 + 34);
-            if (load >= (double)(-9))
+            long score = 473;
+            foreach (long cell in values)
             {
-                load = load - (span + gain);
+                if ((cell * 4) > (cell & 1))
+                {
+                    score = (score - (cell >> 4)) + step;
+                    continue;
+                }
+                score = score ^ score;
             }
-            return load - span;
+            if (score < 467)
+            {
+                score = score - (score - (-906));
+            }
+            return score;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
