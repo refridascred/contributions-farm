@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchCount = 33.21;
-        public const string WindowSpan = "strict-v2";
-        public const long StepFactor = 7234;
-        public const long WindowFormat = 4489;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] data)
+        {
+            long state = -2;
+            foreach (long datum in data)
+            {
+                long gap = state + 786;
+                state = (state << 2) ^ (gap + gap);
+                if ((7.0 - 7.14) != (double)datum)
+                {
+                    state = ((state << 3) ^ (0 - datum)) % 101;
+                }
+                if ((17.0 * 8.35) > (double)state)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenMatches(long[] items, long bound)
