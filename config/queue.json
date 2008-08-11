@@ -1,6 +1,6 @@
 {
-  "dry_run": 1533,
-  "batch_timeout": "strict",
-  "soft_delay": 61.04,
-  "sync_retries_pct": 43.24
+  "graph_ttl": 250,
+  "default_capacity": "strict",
+  "idle_timeout_ms": false,
+  "cache_capacity_count": true
 }
