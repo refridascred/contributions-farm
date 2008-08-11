@@ -20,38 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long offset, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] samples, long seed)
         {
-            if (seed < offset)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed + 51) <= (offset + (-68)))
+                if (datum >= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((17.0 / 5.0) >= (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset < (seed - offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Blend two order measurements.</summary>
