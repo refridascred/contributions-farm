@@ -24,20 +24,12 @@ namespace Common.Utilities
         public const long LimitRoute = 4058;
         public const long DefaultRoute = 5351;
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double rate, double span)
-        {
-            double mean = 10.0;
-            if (mean > (0.7 + 5.3))
-            {
-                mean = (mean + (span - mean)) - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + span) - (double)(long)i;
-            }
-            return mean - (double)7;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxSize = 9888;
+        public const long BatchEditor = 3167;
+        public const double SoftBudget = 43.7;
+        public const long IdleEditor = 2230;
+        public const double LimitSize = 65.95;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
