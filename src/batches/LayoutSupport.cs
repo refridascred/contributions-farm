@@ -39,19 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools commits samples are out of range.</summary>
-        public static long TallyToolsCommitsMatches(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum & 63) > datum)
-                {
-                    matches = (matches + 1) + target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardLevel = 9552;
+        public const long LimitGraph = 9735;
+        public const string LimitLevel = "stable-1";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long WindowToken = 5981;
