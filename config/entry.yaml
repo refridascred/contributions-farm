@@ -1,5 +1,27 @@
 # entry settings
-warm_limit_count: fallback
-hard_timeout_s: 60
-support_depth: true
-record_timeout: stable
+notes_threshold: staging
+session_depth: 21.75
+max_capacity_ms:
+  base_threshold: edge
+  audit: eu-west
+  idle_size_count: stable
+  poll_delay_s: standard
+  hard_interval_pct: false
+  base_timeout_pct: true
+sync_threshold_ms: 1024
+layout_depth:
+  idle_threshold_ms:
+    - 158
+    - 150
+    - 16
+  warm_capacity_count: cached
+  sync_ratio:
+    readonly: 500
+    window_capacity:
+      - 396
+      - 232
+      - 499
+      - 314
+    batches_window: 56
+    base_ttl_s: 4880
+  cache_delay_s: green
