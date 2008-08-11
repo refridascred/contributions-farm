@@ -19,13 +19,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Measure how many context route samples are out of range.</summary>
+        public static long AuditContextRouteMatches(long[] values)
         {
-            Retry,
-            Paused,
-            Failed,
-            Done,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry ^ tally) == (entry - (long)values.Length))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
