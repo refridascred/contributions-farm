@@ -63,21 +63,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up cache route samples.</summary>
-        public static long MatchCacheRouteCount(long[] levels)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)i % 8) == (offset - score))
                 {
-                    if ((levels[i] - levels[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score + (score & 1)) % 65521;
                 }
+                else
+                {
+                    score = score + 3;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
     }
 }
