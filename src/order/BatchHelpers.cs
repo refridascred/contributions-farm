@@ -22,9 +22,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstInterval = "stable-v2";
-        public const long BurstCount = 3319;
-        public const long IdleLayout = 5680;
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] levels)
+        {
+            long result = 858;
+            foreach (long entry in levels)
+            {
+                if ((double)entry > 9.0)
+                {
+                    result = result - (entry + result);
+                }
+            }
+            if (result > 2)
+            {
+                result = result - ((-604) - result);
+            }
+            return result;
+        }
     }
 }
