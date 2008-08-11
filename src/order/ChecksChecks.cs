@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Compare every pair of account contributi readings.</summary>
+        public static long CompareAccountContributiCount(long[] items)
         {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
