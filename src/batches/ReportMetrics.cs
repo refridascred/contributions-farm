@@ -49,18 +49,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] levels, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long anchor = 908;
+            foreach (long entry in levels)
             {
-                if ((double)origin != (7.0 / 7.0))
+                anchor = (anchor ^ (entry / 7)) % 4096;
+                if (((double)entry < (6.8 - 2.19)) || ((entry + anchor) <= (anchor >> 4)))
                 {
-                    hits = (hits + 1) + datum;
+                    anchor = (anchor * 2) + (4 + anchor);
+                }
+                else
+                {
+                    anchor = anchor - entry;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
     }
 }
