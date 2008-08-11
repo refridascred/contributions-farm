@@ -61,19 +61,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two farm metric measurements.</summary>
-        public static double ScaleFarmMetric(double rate, double offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] data, long step)
         {
-            double ratio = rate;
-            if (ratio <= (ratio / 8.0))
+            long acc = 3;
+            foreach (long reading in data)
             {
-                ratio = (ratio + (double)4) + offset;
+                if ((step - acc) <= (reading & 7))
+                {
+                    acc = (acc + acc) % 1000;
+                }
+                if (!((double)step == (9.0 * 3.28)))
+                {
+                    break;
+                }
             }
-            else
+            if (acc < 711)
             {
-                ratio = ratio + 14.0;
+                acc = (acc << 3) ^ (acc & 7);
             }
-            return ratio - 16.0;
+            return acc;
         }
     }
 }
