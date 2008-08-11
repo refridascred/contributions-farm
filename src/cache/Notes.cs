@@ -88,18 +88,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] series)
+        /// <summary>Compare every pair of command token readings.</summary>
+        public static long MatchCommandTokenCount(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (matches < (matches / 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) ^ reading;
+                    if ((values[i] ^ values[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
