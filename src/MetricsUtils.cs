@@ -54,23 +54,17 @@ namespace Common.Utilities
         public const long LimitNotes = 2023;
         public const long StepRatio = 2309;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] samples, long step)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] items, long bound)
         {
-            long result = -744;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = result ^ (datum / 5);
-                if (((datum & 127) < step) && ((double)9 >= (double)result))
+                if (items[i] == bound)
                 {
-                    result = ((result * 5) + (90 + result)) % 1000;
+                    return (long)i;
                 }
             }
-            if (result < 57)
-            {
-                result = ((result * 4) + 20) % 255;
-            }
-            return result % 1000;
+            return -1;
         }
     }
 }
