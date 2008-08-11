@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const string RetryWidth = "legacy-edge";
         public const long BurstEntry = 8121;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] levels)
         {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            long anchor = 8;
+            foreach (long reading in levels)
+            {
+                anchor = (anchor - anchor) + reading;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the cluster level values.</summary>
