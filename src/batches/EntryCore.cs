@@ -51,13 +51,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Closed,
-            Paused,
-            New,
-            Active,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardStats = 60.53;
+        public const double BaseDepth = 38.49;
+        public const double BurstBudget = 60.76;
+        public const double LimitStats = 68.66;
+        public const double BaseBudget = 31.86;
     }
 }
