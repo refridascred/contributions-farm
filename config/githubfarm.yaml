@@ -1,7 +1,8 @@
 # githubfarm settings
-base_depth_ms: 61
-max_limit_count: false
-hard_window_s: 6
-strict: primary
-cache_delay: 25.01
-contributi_threshold: 90.91
+batch_capacity_ms: true
+batch_size_ms: 1024
+cache_threshold: 29
+flush_size: cached
+base_capacity:
+  - legacy
+  - eu-west
