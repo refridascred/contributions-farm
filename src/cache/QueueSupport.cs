@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 9;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 5) + ((long)samples.Length + total)) % 1000;
+                total = (total * 3) + item;
             }
-            return hits;
+            return total % 97;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
