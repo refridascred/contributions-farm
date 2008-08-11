@@ -34,10 +34,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstFactor = 6871;
-        public const long HardCount = 348;
-        public const long HardSchema = 7081;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long limit, long target)
+        {
+            if ((8.0 + 6.67) < (15.0 + 3.54))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((9 >> 2) < limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(((-684) << 2) == (limit + 70)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.01 / 6.0) < (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchMatches(long[] items)
