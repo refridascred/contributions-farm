@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Count the counter route entries that pass the check.</summary>
+        public static long AuditCounterRouteOutliers(long[] series, long step)
         {
-            Paused,
-            Done,
-            Stale,
-            Pending,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)step > (double)item)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every stats profile entry stays within the limit.</summary>
