@@ -1,7 +1,6 @@
-id,active,count,label,rank
-1,edge,464,814,strict
-2,159,primary,standard,572
-3,67.21,101,legacy,258
-4,82.12,529,21,6.79
-5,568,local,23.38,eu-west
-6,362,119,872,13.75
+id,state,token,active
+1,36.24,cached,143
+2,967,edge,297
+3,blue,137,staging
+4,138,cached,53.7
+5,854,7.33,2.64
