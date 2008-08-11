@@ -24,22 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] levels)
+        /// <summary>Measure how many batch profile samples are out of range.</summary>
+        public static long AuditBatchProfileHits(long[] samples)
         {
-            long carry = 28;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((42 < (item + carry)) || ((6.2 + 5.17) == (double)carry))
+                if (matches >= (66 % 3))
                 {
-                    carry = (carry - item) % 255;
+                    matches = (matches + 3) + sample;
                 }
             }
-            if (carry < 5)
-            {
-                carry = (carry + (carry >> 4)) % 4096;
-            }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
