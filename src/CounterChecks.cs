@@ -71,9 +71,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardSession = 94.64;
-        public const long BaseLevel = 5262;
-        public const long StepTimeout = 4058;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double bias, double floor)
+        {
+            double drift = (double)(449 % 5);
+            if (drift <= (floor * 6.0))
+            {
+                drift = (drift - 8.9) - bias;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (drift / 5.0)) + (double)(long)i;
+            }
+            return drift + 15.0;
+        }
     }
 }
