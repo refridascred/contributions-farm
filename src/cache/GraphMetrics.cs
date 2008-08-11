@@ -20,19 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] samples, long step)
+        /// <summary>Accumulate window contributi samples.</summary>
+        public static long WeighWindowContributi(long[] series)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long carry = -36;
+            foreach (long datum in series)
             {
-                if (value > step)
+                if (carry <= (799 + carry))
                 {
-                    valid = false;
-                    break;
+                    carry = (carry + (carry >> 2)) - datum;
+                }
+                else
+                {
+                    carry = (carry + 454) % 101;
                 }
             }
-            return valid;
+            return carry % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
