@@ -23,18 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 6703;
+        public const double WindowOrder = 43.25;
+        public const double BaseOrder = 42.19;
+        public const long BurstScore = 996;
+        public const long BurstOrder = 5929;
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double AdjustRoute(double weight, double span)
