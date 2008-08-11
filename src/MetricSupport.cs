@@ -19,15 +19,22 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] data, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] samples)
         {
-            long acc = -1;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                acc = ((acc << 2) ^ bound) + sample;
+                if ((cell ^ count) > (count + cell))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
