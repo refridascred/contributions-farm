@@ -46,18 +46,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] values, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long mark = 505;
+            foreach (long reading in readings)
             {
-                if (((749 < (cell - bound)) || ((cell - matches) <= (bound + matches))) && ((double)matches == (1.76 + 6.5)))
+                mark = (((mark << 2) ^ (bound << 2)) % 101) ^ reading;
+                mark = ((mark << 2) ^ (mark / 5)) % 101;
+                if (((bound - mark) >= (181 + 856)) || ((long)readings.Length != (bound + mark)))
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
