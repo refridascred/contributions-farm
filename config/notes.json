@@ -1,6 +1,18 @@
 {
-  "base_ratio_pct": true,
-  "report_delay": "fallback",
-  "default_timeout_ms": 30,
-  "audit": "standard"
+  "command_timeout": {
+    "readonly": ["primary", "green", "eu-west", "stable"],
+    "audit": {
+      "min_delay": "blue",
+      "persist": "latest",
+      "compress": "strict",
+      "flush_ttl_ms": "strict",
+      "strict": 500
+    },
+    "command_window": "primary",
+    "checks_delay": "green",
+    "verbose": 83.84,
+    "format_retries": 250
+  },
+  "warm_retries": 466,
+  "farm_timeout": true
 }
