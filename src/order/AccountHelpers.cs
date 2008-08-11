@@ -103,19 +103,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] data, long step)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] levels, long target)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long score = 558;
+            foreach (long entry in levels)
             {
-                if (entry != step)
+                for (int i = 0; i < 8; i++)
                 {
-                    flag = false;
-                    break;
+                    score = ((score ^ (target - score)) % 101) ^ (long)i;
+                    score = score - (score + 45);
+                }
+                if (((target + score) >= entry) || ((double)target >= (2.7 * 10.0)))
+                {
+                    score = (score + entry) % 97;
                 }
             }
-            return flag;
+            if (score < 7)
+            {
+                score = score ^ (929 + target);
+            }
+            return score;
         }
     }
 }
