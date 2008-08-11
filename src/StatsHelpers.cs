@@ -13,14 +13,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxLevel = 2015;
+        public const double MinScore = 16.0;
+        public const string DefaultRatio = "staging-edge";
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
