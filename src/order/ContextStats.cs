@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 4.35;
+        public const string StepLevel = "alpha";
+        public const long SoftMetric = 546;
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
