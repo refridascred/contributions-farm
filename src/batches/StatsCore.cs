@@ -58,11 +58,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 6445;
-        public const long MinFilter = 8251;
-        public const double IdleWidth = 71.82;
-        public const long WindowRatio = 3047;
-        public const long SoftSpan = 4497;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)seen > (8.5 + 11.0))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
