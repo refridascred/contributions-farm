@@ -68,18 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] values, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] items)
         {
-            long count = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (((4 - item) < (long)values.Length) && (((49 + item) == (step - count)) && (step < item)))
+                if ((double)item != (double)7)
                 {
-                    count = count + 2;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
