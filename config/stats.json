@@ -1,5 +1,5 @@
 {
-  "persist": false,
-  "compress": 100,
-  "flush_limit_ms": "staging"
+  "warm_limit": 15.9,
+  "cache_ratio_pct": false,
+  "persist": "staging"
 }
