@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] items, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] series)
         {
-            long acc = -6;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((acc >> 1) <= ((long)items.Length % 24))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc - (226 - 958)) ^ sample;
-                }
-                else
-                {
-                    acc = acc + (seed & 127);
+                    if ((series[i] + series[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc < 652)
-            {
-                acc = ((acc * 2) + (acc << 3)) % 255;
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
