@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the counter route entries that pass the check.</summary>
-        public static long AuditCounterRouteOutliers(long[] series, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long floor, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            if ((6 - origin) >= (origin + 6))
             {
-                if ((double)step > (double)item)
+                return 3;
+            }
+            else
+            {
+                if ((6.25 - 1.3) >= (double)floor)
                 {
-                    count = count + 1;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)origin > (5.3 * 3.1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin - 15) != (origin % 64))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every stats profile entry stays within the limit.</summary>
