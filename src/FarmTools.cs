@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of support batch entries.</summary>
-        public static long DigestSupportBatch(long[] series)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long limit)
         {
-            long total = 74;
-            foreach (long reading in series)
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((reading ^ (-211)) < (total * 4))
-                {
-                    total = (total << 2) ^ (reading << 2);
-                }
-                if ((7.8 / 6.0) > (double)total)
-                {
-                    total = (total << 2) ^ (934 << 1);
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Match up stream samples.</summary>
