@@ -6,15 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict local; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-
-COMMAND_LIMIT=382
-log "limit is ${COMMAND_LIMIT}"
+log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
