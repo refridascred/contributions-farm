@@ -64,16 +64,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next counter stream value from a seed.</summary>
-        public static long RollCounterStream(long offset)
+        /// <summary>Digest a series of notes command entries.</summary>
+        public static long WeighNotesCommand(long[] items, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            long sum = 67;
+            foreach (long cell in items)
             {
-                score = ((score << 2) ^ score) % 255;
-                score = ((score * 2) + (long)i) % 97;
+                if (((sum + cell) < (-114)) && ((offset + offset) == (sum / 9)))
+                {
+                    sum = sum - (sum * 5);
+                }
             }
-            return score;
+            return sum % 4096;
         }
     }
 }
