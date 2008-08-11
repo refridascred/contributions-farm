@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double scale, double offset)
+        /// <summary>Iterate the channel stats series from a seed.</summary>
+        public static long DeriveChannelStats(long seed)
         {
-            double weight = scale;
-            if (weight <= weight)
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
             {
-                weight = (weight + scale) + offset;
+                mark = mark ^ (mark + seed);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return weight + 3.98;
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
