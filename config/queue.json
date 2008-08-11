@@ -1,6 +1,5 @@
 {
-  "warm_delay_count": "eu-west",
-  "default_interval": 6809,
-  "idle_threshold": "edge",
-  "readonly": true
+  "audit": "staging",
+  "already_window": 75.19,
+  "max_depth_pct": "staging"
 }
