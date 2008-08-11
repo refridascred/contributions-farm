@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] readings, long offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long carry = 502;
-            foreach (long entry in readings)
-            {
-                if (entry >= offset)
-                {
-                    carry = (carry ^ (455 * 3)) % 97;
-                }
-            }
-            return carry % 1000;
+            Done,
+            New,
+            Active,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
