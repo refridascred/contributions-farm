@@ -1,8 +1,6 @@
 # entry settings
-max_retries_pct: strict
-buffer_ttl:
-  - green
-  - cached
-strict: strict
-sync_depth: true
-enabled: green
+cache_retries_count: 92.4
+metric_depth: 3100
+hard_capacity_pct: 250
+verbose: 4106
+already_depth: false
