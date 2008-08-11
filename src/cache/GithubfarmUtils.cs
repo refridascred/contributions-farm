@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] values, long seed)
         {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((seed - seed) < (54 + seed))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up cluster batches samples.</summary>
