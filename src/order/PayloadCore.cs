@@ -31,17 +31,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] samples, long limit)
+        /// <summary>Accumulate record batch samples.</summary>
+        public static long DigestRecordBatch(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -18;
+            foreach (long item in data)
             {
-                if (samples[i] == limit)
+                if (!((target - 75) < target))
                 {
-                    return (long)i;
+                    anchor = anchor ^ 827;
+                }
+                if ((target - item) < anchor)
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
