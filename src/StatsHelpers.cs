@@ -24,20 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] levels, long seed)
-        {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinDepth = "legacy-v2";
+        public const double SoftChannel = 70.83;
+        public const double HardChannel = 76.3;
+        public const double MaxChannel = 5.79;
+        public const long LimitChannel = 8482;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] levels, long step)
