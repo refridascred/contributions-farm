@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] items, long step)
         {
-            long state = 32;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long cell in items)
             {
-                state = (state + (entry * 3)) % 101;
+                if (cell < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Validate batches session readings against a bound.</summary>
