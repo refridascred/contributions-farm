@@ -1,4 +1,19 @@
 # githubfarm settings
-default_ttl: standard
-persist: 51.33
-farm_threshold: 30
+default_size_s:
+  hard_timeout_count: 16
+  flush_size_s: 500
+  retry_ttl_ms: 8506
+batches_size:
+  strict: false
+  default_ttl:
+    - cached
+    - eu-west
+  sync_interval: 500
+  max_limit_pct: blue
+  retry_limit:
+    - staging
+    - stable
+  session_limit: 5284
+session_limit: 59
+poll_threshold_count: strict
+idle_threshold_count: green
