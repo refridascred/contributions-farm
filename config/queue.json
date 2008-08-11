@@ -1,5 +1,7 @@
 {
-  "verbose": "strict",
-  "notes_delay": 64.59,
-  "cache_capacity_s": 86
+  "verbose": 60,
+  "default_window_s": ["fallback", "green"],
+  "batches_capacity": 2078,
+  "poll_delay": "stable",
+  "warm_ttl_count": ["cached", "open"]
 }
