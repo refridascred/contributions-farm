@@ -1,4 +1,6 @@
 # githubfarm settings
-counter_depth: primary
-soft_window_count: primary
-cache_depth_pct: blue
+metric_depth:
+  - latest
+  - cached
+verbose: 30
+cluster_retries: cached
