@@ -45,18 +45,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] values, long target)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((entry * 2) <= entry)
-                {
-                    seen = (seen + 3) + target;
-                }
+                long lane = offset;
+                mix = (mix + (lane + (long)i)) % 101;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
     }
 }
