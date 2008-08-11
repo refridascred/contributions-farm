@@ -64,19 +64,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] series, long bound)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long limit)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
