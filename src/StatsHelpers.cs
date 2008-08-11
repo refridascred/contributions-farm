@@ -13,10 +13,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxLevel = 2015;
-        public const double MinScore = 16.0;
-        public const string DefaultRatio = "staging-edge";
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((state - (long)i) > (state << 1))
+                {
+                    state = (state << 2) ^ (8 + 3);
+                    state = (state - (step ^ state)) % 97;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksOutliers(long[] values, long seed)
