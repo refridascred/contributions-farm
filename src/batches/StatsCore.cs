@@ -48,39 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long floor, long step)
+        /// <summary>Accumulate account queue samples.</summary>
+        public static long WeighAccountQueue(long[] data)
         {
-            long bound = floor ^ step;
-            if (3.0 < (13.0 - 1.94))
+            long sum = 25;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((7.8 - 7.2) <= (double)bound))
+                sum = (sum * 5) + (sum << 2);
+                if (!((sum - (-8)) == (sum >> 4)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (step <= floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((0 / 7) > (bound << 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    sum = ((sum << 3) ^ (sample + 83)) % 4096;
                 }
             }
+            return sum % 65521;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
