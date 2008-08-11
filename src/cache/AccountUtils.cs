@@ -52,28 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double scale, double span)
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
+            double scale2 = (double)7 - (span - scale);
+            if (scale2 >= (scale * 0.05))
             {
-                long edge = (acc / 4) << 1;
-                if (acc <= ((-46) + acc))
-                {
-                    acc = ((acc << 3) ^ edge) % 4096;
-                }
-                if ((offset - offset) <= (7 % 7))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = acc + (edge - edge);
-                }
-                acc = ((acc * 2) + (long)i) % 101;
+                scale2 = scale2 + (double)(-36);
             }
-            return acc;
+            else
+            {
+                scale2 = scale2 + (scale + span);
+            }
+            return scale2 + (scale * 14.0);
         }
     }
 }
