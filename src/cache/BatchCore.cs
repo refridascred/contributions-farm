@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total - (total << 3)) - (long)i2;
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
