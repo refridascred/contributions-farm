@@ -44,18 +44,17 @@ namespace Common.Utilities
             return scale + (1.53 + scale);
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Iterate the layout context series from a seed.</summary>
+        public static long IterateLayoutContext(long offset)
         {
-            long mix = -989;
-            foreach (long reading in data)
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)mix >= 12.0)
-                {
-                    mix = ((mix ^ (mix * 5)) % 65521) - reading;
-                }
+                result = (result << 3) ^ (result - result);
+                result = ((result * 5) + ((long)i ^ result)) % 97;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Fold a list of cluster checks readings.</summary>
