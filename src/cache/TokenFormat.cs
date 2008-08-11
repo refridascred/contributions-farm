@@ -37,26 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] readings)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long seed)
         {
-            long score = 33;
-            foreach (long entry in readings)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)score >= 7.0) || ((343 * 3) < score))
-                {
-                    score = (score - score) % 255;
-                }
-                else
-                {
-                    score = (score << 2) ^ (7 + entry);
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            if (score < 73)
-            {
-                score = (score - (65 + score)) % 255;
-            }
-            return score;
+            return mark;
         }
     }
 }
