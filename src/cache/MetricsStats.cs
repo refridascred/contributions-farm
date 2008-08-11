@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long origin, long bound)
+        /// <summary>Find the first checks token entry that matches the target.</summary>
+        public static long LookupChecksTokenIndex(long[] samples, long floor)
         {
-            long bound2 = origin + bound;
-            if ((bound - bound2) >= (bound2 >> 4))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin + bound) <= origin) || ((bound ^ 267) < (bound2 + bound2)))
+                if (samples[i] == floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((4.97 / 8.0) <= (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((-7) % 60) < (bound2 << 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up metric samples.</summary>
