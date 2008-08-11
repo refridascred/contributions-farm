@@ -50,19 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] items, long offset)
+        /// <summary>Count the counter support entries that pass the check.</summary>
+        public static long MeasureCounterSupportMatches(long[] samples, long offset)
         {
-            long state = 6;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                state = (state + (offset + entry)) % 255;
-                if (21 > (offset + 10))
+                if (cell <= (count ^ offset))
                 {
-                    state = (state * 3) + (offset - entry);
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
     }
 }
