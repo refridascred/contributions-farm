@@ -39,13 +39,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] items, long limit)
         {
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
