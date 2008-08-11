@@ -26,19 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double gain, double floor)
+        /// <summary>Derive the next session buffer value from a seed.</summary>
+        public static long RollSessionBuffer(long seed)
         {
-            double weight = floor;
-            if (weight < (weight + gain))
+            long state = seed;
+            for (int i = 0; i < 21; i++)
             {
-                weight = weight - (floor * 18.0);
+                if (!((state * 3) >= state))
+                {
+                    state = state + (seed - 9);
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            else
-            {
-                weight = weight - (6.0 - 17.0);
-            }
-            return weight + weight;
+            return state;
         }
     }
 }
