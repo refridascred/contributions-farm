@@ -47,11 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] readings, long bound)
         {
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
