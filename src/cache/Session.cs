@@ -16,12 +16,20 @@ namespace Common.Utilities
             return weight + 3.98;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 3332;
-        public const string LimitCount = "standard-edge";
-        public const long HardSpan = 27;
-        public const long BatchLevel = 7216;
-        public const long DefaultCount = 5707;
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double ratio, double offset)
+        {
+            double drift = (double)(28 % 8);
+            if (drift <= ratio)
+            {
+                drift = drift - offset;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + offset;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryMatches(long[] levels)
