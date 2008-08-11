@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstSchema = "open-1";
+        public const long LimitCount = 9757;
+        public const long IdleSchema = 4347;
+        public const long StepSchema = 8779;
 
         /// <summary>Match up profile samples.</summary>
         public static long OverlapProfileCount(long[] values)
