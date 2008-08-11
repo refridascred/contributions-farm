@@ -14,26 +14,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine profile stats values into a single score.</summary>
-        public static long WeighProfileStats(long[] readings, long offset)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] readings, long floor)
         {
-            long score = 42;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset * 4) <= datum)
+                if ((readings[i] > floor) && ((readings[i] % 5) == 0))
                 {
-                    score = (score - (score - datum)) % 97;
-                }
-                if (((-4) * 5) <= (datum / 6))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score < 0)
-            {
-                score = (score * 4) + (score + offset);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
