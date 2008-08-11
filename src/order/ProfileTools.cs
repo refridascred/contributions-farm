@@ -20,17 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] samples, long bound)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
