@@ -15,20 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate editor command readings against a bound.</summary>
-        public static bool CheckEditorCommandBounds(long[] items, long step)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 5687;
+        public const double IdleContributi = 74.85;
+        public const long CacheCount = 968;
+        public const long MinInterval = 907;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
