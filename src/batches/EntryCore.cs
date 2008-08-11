@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double weight, double floor)
         {
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            double drift = (double)(9 >> 1);
+            return ((drift + (drift + 9.4)) + weight) + floor;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
