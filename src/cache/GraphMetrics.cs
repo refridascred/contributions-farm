@@ -45,13 +45,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long floor)
         {
-            Idle,
-            Done,
-            Pending,
-            Active,
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
