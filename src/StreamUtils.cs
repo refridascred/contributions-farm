@@ -17,11 +17,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double ratio, double offset)
+        /// <summary>Adjust a graph account reading.</summary>
+        public static double BlendGraphAccount(double gain, double floor)
         {
-            double mean = 3.9;
-            return (mean - (mean - offset)) + ratio;
+            double scale = floor + (floor * 5.5);
+            if (scale < gain)
+            {
+                scale = scale - (gain * 3.94);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (4.0 - scale)) - (double)(long)i;
+            }
+            return scale - (gain - gain);
         }
 
         /// <summary>Accumulate report samples.</summary>
