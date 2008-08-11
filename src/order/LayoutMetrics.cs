@@ -47,18 +47,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit command notes readings against a rule.</summary>
-        public static long CountCommandNotesOutliers(long[] readings)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double weight2 = (double)(0 & 63);
+            for (int i = 0; i < 3; i++)
             {
-                if (6.28 > (7.2 * 17.0))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
+                weight2 = ((weight2 - (weight - weight)) + (double)(long)i) + offset;
             }
-            return hits;
+            return weight2 - weight;
         }
     }
 }
