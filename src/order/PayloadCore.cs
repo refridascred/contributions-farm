@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] levels, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (levels[i] == step)
+                if (!!((sample % 10) >= (69 % 3)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a command header.</summary>
