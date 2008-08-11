@@ -58,26 +58,14 @@ namespace Common.Utilities
             return weight + bias2;
         }
 
-        /// <summary>Fold a list of cluster checks readings.</summary>
-        public static long CombineClusterChecks(long[] items)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long total = 481;
-            foreach (long value in items)
-            {
-                if (!((8.8 + 5.3) >= (double)value))
-                {
-                    total = (total + (value - value)) % 255;
-                }
-                if (((double)(long)items.Length > (double)value) && (value > (total * 5)))
-                {
-                    break;
-                }
-            }
-            if (total < 765)
-            {
-                total = total - 208;
-            }
-            return total;
+            Dropped,
+            Closed,
+            Draft,
+            Ready,
+            Failed,
         }
     }
 }
