@@ -46,19 +46,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] values, long step)
+        /// <summary>Look up the position of a account payload sample.</summary>
+        public static long LookupAccountPayloadIndex(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry >= step)
+                if (values[i] <= seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a commits entry.</summary>
