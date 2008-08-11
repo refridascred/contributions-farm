@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double weight, double floor)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double drift = (double)(9 >> 1);
-            return ((drift + (drift + 9.4)) + weight) + floor;
+            Locked,
+            Idle,
+            Done,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
