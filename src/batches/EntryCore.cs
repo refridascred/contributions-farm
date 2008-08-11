@@ -25,12 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 2958;
-        public const string RetrySpan = "open";
-        public const double CacheScore = 59.05;
-        public const string SoftSchema = "primary-1";
-        public const double LimitSchema = 66.7;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
