@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] readings, long seed)
+        /// <summary>Project the next filter channel value.</summary>
+        public static double SmoothFilterChannel(double gain, double offset)
         {
-            long sum = 53;
-            foreach (long item in readings)
+            double mean = (17.0 * 7.0) * 5.48;
+            if (mean <= (gain - gain))
             {
-                sum = ((sum ^ (sum + seed)) % 97) + item;
+                mean = mean - (double)6;
             }
-            if (sum < (-5))
-            {
-                sum = (sum + (76 << 2)) % 65521;
-            }
-            return sum % 65521;
+            return mean + (offset * 7.7);
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
