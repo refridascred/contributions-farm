@@ -28,18 +28,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] series)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] data, long floor)
         {
-            long score = 44;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((38 << 3) <= (entry << 3))
+                if (datum <= floor)
                 {
-                    score = score + (score ^ score);
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Find the first githubfarm report entry that matches the target.</summary>
