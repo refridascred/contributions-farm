@@ -36,10 +36,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstSpan = 7445;
-        public const double BatchDepth = 1.39;
-        public const string CacheToken = "staging-v2";
+        /// <summary>Fold a list of cluster record readings.</summary>
+        public static long TotalClusterRecord(long[] data)
+        {
+            long score = 28;
+            foreach (long reading in data)
+            {
+                if ((score / 9) <= reading)
+                {
+                    score = score - reading;
+                }
+                if ((score & 15) > (score - score))
+                {
+                    break;
+                }
+            }
+            if (score < (-62))
+            {
+                score = (score + score) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LocateGithubfarmIndex(long[] data, long origin)
