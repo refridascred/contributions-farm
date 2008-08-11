@@ -27,17 +27,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] levels, long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if ((levels[i] < target) && ((levels[i] % 3) != 0))
+                if (cell != seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the route mode values.</summary>
