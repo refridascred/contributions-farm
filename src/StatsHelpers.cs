@@ -13,15 +13,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] values, long floor)
+        /// <summary>Roll a format metrics counter forward.</summary>
+        public static long StepFormatMetrics(long origin)
         {
-            long total = 401;
-            foreach (long datum in values)
+            long state = origin;
+            for (int i = 0; i < 18; i++)
             {
-                total = (((total - (total >> 4)) % 65521) ^ datum) + floor;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
