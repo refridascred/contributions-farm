@@ -22,20 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultTimeout = 15.65;
+        public const double BurstMetric = 97.37;
+        public const string CacheRatio = "primary";
+        public const string IdleMetric = "legacy-edge";
 
         /// <summary>Project the next filter value.</summary>
         public static double SmoothFilter(double bias, double offset)
