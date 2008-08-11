@@ -41,26 +41,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] values)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long acc = -135;
-            foreach (long cell in values)
-            {
-                if ((acc % 10) <= (cell + cell))
-                {
-                    acc = (acc + acc) % 4096;
-                }
-                if ((acc + 49) == (cell % 24))
-                {
-                    acc = (acc - (acc % 24)) % 4096;
-                }
-            }
-            if (acc < 5)
-            {
-                acc = (acc - ((long)values.Length & 1)) % 1000;
-            }
-            return acc;
+            public bool Size { get; set; }
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
