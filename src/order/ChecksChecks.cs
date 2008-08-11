@@ -26,12 +26,14 @@ namespace Common.Utilities
         public const string WindowSize = "stable-edge";
         public const long DefaultInterval = 3383;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Queued,
+            Dropped,
+            Closed,
+            Idle,
+            Ready,
         }
     }
 }
