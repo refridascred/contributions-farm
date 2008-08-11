@@ -1,13 +1,9 @@
 # support settings
-profile_threshold:
-  - 321
-  - 354
-  - 38
-  - 354
-min_threshold_ms:
-  - 177
-  - 257
-  - 105
-hard_interval: 60
-commits_size: 1170
-context_size: 0.67
+contributi_capacity: 18.67
+batch_timeout_count:
+  - local
+  - primary
+max_timeout: primary
+enabled: 1024
+soft_delay_count: 3361
+sync_timeout_count: 1357
