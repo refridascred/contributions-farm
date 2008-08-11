@@ -14,22 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] data, long target)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] series)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mix = 7;
+            foreach (long entry in series)
             {
-                if ((7 * 5) <= (count + value))
+                mix = (mix ^ 29) % 255;
+                if ((2.0 > (double)mix) && (5 <= (entry - mix)))
                 {
-                    count = (count + 2) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    mix = (mix << 3) ^ (entry - entry);
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the cache kind values.</summary>
