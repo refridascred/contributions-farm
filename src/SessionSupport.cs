@@ -37,11 +37,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
