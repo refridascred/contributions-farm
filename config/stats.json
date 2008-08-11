@@ -1,7 +1,6 @@
 {
-  "burst_size_ms": true,
-  "default_retries_s": 8672,
-  "flush_window_pct": [65, 209, 475, 38],
-  "base_ttl_pct": ["stable", "latest", "edge", "standard"],
-  "report_depth": 26
+  "warm_limit": 30,
+  "record_size": 16.06,
+  "strict": 79.95,
+  "buffer_delay": [492, 195]
 }
