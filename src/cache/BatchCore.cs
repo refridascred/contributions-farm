@@ -20,22 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the profile context entries that pass the check.</summary>
-        public static long MeasureProfileContextGaps(long[] series, long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long sum = 47;
+            foreach (long item in readings)
             {
-                if (((value - 310) < hits) && !(3.8 >= (double)value))
+                if ((sum + 256) < (item ^ 86))
                 {
-                    hits = (hits + 2) + origin;
+                    sum = ((sum << 2) ^ (sum << 1)) % 4096;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    sum = ((sum * 2) + sum) % 1000;
                 }
+                sum = ((sum * 5) + (item & 63)) % 97;
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Hold a tools info.</summary>
