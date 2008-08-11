@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] samples, long offset)
+        /// <summary>Audit entry profile readings against a rule.</summary>
+        public static long MeasureEntryProfileHits(long[] data)
         {
-            long anchor = 41;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((offset << 2) != (offset - item))
+                if (((seen + 930) > (item & 7)) && (((item - seen) < (seen & 7)) && (seen > (item + item))))
                 {
-                    anchor = (anchor * 4) + (item << 1);
+                    seen = seen + 1;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit batch notes readings against a rule.</summary>
