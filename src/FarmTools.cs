@@ -26,12 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Region { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
