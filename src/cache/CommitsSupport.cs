@@ -15,20 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] items, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 8768;
+        public const long BatchLevel = 8575;
+        public const long BatchWidth = 1858;
+        public const long BaseToken = 7604;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long SeekFilterIndex(long[] levels, long step)
