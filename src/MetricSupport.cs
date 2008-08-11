@@ -32,23 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] data)
+        /// <summary>Count the editor filter entries that pass the check.</summary>
+        public static long CountEditorFilterMatches(long[] data, long floor)
         {
-            long result = 71;
+            long matches = 0;
             foreach (long reading in data)
             {
-                result = ((result * 3) + result) % 97;
-                if (((reading - result) < reading) && ((6.89 * 3.3) >= (double)reading))
+                if (!((floor ^ reading) == (reading / 6)))
                 {
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (result > 17)
-            {
-                result = (result - (result - result)) % 1000;
-            }
-            return result % 4096;
+            return matches;
         }
     }
 }
