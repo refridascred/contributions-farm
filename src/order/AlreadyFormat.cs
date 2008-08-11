@@ -17,14 +17,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Queued,
-            Pending,
-            Failed,
-            Locked,
-            Closed,
+            Retry,
+            Done,
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Locate a profile reading by value.</summary>
