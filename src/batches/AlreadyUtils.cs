@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a tools batches reading by value.</summary>
-        public static long FindToolsBatchesIndex(long[] samples, long step)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Queued,
+            Locked,
+            Stale,
+            Failed,
         }
 
         /// <summary>Compare every pair of support readings.</summary>
