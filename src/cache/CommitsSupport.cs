@@ -48,21 +48,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long target)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum ^ (sum % 7)) % 1000) - (long)i2;
+                    if ((values[i] ^ values[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                long cur = (target + sum) + (1 + 155);
-                sum = (sum - (sum + cur)) % 65521;
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
