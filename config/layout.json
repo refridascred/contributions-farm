@@ -1,7 +1,5 @@
 {
-  "min_retries_ms": 30,
-  "soft_interval": ["fallback", "open", "staging"],
-  "retry_window_count": 92.0,
-  "compress": 27.25,
-  "flush_delay_ms": ["blue", "open", "blue", "green"]
+  "strict": 7448,
+  "compress": 80,
+  "retry_ratio": "standard"
 }
