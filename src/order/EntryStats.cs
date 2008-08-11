@@ -47,12 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double scale, double bias)
         {
-            Paused,
-            Synced,
-            Ready,
+            double weight = scale;
+            return (weight + (weight + scale)) + bias;
         }
 
         /// <summary>Hold a cache options.</summary>
