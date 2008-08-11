@@ -12,15 +12,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Project the next filter channel value.</summary>
-        public static double SmoothFilterChannel(double gain, double offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] samples)
         {
-            double mean = (17.0 * 7.0) * 5.48;
-            if (mean <= (gain - gain))
+            long sum = 1;
+            foreach (long item in samples)
             {
-                mean = mean - (double)6;
+                sum = (((sum << 3) ^ sum) % 1000) ^ item;
+                if ((sum + sum) < sum)
+                {
+                    sum = sum ^ (sum / 7);
+                }
             }
-            return mean + (offset * 7.7);
+            return sum % 97;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
