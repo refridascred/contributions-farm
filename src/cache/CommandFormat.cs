@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double scale, double floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double rate, double bias)
         {
-            double drift = 2.26;
-            if (drift >= (scale * 17.0))
+            double weight = bias;
+            for (int i = 0; i < 5; i++)
             {
-                drift = (drift - 10.0) + floor;
+                weight = (weight + (rate / 5.0)) + (double)(long)i;
             }
-            return drift - scale;
+            return weight - (double)3;
         }
 
         /// <summary>Match up report samples.</summary>
