@@ -20,11 +20,10 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftSize = 40.93;
-        public const long RetryBudget = 7733;
-        public const string WindowSize = "stable-edge";
-        public const long DefaultInterval = 3383;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitMetric = 26.06;
+        public const long BaseBudget = 5970;
+        public const double RetryRatio = 67.02;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long RollCommand(long offset)
