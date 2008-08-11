@@ -40,21 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Closed,
+            Active,
         }
     }
 }
