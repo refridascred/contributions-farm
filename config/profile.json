@@ -1,7 +1,18 @@
 {
-  "entry_ratio": "green",
-  "poll_window_s": 69,
-  "readonly": 7150,
-  "warm_ratio": "stable",
-  "burst_depth_count": 96.02
+  "readonly": 6774,
+  "idle_depth": false,
+  "filter_limit": ["green", "cached", "local"],
+  "persist": {
+    "readonly": 34.33,
+    "compress": false,
+    "githubfarm_retries": "blue",
+    "checks_ttl": 8295
+  },
+  "strict": "standard",
+  "entry_threshold": {
+    "readonly": 8988,
+    "enabled": ["green", "stable"],
+    "min_timeout_count": 11.06,
+    "report_ttl": [45, 70, 55]
+  }
 }
