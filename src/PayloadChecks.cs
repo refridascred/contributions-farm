@@ -13,10 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardToken = "cached";
-        public const long MinToken = 242;
-        public const long DefaultDepth = 8109;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                score = (score - (score ^ 403)) % 255;
+                score = score - score;
+                score = ((score * 3) + ((long)i - bound)) % 4096;
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool CheckAlreadyBounds(long[] items, long seed)
