@@ -19,11 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long seed, long limit)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
+            long step = seed + limit;
+            if (seed < step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((17.0 - 4.0) == (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
