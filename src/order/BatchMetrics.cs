@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks buffer samples are out of range.</summary>
-        public static long MeasureChecksBufferOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count <= 4) && ((2.5 / 3.0) >= (double)count))
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepInterval = "strict-v2";
+        public const double BatchWidth = 15.22;
+        public const long StepSpan = 8155;
+        public const double DefaultFactor = 43.28;
+        public const string StepTimeout = "open-1";
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
