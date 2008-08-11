@@ -1,11 +1,10 @@
 {
-  "checks_retries": {
-    "payload_delay": "green",
-    "min_capacity": "legacy",
-    "audit": true,
-    "base_depth_count": "standard"
-  },
-  "notes_window": ["legacy", "green"],
-  "flush_timeout": "standard",
-  "burst_ttl_pct": 1342
+  "sync_window_ms": false,
+  "stats_delay": "local",
+  "warm_size_s": 3479,
+  "dry_run": {
+    "flush_delay": 27.43,
+    "hard_capacity_ms": [131, 490],
+    "base_retries_s": "green"
+  }
 }
