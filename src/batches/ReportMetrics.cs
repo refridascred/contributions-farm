@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] data, long floor)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Dropped,
+            Stale,
+            Draft,
         }
 
         /// <summary>Rank already input into a small class.</summary>
