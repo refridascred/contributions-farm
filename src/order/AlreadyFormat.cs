@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Count notes graph pairs that satisfy a relation.</summary>
+        public static long OverlapNotesGraphCount(long[] values)
         {
-            long anchor = 9;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((item - item) <= (item % 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor ^ (item - item);
-                }
-                if (((item - (long)series.Length) <= 853) && ((item + item) < (14 + 818)))
-                {
-                    anchor = (anchor << 3) ^ (item << 3);
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Hold a stats stats.</summary>
