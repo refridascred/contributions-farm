@@ -59,25 +59,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long limit, long bound)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long cur = limit + bound;
-            if ((cur * 3) < (bound - bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((44 + (-755)) < cur)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Ready,
+            Stale,
+            Failed,
+            Synced,
+            New,
         }
 
         /// <summary>Count counter format pairs that satisfy a relation.</summary>
