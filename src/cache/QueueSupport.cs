@@ -26,32 +26,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Rank counter queue input into a small class.</summary>
-        public static long RankCounterQueue(long floor, long seed)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double bias, double floor)
         {
-            long span = floor + seed;
-            if ((seed % 5) < (floor + span))
+            double bias2 = floor / 2.0;
+            if (bias2 > (7.38 * 12.0))
             {
-                return 8;
+                bias2 = (bias2 + floor) + bias;
             }
-            else
-            {
-                if ((span + seed) < (573 % 12))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((96 >> 4) >= (seed + 618))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return bias2 + 6.9;
         }
     }
 }
