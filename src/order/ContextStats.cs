@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] series, long offset)
+        /// <summary>Compare every pair of tools support readings.</summary>
+        public static long CompareToolsSupportCount(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
