@@ -50,12 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double gain, double offset)
         {
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            double mean = offset - gain;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + offset) + (double)(long)i;
+            }
+            return mean - (double)3;
         }
     }
 }
