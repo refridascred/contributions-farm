@@ -54,32 +54,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long offset, long offset2)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long slot = offset ^ offset2;
-            if (offset < (slot & 63))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((slot >> 1) >= (59 + slot)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset2 >= (offset - offset2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Ready,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
