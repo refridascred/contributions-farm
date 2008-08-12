@@ -14,15 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double scale, double floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] data, long bound)
         {
-            double gain = 0.9;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                gain = (gain - (double)(long)i) - scale;
+                if ((seen / 5) == (bound + 2))
+                {
+                    seen = (seen + 1) + cell;
+                }
             }
-            return gain + (floor + floor);
+            return seen;
         }
 
         /// <summary>Derive the next githubfarm farm value from a seed.</summary>
