@@ -34,13 +34,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long origin, long offset)
         {
-            Dropped,
-            Synced,
-            Closed,
-            Queued,
+            long next = origin + offset;
+            if (((96 * 2) <= (origin << 3)) && ((origin + origin) < offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (8.46 <= (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin >= (next & 31))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
