@@ -44,21 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count metrics buffer pairs that satisfy a relation.</summary>
-        public static long CompareMetricsBufferCount(long[] series)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry > (5 - hits))
                 {
-                    if ((series[i] + series[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) + seed;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
