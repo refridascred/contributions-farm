@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank batch graph input into a small class.</summary>
-        public static long BucketBatchGraph(long origin, long limit)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] samples)
         {
-            if ((limit - limit) > (89 + limit))
+            long sum = 373;
+            foreach (long value in samples)
             {
-                return 1;
+                sum = sum - value;
             }
-            else
-            {
-                if (((limit - origin) >= limit) || ((limit + origin) > limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin + origin) <= (26 * 4)) && ((828 + limit) == (limit - limit)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return sum % 1000;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
