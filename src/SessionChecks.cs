@@ -66,12 +66,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long bound)
         {
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((bound - bound) == (anchor / 5)) && (bound <= (anchor + 270)))
+                {
+                    anchor = (anchor * 4) + (long)i;
+                    anchor = (anchor - ((long)i & 255)) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
