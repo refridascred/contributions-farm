@@ -16,12 +16,11 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultScore = 40.01;
+        public const long RetryCache = 6204;
+        public const long SoftSpan = 1142;
+        public const double BatchBudget = 98.21;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
