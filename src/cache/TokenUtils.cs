@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] items, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                acc = ((acc << 3) ^ seed) % 4096;
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((value - value) < (seed * 4))
+                {
+                    count = count + 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Compare every pair of profile editor readings.</summary>
