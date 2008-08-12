@@ -1,6 +1,8 @@
-id,rank,token,count
-1,47.91,open,24.76
-2,706,open,primary
-3,strict,legacy,stable
-4,primary,900,57.32
-5,fallback,5.62,937
+id,score,active
+1,757,legacy
+2,standard,open
+3,27.08,strict
+4,555,15.64
+5,81,278
+6,cached,635
+7,stable,staging
