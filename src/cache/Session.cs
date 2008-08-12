@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Validate report context readings against a bound.</summary>
+        public static bool ValidateReportContextLimits(long[] samples, long limit)
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
