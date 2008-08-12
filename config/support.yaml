@@ -1,13 +1,13 @@
 # support settings
-max_delay_s: false
-compress: 9783
-hard_interval_pct: fallback
-default_ttl_count:
-  - stable
-  - cached
-  - open
-soft_ttl_s:
-  sync_retries_ms: edge
-  retry_window: 7700
-  flush_limit_s: false
-max_capacity: 8353
+retry_interval:
+  - 314
+  - 98
+  - 294
+  - 352
+idle_threshold: 4780
+default_depth_ms: 88
+cache_ratio: green
+dry_run:
+  - latest
+  - local
+flush_capacity_pct: 60
