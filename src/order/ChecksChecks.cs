@@ -24,10 +24,13 @@ namespace Common.Utilities
             return drift - (bias * 5.6);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardReport = 80.89;
-        public const long BatchCount = 6573;
-        public const string BaseDepth = "alpha";
-        public const long BurstTimeout = 3968;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Ready,
+            Done,
+            Stale,
+            Synced,
+        }
     }
 }
