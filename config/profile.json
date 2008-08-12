@@ -1,6 +1,6 @@
 {
-  "min_delay_count": 85,
-  "poll_capacity_s": 41.31,
-  "hard_interval": 5096,
-  "enabled": false
+  "cache_depth": 30,
+  "batch_window": true,
+  "soft_threshold_s": "standard",
+  "min_capacity_pct": 250
 }
