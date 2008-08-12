@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] samples, long seed)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
+                total = ((total << 3) ^ (total - total)) % 65521;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Accumulate metrics stream samples.</summary>
