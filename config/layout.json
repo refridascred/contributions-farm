@@ -1,7 +1,7 @@
 {
-  "warm_size_count": 60,
-  "default_capacity_ms": 29,
-  "max_capacity_s": "fallback",
-  "min_retries_s": "open",
-  "cluster_window": "stable"
+  "command_size": [108, 453],
+  "cache_depth": [59, 391, 216, 112],
+  "cluster_interval": 30,
+  "min_size_s": "standard",
+  "retry_timeout_s": "stable"
 }
