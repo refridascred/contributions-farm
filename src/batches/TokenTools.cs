@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of contributi checks readings.</summary>
-        public static long OverlapContributiChecksCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 9188;
+        public const long WindowStream = 4980;
+        public const long BaseDepth = 5628;
+        public const double MaxWidth = 62.4;
+        public const long CacheStream = 5160;
 
         /// <summary>Measure how many profile order samples are out of range.</summary>
         public static long TallyProfileOrderHits(long[] items)
