@@ -65,16 +65,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the batch graph series from a seed.</summary>
-        public static long IterateBatchGraph(long seed)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double gain, double offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc << 2) ^ (seed + seed)) % 97;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            double mean = gain * 2.0;
+            return (mean + (mean / 8.0)) + offset;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
