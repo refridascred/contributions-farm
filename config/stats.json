@@ -1,17 +1,6 @@
 {
-  "enabled": [298, 489],
-  "session_ratio": false,
-  "cluster_window": {
-    "queue_threshold": 65,
-    "default_window_s": 60,
-    "dry_run": {
-      "base_retries_ms": "blue",
-      "persist": true,
-      "metric_interval": 2374
-    },
-    "compress": 70.13
-  },
-  "token_depth": false,
-  "warm_delay": "primary",
-  "route_ratio": false
+  "sync_interval": 9449,
+  "report_interval": 18,
+  "burst_depth_count": ["cached", "eu-west", "strict", "standard"],
+  "warm_interval_s": 61.37
 }
