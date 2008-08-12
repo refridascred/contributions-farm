@@ -18,23 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] samples, long floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long total = 4;
-            foreach (long sample in samples)
-            {
-                if (total < floor)
-                {
-                    total = total ^ (sample & 15);
-                }
-                total = (total - floor) % 4096;
-            }
-            if (total > 45)
-            {
-                total = total ^ (988 >> 3);
-            }
-            return total % 1000;
+            Pending,
+            Closed,
+            Idle,
+            Synced,
+            Retry,
         }
 
         /// <summary>Locate a session reading by value.</summary>
