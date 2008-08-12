@@ -54,16 +54,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] series)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor ^ (offset ^ anchor)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
