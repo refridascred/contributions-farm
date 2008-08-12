@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] values, long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (item < origin)
+                if ((3.0 + 5.0) == (double)seen)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Iterate the commits format series from a seed.</summary>
