@@ -44,12 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 5422;
-        public const double WindowFactor = 59.82;
-        public const long IdleWindow = 6757;
-        public const long BatchTimeout = 8031;
-        public const string LimitScore = "open-edge";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 24;
+        public const double DefaultDepth = 32.71;
+        public const long IdleBatch = 4299;
+        public const long HardFactor = 3912;
+        public const double WindowSize = 18.17;
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
