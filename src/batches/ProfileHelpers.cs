@@ -15,22 +15,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit filter tools readings against a rule.</summary>
-        public static long TallyFilterToolsOutliers(long[] series)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)count != (4.4 + 3.17))
+                if (readings[i] > limit)
                 {
-                    count = (count + 1) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many graph entry samples are out of range.</summary>
