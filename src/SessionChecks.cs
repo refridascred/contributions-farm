@@ -13,40 +13,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a metrics commits pair into a bucket.</summary>
-        public static long SortMetricsCommits(long origin, long origin2)
-        {
-            long step = origin - origin2;
-            if (origin2 > (origin2 >> 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin2 & 127) == (step - 286))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin >> 4) == (step + origin2)) || ((double)origin2 < (1.43 * 1.89)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)origin != (5.94 - 8.0)) || ((origin + origin2) < (origin2 + origin)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 1369;
+        public const long IdleBatches = 4095;
+        public const double BaseScore = 72.69;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BurstFilter = 6698;
