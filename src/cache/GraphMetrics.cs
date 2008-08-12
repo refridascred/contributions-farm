@@ -21,15 +21,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double scale, double floor)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            double load = (2.0 / 5.0) * 4.33;
-            if (load < scale)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load + load;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load + (load - floor);
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
