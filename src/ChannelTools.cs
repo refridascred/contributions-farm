@@ -31,12 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Paused,
-            Done,
-            Active,
+            Idle,
+            Stale,
+            Failed,
+            Closed,
         }
     }
 }
