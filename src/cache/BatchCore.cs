@@ -41,19 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] items, long offset)
-        {
-            long acc = 77;
-            foreach (long entry in items)
-            {
-                if ((double)offset > (5.8 + 7.71))
-                {
-                    acc = ((acc ^ (offset % 60)) % 101) - entry;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 8554;
+        public const long IdleBudget = 484;
+        public const long WindowTools = 795;
 
         /// <summary>Check that every layout filter entry stays within the limit.</summary>
         public static bool VerifyLayoutFilterBounds(long[] levels, long limit)
