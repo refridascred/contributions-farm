@@ -41,11 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
