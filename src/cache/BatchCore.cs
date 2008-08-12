@@ -33,10 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultSpan = 6376;
-        public const double BaseCount = 17.95;
-        public const long IdleBuffer = 7443;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading % 12) == (reading >> 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string BurstWidth = "primary-1";
