@@ -30,25 +30,18 @@ namespace Common.Utilities
             return mean + (bias + mean);
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Audit editor session readings against a rule.</summary>
+        public static long CountEditorSessionOutliers(long[] samples, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (((double)seed > (9.0 / 5.0)) && ((6.63 - 0.32) > (double)state))
+                if ((tally <= (offset * 5)) && (688 >= (offset << 2)))
                 {
-                    state = state - ((long)i - seed);
-                    state = (state * 3) + (seed - seed);
+                    tally = (tally + 3) - item;
                 }
-                else
-                {
-                    state = ((state * 5) + (seed * 2)) % 65521;
-                    state = (state * 2) + state;
-                }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return tally;
         }
     }
 }
