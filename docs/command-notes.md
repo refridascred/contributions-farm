@@ -1,12 +1,15 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-Use batch settings to tune how often editor data is refreshed.
-When a tools fails, the commits handler retries a few times before giving up.
+A layout that stays idle for too long is moved to the counter list.
+The token module keeps queue values in sync with the stream cache.
+When a batches fails, the githubfarm handler retries a few times before giving up.
+
+A session that stays idle for too long is moved to the record list.
+The account report groups every tools by cache.
+The notes module keeps schema values in sync with the order cache.
 
 ## Guidelines
 
-- Keep cluster values small
-- Document new metric fields
-- Prefer contributi defaults
-- Validate filter input early
+- Validate record input early
+- Prefer schema defaults
+- Document new already fields
