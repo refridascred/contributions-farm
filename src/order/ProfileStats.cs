@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public string Count { get; set; } = "";
-            public double Size { get; set; }
-            public long Flag { get; set; }
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
