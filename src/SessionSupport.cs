@@ -33,13 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Retry,
-            Active,
+            Synced,
             Stale,
-            New,
+            Draft,
         }
     }
 }
