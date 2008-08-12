@@ -23,12 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Validate metric stats readings against a bound.</summary>
+        public static bool GuardMetricStatsRange(long[] levels, long floor)
         {
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
-            public long Label { get; set; }
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up graph cluster samples.</summary>
