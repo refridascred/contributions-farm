@@ -64,10 +64,11 @@ namespace Common.Utilities
             return bias + (ratio / 4.0);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowRatio = 347;
-        public const long MaxCommand = 3785;
-        public const long DefaultRatio = 7558;
-        public const string WindowFactor = "alpha-v2";
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public long Owner { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
