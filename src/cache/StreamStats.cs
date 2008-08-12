@@ -33,17 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a token metric sample.</summary>
-        public static long FindTokenMetricIndex(long[] series, long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (series[i] == bound)
+                if (cell < target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
