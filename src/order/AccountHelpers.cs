@@ -36,20 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if (31 > (sum - target))
-                {
-                    sum = (sum + (46 % 24)) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitWidth = 5419;
+        public const long BatchTimeout = 9454;
+        public const long HardCount = 4901;
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
