@@ -32,19 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((seen ^ datum) != (2 - datum))
-                {
-                    seen = (seen + 1) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardBudget = 1582;
+        public const long LimitLevel = 1003;
+        public const string MinLevel = "strict-edge";
+        public const long BurstBudget = 2473;
 
         /// <summary>Match up window already samples.</summary>
         public static long CompareWindowAlreadyCount(long[] readings)
