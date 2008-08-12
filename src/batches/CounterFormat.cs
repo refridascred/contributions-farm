@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long origin, long bound)
+        /// <summary>Compare every pair of context profile readings.</summary>
+        public static long CompareContextProfileCount(long[] readings)
         {
-            long prev = origin - bound;
-            if ((prev + origin) == (prev & 63))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound > (2 >> 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    if ((readings[i] + readings[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the route mode values.</summary>
