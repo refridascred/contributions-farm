@@ -1,17 +1,9 @@
 # support settings
-verbose: open
-soft_window_count: false
-buffer_capacity: true
-report_depth:
-  readonly: open
-  max_window_count: staging
-  verbose: 500
-  compress:
-    - eu-west
-    - fallback
-  audit:
-    - 219
-    - 337
-    - 461
-  flush_timeout_count: primary
-enabled: primary
+sync_threshold_s: 500
+cache_size:
+  - blue
+  - primary
+  - latest
+warm_interval_ms: true
+notes_size: 9937
+base_threshold: strict
