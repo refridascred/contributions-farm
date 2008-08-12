@@ -33,24 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long origin, long step)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double ratio, double bias)
         {
-            if (((92 & 15) > (origin & 1)) && (2 <= (origin % 7)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(1.2 <= (double)origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            double rate = 4.1;
+            return ((rate + (14.0 / 6.0)) + ratio) + bias;
         }
 
         /// <summary>Rank window context input into a small class.</summary>
