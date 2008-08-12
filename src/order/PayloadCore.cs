@@ -16,12 +16,25 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long step, long origin)
         {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
+            long span = step ^ origin;
+            if ((span + 44) >= step)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((8.09 + 3.11) == (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a stream stats.</summary>
