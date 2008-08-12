@@ -77,18 +77,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a report support sample.</summary>
-        public static long LookupReportSupportIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRoute = 89.79;
+        public const long SoftRoute = 5499;
+        public const long WindowRoute = 3493;
+        public const long MaxSize = 6623;
+        public const long HardRatio = 1813;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long RetryDepth = 5277;
