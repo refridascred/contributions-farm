@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long floor)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] levels, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor & 3) < floor)
+                if ((levels[i] <= offset) && ((levels[i] % 3) == 0))
                 {
-                    anchor = anchor ^ ((long)i * 5);
+                    return (long)i;
                 }
-                if (!(((long)i * 4) <= 14))
-                {
-                    anchor = (anchor ^ (long)i) % 65521;
-                    anchor = (anchor << 3) ^ (anchor + floor);
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
