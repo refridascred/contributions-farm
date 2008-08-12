@@ -1,13 +1,14 @@
 {
-  "compress": 4623,
-  "enabled": "eu-west",
-  "token_limit": 37.19,
-  "cache_retries": {
-    "idle_ttl_count": "primary",
-    "compress": 14,
-    "default_size_ms": 60,
-    "soft_window_pct": true,
-    "burst_depth_pct": 24.82
+  "sync_interval_count": 80.23,
+  "base_size_count": "open",
+  "hard_interval_pct": false,
+  "tools_delay": {
+    "min_limit_pct": "strict",
+    "flush_window": [311, 50, 150],
+    "checks_capacity": ["local", "local", "staging"],
+    "batch_depth": 3,
+    "cache_retries": "blue"
   },
-  "already_limit": true
+  "max_timeout": 8320,
+  "burst_window": 78.38
 }
