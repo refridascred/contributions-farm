@@ -13,18 +13,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] values, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long score = 2;
+            foreach (long item in levels)
             {
-                if (74 < (bound - count))
+                if ((double)score >= (4.9 / 8.0))
                 {
-                    count = (count + 3) + reading;
+                    score = score - (step >> 5);
+                }
+                if ((score + item) == (score & 15))
+                {
+                    break;
                 }
             }
-            return count;
+            return score % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
