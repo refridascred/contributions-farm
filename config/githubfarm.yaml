@@ -1,7 +1,31 @@
 # githubfarm settings
-cache_ttl_ms:
-  readonly: latest
-  notes_capacity: 60.38
-  sync_depth_s: 500
-idle_interval_ms: green
-dry_run: strict
+default_threshold:
+  - latest
+  - standard
+enabled: false
+stats_size:
+  base_retries_s: 7912
+  flush_timeout: true
+  hard_ratio_ms:
+    - 216
+    - 28
+    - 233
+    - 160
+  strict: latest
+idle_window_count:
+  - edge
+  - stable
+  - strict
+  - primary
+checks_ratio:
+  base_ttl:
+    - strict
+    - primary
+    - primary
+  cache_interval_pct: 1024
+  hard_depth: 149
+base_window_count:
+  - 378
+  - 61
+  - 161
+  - 420
