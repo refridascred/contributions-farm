@@ -84,21 +84,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count graph entry pairs that satisfy a relation.</summary>
-        public static long PairGraphEntryCount(long[] series)
+        /// <summary>Accumulate cache editor samples.</summary>
+        public static long ScoreCacheEditor(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 7;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((anchor + cell) > (22 << 3)))
                 {
-                    if ((series[i] ^ series[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (((anchor << 3) ^ (anchor + anchor)) % 101) - bound;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (9 + (long)series.Length)) % 97;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
