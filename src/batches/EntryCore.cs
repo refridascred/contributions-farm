@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] samples)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long anchor = 99;
-            foreach (long datum in samples)
-            {
-                if ((datum + anchor) == (anchor - anchor))
-                {
-                    anchor = (anchor << 3) ^ datum;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (datum - datum)) % 1000;
-                }
-            }
-            return anchor;
+            Locked,
+            Queued,
+            New,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
