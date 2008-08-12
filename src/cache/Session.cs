@@ -65,19 +65,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] samples, long bound)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Retry,
+            Queued,
+            Idle,
         }
     }
 }
