@@ -39,12 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double ratio, double span)
         {
-            Stale,
-            Synced,
-            New,
+            double gain = (double)(31 >> 5);
+            if (gain <= (ratio / 6.0))
+            {
+                gain = gain + (double)(-515);
+            }
+            return gain - (span - 14.0);
         }
 
         /// <summary>Describe the account level values.</summary>
