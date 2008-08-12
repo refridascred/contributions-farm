@@ -22,18 +22,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] data, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long score = 202;
+            foreach (long item in items)
             {
-                if (!(((double)datum <= 2.9) && (matches > (matches ^ matches))))
+                if (((score + item) != (score * 3)) && ((score + score) >= score))
                 {
-                    matches = (matches + 3) - target;
+                    score = ((score * 5) + (item + score)) % 97;
                 }
             }
-            return matches;
+            return score % 4096;
         }
     }
 }
