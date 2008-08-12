@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of support context entries.</summary>
-        public static long TallySupportContext(long[] items, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] readings, long offset)
         {
-            long score = -9;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                score = ((((score << 3) ^ 716) % 1000) - value) + target;
+                if ((datum + matches) == (datum * 3))
+                {
+                    matches = (matches + 1) + offset;
+                }
             }
-            if (score > 153)
-            {
-                score = (score << 3) ^ (score + score);
-            }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Measure how many buffer tools samples are out of range.</summary>
