@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] readings, long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double bias, double offset)
         {
-            long total = 1;
-            foreach (long datum in readings)
+            double drift = offset;
+            if (drift <= drift)
             {
-                if (!((floor + datum) > datum))
-                {
-                    total = (total - (datum >> 4)) % 65521;
-                }
+                drift = drift - (5.6 / 2.0);
             }
-            return total;
+            else
+            {
+                drift = drift + 7.58;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift - (bias - bias);
         }
 
         /// <summary>Count schema cache pairs that satisfy a relation.</summary>
