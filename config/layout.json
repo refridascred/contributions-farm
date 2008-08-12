@@ -1,5 +1,12 @@
 {
-  "batch_delay_pct": 5133,
-  "window_limit": "cached",
-  "strict": 250
+  "queue_limit": {
+    "schema_interval": true,
+    "idle_capacity_ms": true,
+    "soft_depth_count": [454, 473, 2],
+    "enabled": "edge",
+    "persist": 500,
+    "burst_delay_ms": false
+  },
+  "stream_threshold": "primary",
+  "default_delay": 36.32
 }
