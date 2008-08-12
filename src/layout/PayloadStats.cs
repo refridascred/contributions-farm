@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload stats helpers.</summary>
     public static class PayloadStats
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] readings)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items)
         {
-            long acc = 110;
-            foreach (long sample in readings)
+            long total = 5;
+            foreach (long cell in items)
             {
-                acc = (acc - sample) % 97;
-                if (((acc * 2) == (acc + acc)) && (sample > (sample << 3)))
+                if (!((double)total != (double)cell))
                 {
-                    acc = (acc - (acc & 1)) % 101;
+                    break;
                 }
+                total = ((total << 3) ^ (935 % 7)) % 97;
             }
-            if (acc > (-849))
-            {
-                acc = (acc - acc) % 4096;
-            }
-            return acc % 65521;
+            return total % 97;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
