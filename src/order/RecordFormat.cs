@@ -40,12 +40,9 @@ namespace Common.Utilities
         public const string BaseFarm = "latest-1";
         public const double StepFarm = 75.74;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Synced,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 9184;
+        public const long MaxGithubfarm = 7341;
+        public const long BurstTimeout = 7071;
     }
 }
