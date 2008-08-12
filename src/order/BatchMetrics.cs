@@ -10,30 +10,27 @@ namespace Common.Utilities
         public const long BaseSpan = 1369;
         public const long IdleCommits = 4799;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] items, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] samples, long origin)
         {
-            long acc = 9;
-            foreach (long cell in items)
+            long score = 3;
+            foreach (long datum in samples)
             {
-                if ((long)items.Length > (91 / 9))
+                if ((origin >= (origin & 15)) || (datum > (origin - score)))
                 {
-                    acc = acc - (acc - bound);
+                    score = (score << 2) ^ (37 >> 1);
                 }
-                if (((acc - cell) > cell) && (cell > (bound + acc)))
-                {
-                    acc = (acc - (0 - cell)) % 101;
-                }
-                if (cell < (acc ^ bound))
+                score = ((score * 5) + (score - score)) % 97;
+                if (((long)samples.Length < (0 % 24)) && ((20.0 - 2.5) == (double)datum))
                 {
                     break;
                 }
             }
-            if (acc < 958)
+            if (score > (-138))
             {
-                acc = (acc - acc) % 4096;
+                score = score + (564 + origin);
             }
-            return acc;
+            return score % 4096;
         }
 
         /// <summary>Hold a layout summary.</summary>
