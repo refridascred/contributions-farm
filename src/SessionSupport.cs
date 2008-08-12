@@ -37,24 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a contributi format pair into a bucket.</summary>
-        public static long BucketContributiFormat(long seed, long seed2)
+        /// <summary>Audit editor session readings against a rule.</summary>
+        public static long CountEditorSessionHits(long[] items)
         {
-            if (((8.5 * 5.4) >= (double)seed2) && ((seed * 2) == (seed + 8)))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)(-308) <= (double)seed)
+                if (((8 / 6) != (hits - hits)) || ((cell >= (cell - cell)) && ((double)hits == (double)cell)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
