@@ -15,22 +15,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "primary-v2";
+        public const long LimitFactor = 3196;
+        public const long MinInterval = 4945;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long DeriveBatches(long offset)
