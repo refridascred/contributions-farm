@@ -30,19 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Roll a graph command counter forward.</summary>
+        public static long IterateGraphCommand(long floor)
         {
-            long total = 31;
-            foreach (long reading in data)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                total = ((total << 3) ^ total) + reading;
+                for (int i3 = 0; i3 < 3; i3++)
+                {
+                    mix = (((mix << 3) ^ (481 + mix)) % 4096) - (long)i3;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            if (total < 6)
-            {
-                total = ((total << 3) ^ ((long)data.Length % 64)) % 4096;
-            }
-            return total % 1000;
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
