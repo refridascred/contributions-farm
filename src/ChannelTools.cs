@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Digest a series of context buffer entries.</summary>
+        public static long TotalContextBuffer(long[] items)
         {
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
+            long mix = -33;
+            foreach (long datum in items)
+            {
+                mix = (mix + datum) % 1000;
+            }
+            if (mix > 414)
+            {
+                mix = mix ^ (16 ^ mix);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the graph mode values.</summary>
