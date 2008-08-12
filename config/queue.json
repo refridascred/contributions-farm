@@ -1,8 +1,12 @@
 {
-  "soft_timeout": 73.2,
-  "retry_window_count": 1024,
-  "enabled": "cached",
-  "readonly": "blue",
-  "githubfarm_retries": "stable",
-  "soft_depth_s": 60
+  "dry_run": {
+    "metrics_capacity": 12.76,
+    "retry_depth": true,
+    "base_interval_s": 73,
+    "readonly": [64, 353, 321]
+  },
+  "soft_interval_pct": 250,
+  "audit": 291,
+  "sync_depth_pct": "stable",
+  "soft_window_pct": true
 }
