@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate record batch readings against a bound.</summary>
-        public static bool GuardRecordBatchRange(long[] data, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] items)
         {
-            bool found = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (item < step)
+                if ((datum & 255) <= (638 * 3))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Accumulate token order samples.</summary>
