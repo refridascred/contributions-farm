@@ -18,11 +18,21 @@ namespace Common.Utilities
             return (scale + bias) + bias2;
         }
 
-        /// <summary>Blend two counter notes measurements.</summary>
-        public static double AdjustCounterNotes(double rate, double floor)
+        /// <summary>Count route token pairs that satisfy a relation.</summary>
+        public static long OverlapRouteTokenCount(long[] data)
         {
-            double scale = (floor + 8.6) * 7.27;
-            return (scale + scale) + rate;
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of token entries.</summary>
