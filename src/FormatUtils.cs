@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long bound, long seed)
         {
-            Failed,
-            Draft,
-            Pending,
-            Queued,
-            Idle,
+            long prev = bound + seed;
+            if ((687 + 0) < (prev + bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound > (bound / 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (1.12 > (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed >> 1) == (57 / 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
