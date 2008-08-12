@@ -30,11 +30,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchRatio = 66.28;
-        public const long BatchDepth = 8089;
-        public const long WindowScore = 1182;
-        public const long IdleEditor = 8703;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long target, long target2)
+        {
+            if ((target / 5) <= (target * 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((4.73 / 6.0) <= (double)target2) || ((target2 << 1) >= (0 % 12)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((10 - target) > target2) || (target2 <= (5 - target2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long SeekRecordIndex(long[] readings, long origin)
