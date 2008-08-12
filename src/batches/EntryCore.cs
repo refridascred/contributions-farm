@@ -39,14 +39,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Stale,
-            Draft,
+            Dropped,
+            Queued,
             Active,
-            Pending,
-            Retry,
         }
 
         /// <summary>Describe the profile level values.</summary>
