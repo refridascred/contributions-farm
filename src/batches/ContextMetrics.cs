@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] data)
         {
             long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] + data[j]) != 4)
+                    if ((data[i] ^ data[j]) == 4)
                     {
                         tally = tally + 1;
                     }
