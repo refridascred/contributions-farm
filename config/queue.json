@@ -1,9 +1,7 @@
 {
-  "min_window_pct": false,
-  "warm_interval_s": {
-    "hard_delay_s": ["latest", "latest", "blue"],
-    "report_delay": 30,
-    "profile_depth": "latest"
-  },
-  "poll_threshold": 50.89
+  "enabled": 9546,
+  "persist": 2053,
+  "channel_ratio": ["legacy", "primary", "eu-west", "legacy"],
+  "retry_retries_count": 27.21,
+  "default_interval": 55.73
 }
