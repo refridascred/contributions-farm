@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count farm checks pairs that satisfy a relation.</summary>
-        public static long PairFarmChecksCount(long[] data)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)(70 * 2);
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load - (double)(long)i) - weight;
             }
-            return tally;
+            return load + floor;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
