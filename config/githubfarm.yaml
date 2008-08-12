@@ -1,11 +1,4 @@
 # githubfarm settings
-soft_limit_count: legacy
-metrics_ratio: eu-west
-hard_size:
-  - 377
-  - 398
-verbose:
-  - eu-west
-  - cached
-  - primary
-warm_interval: false
+order_capacity: 250
+default_timeout_ms: 67
+cache_depth: 250
