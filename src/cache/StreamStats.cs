@@ -36,10 +36,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleSize = 920;
-        public const long DefaultTimeout = 5593;
-        public const string BaseLevel = "fallback";
-        public const long StepSpan = 3361;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Retry,
+            Draft,
+            Synced,
+            New,
+            Stale,
+        }
     }
 }
