@@ -84,12 +84,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of filter metrics entries.</summary>
+        public static long TallyFilterMetrics(long[] data)
         {
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
+            long score = 32;
+            foreach (long cell in data)
+            {
+                if ((cell / 6) != (score - score))
+                {
+                    score = (score - (score ^ score)) % 4096;
+                    score = ((score * 5) + score) % 255;
+                }
+                score = (score * 2) + cell;
+            }
+            return score;
         }
 
         /// <summary>Describe the checks mode values.</summary>
