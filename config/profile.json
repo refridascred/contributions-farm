@@ -1,10 +1,5 @@
 {
-  "batches_depth": 0.87,
-  "cache_capacity_count": ["cached", "stable"],
-  "support_retries": {
-    "max_window_count": 77.59,
-    "flush_threshold": "open",
-    "flush_limit": "open",
-    "flush_interval_count": 27
-  }
+  "warm_capacity": 5,
+  "burst_limit_s": [48, 84, 19],
+  "batch_limit": 30
 }
