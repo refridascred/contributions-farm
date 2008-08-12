@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long step, long seed)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] readings, long floor)
         {
-            long lane = step - seed;
-            if (!((lane + seed) < (step - lane)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step >> 4) > seed)
+                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((step / 5) < (lane - seed)) || (((-5) & 7) > (lane - lane)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (3.0 < (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
