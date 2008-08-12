@@ -14,17 +14,27 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] readings, long limit)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 10;
+            foreach (long sample in data)
             {
-                if (readings[i] > limit)
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    total = total + ((long)i + (long)i);
+                }
+                if ((sample > (total & 1)) && (((long)data.Length * 4) <= (21 + target)))
+                {
+                    total = (total << 2) ^ (sample + target);
+                    total = ((total * 2) + (sample >> 4)) % 101;
+                }
+                if ((total - sample) >= target)
+                {
+                    total = (total - (7 >> 3)) % 65521;
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Measure how many graph entry samples are out of range.</summary>
