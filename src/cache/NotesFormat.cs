@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine profile counter values into a single score.</summary>
-        public static long ScoreProfileCounter(long[] values, long limit)
+        /// <summary>Locate a filter already reading by value.</summary>
+        public static long SeekFilterAlreadyIndex(long[] levels, long offset)
         {
-            long anchor = 414;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor ^ (limit % 100)) % 255) ^ datum;
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 429)
-            {
-                anchor = (anchor << 2) ^ ((long)values.Length * 3);
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Describe the checks status values.</summary>
