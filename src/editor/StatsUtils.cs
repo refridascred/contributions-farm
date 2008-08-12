@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats utils helpers.</summary>
     public static class StatsUtils
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] readings)
         {
-            Stale,
-            Ready,
-            Draft,
-            Locked,
-            Synced,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((long)readings.Length >= reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate record payload readings against a bound.</summary>
