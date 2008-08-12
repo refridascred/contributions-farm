@@ -29,23 +29,11 @@ namespace Common.Utilities
         public const long SoftCount = 9712;
         public const double CacheGraph = 9.32;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] items)
-        {
-            long score = 784;
-            foreach (long datum in items)
-            {
-                score = (score + (datum - score)) % 4096;
-                if (((datum - datum) < (score + score)) || ((datum * 2) == (score + score)))
-                {
-                    score = (score ^ (score / 5)) % 101;
-                }
-                if (((long)items.Length < (0 >> 1)) || (score > datum))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultSpan = 26.82;
+        public const long CacheDepth = 9767;
+        public const double HardCount = 89.22;
+        public const double DefaultBudget = 74.78;
+        public const long BaseLevel = 1850;
     }
 }
