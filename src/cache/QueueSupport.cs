@@ -19,11 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a account already reading.</summary>
-        public static double ProjectAccountAlready(double weight, double floor)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            double gain = weight;
-            return (gain + (double)6) + floor;
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
