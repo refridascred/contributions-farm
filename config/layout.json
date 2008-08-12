@@ -1,19 +1,11 @@
 {
-  "min_timeout_count": "staging",
-  "poll_ttl": "staging",
-  "enabled": {
-    "metrics_retries": "local",
-    "persist": "stable",
-    "compress": {
-      "min_depth_ms": [497, 125, 29],
-      "enabled": "staging",
-      "idle_window_s": true,
-      "queue_size": 100
-    },
-    "buffer_limit": 97.72,
-    "notes_interval": false
+  "min_depth_pct": 1024,
+  "poll_window_count": 6.97,
+  "base_ttl_ms": {
+    "dry_run": 17.68,
+    "report_delay": false,
+    "poll_ratio_count": "latest"
   },
-  "sync_ttl_count": 60.95,
-  "persist": true,
-  "strict": [55, 495, 131, 336]
+  "enabled": ["open", "eu-west", "staging"],
+  "readonly": true
 }
