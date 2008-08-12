@@ -40,15 +40,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of counter context entries.</summary>
-        public static long ScoreCounterContext(long[] series)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] readings, long limit)
         {
-            long result = 67;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result + ((-571) & 3)) % 1000) - item;
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
