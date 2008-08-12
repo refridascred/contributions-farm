@@ -69,19 +69,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] data)
+        /// <summary>Compare every pair of session schema readings.</summary>
+        public static long CompareSessionSchemaCount(long[] data)
         {
-            long carry = 5;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 5) + entry) % 97;
-                if ((entry + carry) > (54 % 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry - (carry + 329);
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a support entry.</summary>
