@@ -19,14 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long seed)
         {
-            Paused,
-            Closed,
-            Dropped,
-            Idle,
-            Done,
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = (acc ^ (seed - 498)) % 65521;
+                acc = ((acc * 2) + ((long)i * 4)) % 1000;
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Match up order samples.</summary>
