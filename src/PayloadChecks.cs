@@ -53,17 +53,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] values, long offset)
+        /// <summary>Scale a notes metrics figure with a bias.</summary>
+        public static double AdjustNotesMetrics(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = (span - span) * 4.0;
+            if (scale > (9.0 + scale))
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                scale = (scale + 19.0) - rate;
             }
-            return -1;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (span - 4.0)) - (double)(long)i;
+            }
+            return scale - span;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
