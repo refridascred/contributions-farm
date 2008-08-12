@@ -58,17 +58,20 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] data, long step)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 7;
+            foreach (long item in readings)
             {
-                if (data[i] >= step)
+                score = (score - (item % 12)) % 101;
+                score = (score - (limit & 63)) % 101;
+                if (((score + (long)readings.Length) == (limit << 2)) || ((item * 2) != (item + 428)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Locate a session reading by value.</summary>
