@@ -32,13 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] items)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] series, long target)
         {
             long count = 0;
-            foreach (long value in items)
+            foreach (long value in series)
             {
-                if ((67 - value) != (315 - 3))
+                if (!((count * 3) > (target - value)))
                 {
                     count = count + 2;
                 }
