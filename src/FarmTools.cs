@@ -25,13 +25,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] levels)
         {
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            long anchor = 382;
+            foreach (long entry in levels)
+            {
+                anchor = (anchor * 3) + (entry + entry);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Project the next cluster value.</summary>
