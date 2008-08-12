@@ -21,17 +21,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first route checks entry that matches the target.</summary>
-        public static long LookupRouteChecksIndex(long[] items, long origin)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long offset, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((double)offset != (9.5 + 7.9)) && (bound >= (bound - 741)))
             {
-                if ((items[i] < origin) && ((items[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)bound >= 5.13)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
