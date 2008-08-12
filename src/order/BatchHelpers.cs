@@ -24,22 +24,24 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] values, long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long target, long limit)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            if (!((target + 2) < (target - (-584))))
             {
-                if (((double)datum != (double)bound) && ((double)seen == (double)bound))
+                return 3;
+            }
+            else
+            {
+                if (limit <= (target + target))
                 {
-                    seen = seen + 1;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a layout record.</summary>
