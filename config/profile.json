@@ -1,6 +1,6 @@
 {
-  "poll_size_pct": ["standard", "local", "blue"],
-  "burst_interval_ms": "legacy",
-  "account_capacity": "standard",
-  "stats_window": "eu-west"
+  "warm_limit": "stable",
+  "soft_limit_pct": ["eu-west", "stable", "stable", "eu-west"],
+  "flush_threshold_pct": 1037,
+  "enabled": 250
 }
