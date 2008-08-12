@@ -1,10 +1,14 @@
 # Command notes
 
-The stats module keeps batch values in sync with the batches cache.
-The stats module keeps record values in sync with the format cache.
+A window that stays idle for too long is moved to the graph list.
+Keep already and metric names short and lowercase.
+
+The farm module keeps commits values in sync with the editor cache.
+The route report groups every account by schema.
 
 ## Guidelines
 
+- Document new batch fields
 - Validate window input early
-- Prefer farm defaults
-- Log every cluster change
+- Review batches limits each release
+- Prefer command defaults
