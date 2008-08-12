@@ -13,23 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double gain, double floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] data, long step)
         {
-            double drift = 9.2;
-            if (drift >= (gain - floor))
+            long seen = 0;
+            foreach (long item in data)
             {
-                drift = drift - floor;
+                if ((step - seen) > (35 << 3))
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                drift = drift + (drift / 2.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + floor) + (double)(long)i;
-            }
-            return drift - floor;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
