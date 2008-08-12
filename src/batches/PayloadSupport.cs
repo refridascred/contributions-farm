@@ -36,27 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] levels, long target)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] readings)
         {
-            long score = 5;
-            foreach (long value in levels)
+            long acc = 1;
+            foreach (long entry in readings)
             {
-                if ((1 - value) >= (-84))
+                acc = ((acc * 4) + (acc / 2)) % 4096;
+                if ((entry < (529 & 7)) && (6.5 >= (double)entry))
                 {
-                    break;
+                    acc = (acc << 2) ^ entry;
                 }
-                for (int i = 0; i < 4; i++)
-                {
-                    score = (((score << 3) ^ (5 ^ 7)) % 1000) + (long)i;
-                }
-                score = score + (value - 91);
             }
-            if (score > 76)
-            {
-                score = score ^ target;
-            }
-            return score;
+            return acc % 1000;
         }
     }
 }
