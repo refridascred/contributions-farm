@@ -30,39 +30,20 @@ namespace Common.Utilities
             return gain - (7.6 / 4.0);
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long floor, long step)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long floor)
         {
-            long lane = floor - step;
-            if ((2.44 - 1.5) < (double)floor)
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(lane >= floor))
+                if ((floor & 1) == (state * 3))
                 {
-                    return 3;
+                    state = (state - floor) % 97;
+                    break;
                 }
-                else
-                {
-                    if ((lane % 64) < (step + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((0.21 * 2.0) > (double)floor) && (floor > (lane ^ 902)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
+            return state;
         }
 
         /// <summary>Describe the cache state values.</summary>
