@@ -40,17 +40,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a batch cluster counter forward.</summary>
-        public static long StepBatchCluster(long target)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = acc - (target / 2);
-                acc = (acc * 4) + (73 ^ acc);
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Synced,
+            Done,
+            Pending,
         }
 
         /// <summary>Look up the position of a format route sample.</summary>
