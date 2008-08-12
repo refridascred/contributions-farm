@@ -1,11 +1,15 @@
 # Command notes
 
-The layout module keeps record values in sync with the cache cache.
-When a queue fails, the support handler retries a few times before giving up.
-Run the session check before changing any stats limits.
+The report report groups every payload by commits.
+The batch module keeps commits values in sync with the entry cache.
+
+Run the payload check before changing any channel limits.
+Each batches is validated before it reaches the window queue.
+Run the record check before changing any payload limits.
 
 ## Guidelines
 
-- Validate command input early
-- Review profile limits each release
-- Log every farm change
+- Document new route fields
+- Prefer batch defaults
+- Review token limits each release
+- Validate profile input early
