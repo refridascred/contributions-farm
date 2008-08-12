@@ -40,12 +40,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 8340;
-        public const long BatchQueue = 4515;
-        public const long RetryCount = 8600;
-        public const long CacheQueue = 5381;
-        public const string MaxQueue = "standard-edge";
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long offset, long origin)
+        {
+            if ((origin + 71) <= origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin != (4.0 + 12.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin << 3) >= origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset > (origin << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
