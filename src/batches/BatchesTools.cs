@@ -35,11 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleWidth = 16.01;
-        public const string RetryRatio = "latest";
-        public const double MaxDepth = 68.46;
-        public const double WindowFactor = 15.11;
-        public const string BaseAlready = "cached-v2";
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Draft,
+            New,
+            Stale,
+        }
     }
 }
