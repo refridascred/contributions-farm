@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepScore = 301;
-        public const long BaseSchema = 123;
-        public const long BatchFactor = 3021;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 21.66;
+        public const long MaxContributi = 6065;
+        public const double MaxScore = 28.97;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
