@@ -13,12 +13,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Adjust a format checks reading.</summary>
+        public static double ProjectFormatChecks(double ratio, double bias)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
+            double drift = (double)(0 / 9);
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - ratio) - (double)(long)i;
+            }
+            return drift - (bias * 5.6);
         }
 
         /// <summary>Fold a list of stats readings.</summary>
