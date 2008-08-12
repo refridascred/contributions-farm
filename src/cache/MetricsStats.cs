@@ -58,18 +58,9 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((double)79 > (double)hits)
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleTools = "cached";
+        public const string RetryCount = "local-1";
+        public const long BaseFactor = 2029;
     }
 }
