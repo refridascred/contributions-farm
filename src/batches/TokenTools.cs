@@ -25,12 +25,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Digest a series of record filter entries.</summary>
+        public static long ScoreRecordFilter(long[] samples)
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
+            long sum = 815;
+            foreach (long value in samples)
+            {
+                sum = (((sum << 3) ^ (sum >> 1)) % 65521) - value;
+            }
+            return sum;
         }
     }
 }
