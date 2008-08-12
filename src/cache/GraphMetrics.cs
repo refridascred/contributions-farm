@@ -17,12 +17,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            Queued,
+            Ready,
+            Active,
+            Paused,
+            Retry,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
