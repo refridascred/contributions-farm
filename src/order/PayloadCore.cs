@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long bound, long offset)
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            if ((bound - offset) == ((-33) >> 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)offset >= (12.0 * 8.0)) && ((offset % 10) > (bound ^ bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound >= (offset << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset <= 2.1)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload status values.</summary>
