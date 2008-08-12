@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] series)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (count < (reading + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
