@@ -44,32 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long floor, long limit)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long gap = floor - limit;
-            if ((limit + gap) != (gap & 31))
-            {
-                return 1;
-            }
-            else
-            {
-                if (862 < (limit - 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit > (8.0 - 8.75))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public bool Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
