@@ -71,18 +71,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] data, long step)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits > (hits << 1))
+                if ((samples[i] < target) && ((samples[i] % 5) != 0))
                 {
-                    hits = ((hits + 2) ^ entry) + step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
