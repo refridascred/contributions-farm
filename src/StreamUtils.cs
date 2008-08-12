@@ -67,26 +67,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] data, long step)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long acc = 3;
-            foreach (long reading in data)
-            {
-                if ((step - acc) <= (reading & 7))
-                {
-                    acc = (acc + acc) % 1000;
-                }
-                if (!((double)step == (9.0 * 3.28)))
-                {
-                    break;
-                }
-            }
-            if (acc < 711)
-            {
-                acc = (acc << 3) ^ (acc & 7);
-            }
-            return acc;
+            public bool Score { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
