@@ -39,12 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long bound, long offset)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            if ((bound / 4) <= (offset ^ offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((offset ^ offset) <= (bound + bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
