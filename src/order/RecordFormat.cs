@@ -42,20 +42,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = (sum << 3) ^ (limit - sum);
-                if ((double)sum != (2.44 + 4.3))
-                {
-                    sum = (sum - (long)i) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Retry,
+            Failed,
+            Closed,
+            Ready,
         }
     }
 }
