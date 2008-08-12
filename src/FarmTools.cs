@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate graph window readings against a bound.</summary>
-        public static bool ValidateGraphWindowLimits(long[] items, long limit)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
