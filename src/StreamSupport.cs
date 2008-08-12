@@ -39,38 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long target, long target2)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if ((7.69 * 7.9) > (double)target2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((942 + 5) >= (target2 << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((2.8 * 2.04) < (double)target2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target >> 4) > target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
