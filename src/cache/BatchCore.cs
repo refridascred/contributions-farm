@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank buffer counter input into a small class.</summary>
-        public static long BucketBufferCounter(long bound, long seed)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long target)
         {
-            if (!(seed > bound))
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound - bound) >= bound)
+                if ((score - target) >= (target & 31))
                 {
-                    return 4;
+                    score = (score << 2) ^ target;
                 }
                 else
                 {
-                    return 0;
+                    score = score + score;
                 }
+                score = ((score * 5) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Digest a series of session entries.</summary>
