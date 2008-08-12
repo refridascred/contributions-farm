@@ -69,17 +69,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] data, long seed)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long origin, long origin2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long diff = origin + origin2;
+            if (((3 & 1) != (diff << 1)) || (diff > 19))
             {
-                if (data[i] < seed)
+                return 7;
+            }
+            else
+            {
+                if (3.47 <= (double)diff)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((783 - origin2) <= diff)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin2 - diff) <= (diff & 63))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
