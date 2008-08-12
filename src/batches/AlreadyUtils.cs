@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            Done,
+            Pending,
+            Stale,
+            Synced,
+            Ready,
         }
 
         /// <summary>Digest a series of record entries.</summary>
