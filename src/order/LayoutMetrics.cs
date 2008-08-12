@@ -36,13 +36,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double weight, double floor)
         {
-            Active,
-            Idle,
-            Ready,
-            Locked,
+            double scale = weight;
+            if (scale <= (scale * 17.0))
+            {
+                scale = scale - (double)4;
+            }
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + floor) - (double)(long)i;
+            }
+            return scale - (weight + scale);
         }
     }
 }
