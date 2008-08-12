@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long limit, long bound)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] values, long bound)
         {
-            if (62 >= (2 + limit))
+            long mark = 360;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit < 93)
+                if ((double)91 > (double)bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    mark = ((mark ^ bound) % 65521) - datum;
                 }
             }
+            if (mark < 52)
+            {
+                mark = mark + (bound - bound);
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
