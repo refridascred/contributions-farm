@@ -1,8 +1,7 @@
-id,level,rank,region
-1,669,897,latest
-2,latest,legacy,962
-3,eu-west,41.43,eu-west
-4,local,29.8,55.52
-5,878,28,green
-6,cached,9.79,82.08
-7,50.13,standard,primary
+id,label,token,state
+1,919,legacy,74.53
+2,strict,777,442
+3,open,395,85.85
+4,608,fallback,standard
+5,57.01,legacy,edge
+6,79.6,12.52,56.95
