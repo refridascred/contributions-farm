@@ -44,12 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] items)
         {
-            Failed,
-            New,
-            Active,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (!((7 + hits) >= (datum - datum)) && !((double)datum < 8.47))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
