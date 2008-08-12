@@ -38,11 +38,16 @@ namespace Common.Utilities
         public const string MinLevel = "strict-edge";
         public const long BurstBudget = 2473;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinInterval = 8596;
-        public const string BurstSize = "cached-edge";
-        public const string MinToken = "legacy-1";
-        public const long DefaultToken = 9861;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Compare every pair of command token readings.</summary>
         public static long MatchCommandTokenCount(long[] values)
