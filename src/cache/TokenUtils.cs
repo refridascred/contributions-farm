@@ -27,26 +27,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = sum - (limit / 7);
-                if (!((double)limit < (double)(long)i))
-                {
-                    sum = ((sum << 2) ^ sum) % 1000;
-                    sum = (sum ^ (limit - limit)) % 101;
-                }
-                if ((double)limit == (2.43 / 8.0))
-                {
-                    sum = (sum * 4) + (sum + sum);
-                    sum = (sum * 3) + (5 & 255);
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Failed,
+            New,
+            Retry,
+            Stale,
         }
     }
 }
