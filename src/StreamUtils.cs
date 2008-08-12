@@ -22,19 +22,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] data)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long anchor = 696;
-            foreach (long datum in data)
-            {
-                anchor = ((anchor << 2) ^ (datum * 4)) % 101;
-            }
-            if (anchor < 0)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor % 65521;
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
