@@ -47,25 +47,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long seed, long bound)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long bound)
         {
-            long prev = seed + bound;
-            if (((prev - seed) < (prev + prev)) && ((3.0 * 20.0) >= (double)prev))
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed <= (19 + prev))
+                if (!(bound > (total + bound)))
                 {
-                    return 2;
+                    total = (total - (total + (-9))) % 1000;
+                    total = (total * 4) + ((long)i ^ total);
                 }
-                else
-                {
-                    return 4;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
