@@ -20,13 +20,12 @@ namespace Common.Utilities
         public const string StepBudget = "open-1";
         public const long IdleBuffer = 7902;
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public double Owner { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
+            Failed,
+            Locked,
+            Queued,
         }
     }
 }
