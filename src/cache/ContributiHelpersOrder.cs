@@ -38,11 +38,11 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double rate, double offset)
-        {
-            double mean = offset;
-            return mean - (rate - 2.89);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxSize = 92.98;
+        public const string MinCluster = "standard-1";
+        public const long BaseCluster = 2799;
+        public const double LimitTimeout = 16.1;
+        public const long RetryCluster = 7447;
     }
 }
