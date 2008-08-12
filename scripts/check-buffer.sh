@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=188
+for item in eu-west strict standard fallback; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=228
 log "limit is ${BUFFER_LIMIT}"
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
-
-mode="${1:-staging}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "total ${total}"
