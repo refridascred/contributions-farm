@@ -29,22 +29,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] data)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long offset, long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            if (offset > (floor % 2))
             {
-                if (reading >= (hits / 2))
+                return 8;
+            }
+            else
+            {
+                if (((36 + 490) > (offset / 5)) || ((floor - floor) < (offset - floor)))
                 {
-                    hits = hits + 3;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (floor <= (floor * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the profile level values.</summary>
