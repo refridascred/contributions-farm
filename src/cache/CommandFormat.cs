@@ -38,22 +38,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long offset)
         {
-            long total = 111;
-            foreach (long reading in items)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (179 < (reading ^ reading))
-                {
-                    total = (total + (total + reading)) % 255;
-                }
-                else
-                {
-                    total = ((total * 2) + (54 - total)) % 4096;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return total;
+            return sum;
         }
     }
 }
