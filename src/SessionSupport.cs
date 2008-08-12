@@ -36,15 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a context record reading.</summary>
-        public static double ProjectContextRecord(double weight, double floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] data, long bound)
         {
-            double gain = weight;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = ((gain - weight) + (double)(long)i) + floor;
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (gain + 7.7);
+            return -1;
         }
     }
 }
