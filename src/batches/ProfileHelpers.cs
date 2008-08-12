@@ -32,24 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long step, long limit)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] levels, long limit)
         {
-            if ((double)step <= (18.0 * 12.0))
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step - step) != (limit / 5))
+                if (reading <= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
