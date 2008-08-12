@@ -39,20 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] readings, long offset)
+        /// <summary>Check that every contributi session entry stays within the limit.</summary>
+        public static bool ValidateContributiSessionRange(long[] items, long seed)
         {
-            long mix = -487;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((double)value < 2.8)
+                if (entry <= seed)
                 {
-                    mix = (mix + (offset ^ 64)) % 65521;
+                    flag = false;
                     break;
                 }
-                mix = ((mix << 2) ^ (8 * 5)) % 101;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Roll a queue profile counter forward.</summary>
