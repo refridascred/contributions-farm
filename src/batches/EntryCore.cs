@@ -25,16 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 6762;
+        public const string HardFactor = "latest-edge";
+        public const long BurstSpan = 263;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool ValidateChecksLimits(long[] values, long target)
