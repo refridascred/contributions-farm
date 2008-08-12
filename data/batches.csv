@@ -1,7 +1,6 @@
-id,label,token,state
-1,919,legacy,74.53
-2,strict,777,442
-3,open,395,85.85
-4,608,fallback,standard
-5,57.01,legacy,edge
-6,79.6,12.52,56.95
+id,rank,weight
+1,blue,cached
+2,37.36,staging
+3,latest,30.33
+4,924,91.34
+5,569,28.01
