@@ -37,20 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double gain, double bias)
-        {
-            double weight = gain - bias;
-            if (weight <= bias)
-            {
-                weight = weight - (gain * 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (double)97) + (double)(long)i;
-            }
-            return weight + (double)63;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 5288;
+        public const string MinDepth = "local-edge";
+        public const long CacheSchema = 8757;
+        public const long CacheScore = 5913;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheMatches(long[] data)
