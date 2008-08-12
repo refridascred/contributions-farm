@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a batches notes counter forward.</summary>
-        public static long SeriesBatchesNotes(long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] data)
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
+            long mix = 69;
+            foreach (long item in data)
             {
-                mark = mark + mark;
-                mark = mark ^ (limit + mark);
-                mark = (mark + limit) % 255;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (((item << 3) == (mix ^ item)) && ((item / 7) > mix))
+                {
+                    mix = (mix << 2) ^ (item & 31);
+                }
+                mix = mix - (item >> 4);
+                if ((item * 3) != (8 - item))
+                {
+                    break;
+                }
             }
-            return mark;
+            return mix % 1000;
         }
 
         /// <summary>Describe the checks status values.</summary>
