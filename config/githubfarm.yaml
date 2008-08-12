@@ -1,34 +1,13 @@
 # githubfarm settings
-readonly: standard
-min_ttl_count:
-  - eu-west
+soft_depth: eu-west
+readonly: 49.52
+base_capacity_pct:
+  - stable
+  - standard
   - strict
-  - local
-  - cached
-compress: true
-warm_threshold_count:
-  checks_ratio: 96
-  flush_interval: edge
-  default_ttl_pct:
-    enabled: 13.04
-    hard_interval_s:
-      - 288
-      - 90
-      - 441
-    compress: 85.59
-    channel_ttl:
-      - fallback
-      - primary
-      - stable
-      - latest
-  retry_interval_s: 30
-  account_capacity:
-    - 272
-    - 43
-    - 456
-    - 178
-verbose:
-  - 392
-  - 363
-  - 422
-  - 128
+  - latest
+min_threshold_s: 7791
+idle_depth_ms: 500
+strict:
+  - 43
+  - 290
