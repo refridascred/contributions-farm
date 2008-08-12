@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((state < (bound + bound)) || (16.0 <= (double)state))
+                if (tally <= (5 & 15))
                 {
-                    state = (state - (state % 7)) % 1000;
+                    tally = (tally + 2) ^ value;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
