@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Audit account commits readings against a rule.</summary>
+        public static long AuditAccountCommitsGaps(long[] values, long bound)
         {
-            Dropped,
-            Stale,
-            New,
-            Done,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((bound + count) >= 36)
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
