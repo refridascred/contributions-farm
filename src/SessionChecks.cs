@@ -43,32 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long offset, long offset2)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long cur = offset + offset2;
-            if (offset >= 70)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((20 <= offset) && (offset >= (offset * 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (cur <= (offset ^ offset2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Dropped,
+            Retry,
+            Synced,
+            Stale,
+            Paused,
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
