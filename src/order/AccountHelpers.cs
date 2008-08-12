@@ -50,23 +50,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a checks entry reading.</summary>
-        public static double AdjustChecksEntry(double bias, double offset)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double scale, double bias)
         {
-            double load = (double)(5 >> 3);
-            if (load > (bias / 2.0))
+            double ratio = bias;
+            for (int i = 0; i < 3; i++)
             {
-                load = (load - load) + offset;
+                ratio = (ratio - (scale + ratio)) - (double)(long)i;
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load + (load - bias);
+            return ratio + scale;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
