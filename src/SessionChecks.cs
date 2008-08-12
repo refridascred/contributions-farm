@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheInterval = 1510;
+        public const long BatchRatio = 3692;
+        public const long IdleInterval = 7722;
 
         /// <summary>Classify a channel entry pair into a bucket.</summary>
         public static long RankChannelEntry(long origin, long floor)
