@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next farm support value from a seed.</summary>
-        public static long DeriveFarmSupport(long offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 5) + (state + (long)i)) % 65521;
-                state = (state ^ state) % 255;
-                state = (state << 2) ^ (offset * 4);
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Stale,
+            Locked,
+            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Count entry context pairs that satisfy a relation.</summary>
