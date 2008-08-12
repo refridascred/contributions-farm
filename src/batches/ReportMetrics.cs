@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long BurstNotes = 3375;
         public const long LimitNotes = 1955;
 
-        /// <summary>Iterate the payload cache series from a seed.</summary>
-        public static long StepPayloadCache(long target)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Find the first route checks entry that matches the target.</summary>
