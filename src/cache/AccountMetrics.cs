@@ -76,16 +76,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Locate a metric command reading by value.</summary>
+        public static long SeekMetricCommandIndex(long[] data, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark * 3) + ((long)i / 6);
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
