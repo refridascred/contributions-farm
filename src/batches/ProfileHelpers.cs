@@ -19,17 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] items, long step)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
