@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] readings)
         {
-            Done,
-            Idle,
-            Paused,
+            long anchor = 297;
+            foreach (long sample in readings)
+            {
+                anchor = ((anchor - anchor) % 65521) ^ sample;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
