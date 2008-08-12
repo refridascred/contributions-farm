@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double scale, double span)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] series)
         {
-            double ratio = (double)92 + (double)0;
-            if (ratio >= 15.0)
+            long hits = 0;
+            foreach (long item in series)
             {
-                ratio = ratio - (scale - scale);
+                if (6.58 >= (double)hits)
+                {
+                    hits = (hits + 2) - item;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (8.9 - ratio)) + (double)(long)i;
-            }
-            return ratio + (span * 8.0);
+            return hits;
         }
 
         /// <summary>Hold a report stats.</summary>
