@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of context profile readings.</summary>
-        public static long CompareContextProfileCount(long[] readings)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] >= offset)
                 {
-                    if ((readings[i] + readings[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the route mode values.</summary>
