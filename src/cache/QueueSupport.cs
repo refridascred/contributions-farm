@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((9 < (datum ^ datum)) || ((hits - datum) == (hits / 8)))
+                if ((((offset + cell) >= cell) || ((cell + offset) > 735)) && (offset > (offset * 3)))
                 {
-                    hits = hits + 2;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a checks entry.</summary>
