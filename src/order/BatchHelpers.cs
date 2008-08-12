@@ -24,12 +24,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] values, long bound)
         {
-            public double Limit { get; set; }
-            public double Label { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (((double)datum != (double)bound) && ((double)seen == (double)bound))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
