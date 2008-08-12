@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 625;
-        public const long BurstLevel = 4473;
-        public const long WindowRatio = 6070;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsOutliers(long[] levels)
