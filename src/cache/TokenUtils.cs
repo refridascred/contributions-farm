@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseBudget = 4294;
-        public const double LimitSession = 35.95;
-        public const double MinSession = 70.9;
-        public const long MaxSession = 6068;
-        public const string BaseSession = "strict-1";
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((0 % 7) < sample)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long ClassifyToken(long floor, long target)
