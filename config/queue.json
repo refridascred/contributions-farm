@@ -1,20 +1,5 @@
 {
-  "min_depth_s": {
-    "cache_depth": {
-      "schema_limit": 3373,
-      "base_timeout": ["open", "green", "primary", "staging"],
-      "base_interval_ms": 3490,
-      "idle_timeout_pct": true,
-      "default_delay": 54.13,
-      "enabled": 26.9
-    },
-    "payload_ratio": 67,
-    "githubfarm_delay": false,
-    "idle_ttl_ms": "green",
-    "default_timeout": "fallback"
-  },
-  "base_delay_count": false,
-  "batch_size_count": true,
-  "soft_threshold": true,
-  "persist": 2652
+  "strict": 29.88,
+  "retry_limit": false,
+  "counter_capacity": "green"
 }
