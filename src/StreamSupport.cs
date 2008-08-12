@@ -22,10 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultSize = 70.45;
-        public const long SoftLayout = 4473;
-        public const long IdleLayout = 786;
+        /// <summary>Count profile context pairs that satisfy a relation.</summary>
+        public static long CompareProfileContextCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorOutliers(long[] levels, long offset)
