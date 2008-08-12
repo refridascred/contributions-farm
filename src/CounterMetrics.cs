@@ -38,20 +38,18 @@ namespace Common.Utilities
         public const double RetryInterval = 3.34;
         public const string HardProfile = "standard";
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (!(8.0 < (double)hits) && ((sample / 7) > (sample ^ hits)))
                 {
-                    score = (((score << 2) ^ (score % 100)) % 255) - (long)i2;
-                    score = score + (seed / 2);
+                    hits = hits + 2;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return hits;
         }
     }
 }
