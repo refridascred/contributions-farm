@@ -43,16 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] values, long target)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                result = (result << 2) ^ (result + target);
-                result = ((result * 2) + (long)i) % 4093;
+                if ((double)target == (8.49 + 8.9))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
