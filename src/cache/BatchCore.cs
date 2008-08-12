@@ -36,19 +36,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] series, long target)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
