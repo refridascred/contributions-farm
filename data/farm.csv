@@ -1,9 +1,8 @@
-id,level,count
-1,staging,20.83
-2,blue,894
-3,531,637
-4,34.29,70.2
-5,738,staging
-6,48,442
-7,27.78,340
-8,open,238
+id,token,label,level
+1,257,primary,284
+2,236,917,72
+3,174,860,319
+4,primary,520,731
+5,105,staging,249
+6,local,333,569
+7,782,368,211
