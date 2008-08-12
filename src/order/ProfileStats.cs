@@ -25,31 +25,11 @@ namespace Common.Utilities
         public const long BurstBudget = 1031;
         public const long BurstScore = 645;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long floor, long bound)
-        {
-            if ((double)bound >= (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((6.0 + 0.2) >= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor ^ floor) < 70) || ((floor ^ bound) >= bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 7114;
+        public const string BurstCommand = "open";
+        public const long HardDepth = 125;
+        public const double SoftCommand = 11.65;
+        public const string RetryCommand = "primary-1";
     }
 }
