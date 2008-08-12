@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long seed, long floor)
+        /// <summary>Count farm checks pairs that satisfy a relation.</summary>
+        public static long PairFarmChecksCount(long[] data)
         {
-            if ((floor & 255) < floor)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((14.0 < (double)seed) || (4 >= (seed + 1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + seed) >= (seed ^ floor))
+                    if ((data[i] + data[j]) != 17)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
