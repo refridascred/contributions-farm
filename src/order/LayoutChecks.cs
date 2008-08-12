@@ -31,18 +31,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] data, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (!((1.4 * 18.0) != (double)origin) || ((double)datum > (6.0 / 9.0)))
+                if (!((sample - limit) >= 6))
                 {
-                    seen = seen + 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate order format samples.</summary>
