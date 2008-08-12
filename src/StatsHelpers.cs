@@ -37,11 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleTools = 55.58;
-        public const long DefaultBudget = 6678;
-        public const double SoftTimeout = 63.13;
-        public const double StepTools = 55.87;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepChannel = 8.95;
+        public const long BurstChannel = 9518;
+        public const long WindowWidth = 2419;
+        public const string LimitChannel = "cached-1";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MinSpan = 5898;
