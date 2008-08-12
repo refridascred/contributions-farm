@@ -42,18 +42,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit layout command readings against a rule.</summary>
-        public static long AuditLayoutCommandOutliers(long[] items, long limit)
+        /// <summary>Fold a list of editor notes readings.</summary>
+        public static long CombineEditorNotes(long[] values)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long mark = 392;
+            foreach (long cell in values)
             {
-                if ((item * 2) < (matches - limit))
+                if (!((mark * 3) <= cell))
                 {
-                    matches = matches + 3;
+                    mark = (mark + (cell << 1)) % 65521;
+                }
+                else
+                {
+                    mark = (mark + (mark / 9)) % 255;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
