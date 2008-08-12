@@ -29,17 +29,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] items, long floor)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double gain, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = offset;
+            if (rate >= (double)(-88))
             {
-                if ((items[i] > floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - gain;
             }
-            return -1;
+            else
+            {
+                rate = rate + (rate - gain);
+            }
+            return rate - (double)227;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
