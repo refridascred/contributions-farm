@@ -23,22 +23,26 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] levels, long floor)
+        /// <summary>Fold a list of support counter readings.</summary>
+        public static long CombineSupportCounter(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long mark = 7;
+            foreach (long reading in items)
             {
-                if ((double)entry >= (10.0 / 7.0))
+                if (mark >= (reading + mark))
                 {
-                    tally = (tally + 2) - floor;
+                    mark = mark ^ (mark << 2);
                 }
-                else
+                if (6 > (reading + reading))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (mark > 6)
+            {
+                mark = ((mark * 3) + mark) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the cluster class values.</summary>
