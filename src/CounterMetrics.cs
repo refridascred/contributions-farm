@@ -20,15 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double bias, double bias2)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] samples)
         {
-            double bias3 = bias2;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                bias3 = ((bias3 + (bias3 + bias2)) + (double)(long)i) - bias;
+                if ((matches + datum) <= datum)
+                {
+                    matches = matches + 1;
+                }
             }
-            return bias3 - (bias3 + 1.34);
+            return matches;
         }
 
         /// <summary>Digest a series of order entries.</summary>
