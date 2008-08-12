@@ -13,13 +13,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Closed,
-            Synced,
-            Locked,
-            Retry,
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the account kind values.</summary>
