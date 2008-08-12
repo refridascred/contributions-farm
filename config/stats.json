@@ -1,20 +1,10 @@
 {
-  "compress": 35,
-  "default_ttl_ms": {
-    "default_retries": {
-      "audit": 69.24,
-      "already_threshold": 34,
-      "min_size_s": "standard"
-    },
-    "cache_limit": "green",
-    "order_ratio": 9,
-    "burst_depth_pct": 1298
+  "warm_ttl_s": 89.1,
+  "persist": 8868,
+  "default_ttl_count": {
+    "sync_ttl": 7380,
+    "persist": "standard",
+    "batch_capacity": "open"
   },
-  "strict": {
-    "persist": true,
-    "min_size_ms": 6510,
-    "cache_interval_count": 17.91
-  },
-  "tools_ttl": "stable",
-  "batch_ratio_s": "eu-west"
+  "soft_depth_pct": "eu-west"
 }
