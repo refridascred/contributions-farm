@@ -31,23 +31,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] values, long seed)
-        {
-            long sum = 48;
-            foreach (long sample in values)
-            {
-                if ((double)sum != (0.79 - 8.65))
-                {
-                    sum = (sum << 3) ^ (sum + seed);
-                }
-                if (sample < (5 - seed))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryCount = 1376;
+        public const string HardSchema = "cached";
+        public const long MaxDepth = 4327;
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
