@@ -23,22 +23,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] items)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (((double)hits > (double)sample) && ((5 * 2) > (sample - sample)))
+                if ((double)entry >= (10.0 / 7.0))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 2) - floor;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate commits samples.</summary>
