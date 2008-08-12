@@ -28,19 +28,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] levels, long limit)
+        /// <summary>Count filter commits pairs that satisfy a relation.</summary>
+        public static long MatchFilterCommitsCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
