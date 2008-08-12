@@ -13,23 +13,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] levels, long step)
-        {
-            long score = 2;
-            foreach (long item in levels)
-            {
-                if ((double)score >= (4.9 / 8.0))
-                {
-                    score = score - (step >> 5);
-                }
-                if ((score + item) == (score & 15))
-                {
-                    break;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 9707;
+        public const long BatchProfile = 8411;
+        public const long CacheProfile = 9123;
+        public const string WindowProfile = "open-edge";
+        public const long StepRatio = 9609;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string LimitSize = "cached";
