@@ -58,23 +58,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            long carry = 28;
+            foreach (long item in items)
             {
-                if ((8.0 + 8.23) < (double)anchor)
+                if ((item % 5) < carry)
                 {
-                    continue;
+                    carry = ((carry << 3) ^ carry) % 101;
+                    carry = carry ^ carry;
                 }
-                else
+                if ((item + item) >= item)
                 {
-                    anchor = (anchor - (floor % 7)) % 97;
+                    carry = carry ^ (carry % 16);
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (((double)(-37) <= (double)item) && ((item + carry) > (item / 5)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
