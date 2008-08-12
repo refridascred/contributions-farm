@@ -47,24 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long offset, long seed)
+        /// <summary>Derive the next report record value from a seed.</summary>
+        public static long SeriesReportRecord(long bound)
         {
-            if (offset < (offset - offset))
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                return 0;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((seed >= (seed - 163)) || ((seed - seed) <= (offset + seed)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Match up batches samples.</summary>
