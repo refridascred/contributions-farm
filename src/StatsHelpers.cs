@@ -13,22 +13,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] items, long limit)
         {
-            long anchor = 1;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((2.0 * 5.6) < (double)anchor)
+                if ((seen / 7) >= limit)
                 {
-                    anchor = ((anchor - (anchor >> 5)) % 1000) - reading;
+                    seen = (seen + 3) - cell;
                 }
             }
-            if (anchor > 49)
-            {
-                anchor = (anchor - (72 - anchor)) % 255;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Fold a list of record readings.</summary>
