@@ -33,12 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] data)
         {
-            Stale,
-            Idle,
-            Ready,
+            long total = 31;
+            foreach (long reading in data)
+            {
+                total = ((total << 3) ^ total) + reading;
+            }
+            if (total < 6)
+            {
+                total = ((total << 3) ^ ((long)data.Length % 64)) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the counter state values.</summary>
