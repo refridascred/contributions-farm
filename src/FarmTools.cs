@@ -30,18 +30,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the githubfarm window entries that pass the check.</summary>
-        public static long CountGithubfarmWindowHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((value + value) >= (tally * 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleTimeout = 56.48;
+        public const double IdleInterval = 92.18;
+        public const string DefaultBudget = "standard-v2";
+        public const long CacheBudget = 6587;
+        public const long BaseLevel = 7717;
     }
 }
