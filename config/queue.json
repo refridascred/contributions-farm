@@ -1,18 +1,5 @@
 {
-  "sync_ttl": {
-    "queue_timeout": "primary",
-    "cache_limit_count": {
-      "enabled": 45.94,
-      "compress": "strict",
-      "audit": true,
-      "hard_limit": "cached",
-      "readonly": 6057
-    },
-    "retry_ttl": 500,
-    "buffer_threshold": "blue",
-    "poll_delay": 99,
-    "soft_interval_ms": 250
-  },
-  "contributi_retries": true,
-  "default_timeout_ms": 65
+  "flush_retries": [339, 248],
+  "profile_limit": "local",
+  "idle_window_count": 30
 }
