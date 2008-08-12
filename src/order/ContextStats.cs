@@ -35,12 +35,23 @@ namespace Common.Utilities
             return drift + (drift / 8.0);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinSpan = 70.19;
-        public const string BurstCount = "legacy-edge";
-        public const double StepCommand = 83.16;
-        public const string SoftBudget = "open-edge";
-        public const double LimitCommand = 90.3;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item << 1) >= item)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
