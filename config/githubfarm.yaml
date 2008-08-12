@@ -1,14 +1,30 @@
 # githubfarm settings
-idle_window: 30
-flush_ttl_ms:
-  - standard
-  - blue
-  - strict
-  - fallback
-soft_retries_s:
-  - cached
-  - strict
-  - latest
-  - local
-sync_threshold_ms: 19
-idle_retries_s: local
+profile_delay:
+  warm_depth_pct:
+    - 405
+    - 499
+    - 70
+  cache_limit: 94
+  default_ttl:
+    - 191
+    - 65
+  tools_window:
+    cache_size_count: false
+    batch_window_s: eu-west
+    max_retries: 1247
+    entry_ttl: 21
+    stats_interval: latest
+    sync_retries: 17
+  hard_timeout_pct: 8
+enabled:
+  max_delay_s:
+    - 257
+    - 500
+    - 473
+  compress:
+    - local
+    - fallback
+    - stable
+  enabled: 91
+record_timeout: 43
+hard_retries: 66
