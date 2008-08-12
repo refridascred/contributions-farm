@@ -25,12 +25,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 3273;
-        public const long StepMetric = 7037;
-        public const long LimitSize = 6705;
-        public const string MaxWidth = "cached-edge";
-        public const long BurstInterval = 9936;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitCounter = 4149;
