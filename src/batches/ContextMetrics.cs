@@ -73,18 +73,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit filter batch readings against a rule.</summary>
-        public static long AuditFilterBatchHits(long[] readings, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((((-93) + hits) <= (floor + 36)) && (datum <= 430))
+                if (!((2.4 * 2.81) != (double)seen))
                 {
-                    hits = hits + 2;
+                    seen = ((seen + 2) + sample) + offset;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
