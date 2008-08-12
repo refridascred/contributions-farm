@@ -1,15 +1,12 @@
 # Command notes
 
-Keep filter and cache names short and lowercase.
-The entry report groups every metric by support.
-
-Each cluster is validated before it reaches the window queue.
-A schema that stays idle for too long is moved to the contributi list.
-Run the cluster check before changing any metric limits.
+Keep entry and report names short and lowercase.
+Keep contributi and filter names short and lowercase.
+Use metrics settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Document new entry fields
-- Review metrics limits each release
-- Keep tools values small
+- Validate queue input early
+- Review tools limits each release
+- Document new stats fields
+- Keep buffer values small
