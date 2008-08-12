@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] data, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (data[i] == limit)
+                if ((matches % 64) == (matches - step))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
