@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public double Stamp { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "local-1";
+        public const long BurstToken = 8795;
+        public const string WindowTimeout = "legacy-v2";
+        public const string WindowCount = "fallback";
+        public const long IdleToken = 6617;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double MinScore = 46.27;
