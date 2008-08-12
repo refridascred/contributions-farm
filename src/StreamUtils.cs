@@ -78,21 +78,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of session schema readings.</summary>
-        public static long CompareSessionSchemaCount(long[] data)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
