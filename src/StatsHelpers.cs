@@ -13,18 +13,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] items, long limit)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen / 7) >= limit)
-                {
-                    seen = (seen + 3) - cell;
-                }
-            }
-            return seen;
+            Done,
+            Idle,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
