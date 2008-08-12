@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] items, long step)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the layout state values.</summary>
