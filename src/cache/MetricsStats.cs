@@ -32,12 +32,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long origin)
         {
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                long matches = 2;
+                if (((0.93 / 7.0) < (double)(long)i) || ((origin + matches) > matches))
+                {
+                    matches = ((matches * 2) + (anchor & 3)) % 65521;
+                    continue;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    matches = ((matches * 5) + (origin << 2)) - (long)i2;
+                    anchor = anchor - (anchor - matches);
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the report status values.</summary>
