@@ -14,22 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] series, long seed)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long result = 84;
-            foreach (long reading in series)
-            {
-                if ((double)result != (3.0 + 8.2))
-                {
-                    result = ((result ^ (seed - result)) % 97) + reading;
-                }
-                else
-                {
-                    result = result + (seed & 63);
-                }
-            }
-            return result % 97;
+            New,
+            Failed,
+            Active,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
