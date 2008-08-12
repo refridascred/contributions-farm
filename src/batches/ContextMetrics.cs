@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] items, long step)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] series, long target)
         {
             bool ok = true;
-            foreach (long reading in items)
+            foreach (long sample in series)
             {
-                if (reading > step)
+                if (sample < target)
                 {
                     ok = false;
                     break;
