@@ -63,18 +63,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (target >= (target - target))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSchema = "open-v2";
+        public const long MinSchema = 8884;
+        public const long MinSpan = 9467;
+        public const long HardSchema = 349;
+        public const string IdleTimeout = "staging";
     }
 }
