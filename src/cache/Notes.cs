@@ -32,11 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardBudget = 1582;
-        public const long LimitLevel = 1003;
-        public const string MinLevel = "strict-edge";
-        public const long BurstBudget = 2473;
+        /// <summary>Count stats entry pairs that satisfy a relation.</summary>
+        public static long CompareStatsEntryCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
