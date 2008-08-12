@@ -60,13 +60,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] values)
         {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            long result = 123;
+            foreach (long reading in values)
+            {
+                if ((reading + result) < 9)
+                {
+                    break;
+                }
+                else
+                {
+                    result = (result + (reading - 79)) % 65521;
+                }
+                result = (result ^ reading) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a format info.</summary>
