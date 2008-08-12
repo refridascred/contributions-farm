@@ -40,19 +40,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] values, long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (sample >= bound)
+                if (reading < origin)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Validate schema farm readings against a bound.</summary>
