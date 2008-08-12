@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleFactor = 8227;
-        public const double BaseWidth = 19.29;
-        public const long LimitWindow = 6516;
-        public const string DefaultWindow = "standard";
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double rate, double bias)
+        {
+            double scale = bias;
+            if (scale > scale)
+            {
+                scale = scale - (rate * 5.0);
+            }
+            else
+            {
+                scale = scale + (bias / 2.0);
+            }
+            return scale + (1.23 + 9.9);
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string RetrySpan = "primary-edge";
