@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Count the profile account entries that pass the check.</summary>
+        public static long AuditProfileAccountOutliers(long[] levels)
         {
-            Paused,
-            Done,
-            Failed,
-            Queued,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count & 31) == (count - count))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the farm phase values.</summary>
