@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a filter profile figure with a bias.</summary>
-        public static double ScaleFilterProfile(double weight, double span)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            double rate = 7.15 / 9.0;
-            if (rate >= rate)
-            {
-                rate = (rate - (6.18 * 5.5)) + weight;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate - (rate + span);
+            Retry,
+            Draft,
+            Idle,
+            New,
         }
 
         /// <summary>Iterate the githubfarm checks series from a seed.</summary>
