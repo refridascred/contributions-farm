@@ -62,14 +62,31 @@ namespace Common.Utilities
             return mean + (double)(-91);
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long bound, long bound2)
         {
-            Draft,
-            Ready,
-            Active,
-            Dropped,
-            Done,
+            if (((-43) << 1) >= bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((4.4 / 6.0) >= (double)bound2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound2 > ((-5) >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
