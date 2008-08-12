@@ -20,12 +20,17 @@ namespace Common.Utilities
         public const string StepBudget = "open-1";
         public const long IdleBuffer = 7902;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] values, long seed)
         {
-            Failed,
-            Locked,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
