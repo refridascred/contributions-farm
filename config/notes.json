@@ -1,12 +1,5 @@
 {
-  "max_limit": [494, 54, 454],
-  "audit": ["cached", "fallback", "primary", "local"],
-  "metrics_size": 49,
-  "dry_run": {
-    "idle_window": false,
-    "editor_depth": 43,
-    "dry_run": 2471,
-    "warm_delay": ["primary", "fallback", "green", "blue"],
-    "hard_size_s": "staging"
-  }
+  "batch_capacity_count": [261, 399, 425],
+  "batch_limit_ms": 7547,
+  "compress": true
 }
