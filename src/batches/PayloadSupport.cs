@@ -19,26 +19,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] values)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] series)
         {
-            long acc = 842;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((3.0 * 11.0) < (double)acc))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc * 2) + (acc + 597)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ ((long)values.Length ^ acc)) % 101;
-                }
-                if ((item + item) >= 14)
-                {
-                    break;
+                    if ((series[i] - series[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return count;
         }
     }
 }
