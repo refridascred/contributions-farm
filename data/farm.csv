@@ -1,6 +1,6 @@
-id,weight,ratio,region,token
-1,18.61,24.35,32.47,open
-2,81.85,eu-west,strict,77.83
-3,625,76.68,568,445
-4,38.77,65.31,strict,fallback
-5,11.9,656,strict,local
+id,weight,rank,ratio
+1,primary,91.77,19.37
+2,261,606,latest
+3,open,950,811
+4,48.88,cached,fallback
+5,25.02,8,local
