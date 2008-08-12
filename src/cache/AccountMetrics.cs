@@ -45,17 +45,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] data, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (data[i] < step)
+                if (((double)matches >= (3.3 / 7.0)) && (50 <= (value << 3)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
