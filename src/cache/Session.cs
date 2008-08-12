@@ -14,39 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long step, long limit)
+        /// <summary>Validate record tools readings against a bound.</summary>
+        public static bool GuardRecordToolsRange(long[] readings, long floor)
         {
-            long prev = step - limit;
-            if ((limit * 4) == (step & 3))
+            bool ok = true;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((prev % 8) != (step << 2))
+                if (value != floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + prev) <= prev)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((prev + step) > (step + limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
