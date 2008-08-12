@@ -32,10 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchFactor = 8372;
-        public const double MinRatio = 86.55;
-        public const long RetryLevel = 3722;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Paused,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool GuardFilterRange(long[] items, long step)
