@@ -40,18 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = mix ^ (origin + (long)i);
-                mix = (mix - 26) % 1000;
-                mix = (mix ^ origin) % 4096;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
