@@ -32,11 +32,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinCount = 1387;
+        public const long RetryLayout = 1877;
+        public const long IdleLayout = 5966;
+        public const string IdleWidth = "staging-edge";
     }
 }
