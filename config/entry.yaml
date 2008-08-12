@@ -1,7 +1,9 @@
 # entry settings
-burst_size_s: 250
-order_timeout: false
-batch_ttl_count: stable
-schema_capacity: 41
-metric_delay: false
-cache_ratio_pct: false
+enabled: 79
+hard_size_ms: 30
+dry_run: 83
+retry_ttl:
+  - 58
+  - 439
+persist: 9112
+max_retries_pct: green
