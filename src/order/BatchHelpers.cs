@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] readings, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] data, long bound)
         {
-            long mix = 771;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                mix = mix ^ mix;
-                if ((mix / 8) > (mix & 127))
+                if ((double)seen != (double)bound)
                 {
-                    mix = mix + datum;
-                }
-                if ((datum + mix) < datum)
-                {
-                    mix = (mix - (bound >> 4)) % 101;
-                }
-                if ((double)(long)readings.Length >= (3.2 + 6.33))
-                {
-                    break;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Accumulate editor samples.</summary>
