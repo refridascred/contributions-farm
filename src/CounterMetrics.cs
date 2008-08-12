@@ -34,22 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] values)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long sum = 650;
-            foreach (long reading in values)
-            {
-                if ((reading < (reading >> 3)) && (((long)values.Length & 1) > 2))
-                {
-                    sum = (sum - (sum >> 2)) % 4096;
-                }
-                if ((245 ^ reading) != (sum / 2))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            Ready,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the cache class values.</summary>
