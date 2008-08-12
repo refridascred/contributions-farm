@@ -1,17 +1,11 @@
 {
-  "schema_retries": {
-    "tools_retries": "legacy",
-    "tools_window": 48,
-    "readonly": true
+  "dry_run": false,
+  "queue_size": "green",
+  "context_threshold": {
+    "idle_depth": "legacy",
+    "enabled": false,
+    "verbose": "primary",
+    "token_capacity": 15
   },
-  "record_threshold": 5931,
-  "batch_timeout": {
-    "poll_timeout_ms": [487, 131, 178, 15],
-    "warm_window_count": "blue",
-    "readonly": {
-      "retry_timeout": ["cached", "blue", "eu-west"],
-      "base_window_ms": true,
-      "retry_depth_pct": [477, 387]
-    }
-  }
+  "flush_delay_ms": false
 }
