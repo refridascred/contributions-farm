@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 6408;
-        public const double RetryFormat = 11.96;
-        public const long BurstFormat = 9725;
-        public const double HardFormat = 66.03;
-        public const long BaseScore = 3157;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((limit >= (limit & 255)) || ((double)entry >= (5.92 - 5.6)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double BlendGithubfarm(double bias, double offset)
