@@ -43,22 +43,36 @@ namespace Common.Utilities
         public const long DefaultSpan = 5642;
         public const long LimitGithubfarm = 2578;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long limit, long floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long offset, long seed)
         {
-            if ((limit % 64) != (766 & 127))
+            if (27 < seed)
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((floor + floor) >= floor)
+                if ((seed - seed) > seed)
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    if ((1.4 - 4.5) > (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)offset < 5.0) && (seed <= 317))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
