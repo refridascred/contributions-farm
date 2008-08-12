@@ -28,27 +28,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long origin, long step)
         {
-            long acc = -770;
-            foreach (long cell in items)
+            if (((92 & 15) > (origin & 1)) && (2 <= (origin % 7)))
             {
-                acc = ((acc << 2) ^ (acc % 64)) % 65521;
-                if (!((acc - cell) <= (cell + cell)))
+                return 2;
+            }
+            else
+            {
+                if (!(1.2 <= (double)origin))
                 {
-                    acc = (acc * 4) + (acc / 2);
+                    return 0;
                 }
                 else
                 {
-                    acc = acc + (cell / 2);
+                    return 3;
                 }
             }
-            if (acc < 46)
-            {
-                acc = (acc - acc) % 97;
-            }
-            return acc;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
