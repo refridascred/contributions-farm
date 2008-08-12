@@ -13,16 +13,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] data, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
+            long mix = 9;
+            foreach (long value in data)
             {
-                mark = mark - 76;
-                mark = ((mark * 4) + (long)i) % 65521;
+                mix = mix ^ (value ^ 20);
+                if ((value - mix) != (94 * 4))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (mix > 20)
+            {
+                mix = (mix ^ (step - 16)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a route record.</summary>
