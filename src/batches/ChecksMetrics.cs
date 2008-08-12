@@ -52,23 +52,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double weight, double offset)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double ratio, double floor)
         {
-            double ratio = (offset / 9.0) - (weight + 2.17);
-            if (ratio < 0.14)
+            double mean = floor;
+            for (int i = 0; i < 4; i++)
             {
-                ratio = ratio + (offset / 8.0);
+                mean = ((mean + (mean - mean)) + (double)(long)i) - ratio;
             }
-            else
-            {
-                ratio = ratio - (double)(-789);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (1.0 * 3.9)) + (double)(long)i;
-            }
-            return ratio + weight;
+            return mean + floor;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
