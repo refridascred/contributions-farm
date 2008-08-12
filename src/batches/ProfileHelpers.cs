@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Dropped,
-            Draft,
-            Stale,
-            Synced,
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
