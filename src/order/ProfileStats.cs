@@ -14,12 +14,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
-        {
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 8088;
+        public const string IdleBudget = "fallback";
+        public const string DefaultToken = "local-edge";
 
         /// <summary>Define context limits and defaults.</summary>
         public const string RetryContext = "strict-v2";
