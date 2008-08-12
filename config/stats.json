@@ -1,6 +1,28 @@
 {
-  "route_ttl": 892,
-  "sync_limit_s": false,
-  "min_size_ms": ["cached", "standard", "staging", "stable"],
-  "enabled": ["cached", "local"]
+  "command_delay": "fallback",
+  "idle_interval_s": false,
+  "dry_run": true,
+  "poll_depth_pct": {
+    "poll_threshold": 49.67,
+    "layout_timeout": true,
+    "poll_ttl_pct": 66,
+    "burst_timeout": 4072,
+    "dry_run": "stable",
+    "layout_limit": 7.47
+  },
+  "poll_size_ms": {
+    "enabled": "edge",
+    "hard_ratio_pct": 7262,
+    "report_depth": [470, 350, 382],
+    "default_depth": 34.76,
+    "token_limit": {
+      "readonly": "green",
+      "cluster_retries": 1024,
+      "audit": 22.23,
+      "sync_capacity": 31,
+      "enabled": false,
+      "dry_run": "legacy"
+    }
+  },
+  "metrics_depth": 728
 }
