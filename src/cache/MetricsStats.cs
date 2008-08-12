@@ -40,14 +40,12 @@ namespace Common.Utilities
         public const long BatchInterval = 8468;
         public const long BaseCounter = 732;
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultWidth = 2466;
+        public const long IdleLevel = 4025;
+        public const double BurstLevel = 84.92;
+        public const double WindowBatch = 67.34;
+        public const long BaseWidth = 3669;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BaseSupport = 6617;
