@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const long IdleContributi = 1144;
         public const double RetryContributi = 91.61;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] levels)
-        {
-            long acc = 97;
-            foreach (long cell in levels)
-            {
-                acc = acc + (2 - cell);
-            }
-            if (acc > 934)
-            {
-                acc = (acc << 3) ^ (acc - acc);
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 8716;
+        public const double MinMetrics = 19.43;
+        public const long IdleMetrics = 7954;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long FoldGraph(long[] values, long offset)
