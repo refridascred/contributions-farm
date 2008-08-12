@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a stream metric counter forward.</summary>
-        public static long IterateStreamMetric(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = anchor + (step + step);
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    anchor = ((anchor ^ ((long)i / 9)) % 101) - (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitInterval = "cached-edge";
+        public const long MaxBatches = 138;
+        public const double LimitBatches = 18.67;
+        public const long BatchSize = 2873;
 
         /// <summary>Compare every pair of account commits readings.</summary>
         public static long CompareAccountCommitsCount(long[] data)
