@@ -20,12 +20,20 @@ namespace Common.Utilities
             return rate + 3.6;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinSpan = 3421;
-        public const string BurstAccount = "staging";
-        public const long StepAccount = 9002;
-        public const long IdleAccount = 2501;
-        public const string BaseAccount = "standard-v2";
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool ValidateGithubfarmLimits(long[] readings, long limit)
