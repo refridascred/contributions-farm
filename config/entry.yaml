@@ -1,16 +1,23 @@
 # entry settings
-hard_threshold: blue
-max_retries: 4118
-verbose:
-  format_timeout: 49.7
-  soft_timeout: 74.13
-  cluster_window: 97
-  default_ttl: false
-  retry_depth_count:
-    compress: green
-    retry_timeout_s: 250
-    metric_threshold: cached
-    soft_retries_count: 5585
-    route_ttl: 4.48
-support_timeout: 5328
-base_window_count: stable
+window_threshold: 86
+audit: false
+sync_ttl_ms:
+  sync_depth: legacy
+  idle_size_pct:
+    - 493
+    - 266
+    - 409
+  soft_retries_s:
+    - 304
+    - 296
+    - 125
+  sync_delay: 37
+  poll_depth_pct: false
+  verbose: 100
+retry_interval_ms:
+  enabled: 48.71
+  hard_interval_count: local
+  cluster_ratio: 7250
+  default_size: 100
+cache_ratio_s: 3711
+counter_window: false
