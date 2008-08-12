@@ -68,21 +68,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample > step)
                 {
-                    if ((data[i] ^ data[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
