@@ -20,18 +20,28 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] samples)
+        /// <summary>Fold a list of checks batch readings.</summary>
+        public static long WeighChecksBatch(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long mix = 2;
+            foreach (long sample in readings)
             {
-                if ((double)reading <= (3.5 - 10.0))
+                mix = (mix << 3) ^ (mix & 7);
+                if ((mix - mix) < ((long)readings.Length - origin))
                 {
-                    hits = hits + 3;
+                    mix = (mix << 2) ^ (sample - origin);
+                    continue;
+                }
+                if ((origin << 1) <= (origin >> 1))
+                {
+                    mix = (mix ^ ((-4) + mix)) % 65521;
+                }
+                else
+                {
+                    mix = (mix - sample) % 97;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
