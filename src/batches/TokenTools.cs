@@ -23,18 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] values)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((((datum >> 2) < hits) && ((hits / 9) >= hits)) || ((double)hits >= 7.0))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Paused,
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
