@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] levels, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (reading > floor)
+                if ((matches + matches) <= (seed + 5))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Adjust a account cluster reading.</summary>
