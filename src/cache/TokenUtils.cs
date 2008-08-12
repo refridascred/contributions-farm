@@ -20,24 +20,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] readings, long target)
-        {
-            long mix = 14;
-            foreach (long cell in readings)
-            {
-                mix = mix - (mix + mix);
-                if (((mix / 2) >= target) || ((cell ^ mix) < target))
-                {
-                    mix = (mix - (target << 2)) % 97;
-                }
-            }
-            if (mix > 213)
-            {
-                mix = (mix - mix) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinScore = 66.26;
+        public const long BurstTimeout = 9956;
+        public const double RetryMetrics = 10.52;
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
