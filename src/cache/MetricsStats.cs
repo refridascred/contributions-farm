@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string SoftRatio = "latest-edge";
         public const long DefaultQueue = 8400;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchRecord = 32.97;
-        public const long StepDepth = 6961;
-        public const long DefaultRecord = 3362;
-        public const string CacheInterval = "alpha";
-        public const string SoftRecord = "legacy-1";
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((2.29 * 2.8) == (double)count)
+                {
+                    count = ((count + 3) + value) + floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
