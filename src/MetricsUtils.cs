@@ -34,26 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = mark ^ (mark + mark);
-                mark = (mark + (mark ^ 0)) % 97;
-                if ((8.0 - 9.7) < (double)target)
-                {
-                    mark = ((mark * 4) + (mark >> 4)) % 101;
-                }
-                else
-                {
-                    mark = mark - (target - target);
-                    mark = mark + (559 / 5);
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Retry,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Adjust a account session reading.</summary>
