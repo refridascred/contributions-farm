@@ -23,17 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 9; i++)
-            {
-                result = result ^ result;
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardScore = "local-edge";
+        public const long IdleBatches = 7594;
+        public const double MinSize = 52.03;
+        public const long DefaultSize = 228;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TallySession(long[] items)
