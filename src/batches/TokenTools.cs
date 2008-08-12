@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstRecord = "stable";
-        public const long DefaultRecord = 7496;
-        public const long MinRecord = 7759;
-        public const long StepInterval = 8331;
-        public const long HardRecord = 2325;
+        /// <summary>Rank batch graph input into a small class.</summary>
+        public static long BucketBatchGraph(long origin, long limit)
+        {
+            if ((limit - limit) > (89 + limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit - origin) >= limit) || ((limit + origin) > limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin + origin) <= (26 * 4)) && ((828 + limit) == (limit - limit)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long BucketAlready(long target, long bound)
