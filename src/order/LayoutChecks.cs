@@ -59,12 +59,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] series, long limit)
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((double)limit <= (0.9 * 16.0)) || (((matches ^ limit) < limit) && (((long)series.Length << 3) <= limit)))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate account tools samples.</summary>
