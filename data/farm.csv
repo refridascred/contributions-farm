@@ -1,8 +1,6 @@
-id,state,ratio,token
-1,stable,16.6,33.37
-2,33.36,open,744
-3,67.42,764,36.74
-4,41.73,907,75.62
-5,200,44,30.25
-6,377,legacy,121
-7,76.84,19.27,fallback
+id,weight,ratio,region,token
+1,18.61,24.35,32.47,open
+2,81.85,eu-west,strict,77.83
+3,625,76.68,568,445
+4,38.77,65.31,strict,fallback
+5,11.9,656,strict,local
