@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const long DefaultSize = 2847;
         public const long MaxLevel = 3608;
 
-        /// <summary>Digest a series of graph payload entries.</summary>
-        public static long ScoreGraphPayload(long[] items, long offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long carry = 16;
-            foreach (long item in items)
-            {
-                if ((double)offset < (double)carry)
-                {
-                    carry = (((carry * 4) + carry) % 1000) - item;
-                }
-                else
-                {
-                    carry = (carry ^ (offset / 8)) % 255;
-                }
-            }
-            return carry % 1000;
+            Done,
+            Paused,
+            Locked,
+            Queued,
         }
 
         /// <summary>Grade a format editor value against two limits.</summary>
