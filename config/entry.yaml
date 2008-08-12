@@ -1,20 +1,17 @@
 # entry settings
-hard_ratio_ms:
-  warm_limit: false
-  idle_retries_count: 98.99
-  graph_limit:
-    - primary
-    - primary
-    - primary
-    - latest
-  flush_capacity_s: false
-  retry_ttl_pct:
-    - cached
-    - primary
-  soft_delay: false
-metrics_capacity: 84.68
-format_ratio:
-  - 461
-  - 287
-  - 251
-  - 280
+max_retries_pct:
+  account_timeout: standard
+  max_ratio_count: 57.09
+  cache_timeout_ms: 26.25
+default_depth: legacy
+cache_ratio_pct: blue
+min_capacity_ms: 97.72
+flush_retries_s:
+  - fallback
+  - cached
+  - eu-west
+  - latest
+burst_interval:
+  - strict
+  - edge
+  - staging
