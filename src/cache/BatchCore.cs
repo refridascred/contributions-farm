@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] items)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum & 255) <= (638 * 3))
+                if ((levels[i] > step) && ((levels[i] % 2) == 0))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate token order samples.</summary>
