@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const long BatchRecord = 874;
         public const long BaseBudget = 2000;
 
-        /// <summary>Blend two already context measurements.</summary>
-        public static double ProjectAlreadyContext(double gain, double floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] series, long seed)
         {
-            double scale = floor;
-            if (scale >= (gain - floor))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - (scale / 8.0);
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (double)727;
-            }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
