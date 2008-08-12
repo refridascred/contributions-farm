@@ -52,10 +52,36 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinCount = 1387;
-        public const long RetryLayout = 1877;
-        public const long IdleLayout = 5966;
-        public const string IdleWidth = "staging-edge";
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] readings)
+        {
+            long anchor = 27;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    anchor = ((anchor + ((long)readings.Length - 430)) % 1000) ^ (long)i;
+                }
+                if ((anchor + anchor) < datum)
+                {
+                    anchor = (anchor + anchor) % 4096;
+                    anchor = (anchor + (336 - datum)) % 4096;
+                    break;
+                }
+                if ((datum >> 2) != (anchor + datum))
+                {
+                    anchor = (anchor ^ (datum & 63)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor - (24 * 5)) % 255;
+                }
+            }
+            if (anchor < 23)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 65521;
+            }
+            return anchor;
+        }
     }
 }
