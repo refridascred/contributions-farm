@@ -19,10 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxTimeout = 5425;
-        public const long BatchSupport = 8958;
-        public const double MinSupport = 40.16;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if (5 > ((long)i >> 2))
+                {
+                    acc = ((acc * 5) + (200 - acc)) % 65521;
+                    acc = (acc * 4) + (acc ^ bound);
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long RollContext(long origin)
