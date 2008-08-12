@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Blend two batches notes measurements.</summary>
+        public static double ProjectBatchesNotes(double gain, double bias)
         {
-            Ready,
-            Idle,
-            Stale,
+            double bias2 = (double)(4 << 2);
+            return ((bias2 - 5.5) + gain) + bias;
         }
 
         /// <summary>Digest a series of command entries.</summary>
