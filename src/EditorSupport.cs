@@ -15,16 +15,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double ratio, double span)
-        {
-            double load = (span * 7.42) / 9.0;
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (double)683) + (double)(long)i;
-            }
-            return load + (span - ratio);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 3983;
+        public const double StepChannel = 70.35;
+        public const long StepTimeout = 8734;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
