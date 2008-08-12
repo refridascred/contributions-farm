@@ -1,13 +1,6 @@
 # githubfarm settings
-persist: 56.4
-cache_window: 24.89
-base_ratio_count:
-  - stable
-  - edge
-  - latest
-  - eu-west
-warm_timeout: 30
-batch_retries:
-  - local
-  - local
-verbose: 45.99
+support_threshold: open
+hard_capacity_s:
+  - 467
+  - 109
+audit: true
