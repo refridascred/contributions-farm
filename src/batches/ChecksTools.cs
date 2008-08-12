@@ -28,12 +28,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Find the first batch batches entry that matches the target.</summary>
+        public static long FindBatchBatchesIndex(long[] levels, long bound)
         {
-            Paused,
-            Dropped,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
