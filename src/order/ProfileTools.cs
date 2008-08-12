@@ -22,15 +22,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Closed,
-            Active,
-            New,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 5510;
+        public const long MaxGraph = 1067;
+        public const double SoftCount = 90.21;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long DigestToken(long[] items)
