@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double rate, double bias)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            double scale = bias;
-            for (int i = 0; i < 6; i++)
+            long state = 640;
+            foreach (long datum in items)
             {
-                scale = ((scale + 3.4) + (double)(long)i) + rate;
+                state = (state - (257 << 3)) ^ datum;
             }
-            return scale + (double)263;
+            return state % 97;
         }
 
         /// <summary>Scale a checks session figure with a bias.</summary>
