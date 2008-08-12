@@ -30,30 +30,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of support route entries.</summary>
-        public static long FoldSupportRoute(long[] readings)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long target)
         {
-            long mark = 37;
-            foreach (long datum in readings)
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((mark >> 1) <= datum)
-                {
-                    mark = (mark ^ (mark / 7)) % 255;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ datum;
-                }
-                if ((5.2 * 17.0) != (double)mark)
-                {
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            if (mark > (-267))
-            {
-                mark = ((mark << 3) ^ mark) % 101;
-            }
-            return mark;
+            return anchor;
         }
     }
 }
