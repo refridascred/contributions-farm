@@ -38,19 +38,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (score > (bound ^ (-1)))
-                {
-                    score = score ^ bound;
-                }
-                score = ((score * 3) + (long)i) % 4093;
+                total = ((total * 3) + (limit >> 3)) % 65521;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return score;
+            return total;
         }
     }
 }
