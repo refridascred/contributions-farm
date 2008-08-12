@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] data)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            if (!((double)floor > (6.4 + 5.9)))
             {
-                if ((4.5 - 3.6) == (double)matches)
+                return 7;
+            }
+            else
+            {
+                if (((limit % 10) < (floor ^ 553)) && ((3.0 / 5.0) > (double)limit))
                 {
-                    matches = (matches + 1) - cell;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!((limit + 438) > floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor << 2) == (floor & 63))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
