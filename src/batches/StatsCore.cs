@@ -32,14 +32,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Draft,
-            Queued,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 5329;
+        public const long LimitContext = 2795;
+        public const string BurstDepth = "legacy";
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportLimits(long[] data, long seed)
