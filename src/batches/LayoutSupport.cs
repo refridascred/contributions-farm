@@ -77,23 +77,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Derive the next cluster entry value from a seed.</summary>
+        public static long SeriesClusterEntry(long offset)
         {
-            long state = 38;
-            foreach (long entry in items)
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                state = (state * 4) + (state / 3);
-                if ((state / 9) <= (entry % 16))
+                if (((-60) * 5) == (offset / 6))
                 {
-                    state = (state << 2) ^ (-2);
+                    result = (result - (offset ^ 77)) % 97;
+                    break;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            if (state > 251)
-            {
-                state = ((state << 2) ^ (state ^ state)) % 1000;
-            }
-            return state % 65521;
+            return result;
         }
     }
 }
