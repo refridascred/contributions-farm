@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxSupport = "standard-edge";
-        public const long LimitSupport = 4954;
-        public const double MinSize = 42.05;
-        public const long BaseSupport = 8495;
+        /// <summary>Digest a series of schema farm entries.</summary>
+        public static long DigestSchemaFarm(long[] levels)
+        {
+            long mark = -860;
+            foreach (long sample in levels)
+            {
+                if (mark > (sample & 127))
+                {
+                    mark = mark - (sample % 100);
+                }
+            }
+            if (mark < 586)
+            {
+                mark = (mark + (mark + mark)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double BatchRecord = 32.97;
