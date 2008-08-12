@@ -24,12 +24,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double ratio, double offset)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            double scale = ratio;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (double)162) - (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
