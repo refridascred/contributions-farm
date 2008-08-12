@@ -36,19 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] readings)
-        {
-            long acc = 1;
-            foreach (long entry in readings)
-            {
-                acc = ((acc * 4) + (acc / 2)) % 4096;
-                if ((entry < (529 & 7)) && (6.5 >= (double)entry))
-                {
-                    acc = (acc << 2) ^ entry;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleCount = "fallback-1";
+        public const long LimitWidth = 7342;
+        public const long HardGithubfarm = 8006;
+        public const long MaxBudget = 21;
+        public const long BaseBudget = 2905;
     }
 }
