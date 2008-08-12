@@ -60,28 +60,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] data, long target)
+        /// <summary>Look up the position of a metrics graph sample.</summary>
+        public static long LookupMetricsGraphIndex(long[] levels, long origin)
         {
-            long state = 565;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state + state) % 255) - target;
-                state = ((state << 2) ^ (sample / 3)) % 255;
-                if (!((state + state) <= (state ^ (long)data.Length)))
+                if (levels[i] == origin)
                 {
-                    state = (state ^ (sample % 3)) % 101;
-                }
-                else
-                {
-                    state = (state + (sample + sample)) % 65521;
+                    return (long)i;
                 }
             }
-            if (state < 8)
-            {
-                state = ((state << 3) ^ (state + state)) % 255;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Derive the next cluster entry value from a seed.</summary>
