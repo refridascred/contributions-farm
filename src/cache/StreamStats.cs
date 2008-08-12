@@ -24,17 +24,13 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] readings, long limit)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Describe the contributi kind values.</summary>
