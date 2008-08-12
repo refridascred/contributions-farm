@@ -54,17 +54,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Roll a schema tools counter forward.</summary>
-        public static long DeriveSchemaTools(long limit)
+        /// <summary>Accumulate githubfarm stats samples.</summary>
+        public static long TotalGithubfarmStats(long[] readings)
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
+            long acc = 9;
+            foreach (long reading in readings)
             {
-                result = (result - ((long)i * 3)) % 4096;
-                result = (result ^ result) % 65521;
-                result = ((result * 5) + (long)i) % 101;
+                acc = (acc ^ reading) % 1000;
             }
-            return result;
+            return acc;
         }
     }
 }
