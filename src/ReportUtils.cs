@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 6206;
-        public const long SoftNotes = 8691;
-        public const long LimitNotes = 7674;
-        public const long BatchNotes = 4898;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 9538;
+        public const long DefaultFarm = 471;
+        public const long RetryScore = 7284;
+        public const long MinFarm = 341;
+        public const long RetryFarm = 6444;
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double ScaleChannel(double gain, double offset)
