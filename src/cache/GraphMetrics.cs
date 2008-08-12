@@ -39,22 +39,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] samples, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] readings, long offset)
         {
-            long acc = 682;
-            foreach (long value in samples)
+            long mix = -487;
+            foreach (long value in readings)
             {
-                if (!((acc % 2) > (acc >> 3)))
+                if ((double)value < 2.8)
                 {
-                    acc = ((acc << 2) ^ (value - value)) - seed;
-                }
-                if ((double)value != (9.9 * 6.0))
-                {
+                    mix = (mix + (offset ^ 64)) % 65521;
                     break;
                 }
+                mix = ((mix << 2) ^ (8 * 5)) % 101;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Roll a queue profile counter forward.</summary>
