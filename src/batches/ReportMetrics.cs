@@ -23,17 +23,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] samples, long limit)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] samples)
         {
+            long count = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 5) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Find the first route checks entry that matches the target.</summary>
