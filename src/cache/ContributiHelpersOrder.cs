@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long target, long origin)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long step, long bound)
         {
-            if ((target + origin) <= target)
+            long cur = step + bound;
+            if ((double)bound < (6.0 / 4.0))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if (3.9 > (double)origin)
+                if ((cur >= (step & 255)) && (7.0 > (double)step))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    return 3;
+                    if ((cur << 3) > (step / 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
