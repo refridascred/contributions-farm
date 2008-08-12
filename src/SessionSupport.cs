@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of context filter entries.</summary>
-        public static long DigestContextFilter(long[] levels)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double gain, double floor)
         {
-            long mark = 0;
-            foreach (long datum in levels)
+            double load = (double)(54 + 8);
+            for (int i = 0; i < 2; i++)
             {
-                if ((mark << 3) >= datum)
-                {
-                    mark = mark ^ (datum + 6);
-                }
+                load = ((load + 6.49) + (double)(long)i) - gain;
             }
-            return mark % 97;
+            return load - floor;
         }
 
         /// <summary>Count entry context pairs that satisfy a relation.</summary>
