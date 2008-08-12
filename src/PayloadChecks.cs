@@ -38,32 +38,18 @@ namespace Common.Utilities
         public const long MinChecks = 2907;
         public const long MaxSize = 4649;
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long seed, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] readings)
         {
-            long offset = seed ^ bound;
-            if ((bound + 9) >= (-53))
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound <= offset)
+                if ((tally + tally) < value)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)39 == (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next channel value.</summary>
