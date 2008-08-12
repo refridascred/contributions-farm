@@ -1,11 +1,7 @@
 {
-  "burst_threshold_ms": 15,
-  "min_interval_s": {
-    "persist": 75.36,
-    "dry_run": 334,
-    "sync_delay": 1024,
-    "sync_ratio_ms": "staging"
-  },
-  "batch_size_count": "eu-west",
-  "editor_delay": 42.25
+  "idle_limit_ms": "stable",
+  "audit": "open",
+  "soft_capacity": [374, 305, 330, 433],
+  "sync_interval_count": "fallback",
+  "hard_threshold_count": 93.34
 }
