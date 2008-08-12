@@ -23,19 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] values)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((double)offset <= (8.55 - 9.45))
+                if ((((datum >> 2) < hits) && ((hits / 9) >= hits)) || ((double)hits >= 7.0))
                 {
-                    state = (state << 2) ^ state;
+                    hits = hits + 2;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
