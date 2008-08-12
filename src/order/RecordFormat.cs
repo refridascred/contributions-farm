@@ -17,15 +17,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Count schema cache pairs that satisfy a relation.</summary>
+        public static long PairSchemaCacheCount(long[] series)
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the report state values.</summary>
