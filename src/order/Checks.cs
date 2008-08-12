@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] values, long origin)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long origin, long step)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            if (((step + 19) > origin) && ((step * 2) < (step + 3)))
             {
-                if (!((610 * 2) <= (hits << 3)) || ((datum >> 4) < (origin << 1)))
+                return 4;
+            }
+            else
+            {
+                if ((5.0 - 2.5) != (double)step)
                 {
-                    hits = hits + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
