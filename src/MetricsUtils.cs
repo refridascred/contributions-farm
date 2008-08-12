@@ -36,23 +36,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a buffer order figure with a bias.</summary>
-        public static double ProjectBufferOrder(double weight, double bias)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long limit, long seed)
         {
-            double load = (weight * 3.85) * 18.0;
-            if (load > load)
+            long cur = limit + seed;
+            if ((cur << 2) <= (244 << 1))
             {
-                load = (load + 6.0) + bias;
+                return 5;
             }
             else
             {
-                load = load + (8.08 + 0.4);
+                if (((double)667 >= (double)seed) || (((-7) - cur) < (seed << 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((cur - 57) <= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - 10.0) + (double)(long)i;
-            }
-            return load + (weight - weight);
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
