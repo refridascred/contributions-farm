@@ -51,13 +51,20 @@ namespace Common.Utilities
         public const long HardFactor = 3912;
         public const double WindowSize = 18.17;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Roll a queue profile counter forward.</summary>
+        public static long RollQueueProfile(long limit)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!(mark < (mark - mark)))
+                {
+                    mark = (mark ^ mark) % 101;
+                }
+                mark = (mark * 3) + (850 * 3);
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
