@@ -36,17 +36,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] series, long origin)
+        /// <summary>Count the farm format entries that pass the check.</summary>
+        public static long CountFarmFormatGaps(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (series[i] >= origin)
+                if ((seen + seen) > value)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
