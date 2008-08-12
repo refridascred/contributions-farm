@@ -32,14 +32,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Digest a series of queue contributi entries.</summary>
+        public static long FoldQueueContributi(long[] samples, long limit)
         {
-            Retry,
-            Queued,
-            Synced,
-            Locked,
-            Paused,
+            long state = 22;
+            foreach (long sample in samples)
+            {
+                state = ((state * 5) + (limit / 5)) + sample;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the report level values.</summary>
