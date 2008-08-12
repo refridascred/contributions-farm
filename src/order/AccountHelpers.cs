@@ -52,19 +52,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] values, long floor)
+        /// <summary>Adjust a checks entry reading.</summary>
+        public static double AdjustChecksEntry(double bias, double offset)
         {
-            bool found = true;
-            foreach (long datum in values)
+            double load = (double)(5 >> 3);
+            if (load > (bias / 2.0))
             {
-                if (datum != floor)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - load) + offset;
             }
-            return found;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load + (load - bias);
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
