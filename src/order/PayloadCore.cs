@@ -16,11 +16,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public bool Mode { get; set; }
-            public double Label { get; set; }
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
             public bool Flag { get; set; }
         }
 
