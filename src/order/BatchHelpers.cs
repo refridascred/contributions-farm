@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] values, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long mix = 771;
+            foreach (long datum in readings)
             {
-                if ((matches + matches) <= (seed + 5))
+                mix = mix ^ mix;
+                if ((mix / 8) > (mix & 127))
                 {
-                    matches = (matches + 2) ^ reading;
+                    mix = mix + datum;
+                }
+                if ((datum + mix) < datum)
+                {
+                    mix = (mix - (bound >> 4)) % 101;
+                }
+                if ((double)(long)readings.Length >= (3.2 + 6.33))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the commits kind values.</summary>
