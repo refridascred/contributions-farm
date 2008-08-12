@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double scale, double bias)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double ratio = 1.8;
-            if (ratio < bias)
-            {
-                ratio = (ratio - (ratio + bias)) - scale;
-            }
-            else
-            {
-                ratio = ratio - (ratio / 4.0);
-            }
-            return ratio + bias;
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
