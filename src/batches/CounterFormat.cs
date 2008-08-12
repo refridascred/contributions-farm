@@ -23,38 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long floor, long limit)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long limit)
         {
-            if (((floor + limit) <= (floor - floor)) && (floor < (limit ^ floor)))
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (limit > (limit ^ floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)limit > 4.68) || ((4.47 / 2.0) > (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit >> 5) > (floor + floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Describe the contributi level values.</summary>
