@@ -19,17 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] items, long step)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > step) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Pending,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
