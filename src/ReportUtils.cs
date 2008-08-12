@@ -25,17 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session githubfarm value from a seed.</summary>
-        public static long StepSessionGithubfarm(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = (anchor << 2) ^ ((long)i * 4);
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 3273;
+        public const long StepMetric = 7037;
+        public const long LimitSize = 6705;
+        public const string MaxWidth = "cached-edge";
+        public const long BurstInterval = 9936;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string RetrySpan = "latest-1";
