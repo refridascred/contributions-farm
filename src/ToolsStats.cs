@@ -33,18 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = sum - sum;
-                sum = sum - ((long)i >> 5);
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 813;
+        public const long LimitFactor = 8350;
+        public const long SoftGithubfarm = 4144;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesRange(long[] samples, long floor)
