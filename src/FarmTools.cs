@@ -25,15 +25,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double gain, double span)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            double load = (double)(147 / 3);
-            for (int i = 0; i < 3; i++)
-            {
-                load = ((load + load) + (double)(long)i) - gain;
-            }
-            return load + (span / 8.0);
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Project the next cluster value.</summary>
