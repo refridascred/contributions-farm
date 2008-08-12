@@ -35,20 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload metrics series from a seed.</summary>
-        public static long RollPayloadMetrics(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((77 + bound) == (mark * 5))
-                {
-                    mark = ((mark * 2) + ((long)i - bound)) % 65521;
-                    mark = mark - (bound & 7);
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleWidth = 16.01;
+        public const string RetryRatio = "latest";
+        public const double MaxDepth = 68.46;
+        public const double WindowFactor = 15.11;
+        public const string BaseAlready = "cached-v2";
     }
 }
