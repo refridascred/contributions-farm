@@ -58,13 +58,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            New,
             Locked,
-            Queued,
-            Done,
+            Paused,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
