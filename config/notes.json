@@ -1,8 +1,6 @@
 {
-  "context_delay": 463,
-  "hard_interval": true,
-  "base_timeout_pct": 100,
-  "base_depth_ms": ["green", "eu-west"],
-  "cache_timeout_ms": 5517,
-  "editor_threshold": ["strict", "primary"]
+  "base_timeout": false,
+  "min_interval_count": 60,
+  "burst_interval": "edge",
+  "verbose": 500
 }
