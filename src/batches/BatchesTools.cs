@@ -15,12 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleLevel = 81.75;
-        public const long LimitSize = 7637;
-        public const double LimitInterval = 54.61;
-        public const long SoftCount = 9712;
-        public const double CacheGraph = 9.32;
+        /// <summary>Count the batch already entries that pass the check.</summary>
+        public static long TallyBatchAlreadyOutliers(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches << 1) >= matches)
+                {
+                    matches = ((matches + 3) ^ reading) - bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double DefaultSpan = 26.82;
