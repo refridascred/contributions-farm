@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public double Level { get; set; }
-            public double Size { get; set; }
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Locate a batches reading by value.</summary>
