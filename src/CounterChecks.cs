@@ -47,18 +47,19 @@ namespace Common.Utilities
         public const long BatchRatio = 584;
         public const string BatchScore = "local-1";
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] series, long bound)
+        /// <summary>Validate schema farm readings against a bound.</summary>
+        public static bool ValidateSchemaFarmBounds(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if ((bound << 2) != (bound / 2))
+                if (sample != offset)
                 {
-                    tally = (tally + 1) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a checks info.</summary>
