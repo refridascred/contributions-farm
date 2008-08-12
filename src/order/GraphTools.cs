@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultBudget = "primary";
-        public const long HardSize = 7879;
-        public const double StepCommand = 78.46;
-        public const long RetryCommand = 5872;
-        public const double HardCommand = 80.89;
+        /// <summary>Match up already record samples.</summary>
+        public static long CompareAlreadyRecordCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MaxTimeout = 5425;
