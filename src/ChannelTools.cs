@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next record cluster value from a seed.</summary>
-        public static long StepRecordCluster(long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long origin, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            long step = origin + seed;
+            if (step < (origin >> 3))
             {
-                total = ((total * 3) + (long)i) % 4093;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((double)seed >= (19.0 + 6.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin >= (seed % 12)) && ((seed % 2) != (seed >> 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((step / 3) <= (step << 1)) && ((9 + origin) < (273 + step)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
