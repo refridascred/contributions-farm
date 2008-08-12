@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every command order entry stays within the limit.</summary>
-        public static bool CheckCommandOrderBounds(long[] series, long target)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long limit)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry <= target)
+                if (!((double)mix <= (3.8 + 5.7)))
                 {
-                    ok = false;
-                    break;
+                    mix = mix ^ (limit << 1);
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Hold a checks header.</summary>
