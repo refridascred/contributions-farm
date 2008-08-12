@@ -20,19 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double weight, double span)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double load = (weight + 9.0) / 9.0;
-            if (load >= (span * 8.8))
-            {
-                load = load - weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (load - span)) + (double)(long)i;
-            }
-            return load - (span / 6.0);
+            Queued,
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
