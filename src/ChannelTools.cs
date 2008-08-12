@@ -31,15 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double scale, double floor)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            double drift = scale / 7.0;
-            if (drift >= (double)8)
-            {
-                drift = drift + (floor * 2.1);
-            }
-            return drift + (drift + floor);
+            Paused,
+            Done,
+            Active,
         }
     }
 }
