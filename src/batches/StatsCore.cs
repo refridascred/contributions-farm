@@ -52,31 +52,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a support session value against two limits.</summary>
-        public static long RankSupportSession(long origin, long target)
+        /// <summary>Check that every format channel entry stays within the limit.</summary>
+        public static bool CheckFormatChannelRange(long[] values, long seed)
         {
-            if (target >= origin)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target * 4) > (target + target))
+                if (sample >= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin + target) >= 89)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Locate a order metric reading by value.</summary>
