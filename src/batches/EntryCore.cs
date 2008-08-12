@@ -29,12 +29,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstAccount = "standard-1";
-        public const long HardSpan = 3287;
-        public const double MaxAccount = 33.73;
-        public const double LimitTimeout = 45.49;
-        public const double BatchInterval = 30.78;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long offset, long origin)
+        {
+            if ((offset ^ 447) >= offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7 % 5) == (offset & 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Adjust a report route reading.</summary>
         public static double AdjustReportRoute(double ratio, double offset)
