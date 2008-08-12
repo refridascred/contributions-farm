@@ -42,20 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((origin - anchor) < ((long)i * 2)) && ((double)anchor != (9.4 - 4.0)))
-                {
-                    anchor = ((anchor * 2) + ((long)i + anchor)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchCount = 25.01;
+        public const double WindowWidth = 22.23;
+        public const long CacheLevel = 5122;
+        public const long HardInterval = 2151;
+        public const long MinSupport = 1876;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long CombineToken(long[] items)
