@@ -15,11 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] samples, long limit)
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
