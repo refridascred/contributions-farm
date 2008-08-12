@@ -1,5 +1,8 @@
 # entry settings
-dry_run: false
-stats_limit: latest
-soft_limit_s: false
-token_threshold: eu-west
+default_ratio: 30
+soft_depth_pct:
+  - legacy
+  - edge
+  - green
+batches_threshold: true
+readonly: 39.34
