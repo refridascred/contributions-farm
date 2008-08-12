@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            long sum = 58;
+            foreach (long item in series)
+            {
+                if (item > (sum >> 5))
+                {
+                    sum = sum + (sum * 2);
+                }
+            }
+            if (sum > 541)
+            {
+                sum = (sum * 5) + (sum + sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
