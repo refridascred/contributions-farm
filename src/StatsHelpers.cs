@@ -39,12 +39,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long origin)
         {
-            Done,
-            Active,
-            Failed,
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = anchor + (origin & 1);
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
