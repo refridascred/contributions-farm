@@ -47,13 +47,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public string Ratio { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public double Region { get; set; }
+            Queued,
+            Retry,
+            Ready,
+            Locked,
+            Done,
         }
     }
 }
