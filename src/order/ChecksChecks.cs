@@ -30,17 +30,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Find the first context tools entry that matches the target.</summary>
-        public static long SeekContextToolsIndex(long[] items, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 10;
+            foreach (long entry in series)
             {
-                if (items[i] > floor)
+                if ((entry - mix) == (mix ^ (-8)))
                 {
-                    return (long)i;
+                    mix = mix - ((-21) + mix);
                 }
             }
-            return -1;
+            if (mix > 746)
+            {
+                mix = mix ^ mix;
+            }
+            return mix % 65521;
         }
     }
 }
