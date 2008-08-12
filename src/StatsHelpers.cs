@@ -37,11 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepChannel = 8.95;
-        public const long BurstChannel = 9518;
-        public const long WindowWidth = 2419;
-        public const string LimitChannel = "cached-1";
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Done,
+            Active,
+            Failed,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MinSpan = 5898;
