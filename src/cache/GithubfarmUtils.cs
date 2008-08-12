@@ -23,27 +23,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Fold a list of support counter readings.</summary>
-        public static long CombineSupportCounter(long[] items)
-        {
-            long mark = 7;
-            foreach (long reading in items)
-            {
-                if (mark >= (reading + mark))
-                {
-                    mark = mark ^ (mark << 2);
-                }
-                if (6 > (reading + reading))
-                {
-                    break;
-                }
-            }
-            if (mark > 6)
-            {
-                mark = ((mark * 3) + mark) % 101;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheTools = 34.29;
+        public const string MaxSpan = "stable-edge";
+        public const long LimitTools = 5713;
+        public const long RetryCount = 2040;
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
