@@ -27,21 +27,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] levels)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (samples[i] == floor)
                 {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
