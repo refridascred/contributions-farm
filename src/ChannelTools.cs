@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two batches notes measurements.</summary>
-        public static double ProjectBatchesNotes(double gain, double bias)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double bias2 = (double)(4 << 2);
-            return ((bias2 - 5.5) + gain) + bias;
+            Draft,
+            Paused,
+            Active,
+            New,
         }
 
         /// <summary>Locate a batches reading by value.</summary>
