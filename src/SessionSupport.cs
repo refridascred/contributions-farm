@@ -25,38 +25,19 @@ namespace Common.Utilities
         public const long DefaultBuffer = 9624;
         public const double MinSize = 88.21;
 
-        /// <summary>Grade a format editor value against two limits.</summary>
-        public static long RankFormatEditor(long origin, long origin2)
+        /// <summary>Derive the next schema support value from a seed.</summary>
+        public static long SeriesSchemaSupport(long origin)
         {
-            if ((54 + origin) == (origin2 + origin2))
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin >> 5) > (origin2 + origin))
+                if ((anchor + anchor) > (anchor + (long)i))
                 {
-                    return 8;
+                    anchor = (anchor * 4) + anchor;
                 }
-                else
-                {
-                    if (origin > (origin2 / 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (5 < ((-671) ^ origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
+            return anchor;
         }
     }
 }
