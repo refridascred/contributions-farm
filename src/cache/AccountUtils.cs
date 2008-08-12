@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] series, long origin)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Closed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Blend two metrics measurements.</summary>
