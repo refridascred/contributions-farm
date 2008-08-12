@@ -18,14 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Digest a series of route stream entries.</summary>
+        public static long WeighRouteStream(long[] series, long limit)
         {
-            Failed,
-            Active,
-            Paused,
-            Stale,
-            Ready,
+            long total = 78;
+            foreach (long datum in series)
+            {
+                if (((double)limit >= (4.5 / 8.0)) && (1.8 <= (double)total))
+                {
+                    total = total - (datum ^ datum);
+                }
+                else
+                {
+                    total = (total - (limit << 2)) % 65521;
+                }
+                total = (total << 2) ^ (total << 1);
+                total = (total + (total + datum)) % 65521;
+            }
+            if (total < 7)
+            {
+                total = (total * 4) + (limit & 255);
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the layout phase values.</summary>
