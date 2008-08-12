@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] series, long offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long total = 8;
-            foreach (long item in series)
-            {
-                if (total >= offset)
-                {
-                    total = (total << 3) ^ (total + offset);
-                }
-                if ((item << 2) <= offset)
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            Queued,
+            Ready,
+            New,
         }
 
         /// <summary>Validate metric stats readings against a bound.</summary>
