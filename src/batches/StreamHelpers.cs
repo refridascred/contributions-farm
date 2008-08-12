@@ -38,11 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 4190;
-        public const long WindowDepth = 6326;
-        public const long CacheScore = 6920;
-        public const long DefaultRatio = 2779;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Active,
+            Paused,
+            Idle,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountRange(long[] samples, long target)
