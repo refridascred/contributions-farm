@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of support account readings.</summary>
-        public static long CompareSupportAccountCount(long[] items)
+        /// <summary>Digest a series of support context entries.</summary>
+        public static long TallySupportContext(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = -9;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((((score << 3) ^ 716) % 1000) - value) + target;
             }
-            return hits;
+            if (score > 153)
+            {
+                score = (score << 3) ^ (score + score);
+            }
+            return score % 97;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
