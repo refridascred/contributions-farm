@@ -31,19 +31,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] items, long origin)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            double gain = offset;
+            if (gain > gain)
             {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = gain - (offset + weight);
             }
-            return valid;
+            return gain - (gain - offset);
         }
 
         /// <summary>Validate schema farm readings against a bound.</summary>
