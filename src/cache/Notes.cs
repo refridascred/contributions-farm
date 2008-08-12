@@ -38,15 +38,13 @@ namespace Common.Utilities
         public const string MinLevel = "strict-edge";
         public const long BurstBudget = 2473;
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of command token readings.</summary>
