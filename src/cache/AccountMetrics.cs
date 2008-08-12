@@ -44,17 +44,19 @@ namespace Common.Utilities
         public const string IdleTimeout = "local-1";
         public const double StepSize = 20.63;
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] readings, long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
+                if (entry <= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
