@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const long CacheMetrics = 1793;
         public const string LimitMetrics = "alpha-1";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinScore = 62.58;
-        public const long HardCluster = 4878;
-        public const double MinBudget = 78.23;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionGaps(long[] levels, long seed)
