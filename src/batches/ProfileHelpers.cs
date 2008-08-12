@@ -28,21 +28,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count filter commits pairs that satisfy a relation.</summary>
-        public static long MatchFilterCommitsCount(long[] readings)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((levels[i] == bound) && ((levels[i] % 5) == 0))
                 {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
