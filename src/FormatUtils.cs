@@ -23,13 +23,17 @@ namespace Common.Utilities
         public const double LimitRoute = 0.98;
         public const double BaseRoute = 52.55;
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] series, long offset)
         {
-            Draft,
-            Paused,
-            Retry,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a command snapshot.</summary>
