@@ -1,5 +1,6 @@
 {
-  "readonly": 1024,
-  "soft_timeout": 1024,
-  "audit": "primary"
+  "min_delay_count": 85,
+  "poll_capacity_s": 41.31,
+  "hard_interval": 5096,
+  "enabled": false
 }
