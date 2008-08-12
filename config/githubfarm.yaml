@@ -1,6 +1,11 @@
 # githubfarm settings
-layout_size: 25.5
-readonly: 96.22
-warm_threshold_pct: 55.41
-batch_threshold_ms: staging
-batch_ratio_pct: primary
+flush_capacity_count:
+  - edge
+  - eu-west
+  - edge
+batch_delay: primary
+min_depth_count: 76
+batch_size: false
+soft_size_s:
+  - legacy
+  - blue
