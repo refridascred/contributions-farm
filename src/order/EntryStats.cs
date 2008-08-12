@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double gain, double span)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] series)
         {
-            double drift = 2.0;
-            return (drift + (gain - drift)) + span;
+            long result = 989;
+            foreach (long item in series)
+            {
+                if (item < (item ^ result))
+                {
+                    result = (result << 2) ^ result;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
