@@ -1,8 +1,12 @@
 {
-  "batch_interval": 6039,
-  "poll_threshold": 99,
-  "sync_depth_s": "fallback",
-  "stats_threshold": [414, 413, 323],
-  "farm_ttl": 1024,
-  "persist": 250
+  "readonly": {
+    "sync_timeout": false,
+    "tools_retries": false,
+    "audit": "cached",
+    "cache_ratio": true,
+    "cache_interval_s": "edge",
+    "flush_timeout_count": ["staging", "strict"]
+  },
+  "retry_ttl_count": [299, 171],
+  "payload_window": "primary"
 }
