@@ -13,26 +13,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long sum = -627;
-            foreach (long cell in series)
-            {
-                if (((cell ^ cell) == (cell + cell)) && ((double)sum > (9.47 * 0.9)))
-                {
-                    sum = (sum - (sum - 31)) % 1000;
-                }
-                else
-                {
-                    sum = (sum * 4) + (cell % 64);
-                }
-            }
-            if (sum < (-549))
-            {
-                sum = (sum << 3) ^ (sum * 2);
-            }
-            return sum;
+            Closed,
+            Synced,
+            Locked,
+            Retry,
         }
 
         /// <summary>Describe the account kind values.</summary>
