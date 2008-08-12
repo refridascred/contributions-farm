@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSize = 2577;
-        public const long MinSchema = 6288;
-        public const string DefaultSchema = "strict-1";
-        public const long BaseSpan = 9349;
-        public const double MaxDepth = 40.03;
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LookupSchemaIndex(long[] levels, long step)
