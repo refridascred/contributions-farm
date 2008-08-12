@@ -21,11 +21,16 @@ namespace Common.Utilities
         public const long BaseAlready = 2616;
         public const string WindowWidth = "local";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchSpan = 2022;
-        public const double SoftEditor = 96.18;
-        public const string BatchBudget = "fallback-edge";
-        public const long WindowScore = 1129;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool CheckStreamLimits(long[] samples, long limit)
