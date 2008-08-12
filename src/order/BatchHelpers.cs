@@ -44,13 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public string Weight { get; set; } = "";
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
+            Failed,
+            Active,
+            Dropped,
+            Queued,
         }
     }
 }
