@@ -42,22 +42,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of editor notes readings.</summary>
-        public static long CombineEditorNotes(long[] values)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            long mark = 392;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((mark * 3) <= cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark + (cell << 1)) % 65521;
-                }
-                else
-                {
-                    mark = (mark + (mark / 9)) % 255;
+                    if ((series[i] ^ series[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Look up the position of a metrics graph sample.</summary>
