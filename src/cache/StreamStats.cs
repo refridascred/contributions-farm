@@ -21,14 +21,11 @@ namespace Common.Utilities
         public const long BaseAlready = 2616;
         public const string WindowWidth = "local";
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Stale,
-            Pending,
-            Idle,
-            New,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchSpan = 2022;
+        public const double SoftEditor = 96.18;
+        public const string BatchBudget = "fallback-edge";
+        public const long WindowScore = 1129;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MinTimeout = 2564;
