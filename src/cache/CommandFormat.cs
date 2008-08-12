@@ -38,15 +38,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] levels, long target)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long acc = 364;
-            foreach (long reading in levels)
-            {
-                acc = (((acc ^ (acc * 3)) % 101) ^ reading) + target;
-            }
-            return acc;
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
+            public double Size { get; set; }
         }
     }
 }
