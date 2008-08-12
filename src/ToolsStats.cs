@@ -39,31 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context profile input into a small class.</summary>
-        public static long GradeContextProfile(long target, long origin)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            if ((target << 3) != (origin & 63))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin >> 3) < (8 & 127)) || ((target & 1) != (origin >> 5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + target) <= (origin >> 3))
+                    if ((data[i] + data[j]) > 17)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
