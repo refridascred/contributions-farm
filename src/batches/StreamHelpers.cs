@@ -16,18 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] series)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long acc = 0;
-            foreach (long reading in series)
-            {
-                if ((double)(long)series.Length < (20.0 / 6.0))
-                {
-                    acc = acc - (reading << 1);
-                }
-            }
-            return acc % 65521;
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
