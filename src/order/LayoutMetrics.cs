@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] readings)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((state < (bound + bound)) || (16.0 <= (double)state))
                 {
-                    if ((readings[i] ^ readings[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state - (state % 7)) % 1000;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
