@@ -19,13 +19,14 @@ namespace Common.Utilities
         public const string CacheEntry = "staging-1";
         public const double WindowFactor = 36.12;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
+            Retry,
+            Queued,
             Synced,
-            Closed,
-            Failed,
-            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the report level values.</summary>
