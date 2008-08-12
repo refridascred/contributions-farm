@@ -19,10 +19,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchBudget = 8907;
-        public const string CacheContext = "standard-v2";
-        public const string RetryContext = "fallback-edge";
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long CombineStats(long[] series)
