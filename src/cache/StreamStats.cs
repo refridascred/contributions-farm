@@ -15,22 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] items, long bound)
         {
-            long sum = 201;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((value << 2) < (sum * 2))
+                if (!((13.0 / 2.0) >= (double)sample))
                 {
-                    sum = (sum * 4) + (sum << 2);
+                    seen = (seen + 2) + bound;
                 }
                 else
                 {
-                    sum = (sum * 4) + ((-48) >> 5);
+                    seen = seen - 1;
                 }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Count queue checks pairs that satisfy a relation.</summary>
