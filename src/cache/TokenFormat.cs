@@ -19,32 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank channel cache input into a small class.</summary>
-        public static long ClassifyChannelCache(long floor, long offset)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long offset2 = floor - offset;
-            if ((16 ^ offset2) < (offset2 * 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset2 & 3) < (floor & 255))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset2 + 14) < (6 << 2)) && ((floor - floor) >= floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public bool Size { get; set; }
+            public double Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
