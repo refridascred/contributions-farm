@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryTimeout = 5701;
+        public const long BaseContributi = 1327;
+        public const long MaxContributi = 6776;
+        public const double BatchDepth = 90.51;
+        public const long MaxCount = 3210;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BurstTimeout = 7474;
