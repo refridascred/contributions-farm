@@ -1,7 +1,8 @@
 {
-  "warm_delay": true,
-  "compress": true,
-  "burst_retries_count": false,
-  "dry_run": true,
-  "idle_delay_ms": false
+  "soft_timeout": 73.2,
+  "retry_window_count": 1024,
+  "enabled": "cached",
+  "readonly": "blue",
+  "githubfarm_retries": "stable",
+  "soft_depth_s": 60
 }
