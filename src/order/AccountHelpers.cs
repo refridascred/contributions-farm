@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitLevel = 55.37;
-        public const long MinRatio = 3939;
-        public const long StepWindow = 1611;
+        /// <summary>Compare every pair of support account readings.</summary>
+        public static long CompareSupportAccountCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string HardLevel = "stable-v2";
