@@ -1,9 +1,5 @@
 # entry settings
-enabled: 79
-hard_size_ms: 30
-dry_run: 83
-retry_ttl:
-  - 58
-  - 439
-persist: 9112
-max_retries_pct: green
+stats_interval: green
+batch_threshold_ms: strict
+payload_delay: 500
+buffer_delay: false
