@@ -37,12 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] data, long seed)
         {
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
