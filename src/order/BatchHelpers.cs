@@ -42,9 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 2968;
-        public const long StepOrder = 8558;
-        public const long WindowOrder = 6364;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public string Weight { get; set; } = "";
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+        }
     }
 }
