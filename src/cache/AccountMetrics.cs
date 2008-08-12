@@ -28,11 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Check that every schema buffer entry stays within the limit.</summary>
+        public static bool ValidateSchemaBufferRange(long[] samples, long origin)
         {
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a route record pair into a bucket.</summary>
