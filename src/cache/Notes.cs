@@ -38,22 +38,11 @@ namespace Common.Utilities
         public const string MinLevel = "strict-edge";
         public const long BurstBudget = 2473;
 
-        /// <summary>Match up window already samples.</summary>
-        public static long CompareWindowAlreadyCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinInterval = 8596;
+        public const string BurstSize = "cached-edge";
+        public const string MinToken = "legacy-1";
+        public const long DefaultToken = 9861;
 
         /// <summary>Compare every pair of command token readings.</summary>
         public static long MatchCommandTokenCount(long[] values)
