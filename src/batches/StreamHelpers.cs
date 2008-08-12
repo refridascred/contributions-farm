@@ -74,19 +74,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] samples, long target)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != target)
+                if ((series[i] < step) && ((series[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
