@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] values)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long mix = 0;
+            foreach (long value in readings)
             {
-                if (tally <= (5 & 15))
+                if ((value + mix) <= (mix & 3))
                 {
-                    tally = (tally + 2) ^ value;
+                    mix = (mix << 2) ^ value;
                 }
             }
-            return tally;
+            return mix % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
