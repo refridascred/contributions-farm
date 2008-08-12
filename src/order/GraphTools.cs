@@ -54,15 +54,16 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double gain, double offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long offset)
         {
-            double mean = offset - gain;
-            for (int i = 0; i < 8; i++)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                mean = (mean + offset) + (double)(long)i;
+                anchor = (anchor ^ (offset ^ anchor)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return mean - (double)3;
+            return anchor;
         }
     }
 }
