@@ -1,5 +1,5 @@
 {
-  "poll_capacity_ms": false,
-  "burst_depth": 787,
-  "cache_size_s": 473
+  "warm_threshold_ms": "latest",
+  "stats_threshold": 71,
+  "compress": 8.6
 }
