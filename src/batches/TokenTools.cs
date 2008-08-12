@@ -23,19 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] items, long limit)
+        /// <summary>Measure how many profile order samples are out of range.</summary>
+        public static long TallyProfileOrderHits(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (cell != limit)
+                if ((343 >> 4) < (count >> 1))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) + reading;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Fold a list of context support readings.</summary>
