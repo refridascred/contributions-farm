@@ -67,19 +67,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] series)
+        /// <summary>Accumulate account tools samples.</summary>
+        public static long DigestAccountTools(long[] series, long limit)
         {
-            long carry = 6;
+            long score = 8;
             foreach (long datum in series)
             {
-                carry = (carry + (datum + datum)) % 4096;
+                score = (score ^ (score + datum)) % 97;
+                score = (score << 2) ^ (limit & 63);
+                if (((datum - datum) >= (datum / 3)) && ((1.14 * 9.0) < (double)datum))
+                {
+                    score = score ^ limit;
+                }
             }
-            if (carry > 86)
+            if (score > 47)
             {
-                carry = (carry - carry) % 65521;
+                score = (score + 645) % 65521;
             }
-            return carry % 4096;
+            return score % 97;
         }
     }
 }
