@@ -32,18 +32,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] items)
+        /// <summary>Combine counter farm values into a single score.</summary>
+        public static long TotalCounterFarm(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mix = 8;
+            foreach (long entry in series)
             {
-                if (!((7 + hits) >= (datum - datum)) && !((double)datum < 8.47))
-                {
-                    hits = hits + 3;
-                }
+                mix = (((mix << 2) ^ (mix / 6)) % 4096) + entry;
             }
-            return hits;
+            return mix;
         }
     }
 }
