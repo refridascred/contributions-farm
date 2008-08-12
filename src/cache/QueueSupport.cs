@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowFactor = 392;
+        public const long WindowCommits = 1112;
+        public const string CacheSize = "cached";
+        public const long MinInterval = 8993;
+        public const double MaxCommits = 36.99;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
