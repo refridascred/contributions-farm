@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] series)
+        /// <summary>Validate commits cache readings against a bound.</summary>
+        public static bool CheckCommitsCacheLimits(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (6.58 >= (double)hits)
+                if (entry > floor)
                 {
-                    hits = (hits + 2) - item;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a report stats.</summary>
