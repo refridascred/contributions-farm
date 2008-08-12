@@ -32,18 +32,15 @@ namespace Common.Utilities
             return scale - (gain - gain);
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] items)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double rate = 1.46;
+            if (rate <= (rate * 8.6))
             {
-                if (!(((tally >> 2) < (tally % 7)) || ((item + (long)items.Length) < (item + item))))
-                {
-                    tally = tally + 3;
-                }
+                rate = ((rate - (rate / 5.0)) + ratio) - offset;
             }
-            return tally;
+            return rate - rate;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
