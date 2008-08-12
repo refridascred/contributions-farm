@@ -57,11 +57,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 1112;
-        public const long IdleBudget = 8609;
-        public const long LimitBudget = 7245;
-        public const double SoftTools = 22.74;
-        public const long WindowRatio = 8232;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] series, long target)
+        {
+            long anchor = 199;
+            foreach (long entry in series)
+            {
+                if ((double)target != (5.62 + 8.1))
+                {
+                    anchor = (anchor ^ target) % 97;
+                    continue;
+                }
+                if ((anchor * 3) >= entry)
+                {
+                    anchor = anchor + (anchor + target);
+                }
+                if ((entry & 7) <= (target + 89))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
     }
 }
