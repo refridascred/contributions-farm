@@ -47,19 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long floor)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double ratio, double floor)
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
+            double weight = floor - (double)9;
+            if (weight < (double)23)
             {
-                if (!((double)score >= (6.82 + 8.96)))
-                {
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 1000;
+                weight = (weight + (floor / 4.0)) - ratio;
             }
-            return score;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - (weight + 8.6);
         }
     }
 }
