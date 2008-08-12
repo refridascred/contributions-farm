@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of context counter readings.</summary>
-        public static long OverlapContextCounterCount(long[] readings)
+        /// <summary>Digest a series of context filter entries.</summary>
+        public static long DigestContextFilter(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((mark << 3) >= datum)
                 {
-                    if ((readings[i] - readings[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark ^ (datum + 6);
                 }
             }
-            return seen;
+            return mark % 97;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
