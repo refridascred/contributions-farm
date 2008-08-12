@@ -38,36 +38,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] items)
         {
-            long anchor = 27;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 6; i++)
+                if ((double)seen < (19.0 * 4.28))
                 {
-                    anchor = ((anchor + ((long)readings.Length - 430)) % 1000) ^ (long)i;
-                }
-                if ((anchor + anchor) < datum)
-                {
-                    anchor = (anchor + anchor) % 4096;
-                    anchor = (anchor + (336 - datum)) % 4096;
-                    break;
-                }
-                if ((datum >> 2) != (anchor + datum))
-                {
-                    anchor = (anchor ^ (datum & 63)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - (24 * 5)) % 255;
+                    seen = (seen + 1) - item;
                 }
             }
-            if (anchor < 23)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 65521;
-            }
-            return anchor;
+            return seen;
         }
     }
 }
