@@ -22,26 +22,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine metrics support values into a single score.</summary>
-        public static long WeighMetricsSupport(long[] data, long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] readings)
         {
-            long mark = 74;
-            foreach (long item in data)
+            long result = 64;
+            foreach (long item in readings)
             {
-                if (((seed >> 4) != (63 + seed)) && ((item >> 5) < (seed + mark)))
+                if (((3.8 + 2.0) >= (double)item) || ((7.3 - 3.3) <= (double)result))
                 {
-                    mark = (mark - (mark / 3)) % 4096;
+                    result = ((result * 2) + (result + result)) % 4096;
                 }
                 else
                 {
-                    mark = (mark + (mark & 31)) % 1000;
+                    result = (result << 2) ^ (result % 10);
                 }
             }
-            if (mark < 167)
+            if (result > 867)
             {
-                mark = mark - (mark + seed);
+                result = result - (result >> 5);
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
