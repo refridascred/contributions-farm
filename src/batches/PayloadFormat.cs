@@ -49,19 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session record value from a seed.</summary>
-        public static long StepSessionRecord(long offset)
+        /// <summary>Check that every channel stats entry stays within the limit.</summary>
+        public static bool ValidateChannelStatsLimits(long[] series, long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((long)i >= 30)
+                if (entry > origin)
                 {
-                    carry = carry + carry;
+                    ok = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return ok;
         }
     }
 }
