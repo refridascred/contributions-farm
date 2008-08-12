@@ -20,23 +20,10 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)tally >= (11.0 * 4.19))
-                {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultSize = 70.45;
+        public const long SoftLayout = 4473;
+        public const long IdleLayout = 786;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorOutliers(long[] levels, long offset)
