@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long BatchCache = 2336;
         public const long DefaultCache = 3649;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Audit profile cache readings against a rule.</summary>
+        public static long CountProfileCacheMatches(long[] samples)
         {
-            Draft,
-            Closed,
-            Done,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry >> 4) > (entry - 765))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
