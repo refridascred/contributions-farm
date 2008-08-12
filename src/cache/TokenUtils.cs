@@ -19,32 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long floor, long target)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long bound = floor + target;
-            if ((target & 31) <= (floor + target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 1) > (bound + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)bound > (double)floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Failed,
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
