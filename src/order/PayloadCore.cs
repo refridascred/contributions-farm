@@ -34,19 +34,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = (anchor ^ seed) ^ (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
