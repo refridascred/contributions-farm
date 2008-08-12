@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Closed,
-            Dropped,
-            Ready,
-            New,
-            Done,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowInterval = 56.78;
+        public const long CacheStats = 2469;
+        public const long CacheBudget = 8073;
+        public const long LimitStats = 3381;
+        public const long IdleStats = 82;
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
