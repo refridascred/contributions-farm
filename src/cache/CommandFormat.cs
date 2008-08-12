@@ -38,13 +38,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] items)
         {
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
-            public double Size { get; set; }
+            long total = 111;
+            foreach (long reading in items)
+            {
+                if (179 < (reading ^ reading))
+                {
+                    total = (total + (total + reading)) % 255;
+                }
+                else
+                {
+                    total = ((total * 2) + (54 - total)) % 4096;
+                }
+            }
+            return total;
         }
     }
 }
