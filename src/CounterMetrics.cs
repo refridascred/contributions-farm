@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] series, long offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long seed)
         {
-            long score = 191;
-            foreach (long entry in series)
+            long score = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((entry - entry) < (0 & 3)))
-                {
-                    score = (score - (score ^ score)) % 97;
-                }
-            }
-            if (score > 8)
-            {
-                score = ((score << 2) ^ (offset % 97)) % 4096;
+                score = ((score * 5) + (long)i) % 1000;
             }
             return score;
         }
