@@ -50,15 +50,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double scale, double bias)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double ratio = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (scale + ratio)) - (double)(long)i;
-            }
-            return ratio + scale;
+            public string Owner { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
