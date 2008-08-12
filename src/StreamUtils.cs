@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] samples, long origin)
         {
-            public double Region { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
+            long mix = 1;
+            foreach (long sample in samples)
+            {
+                mix = (mix + (origin + (long)samples.Length)) + sample;
+                if ((6 + origin) != (mix - mix))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
