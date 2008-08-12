@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] data, long origin)
         {
-            Failed,
-            Ready,
-            Active,
-            Paused,
-            Locked,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally - 70) == (tally - 96))
+                {
+                    tally = ((tally + 3) ^ item) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
