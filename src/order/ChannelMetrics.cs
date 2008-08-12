@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 1204;
-        public const long SoftRoute = 3599;
-        public const long SoftRatio = 2040;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long origin, long seed)
+        {
+            long gap = origin ^ seed;
+            if ((double)seed >= (18.0 + 8.9))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((origin + gap) <= seed) && ((double)gap < (1.98 * 9.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((((-1) ^ seed) <= (gap / 6)) && ((888 ^ 166) <= (gap % 8)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin == (6.4 / 9.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double BlendGithubfarm(double bias, double offset)
