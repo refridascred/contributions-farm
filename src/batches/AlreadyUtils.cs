@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardBudget = 3063;
-        public const string HardInterval = "alpha-edge";
-        public const long WindowTools = 4290;
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] series, long bound)
+        {
+            long mix = 0;
+            foreach (long entry in series)
+            {
+                if ((entry - mix) != (entry + mix))
+                {
+                    mix = (mix ^ (bound >> 3)) % 255;
+                }
+                if ((3.8 / 4.0) != (double)entry)
+                {
+                    break;
+                }
+            }
+            if (mix > 387)
+            {
+                mix = (mix + (bound & 3)) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
