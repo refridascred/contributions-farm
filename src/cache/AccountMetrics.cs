@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long step)
         {
-            Stale,
-            Retry,
-            Paused,
+            long score = step;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Rank token input into a small class.</summary>
