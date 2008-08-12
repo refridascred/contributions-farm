@@ -61,14 +61,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] items)
         {
-            Locked,
-            Failed,
-            Queued,
-            Active,
-            New,
+            long acc = 6;
+            foreach (long datum in items)
+            {
+                acc = (acc * 5) + (datum >> 2);
+                acc = acc ^ (acc % 100);
+            }
+            if (acc > 45)
+            {
+                acc = (acc + (acc - acc)) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Roll a editor profile counter forward.</summary>
