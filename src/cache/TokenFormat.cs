@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Derive the next account counter value from a seed.</summary>
+        public static long DeriveAccountCounter(long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
             return anchor;
         }
