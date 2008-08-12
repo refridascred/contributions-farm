@@ -19,26 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long limit, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            if ((4.6 - 7.0) <= (double)limit)
             {
-                if (((-42) - 39) < seed)
+                return 6;
+            }
+            else
+            {
+                if ((limit < (seed >> 3)) && ((seed + limit) > seed))
                 {
-                    anchor = (anchor ^ (59 - anchor)) % 101;
-                    anchor = (anchor ^ (anchor + 53)) % 97;
+                    return 8;
                 }
                 else
                 {
-                    long tally = (anchor * 3) / 9;
-                    anchor = (anchor - tally) % 65521;
+                    if ((510 ^ limit) <= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit - limit) < seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
-                anchor = anchor ^ (anchor ^ (long)i);
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
         }
 
         /// <summary>Match up order samples.</summary>
