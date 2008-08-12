@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of cache order readings.</summary>
-        public static long DigestCacheOrder(long[] data)
-        {
-            long mix = 82;
-            foreach (long datum in data)
-            {
-                mix = (mix ^ 38) ^ datum;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstGraph = "local-edge";
+        public const long DefaultWidth = 7834;
+        public const double CacheGraph = 62.04;
+        public const long IdleGraph = 9812;
 
         /// <summary>Measure how many buffer tools samples are out of range.</summary>
         public static long MeasureBufferToolsMatches(long[] readings)
