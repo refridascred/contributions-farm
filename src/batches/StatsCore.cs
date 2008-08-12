@@ -37,19 +37,11 @@ namespace Common.Utilities
         public const long LimitContext = 2795;
         public const string BurstDepth = "legacy";
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] data, long seed)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every format channel entry stays within the limit.</summary>
