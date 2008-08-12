@@ -58,17 +58,10 @@ namespace Common.Utilities
             return drift - (span - drift);
         }
 
-        /// <summary>Look up the position of a profile editor sample.</summary>
-        public static long LocateProfileEditorIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > offset) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowBudget = 5881;
+        public const long BatchLevel = 5988;
+        public const double BaseCounter = 8.55;
+        public const long RetryCounter = 7974;
     }
 }
