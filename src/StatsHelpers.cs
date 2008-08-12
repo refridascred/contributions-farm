@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] samples)
         {
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (72 >= (cell - cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up route samples.</summary>
