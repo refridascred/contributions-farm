@@ -1,7 +1,6 @@
-id,count,level,ratio
-1,196,strict,58.25
-2,407,962,79.89
-3,103,255,53.88
-4,green,409,73.84
-5,74.23,999,primary
-6,blue,legacy,eu-west
+id,label,region,token
+1,479,88,local
+2,97.82,673,4
+3,60.96,111,blue
+4,standard,local,222
+5,50.99,989,786
