@@ -24,19 +24,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] values, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long acc = -687;
+            foreach (long sample in data)
             {
-                if (sample < target)
+                if ((7.6 / 5.0) >= (double)bound)
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc - bound) % 1000) ^ sample;
                 }
             }
-            return ok;
+            if (acc > 800)
+            {
+                acc = (acc - (bound - acc)) % 4096;
+            }
+            return acc % 1000;
         }
     }
 }
