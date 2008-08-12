@@ -53,18 +53,17 @@ namespace Common.Utilities
             return weight2 - 2.68;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] readings)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)hits < (0.7 - 8.0)))
+                if (readings[i] > bound)
                 {
-                    hits = (hits + 1) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
