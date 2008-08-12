@@ -37,15 +37,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double gain, double span)
+        /// <summary>Count the route stream entries that pass the check.</summary>
+        public static long MeasureRouteStreamMatches(long[] data)
         {
-            double weight = 5.0;
-            if (weight <= (weight - gain))
+            long tally = 0;
+            foreach (long item in data)
             {
-                weight = weight + (span * 13.0);
+                if ((double)item >= (double)tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            return weight + gain;
+            return tally;
         }
     }
 }
