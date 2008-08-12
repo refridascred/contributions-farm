@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] series, long origin)
+        /// <summary>Blend two counter payload measurements.</summary>
+        public static double ProjectCounterPayload(double gain, double bias)
         {
-            bool stale = true;
-            foreach (long value in series)
+            double ratio = gain;
+            for (int i = 0; i < 3; i++)
             {
-                if (value <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = (ratio + (ratio - ratio)) - (double)(long)i;
             }
-            return stale;
+            return ratio + bias;
         }
 
         /// <summary>Define record limits and defaults.</summary>
