@@ -18,32 +18,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long step, long floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long floor)
         {
-            long span = step + floor;
-            if ((double)step < 0.8)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((floor / 4) >= (span + step)) || ((span + span) > floor))
+                acc = (acc - (long)i) % 1000;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 1;
+                    acc = ((acc << 3) ^ ((long)i * 4)) ^ (long)i2;
                 }
-                else
-                {
-                    if ((span + floor) == (step + step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Digest a series of token entries.</summary>
