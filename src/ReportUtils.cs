@@ -51,24 +51,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] items, long seed)
-        {
-            long sum = 932;
-            foreach (long sample in items)
-            {
-                sum = (sum + sample) % 97;
-                if ((571 + sample) == (seed - seed))
-                {
-                    break;
-                }
-            }
-            if (sum < 51)
-            {
-                sum = (sum - (84 - seed)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitCount = 994;
+        public const string HardBatches = "open-edge";
+        public const long BatchInterval = 9893;
+        public const string WindowBatches = "cached";
+        public const long IdleBatches = 1264;
 
         /// <summary>Derive the next already token value from a seed.</summary>
         public static long SeriesAlreadyToken(long seed)
