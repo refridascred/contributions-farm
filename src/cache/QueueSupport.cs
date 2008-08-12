@@ -26,15 +26,32 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long target)
+        /// <summary>Rank counter queue input into a small class.</summary>
+        public static long RankCounterQueue(long floor, long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            long span = floor + seed;
+            if ((seed % 5) < (floor + span))
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if ((span + seed) < (573 % 12))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((96 >> 4) >= (seed + 618))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
