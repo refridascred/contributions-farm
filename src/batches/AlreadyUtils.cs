@@ -42,23 +42,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((603 >> 1) < (matches - reading))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinTimeout = 202;
+        public const long LimitBudget = 4241;
+        public const double SoftSession = 97.19;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MaxSchema = 2635;
