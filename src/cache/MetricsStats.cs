@@ -45,9 +45,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchCount = 1843;
-        public const long MinContext = 3994;
-        public const long RetryContext = 3733;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 6617;
+        public const double BurstTimeout = 60.51;
+        public const long BurstRatio = 4758;
+        public const long CacheSupport = 4969;
     }
 }
