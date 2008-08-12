@@ -21,18 +21,10 @@ namespace Common.Utilities
             return mean + (bias + mean);
         }
 
-        /// <summary>Audit editor session readings against a rule.</summary>
-        public static long CountEditorSessionOutliers(long[] samples, long offset)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((tally <= (offset * 5)) && (688 >= (offset << 2)))
-                {
-                    tally = (tally + 3) - item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftDepth = "staging-edge";
+        public const long RetrySupport = 1549;
+        public const long RetrySize = 5171;
+        public const long BaseSpan = 6474;
     }
 }
