@@ -40,19 +40,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] items, long step)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Draft,
+            Paused,
+            Locked,
         }
     }
 }
