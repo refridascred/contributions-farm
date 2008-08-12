@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] data, long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long acc = 1;
+            foreach (long item in series)
             {
-                if (reading != target)
+                acc = (acc ^ acc) % 65521;
+                if ((20.0 + 3.12) == (double)item)
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc * 5) + (acc / 3)) % 65521;
                 }
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
