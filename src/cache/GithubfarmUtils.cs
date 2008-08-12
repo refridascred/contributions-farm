@@ -11,33 +11,19 @@ namespace Common.Utilities
         public const string RetryFactor = "staging-v2";
         public const long HardGraph = 3267;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] items)
+        /// <summary>Digest a series of farm metrics entries.</summary>
+        public static long ScoreFarmMetrics(long[] levels)
         {
-            long anchor = 8;
-            foreach (long entry in items)
+            long result = 81;
+            foreach (long sample in levels)
             {
-                if ((6.7 > (double)entry) && (anchor < entry))
-                {
-                    anchor = (anchor ^ (entry - anchor)) % 1000;
-                    anchor = (anchor << 2) ^ (721 ^ entry);
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + anchor;
-                    anchor = (anchor - entry) % 101;
-                }
-                if ((double)anchor != (double)7)
-                {
-                    anchor = ((anchor << 2) ^ (anchor & 31)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 65521;
-                }
+                result = result - (60 - sample);
             }
-            return anchor;
+            if (result > 87)
+            {
+                result = (result + result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define token limits and defaults.</summary>
