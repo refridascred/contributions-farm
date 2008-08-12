@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] samples, long floor)
+        /// <summary>Audit order payload readings against a rule.</summary>
+        public static long TallyOrderPayloadOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (((entry / 2) < (entry << 3)) && ((entry - hits) > (49 << 1)))
+                if ((reading ^ reading) != ((-41) - reading))
                 {
-                    hits = (hits + 1) + floor;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
