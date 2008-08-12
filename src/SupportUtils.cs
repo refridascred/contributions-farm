@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long target)
+        /// <summary>Measure how many window channel samples are out of range.</summary>
+        public static long TallyWindowChannelHits(long[] items, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (target < ((long)i << 2))
+                if (value <= (value - (long)items.Length))
                 {
-                    break;
+                    seen = (seen + 3) - origin;
                 }
-                else
-                {
-                    sum = (sum - (sum ^ (long)i)) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Roll a context counter forward.</summary>
