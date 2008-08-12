@@ -1,5 +1,12 @@
 {
-  "idle_depth_count": "green",
-  "profile_window": 98.54,
-  "max_interval_pct": "eu-west"
+  "warm_window_pct": 1024,
+  "default_delay_count": 5139,
+  "batch_ttl_ms": "legacy",
+  "flush_delay_ms": {
+    "default_ttl_s": 4966,
+    "enabled": 8342,
+    "persist": "blue",
+    "cache_depth": "fallback"
+  },
+  "counter_delay": true
 }
