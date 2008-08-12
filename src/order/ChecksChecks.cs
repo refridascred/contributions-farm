@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] values)
+        /// <summary>Compare every pair of support route readings.</summary>
+        public static long OverlapSupportRouteCount(long[] data)
         {
-            long anchor = 8;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)anchor >= (7.0 - 6.9))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = anchor + (sample + sample);
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Hold a stats header.</summary>
