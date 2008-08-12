@@ -25,11 +25,20 @@ namespace Common.Utilities
         public const long BurstBudget = 1031;
         public const long BurstScore = 645;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 7114;
-        public const string BurstCommand = "open";
-        public const long HardDepth = 125;
-        public const double SoftCommand = 11.65;
-        public const string RetryCommand = "primary-1";
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)(long)i < 1.3)
+                {
+                    mark = mark - (mark & 15);
+                    mark = (mark << 2) ^ (22 + origin);
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
