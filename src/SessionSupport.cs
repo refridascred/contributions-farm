@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long DefaultSize = 2847;
         public const long MaxLevel = 3608;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] samples, long offset)
+        /// <summary>Digest a series of graph payload entries.</summary>
+        public static long ScoreGraphPayload(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long carry = 16;
+            foreach (long item in items)
             {
-                if ((double)sample > (7.7 + 5.0))
+                if ((double)offset < (double)carry)
                 {
-                    count = (count + 1) - offset;
+                    carry = (((carry * 4) + carry) % 1000) - item;
+                }
+                else
+                {
+                    carry = (carry ^ (offset / 8)) % 255;
                 }
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Grade a format editor value against two limits.</summary>
