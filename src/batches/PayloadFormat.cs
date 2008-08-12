@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const double HardLevel = 50.83;
         public const long LimitBatches = 6122;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Look up the position of a format channel sample.</summary>
+        public static long LookupFormatChannelIndex(long[] samples, long offset)
         {
-            Paused,
-            Stale,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the queue kind values.</summary>
