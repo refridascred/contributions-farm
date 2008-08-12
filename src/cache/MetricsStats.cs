@@ -35,10 +35,11 @@ namespace Common.Utilities
             return bias2 + (double)5;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstFactor = 667;
-        public const long BatchInterval = 8468;
-        public const long BaseCounter = 732;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleCount = "standard-1";
+        public const string RetrySpan = "strict-v2";
+        public const long MaxSpan = 7513;
+        public const string SoftToken = "stable-1";
 
         /// <summary>Accumulate command samples.</summary>
         public static long CombineCommand(long[] data, long offset)
