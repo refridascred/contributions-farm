@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const string LimitEntry = "latest";
         public const double SoftBudget = 29.76;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double bias, double bias2)
         {
-            Failed,
-            Active,
-            Ready,
-            Done,
-            New,
+            double scale = (double)9 * 7.4;
+            return (scale + bias) + bias2;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
