@@ -88,22 +88,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache editor samples.</summary>
-        public static long ScoreCacheEditor(long[] series, long bound)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long anchor = 7;
-            foreach (long cell in series)
-            {
-                if (!((anchor + cell) > (22 << 3)))
-                {
-                    anchor = (((anchor << 3) ^ (anchor + anchor)) % 101) - bound;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (9 + (long)series.Length)) % 97;
-                }
-            }
-            return anchor;
+            Ready,
+            New,
+            Idle,
         }
     }
 }
