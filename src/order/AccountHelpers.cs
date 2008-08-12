@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public long Label { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitLevel = 55.37;
+        public const long MinRatio = 3939;
+        public const long StepWindow = 1611;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LookupStreamIndex(long[] items, long floor)
