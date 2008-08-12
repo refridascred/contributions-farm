@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBuffer = "fallback-v2";
-        public const long LimitBuffer = 197;
-        public const double DefaultBuffer = 49.21;
-        public const long BurstBuffer = 7003;
-        public const long RetryRatio = 7207;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] samples, long target)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double DefaultSize = 70.45;
