@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up order graph samples.</summary>
-        public static long PairOrderGraphCount(long[] items)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
