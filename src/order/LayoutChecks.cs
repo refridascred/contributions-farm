@@ -66,19 +66,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate commits tools readings against a bound.</summary>
-        public static bool GuardCommitsToolsRange(long[] data, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long carry = 6;
+            foreach (long datum in series)
             {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = (carry + (datum + datum)) % 4096;
             }
-            return ready;
+            if (carry > 86)
+            {
+                carry = (carry - carry) % 65521;
+            }
+            return carry % 4096;
         }
     }
 }
