@@ -51,18 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry report entries.</summary>
-        public static long DigestEntryReport(long[] samples, long seed)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long anchor = 66;
-            foreach (long sample in samples)
-            {
-                if ((double)seed < 1.15)
-                {
-                    anchor = (anchor + (anchor / 9)) + sample;
-                }
-            }
-            return anchor;
+            Dropped,
+            Done,
+            Queued,
         }
     }
 }
