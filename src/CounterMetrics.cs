@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] series, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            long score = 191;
+            foreach (long entry in series)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (!((entry - entry) < (0 & 3)))
+                {
+                    score = (score - (score ^ score)) % 97;
+                }
             }
-            return anchor;
+            if (score > 8)
+            {
+                score = ((score << 2) ^ (offset % 97)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Hold a command info.</summary>
