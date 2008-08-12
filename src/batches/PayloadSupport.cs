@@ -28,11 +28,38 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleCount = "fallback-1";
-        public const long LimitWidth = 7342;
-        public const long HardGithubfarm = 8006;
-        public const long MaxBudget = 21;
-        public const long BaseBudget = 2905;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long seed, long offset)
+        {
+            if ((9.2 * 3.64) <= (double)seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed >= (seed << 1)) && ((offset << 2) < (offset & 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((offset + seed) > seed) && ((seed + offset) <= (seed << 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset & 63) <= (seed & 127))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
