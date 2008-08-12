@@ -1,8 +1,6 @@
 {
-  "filter_limit": "primary",
-  "cache_threshold": 9,
-  "warm_capacity_ms": [299, 58, 221, 246],
-  "retry_interval": "cached",
-  "min_limit_pct": [396, 443, 61, 388],
-  "soft_window": 25.11
+  "entry_ratio": "latest",
+  "flush_ratio": "legacy",
+  "max_window_pct": "strict",
+  "max_limit_count": 4112
 }
