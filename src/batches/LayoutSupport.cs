@@ -41,22 +41,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] items)
+        /// <summary>Fold a list of filter metrics readings.</summary>
+        public static long TotalFilterMetrics(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long score = 3;
+            foreach (long value in readings)
             {
-                if ((reading > ((long)items.Length - reading)) && (((596 ^ matches) < 85) && ((45 ^ matches) > (matches + 5))))
+                if ((value << 1) < (value + value))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = (score - score) % 97;
                 }
             }
-            return matches;
+            if (score < 918)
+            {
+                score = ((score << 3) ^ (score << 3)) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
