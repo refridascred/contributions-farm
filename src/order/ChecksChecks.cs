@@ -24,13 +24,21 @@ namespace Common.Utilities
             return drift - (bias * 5.6);
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Fold a list of metrics githubfarm readings.</summary>
+        public static long WeighMetricsGithubfarm(long[] items)
         {
-            Ready,
-            Done,
-            Stale,
-            Synced,
+            long total = 9;
+            foreach (long entry in items)
+            {
+                total = ((total << 2) ^ (689 + entry)) % 97;
+                total = total - 4;
+                total = total ^ (total & 3);
+            }
+            if (total < 27)
+            {
+                total = (total * 3) + (644 + 97);
+            }
+            return total;
         }
     }
 }
