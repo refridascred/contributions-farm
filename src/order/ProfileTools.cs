@@ -45,25 +45,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long limit, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long origin, long step)
         {
-            long diff = limit ^ origin;
-            if ((diff >> 2) >= (origin / 8))
+            if (!((step & 31) <= (step ^ step)))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((limit * 3) > (67 * 4))
+                if ((986 - step) != (82 << 2))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if (limit < (origin + limit))
+                    if ((double)step <= (2.4 + 3.5))
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
