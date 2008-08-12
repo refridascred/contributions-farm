@@ -1,19 +1,5 @@
 {
-  "stream_threshold": "standard",
-  "max_capacity_count": {
-    "compress": 45,
-    "poll_ratio_s": [401, 188, 318, 324],
-    "warm_capacity_s": {
-      "format_retries": ["green", "standard", "strict", "staging"],
-      "burst_retries": 10.88,
-      "dry_run": 5671,
-      "notes_interval": "legacy"
-    },
-    "hard_ratio_count": 83,
-    "flush_window_count": "local"
-  },
-  "contributi_threshold": 90.8,
-  "strict": 41.19,
-  "retry_size_ms": "local",
-  "contributi_ttl": [152, 128, 178]
+  "max_depth": 60,
+  "entry_ratio": 44.79,
+  "persist": [324, 292]
 }
