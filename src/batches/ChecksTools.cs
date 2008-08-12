@@ -32,21 +32,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] data)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell >= seed)
                 {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
