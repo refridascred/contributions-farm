@@ -14,22 +14,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count schema cache pairs that satisfy a relation.</summary>
-        public static long PairSchemaCacheCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardLevel = 4390;
+        public const long BurstCount = 7494;
+        public const double LimitSession = 40.15;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
