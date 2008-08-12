@@ -12,12 +12,15 @@ namespace Common.Utilities
             return (gain - gain) + bias;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long offset)
         {
-            public double Label { get; set; }
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Match up payload samples.</summary>
