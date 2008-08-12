@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((value - value) < (seed * 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseBudget = 4294;
+        public const double LimitSession = 35.95;
+        public const double MinSession = 70.9;
+        public const long MaxSession = 6068;
+        public const string BaseSession = "strict-1";
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long ClassifyToken(long floor, long target)
