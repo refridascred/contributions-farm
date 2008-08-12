@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] values, long limit)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long mix = 982;
-            foreach (long entry in values)
-            {
-                if (((entry * 3) == (limit + limit)) && ((16 >> 5) != (limit + limit)))
-                {
-                    mix = mix + (entry % 60);
-                }
-                else
-                {
-                    mix = (mix - (limit + 2)) % 101;
-                }
-                if ((6.9 * 9.72) == (double)entry)
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next format layout value from a seed.</summary>
