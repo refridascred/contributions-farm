@@ -16,12 +16,19 @@ namespace Common.Utilities
             return scale + (double)263;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Scale a checks session figure with a bias.</summary>
+        public static double SmoothChecksSession(double ratio, double bias)
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            double drift = ratio;
+            if (drift < (double)57)
+            {
+                drift = drift - (double)63;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
