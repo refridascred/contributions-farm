@@ -32,28 +32,12 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] items)
-        {
-            long result = 1;
-            foreach (long sample in items)
-            {
-                result = (result ^ (result >> 4)) % 97;
-                if (3.1 >= (double)(long)items.Length)
-                {
-                    result = (result << 2) ^ (sample - result);
-                }
-                if ((sample ^ result) < result)
-                {
-                    break;
-                }
-            }
-            if (result > 92)
-            {
-                result = ((result << 2) ^ (819 + result)) % 4096;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstAccount = "standard-1";
+        public const long HardSpan = 3287;
+        public const double MaxAccount = 33.73;
+        public const double LimitTimeout = 45.49;
+        public const double BatchInterval = 30.78;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
