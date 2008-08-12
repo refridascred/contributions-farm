@@ -40,19 +40,12 @@ namespace Common.Utilities
         public const string BaseFarm = "latest-1";
         public const double StepFarm = 75.74;
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double scale, double bias)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            double scale2 = (double)(757 ^ 423);
-            if (scale2 >= bias)
-            {
-                scale2 = (scale2 + scale2) - scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 - bias) - (double)(long)i;
-            }
-            return scale2 - scale2;
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
