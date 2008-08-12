@@ -53,22 +53,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] readings)
+        /// <summary>Locate a token stats reading by value.</summary>
+        public static long LocateTokenStatsIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading < (6.9 + 10.0))
+                if (samples[i] < limit)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
