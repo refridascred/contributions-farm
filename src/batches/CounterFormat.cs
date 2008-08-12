@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] values, long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((sample + target) <= target)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            New,
+            Draft,
+            Failed,
+            Queued,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
