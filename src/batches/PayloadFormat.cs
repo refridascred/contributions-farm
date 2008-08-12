@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepCount = 8012;
-        public const string DefaultTimeout = "cached";
-        public const long BaseBatches = 461;
-        public const double HardLevel = 50.83;
-        public const long LimitBatches = 6122;
+        /// <summary>Measure how many batches notes samples are out of range.</summary>
+        public static long TallyBatchesNotesMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + datum) > tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a format channel sample.</summary>
         public static long LookupFormatChannelIndex(long[] samples, long offset)
