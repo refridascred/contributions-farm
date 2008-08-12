@@ -57,13 +57,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Retry,
-            Failed,
-            Closed,
-            Ready,
+            Draft,
+            Idle,
+            Pending,
+            Paused,
         }
     }
 }
