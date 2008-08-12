@@ -28,10 +28,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitRatio = 404;
-        public const long RetryCount = 3035;
-        public const string StepTools = "primary-1";
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Synced,
+            Closed,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
