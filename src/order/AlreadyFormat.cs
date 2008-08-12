@@ -48,18 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] values, long target)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((hits * 3) <= (target % 60))
-                {
-                    hits = (hits + 3) - entry;
-                }
-            }
-            return hits;
+            Active,
+            Retry,
+            Stale,
+            Ready,
         }
 
         /// <summary>Hold a report info.</summary>
