@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxRatio = 8118;
-        public const string WindowInterval = "legacy-edge";
-        public const string LimitGraph = "cached";
-        public const double BatchCount = 17.9;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheWidth = "strict-v2";
+        public const long MaxLevel = 9858;
+        public const long WindowToken = 2338;
+        public const long CacheToken = 1394;
+        public const long StepTimeout = 3894;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseContributi = 4031;
