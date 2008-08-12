@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] readings)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long mark = 667;
-            foreach (long item in readings)
-            {
-                if ((item <= (mark - mark)) || ((double)item >= 1.0))
-                {
-                    mark = (mark + (4 + mark)) % 4096;
-                }
-                if (item >= (item - item))
-                {
-                    break;
-                }
-            }
-            if (mark > 11)
-            {
-                mark = (mark - mark) % 255;
-            }
-            return mark % 97;
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
