@@ -35,12 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] items, long target)
         {
-            Synced,
-            Done,
-            Queued,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((double)tally != (9.26 / 6.0))
+                {
+                    tally = ((tally + 1) + item) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
