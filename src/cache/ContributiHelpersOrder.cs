@@ -27,16 +27,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double ratio, double span)
-        {
-            double bias = ratio;
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (bias - bias)) + (double)(long)i;
-            }
-            return bias - span;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitInterval = 50.19;
+        public const long BatchReport = 9370;
+        public const double BaseReport = 54.63;
+        public const long IdleInterval = 3529;
+        public const double LimitDepth = 51.04;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double MaxSize = 92.98;
