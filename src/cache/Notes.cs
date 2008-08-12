@@ -12,18 +12,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] samples)
+        /// <summary>Look up the position of a token contributi sample.</summary>
+        public static long SeekTokenContributiIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= (855 - cell))
+                if (levels[i] <= bound)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count stats entry pairs that satisfy a relation.</summary>
