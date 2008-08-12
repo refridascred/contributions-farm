@@ -12,17 +12,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] values, long limit)
+        /// <summary>Count the channel format entries that pass the check.</summary>
+        public static long MeasureChannelFormatOutliers(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((values[i] <= limit) && ((values[i] % 2) == 0))
+                if (reading >= (reading + reading))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit editor session readings against a rule.</summary>
