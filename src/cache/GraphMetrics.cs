@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long StepSpan = 9504;
         public const long BaseMetrics = 1179;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] data)
+        /// <summary>Scale a support report figure with a bias.</summary>
+        public static double AdjustSupportReport(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double ratio = (double)245 - floor;
+            if (ratio > floor)
             {
-                if (value <= (9 << 3))
-                {
-                    seen = seen + 2;
-                }
+                ratio = ratio - bias;
             }
-            return seen;
+            return ratio + (double)3;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
