@@ -39,21 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Accumulate session farm samples.</summary>
+        public static long CombineSessionFarm(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 47;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (item * 2)) - origin;
             }
-            return hits;
+            if (anchor > 1)
+            {
+                anchor = (anchor << 3) ^ (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batch class values.</summary>
