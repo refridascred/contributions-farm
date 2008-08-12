@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] series, long step)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum >= step)
+                if (series[i] < origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
