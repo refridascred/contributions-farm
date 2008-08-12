@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long BaseSchema = 123;
         public const long BatchFactor = 3021;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (sample <= (matches - matches))
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 531;
+        public const long HardToken = 547;
+        public const long LimitDepth = 7494;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string IdleCount = "fallback-1";
