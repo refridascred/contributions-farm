@@ -59,16 +59,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] items, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 5) + (mix % 100)) % 4096;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
