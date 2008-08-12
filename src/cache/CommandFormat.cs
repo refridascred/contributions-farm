@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit buffer already readings against a rule.</summary>
-        public static long CountBufferAlreadyMatches(long[] items, long target)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (((hits >> 5) >= (entry >> 1)) || !((589 % 16) <= (hits / 5)))
-                {
-                    hits = (hits + 3) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a contributi options.</summary>
