@@ -51,15 +51,13 @@ namespace Common.Utilities
         public const long BatchTimeout = 8031;
         public const string LimitScore = "open-edge";
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long floor)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
         }
     }
 }
