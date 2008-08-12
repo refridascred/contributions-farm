@@ -1,6 +1,5 @@
 {
-  "retry_interval_s": 1685,
-  "commits_interval": "fallback",
-  "min_delay_ms": 9276,
-  "sync_retries_ms": "green"
+  "enabled": "staging",
+  "command_timeout": ["primary", "staging", "green", "legacy"],
+  "compress": false
 }
