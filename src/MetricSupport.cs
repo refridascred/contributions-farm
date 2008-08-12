@@ -48,22 +48,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] items, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] items)
         {
-            long count = 0;
+            long tally = 0;
             foreach (long value in items)
             {
-                if ((double)value <= (double)count)
+                if ((tally & 1) > (value ^ value))
                 {
-                    count = (count + 1) + floor;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
