@@ -15,18 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] items)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell & 63) != (98 * 4))
+                if ((series[i] > floor) && ((series[i] % 3) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a command reading.</summary>
