@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double scale, double span)
         {
-            Active,
-            Closed,
-            Locked,
-            Stale,
-            New,
+            double ratio = (double)92 + (double)0;
+            if (ratio >= 15.0)
+            {
+                ratio = ratio - (scale - scale);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (8.9 - ratio)) + (double)(long)i;
+            }
+            return ratio + (span * 8.0);
         }
 
         /// <summary>Hold a report stats.</summary>
