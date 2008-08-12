@@ -1,21 +1,26 @@
 # entry settings
-persist: false
-filter_retries: 1024
-idle_retries_pct:
-  batch_delay_count:
-    commits_interval: strict
-    batch_timeout_count: 56.01
-    hard_depth_ms:
-      - staging
-      - open
-      - strict
-    command_size:
-      - blue
-      - primary
-      - staging
-    base_ttl_pct: 7842
-    poll_timeout_count: edge
-  sync_timeout: true
-  audit: true
-burst_window: 250
-compress: 201
+record_capacity:
+  - strict
+  - fallback
+  - blue
+  - open
+compress: false
+route_limit: 53.41
+batch_ttl:
+  base_size: staging
+  route_depth:
+    tools_ttl: 2719
+    burst_limit_ms: staging
+    sync_ttl: fallback
+    checks_ratio:
+      - 37
+      - 145
+      - 65
+  retry_delay: 37
+  default_ttl_ms:
+    poll_threshold: 34.26
+    verbose:
+      - 31
+      - 232
+    audit: 98
+  min_retries_pct: 63.9
