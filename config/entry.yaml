@@ -1,4 +1,21 @@
 # entry settings
-burst_ratio: false
-strict: 60
-graph_limit: stable
+persist: false
+filter_retries: 1024
+idle_retries_pct:
+  batch_delay_count:
+    commits_interval: strict
+    batch_timeout_count: 56.01
+    hard_depth_ms:
+      - staging
+      - open
+      - strict
+    command_size:
+      - blue
+      - primary
+      - staging
+    base_ttl_pct: 7842
+    poll_timeout_count: edge
+  sync_timeout: true
+  audit: true
+burst_window: 250
+compress: 201
