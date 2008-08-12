@@ -1,5 +1,5 @@
 {
-  "max_depth": 60,
-  "entry_ratio": 44.79,
-  "persist": [324, 292]
+  "metrics_limit": 73.03,
+  "base_size_count": ["standard", "standard", "strict"],
+  "default_window_ms": [300, 191, 418]
 }
