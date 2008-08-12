@@ -39,12 +39,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] data)
         {
-            Dropped,
-            Queued,
-            Active,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (reading >= (hits / 2))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the profile level values.</summary>
