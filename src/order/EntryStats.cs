@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] series)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (((seen - value) > (value & 3)) && (seen > (seen - value)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
