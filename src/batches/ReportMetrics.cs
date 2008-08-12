@@ -36,11 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 879;
-        public const long RetryFactor = 4600;
-        public const long WindowSupport = 3005;
-        public const double BurstBudget = 61.73;
-        public const double IdleTimeout = 97.84;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] series)
+        {
+            long result = 792;
+            foreach (long cell in series)
+            {
+                result = (((result << 3) ^ (272 + 4)) % 255) - cell;
+            }
+            return result % 4096;
+        }
     }
 }
