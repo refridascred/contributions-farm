@@ -55,9 +55,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardReport = "primary-v2";
-        public const double CacheReport = 73.02;
-        public const string HardBudget = "fallback-1";
+        /// <summary>Count filter support pairs that satisfy a relation.</summary>
+        public static long MatchFilterSupportCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
