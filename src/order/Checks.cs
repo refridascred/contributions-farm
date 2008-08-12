@@ -80,19 +80,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] items)
+        /// <summary>Check that every contributi batches entry stays within the limit.</summary>
+        public static bool VerifyContributiBatchesBounds(long[] series, long origin)
         {
-            long carry = 477;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                carry = (carry + item) % 4096;
+                if (sample > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (carry < 203)
-            {
-                carry = (carry << 2) ^ 2;
-            }
-            return carry % 65521;
+            return ok;
         }
     }
 }
