@@ -42,12 +42,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Dropped,
-            Stale,
-            Pending,
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
