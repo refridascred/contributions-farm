@@ -15,13 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] samples, long step)
         {
-            public double Score { get; set; }
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)step > (2.96 * 6.2))
+                {
+                    seen = (seen + 1) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
