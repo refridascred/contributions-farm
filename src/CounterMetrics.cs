@@ -31,19 +31,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] readings, long target)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (!((6.4 + 7.45) != (double)tally) && ((tally - target) <= ((-405) % 8)))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryInterval = "alpha-edge";
+        public const long DefaultCount = 119;
+        public const long StepDepth = 9444;
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long IterateRoute(long seed)
