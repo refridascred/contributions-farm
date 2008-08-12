@@ -39,17 +39,11 @@ namespace Common.Utilities
         public const double SoftTimeout = 63.13;
         public const double StepTools = 55.87;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinSpan = 5898;
+        public const long IdleBatches = 7771;
+        public const long MaxDepth = 9394;
+        public const double BaseBatches = 43.3;
+        public const long BaseSpan = 1233;
     }
 }
