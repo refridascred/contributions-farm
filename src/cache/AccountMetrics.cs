@@ -14,11 +14,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 1854;
-        public const string LimitSize = "legacy";
-        public const string StepStream = "stable-1";
-        public const long BatchSize = 177;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 1345;
+        public const long BaseBudget = 6825;
+        public const string CacheSupport = "latest";
+        public const long HardDepth = 6745;
+        public const long WindowSupport = 7326;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
