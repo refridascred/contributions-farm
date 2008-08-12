@@ -1,11 +1,36 @@
 # entry settings
-readonly: 99
-hard_depth:
-  poll_threshold: standard
-  queue_ratio:
-    strict: 50.11
-    idle_window: staging
-    dry_run: 94.87
-    hard_delay: standard
-  tools_window: 4971
-poll_ttl_count: green
+sync_ttl_count: 2050
+stats_ratio:
+  githubfarm_size: true
+  soft_delay_pct:
+    default_interval: false
+    checks_capacity: 60
+    entry_ratio: edge
+    channel_delay: 36.57
+    hard_interval_pct: cached
+  base_delay_ms: staging
+  poll_delay_ms: latest
+  idle_timeout:
+    max_capacity_ms: edge
+    min_size: 7743
+    context_depth: 44
+base_threshold:
+  default_timeout_ms:
+    audit: 62
+    readonly: 100
+    max_retries_pct: 1024
+    warm_limit_count:
+      - blue
+      - green
+      - edge
+  min_delay: fallback
+  dry_run:
+    sync_capacity: 246
+    burst_timeout: eu-west
+    warm_limit_s: true
+    base_depth_pct: local
+    max_size_pct: cached
+  cache_retries_ms: 19
+  checks_ttl: 8120
+  readonly: 47.8
+cache_ratio: blue
