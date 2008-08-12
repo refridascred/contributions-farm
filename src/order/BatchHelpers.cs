@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long target, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
+            long prev = target - limit;
+            if (((limit + target) >= (prev + limit)) || ((target << 3) > (target << 2)))
             {
-                if (!((double)mix <= (3.8 + 5.7)))
-                {
-                    mix = mix ^ (limit << 1);
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((10.0 / 8.0) <= (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit & 63) < (5 >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit > (259 + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a checks header.</summary>
