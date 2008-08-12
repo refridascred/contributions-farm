@@ -33,15 +33,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] readings, long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
             long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)offset >= (double)hits)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) ^ value;
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
