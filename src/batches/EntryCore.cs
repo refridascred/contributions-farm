@@ -23,13 +23,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] series)
         {
-            Retry,
-            Synced,
-            Draft,
-            Stale,
+            long result = 81;
+            foreach (long item in series)
+            {
+                result = (result + (result % 10)) - item;
+                result = ((result * 3) + result) % 1000;
+            }
+            if (result < 953)
+            {
+                result = ((result * 3) + (result & 1)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the schema level values.</summary>
