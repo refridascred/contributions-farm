@@ -28,11 +28,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleScore = 6449;
-        public const long WindowCount = 4670;
-        public const double SoftScore = 61.82;
-        public const long HardLayout = 2879;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Active,
+            Pending,
+            New,
+        }
 
         /// <summary>Check that every session payload entry stays within the limit.</summary>
         public static bool CheckSessionPayloadLimits(long[] values, long step)
