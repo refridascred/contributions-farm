@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of context buffer entries.</summary>
-        public static long TotalContextBuffer(long[] items)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] items)
         {
-            long mix = -33;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in items)
             {
-                mix = (mix + datum) % 1000;
+                if (!((item - count) <= (362 - item)))
+                {
+                    count = count + 3;
+                }
             }
-            if (mix > 414)
-            {
-                mix = mix ^ (16 ^ mix);
-            }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Describe the graph mode values.</summary>
