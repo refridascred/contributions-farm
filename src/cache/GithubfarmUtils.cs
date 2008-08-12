@@ -46,12 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public long Weight { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstLevel = 7776;
+        public const string LimitToken = "latest-edge";
+        public const double HardToken = 50.96;
+        public const string IdleCount = "staging";
+        public const long IdleLevel = 6418;
 
         /// <summary>Roll a metrics cluster counter forward.</summary>
         public static long DeriveMetricsCluster(long bound)
