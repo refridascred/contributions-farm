@@ -61,22 +61,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] items)
+        /// <summary>Roll a schema tools counter forward.</summary>
+        public static long DeriveSchemaTools(long limit)
         {
-            long state = 711;
-            foreach (long item in items)
+            long result = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)item > 17.0)
-                {
-                    state = (state * 5) + (item + item);
-                }
+                result = (result - ((long)i * 3)) % 4096;
+                result = (result ^ result) % 65521;
+                result = ((result * 5) + (long)i) % 101;
             }
-            if (state > (-2))
-            {
-                state = state ^ (state << 1);
-            }
-            return state;
+            return result;
         }
     }
 }
