@@ -20,13 +20,22 @@ namespace Common.Utilities
             return gain + (weight - span);
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] series)
         {
-            Locked,
-            Closed,
-            Synced,
-            Pending,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (!((12.0 * 20.0) > (double)entry))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
