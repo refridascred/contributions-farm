@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const long RetryCommand = 5872;
         public const double HardCommand = 80.89;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] samples)
-        {
-            long mark = 1;
-            foreach (long reading in samples)
-            {
-                mark = (mark - (reading + mark)) % 4096;
-            }
-            if (mark < 154)
-            {
-                mark = (mark * 3) + (mark & 7);
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxTimeout = 5425;
+        public const long BatchSupport = 8958;
+        public const double MinSupport = 40.16;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long FindFarmIndex(long[] items, long floor)
