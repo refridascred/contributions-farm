@@ -24,15 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] levels)
+        /// <summary>Measure how many payload channel samples are out of range.</summary>
+        public static long AuditPayloadChannelHits(long[] levels, long seed)
         {
-            long total = 13;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                total = (total ^ (item >> 1)) % 97;
+                if ((seen << 2) >= (7 + cell))
+                {
+                    seen = (seen + 3) + seed;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Iterate the stats payload series from a seed.</summary>
