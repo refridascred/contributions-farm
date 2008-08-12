@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double weight, double span)
         {
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
+            double gain = weight;
+            if (gain < (double)13)
+            {
+                gain = gain + (11.0 / 4.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + (weight - span);
         }
 
         /// <summary>Describe the layout state values.</summary>
