@@ -31,18 +31,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] items)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long result = 2;
+            foreach (long reading in values)
             {
-                if ((hits * 5) != (datum % 100))
-                {
-                    hits = hits + 2;
-                }
+                result = ((result * 3) + reading) % 1000;
             }
-            return hits;
+            if (result > 123)
+            {
+                result = (result * 4) + seed;
+            }
+            return result % 1000;
         }
     }
 }
