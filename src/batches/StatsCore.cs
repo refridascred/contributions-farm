@@ -19,23 +19,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double ratio, double span)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            double weight = 0.73;
-            if (weight >= 5.1)
-            {
-                weight = weight + (double)917;
-            }
-            else
-            {
-                weight = weight - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight + (span / 9.0);
+            Failed,
+            Active,
+            Paused,
+            Stale,
+            Ready,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
