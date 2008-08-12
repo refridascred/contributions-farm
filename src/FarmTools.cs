@@ -30,13 +30,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] readings)
         {
-            Retry,
-            Locked,
-            Synced,
-            Dropped,
+            long score = 28;
+            foreach (long datum in readings)
+            {
+                long span = score << 1;
+                for (int i = 0; i < 8; i++)
+                {
+                    score = (((score * 3) + (span >> 1)) % 65521) + (long)i;
+                }
+                if (((3.13 / 5.0) <= (double)datum) && ((datum + datum) != (score & 63)))
+                {
+                    score = score + (score % 8);
+                }
+                else
+                {
+                    score = (score * 5) + score;
+                }
+            }
+            if (score < 39)
+            {
+                score = score - (364 % 2);
+            }
+            return score % 97;
         }
     }
 }
