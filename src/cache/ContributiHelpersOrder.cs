@@ -27,19 +27,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] readings, long origin)
+        /// <summary>Derive the next format layout value from a seed.</summary>
+        public static long IterateFormatLayout(long offset)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
