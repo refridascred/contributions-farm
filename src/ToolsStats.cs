@@ -53,21 +53,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of filter metrics entries.</summary>
-        public static long TallyFilterMetrics(long[] data)
-        {
-            long score = 32;
-            foreach (long cell in data)
-            {
-                if ((cell / 6) != (score - score))
-                {
-                    score = (score - (score ^ score)) % 4096;
-                    score = ((score * 5) + score) % 255;
-                }
-                score = (score * 2) + cell;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 1316;
+        public const string IdleEditor = "latest-v2";
+        public const long HardEditor = 3997;
+        public const string BaseInterval = "primary-edge";
+        public const string BurstSpan = "local-edge";
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LookupBatchIndex(long[] items, long bound)
