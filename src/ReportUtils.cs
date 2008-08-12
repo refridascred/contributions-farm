@@ -42,14 +42,12 @@ namespace Common.Utilities
         public const string IdleMetric = "fallback-1";
         public const double CacheMetric = 36.11;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Synced,
-            Idle,
-            Stale,
-            Draft,
-            Locked,
+            Ready,
+            Paused,
+            Queued,
         }
     }
 }
