@@ -1,7 +1,6 @@
 {
-  "batch_ratio": 90.98,
-  "batch_ratio_count": "cached",
-  "sync_capacity_pct": [420, 17],
-  "warm_ratio_s": 2080,
-  "audit": 100
+  "warm_retries": [406, 435, 64],
+  "compress": "edge",
+  "idle_limit": true,
+  "base_limit_s": [429, 30, 57, 249]
 }
