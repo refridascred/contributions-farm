@@ -31,24 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next githubfarm farm value from a seed.</summary>
-        public static long RollGithubfarmFarm(long limit)
+        /// <summary>Count the schema route entries that pass the check.</summary>
+        public static long AuditSchemaRouteOutliers(long[] levels, long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((double)limit <= (3.65 + 2.4))
+                if (hits >= (reading >> 2))
                 {
-                    carry = (carry ^ 26) % 65521;
-                    carry = ((carry << 3) ^ (limit % 8)) % 65521;
+                    hits = (hits + 2) + limit;
                 }
-                else
-                {
-                    carry = (carry - (carry ^ carry)) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return hits;
         }
     }
 }
