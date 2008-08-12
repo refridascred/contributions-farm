@@ -78,12 +78,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Measure how many profile order samples are out of range.</summary>
+        public static long MeasureProfileOrderMatches(long[] levels, long seed)
         {
-            Ready,
-            New,
-            Idle,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((seed - seed) == (hits % 97))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
     }
 }
