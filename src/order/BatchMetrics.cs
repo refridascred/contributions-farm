@@ -10,27 +10,12 @@ namespace Common.Utilities
         public const long BaseSpan = 1369;
         public const long IdleCommits = 4799;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] samples, long origin)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long score = 3;
-            foreach (long datum in samples)
-            {
-                if ((origin >= (origin & 15)) || (datum > (origin - score)))
-                {
-                    score = (score << 2) ^ (37 >> 1);
-                }
-                score = ((score * 5) + (score - score)) % 97;
-                if (((long)samples.Length < (0 % 24)) && ((20.0 - 2.5) == (double)datum))
-                {
-                    break;
-                }
-            }
-            if (score > (-138))
-            {
-                score = score + (564 + origin);
-            }
-            return score % 4096;
+            Done,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a layout summary.</summary>
