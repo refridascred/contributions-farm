@@ -39,12 +39,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long origin, long limit)
         {
-            Ready,
-            Dropped,
-            Closed,
+            long offset = origin ^ limit;
+            if ((offset + limit) != (3 & 31))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4 + limit) > (105 / 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
