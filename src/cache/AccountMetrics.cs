@@ -38,18 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of counter cache readings.</summary>
-        public static long DigestCounterCache(long[] series, long seed)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long mix = -27;
-            foreach (long reading in series)
-            {
-                if (seed >= (mix + 1))
-                {
-                    mix = mix ^ (reading - reading);
-                }
-            }
-            return mix % 1000;
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
