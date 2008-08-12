@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] series, long bound)
+        /// <summary>Roll a report batch counter forward.</summary>
+        public static long SeriesReportBatch(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((series[i] < bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
