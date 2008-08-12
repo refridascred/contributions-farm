@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepScore = 301;
+        public const long BaseSchema = 123;
+        public const long BatchFactor = 3021;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] readings, long floor)
