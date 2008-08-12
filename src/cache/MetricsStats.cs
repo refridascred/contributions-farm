@@ -40,19 +40,13 @@ namespace Common.Utilities
         public const long BatchInterval = 8468;
         public const long BaseCounter = 732;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] values, long seed)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long mix = 754;
-            foreach (long value in values)
-            {
-                mix = ((mix * 4) + (seed << 1)) ^ value;
-                if ((mix << 3) == (seed * 4))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
