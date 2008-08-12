@@ -53,19 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every channel stats entry stays within the limit.</summary>
-        public static bool ValidateChannelStatsLimits(long[] series, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (entry > origin)
+                if ((double)reading < (6.9 + 10.0))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
