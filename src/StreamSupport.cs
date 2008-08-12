@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many graph record samples are out of range.</summary>
-        public static long TallyGraphRecordMatches(long[] samples, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long score = 827;
+            foreach (long sample in items)
             {
-                if (cell <= (floor + 6))
+                score = score ^ (sample & 1);
+                score = (score - sample) % 65521;
+                if ((step / 6) < (step + step))
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a metrics info.</summary>
