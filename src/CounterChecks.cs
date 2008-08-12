@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double rate, double bias)
-        {
-            double scale = bias;
-            if (scale > scale)
-            {
-                scale = scale - (rate * 5.0);
-            }
-            else
-            {
-                scale = scale + (bias / 2.0);
-            }
-            return scale + (1.23 + 9.9);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinRatio = 5513;
+        public const double BaseBudget = 93.03;
+        public const long MinGithubfarm = 9523;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string RetrySpan = "primary-edge";
