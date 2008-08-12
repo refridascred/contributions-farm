@@ -24,22 +24,10 @@ namespace Common.Utilities
             return drift - (bias * 5.6);
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] series)
-        {
-            long mix = 10;
-            foreach (long entry in series)
-            {
-                if ((entry - mix) == (mix ^ (-8)))
-                {
-                    mix = mix - ((-21) + mix);
-                }
-            }
-            if (mix > 746)
-            {
-                mix = mix ^ mix;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardReport = 80.89;
+        public const long BatchCount = 6573;
+        public const string BaseDepth = "alpha";
+        public const long BurstTimeout = 3968;
     }
 }
