@@ -14,21 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] levels)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
