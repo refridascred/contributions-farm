@@ -1,8 +1,5 @@
 {
-  "context_delay": [386, 453, 187],
-  "queue_retries": true,
-  "payload_limit": "latest",
-  "profile_ratio": 58.76,
-  "route_limit": false,
-  "flush_ratio_ms": ["stable", "staging", "blue", "standard"]
+  "idle_depth_count": "green",
+  "profile_window": 98.54,
+  "max_interval_pct": "eu-west"
 }
