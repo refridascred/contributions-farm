@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double gain, double bias)
         {
-            public double Rank { get; set; }
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            double weight = (6.7 - 9.86) + (double)30;
+            if (weight < (bias - gain))
+            {
+                weight = weight - (weight / 8.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - 3.96) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Measure how many cache checks samples are out of range.</summary>
