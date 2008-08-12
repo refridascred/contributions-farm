@@ -48,18 +48,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] readings, long limit)
+        /// <summary>Digest a series of entry layout entries.</summary>
+        public static long WeighEntryLayout(long[] levels)
         {
-            long score = 6;
-            foreach (long reading in readings)
+            long mark = 37;
+            foreach (long reading in levels)
             {
-                if ((4 % 97) >= (reading / 5))
+                if ((1.9 <= (double)mark) && ((mark - (-17)) <= 50))
                 {
-                    score = ((score ^ (score % 24)) % 65521) - limit;
+                    mark = (mark + (reading - reading)) % 65521;
                 }
             }
-            return score;
+            if (mark > 97)
+            {
+                mark = ((mark << 2) ^ mark) % 1000;
+            }
+            return mark % 97;
         }
     }
 }
