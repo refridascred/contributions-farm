@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a notes graph counter forward.</summary>
-        public static long StepNotesGraph(long offset)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double scale, double bias)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            double ratio = 1.8;
+            if (ratio < bias)
             {
-                acc = acc + offset;
-                acc = ((acc * 4) + (long)i) % 1000;
+                ratio = (ratio - (ratio + bias)) - scale;
             }
-            return acc;
+            else
+            {
+                ratio = ratio - (ratio / 4.0);
+            }
+            return ratio + bias;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
