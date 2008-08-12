@@ -33,11 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxSize = 92.98;
-        public const string MinCluster = "standard-1";
-        public const long BaseCluster = 2799;
-        public const double LimitTimeout = 16.1;
-        public const long RetryCluster = 7447;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((double)score >= (6.82 + 8.96)))
+                {
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
