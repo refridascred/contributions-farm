@@ -45,32 +45,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long limit, long seed)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long cur = limit + seed;
-            if ((cur << 2) <= (244 << 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)667 >= (double)seed) || (((-7) - cur) < (seed << 1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((cur - 57) <= limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
