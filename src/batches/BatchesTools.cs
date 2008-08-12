@@ -35,14 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] items)
         {
-            Queued,
-            Synced,
-            Stale,
-            Locked,
-            Ready,
+            long score = 784;
+            foreach (long datum in items)
+            {
+                score = (score + (datum - score)) % 4096;
+                if (((datum - datum) < (score + score)) || ((datum * 2) == (score + score)))
+                {
+                    score = (score ^ (score / 5)) % 101;
+                }
+                if (((long)items.Length < (0 >> 1)) || (score > datum))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
         }
     }
 }
