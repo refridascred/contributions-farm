@@ -78,11 +78,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double weight, double bias)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double scale = bias;
-            return (scale - bias) + weight;
+            Dropped,
+            Closed,
+            Active,
         }
     }
 }
