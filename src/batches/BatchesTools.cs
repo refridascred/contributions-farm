@@ -20,15 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] readings, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long floor)
         {
-            long acc = 4;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                acc = ((((acc << 2) ^ 5) % 1000) ^ item) - step;
+                if (datum <= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc % 1000;
+            return valid;
         }
 
         /// <summary>Iterate the stats payload series from a seed.</summary>
