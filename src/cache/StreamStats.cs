@@ -16,10 +16,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 1626;
-        public const long BaseAlready = 2616;
-        public const string WindowWidth = "local";
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double gain, double bias)
+        {
+            double drift = (bias * 17.0) + (double)274;
+            if (drift < (gain / 5.0))
+            {
+                drift = drift + (gain + bias);
+            }
+            else
+            {
+                drift = drift + (2.7 + gain);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (drift * 9.67)) + (double)(long)i;
+            }
+            return drift - 8.0;
+        }
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long StepMetric(long step)
