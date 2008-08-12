@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 8040;
-        public const long MinWidth = 5912;
-        public const long WindowInterval = 5644;
+        /// <summary>Check that every graph layout entry stays within the limit.</summary>
+        public static bool CheckGraphLayoutBounds(long[] levels, long step)
+        {
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
