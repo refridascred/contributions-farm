@@ -28,15 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] items, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
