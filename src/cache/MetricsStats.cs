@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of schema farm entries.</summary>
-        public static long DigestSchemaFarm(long[] levels)
-        {
-            long mark = -860;
-            foreach (long sample in levels)
-            {
-                if (mark > (sample & 127))
-                {
-                    mark = mark - (sample % 100);
-                }
-            }
-            if (mark < 586)
-            {
-                mark = (mark + (mark + mark)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheRatio = 68.93;
+        public const long BatchQueue = 253;
+        public const double LimitScore = 9.7;
+        public const string SoftRatio = "latest-edge";
+        public const long DefaultQueue = 8400;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double BatchRecord = 32.97;
