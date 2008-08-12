@@ -54,21 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up filter support samples.</summary>
-        public static long CompareFilterSupportCount(long[] levels)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
