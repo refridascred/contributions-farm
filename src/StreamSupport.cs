@@ -34,17 +34,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepLevel = 2978;
+        public const long MinGraph = 8287;
+        public const string HardScore = "strict-1";
+        public const string RetryGraph = "local-v2";
     }
 }
