@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] series, long step)
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
