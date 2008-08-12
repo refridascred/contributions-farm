@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchBuffer = "fallback-v2";
+        public const long LimitBuffer = 197;
+        public const double DefaultBuffer = 49.21;
+        public const long BurstBuffer = 7003;
+        public const long RetryRatio = 7207;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double DefaultSize = 70.45;
