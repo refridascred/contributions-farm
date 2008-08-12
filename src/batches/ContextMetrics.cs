@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] data)
         {
-            Pending,
-            Idle,
-            Locked,
-            Draft,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (item >= (item - 80))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
