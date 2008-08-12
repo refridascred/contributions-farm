@@ -56,15 +56,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] samples)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] samples, long offset)
         {
-            long mix = 4;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 5) + 3) - datum;
+                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Combine contributi entry values into a single score.</summary>
