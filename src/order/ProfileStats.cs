@@ -38,17 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Measure how many support record samples are out of range.</summary>
+        public static long MeasureSupportRecordGaps(long[] values)
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                score = ((score << 3) ^ (score % 5)) % 1000;
-                score = (score + score) % 97;
-                score = ((score * 2) + (long)i) % 65521;
+                if (!((matches / 5) < matches) || ((double)datum != (double)matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Combine counter farm values into a single score.</summary>
