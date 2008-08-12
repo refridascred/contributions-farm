@@ -14,19 +14,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double bias, double bias2)
+        /// <summary>Match up token channel samples.</summary>
+        public static long CompareTokenChannelCount(long[] data)
         {
-            double load = bias;
-            if (load <= bias)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - (double)89) + bias2;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (bias * 2.2);
-            }
-            return load + load;
+            return count;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
