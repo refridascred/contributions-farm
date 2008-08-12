@@ -19,21 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] items)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long offset, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = offset ^ target;
+            if (target >= step)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (4.3 < (double)offset)
                 {
-                    if ((items[i] - items[j]) < 5)
+                    return 2;
+                }
+                else
+                {
+                    if ((target ^ target) <= (offset >> 5))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (4.0 / 8.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
