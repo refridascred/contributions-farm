@@ -31,18 +31,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] levels)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry - tally) == (tally ^ entry))
+                if (samples[i] > target)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a batches summary.</summary>
