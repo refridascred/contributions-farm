@@ -31,27 +31,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] items)
-        {
-            long score = 878;
-            foreach (long sample in items)
-            {
-                score = ((score << 2) ^ (score + score)) % 97;
-                if (!(((sample + 6) == (sample - score)) || ((3.0 / 3.0) == (double)score)))
-                {
-                    score = (score - (sample / 4)) % 65521;
-                }
-                if (!((double)sample != (6.9 - 5.71)))
-                {
-                    score = ((score << 2) ^ sample) % 65521;
-                }
-                if ((3 % 12) > (90 - sample))
-                {
-                    break;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 7757;
+        public const long MinDepth = 9597;
+        public const long LimitWidth = 8255;
     }
 }
