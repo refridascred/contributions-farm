@@ -76,18 +76,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] series, long seed)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long mark = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((count / 9) < (233 / 3)))
-                {
-                    count = ((count + 3) - sample) - seed;
-                }
+                mark = (mark * 3) + ((long)i / 6);
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
     }
 }
