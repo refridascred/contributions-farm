@@ -1,31 +1,19 @@
 # githubfarm settings
-payload_capacity: true
-max_delay:
-  checks_timeout: 63.02
-  warm_interval: legacy
-  buffer_threshold:
-    audit: 66
-    dry_run: false
-    sync_depth_ms: 3337
-    sync_threshold: 6.62
-  githubfarm_window: latest
-  hard_interval_pct:
-    filter_retries: 1024
-    sync_depth: false
-    sync_delay: strict
-    max_delay_count: eu-west
-    verbose:
-      - 444
-      - 393
-      - 186
-profile_ttl:
-  soft_window_ms: 88.35
-  report_size: blue
-  counter_delay:
-    - green
-    - eu-west
-    - latest
-    - local
-  soft_timeout: open
-min_retries_s: 85.48
-channel_window: 66.83
+checks_limit: standard
+cache_timeout_ms: standard
+min_delay_pct: standard
+payload_capacity:
+  enabled: eu-west
+  graph_ratio: false
+  min_limit_pct:
+    - staging
+    - open
+    - cached
+  queue_delay: 14
+  hard_capacity_pct:
+    - 386
+    - 476
+    - 341
+    - 159
+  cache_threshold_s: false
+enabled: true
