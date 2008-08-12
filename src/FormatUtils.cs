@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double scale, double offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] readings)
         {
-            double ratio = scale + (scale * 11.0);
-            if (ratio < (double)111)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                ratio = (ratio + (3.28 * 5.5)) + offset;
+                if ((cell >= (96 % 64)) && ((hits % 8) >= (cell * 5)))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + (ratio + scale);
+            return hits;
         }
 
         /// <summary>Describe the payload kind values.</summary>
