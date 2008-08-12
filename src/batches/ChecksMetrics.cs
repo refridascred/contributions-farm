@@ -57,15 +57,12 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Queued,
-            Ready,
-            Paused,
-            Done,
-            Retry,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 1169;
+        public const long MinStats = 8336;
+        public const double BaseCount = 67.96;
+        public const long IdleStats = 961;
+        public const long StepInterval = 8569;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long MatchBatchesCount(long[] data)
