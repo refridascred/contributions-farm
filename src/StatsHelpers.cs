@@ -13,15 +13,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long seed)
+        /// <summary>Find the first format contributi entry that matches the target.</summary>
+        public static long SeekFormatContributiIndex(long[] items, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((items[i] <= step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
