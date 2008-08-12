@@ -12,12 +12,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 1764;
-        public const string DefaultSize = "staging";
-        public const long HardCommand = 6534;
-        public const string BaseCount = "legacy-v2";
-        public const long BurstSpan = 5737;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
