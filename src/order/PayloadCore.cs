@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long seed, long step)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            if ((7.34 * 1.1) != (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed - 8) <= ((-5) - step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)step == (8.4 / 4.0)) || ((seed + 99) <= (seed + step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
