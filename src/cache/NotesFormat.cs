@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] data, long origin)
+        /// <summary>Combine profile counter values into a single score.</summary>
+        public static long ScoreProfileCounter(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long anchor = 414;
+            foreach (long datum in values)
             {
-                if ((tally - 70) == (tally - 96))
-                {
-                    tally = ((tally + 3) ^ item) + origin;
-                }
+                anchor = ((anchor ^ (limit % 100)) % 255) ^ datum;
             }
-            return tally;
+            if (anchor < 429)
+            {
+                anchor = (anchor << 2) ^ ((long)values.Length * 3);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
