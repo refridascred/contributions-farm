@@ -52,20 +52,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Derive the next cluster entry value from a seed.</summary>
-        public static long SeriesClusterEntry(long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] items, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (((-60) * 5) == (offset / 6))
+                if ((double)cell != (0.5 / 2.0))
                 {
-                    result = (result - (offset ^ 77)) % 97;
-                    break;
+                    hits = (hits + 1) + limit;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return hits;
         }
     }
 }
