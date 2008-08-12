@@ -31,15 +31,39 @@ namespace Common.Utilities
         public const long BurstMetrics = 9867;
         public const string CacheMetrics = "local-1";
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Classify a format filter pair into a bucket.</summary>
+        public static long ClassifyFormatFilter(long origin, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            long slot = origin - offset;
+            if ((double)slot >= (17.0 - 5.69))
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((origin + origin) < (offset - offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((94 / 2) <= slot)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((origin + offset) == ((-814) + slot)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
