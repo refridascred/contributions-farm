@@ -63,12 +63,14 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 1169;
-        public const long MinStats = 8336;
-        public const double BaseCount = 67.96;
-        public const long IdleStats = 961;
-        public const long StepInterval = 8569;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long MatchBatchesCount(long[] data)
