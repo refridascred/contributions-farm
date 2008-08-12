@@ -1,10 +1,21 @@
 # githubfarm settings
-soft_ratio_ms:
-  - 212
-  - 130
-burst_window_ms: 68.4
-sync_interval_ms: true
-idle_ttl_count:
-  - local
-  - latest
-audit: 1871
+max_size: 94.77
+schema_depth: 12
+enabled:
+  - 88
+  - 290
+min_retries: 46
+payload_timeout:
+  warm_delay_pct: staging
+  soft_size_s: false
+  min_retries_ms: false
+  verbose: 3384
+  stream_capacity:
+    - strict
+    - strict
+    - fallback
+    - blue
+  poll_limit:
+    - cached
+    - blue
+    - open
