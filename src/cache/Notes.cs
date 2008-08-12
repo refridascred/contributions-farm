@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a githubfarm notes counter forward.</summary>
-        public static long DeriveGithubfarmNotes(long target)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] values, long step)
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Roll a already counter forward.</summary>
