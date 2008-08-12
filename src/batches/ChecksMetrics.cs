@@ -72,17 +72,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] items, long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= target) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Done,
+            Ready,
         }
     }
 }
