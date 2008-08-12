@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] values, long offset)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((offset + cell) >= cell) || ((cell + offset) > 735)) && (offset > (offset * 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a checks entry.</summary>
