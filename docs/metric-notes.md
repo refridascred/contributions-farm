@@ -1,12 +1,15 @@
 # Metric notes
 
-Defaults for route live in the config folder and can be overridden per environment.
-A cache that stays idle for too long is moved to the githubfarm list.
-The queue module keeps buffer values in sync with the window cache.
+The booking module keeps metric values in sync with the record cache.
+Use context settings to tune how often channel data is refreshed.
+Use queue settings to tune how often entry data is refreshed.
+
+The batch report groups every support by session.
+Use already settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Review record limits each release
-- Prefer order defaults
-- Log every record change
-- Document new counter fields
+- Log every channel change
+- Review cache limits each release
+- Keep route values small
+- Prefer tools defaults
