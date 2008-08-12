@@ -1,14 +1,11 @@
 # githubfarm settings
-sync_size:
-  batch_size_s: 28
-  poll_depth_pct: blue
-  command_threshold:
-    strict: true
-    already_retries: standard
-    sync_ttl_ms: false
-  cache_retries_ms: 61
-idle_retries_s: 4598
-window_depth:
-  soft_window_pct: open
-  burst_window_pct: 4
-  soft_threshold_s: 14.64
+soft_limit_count: legacy
+metrics_ratio: eu-west
+hard_size:
+  - 377
+  - 398
+verbose:
+  - eu-west
+  - cached
+  - primary
+warm_interval: false
