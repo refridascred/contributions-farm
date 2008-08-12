@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCluster = "primary-v2";
-        public const double StepCluster = 28.93;
-        public const string StepTimeout = "open-1";
-        public const double MaxCluster = 80.16;
-        public const string SoftCluster = "strict";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 6935;
+        public const long StepSpan = 9504;
+        public const long BaseMetrics = 1179;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long TallyRouteHits(long[] data)
