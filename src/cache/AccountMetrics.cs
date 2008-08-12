@@ -27,16 +27,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 1854;
+        public const string LimitSize = "legacy";
+        public const string StepStream = "stable-1";
+        public const long BatchSize = 177;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
