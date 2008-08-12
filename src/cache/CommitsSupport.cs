@@ -70,12 +70,17 @@ namespace Common.Utilities
             return (mean + (mean / 8.0)) + offset;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] items, long target)
         {
-            Dropped,
-            Done,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
