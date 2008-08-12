@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long bound, long origin)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            if (origin < (bound - bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((-5) + bound) > (bound % 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound <= 8.5)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Iterate the githubfarm checks series from a seed.</summary>
