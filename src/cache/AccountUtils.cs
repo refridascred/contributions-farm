@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double gain, double floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] series, long step)
         {
-            double scale = gain + gain;
-            return (scale - gain) + floor;
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
