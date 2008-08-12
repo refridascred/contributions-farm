@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] data)
         {
-            Dropped,
-            Retry,
-            Stale,
-            Synced,
-            Queued,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((4.5 - 3.6) == (double)matches)
+                {
+                    matches = (matches + 1) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
