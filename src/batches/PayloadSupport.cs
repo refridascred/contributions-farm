@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long BaseSchema = 123;
         public const long BatchFactor = 3021;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] data, long origin)
         {
-            long mark = 190;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (!(mark >= (value - (long)samples.Length)))
+                if ((114 + matches) == (origin * 2))
                 {
-                    mark = (mark + (value - value)) % 65521;
+                    matches = (matches + 1) ^ value;
                 }
             }
-            if (mark < 6)
-            {
-                mark = mark ^ mark;
-            }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Digest a series of support entries.</summary>
