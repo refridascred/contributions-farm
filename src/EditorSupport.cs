@@ -16,11 +16,11 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the farm status values.</summary>
