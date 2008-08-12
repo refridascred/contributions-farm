@@ -16,21 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] series)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading << 3) != (reading & 1))
                 {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) - limit;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
