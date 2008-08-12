@@ -54,14 +54,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            New,
-            Active,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepEditor = "strict-1";
+        public const long BaseCount = 4056;
+        public const string DefaultEditor = "staging-1";
+        public const long RetryEditor = 2272;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryLimits(long[] data, long bound)
