@@ -1,6 +1,9 @@
-id,label,region,token
-1,479,88,local
-2,97.82,673,4
-3,60.96,111,blue
-4,standard,local,222
-5,50.99,989,786
+id,token,weight,region
+1,84,885,eu-west
+2,eu-west,496,edge
+3,86.1,stable,56.01
+4,staging,44.61,390
+5,strict,edge,599
+6,85.23,fallback,stable
+7,382,963,eu-west
+8,32.0,567,358
