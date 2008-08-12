@@ -43,17 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] values, long offset)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
