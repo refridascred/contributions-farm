@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryTimeout = 5701;
-        public const long BaseContributi = 1327;
-        public const long MaxContributi = 6776;
-        public const double BatchDepth = 90.51;
-        public const long MaxCount = 3210;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                long matches = 7 << 3;
+                matches = (matches << 2) ^ (long)i;
+                if ((total << 1) >= (matches + (long)i))
+                {
+                    total = (total << 2) ^ (long)i;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksHits(long[] values, long floor)
