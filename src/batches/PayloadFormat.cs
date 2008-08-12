@@ -27,11 +27,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Match up stream entry samples.</summary>
+        public static long PairStreamEntryCount(long[] readings)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
