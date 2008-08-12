@@ -69,12 +69,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchCount = 25.01;
-        public const double WindowWidth = 22.23;
-        public const long CacheLevel = 5122;
-        public const long HardInterval = 2151;
-        public const long MinSupport = 1876;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long CombineToken(long[] items)
