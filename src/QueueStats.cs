@@ -34,15 +34,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long offset, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            long delta = offset + seed;
+            if (((seed + seed) > (offset - seed)) && (seed < offset))
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (((offset % 16) != (3 - seed)) && ((4.4 + 9.85) == (double)delta))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed < (17.0 * 8.8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stream level values.</summary>
