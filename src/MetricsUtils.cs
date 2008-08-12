@@ -58,19 +58,17 @@ namespace Common.Utilities
         public const string DefaultEditor = "staging-1";
         public const long RetryEditor = 2272;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] data, long bound)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading > bound)
+                if (levels[i] >= step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
