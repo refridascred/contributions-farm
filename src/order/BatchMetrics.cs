@@ -53,39 +53,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long origin, long origin2)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] data, long seed)
         {
-            long diff = origin + origin2;
-            if (((3 & 1) != (diff << 1)) || (diff > 19))
+            long mix = 34;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (3.47 <= (double)diff)
+                mix = mix ^ mix;
+                if (((867 % 7) <= seed) && ((sample & 7) <= (mix / 4)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((783 - origin2) <= diff)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin2 - diff) <= (diff & 63))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mix = (mix + (sample >> 5)) % 4096;
                 }
             }
+            if (mix < (-70))
+            {
+                mix = ((mix << 3) ^ (mix + seed)) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
