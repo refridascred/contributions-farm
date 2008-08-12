@@ -57,19 +57,14 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] readings, long seed)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Ready,
+            Paused,
+            Done,
+            Retry,
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
