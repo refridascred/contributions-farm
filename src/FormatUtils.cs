@@ -48,20 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] readings, long target)
-        {
-            long carry = 389;
-            foreach (long item in readings)
-            {
-                carry = ((carry ^ carry) % 1000) - item;
-            }
-            if (carry > 53)
-            {
-                carry = (carry * 3) + (target - carry);
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinBudget = 5837;
+        public const long WindowScore = 8031;
+        public const long MinInterval = 9885;
+        public const long MaxSpan = 6589;
 
         /// <summary>Accumulate account samples.</summary>
         public static long DigestAccount(long[] values)
