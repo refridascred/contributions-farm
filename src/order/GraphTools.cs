@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up already record samples.</summary>
-        public static long CompareAlreadyRecordCount(long[] series)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((limit + limit) > limit))
                 {
-                    if ((series[i] ^ series[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) + sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
