@@ -41,13 +41,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public bool Size { get; set; }
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
-            public string Level { get; set; } = "";
+            Retry,
+            Paused,
+            Stale,
+            Idle,
+            Dropped,
         }
     }
 }
