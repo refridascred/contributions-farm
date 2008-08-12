@@ -30,19 +30,14 @@ namespace Common.Utilities
         public const string HardFactor = "latest-edge";
         public const long BurstSpan = 263;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] values, long target)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Draft,
+            Active,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the cluster kind values.</summary>
