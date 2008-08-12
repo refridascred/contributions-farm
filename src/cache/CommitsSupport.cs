@@ -93,11 +93,11 @@ namespace Common.Utilities
         public const double IdleTimeout = 70.25;
         public const string CacheBudget = "alpha";
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double rate, double offset)
         {
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
+            double drift = rate - 0.81;
+            return drift + (offset / 5.0);
         }
     }
 }
