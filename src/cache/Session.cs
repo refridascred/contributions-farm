@@ -14,19 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate record tools readings against a bound.</summary>
-        public static bool GuardRecordToolsRange(long[] readings, long floor)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != floor)
+                if (items[i] <= step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
