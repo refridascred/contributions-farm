@@ -20,10 +20,9 @@ namespace Common.Utilities
         public const string MinDepth = "legacy-v2";
         public const double IdleFactor = 40.96;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 2169;
-        public const long CacheRoute = 3388;
-        public const double BurstRatio = 86.37;
-        public const long MaxInterval = 195;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepSize = "stable-edge";
+        public const double BaseBudget = 13.14;
+        public const long BaseFormat = 4981;
     }
 }
