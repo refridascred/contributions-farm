@@ -15,39 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long floor, long floor2)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] values)
         {
-            long offset = floor ^ floor2;
-            if ((0 > (floor / 8)) || (floor <= (floor + floor2)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset < (offset ^ offset)) && ((offset % 64) < (floor2 & 255)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (11.0 >= (double)floor)
+                    if ((values[i] - values[j]) > 17)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((offset << 2) == (offset - offset)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
