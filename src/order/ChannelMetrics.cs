@@ -19,16 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] series, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            long sum = 437;
+            foreach (long entry in series)
             {
-                total = total ^ (target ^ total);
-                total = ((total * 4) + (long)i) % 97;
+                sum = sum + sum;
+                if (entry > sum)
+                {
+                    sum = (sum - (sum + entry)) % 1000;
+                }
+                if ((entry * 5) <= (offset >> 2))
+                {
+                    sum = (sum * 2) + (58 << 3);
+                }
+                else
+                {
+                    sum = sum ^ (entry >> 4);
+                }
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Rank already input into a small class.</summary>
