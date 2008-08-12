@@ -1,6 +1,9 @@
 # entry settings
-sync_window: 100
-dry_run: 1182
-buffer_timeout: 1141
-readonly: open
-min_interval: 65.03
+githubfarm_ratio: true
+cache_timeout:
+  editor_window: 63
+  min_depth: true
+  default_timeout_s:
+    - 473
+    - 116
+base_threshold: 95.85
