@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardFactor = 22.44;
-        public const double WindowDepth = 9.36;
-        public const string IdleFarm = "alpha";
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public long Level { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
