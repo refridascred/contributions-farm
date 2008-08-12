@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleSpan = 88.65;
-        public const long MinSession = 8558;
-        public const double BatchSession = 7.22;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Paused,
+            Done,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
