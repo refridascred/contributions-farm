@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Stale,
-            Locked,
-            Paused,
-            New,
-            Idle,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 5490;
+        public const long LimitInterval = 927;
+        public const long DefaultSize = 2847;
+        public const long MaxLevel = 3608;
 
         /// <summary>Count entry context pairs that satisfy a relation.</summary>
         public static long MatchEntryContextCount(long[] readings)
