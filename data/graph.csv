@@ -1,6 +1,10 @@
-id,owner,count
-1,601,latest
-2,343,33.61
-3,179,98.02
-4,646,992
-5,edge,800
+id,token,active,label,level
+1,596,723,strict,872
+2,open,open,447,346
+3,13.19,16.1,latest,97.41
+4,71.89,45.05,8.01,28.51
+5,67.61,76.12,353,66
+6,primary,cached,87.01,634
+7,strict,63.22,21.25,0.86
+8,green,open,strict,3.24
+9,edge,edge,885,120
