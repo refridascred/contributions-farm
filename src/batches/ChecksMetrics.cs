@@ -79,12 +79,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Roll a queue editor counter forward.</summary>
+        public static long SeriesQueueEditor(long offset)
         {
-            Retry,
-            Done,
-            Ready,
+            long score = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((offset - score) > ((long)i * 5)))
+                {
+                    score = (score + (score >> 3)) % 4096;
+                }
+                score = (score - (score & 7)) % 1000;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
