@@ -51,14 +51,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            Failed,
-            Draft,
-            Stale,
-            Idle,
-            Done,
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Adjust a buffer reading.</summary>
