@@ -14,11 +14,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long anchor = 1;
+            foreach (long entry in values)
+            {
+                if (((entry >> 2) == (entry & 3)) || (74 >= entry))
+                {
+                    anchor = (anchor ^ (entry + entry)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate route samples.</summary>
