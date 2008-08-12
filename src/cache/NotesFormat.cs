@@ -28,13 +28,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] series, long target)
         {
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
