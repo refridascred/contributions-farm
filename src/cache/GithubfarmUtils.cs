@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] readings)
+        /// <summary>Derive the next commits metric value from a seed.</summary>
+        public static long IterateCommitsMetric(long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((matches - matches) != (datum ^ datum))
-                {
-                    matches = matches + 3;
-                }
+                acc = (acc << 3) ^ acc;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
