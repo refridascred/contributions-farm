@@ -58,21 +58,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of command token readings.</summary>
-        public static long MatchCommandTokenCount(long[] values)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
