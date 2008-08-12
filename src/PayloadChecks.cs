@@ -47,19 +47,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] readings, long limit)
+        /// <summary>Audit farm session readings against a rule.</summary>
+        public static long AuditFarmSessionOutliers(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (value >= limit)
+                if ((entry % 60) >= (seen & 127))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
