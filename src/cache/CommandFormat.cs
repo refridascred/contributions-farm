@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] levels, long offset)
         {
-            Done,
-            Failed,
-            Paused,
-            Locked,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((((item / 9) <= (offset + offset)) || ((item - seen) >= (item % 16))) || (((double)871 <= (double)offset) && (3.9 > (double)item)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the channel kind values.</summary>
