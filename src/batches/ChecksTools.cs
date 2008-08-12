@@ -18,15 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Pending,
-            Closed,
-            Idle,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 7582;
+        public const long BatchFarm = 6908;
+        public const double MinFarm = 54.65;
 
         /// <summary>Locate a session reading by value.</summary>
         public static long LocateSessionIndex(long[] samples, long origin)
