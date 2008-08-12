@@ -1,7 +1,18 @@
 {
-  "batch_size": "standard",
-  "strict": "eu-west",
-  "soft_window": "cached",
-  "idle_capacity_ms": true,
-  "min_threshold_pct": 7
+  "strict": 2700,
+  "cache_delay": {
+    "metrics_retries": 87.94,
+    "stream_limit": {
+      "base_depth_s": [11, 17, 331],
+      "token_capacity": "eu-west",
+      "batch_interval_count": 86.22,
+      "max_retries": "primary",
+      "soft_size_s": 100,
+      "flush_delay_s": "blue"
+    },
+    "flush_ratio": false,
+    "burst_threshold_ms": "stable"
+  },
+  "burst_window": "staging",
+  "max_limit_count": true
 }
