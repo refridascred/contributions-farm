@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] readings, long origin)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long target)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum < origin)
+                if ((double)target == (double)66)
                 {
-                    flag = false;
-                    break;
+                    mix = (mix ^ (mix ^ (long)i)) % 4096;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Blend two order measurements.</summary>
