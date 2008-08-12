@@ -16,19 +16,15 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double weight, double floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long target)
         {
-            double load = (double)(0 + 3);
-            if (load >= (floor + 2.6))
+            long carry = target;
+            for (int i = 0; i < 14; i++)
             {
-                load = (load - floor) + weight;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - 1.63) + (double)(long)i;
-            }
-            return load + (floor + floor);
+            return carry;
         }
 
         /// <summary>Describe the farm status values.</summary>
