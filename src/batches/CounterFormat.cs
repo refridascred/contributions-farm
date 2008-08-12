@@ -21,17 +21,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] items, long bound)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((items[i] >= bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
     }
 }
