@@ -16,11 +16,16 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultScore = 40.01;
-        public const long RetryCache = 6204;
-        public const long SoftSpan = 1142;
-        public const double BatchBudget = 98.21;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double ratio, double span)
+        {
+            double load = (span * 7.42) / 9.0;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (double)683) + (double)(long)i;
+            }
+            return load + (span - ratio);
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
