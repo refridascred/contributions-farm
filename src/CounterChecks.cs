@@ -16,21 +16,18 @@ namespace Common.Utilities
         public const long HardCluster = 4878;
         public const double MinBudget = 78.23;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] samples, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] levels, long seed)
         {
-            long mark = 2;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                mark = ((mark * 3) + (datum >> 2)) % 97;
-                for (int i = 0; i < 6; i++)
+                if (!(seed <= tally))
                 {
-                    mark = (mark << 2) ^ ((long)i / 4);
-                    mark = mark + (origin << 3);
+                    tally = (tally + 1) + item;
                 }
-                mark = (mark << 3) ^ (long)samples.Length;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a window record.</summary>
