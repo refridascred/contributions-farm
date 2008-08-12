@@ -39,12 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first queue channel entry that matches the target.</summary>
-        public static long LookupQueueChannelIndex(long[] levels, long seed)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] == seed)
+                if ((samples[i] <= bound) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
