@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the batch queue series from a seed.</summary>
-        public static long StepBatchQueue(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 3) + ((long)i + (-72))) % 4096;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCluster = "primary-v2";
+        public const double StepCluster = 28.93;
+        public const string StepTimeout = "open-1";
+        public const double MaxCluster = 80.16;
+        public const string SoftCluster = "strict";
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long TallyRouteHits(long[] data)
