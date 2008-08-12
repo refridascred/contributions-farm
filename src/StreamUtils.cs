@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxRatio = 2424;
-        public const string BaseSize = "open";
-        public const long LimitCount = 9028;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((4.9 + 8.0) < (double)limit)
+                {
+                    sum = (sum + (sum + limit)) % 97;
+                    sum = (sum << 3) ^ (5 - sum);
+                }
+                sum = sum ^ (limit + limit);
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
