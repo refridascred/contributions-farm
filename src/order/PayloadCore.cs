@@ -45,17 +45,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
+                if (target >= (target - target))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
