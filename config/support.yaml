@@ -1,11 +1,17 @@
 # support settings
-base_timeout_s: 1024
-strict: staging
-base_limit: true
-batch_interval: 250
-stats_capacity: green
-flush_limit_pct:
-  batches_threshold: 82
-  enabled: green
-  base_timeout_count: false
-  flush_limit_count: 77.27
+verbose: open
+soft_window_count: false
+buffer_capacity: true
+report_depth:
+  readonly: open
+  max_window_count: staging
+  verbose: 500
+  compress:
+    - eu-west
+    - fallback
+  audit:
+    - 219
+    - 337
+    - 461
+  flush_timeout_count: primary
+enabled: primary
