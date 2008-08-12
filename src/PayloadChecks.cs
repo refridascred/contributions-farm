@@ -38,22 +38,10 @@ namespace Common.Utilities
         public const long MinChecks = 2907;
         public const long MaxSize = 4649;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 3527;
+        public const long MinCommits = 792;
+        public const long HardFactor = 3012;
 
         /// <summary>Project the next channel value.</summary>
         public static double SmoothChannel(double weight, double span)
