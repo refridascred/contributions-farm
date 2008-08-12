@@ -20,19 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] samples, long seed)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Paused,
+            Done,
+            Draft,
+            Locked,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
