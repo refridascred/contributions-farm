@@ -24,12 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 9543;
-        public const long IdleContributi = 1430;
-        public const double LimitRatio = 8.03;
-        public const long BaseInterval = 7508;
-        public const long BaseWidth = 3094;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (!((origin < (reading << 2)) || ((reading & 15) < hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long SeriesGraph(long bound)
