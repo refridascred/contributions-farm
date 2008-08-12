@@ -44,11 +44,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] items, long seed)
         {
-            public double Mode { get; set; }
-            public long Level { get; set; }
+            long carry = 80;
+            foreach (long value in items)
+            {
+                if ((carry + seed) < (carry % 100))
+                {
+                    carry = (((carry * 2) + (95 & 3)) % 65521) ^ value;
+                }
+            }
+            return carry;
         }
     }
 }
