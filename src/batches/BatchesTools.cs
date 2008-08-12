@@ -22,15 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] values, long bound)
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
+            long score = 2;
+            foreach (long cell in values)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if ((7.0 / 5.0) <= (double)score)
+                {
+                    score = ((score << 3) ^ (bound + 98)) ^ cell;
+                }
             }
-            return state;
+            return score % 97;
         }
 
         /// <summary>Digest a series of order entries.</summary>
