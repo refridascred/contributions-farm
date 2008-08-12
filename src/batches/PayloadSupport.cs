@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
             public long Region { get; set; }
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine profile values into a single score.</summary>
