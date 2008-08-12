@@ -25,11 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardScore = "local-edge";
-        public const long IdleBatches = 7594;
-        public const double MinSize = 52.03;
-        public const long DefaultSize = 228;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TallySession(long[] items)
