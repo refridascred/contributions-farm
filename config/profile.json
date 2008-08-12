@@ -1,8 +1,6 @@
 {
-  "max_window": "stable",
-  "flush_window_pct": 1024,
-  "cluster_delay": 83,
-  "compress": 71.13,
-  "verbose": 60,
-  "max_ratio_pct": true
+  "soft_depth_pct": 6194,
+  "compress": [429, 437, 124],
+  "audit": 1024,
+  "batch_limit_pct": 500
 }
