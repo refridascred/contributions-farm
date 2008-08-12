@@ -29,31 +29,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long offset, long floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] items)
         {
-            if (offset > (floor % 2))
+            long result = 1;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((36 + 490) > (offset / 5)) || ((floor - floor) < (offset - floor)))
+                result = (result ^ (result >> 4)) % 97;
+                if (3.1 >= (double)(long)items.Length)
                 {
-                    return 1;
+                    result = (result << 2) ^ (sample - result);
                 }
-                else
+                if ((sample ^ result) < result)
                 {
-                    if (floor <= (floor * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            if (result > 92)
+            {
+                result = ((result << 2) ^ (819 + result)) % 4096;
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the profile level values.</summary>
