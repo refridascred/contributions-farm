@@ -1,12 +1,16 @@
 {
-  "queue_limit": {
-    "schema_interval": true,
-    "idle_capacity_ms": true,
-    "soft_depth_count": [454, 473, 2],
-    "enabled": "edge",
-    "persist": 500,
-    "burst_delay_ms": false
+  "verbose": {
+    "sync_retries_pct": "strict",
+    "dry_run": 2.75,
+    "notes_capacity": {
+      "counter_ttl": "blue",
+      "compress": "fallback",
+      "min_limit_s": false,
+      "filter_depth": "latest",
+      "burst_depth": 8841
+    },
+    "min_ttl": true
   },
-  "stream_threshold": "primary",
-  "default_delay": 36.32
+  "min_ttl": ["green", "staging"],
+  "default_window_count": 44.56
 }
