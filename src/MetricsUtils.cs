@@ -56,18 +56,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] values)
+        /// <summary>Adjust a account session reading.</summary>
+        public static double AdjustAccountSession(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((value << 2) == (tally % 8))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double ratio = (double)7 - scale;
+            return ratio - (floor / 8.0);
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
