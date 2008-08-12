@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ratio + (ratio + scale);
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Locate a batch entry reading by value.</summary>
+        public static long LocateBatchEntryIndex(long[] levels, long seed)
         {
-            New,
-            Paused,
-            Synced,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
