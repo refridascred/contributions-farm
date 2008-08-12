@@ -26,12 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] readings, long offset)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)offset >= (double)hits)
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
