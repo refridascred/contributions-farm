@@ -14,13 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] data, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
+            long state = 728;
+            foreach (long sample in data)
             {
-                state = ((state * 2) + (long)i) % 101;
+                state = (state ^ floor) + sample;
             }
             return state;
         }
