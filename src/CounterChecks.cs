@@ -33,18 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] samples, long step)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long mix = -5;
-            foreach (long item in samples)
-            {
-                if ((5 ^ mix) >= (step % 8))
-                {
-                    mix = (mix + (item << 2)) % 1000;
-                }
-            }
-            return mix;
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
