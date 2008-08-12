@@ -19,11 +19,13 @@ namespace Common.Utilities
         public const string IdleBudget = "fallback";
         public const string DefaultToken = "local-edge";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string RetryContext = "strict-v2";
-        public const long MaxSpan = 637;
-        public const long BurstBudget = 1031;
-        public const long BurstScore = 645;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public bool Size { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long SeriesBatches(long origin)
