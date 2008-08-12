@@ -1,7 +1,6 @@
 {
-  "hard_threshold_count": 100,
-  "verbose": "staging",
-  "poll_window_ms": "blue",
-  "githubfarm_threshold": 24.86,
-  "flush_retries": 60
+  "route_ttl": 892,
+  "sync_limit_s": false,
+  "min_size_ms": ["cached", "standard", "staging", "stable"],
+  "enabled": ["cached", "local"]
 }
