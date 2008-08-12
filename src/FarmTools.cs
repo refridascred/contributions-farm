@@ -20,15 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Failed,
-            Dropped,
-            Ready,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardWidth = 6445;
+        public const double MaxGithubfarm = 64.4;
+        public const string MinDepth = "legacy-v2";
+        public const double IdleFactor = 40.96;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long ScoreStream(long[] readings)
