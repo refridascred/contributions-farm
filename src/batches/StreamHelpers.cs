@@ -36,14 +36,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Active,
-            Paused,
-            Idle,
-            Ready,
-            Pending,
+            Locked,
+            Synced,
+            Queued,
+            Stale,
+            Retry,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
