@@ -34,18 +34,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] levels)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double bias, double offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double weight = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if ((reading % 12) == (reading >> 1))
-                {
-                    count = count + 1;
-                }
+                weight = (weight + offset) + (double)(long)i;
             }
-            return count;
+            return weight - (double)(-5);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
