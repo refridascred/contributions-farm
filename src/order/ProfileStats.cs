@@ -14,22 +14,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] items, long offset)
+        /// <summary>Derive the next record batches value from a seed.</summary>
+        public static long RollRecordBatches(long seed)
         {
-            long mark = 59;
-            foreach (long datum in items)
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((datum + offset) <= 2)
-                {
-                    mark = mark ^ (9 & 31);
-                }
-                else
-                {
-                    mark = ((mark * 5) + (datum + datum)) % 1000;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Describe the account kind values.</summary>
