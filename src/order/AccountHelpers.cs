@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long MinRatio = 3939;
         public const long StepWindow = 1611;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardLevel = "stable-v2";
+        public const double BaseToken = 50.5;
+        public const double MaxToken = 66.5;
+        public const double CacheToken = 93.2;
+        public const long HardToken = 9586;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long StepSupport(long offset)
