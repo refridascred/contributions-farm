@@ -55,18 +55,19 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] samples, long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (((count <= (cell - count)) || ((step >> 4) == (count << 1))) && !((count >> 4) != (49 + 668)))
+                if (sample > step)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
