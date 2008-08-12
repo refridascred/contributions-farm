@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count counter layout pairs that satisfy a relation.</summary>
-        public static long PairCounterLayoutCount(long[] levels)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long bound, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (origin < (bound - bound))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((-5) + bound) > (bound % 3))
                 {
-                    if ((levels[i] - levels[j]) > 9)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound <= 8.5)
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the githubfarm checks series from a seed.</summary>
