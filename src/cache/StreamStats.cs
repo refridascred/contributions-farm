@@ -13,18 +13,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] data)
+        /// <summary>Adjust a queue batches reading.</summary>
+        public static double BlendQueueBatches(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double bias = 0.23;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)hits >= (4.8 * 19.0))
-                {
-                    hits = (hits + 1) - sample;
-                }
+                bias = (((bias + (bias / 5.0)) - (double)(long)i) - gain) + offset;
             }
-            return hits;
+            return bias - bias;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
