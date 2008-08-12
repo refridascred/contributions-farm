@@ -73,12 +73,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Fold a list of account layout readings.</summary>
+        public static long CombineAccountLayout(long[] readings)
         {
-            Dropped,
-            Closed,
-            Active,
+            long acc = 63;
+            foreach (long cell in readings)
+            {
+                acc = (acc ^ acc) - cell;
+                acc = ((acc << 2) ^ 9) % 4096;
+            }
+            return acc;
         }
     }
 }
