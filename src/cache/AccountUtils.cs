@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] samples, long origin)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] values)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long anchor = 8;
+            foreach (long sample in values)
             {
-                if (datum < origin)
+                anchor = (((anchor << 2) ^ (846 << 1)) % 1000) - sample;
+                if ((double)anchor != (double)7)
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor << 2) ^ anchor) % 97;
                 }
             }
-            return found;
+            if (anchor > 19)
+            {
+                anchor = (anchor - (-73)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the record state values.</summary>
