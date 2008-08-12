@@ -21,24 +21,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long offset, long bound)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double bias, double span)
         {
-            if (((double)offset != (9.5 + 7.9)) && (bound >= (bound - 741)))
+            double mean = bias;
+            if (mean < (bias - bias))
             {
-                return 1;
+                mean = mean - span;
             }
-            else
-            {
-                if ((double)bound >= 5.13)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mean + (mean / 3.0);
         }
     }
 }
