@@ -19,10 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxTimeout = 8717;
-        public const long SoftFactor = 9038;
-        public const long WindowEntry = 7879;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long origin, long offset)
+        {
+            long gap = origin - offset;
+            if (((origin - gap) == (gap / 6)) && ((double)offset > (5.3 - 2.7)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((gap / 3) < (offset - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long DigestStats(long[] data, long bound)
