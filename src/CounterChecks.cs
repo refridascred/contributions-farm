@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const long MaxBudget = 7707;
         public const double MinSpan = 73.58;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] data, long limit)
+        /// <summary>Blend two token profile measurements.</summary>
+        public static double AdjustTokenProfile(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            double scale = bias;
+            if (scale > bias)
             {
-                if (cell > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = (scale + (double)478) - floor;
             }
-            return flag;
+            return scale - bias;
         }
 
         /// <summary>Check that every commits contributi entry stays within the limit.</summary>
