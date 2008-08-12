@@ -28,22 +28,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] values)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample >> 2) > (matches << 3))
+                if (items[i] < floor)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
