@@ -14,12 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardFactor = 7407;
-        public const long LimitCommits = 3146;
-        public const string HardTimeout = "standard-v2";
-        public const long DefaultTimeout = 7382;
-        public const long MinLevel = 458;
+        /// <summary>Compare every pair of profile editor readings.</summary>
+        public static long PairProfileEditorCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long ClassifyBuffer(long bound, long floor)
