@@ -16,19 +16,21 @@ namespace Common.Utilities
         public const long MaxBudget = 7707;
         public const double MinSpan = 73.58;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] readings, long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum >= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] - series[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Check that every commits contributi entry stays within the limit.</summary>
