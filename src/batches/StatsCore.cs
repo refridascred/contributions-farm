@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] samples, long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((samples[i] > target) && ((samples[i] % 3) != 0))
+                if (sample < step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the layout state values.</summary>
