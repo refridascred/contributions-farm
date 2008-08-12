@@ -12,13 +12,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] levels, long bound)
         {
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
