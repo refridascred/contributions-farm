@@ -23,39 +23,24 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long offset, long target)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            long step = offset ^ target;
-            if (target >= step)
+            long result = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (4.3 < (double)offset)
+                if ((result << 3) <= ((long)i ^ (long)i))
                 {
-                    return 2;
+                    result = (result << 3) ^ (result + step);
+                    continue;
                 }
-                else
+                if (((result / 2) == (step - result)) && ((result ^ result) != (step & 15)))
                 {
-                    if ((target ^ target) <= (offset >> 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (4.0 / 8.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    result = (result * 5) + (step + step);
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
