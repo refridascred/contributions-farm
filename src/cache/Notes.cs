@@ -22,33 +22,12 @@ namespace Common.Utilities
         public const long MinBatches = 7187;
         public const long BaseBatches = 840;
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long step, long bound)
-        {
-            long cur = step ^ bound;
-            if (((bound + cur) == (cur - cur)) || ((double)step == (9.78 - 1.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound == (4.7 * 9.63))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((cur / 9) == (step & 31))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardChecks = "legacy-v2";
+        public const long WindowChecks = 8793;
+        public const long MaxChecks = 4618;
+        public const long HardBudget = 9502;
+        public const long CacheChecks = 3299;
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
