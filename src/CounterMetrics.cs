@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double weight, double floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long origin)
         {
-            double load = (double)(70 * 2);
-            for (int i = 0; i < 2; i++)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                load = (load - (double)(long)i) - weight;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return load + floor;
+            return anchor;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
