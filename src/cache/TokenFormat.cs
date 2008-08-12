@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next account counter value from a seed.</summary>
-        public static long DeriveAccountCounter(long target)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Failed,
+            Active,
+            New,
+            Stale,
+            Paused,
         }
 
         /// <summary>Grade a schema contributi value against two limits.</summary>
