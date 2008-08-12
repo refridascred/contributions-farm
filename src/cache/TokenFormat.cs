@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double ratio, double bias)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] data)
         {
-            double rate = (double)31;
-            if (rate <= (rate * 9.22))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                rate = (rate + rate) - ratio;
+                if (!((reading - 7) >= (hits + 33)))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate + 3.6;
+            return hits;
         }
 
         /// <summary>Describe the metric state values.</summary>
