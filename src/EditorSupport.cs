@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next cluster order value.</summary>
-        public static double BlendClusterOrder(double rate, double span)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double ratio = rate;
-            if (ratio > 11.0)
-            {
-                ratio = (ratio - (rate / 2.0)) - span;
-            }
-            else
-            {
-                ratio = ratio - (double)9;
-            }
-            return ratio - rate;
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
