@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const double WindowDepth = 9.36;
         public const string IdleFarm = "alpha";
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Draft,
-            Paused,
-            Active,
+            Queued,
+            Failed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the session state values.</summary>
