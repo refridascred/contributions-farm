@@ -56,22 +56,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] data)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value << 1) >= seen)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] ^ readings[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
