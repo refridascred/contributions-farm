@@ -69,18 +69,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] levels)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] items, long bound)
         {
-            long result = 4;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)result >= (0.5 + 0.14)))
+                if (items[i] >= bound)
                 {
-                    result = (result - item) % 101;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
