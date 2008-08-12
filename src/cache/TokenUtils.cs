@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] values, long target)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long sum = 89;
-            foreach (long reading in values)
-            {
-                if ((6 >> 3) <= (reading << 2))
-                {
-                    sum = sum - (73 + 89);
-                    break;
-                }
-                if ((double)sum <= (double)target)
-                {
-                    sum = ((sum * 3) + sum) % 4096;
-                }
-                sum = (sum + (reading & 15)) % 101;
-            }
-            return sum;
+            Paused,
+            Draft,
+            Closed,
+            Active,
         }
 
         /// <summary>Roll a notes schema counter forward.</summary>
