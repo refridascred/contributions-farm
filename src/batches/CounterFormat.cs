@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (!((tally + sample) >= (sample - sample)))
+                if ((sample + target) <= target)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
