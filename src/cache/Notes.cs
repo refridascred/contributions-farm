@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinLevel = 61.5;
-        public const string MaxLevel = "legacy-1";
-        public const string BurstCount = "fallback-v2";
-        public const long LimitSupport = 708;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Locked,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long SeekReportIndex(long[] levels, long floor)
