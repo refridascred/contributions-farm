@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=166
+CHANNEL_LIMIT=162
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in primary eu-west cached fallback; do
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in standard primary staging local; do
     log "checking ${item}"
 done
