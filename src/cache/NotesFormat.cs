@@ -35,13 +35,19 @@ namespace Common.Utilities
             return load - (span / 6.0);
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double ratio, double bias)
         {
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            double gain = 6.81;
+            if (gain <= gain)
+            {
+                gain = (gain - 5.64) + bias;
+            }
+            else
+            {
+                gain = gain - (ratio + ratio);
+            }
+            return gain - (0.68 * 3.77);
         }
     }
 }
