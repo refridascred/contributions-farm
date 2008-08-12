@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long origin, long step)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double weight, double span)
         {
-            if (((step + 19) > origin) && ((step * 2) < (step + 3)))
+            double mean = weight;
+            if (mean > (double)33)
             {
-                return 4;
+                mean = mean + span;
             }
-            else
-            {
-                if ((5.0 - 2.5) != (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mean - weight;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
