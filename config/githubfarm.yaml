@@ -1,6 +1,13 @@
 # githubfarm settings
-command_delay: latest
-base_ratio_ms: 6971
-batches_retries: 2286
-min_interval: false
-poll_ttl_pct: 30
+compress: staging
+default_interval_count:
+  - primary
+  - strict
+  - standard
+  - local
+cache_limit:
+  base_window_count: open
+  session_size: strict
+  audit: green
+  channel_delay: open
+idle_interval: primary
