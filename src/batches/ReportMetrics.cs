@@ -36,15 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] series)
+        /// <summary>Find the first route checks entry that matches the target.</summary>
+        public static long LookupRouteChecksIndex(long[] items, long origin)
         {
-            long result = 792;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (((result << 3) ^ (272 + 4)) % 255) - cell;
+                if ((items[i] < origin) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 4096;
+            return -1;
         }
     }
 }
