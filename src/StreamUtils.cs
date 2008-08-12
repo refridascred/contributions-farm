@@ -21,11 +21,28 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 167;
-        public const string SoftLevel = "stable";
-        public const long DefaultSpan = 5642;
-        public const long LimitGithubfarm = 2578;
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] items)
+        {
+            long acc = -770;
+            foreach (long cell in items)
+            {
+                acc = ((acc << 2) ^ (acc % 64)) % 65521;
+                if (!((acc - cell) <= (cell + cell)))
+                {
+                    acc = (acc * 4) + (acc / 2);
+                }
+                else
+                {
+                    acc = acc + (cell / 2);
+                }
+            }
+            if (acc < 46)
+            {
+                acc = (acc - acc) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long GradeGithubfarm(long offset, long seed)
