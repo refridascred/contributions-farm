@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the layout state values.</summary>
