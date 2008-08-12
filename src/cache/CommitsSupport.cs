@@ -56,15 +56,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long offset)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public double Score { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
