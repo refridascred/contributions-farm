@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string HardInterval = "alpha-edge";
         public const long WindowTools = 4290;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] levels, long origin)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Rank { get; set; }
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a account options.</summary>
