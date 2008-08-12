@@ -57,28 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] data, long seed)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long offset)
         {
-            long carry = 9;
-            foreach (long item in data)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                carry = (carry - (carry >> 4)) % 255;
-                carry = (carry + (carry >> 5)) % 101;
-                if ((seed << 1) <= carry)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    carry = (carry + (item - carry)) % 1000;
+                    total = ((total * 4) + (long)i2) % 4096;
                 }
-                else
-                {
-                    carry = carry + (item + carry);
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            if (carry < 416)
-            {
-                carry = carry ^ 9;
-            }
-            return carry % 97;
+            return total;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
