@@ -58,17 +58,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Iterate the counter command series from a seed.</summary>
-        public static long DeriveCounterCommand(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = anchor + anchor;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinCount = 4631;
+        public const long RetryRatio = 752;
+        public const long LimitLevel = 2687;
+        public const long WindowFarm = 6600;
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
