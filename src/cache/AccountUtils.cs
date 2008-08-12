@@ -25,31 +25,22 @@ namespace Common.Utilities
             return gain + (floor + floor);
         }
 
-        /// <summary>Grade a metrics cluster value against two limits.</summary>
-        public static long RankMetricsCluster(long target, long target2)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] items, long floor)
         {
-            if ((target - target) == (475 << 3))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0 % 64) >= (target2 + target))
+                if (!((sample >> 3) <= sample) && ((1 & 3) >= (sample >> 5)))
                 {
-                    return 6;
+                    count = (count + 1) - floor;
                 }
                 else
                 {
-                    if (!((double)target > (double)target2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
