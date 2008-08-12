@@ -43,12 +43,19 @@ namespace Common.Utilities
         public const string BaseFarm = "latest-1";
         public const double StepFarm = 75.74;
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double scale, double span)
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
+            double gain = (double)(386 + (-59));
+            if (gain > 15.0)
+            {
+                gain = gain - span;
+            }
+            else
+            {
+                gain = gain - (scale - scale);
+            }
+            return gain - scale;
         }
     }
 }
