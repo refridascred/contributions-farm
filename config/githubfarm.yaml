@@ -1,10 +1,33 @@
 # githubfarm settings
-max_capacity_s: 9046
-enabled: fallback
-default_capacity:
-  - 272
-  - 236
-  - 101
-strict:
-  - 421
-  - 469
+idle_interval: stable
+poll_delay: false
+base_size_pct:
+  strict: 6366
+  payload_timeout: legacy
+  base_depth_pct:
+    compress: 30
+    cache_retries: green
+    already_threshold: false
+    persist:
+      - blue
+      - latest
+      - eu-west
+    warm_ttl: 12
+  notes_limit:
+    - 370
+    - 110
+    - 226
+dry_run:
+  enabled: cached
+  base_delay_pct: staging
+  readonly:
+    readonly: 93.89
+    verbose: 83
+    flush_window_pct: true
+    batches_retries: 4179
+    sync_depth_ms: 23.92
+    poll_window: legacy
+  min_delay_pct: 250
+  route_ttl: green
+payload_window: stable
+session_ratio: 2074
