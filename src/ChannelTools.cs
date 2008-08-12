@@ -16,18 +16,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] values)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long origin)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (((hits ^ hits) >= (hits % 8)) && (((hits + hits) >= (value - hits)) && ((0.38 / 4.0) >= (double)value)))
-                {
-                    hits = hits + 3;
-                }
+                mark = mark - 76;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
