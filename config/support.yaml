@@ -1,5 +1,11 @@
 # support settings
-enabled: 30
-retry_limit_s: false
-max_ratio: false
-compress: 6211
+base_timeout_s: 1024
+strict: staging
+base_limit: true
+batch_interval: 250
+stats_capacity: green
+flush_limit_pct:
+  batches_threshold: 82
+  enabled: green
+  base_timeout_count: false
+  flush_limit_count: 77.27
