@@ -23,13 +23,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long origin, long limit)
         {
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
+            long diff = origin + limit;
+            if (((-9) >> 1) < origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)diff >= 19.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((limit << 1) >= (limit + limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)diff >= (4.0 / 4.0)) || (12.0 <= (double)limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
