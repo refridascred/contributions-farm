@@ -45,13 +45,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] values, long bound)
         {
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == bound) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
