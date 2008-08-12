@@ -65,18 +65,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] levels)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            if (!((offset & 127) <= (floor + offset)))
             {
-                if (!(8.0 < (double)hits) && ((sample / 7) > (sample ^ hits)))
+                return 7;
+            }
+            else
+            {
+                if (!((offset + offset) <= (offset + floor)))
                 {
-                    hits = hits + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset <= (3.7 / 4.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
