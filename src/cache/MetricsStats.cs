@@ -47,27 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((offset - offset) >= (offset << 2))
-                {
-                    total = ((total * 4) + (offset * 3)) % 4096;
-                }
-                if (offset < (total & 7))
-                {
-                    break;
-                }
-                else
-                {
-                    total = ((total * 3) + ((long)i ^ (long)i)) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Idle,
+            Failed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
