@@ -47,15 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next report record value from a seed.</summary>
-        public static long SeriesReportRecord(long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] items)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long result = 0;
+            foreach (long sample in items)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (!((724 - result) != (result << 1)))
+                {
+                    result = (result << 2) ^ (sample - 3);
+                }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Match up batches samples.</summary>
