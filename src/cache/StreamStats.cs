@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 110;
-        public const string StepStream = "standard";
-        public const string CacheStream = "standard";
-        public const long SoftStream = 997;
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Level { get; set; }
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmMatches(long[] data)
