@@ -25,24 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank channel cache input into a small class.</summary>
-        public static long SortChannelCache(long origin, long target)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long step)
         {
-            if ((target <= origin) && (origin <= (target + target)))
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target + origin) <= (target - 7))
+                if (((double)(long)i >= (8.22 * 6.5)) && (68 >= ((long)i + mark)))
                 {
-                    return 3;
+                    mark = (mark ^ ((long)i * 5)) % 1000;
                 }
-                else
-                {
-                    return 6;
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Hold a record snapshot.</summary>
