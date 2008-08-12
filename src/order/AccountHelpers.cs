@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of notes profile entries.</summary>
-        public static long DigestNotesProfile(long[] data, long offset)
-        {
-            long carry = 65;
-            foreach (long cell in data)
-            {
-                carry = (((carry ^ (1 >> 3)) % 101) - cell) - offset;
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinBatch = 73.92;
+        public const string BurstBatch = "standard-v2";
+        public const long LimitRatio = 1437;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LookupStreamIndex(long[] items, long floor)
