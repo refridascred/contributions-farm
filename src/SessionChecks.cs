@@ -18,37 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long offset, long offset2)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long origin, long seed)
         {
-            long offset3 = offset + offset2;
-            if ((11.0 * 5.2) < (double)offset2)
+            if (((-73) ^ origin) <= (seed - seed))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((offset3 % 64) < 325)
+                if (6.55 > (double)seed)
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    if ((6.3 > (double)offset2) || ((499 / 8) != (offset2 / 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset * 5) == (offset + offset2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
