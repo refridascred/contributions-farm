@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 4423;
-        public const double BurstRecord = 73.68;
-        public const double WindowRecord = 81.91;
-        public const long BatchRecord = 874;
-        public const long BaseBudget = 2000;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Synced,
+            Idle,
+            Done,
+            Active,
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long FindCommitsIndex(long[] series, long seed)
