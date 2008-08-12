@@ -20,10 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "fallback-edge";
-        public const long DefaultBuffer = 9624;
-        public const double MinSize = 88.21;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next schema support value from a seed.</summary>
         public static long SeriesSchemaSupport(long origin)
