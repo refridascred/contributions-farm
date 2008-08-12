@@ -18,18 +18,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (entry < (entry >> 3))
+                if ((sample >> 2) > (matches << 3))
                 {
-                    hits = hits + 3;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
