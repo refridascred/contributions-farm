@@ -60,23 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] values)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] readings, long limit)
         {
-            long result = 123;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading + result) < 9)
+                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result + (reading - 79)) % 65521;
-                }
-                result = (result ^ reading) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a format info.</summary>
