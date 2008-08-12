@@ -14,27 +14,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] data)
-        {
-            long score = 7;
-            foreach (long item in data)
-            {
-                if (((long)data.Length + score) >= score)
-                {
-                    score = (score + (score / 6)) ^ item;
-                }
-                if ((97 - score) != (long)data.Length)
-                {
-                    score = ((score << 3) ^ (score >> 4)) % 101;
-                }
-            }
-            if (score < 558)
-            {
-                score = ((score * 4) + 5) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepScore = "primary-v2";
+        public const long IdleScore = 1655;
+        public const long BaseLevel = 9268;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long ScoreChecks(long[] levels, long target)
