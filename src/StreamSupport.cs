@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] samples, long seed)
+        /// <summary>Roll a notes graph counter forward.</summary>
+        public static long StepNotesGraph(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
+                acc = acc + offset;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
