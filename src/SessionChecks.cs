@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const string SoftFilter = "local-v2";
         public const long DefaultRatio = 3070;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] levels, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] readings)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (item > seed)
+                if ((6.2 - 13.0) < (double)sample)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
