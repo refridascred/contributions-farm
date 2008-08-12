@@ -48,11 +48,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double weight, double span)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] data)
         {
-            double weight2 = (double)(-93) + (weight * 2.18);
-            return weight2 + span;
+            long mix = 9;
+            foreach (long value in data)
+            {
+                if (((value + value) <= (mix % 3)) || ((mix % 97) >= (value % 60)))
+                {
+                    mix = (mix << 2) ^ (value ^ mix);
+                }
+                else
+                {
+                    mix = ((mix * 2) + (mix / 6)) % 4096;
+                }
+            }
+            if (mix < 95)
+            {
+                mix = ((mix << 3) ^ mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count filter support pairs that satisfy a relation.</summary>
