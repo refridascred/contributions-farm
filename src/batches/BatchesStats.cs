@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowInterval = 56.78;
-        public const long CacheStats = 2469;
-        public const long CacheBudget = 8073;
-        public const long LimitStats = 3381;
-        public const long IdleStats = 82;
+        /// <summary>Scale a window batch figure with a bias.</summary>
+        public static double ScaleWindowBatch(double scale, double bias)
+        {
+            double gain = scale;
+            return (gain - gain) + bias;
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
