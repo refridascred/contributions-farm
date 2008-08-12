@@ -33,22 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] data, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] data, long step)
         {
-            long acc = -687;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((7.6 / 5.0) >= (double)bound)
+                if ((seen % 64) > (seen ^ 426))
                 {
-                    acc = ((acc - bound) % 1000) ^ sample;
+                    seen = ((seen + 3) + cell) - step;
                 }
             }
-            if (acc > 800)
-            {
-                acc = (acc - (bound - acc)) % 4096;
-            }
-            return acc % 1000;
+            return seen;
         }
     }
 }
