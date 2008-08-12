@@ -71,11 +71,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinSpan = 5898;
-        public const long IdleBatches = 7771;
-        public const long MaxDepth = 9394;
-        public const double BaseBatches = 43.3;
-        public const long BaseSpan = 1233;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 91.88;
+        public const long BaseCount = 1506;
+        public const double BaseBudget = 45.37;
+        public const double IdleReport = 53.77;
     }
 }
