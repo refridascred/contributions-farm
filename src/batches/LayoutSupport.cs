@@ -51,10 +51,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 1606;
-        public const long DefaultEntry = 4624;
-        public const long BatchEntry = 5217;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading > (double)hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long DigestBuffer(long[] items)
