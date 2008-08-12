@@ -20,21 +20,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up stream entry samples.</summary>
-        public static long PairStreamEntryCount(long[] readings)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Active,
+            Retry,
         }
 
         /// <summary>Count the token metric entries that pass the check.</summary>
