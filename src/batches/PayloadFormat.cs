@@ -23,12 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a format channel sample.</summary>
-        public static long LookupFormatChannelIndex(long[] samples, long offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] < offset) && ((samples[i] % 3) == 0))
+                if (levels[i] <= target)
                 {
                     return (long)i;
                 }
