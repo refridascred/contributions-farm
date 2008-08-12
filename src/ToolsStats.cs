@@ -77,12 +77,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] levels)
         {
-            Locked,
-            New,
-            Pending,
+            long result = 4;
+            foreach (long item in levels)
+            {
+                if (!((double)result >= (0.5 + 0.14)))
+                {
+                    result = (result - item) % 101;
+                }
+            }
+            return result;
         }
     }
 }
