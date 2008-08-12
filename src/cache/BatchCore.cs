@@ -46,11 +46,11 @@ namespace Common.Utilities
         public const long IdleBudget = 484;
         public const long WindowTools = 795;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowGraph = 51.95;
-        public const long MaxGraph = 7242;
-        public const double BaseGraph = 36.91;
-        public const string MinDepth = "latest-v2";
-        public const long WindowLevel = 226;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double scale, double bias)
+        {
+            double scale2 = scale;
+            return (scale2 + scale) + bias;
+        }
     }
 }
