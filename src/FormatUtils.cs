@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long offset)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (offset >= (offset % 10))
-                {
-                    acc = ((acc << 3) ^ (long)i) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            New,
+            Paused,
+            Synced,
+            Closed,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
