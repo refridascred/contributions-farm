@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] levels, long seed)
+        /// <summary>Measure how many session order samples are out of range.</summary>
+        public static long CountSessionOrderOutliers(long[] data, long target)
         {
-            long carry = 7;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (((seed + seed) > (value + value)) || ((seed + 6) == (value >> 4)))
+                if (((target + 2) < (target & 127)) && ((double)target != (6.5 * 2.43)))
                 {
-                    carry = carry ^ (2 & 63);
+                    tally = (tally + 1) + reading;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count the githubfarm cluster entries that pass the check.</summary>
