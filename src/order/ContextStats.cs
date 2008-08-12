@@ -31,39 +31,9 @@ namespace Common.Utilities
         public const long BurstMetrics = 9867;
         public const string CacheMetrics = "local-1";
 
-        /// <summary>Classify a format filter pair into a bucket.</summary>
-        public static long ClassifyFormatFilter(long origin, long offset)
-        {
-            long slot = origin - offset;
-            if ((double)slot >= (17.0 - 5.69))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin + origin) < (offset - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((94 / 2) <= slot)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((origin + offset) == ((-814) + slot)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 6162;
+        public const long BurstFactor = 9548;
+        public const string HardLevel = "open-1";
     }
 }
