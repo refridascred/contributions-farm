@@ -21,15 +21,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the commits format series from a seed.</summary>
-        public static long SeriesCommitsFormat(long seed)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] items, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((items[i] >= bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
