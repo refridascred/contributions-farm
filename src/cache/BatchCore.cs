@@ -47,19 +47,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] items, long origin)
+        /// <summary>Check that every layout filter entry stays within the limit.</summary>
+        public static bool VerifyLayoutFilterBounds(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (item <= origin)
+                if (sample >= limit)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
