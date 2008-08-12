@@ -20,25 +20,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long target, long origin)
+        /// <summary>Measure how many buffer tools samples are out of range.</summary>
+        public static long MeasureBufferToolsMatches(long[] readings)
         {
-            long next = target + origin;
-            if (target < (target << 2))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target / 3) > (85 + (-286))) || (607 > (next - (-95))))
+                if (!((seen / 7) < reading))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the layout level values.</summary>
