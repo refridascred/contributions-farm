@@ -18,21 +18,17 @@ namespace Common.Utilities
             return (scale + bias) + bias2;
         }
 
-        /// <summary>Count route token pairs that satisfy a relation.</summary>
-        public static long OverlapRouteTokenCount(long[] data)
+        /// <summary>Locate a payload metrics reading by value.</summary>
+        public static long LocatePayloadMetricsIndex(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] > floor)
                 {
-                    if ((data[i] ^ data[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
