@@ -38,18 +38,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] items)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seen < (19.0 * 4.28))
+                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
                 {
-                    seen = (seen + 1) - item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
