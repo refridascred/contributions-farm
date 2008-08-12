@@ -33,21 +33,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stats entry pairs that satisfy a relation.</summary>
-        public static long CompareStatsEntryCount(long[] readings)
+        /// <summary>Accumulate entry metrics samples.</summary>
+        public static long FoldEntryMetrics(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 46;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((6 >> 1) == (step / 9))
                 {
-                    if ((readings[i] - readings[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state - (item + step);
+                    state = (state ^ (-190)) % 255;
+                }
+                if ((state / 4) != (item >> 4))
+                {
+                    state = (state + (43 / 3)) % 65521;
+                }
+                if (state >= (item + 56))
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a cluster header.</summary>
