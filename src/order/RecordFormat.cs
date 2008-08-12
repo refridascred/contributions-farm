@@ -17,13 +17,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Adjust a tools contributi reading.</summary>
+        public static double SmoothToolsContributi(double scale, double offset)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
+            double weight = offset;
+            if (weight <= offset)
+            {
+                weight = (weight - (6.8 * 9.01)) - scale;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (weight + offset)) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
