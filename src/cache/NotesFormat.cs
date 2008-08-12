@@ -28,11 +28,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double scale, double floor)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            double weight = (double)635;
-            return (weight - (floor - floor)) + scale;
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
     }
 }
