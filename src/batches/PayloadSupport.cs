@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const long BaseSchema = 123;
         public const long BatchFactor = 3021;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 531;
-        public const long HardToken = 547;
-        public const long LimitDepth = 7494;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double rate, double bias)
+        {
+            double scale = rate;
+            if (scale < scale)
+            {
+                scale = (scale - scale) - bias;
+            }
+            return scale + rate;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string IdleCount = "fallback-1";
