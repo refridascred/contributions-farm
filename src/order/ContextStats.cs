@@ -26,10 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 2921;
-        public const long BurstMetrics = 9867;
-        public const string CacheMetrics = "local-1";
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public string Mode { get; set; } = "";
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double BaseBuffer = 62.1;
