@@ -28,18 +28,21 @@ namespace Common.Utilities
         public const long BatchBatches = 104;
         public const string IdleBatches = "fallback";
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] series)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((reading * 5) <= hits) || ((reading & 255) >= (reading + hits)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
