@@ -11,14 +11,10 @@ namespace Common.Utilities
         public const long DefaultSize = 2847;
         public const long MaxLevel = 3608;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Done,
-            Paused,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "fallback-edge";
+        public const long DefaultBuffer = 9624;
+        public const double MinSize = 88.21;
 
         /// <summary>Grade a format editor value against two limits.</summary>
         public static long RankFormatEditor(long origin, long origin2)
