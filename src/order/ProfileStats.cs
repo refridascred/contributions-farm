@@ -13,13 +13,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] items, long offset)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            long mark = 59;
+            foreach (long datum in items)
+            {
+                if ((datum + offset) <= 2)
+                {
+                    mark = mark ^ (9 & 31);
+                }
+                else
+                {
+                    mark = ((mark * 5) + (datum + datum)) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the account kind values.</summary>
