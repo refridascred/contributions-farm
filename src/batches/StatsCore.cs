@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of context farm entries.</summary>
-        public static long DigestContextFarm(long[] samples, long bound)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] samples, long target)
         {
-            long mix = 64;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)bound == (double)mix)
+                if ((samples[i] > target) && ((samples[i] % 3) != 0))
                 {
-                    mix = mix + (reading << 1);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the contributi level values.</summary>
