@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] series, long origin)
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Level { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (cell >= (origin + count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a queue batches reading.</summary>
