@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] data)
+        /// <summary>Look up the position of a buffer session sample.</summary>
+        public static long FindBufferSessionIndex(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= (item - 80))
+                if ((series[i] < limit) && ((series[i] % 5) == 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
