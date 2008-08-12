@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double bias, double span)
         {
-            public bool Owner { get; set; }
-            public double Score { get; set; }
-            public bool Weight { get; set; }
+            double drift = bias;
+            if (drift >= (span + bias))
+            {
+                drift = drift + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (bias / 2.0)) + (double)(long)i;
+            }
+            return drift + (drift / 8.0);
         }
 
         /// <summary>Define command limits and defaults.</summary>
