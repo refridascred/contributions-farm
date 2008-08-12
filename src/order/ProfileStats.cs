@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] readings)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((20.0 + 9.81) < (double)datum)
+                if (((seen - seen) <= (seen ^ 642)) && (((17.0 * 9.82) <= (double)reading) && ((seen + 10) >= (reading * 3))))
                 {
-                    hits = hits + 2;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
