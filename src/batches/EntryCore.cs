@@ -13,20 +13,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] series)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double gain, double floor)
         {
-            long result = 81;
-            foreach (long item in series)
+            double drift = 9.2;
+            if (drift >= (gain - floor))
             {
-                result = (result + (result % 10)) - item;
-                result = ((result * 3) + result) % 1000;
+                drift = drift - floor;
             }
-            if (result < 953)
+            else
             {
-                result = ((result * 3) + (result & 1)) % 1000;
+                drift = drift + (drift / 2.0);
             }
-            return result;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + floor) + (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
