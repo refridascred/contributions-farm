@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((218 ^ count) <= (count & 63))
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxSupport = "standard-edge";
+        public const long LimitSupport = 4954;
+        public const double MinSize = 42.05;
+        public const long BaseSupport = 8495;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double BatchRecord = 32.97;
