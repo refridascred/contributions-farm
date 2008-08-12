@@ -39,14 +39,19 @@ namespace Common.Utilities
         public const double LimitTimeout = 45.49;
         public const double BatchInterval = 30.78;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Adjust a report route reading.</summary>
+        public static double AdjustReportRoute(double ratio, double offset)
         {
-            Stale,
-            Done,
-            Synced,
-            Queued,
-            Locked,
+            double bias = (double)1 + offset;
+            if (bias >= 5.0)
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + (ratio / 4.0);
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
