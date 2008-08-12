@@ -21,18 +21,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] readings)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((seen + (-297)) < (seen % 64))
+                if ((count + reading) > bound)
                 {
-                    seen = (seen + 2) ^ cell;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
