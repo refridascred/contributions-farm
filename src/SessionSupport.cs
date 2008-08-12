@@ -30,18 +30,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] data, long origin)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((6.56 - 16.0) < (double)entry)
-                {
-                    seen = (seen + 3) - origin;
-                }
+                acc = (acc ^ (target * 4)) % 255;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
     }
 }
