@@ -41,22 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter metrics readings.</summary>
-        public static long TotalFilterMetrics(long[] readings)
+        /// <summary>Audit layout command readings against a rule.</summary>
+        public static long AuditLayoutCommandOutliers(long[] items, long limit)
         {
-            long score = 3;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((value << 1) < (value + value))
+                if ((item * 2) < (matches - limit))
                 {
-                    score = (score - score) % 97;
+                    matches = matches + 3;
                 }
             }
-            if (score < 918)
-            {
-                score = ((score << 3) ^ (score << 3)) % 97;
-            }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
