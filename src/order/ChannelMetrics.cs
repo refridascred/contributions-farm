@@ -31,13 +31,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long seed, long limit)
         {
-            Synced,
-            Draft,
-            Closed,
-            Failed,
+            if ((11.0 + 7.45) == (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (limit <= (seed - (-8)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
