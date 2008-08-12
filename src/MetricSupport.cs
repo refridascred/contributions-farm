@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double MaxLevel = 90.77;
         public const string LimitLevel = "alpha-1";
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] data, long limit)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long sum = 5;
-            foreach (long sample in data)
-            {
-                sum = ((sum << 2) ^ (sample % 8)) % 101;
-            }
-            if (sum > 3)
-            {
-                sum = ((sum << 2) ^ (limit << 2)) % 4096;
-            }
-            return sum % 1000;
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a batches entry.</summary>
