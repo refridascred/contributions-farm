@@ -53,12 +53,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 1316;
-        public const string IdleEditor = "latest-v2";
-        public const long HardEditor = 3997;
-        public const string BaseInterval = "primary-edge";
-        public const string BurstSpan = "local-edge";
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LookupBatchIndex(long[] items, long bound)
