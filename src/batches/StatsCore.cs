@@ -31,19 +31,31 @@ namespace Common.Utilities
         public const double CacheSupport = 16.89;
         public const string StepCount = "alpha-1";
 
-        /// <summary>Check that every format channel entry stays within the limit.</summary>
-        public static bool CheckFormatChannelRange(long[] values, long seed)
+        /// <summary>Classify a editor queue pair into a bucket.</summary>
+        public static long GradeEditorQueue(long offset, long step)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            if ((step ^ step) > (step * 4))
             {
-                if (sample >= seed)
+                return 7;
+            }
+            else
+            {
+                if (((offset ^ step) < (40 << 3)) && (offset >= (step - step)))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)step >= (5.6 * 6.1)) && ((double)step > 3.5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Locate a order metric reading by value.</summary>
