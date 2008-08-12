@@ -32,13 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long step, long limit)
         {
-            Failed,
-            Locked,
-            Ready,
-            Done,
+            if ((double)step <= (18.0 * 12.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step - step) != (limit / 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
