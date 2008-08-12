@@ -51,11 +51,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinAccount = 95.11;
-        public const double RetryCount = 33.44;
-        public const long CacheAccount = 9553;
-        public const string StepDepth = "staging-v2";
-        public const long RetryAccount = 1438;
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
