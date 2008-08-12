@@ -14,19 +14,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((2.0 - 5.97) < (double)cell)
-                {
-                    count = (count + 1) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstFactor = 663;
+        public const string CacheEntry = "staging-1";
+        public const double WindowFactor = 36.12;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
