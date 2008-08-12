@@ -31,16 +31,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long offset)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = (sum + (sum + sum)) % 97;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public double Level { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
