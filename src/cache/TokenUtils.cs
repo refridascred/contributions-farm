@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] items)
+        /// <summary>Look up the position of a format batch sample.</summary>
+        public static long FindFormatBatchIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((0 % 7) < sample)
+                if (series[i] > bound)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the metric level values.</summary>
