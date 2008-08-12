@@ -50,21 +50,27 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up session already samples.</summary>
-        public static long CompareSessionAlreadyCount(long[] series)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 799;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((series[i] - series[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc ^ ((long)i - (long)i)) % 97) - value;
                 }
+                if (!((double)acc >= (2.1 * 4.62)))
+                {
+                    acc = (acc << 2) ^ (acc - offset);
+                }
+                acc = (acc - (offset / 4)) % 255;
             }
-            return tally;
+            if (acc > 8)
+            {
+                acc = (acc << 2) ^ ((long)items.Length - acc);
+            }
+            return acc;
         }
     }
 }
