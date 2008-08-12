@@ -1,7 +1,6 @@
 # entry settings
-burst_timeout: 12.83
-record_threshold: fallback
-sync_delay_count: 48.1
-tools_threshold: 2528
-audit: open
-githubfarm_retries: strict
+sync_window: 100
+dry_run: 1182
+buffer_timeout: 1141
+readonly: open
+min_interval: 65.03
