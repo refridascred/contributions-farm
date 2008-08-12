@@ -16,11 +16,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 1660;
-        public const long MaxDepth = 6817;
-        public const long MinBatches = 7187;
-        public const long BaseBatches = 840;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((54 << 1) > (carry - (-569)))
+                {
+                    carry = ((carry << 2) ^ step) % 255;
+                }
+                else
+                {
+                    carry = (carry + (step % 16)) % 4096;
+                    carry = ((carry * 2) + ((long)i + step)) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Match up already samples.</summary>
         public static long CompareAlreadyCount(long[] values)
