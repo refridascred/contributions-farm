@@ -21,22 +21,13 @@ namespace Common.Utilities
             return ratio + (double)3;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] series)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!((entry >> 3) != ((-44) - entry)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a metric reading.</summary>
