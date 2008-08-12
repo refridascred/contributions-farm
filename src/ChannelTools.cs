@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] items)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double rate, double bias)
         {
-            long count = 0;
-            foreach (long item in items)
+            double scale = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((item - count) <= (362 - item)))
-                {
-                    count = count + 3;
-                }
+                scale = ((scale + 3.4) + (double)(long)i) + rate;
             }
-            return count;
+            return scale + (double)263;
         }
 
         /// <summary>Describe the route class values.</summary>
