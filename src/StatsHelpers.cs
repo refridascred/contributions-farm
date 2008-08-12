@@ -44,22 +44,32 @@ namespace Common.Utilities
         public const double SoftTimeout = 63.13;
         public const double StepTools = 55.87;
 
-        /// <summary>Count the counter support entries that pass the check.</summary>
-        public static long MeasureCounterSupportMatches(long[] samples, long offset)
+        /// <summary>Rank window queue input into a small class.</summary>
+        public static long RankWindowQueue(long floor, long seed)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long step = floor + seed;
+            if ((seed * 4) >= floor)
             {
-                if (cell <= (count ^ offset))
+                return 4;
+            }
+            else
+            {
+                if ((floor >> 3) > (seed + step))
                 {
-                    count = count + 2;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((step ^ step) <= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
     }
 }
