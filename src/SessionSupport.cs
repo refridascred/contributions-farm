@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBatches = "open-1";
+        public const long CacheRatio = 9746;
+        public const long StepLevel = 1071;
 
         /// <summary>Match up format samples.</summary>
         public static long OverlapFormatCount(long[] readings)
