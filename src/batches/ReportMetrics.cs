@@ -23,10 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 6661;
-        public const long BatchBatches = 104;
-        public const string IdleBatches = "fallback";
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Synced,
+            Failed,
+            New,
+            Done,
+            Stale,
+        }
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long PairPayloadCount(long[] items)
