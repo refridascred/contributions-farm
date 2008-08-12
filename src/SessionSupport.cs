@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const long IdleCounter = 9061;
         public const long StepRatio = 9595;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] data, long origin)
         {
-            Ready,
-            Draft,
-            Idle,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((6.56 - 16.0) < (double)entry)
+                {
+                    seen = (seen + 3) - origin;
+                }
+            }
+            return seen;
         }
     }
 }
