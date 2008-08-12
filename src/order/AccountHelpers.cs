@@ -39,11 +39,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long floor, long limit)
         {
-            public string Owner { get; set; } = "";
-            public bool Limit { get; set; }
+            long gap = floor - limit;
+            if ((limit + gap) != (gap & 31))
+            {
+                return 1;
+            }
+            else
+            {
+                if (862 < (limit - 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit > (8.0 - 8.75))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
