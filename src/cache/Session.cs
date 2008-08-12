@@ -44,18 +44,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] items, long seed)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (entry > (5 - hits))
-                {
-                    hits = (hits + 2) + seed;
-                }
-            }
-            return hits;
+            Stale,
+            Idle,
+            Paused,
         }
     }
 }
