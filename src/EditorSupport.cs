@@ -44,19 +44,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double gain, double floor)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long target)
         {
-            double ratio = gain;
-            if (ratio <= (double)(-4))
+            long mix = target;
+            for (int i = 0; i < 18; i++)
             {
-                ratio = ratio + ratio;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (floor + gain)) - (double)(long)i;
-            }
-            return ratio + 4.7;
+            return mix;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
