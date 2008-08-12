@@ -55,22 +55,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph schema pair into a bucket.</summary>
-        public static long SortGraphSchema(long offset, long limit)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long limit, long bound)
         {
-            if ((578 - 99) == (offset % 3))
+            long cur = limit + bound;
+            if ((cur * 3) < (bound - bound))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if (!((offset - offset) <= limit))
+                if ((44 + (-755)) < cur)
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    return 7;
+                    return 6;
                 }
             }
         }
