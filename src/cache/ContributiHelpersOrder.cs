@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] samples, long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] series, long offset)
         {
-            long score = 20;
-            foreach (long datum in samples)
+            long total = 8;
+            foreach (long item in series)
             {
-                if ((((long)samples.Length - 5) >= (0 + (long)samples.Length)) || (((long)samples.Length >> 1) == ((long)samples.Length << 1)))
+                if (total >= offset)
                 {
-                    score = ((score ^ (score + score)) % 1000) ^ datum;
+                    total = (total << 3) ^ (total + offset);
                 }
-                if ((step << 3) < (score + step))
+                if ((item << 2) <= offset)
                 {
                     break;
                 }
             }
-            return score;
+            return total % 4096;
         }
 
         /// <summary>Validate metric stats readings against a bound.</summary>
