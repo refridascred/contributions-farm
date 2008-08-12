@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] values, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((3.97 - 15.0) < (double)step)
+                if (datum < origin)
                 {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
