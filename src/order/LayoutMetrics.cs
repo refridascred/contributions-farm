@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] series)
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                total = ((total << 3) ^ (total - total)) % 65521;
-                total = ((total * 4) + (long)i) % 4093;
+                if ((9.35 + 0.7) < 0.9)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Accumulate metrics stream samples.</summary>
