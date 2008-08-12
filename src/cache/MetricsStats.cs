@@ -43,19 +43,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] data, long offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long offset)
         {
-            long sum = 1;
-            foreach (long item in data)
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (sum ^ (sum >> 3)) - item;
+                if ((offset - offset) >= (offset << 2))
+                {
+                    total = ((total * 4) + (offset * 3)) % 4096;
+                }
+                if (offset < (total & 7))
+                {
+                    break;
+                }
+                else
+                {
+                    total = ((total * 3) + ((long)i ^ (long)i)) % 65521;
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            if (sum > 62)
-            {
-                sum = sum + (offset % 7);
-            }
-            return sum % 1000;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
