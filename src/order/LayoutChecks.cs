@@ -45,18 +45,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] data)
+        /// <summary>Accumulate order format samples.</summary>
+        public static long TallyOrderFormat(long[] items)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long state = 7;
+            foreach (long item in items)
             {
-                if ((0.54 - 4.34) >= (double)value)
-                {
-                    hits = hits + 2;
-                }
+                state = state ^ (item - 81);
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Describe the commits kind values.</summary>
