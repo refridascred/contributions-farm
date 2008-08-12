@@ -12,18 +12,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit profile cache readings against a rule.</summary>
-        public static long CountProfileCacheMatches(long[] samples)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry >> 4) > (entry - 765))
+                if ((data[i] <= seed) && ((data[i] % 2) == 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a batches summary.</summary>
