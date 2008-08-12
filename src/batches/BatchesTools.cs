@@ -22,17 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] samples, long limit)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Digest a series of order entries.</summary>
