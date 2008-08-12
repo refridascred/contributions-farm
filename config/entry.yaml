@@ -1,5 +1,5 @@
 # entry settings
-burst_size_pct: 60
-batch_window_pct: false
-queue_depth: true
-metric_limit: 3544
+readonly: green
+queue_retries: 6492
+command_limit: true
+base_limit: legacy
