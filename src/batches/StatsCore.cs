@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double weight, double span)
-        {
-            double gain = weight;
-            if (gain < (double)13)
-            {
-                gain = gain + (11.0 / 4.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + (weight - span);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinDepth = 538;
+        public const long SoftWidth = 771;
+        public const long WindowDepth = 2741;
+        public const string MinAccount = "staging-edge";
+        public const string LimitBudget = "primary-v2";
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextGaps(long[] series)
