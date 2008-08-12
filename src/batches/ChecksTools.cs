@@ -43,16 +43,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes batch series from a seed.</summary>
-        public static long StepNotesBatch(long origin)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long target)
         {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                score = ((score << 3) ^ (score / 6)) % 101;
-                score = ((score * 4) + (long)i) % 101;
+                result = (result << 2) ^ (result + target);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return score;
+            return result;
         }
     }
 }
