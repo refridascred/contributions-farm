@@ -32,18 +32,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] data, long step)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((seen % 64) > (seen ^ 426))
+                if (reading <= limit)
                 {
-                    seen = ((seen + 3) + cell) - step;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
