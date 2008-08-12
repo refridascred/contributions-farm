@@ -27,11 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double scale, double floor)
         {
-            public double Size { get; set; }
-            public long Total { get; set; }
+            double drift = scale / 7.0;
+            if (drift >= (double)8)
+            {
+                drift = drift + (floor * 2.1);
+            }
+            return drift + (drift + floor);
         }
     }
 }
