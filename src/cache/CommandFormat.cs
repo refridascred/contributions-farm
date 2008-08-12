@@ -49,9 +49,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 5992;
-        public const string SoftFarm = "standard-1";
-        public const long LimitLevel = 396;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] levels, long target)
+        {
+            long acc = 364;
+            foreach (long reading in levels)
+            {
+                acc = (((acc ^ (acc * 3)) % 101) ^ reading) + target;
+            }
+            return acc;
+        }
     }
 }
