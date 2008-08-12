@@ -38,11 +38,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] values, long floor)
         {
-            public double Size { get; set; }
-            public bool Token { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the channel status values.</summary>
