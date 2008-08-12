@@ -13,17 +13,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first format contributi entry that matches the target.</summary>
-        public static long SeekFormatContributiIndex(long[] items, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 1;
+            foreach (long reading in levels)
             {
-                if ((items[i] <= step) && ((items[i] % 2) == 0))
+                if ((2.0 * 5.6) < (double)anchor)
                 {
-                    return (long)i;
+                    anchor = ((anchor - (anchor >> 5)) % 1000) - reading;
                 }
             }
-            return -1;
+            if (anchor > 49)
+            {
+                anchor = (anchor - (72 - anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of record readings.</summary>
