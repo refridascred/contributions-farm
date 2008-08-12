@@ -14,17 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a notes schema counter forward.</summary>
-        public static long IterateNotesSchema(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                score = (score + (score >> 4)) % 4096;
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardFactor = 7407;
+        public const long LimitCommits = 3146;
+        public const string HardTimeout = "standard-v2";
+        public const long DefaultTimeout = 7382;
+        public const long MinLevel = 458;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long ClassifyBuffer(long bound, long floor)
