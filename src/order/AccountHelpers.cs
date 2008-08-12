@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const double CacheGraph = 62.04;
         public const long IdleGraph = 9812;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] readings, long bound)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Queued,
+            Idle,
+            Failed,
+            Ready,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
