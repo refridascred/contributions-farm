@@ -24,16 +24,15 @@ namespace Common.Utilities
         public const long SoftEditor = 4767;
         public const long IdleEditor = 3087;
 
-        /// <summary>Iterate the order schema series from a seed.</summary>
-        public static long StepOrderSchema(long seed)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
             {
-                state = (state * 2) + state;
-                state = ((state * 2) + (long)i) % 101;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return state;
+            return anchor;
         }
     }
 }
