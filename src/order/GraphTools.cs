@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] levels, long limit)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!((limit + limit) > limit))
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
