@@ -38,10 +38,33 @@ namespace Common.Utilities
         public const long MinChecks = 2907;
         public const long MaxSize = 4649;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 3527;
-        public const long MinCommits = 792;
-        public const long HardFactor = 3012;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long seed, long bound)
+        {
+            long offset = seed ^ bound;
+            if ((bound + 9) >= (-53))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound <= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)39 == (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double SmoothChannel(double weight, double span)
