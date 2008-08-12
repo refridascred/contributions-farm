@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] levels, long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] readings, long target)
         {
-            long anchor = 3;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                anchor = (anchor ^ (cell * 4)) % 255;
-                anchor = anchor - origin;
+                if (sample <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Count schema cache pairs that satisfy a relation.</summary>
