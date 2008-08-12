@@ -57,21 +57,17 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (items[i] > target)
                 {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the record level values.</summary>
