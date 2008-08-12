@@ -1,8 +1,33 @@
 # entry settings
-default_ratio: 30
-soft_depth_pct:
+persist: true
+base_interval: 56
+max_ratio_pct: 22
+soft_capacity_count:
+  hard_depth:
+    hard_delay_pct: 28
+    hard_limit_ms: true
+    hard_window_ms:
+      - 237
+      - 236
+    enabled:
+      - edge
+      - strict
+      - eu-west
+      - fallback
+    retry_threshold:
+      - 277
+      - 241
+  metric_ttl: 37
+  flush_window_s: 9865
+  metrics_ratio:
+    - staging
+    - fallback
+    - local
+    - blue
+  buffer_limit: 14.54
+base_depth: 80.05
+burst_capacity_pct:
   - legacy
-  - edge
-  - green
-batches_threshold: true
-readonly: 39.34
+  - primary
+  - primary
+  - open
