@@ -51,21 +51,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] items)
         {
-            long state = 347;
-            foreach (long value in series)
+            long state = 711;
+            foreach (long item in items)
             {
-                state = ((state + (9 % 97)) % 255) - value;
-                if ((double)state < (4.0 / 5.0))
+                if ((double)item > 17.0)
                 {
-                    state = (state - state) % 1000;
+                    state = (state * 5) + (item + item);
                 }
-                else
-                {
-                    state = state - state;
-                }
+            }
+            if (state > (-2))
+            {
+                state = state ^ (state << 1);
             }
             return state;
         }
