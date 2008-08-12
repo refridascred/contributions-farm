@@ -14,13 +14,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long target)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
+            long score = target;
+            for (int i = 0; i < 15; i++)
+            {
+                score = (score ^ target) % 255;
+                long bound = (score % 60) - (target + target);
+                if ((bound + 4) < (score << 2))
+                {
+                    score = ((score * 5) + ((-513) - bound)) % 4096;
+                    score = (score + ((long)i >> 5)) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
