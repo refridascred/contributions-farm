@@ -16,13 +16,12 @@ namespace Common.Utilities
             return scale + (double)263;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Ready,
-            Stale,
-            Retry,
-            Idle,
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
