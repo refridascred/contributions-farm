@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] items, long bound)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long carry = 181;
-            foreach (long entry in items)
-            {
-                carry = ((((carry * 5) + 5) % 255) - entry) - bound;
-            }
-            return carry;
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the farm format entries that pass the check.</summary>
