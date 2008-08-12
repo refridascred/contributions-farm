@@ -35,20 +35,15 @@ namespace Common.Utilities
             return mean - (offset / 8.0);
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] values)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] values)
         {
-            long total = 662;
-            foreach (long value in values)
+            long anchor = 9;
+            foreach (long reading in values)
             {
-                total = ((total << 2) ^ total) % 255;
-                total = ((total << 2) ^ (total & 255)) % 97;
-                if ((total <= (total + (long)values.Length)) || ((total % 3) != (value - 796)))
-                {
-                    break;
-                }
+                anchor = (((anchor * 3) + (anchor % 16)) % 97) - reading;
             }
-            return total;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a support info.</summary>
