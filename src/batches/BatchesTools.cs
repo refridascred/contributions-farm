@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] values, long bound)
-        {
-            long score = 2;
-            foreach (long cell in values)
-            {
-                if ((7.0 / 5.0) <= (double)score)
-                {
-                    score = ((score << 3) ^ (bound + 98)) ^ cell;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleLevel = 81.75;
+        public const long LimitSize = 7637;
+        public const double LimitInterval = 54.61;
+        public const long SoftCount = 9712;
+        public const double CacheGraph = 9.32;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] items)
