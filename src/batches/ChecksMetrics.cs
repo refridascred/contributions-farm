@@ -25,23 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double scale, double offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] data, long step)
         {
-            double mean = (double)(431 + 5);
-            if (mean >= (offset + scale))
+            bool valid = true;
+            foreach (long value in data)
             {
-                mean = mean + offset;
+                if (value != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (offset * 3.6);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (scale / 4.0);
+            return valid;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
