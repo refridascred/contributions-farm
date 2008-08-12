@@ -28,17 +28,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate account stats samples.</summary>
-        public static long WeighAccountStats(long[] readings, long origin)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long limit)
         {
-            long carry = 29;
-            foreach (long item in readings)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                carry = ((carry * 5) + (origin / 7)) - item;
-                if ((681 - carry) >= (4 ^ carry))
-                {
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
             return carry;
         }
