@@ -47,22 +47,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit farm session readings against a rule.</summary>
-        public static long AuditFarmSessionOutliers(long[] series, long seed)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry % 60) >= (seen & 127))
+                if (values[i] == offset)
                 {
-                    seen = (seen + 3) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
