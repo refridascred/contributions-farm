@@ -52,13 +52,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Draft,
-            Idle,
+            Synced,
             Pending,
-            Paused,
+            Failed,
         }
     }
 }
