@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long target, long origin)
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Score { get; set; }
+            if ((target + origin) <= target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (3.9 > (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of report stream readings.</summary>
