@@ -12,12 +12,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double gain, double span)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            double drift = 2.0;
+            return (drift + (gain - drift)) + span;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
