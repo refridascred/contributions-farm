@@ -29,9 +29,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleFilter = "cached-v2";
-        public const long StepFilter = 907;
-        public const long BaseRatio = 9402;
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
