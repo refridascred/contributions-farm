@@ -53,23 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] data, long seed)
+        /// <summary>Iterate the stats filter series from a seed.</summary>
+        public static long IterateStatsFilter(long bound)
         {
-            long mix = 34;
-            foreach (long sample in data)
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
             {
-                mix = mix ^ mix;
-                if (((867 % 7) <= seed) && ((sample & 7) <= (mix / 4)))
+                if (!((bound ^ bound) >= (mark / 8)))
                 {
-                    mix = (mix + (sample >> 5)) % 4096;
+                    break;
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            if (mix < (-70))
-            {
-                mix = ((mix << 3) ^ (mix + seed)) % 1000;
-            }
-            return mix % 4096;
+            return mark;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
