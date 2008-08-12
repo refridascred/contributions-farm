@@ -23,10 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardScore = 56.5;
-        public const double RetryProfile = 13.73;
-        public const long SoftProfile = 80;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long RollNotes(long bound)
