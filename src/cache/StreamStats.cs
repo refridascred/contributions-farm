@@ -36,14 +36,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Retry,
-            Draft,
-            Synced,
-            New,
-            Stale,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinTimeout = 2564;
+        public const long HardReport = 4784;
+        public const double SoftCount = 21.71;
+        public const double StepBudget = 62.35;
+        public const double BatchReport = 16.23;
     }
 }
