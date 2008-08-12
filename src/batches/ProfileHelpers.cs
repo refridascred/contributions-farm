@@ -12,27 +12,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] data, long target)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] items, long step)
         {
-            long total = 10;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if (items[i] == step)
                 {
-                    total = total + ((long)i + (long)i);
-                }
-                if ((sample > (total & 1)) && (((long)data.Length * 4) <= (21 + target)))
-                {
-                    total = (total << 2) ^ (sample + target);
-                    total = ((total * 2) + (sample >> 4)) % 101;
-                }
-                if ((total - sample) >= target)
-                {
-                    total = (total - (7 >> 3)) % 65521;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Count the buffer cluster entries that pass the check.</summary>
