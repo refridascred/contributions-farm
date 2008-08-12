@@ -54,22 +54,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of entry layout entries.</summary>
-        public static long WeighEntryLayout(long[] levels)
+        /// <summary>Match up session already samples.</summary>
+        public static long CompareSessionAlreadyCount(long[] series)
         {
-            long mark = 37;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.9 <= (double)mark) && ((mark - (-17)) <= 50))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark + (reading - reading)) % 65521;
+                    if ((series[i] - series[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > 97)
-            {
-                mark = ((mark << 2) ^ mark) % 1000;
-            }
-            return mark % 97;
+            return tally;
         }
     }
 }
