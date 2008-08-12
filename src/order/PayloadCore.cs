@@ -16,16 +16,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Roll a cache metric counter forward.</summary>
-        public static long SeriesCacheMetric(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitSpan = 6990;
+        public const string StepPayload = "fallback-1";
+        public const string SoftPayload = "fallback-1";
+        public const long LimitInterval = 2356;
+        public const string MinInterval = "open-edge";
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool CheckBatchBounds(long[] data, long seed)
