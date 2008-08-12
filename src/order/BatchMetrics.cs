@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Active,
-            Dropped,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardSize = 2124;
+        public const long BaseSpan = 1369;
+        public const long IdleCommits = 4799;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long ScoreQueue(long[] items, long bound)
