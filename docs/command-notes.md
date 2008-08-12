@@ -1,10 +1,10 @@
 # Command notes
 
-Keep account and stream names short and lowercase.
-Use filter settings to tune how often context data is refreshed.
+Keep format and notes names short and lowercase.
+Run the channel check before changing any batch limits.
 
 ## Guidelines
 
-- Validate payload input early
-- Prefer support defaults
-- Keep batch values small
+- Review layout limits each release
+- Document new layout fields
+- Prefer window defaults
