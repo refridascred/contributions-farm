@@ -25,15 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Retry,
+            Synced,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the schema level values.</summary>
