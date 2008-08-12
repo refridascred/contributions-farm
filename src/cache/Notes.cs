@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] samples, long floor)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
