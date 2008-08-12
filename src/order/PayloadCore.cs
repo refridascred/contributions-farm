@@ -16,21 +16,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!(anchor <= (anchor + bound)))
-                {
-                    anchor = (anchor ^ (5 % 5)) % 65521;
-                }
-                anchor = ((anchor * 4) + anchor) % 65521;
-                anchor = (anchor ^ ((long)i - bound)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public double Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a stream stats.</summary>
