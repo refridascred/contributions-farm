@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every graph layout entry stays within the limit.</summary>
-        public static bool CheckGraphLayoutBounds(long[] levels, long step)
-        {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultBudget = "primary";
+        public const long HardSize = 7879;
+        public const double StepCommand = 78.46;
+        public const long RetryCommand = 5872;
+        public const double HardCommand = 80.89;
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
