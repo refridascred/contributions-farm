@@ -1,5 +1,8 @@
 {
-  "flush_retries": [339, 248],
-  "profile_limit": "local",
-  "idle_window_count": 30
+  "poll_capacity_pct": [386, 158],
+  "audit": "edge",
+  "session_threshold": "open",
+  "default_timeout_pct": [249, 337, 2, 248],
+  "soft_threshold": true,
+  "profile_ttl": ["eu-west", "staging", "stable", "green"]
 }
