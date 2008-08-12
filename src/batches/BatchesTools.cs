@@ -35,12 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Locate a filter githubfarm reading by value.</summary>
+        public static long LookupFilterGithubfarmIndex(long[] items, long step)
         {
-            Draft,
-            New,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
