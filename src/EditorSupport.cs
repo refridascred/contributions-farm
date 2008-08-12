@@ -32,18 +32,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] readings, long bound)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long state = 18;
-            foreach (long value in readings)
-            {
-                if (value <= (bound + state))
-                {
-                    state = (state * 4) + (value + state);
-                }
-            }
-            return state % 97;
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Adjust a batch reading.</summary>
