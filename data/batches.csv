@@ -1,7 +1,10 @@
-id,level,region
-1,staging,legacy
-2,53,4.6
-3,33.42,284
-4,17.76,8.47
-5,open,636
-6,open,16.36
+id,count,owner,score
+1,355,395,16.33
+2,664,994,61.18
+3,latest,eu-west,standard
+4,primary,596,72.38
+5,359,251,27.42
+6,348,fallback,829
+7,18.06,green,774
+8,local,555,37.92
+9,561,primary,375
