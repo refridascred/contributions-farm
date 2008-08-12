@@ -71,19 +71,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every contributi batches entry stays within the limit.</summary>
-        public static bool VerifyContributiBatchesBounds(long[] series, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (sample > origin)
+                if (((matches >> 4) < matches) || (((1 ^ matches) > cell) || (matches > (342 / 2))))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) - origin;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
