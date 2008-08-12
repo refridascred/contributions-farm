@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Dropped,
-            Paused,
-            Retry,
-            Synced,
-            Pending,
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
