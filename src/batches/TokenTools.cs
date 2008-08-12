@@ -25,22 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of tools context readings.</summary>
-        public static long TotalToolsContext(long[] samples, long step)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long state = 4;
-            foreach (long datum in samples)
-            {
-                if ((state << 1) < ((-324) * 2))
-                {
-                    state = (state ^ (datum - step)) % 255;
-                }
-            }
-            if (state < 659)
-            {
-                state = (state * 3) + (state * 5);
-            }
-            return state;
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
