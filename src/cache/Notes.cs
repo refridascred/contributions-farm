@@ -55,17 +55,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] data, long offset)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long target, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((3.0 - 2.0) < (double)floor)
             {
-                if (data[i] >= offset)
+                return 4;
+            }
+            else
+            {
+                if (floor <= 139)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)target <= (9.5 + 1.2)) || ((354 << 1) <= (791 + target)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor >= 6.59)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
