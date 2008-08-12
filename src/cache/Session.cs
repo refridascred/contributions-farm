@@ -14,17 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] samples, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] readings, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (samples[i] >= step)
+                if ((2.0 - 5.97) < (double)cell)
                 {
-                    return (long)i;
+                    count = (count + 1) + limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine report values into a single score.</summary>
