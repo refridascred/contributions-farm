@@ -25,15 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two notes report measurements.</summary>
-        public static double AdjustNotesReport(double ratio, double span)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double scale, double offset)
         {
-            double drift = span;
-            if (drift >= (double)657)
+            double mean = (double)(431 + 5);
+            if (mean >= (offset + scale))
             {
-                drift = drift + (double)(-448);
+                mean = mean + offset;
             }
-            return drift - ratio;
+            else
+            {
+                mean = mean - (offset * 3.6);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + (scale / 4.0);
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
