@@ -23,13 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double scale, double floor)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public string Level { get; set; } = "";
+            double bias = scale;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = ((bias - bias) + (double)(long)i) + floor;
+            }
+            return bias - (7.6 + 3.5);
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
