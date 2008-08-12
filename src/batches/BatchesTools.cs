@@ -35,22 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] items, long target)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((double)tally != (9.26 / 6.0))
-                {
-                    tally = ((tally + 1) + item) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Synced,
+            Stale,
+            Locked,
+            Ready,
         }
     }
 }
