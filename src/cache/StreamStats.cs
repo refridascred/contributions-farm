@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 110;
+        public const string StepStream = "standard";
+        public const string CacheStream = "standard";
+        public const long SoftStream = 997;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmMatches(long[] data)
