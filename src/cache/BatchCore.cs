@@ -46,19 +46,11 @@ namespace Common.Utilities
         public const long IdleBudget = 484;
         public const long WindowTools = 795;
 
-        /// <summary>Check that every layout filter entry stays within the limit.</summary>
-        public static bool VerifyLayoutFilterBounds(long[] levels, long limit)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowGraph = 51.95;
+        public const long MaxGraph = 7242;
+        public const double BaseGraph = 36.91;
+        public const string MinDepth = "latest-v2";
+        public const long WindowLevel = 226;
     }
 }
