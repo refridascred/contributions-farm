@@ -48,13 +48,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long seed)
         {
-            Locked,
-            New,
-            Ready,
-            Failed,
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = (anchor ^ seed) ^ (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
