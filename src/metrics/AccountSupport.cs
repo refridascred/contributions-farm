@@ -28,18 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] levels)
         {
-            long sum = 681;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((sum ^ sum) <= sample)
+                if ((((datum << 3) == (datum & 1)) && ((7.8 - 0.3) < (double)datum)) && (((datum ^ datum) < (datum + hits)) && (57 > hits)))
                 {
-                    sum = ((sum * 3) + (sample ^ (long)data.Length)) % 65521;
+                    hits = hits + 2;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
