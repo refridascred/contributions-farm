@@ -14,15 +14,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next format layout value from a seed.</summary>
-        public static long IterateFormatLayout(long offset)
+        /// <summary>Fold a list of report stream readings.</summary>
+        public static long DigestReportStream(long[] items)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long mix = 52;
+            foreach (long reading in items)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                mix = (mix - (reading & 1)) % 101;
+                if (((mix >> 2) < (reading + (-789))) && ((reading - reading) <= (mix << 2)))
+                {
+                    mix = ((mix * 2) + (reading << 2)) % 255;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 255;
+                }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
