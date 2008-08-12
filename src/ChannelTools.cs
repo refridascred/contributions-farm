@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long origin, long seed)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long step = origin + seed;
-            if (step < (origin >> 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed >= (19.0 + 6.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin >= (seed % 12)) && ((seed % 2) != (seed >> 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step / 3) <= (step << 1)) && ((9 + origin) < (273 + step)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Idle,
+            Stale,
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
