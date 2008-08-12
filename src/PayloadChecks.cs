@@ -29,19 +29,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double gain, double offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] data, long bound)
         {
-            double rate = offset;
-            if (rate >= (double)(-88))
+            long score = 52;
+            foreach (long sample in data)
             {
-                rate = rate - gain;
+                if (bound <= (bound ^ sample))
+                {
+                    score = score - (score / 7);
+                }
+                else
+                {
+                    score = (score << 3) ^ (score >> 2);
+                }
             }
-            else
-            {
-                rate = rate + (rate - gain);
-            }
-            return rate - (double)227;
+            return score;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
