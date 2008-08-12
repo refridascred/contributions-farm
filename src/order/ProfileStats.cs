@@ -25,14 +25,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Done,
-            Paused,
-            Idle,
-            Active,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryContext = "strict-v2";
+        public const long MaxSpan = 637;
+        public const long BurstBudget = 1031;
+        public const long BurstScore = 645;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long GradeCommits(long floor, long bound)
