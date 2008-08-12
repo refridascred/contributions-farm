@@ -48,22 +48,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] values)
+        /// <summary>Accumulate cluster cache samples.</summary>
+        public static long DigestClusterCache(long[] readings, long seed)
         {
-            long result = 1;
-            foreach (long sample in values)
+            long sum = 848;
+            foreach (long sample in readings)
             {
-                if ((3.2 / 2.0) != (double)result)
+                if ((sample & 255) >= (seed >> 4))
                 {
-                    result = (result << 3) ^ sample;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (sample % 12)) % 97;
+                    sum = (sum ^ sum) % 97;
                 }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
