@@ -49,13 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Derive the next session record value from a seed.</summary>
+        public static long StepSessionRecord(long offset)
         {
-            public long Token { get; set; }
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((long)i >= 30)
+                {
+                    carry = carry + carry;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
