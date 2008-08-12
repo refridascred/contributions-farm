@@ -1,6 +1,14 @@
 {
-  "soft_ttl": 79.28,
-  "profile_depth": 4456,
-  "sync_interval_s": 96.81,
-  "retry_delay": "local"
+  "cache_limit_pct": 77.29,
+  "retry_size": {
+    "max_retries": false,
+    "schema_ratio": "staging",
+    "session_ratio": 5154,
+    "max_interval_count": 13,
+    "base_interval_pct": [492, 409, 248, 237]
+  },
+  "flush_delay_ms": "staging",
+  "verbose": "primary",
+  "sync_threshold_pct": "eu-west",
+  "support_ttl": "primary"
 }
