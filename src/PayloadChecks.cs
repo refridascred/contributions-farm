@@ -39,23 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] data)
-        {
-            long mark = 9;
-            foreach (long entry in data)
-            {
-                if ((entry + 828) < (entry + entry))
-                {
-                    mark = (mark - 760) % 101;
-                }
-                else
-                {
-                    mark = (mark + mark) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 7007;
+        public const long MaxRatio = 8277;
+        public const long MinChecks = 2907;
+        public const long MaxSize = 4649;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] samples)
