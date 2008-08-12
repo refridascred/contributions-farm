@@ -47,12 +47,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] data, long bound)
         {
-            Locked,
-            Synced,
-            Stale,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!((reading / 9) < bound))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next format entry value from a seed.</summary>
