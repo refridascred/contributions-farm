@@ -23,21 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
