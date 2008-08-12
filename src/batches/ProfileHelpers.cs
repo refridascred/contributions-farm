@@ -59,22 +59,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] series)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((double)item <= (double)tally)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Paused,
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the buffer mode values.</summary>
