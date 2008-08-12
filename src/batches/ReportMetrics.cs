@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit commits farm readings against a rule.</summary>
-        public static long MeasureCommitsFarmMatches(long[] series, long floor)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (7.04 <= (double)floor)
-                {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleSpan = 88.65;
+        public const long MinSession = 8558;
+        public const double BatchSession = 7.22;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
