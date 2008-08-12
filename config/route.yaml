@@ -1,33 +1,5 @@
 # route settings
-persist:
-  compress:
-    batch_size: legacy
-    idle_timeout_s:
-      - latest
-      - local
-      - staging
-    format_depth:
-      - cached
-      - staging
-      - cached
-    format_retries: 250
-    poll_limit_pct:
-      - strict
-      - staging
-      - edge
-    channel_ratio:
-      - open
-      - fallback
-  enabled: false
-  persist: strict
-  poll_capacity: 632
-  base_window_count:
-    - local
-    - latest
-    - legacy
-account_window: local
-profile_ttl:
-  - 40
-  - 42
-  - 4
-  - 193
+warm_depth_s: 48.87
+persist: 90.78
+buffer_timeout: 47
+audit: strict
