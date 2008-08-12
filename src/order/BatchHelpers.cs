@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
+            long anchor = 365;
+            foreach (long reading in series)
+            {
+                anchor = (anchor + (anchor - 3)) % 1000;
+                if (((-7) ^ anchor) <= reading)
+                {
+                    break;
+                }
+            }
+            if (anchor < 9)
+            {
+                anchor = ((anchor * 5) + (anchor ^ anchor)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a checks header.</summary>
