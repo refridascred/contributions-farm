@@ -45,12 +45,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] levels, long seed)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
+                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
