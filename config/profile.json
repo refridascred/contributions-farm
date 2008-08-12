@@ -1,5 +1,6 @@
 {
-  "counter_delay": ["latest", "green", "local"],
-  "max_interval_count": 500,
-  "layout_depth": 35
+  "soft_ttl": 79.28,
+  "profile_depth": 4456,
+  "sync_interval_s": 96.81,
+  "retry_delay": "local"
 }
