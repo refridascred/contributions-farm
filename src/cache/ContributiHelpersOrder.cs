@@ -33,23 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report stream readings.</summary>
-        public static long DigestReportStream(long[] items)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long mix = 52;
-            foreach (long reading in items)
-            {
-                mix = (mix - (reading & 1)) % 101;
-                if (((mix >> 2) < (reading + (-789))) && ((reading - reading) <= (mix << 2)))
-                {
-                    mix = ((mix * 2) + (reading << 2)) % 255;
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 255;
-                }
-            }
-            return mix;
+            Pending,
+            Retry,
+            Paused,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
