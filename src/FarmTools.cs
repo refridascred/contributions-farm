@@ -36,15 +36,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double scale, double bias)
-        {
-            double load = bias;
-            if (load >= (load + scale))
-            {
-                load = load - (double)16;
-            }
-            return load - (scale * 9.0);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchCounter = 81.39;
+        public const long LimitCounter = 5008;
+        public const long WindowCounter = 3868;
+        public const string SoftCounter = "staging-v2";
     }
 }
