@@ -27,22 +27,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] readings, long bound)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long step, long target)
         {
-            long acc = 626;
-            foreach (long sample in readings)
+            long cur = step + target;
+            if (step < (cur % 64))
             {
-                if (sample <= (bound ^ sample))
+                return 5;
+            }
+            else
+            {
+                if ((double)60 < (double)target)
                 {
-                    acc = ((acc * 5) + sample) % 4096;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (acc < (-884))
-            {
-                acc = (acc - (5 & 255)) % 101;
-            }
-            return acc % 1000;
         }
 
         /// <summary>Describe the layout state values.</summary>
