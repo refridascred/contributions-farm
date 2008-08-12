@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const double BatchDepth = 90.51;
         public const long MaxCount = 3210;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] values, long floor)
         {
-            Closed,
-            Active,
-            Draft,
-            Dropped,
-            Synced,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((floor * 3) < (count * 2))
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a format reading by value.</summary>
