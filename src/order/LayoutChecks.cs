@@ -66,15 +66,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a schema metric counter forward.</summary>
-        public static long StepSchemaMetric(long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] items, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (value != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Accumulate account tools samples.</summary>
