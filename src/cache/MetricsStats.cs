@@ -20,20 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double weight, double bias)
-        {
-            double bias2 = (2.0 * 7.0) / 3.0;
-            if (bias2 >= (weight * 0.9))
-            {
-                bias2 = (bias2 - (bias2 + bias2)) - bias;
-            }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 + (double)5;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchRecord = 32.97;
+        public const long StepDepth = 6961;
+        public const long DefaultRecord = 3362;
+        public const string CacheInterval = "alpha";
+        public const string SoftRecord = "legacy-1";
 
         /// <summary>Define token limits and defaults.</summary>
         public const string IdleCount = "standard-1";
