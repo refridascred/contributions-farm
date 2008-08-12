@@ -19,19 +19,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] items, long target)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
