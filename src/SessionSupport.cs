@@ -33,19 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next schema support value from a seed.</summary>
-        public static long SeriesSchemaSupport(long origin)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] series, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor + anchor) > (anchor + (long)i))
+                if (series[i] >= bound)
                 {
-                    anchor = (anchor * 4) + anchor;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
     }
 }
