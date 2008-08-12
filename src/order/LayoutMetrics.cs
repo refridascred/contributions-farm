@@ -19,23 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics stream samples.</summary>
-        public static long DigestMetricsStream(long[] levels, long seed)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long limit, long seed)
         {
-            long carry = 5;
-            foreach (long reading in levels)
+            long delta = limit - seed;
+            if ((double)465 <= (double)limit)
             {
-                carry = (carry << 3) ^ (reading % 10);
-                if ((carry % 5) < (carry + 115))
+                return 8;
+            }
+            else
+            {
+                if ((seed + delta) <= 67)
                 {
-                    carry = (carry - (carry + seed)) % 255;
+                    return 4;
                 }
                 else
                 {
-                    carry = (carry ^ (seed + reading)) % 97;
+                    return 1;
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
