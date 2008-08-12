@@ -1,7 +1,7 @@
-id,active,level,label,owner
-1,45.12,265,222,31.02
-2,local,eu-west,latest,88.36
-3,547,primary,63.62,57.3
-4,latest,cached,fallback,73.21
-5,green,8.22,46.0,local
-6,380,latest,67.2,local
+id,level,score
+1,fallback,staging
+2,blue,26.01
+3,edge,primary
+4,5.11,404
+5,453,eu-west
+6,499,95.17
