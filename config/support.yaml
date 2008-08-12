@@ -1,6 +1,9 @@
 # support settings
-graph_delay: green
-enabled: edge
-base_interval_count: 86.21
-route_interval: 60
-hard_retries_count: 30
+max_depth_s: latest
+hard_limit: true
+verbose: 63.28
+retry_interval: blue
+min_size:
+  - 346
+  - 331
+  - 286
