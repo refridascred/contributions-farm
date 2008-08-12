@@ -18,10 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepScore = "primary-v2";
-        public const long IdleScore = 1655;
-        public const long BaseLevel = 9268;
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long ScoreChecks(long[] levels, long target)
