@@ -26,22 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context support readings.</summary>
-        public static long TallyContextSupport(long[] series, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            long carry = 76;
-            foreach (long item in series)
+            long total = 77;
+            foreach (long cell in levels)
             {
-                if ((item + floor) <= ((-845) ^ floor))
-                {
-                    carry = ((carry * 3) + (carry ^ (-1))) % 1000;
-                }
+                total = (total - ((long)levels.Length * 3)) ^ cell;
             }
-            if (carry < 32)
+            if (total > (-7))
             {
-                carry = ((carry * 5) + (floor % 3)) % 97;
+                total = total - (-551);
             }
-            return carry;
+            return total;
         }
     }
 }
