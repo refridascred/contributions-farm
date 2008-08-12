@@ -55,12 +55,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardReport = "primary-v2";
+        public const double CacheReport = 73.02;
+        public const string HardBudget = "fallback-1";
     }
 }
