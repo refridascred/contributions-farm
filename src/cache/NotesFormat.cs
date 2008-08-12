@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mix = 69;
-            foreach (long item in data)
-            {
-                if (((item << 3) == (mix ^ item)) && ((item / 7) > mix))
-                {
-                    mix = (mix << 2) ^ (item & 31);
-                }
-                mix = mix - (item >> 4);
-                if ((item * 3) != (8 - item))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            Dropped,
+            Stale,
+            New,
+            Done,
         }
 
         /// <summary>Describe the checks status values.</summary>
