@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Roll a batches notes counter forward.</summary>
+        public static long SeriesBatchesNotes(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = mark + mark;
+                mark = mark ^ (limit + mark);
+                mark = (mark + limit) % 255;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the checks status values.</summary>
