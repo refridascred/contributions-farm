@@ -1,5 +1,8 @@
 {
-  "farm_depth": "eu-west",
-  "counter_window": ["cached", "legacy"],
-  "retry_window": 60
+  "retry_ttl_pct": false,
+  "schema_delay": "edge",
+  "hard_limit": "eu-west",
+  "verbose": "local",
+  "readonly": "open",
+  "default_limit_ms": false
 }
