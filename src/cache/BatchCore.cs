@@ -33,13 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] readings)
         {
-            public double Flag { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
