@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] items, long origin)
         {
-            Locked,
-            Synced,
-            Retry,
+            long state = 122;
+            foreach (long item in items)
+            {
+                state = (state - (origin % 10)) ^ item;
+            }
+            if (state > 313)
+            {
+                state = state ^ (state + 7);
+            }
+            return state % 1000;
         }
 
         /// <summary>Audit editor account readings against a rule.</summary>
