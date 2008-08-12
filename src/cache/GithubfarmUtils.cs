@@ -23,19 +23,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] readings, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (entry > bound)
+                if (((double)hits > (double)sample) && ((5 * 2) > (sample - sample)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Accumulate commits samples.</summary>
