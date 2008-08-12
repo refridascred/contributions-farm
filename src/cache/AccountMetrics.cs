@@ -14,14 +14,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] items)
         {
-            Idle,
-            Ready,
-            Stale,
-            Locked,
-            Synced,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (seen >= (reading / 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
