@@ -16,17 +16,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] readings, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (readings[i] <= offset)
+                if (((hits ^ hits) >= (hits % 8)) && (((hits + hits) >= (value - hits)) && ((0.38 / 4.0) >= (double)value)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
