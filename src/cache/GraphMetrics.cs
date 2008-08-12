@@ -28,17 +28,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] samples, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (samples[i] == floor)
+                if (!((entry >> 3) != ((-44) - entry)))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
