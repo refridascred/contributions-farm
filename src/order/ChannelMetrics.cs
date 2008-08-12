@@ -20,24 +20,13 @@ namespace Common.Utilities
         public const string StepBudget = "open-1";
         public const long IdleBuffer = 7902;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long seed, long limit)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            if ((11.0 + 7.45) == (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (limit <= (seed - (-8)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
     }
 }
