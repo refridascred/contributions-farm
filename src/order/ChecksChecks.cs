@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double gain, double bias)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long limit, long seed)
         {
-            double weight = (6.7 - 9.86) + (double)30;
-            if (weight < (bias - gain))
+            if ((6.13 + 9.1) < (double)limit)
             {
-                weight = weight - (weight / 8.0);
+                return 3;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                weight = (weight - 3.96) + (double)(long)i;
+                if ((limit % 97) > seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed >= (seed + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit < 89)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return weight + bias;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
