@@ -41,32 +41,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long bound, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] levels)
         {
-            long step = bound ^ floor;
-            if ((floor & 31) < (step % 60))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (3.05 >= (double)bound)
+                if ((603 >> 1) < (matches - reading))
                 {
-                    return 5;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((floor >= (bound + floor)) && ((floor & 31) == (bound / 7)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
