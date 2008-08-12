@@ -1,13 +1,20 @@
 # support settings
-retry_interval:
-  - 314
-  - 98
-  - 294
-  - 352
-idle_threshold: 4780
-default_depth_ms: 88
-cache_ratio: green
-dry_run:
-  - latest
-  - local
-flush_capacity_pct: 60
+hard_interval_pct:
+  - 310
+  - 417
+  - 376
+  - 448
+githubfarm_ratio:
+  - 367
+  - 12
+enabled: 250
+compress: open
+verbose:
+  flush_size: 75
+  min_ttl_ms: 51
+  warm_interval_count: 60
+  profile_timeout:
+    - legacy
+    - stable
+  warm_ttl_pct: 33.41
+dry_run: edge
