@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit githubfarm graph readings against a rule.</summary>
-        public static long MeasureGithubfarmGraphMatches(long[] series)
+        /// <summary>Count tools editor pairs that satisfy a relation.</summary>
+        public static long PairToolsEditorCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7 / 6) >= matches)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) - datum;
+                    if ((samples[i] + samples[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
