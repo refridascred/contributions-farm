@@ -24,16 +24,10 @@ namespace Common.Utilities
         public const string LimitGraph = "cached";
         public const double BatchCount = 17.9;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 4031;
+        public const string CacheContributi = "open-v2";
+        public const double DefaultContributi = 55.07;
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
