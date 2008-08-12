@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const double CacheGraph = 62.04;
         public const long IdleGraph = 9812;
 
-        /// <summary>Measure how many buffer tools samples are out of range.</summary>
-        public static long MeasureBufferToolsMatches(long[] readings)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (!((seen / 7) < reading))
+                if (entry >= bound)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
