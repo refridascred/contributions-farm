@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinBatch = 73.92;
-        public const string BurstBatch = "standard-v2";
-        public const long LimitRatio = 1437;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public long Label { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LookupStreamIndex(long[] items, long floor)
