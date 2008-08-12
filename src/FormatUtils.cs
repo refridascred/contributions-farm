@@ -48,39 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long limit, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] readings, long target)
         {
-            long diff = limit + floor;
-            if ((double)limit <= (15.0 / 6.0))
+            long carry = 389;
+            foreach (long item in readings)
             {
-                return 1;
+                carry = ((carry ^ carry) % 1000) - item;
             }
-            else
+            if (carry > 53)
             {
-                if (!((diff + 1) < (8 + 347)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor / 6) > (2 + floor)) && ((double)limit == (3.0 * 3.7)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor + floor) >= (628 * 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                carry = (carry * 3) + (target - carry);
             }
+            return carry;
         }
 
         /// <summary>Accumulate account samples.</summary>
