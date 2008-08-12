@@ -1,8 +1,17 @@
 {
-  "idle_window_pct": [173, 65, 483, 448],
-  "burst_ttl_count": ["fallback", "green"],
-  "sync_ttl": 1.58,
-  "base_size": "open",
-  "batch_window_pct": 8892,
-  "burst_depth": 7.34
+  "hard_capacity_pct": {
+    "default_depth_pct": 1024,
+    "queue_delay": 4882,
+    "soft_capacity": {
+      "support_capacity": "stable",
+      "persist": 87,
+      "compress": "green",
+      "sync_retries_count": 6305,
+      "warm_depth_count": 76.61
+    },
+    "farm_ttl": "local",
+    "payload_timeout": true
+  },
+  "readonly": 71,
+  "editor_timeout": 32.14
 }
