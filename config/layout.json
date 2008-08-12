@@ -1,6 +1,17 @@
 {
-  "record_capacity": "cached",
-  "base_capacity_ms": "blue",
-  "base_threshold_ms": false,
-  "profile_delay": "local"
+  "default_size_s": 11.8,
+  "cache_ratio": {
+    "hard_window": 500,
+    "poll_depth": "fallback",
+    "order_interval": "edge",
+    "dry_run": 23,
+    "persist": 100
+  },
+  "idle_size_count": {
+    "batch_threshold": 1,
+    "persist": "stable",
+    "hard_interval_ms": "blue",
+    "audit": "open"
+  },
+  "idle_depth_ms": 60
 }
