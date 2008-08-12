@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every commits githubfarm entry stays within the limit.</summary>
-        public static bool CheckCommitsGithubfarmRange(long[] readings, long limit)
+        /// <summary>Audit report metric readings against a rule.</summary>
+        public static long AuditReportMetricOutliers(long[] values)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (item <= limit)
+                if (68 >= (tally - tally))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) ^ reading;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
