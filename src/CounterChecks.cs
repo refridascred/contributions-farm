@@ -31,11 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Check that every commits contributi entry stays within the limit.</summary>
+        public static bool ValidateCommitsContributiBounds(long[] levels, long bound)
         {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the account kind values.</summary>
