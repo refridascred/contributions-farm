@@ -27,12 +27,16 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitInterval = 50.19;
-        public const long BatchReport = 9370;
-        public const double BaseReport = 54.63;
-        public const long IdleInterval = 3529;
-        public const double LimitDepth = 51.04;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double MaxSize = 92.98;
