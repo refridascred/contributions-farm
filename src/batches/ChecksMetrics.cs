@@ -16,10 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 3061;
-        public const double CacheFactor = 38.8;
-        public const string StepSpan = "primary-edge";
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public long Count { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool ValidateNotesRange(long[] data, long step)
