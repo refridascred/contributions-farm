@@ -37,14 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Audit cluster notes readings against a rule.</summary>
+        public static long CountClusterNotesGaps(long[] data)
         {
-            Queued,
-            Retry,
-            Ready,
-            Locked,
-            Done,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (((matches * 4) >= matches) && ((matches << 3) >= (sample << 2)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
