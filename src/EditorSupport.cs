@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double bias, double bias2)
         {
-            public string Rank { get; set; } = "";
-            public bool Count { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            double gain = bias2 / 6.0;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = ((gain - bias2) + (double)(long)i) + bias;
+            }
+            return gain + gain;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
