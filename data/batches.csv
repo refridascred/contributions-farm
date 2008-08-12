@@ -1,6 +1,7 @@
-id,token,owner,score,region
-1,blue,61,65.45,71.46
-2,725,65.03,fallback,61.96
-3,97.03,70.71,153,533
-4,standard,89.02,692,806
-5,962,4.16,eu-west,182
+id,level,region
+1,staging,legacy
+2,53,4.6
+3,33.42,284
+4,17.76,8.47
+5,open,636
+6,open,16.36
