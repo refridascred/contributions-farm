@@ -53,19 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stats filter series from a seed.</summary>
-        public static long IterateStatsFilter(long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] levels)
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (!((bound ^ bound) >= (mark / 8)))
+                if ((cell + seen) <= seen)
                 {
-                    break;
+                    seen = seen + 2;
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
