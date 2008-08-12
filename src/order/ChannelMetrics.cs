@@ -32,15 +32,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Blend two payload commits measurements.</summary>
-        public static double SmoothPayloadCommits(double bias, double span)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double scale, double offset)
         {
-            double gain = bias;
-            if (gain <= bias)
+            double weight = scale / 2.0;
+            if (weight < offset)
             {
-                gain = gain - (span - span);
+                weight = weight + (scale - scale);
             }
-            return gain - (span / 5.0);
+            return weight - (double)2;
         }
     }
 }
