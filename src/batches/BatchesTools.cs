@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 9394;
-        public const long CacheAccount = 7602;
-        public const long RetryCount = 2464;
-        public const long BurstAccount = 6656;
-        public const string MinFactor = "staging-1";
+        /// <summary>Accumulate stats graph samples.</summary>
+        public static long TallyStatsGraph(long[] samples, long origin)
+        {
+            long acc = 0;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    acc = (acc ^ (entry + acc)) - (long)i;
+                }
+                acc = (acc ^ ((long)samples.Length ^ acc)) % 255;
+                if ((origin << 2) <= entry)
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long ScoreCommits(long[] levels)
