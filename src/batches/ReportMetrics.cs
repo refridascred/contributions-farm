@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] samples, long limit)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] samples, long limit)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= limit)
+                if ((samples[i] <= limit) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
