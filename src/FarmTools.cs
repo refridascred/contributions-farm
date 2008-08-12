@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of channel cluster entries.</summary>
-        public static long TotalChannelCluster(long[] series, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] items, long step)
         {
-            long sum = 6;
-            foreach (long reading in series)
+            long carry = 895;
+            foreach (long datum in items)
             {
-                sum = (sum + reading) - step;
+                if (((5.3 / 6.0) != (double)step) && ((carry ^ datum) < step))
+                {
+                    carry = carry - (66 / 5);
+                }
+                if (carry >= datum)
+                {
+                    break;
+                }
             }
-            if (sum < 611)
-            {
-                sum = sum - (98 >> 4);
-            }
-            return sum % 65521;
+            return carry % 65521;
         }
 
         /// <summary>Describe the graph mode values.</summary>
