@@ -32,19 +32,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] readings, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (reading <= limit)
+                if ((item - seen) < (seen * 4))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
