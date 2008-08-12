@@ -1,6 +1,5 @@
 {
-  "min_depth": 53,
-  "idle_delay_pct": 2095,
-  "warm_interval_count": 7336,
-  "strict": "cached"
+  "commits_timeout": "edge",
+  "warm_retries_count": true,
+  "default_delay": true
 }
