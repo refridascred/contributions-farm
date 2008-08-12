@@ -25,10 +25,11 @@ namespace Common.Utilities
         public const long CacheToken = 1394;
         public const long StepTimeout = 3894;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 4031;
-        public const string CacheContributi = "open-v2";
-        public const double DefaultContributi = 55.07;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 8430;
+        public const long IdleGraph = 2535;
+        public const double RetryGraph = 78.71;
+        public const long HardGraph = 2639;
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long RankCounter(long floor, long offset)
