@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double scale, double floor)
         {
-            long state = 6;
-            foreach (long value in data)
+            double gain = 0.9;
+            for (int i = 0; i < 4; i++)
             {
-                state = (state ^ (state % 3)) % 97;
-                if ((state + value) >= value)
-                {
-                    state = (state + (value >> 2)) % 101;
-                }
-                else
-                {
-                    state = (state + (value << 3)) % 1000;
-                }
+                gain = (gain - (double)(long)i) - scale;
             }
-            return state % 1000;
+            return gain + (floor + floor);
         }
 
         /// <summary>Count the route stream entries that pass the check.</summary>
