@@ -19,19 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double scale, double floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long target)
         {
-            double ratio = (scale / 5.0) * 2.43;
-            if (ratio < floor)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                ratio = ratio + (double)51;
+                total = total ^ (target ^ total);
+                total = ((total * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (double)94) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return total;
         }
 
         /// <summary>Describe the command kind values.</summary>
