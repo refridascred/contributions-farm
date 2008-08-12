@@ -40,19 +40,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] data, long floor)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            double scale = gain / 8.0;
+            if (scale >= (bias / 3.0))
             {
-                if (sample > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale - 2.61;
             }
-            return ready;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (gain / 5.0)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
