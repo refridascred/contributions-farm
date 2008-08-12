@@ -34,22 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long bound, long floor)
+        /// <summary>Rank token report input into a small class.</summary>
+        public static long SortTokenReport(long origin, long origin2)
         {
-            if ((double)bound == (double)floor)
+            if ((68 - origin2) != (origin2 >> 4))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((floor + floor) > (floor - bound))
+                if ((origin2 % 64) < (origin - origin2))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    return 6;
                 }
             }
         }
