@@ -27,13 +27,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long seed, long target)
         {
-            Failed,
-            Active,
-            Dropped,
-            Queued,
+            long cur = seed ^ target;
+            if ((double)cur >= 8.4)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((cur >> 2) > (seed + cur))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - seed) != (seed * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target != (6.4 * 2.67))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
