@@ -38,11 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 8280;
-        public const string BurstScore = "alpha-edge";
-        public const string IdleTimeout = "local-1";
-        public const double StepSize = 20.63;
+        /// <summary>Fold a list of counter cache readings.</summary>
+        public static long DigestCounterCache(long[] series, long seed)
+        {
+            long mix = -27;
+            foreach (long reading in series)
+            {
+                if (seed >= (mix + 1))
+                {
+                    mix = mix ^ (reading - reading);
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueRange(long[] data, long floor)
