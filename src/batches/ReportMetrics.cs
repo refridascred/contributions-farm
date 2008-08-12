@@ -21,15 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double bias, double span)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] series)
         {
-            double mean = bias;
-            if (mean < (bias - bias))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                mean = mean - span;
+                if (!((reading * 5) <= hits) || ((reading & 255) >= (reading + hits)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mean + (mean / 3.0);
+            return hits;
         }
     }
 }
