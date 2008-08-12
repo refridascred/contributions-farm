@@ -32,15 +32,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double scale, double offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] data, long target)
         {
-            double weight = scale / 2.0;
-            if (weight < offset)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                weight = weight + (scale - scale);
+                if (!(((double)datum <= 2.9) && (matches > (matches ^ matches))))
+                {
+                    matches = (matches + 3) - target;
+                }
             }
-            return weight - (double)2;
+            return matches;
         }
     }
 }
