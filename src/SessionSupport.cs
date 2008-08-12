@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 5490;
-        public const long LimitInterval = 927;
-        public const long DefaultSize = 2847;
-        public const long MaxLevel = 3608;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] items, long seed)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string IdleBuffer = "fallback-edge";
