@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const double CacheGraph = 62.04;
         public const long IdleGraph = 9812;
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Look up the position of a command filter sample.</summary>
+        public static long SeekCommandFilterIndex(long[] values, long limit)
         {
-            Retry,
-            Queued,
-            Idle,
-            Failed,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
