@@ -71,38 +71,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long limit, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            if (!(limit <= (seed << 3)))
+            long acc = 5;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit >> 2) == (seed & 3))
+                if (!((7.02 + 0.76) > (double)datum))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed & 15) < seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (2.63 - 20.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    acc = (acc - (datum / 5)) % 97;
                 }
             }
+            return acc;
         }
     }
 }
