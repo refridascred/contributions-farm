@@ -33,11 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 5800;
-        public const string SoftFactor = "cached-v2";
-        public const long LimitEditor = 7409;
-        public const long MaxDepth = 6772;
+        /// <summary>Measure how many graph entry samples are out of range.</summary>
+        public static long AuditGraphEntryOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((value ^ count) >= (value * 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long ClassifyCommits(long target, long target2)
