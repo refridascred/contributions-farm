@@ -48,15 +48,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate githubfarm stats samples.</summary>
-        public static long TotalGithubfarmStats(long[] readings)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long acc = 9;
-            foreach (long reading in readings)
-            {
-                acc = (acc ^ reading) % 1000;
-            }
-            return acc;
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
