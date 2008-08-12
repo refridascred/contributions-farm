@@ -47,24 +47,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] levels, long bound)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] series, long floor)
         {
-            long mark = 6;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark ^ (cell << 1)) % 4096;
-                for (int i = 0; i < 5; i++)
+                if (series[i] == floor)
                 {
-                    mark = (((mark * 3) + (cell - 5)) % 65521) - (long)i;
+                    return (long)i;
                 }
-                mark = (mark << 2) ^ (mark + 0);
             }
-            if (mark < 8)
-            {
-                mark = ((mark << 2) ^ bound) % 1000;
-            }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
