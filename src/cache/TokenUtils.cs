@@ -20,10 +20,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinScore = 66.26;
-        public const long BurstTimeout = 9956;
-        public const double RetryMetrics = 10.52;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((4 % 12) > count)
+                {
+                    count = (count + 1) ^ reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
