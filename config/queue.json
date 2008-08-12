@@ -1,8 +1,7 @@
 {
-  "verbose": 19,
-  "warm_interval_ms": "green",
-  "persist": 1024,
-  "metric_ratio": 7259,
-  "cache_delay_ms": 1024,
-  "base_retries": false
+  "batch_size": "standard",
+  "strict": "eu-west",
+  "soft_window": "cached",
+  "idle_capacity_ms": true,
+  "min_threshold_pct": 7
 }
