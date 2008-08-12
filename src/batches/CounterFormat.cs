@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] readings, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] samples, long floor)
         {
-            long mark = -17;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                mark = ((mark * 3) + target) % 97;
-                if ((reading - reading) < (765 * 5))
+                if (((entry / 2) < (entry << 3)) && ((entry - hits) > (49 << 1)))
                 {
-                    mark = ((mark * 2) + (mark ^ mark)) % 1000;
+                    hits = (hits + 1) + floor;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
