@@ -35,22 +35,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 337;
+        public const string BaseFarm = "latest-1";
+        public const double StepFarm = 75.74;
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
