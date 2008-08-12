@@ -38,14 +38,11 @@ namespace Common.Utilities
         public const long WindowStats = 7943;
         public const long SoftStats = 5730;
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public bool Total { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double IdleTools = 55.58;
+        public const long DefaultBudget = 6678;
+        public const double SoftTimeout = 63.13;
+        public const double StepTools = 55.87;
 
         /// <summary>Count the counter support entries that pass the check.</summary>
         public static long MeasureCounterSupportMatches(long[] samples, long offset)
