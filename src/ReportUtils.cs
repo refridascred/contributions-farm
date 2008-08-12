@@ -51,12 +51,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitCount = 994;
-        public const string HardBatches = "open-edge";
-        public const long BatchInterval = 9893;
-        public const string WindowBatches = "cached";
-        public const long IdleBatches = 1264;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Failed,
+            Draft,
+            Stale,
+            Idle,
+            Done,
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double BlendBuffer(double bias, double bias2)
