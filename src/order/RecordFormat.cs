@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] readings, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
+            long total = 1;
+            foreach (long datum in readings)
             {
-                mix = (mix ^ (floor ^ mix)) % 65521;
-                if (mix <= (floor >> 2))
+                if (!((floor + datum) > datum))
                 {
-                    mix = ((mix * 2) + (floor - 8)) % 255;
+                    total = (total - (datum >> 4)) % 65521;
                 }
-                else
-                {
-                    mix = (mix << 3) ^ mix;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Count schema cache pairs that satisfy a relation.</summary>
