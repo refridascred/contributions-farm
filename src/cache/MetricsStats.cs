@@ -25,13 +25,10 @@ namespace Common.Utilities
         public const double MaxSpan = 33.74;
         public const string IdleProfile = "legacy-1";
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstFactor = 667;
+        public const long BatchInterval = 8468;
+        public const long BaseCounter = 732;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long WeighWindow(long[] values, long seed)
