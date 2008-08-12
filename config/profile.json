@@ -1,5 +1,5 @@
 {
-  "metrics_limit": 73.03,
-  "base_size_count": ["standard", "standard", "strict"],
-  "default_window_ms": [300, 191, 418]
+  "burst_delay_s": 30,
+  "default_ratio_pct": true,
+  "hard_size_s": "stable"
 }
