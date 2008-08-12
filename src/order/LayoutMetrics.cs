@@ -25,15 +25,16 @@ namespace Common.Utilities
         public const long SoftEditor = 4767;
         public const long IdleEditor = 3087;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double bias, double offset)
+        /// <summary>Iterate the order schema series from a seed.</summary>
+        public static long StepOrderSchema(long seed)
         {
-            double load = (double)(639 - (-820));
-            if (load > offset)
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                load = (load - (1.0 + offset)) - bias;
+                state = (state * 2) + state;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return load - (offset + load);
+            return state;
         }
     }
 }
