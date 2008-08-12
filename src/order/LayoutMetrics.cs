@@ -20,12 +20,18 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] series)
         {
-            Pending,
-            Done,
-            Active,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum <= (double)49)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
