@@ -19,9 +19,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinSize = 87.74;
-        public const long HardWidth = 7352;
-        public const long WindowRoute = 2251;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long seed, long offset)
+        {
+            long prev = seed ^ offset;
+            if (!((double)prev > 11.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(0.11 < (double)seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)prev < 6.09) || ((696 * 4) < offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
