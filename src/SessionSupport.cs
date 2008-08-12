@@ -26,13 +26,12 @@ namespace Common.Utilities
         public const long IdleCounter = 9061;
         public const long StepRatio = 9595;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public double Region { get; set; }
+            Ready,
+            Draft,
+            Idle,
         }
     }
 }
