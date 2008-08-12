@@ -26,28 +26,29 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long limit, long bound)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long origin, long offset)
         {
-            if ((bound % 100) != (3 % 24))
+            long step = origin ^ offset;
+            if ((step * 2) <= (step - 648))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (!(bound > (limit - bound)))
+                if (((step << 2) <= 66) || ((origin + 5) >= (42 << 3)))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if (limit > (limit - bound))
+                    if ((step - step) <= (65 >> 2))
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        if (((-8) < (limit % 97)) && ((bound ^ limit) < bound))
+                        if ((8 - 8) > (step - step))
                         {
                             return 7;
                         }
