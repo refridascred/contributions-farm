@@ -83,22 +83,12 @@ namespace Common.Utilities
             return (mean + (mean / 8.0)) + offset;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] items)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((datum - matches) == (datum * 4))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Done,
+            Pending,
         }
     }
 }
