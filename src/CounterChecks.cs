@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public double Label { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitInterval = 9544;
+        public const double CacheTimeout = 89.32;
+        public const long CacheMetrics = 1793;
+        public const string LimitMetrics = "alpha-1";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double MinScore = 62.58;
