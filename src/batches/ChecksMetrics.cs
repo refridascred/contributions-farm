@@ -16,11 +16,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long seed, long target)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long delta = seed + target;
+            if ((target + delta) == (seed >> 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target & 1) != (target ^ seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
