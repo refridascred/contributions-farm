@@ -48,15 +48,18 @@ namespace Common.Utilities
             return ratio - (floor / 8.0);
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] samples)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] data)
         {
-            long sum = 61;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in data)
             {
-                sum = ((sum ^ (30 & 1)) % 1000) ^ datum;
+                if (((double)hits <= (5.37 + 20.0)) && ((hits - item) < (hits + hits)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
