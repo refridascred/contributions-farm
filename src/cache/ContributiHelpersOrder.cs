@@ -27,15 +27,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Closed,
+            Failed,
+            Dropped,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
