@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const string IdleInterval = "local-edge";
         public const string HardCount = "cached-edge";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardWidth = 6445;
-        public const double MaxGithubfarm = 64.4;
-        public const string MinDepth = "legacy-v2";
-        public const double IdleFactor = 40.96;
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double gain, double span)
+        {
+            double load = (double)(147 / 3);
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load + load) + (double)(long)i) - gain;
+            }
+            return load + (span / 8.0);
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double ScaleCluster(double scale, double bias)
