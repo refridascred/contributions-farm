@@ -34,12 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double weight, double bias)
         {
-            Retry,
-            Dropped,
-            Pending,
+            double bias2 = bias - weight;
+            return bias2 + (weight + weight);
         }
 
         /// <summary>Adjust a account session reading.</summary>
