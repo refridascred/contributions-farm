@@ -20,22 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double weight, double bias)
         {
-            long sum = 4;
-            foreach (long cell in data)
+            double bias2 = (2.0 * 7.0) / 3.0;
+            if (bias2 >= (weight * 0.9))
             {
-                if ((sum - cell) > cell)
-                {
-                    sum = (sum - 43) % 4096;
-                }
+                bias2 = (bias2 - (bias2 + bias2)) - bias;
             }
-            if (sum > 0)
+            else
             {
-                sum = sum - sum;
+                bias2 = bias2 + bias2;
             }
-            return sum;
+            return bias2 + (double)5;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
