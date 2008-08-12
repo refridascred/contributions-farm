@@ -58,11 +58,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinCount = 4631;
-        public const long RetryRatio = 752;
-        public const long LimitLevel = 2687;
-        public const long WindowFarm = 6600;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
