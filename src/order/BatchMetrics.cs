@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long BaseSpan = 1369;
         public const long IdleCommits = 4799;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] series, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((count << 1) > (entry - offset))
+                if (sample > seed)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a layout summary.</summary>
