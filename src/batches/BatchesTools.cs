@@ -12,16 +12,15 @@ namespace Common.Utilities
         public const long BurstAccount = 6656;
         public const string MinFactor = "staging-1";
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long total = 13;
+            foreach (long item in levels)
             {
-                score = (score ^ (26 & 127)) % 65521;
-                score = ((score * 4) + (long)i) % 1000;
+                total = (total ^ (item >> 1)) % 97;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Iterate the stats payload series from a seed.</summary>
