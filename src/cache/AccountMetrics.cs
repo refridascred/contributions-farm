@@ -31,19 +31,25 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] data, long floor)
+        /// <summary>Classify a route record pair into a bucket.</summary>
+        public static long BucketRouteRecord(long limit, long seed)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long diff = limit + seed;
+            if (!((double)diff != (5.4 - 7.14)))
             {
-                if (entry <= floor)
+                return 4;
+            }
+            else
+            {
+                if ((78 << 1) <= (limit - diff))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ok;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
