@@ -53,12 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] series)
         {
-            Queued,
-            New,
-            Active,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((seen >> 1) <= (seen << 1))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
