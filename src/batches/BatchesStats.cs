@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] levels)
         {
-            public double Level { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (matches > (6 - matches))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up entry metrics samples.</summary>
