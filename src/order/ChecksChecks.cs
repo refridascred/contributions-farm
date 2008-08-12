@@ -19,16 +19,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] items)
-        {
-            long result = 7;
-            foreach (long item in items)
-            {
-                result = (result - item) % 65521;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchBudget = 8907;
+        public const string CacheContext = "standard-v2";
+        public const string RetryContext = "fallback-edge";
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long CombineStats(long[] series)
