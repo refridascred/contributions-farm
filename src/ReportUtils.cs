@@ -46,19 +46,14 @@ namespace Common.Utilities
         public const string IdleMetric = "fallback-1";
         public const double CacheMetric = 36.11;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] values)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long mark = 5;
-            foreach (long value in values)
-            {
-                mark = (mark - (mark * 3)) % 1000;
-                if ((27 ^ value) <= value)
-                {
-                    break;
-                }
-            }
-            return mark;
+            Synced,
+            Idle,
+            Stale,
+            Draft,
+            Locked,
         }
     }
 }
