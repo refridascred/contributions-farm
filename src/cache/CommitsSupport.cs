@@ -80,10 +80,20 @@ namespace Common.Utilities
         public const long MaxSize = 6623;
         public const long HardRatio = 1813;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryDepth = 5277;
-        public const double IdleTimeout = 70.25;
-        public const string CacheBudget = "alpha";
+        /// <summary>Check that every githubfarm command entry stays within the limit.</summary>
+        public static bool CheckGithubfarmCommandLimits(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool CheckFilterLimits(long[] levels, long step)
