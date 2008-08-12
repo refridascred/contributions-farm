@@ -35,13 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Locked,
-            Active,
-            Queued,
-            New,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxWidth = 5919;
+        public const long MinFactor = 3750;
+        public const long WindowOrder = 9752;
+        public const long BurstLevel = 7442;
+        public const string BatchFactor = "staging-1";
     }
 }
