@@ -39,11 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Find the first queue channel entry that matches the target.</summary>
+        public static long LookupQueueChannelIndex(long[] levels, long seed)
         {
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
