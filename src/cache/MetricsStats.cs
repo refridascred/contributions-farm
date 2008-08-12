@@ -54,13 +54,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] data, long floor)
         {
-            Idle,
-            Failed,
-            Synced,
-            Locked,
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
