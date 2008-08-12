@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long step)
+        /// <summary>Roll a stream metric counter forward.</summary>
+        public static long IterateStreamMetric(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((levels[i] > step) && ((levels[i] % 5) == 0))
+                anchor = anchor + (step + step);
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    anchor = ((anchor ^ ((long)i / 9)) % 101) - (long)i2;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
