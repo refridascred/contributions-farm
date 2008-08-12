@@ -1,4 +1,6 @@
 # githubfarm settings
-warm_delay_s: 1024
-persist: strict
-max_capacity: 67.6
+layout_size: 25.5
+readonly: 96.22
+warm_threshold_pct: 55.41
+batch_threshold_ms: staging
+batch_ratio_pct: primary
