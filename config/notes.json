@@ -1,5 +1,8 @@
 {
-  "enabled": "staging",
-  "command_timeout": ["primary", "staging", "green", "legacy"],
-  "compress": false
+  "stream_size": ["local", "cached", "strict"],
+  "default_interval": "open",
+  "cluster_threshold": "edge",
+  "cache_size_pct": "eu-west",
+  "filter_size": 56,
+  "base_timeout_ms": "latest"
 }
