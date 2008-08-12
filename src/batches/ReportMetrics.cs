@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next stats support value from a seed.</summary>
-        public static long RollStatsSupport(long bound)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
