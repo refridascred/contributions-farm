@@ -1,6 +1,7 @@
-id,weight,token
-1,64.71,standard
-2,local,255
-3,212,primary
-4,fallback,standard
-5,100,68.73
+id,token,active,score,weight
+1,929,534,734,green
+2,277,672,61.5,73
+3,408,open,540,eu-west
+4,323,strict,180,52.09
+5,eu-west,221,31.64,cached
+6,205,stable,local,640
