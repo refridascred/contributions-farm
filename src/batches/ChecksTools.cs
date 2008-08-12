@@ -40,13 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long origin)
         {
-            Retry,
-            Draft,
-            Paused,
-            Locked,
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = mix ^ (origin + (long)i);
+                mix = (mix - 26) % 1000;
+                mix = (mix ^ origin) % 4096;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
