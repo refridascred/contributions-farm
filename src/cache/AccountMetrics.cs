@@ -33,21 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Count the context already entries that pass the check.</summary>
+        public static long MeasureContextAlreadyMatches(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry > (count / 3))
                 {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
