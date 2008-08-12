@@ -50,9 +50,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 3440;
-        public const string HardCommits = "latest-edge";
-        public const long MinCount = 7008;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 79.24;
+        public const long WindowEntry = 5060;
+        public const string StepEntry = "strict-v2";
+        public const long BaseInterval = 8410;
     }
 }
