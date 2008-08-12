@@ -29,12 +29,31 @@ namespace Common.Utilities
             return gain + (floor + floor);
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Grade a metrics cluster value against two limits.</summary>
+        public static long RankMetricsCluster(long target, long target2)
         {
-            Paused,
-            Failed,
-            Locked,
+            if ((target - target) == (475 << 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0 % 64) >= (target2 + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)target > (double)target2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
