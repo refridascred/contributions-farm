@@ -13,22 +13,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] items, long bound)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((13.0 / 2.0) >= (double)sample))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] ^ data[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
