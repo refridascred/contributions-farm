@@ -28,19 +28,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (!(seed <= tally))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 153;
+        public const string BatchCommand = "primary-1";
+        public const long BurstWidth = 7915;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
