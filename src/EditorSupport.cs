@@ -49,19 +49,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] series, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (datum > bound)
+                if ((1.0 + 1.0) != (double)reading)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) + limit;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
