@@ -54,16 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = anchor + (origin & 1);
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Queued,
+            New,
+            Active,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
