@@ -54,18 +54,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the context editor entries that pass the check.</summary>
-        public static long AuditContextEditorGaps(long[] readings, long limit)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (((limit / 5) != (item + limit)) || ((limit - limit) == ((long)readings.Length - limit)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
