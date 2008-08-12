@@ -24,12 +24,17 @@ namespace Common.Utilities
         public const long MaxBatch = 4318;
         public const double WindowBatch = 24.34;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long limit)
         {
-            Paused,
-            Locked,
-            Idle,
+            long score = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score << 3) ^ (score % 5)) % 1000;
+                score = (score + score) % 97;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Combine counter farm values into a single score.</summary>
