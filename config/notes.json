@@ -1,21 +1,6 @@
 {
-  "queue_delay": {
-    "sync_retries": false,
-    "warm_depth": 500,
-    "readonly": 8983,
-    "verbose": 0.75,
-    "base_capacity": ["open", "primary", "fallback", "legacy"]
-  },
-  "tools_depth": {
-    "burst_timeout_count": 60,
-    "default_retries_ms": [93, 237, 143],
-    "max_ratio_ms": {
-      "dry_run": "latest",
-      "compress": "blue",
-      "warm_window_count": ["latest", "staging", "cached", "open"]
-    },
-    "hard_threshold_count": false,
-    "base_ratio_count": false
-  },
-  "idle_interval_ms": true
+  "route_interval": "edge",
+  "persist": 43.09,
+  "filter_size": 41,
+  "readonly": "legacy"
 }
