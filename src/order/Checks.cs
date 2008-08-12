@@ -28,18 +28,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] readings, long floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((item > ((-18) ^ (-773))) || ((floor * 3) <= (floor << 1))) || !(item > (matches + 15)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
