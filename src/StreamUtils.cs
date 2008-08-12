@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((4.9 + 8.0) < (double)limit)
-                {
-                    sum = (sum + (sum + limit)) % 97;
-                    sum = (sum << 3) ^ (5 - sum);
-                }
-                sum = sum ^ (limit + limit);
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public double Region { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a already stats.</summary>
