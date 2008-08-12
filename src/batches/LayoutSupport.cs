@@ -28,22 +28,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] series)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (count > (count + count))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a token info.</summary>
