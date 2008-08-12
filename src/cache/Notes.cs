@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double rate, double floor)
-        {
-            double scale = rate;
-            if (scale <= scale)
-            {
-                scale = scale + (7.0 + rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinLevel = 61.5;
+        public const string MaxLevel = "legacy-1";
+        public const string BurstCount = "fallback-v2";
+        public const long LimitSupport = 708;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadGaps(long[] readings)
