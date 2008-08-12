@@ -54,18 +54,11 @@ namespace Common.Utilities
         public const long BurstBatches = 8024;
         public const long BatchCount = 2655;
 
-        /// <summary>Digest a series of notes command entries.</summary>
-        public static long WeighNotesCommand(long[] items, long offset)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long sum = 67;
-            foreach (long cell in items)
-            {
-                if (((sum + cell) < (-114)) && ((offset + offset) == (sum / 9)))
-                {
-                    sum = sum - (sum * 5);
-                }
-            }
-            return sum % 4096;
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
