@@ -111,18 +111,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] samples)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (cell < (cell + tally))
+                if (((sample << 3) != (seen - 86)) || ((origin > (sample + 28)) && ((seen + 26) > (sample + sample))))
                 {
-                    tally = tally + 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
