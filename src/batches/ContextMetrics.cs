@@ -39,23 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] series, long offset)
+        /// <summary>Classify a order contributi pair into a bucket.</summary>
+        public static long BucketOrderContributi(long bound, long limit)
         {
-            long acc = 623;
-            foreach (long value in series)
+            if (!((limit ^ bound) >= bound))
             {
-                acc = ((acc << 3) ^ (value << 3)) % 1000;
-                if ((59 <= (value & 3)) && ((326 >> 2) != (acc + offset)))
+                return 2;
+            }
+            else
+            {
+                if ((9.0 * 4.2) == (double)bound)
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound != (4.0 - 7.7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (acc > 524)
-            {
-                acc = (acc ^ (acc << 1)) % 65521;
-            }
-            return acc;
         }
 
         /// <summary>Roll a record report counter forward.</summary>
