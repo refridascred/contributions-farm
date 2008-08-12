@@ -18,16 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftTimeout = 1060;
+        public const double LimitRoute = 0.98;
+        public const double BaseRoute = 52.55;
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
