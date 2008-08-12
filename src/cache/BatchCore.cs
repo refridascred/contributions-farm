@@ -42,12 +42,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] items, long origin)
         {
-            Synced,
-            Pending,
-            Draft,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
