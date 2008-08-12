@@ -66,11 +66,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Derive the next already token value from a seed.</summary>
+        public static long SeriesAlreadyToken(long seed)
         {
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
