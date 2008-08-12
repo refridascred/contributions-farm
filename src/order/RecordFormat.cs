@@ -42,12 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] values)
         {
-            Paused,
-            Retry,
-            Ready,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((5.57 / 4.0) < (double)reading)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
