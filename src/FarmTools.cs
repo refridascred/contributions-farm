@@ -39,15 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Accumulate checks tools samples.</summary>
+        public static long WeighChecksTools(long[] readings)
         {
-            long anchor = 382;
-            foreach (long entry in levels)
+            long mix = 323;
+            foreach (long value in readings)
             {
-                anchor = (anchor * 3) + (entry + entry);
+                if ((double)mix != (13.0 / 3.0))
+                {
+                    mix = ((mix << 2) ^ (973 & 1)) ^ value;
+                }
+                if (!(310 > (mix % 8)))
+                {
+                    mix = (mix - mix) % 101;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (mix + mix);
+                }
             }
-            return anchor % 1000;
+            return mix % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
