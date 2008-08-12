@@ -1,5 +1,25 @@
 # support settings
-min_window_s: 3831
-batch_threshold: 91.55
-schema_depth: true
-session_limit: true
+enabled: 74.79
+format_limit:
+  flush_delay_count:
+    batch_limit: 9
+    metric_ratio: local
+    batch_interval_s: 500
+  batch_size_pct: legacy
+  cluster_capacity: 2876
+  enabled:
+    default_ttl: 19.46
+    editor_ttl:
+      - 471
+      - 330
+      - 159
+      - 121
+    stream_delay: edge
+    base_size: fallback
+    dry_run: false
+  retry_capacity: false
+  dry_run:
+    - standard
+    - eu-west
+persist: fallback
+tools_limit: legacy
