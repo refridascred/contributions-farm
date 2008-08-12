@@ -14,15 +14,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next record batches value from a seed.</summary>
-        public static long RollRecordBatches(long seed)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
