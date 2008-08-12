@@ -76,10 +76,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 3268;
-        public const long BurstFormat = 743;
-        public const long LimitFormat = 1994;
-        public const long IdleTimeout = 1678;
+        /// <summary>Count counter format pairs that satisfy a relation.</summary>
+        public static long CompareCounterFormatCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
