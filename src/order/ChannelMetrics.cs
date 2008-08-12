@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "local-1";
-        public const long BurstToken = 8795;
-        public const string WindowTimeout = "legacy-v2";
-        public const string WindowCount = "fallback";
-        public const long IdleToken = 6617;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleBudget = 4852;
+        public const long DefaultChannel = 106;
+        public const long SoftRatio = 1688;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double MinScore = 46.27;
