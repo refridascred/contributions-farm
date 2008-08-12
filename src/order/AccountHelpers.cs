@@ -67,17 +67,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] data, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = -2;
+            foreach (long value in data)
             {
-                if ((data[i] > floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((((carry * 4) + (0 * 4)) % 255) ^ value) + limit;
             }
-            return -1;
+            return carry % 97;
         }
     }
 }
