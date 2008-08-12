@@ -24,18 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many payload channel samples are out of range.</summary>
-        public static long AuditPayloadChannelHits(long[] levels, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((seen << 2) >= (7 + cell))
+                if (((double)reading == (8.47 + 5.7)) && ((4.5 / 3.0) < (double)hits))
                 {
-                    seen = (seen + 3) + seed;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Iterate the stats payload series from a seed.</summary>
