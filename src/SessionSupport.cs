@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double gain, double span)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] readings, long offset)
         {
-            double drift = 7.2;
-            if (drift > drift)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                drift = ((drift - 4.0) + gain) + span;
+                if (datum < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (drift * 8.0)) + (double)(long)i;
-            }
-            return drift - 4.71;
+            return valid;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
