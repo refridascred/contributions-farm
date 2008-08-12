@@ -24,11 +24,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinWidth = 4786;
-        public const double LimitRatio = 93.97;
-        public const long IdleStream = 1254;
-        public const string SoftStream = "strict-v2";
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long target, long seed)
+        {
+            long prev = target - seed;
+            if ((double)seed < (5.2 * 0.39))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((prev ^ (-149)) <= (seed % 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target % 64) > (target / 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long RankStats(long target, long floor)
