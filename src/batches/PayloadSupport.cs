@@ -35,21 +35,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count buffer window pairs that satisfy a relation.</summary>
-        public static long OverlapBufferWindowCount(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 5;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((1 - value) >= (-84))
                 {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                for (int i = 0; i < 4; i++)
+                {
+                    score = (((score << 3) ^ (5 ^ 7)) % 1000) + (long)i;
+                }
+                score = score + (value - 91);
             }
-            return matches;
+            if (score > 76)
+            {
+                score = score ^ target;
+            }
+            return score;
         }
     }
 }
