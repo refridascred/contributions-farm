@@ -23,12 +23,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
