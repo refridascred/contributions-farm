@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
+            long score = 4;
+            foreach (long datum in levels)
+            {
+                if ((score + score) != (datum - score))
+                {
+                    score = (score + (datum & 31)) % 97;
+                }
+                else
+                {
+                    score = ((score * 3) + (datum + 123)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
