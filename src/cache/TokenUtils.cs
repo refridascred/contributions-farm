@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Failed,
-            Done,
-            New,
-            Stale,
+            Draft,
+            Paused,
+            Active,
         }
 
         /// <summary>Describe the session state values.</summary>
