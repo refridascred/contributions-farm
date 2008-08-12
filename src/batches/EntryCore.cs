@@ -51,17 +51,10 @@ namespace Common.Utilities
             return bias + (ratio / 4.0);
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == bound) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowRatio = 347;
+        public const long MaxCommand = 3785;
+        public const long DefaultRatio = 7558;
+        public const string WindowFactor = "alpha-v2";
     }
 }
