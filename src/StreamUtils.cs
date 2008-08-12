@@ -22,11 +22,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] data)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            long anchor = 696;
+            foreach (long datum in data)
+            {
+                anchor = ((anchor << 2) ^ (datum * 4)) % 101;
+            }
+            if (anchor < 0)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Adjust a graph account reading.</summary>
