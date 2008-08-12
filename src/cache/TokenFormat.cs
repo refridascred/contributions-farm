@@ -20,19 +20,14 @@ namespace Common.Utilities
             return rate + 3.6;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] levels, long seed)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Dropped,
+            Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
