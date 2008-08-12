@@ -39,10 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchSpan = 45.4;
-        public const long RetryProfile = 6045;
-        public const string LimitProfile = "strict-v2";
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public bool Limit { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long GradeWindow(long floor, long offset)
