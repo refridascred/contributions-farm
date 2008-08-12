@@ -31,10 +31,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepLevel = 2978;
-        public const long MinGraph = 8287;
-        public const string HardScore = "strict-1";
-        public const string RetryGraph = "local-v2";
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = (sum + (sum + sum)) % 97;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
