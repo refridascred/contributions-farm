@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
