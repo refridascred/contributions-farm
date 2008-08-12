@@ -42,22 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] values)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long result = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((5.57 / 4.0) < (double)reading)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
