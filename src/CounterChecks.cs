@@ -20,10 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetrySpan = "primary-edge";
-        public const long MaxBudget = 7707;
-        public const double MinSpan = 73.58;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinScore = 62.58;
+        public const long HardCluster = 4878;
+        public const double MinBudget = 78.23;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long CombineCache(long[] samples, long origin)
