@@ -20,18 +20,16 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] values)
+        /// <summary>Roll a notes schema counter forward.</summary>
+        public static long IterateNotesSchema(long bound)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((4 % 12) > count)
-                {
-                    count = (count + 1) ^ reading;
-                }
+                score = (score + (score >> 4)) % 4096;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
