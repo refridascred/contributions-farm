@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] levels, long bound)
+        /// <summary>Rank buffer counter input into a small class.</summary>
+        public static long BucketBufferCounter(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            if (!(seed > bound))
             {
-                if ((bound & 31) < (cell + bound))
+                return 7;
+            }
+            else
+            {
+                if ((bound - bound) >= bound)
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of session entries.</summary>
