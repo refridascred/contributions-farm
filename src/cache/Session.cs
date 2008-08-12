@@ -37,12 +37,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Count the session cluster entries that pass the check.</summary>
+        public static long MeasureSessionClusterHits(long[] data, long origin)
         {
-            Stale,
-            Idle,
-            Paused,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((origin << 3) >= (count * 5))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
     }
 }
