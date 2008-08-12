@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string SoftRatio = "latest-edge";
         public const long DefaultQueue = 8400;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] items, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (cell >= limit)
+                if ((sample - tally) >= sample)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a profile options.</summary>
