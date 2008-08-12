@@ -38,11 +38,12 @@ namespace Common.Utilities
         public const long LimitBudget = 4241;
         public const double SoftSession = 97.19;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
+            Ready,
+            Failed,
+            Queued,
         }
     }
 }
