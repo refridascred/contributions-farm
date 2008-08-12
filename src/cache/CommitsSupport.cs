@@ -63,11 +63,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double gain, double offset)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double bias, double floor)
         {
-            double mean = gain * 2.0;
-            return (mean + (mean / 8.0)) + offset;
+            double scale = floor;
+            if (scale < (scale * 8.11))
+            {
+                scale = (scale - (double)0) + bias;
+            }
+            return scale + scale;
         }
 
         /// <summary>Locate a format reading by value.</summary>
