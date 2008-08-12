@@ -1,8 +1,5 @@
 {
-  "burst_depth_pct": true,
-  "warm_depth_pct": 60,
-  "poll_delay_ms": 26,
-  "base_depth_pct": "staging",
-  "hard_retries_s": false,
-  "burst_ttl": 32.97
+  "farm_depth": "eu-west",
+  "counter_window": ["cached", "legacy"],
+  "retry_window": 60
 }
