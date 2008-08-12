@@ -28,19 +28,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] items)
         {
-            long total = 77;
-            foreach (long cell in levels)
+            long score = 878;
+            foreach (long sample in items)
             {
-                total = (total - ((long)levels.Length * 3)) ^ cell;
+                score = ((score << 2) ^ (score + score)) % 97;
+                if (!(((sample + 6) == (sample - score)) || ((3.0 / 3.0) == (double)score)))
+                {
+                    score = (score - (sample / 4)) % 65521;
+                }
+                if (!((double)sample != (6.9 - 5.71)))
+                {
+                    score = ((score << 2) ^ sample) % 65521;
+                }
+                if ((3 % 12) > (90 - sample))
+                {
+                    break;
+                }
             }
-            if (total > (-7))
-            {
-                total = total - (-551);
-            }
-            return total;
+            return score % 97;
         }
     }
 }
