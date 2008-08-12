@@ -28,38 +28,26 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long seed, long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] values)
         {
-            if ((9.2 * 3.64) <= (double)seed)
+            long acc = 842;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed >= (seed << 1)) && ((offset << 2) < (offset & 1)))
+                if (!((3.0 * 11.0) < (double)acc))
                 {
-                    return 1;
+                    acc = ((acc * 2) + (acc + 597)) % 4096;
                 }
                 else
                 {
-                    if (((offset + seed) > seed) && ((seed + offset) <= (seed << 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset & 63) <= (seed & 127))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    acc = ((acc << 3) ^ ((long)values.Length ^ acc)) % 101;
+                }
+                if ((item + item) >= 14)
+                {
+                    break;
                 }
             }
+            return acc % 97;
         }
     }
 }
