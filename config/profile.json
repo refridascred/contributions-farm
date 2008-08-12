@@ -1,6 +1,6 @@
 {
-  "soft_depth_pct": 6194,
-  "compress": [429, 437, 124],
-  "audit": 1024,
-  "batch_limit_pct": 500
+  "githubfarm_capacity": 3853,
+  "warm_ratio_pct": 19,
+  "sync_limit_ms": true,
+  "compress": [252, 142]
 }
