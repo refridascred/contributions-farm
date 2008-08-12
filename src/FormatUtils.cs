@@ -20,17 +20,13 @@ namespace Common.Utilities
             return ratio + (ratio + scale);
         }
 
-        /// <summary>Locate a batch entry reading by value.</summary>
-        public static long LocateBatchEntryIndex(long[] levels, long seed)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
