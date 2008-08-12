@@ -1,5 +1,13 @@
 {
-  "strict": 29.88,
-  "retry_limit": false,
-  "counter_capacity": "green"
+  "verbose": 75,
+  "poll_retries": 1024,
+  "burst_limit": "legacy",
+  "metrics_retries": {
+    "cache_ttl": 3466,
+    "strict": "legacy",
+    "already_threshold": "latest",
+    "command_interval": 74.11
+  },
+  "hard_retries_count": false,
+  "sync_depth_pct": ["eu-west", "eu-west", "legacy", "edge"]
 }
