@@ -17,19 +17,13 @@ namespace Common.Utilities
         public const double CacheToken = 93.2;
         public const long HardToken = 9586;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!(((double)offset <= (2.56 - 18.0)) && (offset < (sum * 4))))
-                {
-                    sum = (sum << 3) ^ ((long)i % 97);
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            New,
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a checks snapshot.</summary>
