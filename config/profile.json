@@ -1,5 +1,5 @@
 {
-  "compress": "open",
-  "profile_limit": "fallback",
-  "min_delay_count": false
+  "counter_delay": ["latest", "green", "local"],
+  "max_interval_count": 500,
+  "layout_depth": 35
 }
