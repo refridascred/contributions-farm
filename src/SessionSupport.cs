@@ -36,16 +36,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc ^ (target * 4)) % 255;
-                acc = ((acc * 4) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
