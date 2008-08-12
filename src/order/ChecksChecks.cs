@@ -27,11 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 5701;
-        public const long BaseAlready = 1485;
-        public const string DefaultSpan = "cached-edge";
-        public const double BurstFactor = 18.58;
-        public const double StepRatio = 85.36;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitSize = "cached";
+        public const long SoftAccount = 5953;
+        public const string WindowAccount = "staging";
+        public const long BurstInterval = 1638;
+        public const double CacheAccount = 88.64;
     }
 }
