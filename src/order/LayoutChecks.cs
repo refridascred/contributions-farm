@@ -57,19 +57,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] items, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long bound)
         {
-            bool found = true;
-            foreach (long value in items)
+            if ((double)bound >= 4.1)
             {
-                if (value != limit)
+                return 7;
+            }
+            else
+            {
+                if (((double)bound >= 8.5) && ((limit * 2) != (bound / 9)))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound << 3) != (bound - 303))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound - bound) > ((-4) & 255))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Accumulate account tools samples.</summary>
