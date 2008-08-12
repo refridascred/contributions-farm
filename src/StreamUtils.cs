@@ -53,34 +53,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long offset, long seed)
+        /// <summary>Rank window context input into a small class.</summary>
+        public static long ClassifyWindowContext(long bound, long floor)
         {
-            if (27 < seed)
+            if (bound <= (bound % 12))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((seed - seed) > seed)
+                if ((floor >= (bound & 63)) && ((3 / 8) > (floor + floor)))
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    if ((1.4 - 4.5) > (double)offset)
+                    if (!(bound <= (floor >> 5)))
                     {
-                        return 7;
+                        return 8;
                     }
                     else
                     {
-                        if (((double)offset < 5.0) && (seed <= 317))
+                        if (9.8 >= (double)bound)
                         {
-                            return 6;
+                            return 3;
                         }
                         else
                         {
-                            return 0;
+                            return 5;
                         }
                     }
                 }
