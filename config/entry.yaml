@@ -1,11 +1,7 @@
 # entry settings
-stats_timeout: local
-filter_limit: false
-enabled:
-  default_ttl_s: true
-  contributi_ttl: false
-  record_size: 53.88
-  enabled: 66.58
-sync_interval_pct: 100
-default_timeout: 1
-cache_limit: eu-west
+base_retries_count: true
+retry_timeout: latest
+soft_depth_count: 250
+default_interval_pct: 7.69
+cache_limit_pct: 250
+persist: latest
