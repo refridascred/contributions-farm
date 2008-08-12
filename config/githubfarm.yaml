@@ -1,8 +1,14 @@
 # githubfarm settings
-max_delay: legacy
-hard_threshold_pct: 58.87
-cache_ttl_pct: latest
-queue_ttl:
-  - 21
-  - 314
-verbose: 55.49
+idle_window: 30
+flush_ttl_ms:
+  - standard
+  - blue
+  - strict
+  - fallback
+soft_retries_s:
+  - cached
+  - strict
+  - latest
+  - local
+sync_threshold_ms: 19
+idle_retries_s: local
