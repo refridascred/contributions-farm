@@ -17,12 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseScore = 4716;
-        public const long DefaultTools = 1219;
-        public const string IdleTools = "fallback-v2";
-        public const string RetryCount = "fallback-1";
-        public const double SoftTools = 62.68;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderHits(long[] levels)
