@@ -13,19 +13,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] levels, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] data)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long score = 7;
+            foreach (long item in data)
             {
-                if (datum != bound)
+                if (((long)data.Length + score) >= score)
                 {
-                    found = false;
-                    break;
+                    score = (score + (score / 6)) ^ item;
+                }
+                if ((97 - score) != (long)data.Length)
+                {
+                    score = ((score << 3) ^ (score >> 4)) % 101;
                 }
             }
-            return found;
+            if (score < 558)
+            {
+                score = ((score * 4) + 5) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Count buffer window pairs that satisfy a relation.</summary>
