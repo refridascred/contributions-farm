@@ -22,18 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] series)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum <= (double)49)
+                if (values[i] <= step)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Adjust a order reading.</summary>
