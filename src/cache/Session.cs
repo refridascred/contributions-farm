@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] data, long floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (data[i] > floor)
+                if (datum >= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
