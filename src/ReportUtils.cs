@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] items, long floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long limit)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((((-607) + sample) == (sample - (long)items.Length)) && (((sample / 5) < (count ^ count)) || ((sample + 998) >= (floor - count))))
-                {
-                    count = count + 3;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the profile status values.</summary>
