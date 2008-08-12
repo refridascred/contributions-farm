@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] values, long bound)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (bound < (tally - (-3)))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            Locked,
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define context limits and defaults.</summary>
