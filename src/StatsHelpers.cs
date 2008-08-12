@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] series)
         {
-            Dropped,
-            Idle,
-            Active,
-            Closed,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (count < (reading + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
