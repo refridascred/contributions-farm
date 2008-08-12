@@ -13,12 +13,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public string Count { get; set; } = "";
+            public double Count { get; set; }
             public long Stamp { get; set; }
-            public double Owner { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Blend two entry measurements.</summary>
