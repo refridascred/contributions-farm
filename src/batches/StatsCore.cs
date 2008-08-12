@@ -79,10 +79,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 108;
-        public const long StepBudget = 2119;
-        public const long MinRatio = 4715;
-        public const double StepBuffer = 89.54;
+        /// <summary>Locate a order metric reading by value.</summary>
+        public static long SeekOrderMetricIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
