@@ -55,14 +55,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long floor)
         {
-            Synced,
-            Pending,
-            Draft,
-            Active,
-            New,
+            long score = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                score = score ^ (506 >> 2);
+                score = ((score << 3) ^ (score ^ (long)i)) % 4096;
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
