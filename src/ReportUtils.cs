@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 9538;
-        public const long DefaultFarm = 471;
-        public const long RetryScore = 7284;
-        public const long MinFarm = 341;
-        public const long RetryFarm = 6444;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((((-607) + sample) == (sample - (long)items.Length)) && (((sample / 5) < (count ^ count)) || ((sample + 998) >= (floor - count))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long SeekCommandIndex(long[] items, long step)
