@@ -50,17 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] readings, long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a format info.</summary>
