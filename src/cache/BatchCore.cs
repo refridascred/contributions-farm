@@ -52,11 +52,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double scale, double bias)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] readings, long target)
         {
-            double scale2 = scale;
-            return (scale2 + scale) + bias;
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((((matches - target) != (target - 4)) && ((double)target != (double)35)) || ((186 / 4) < (reading + (long)readings.Length)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
