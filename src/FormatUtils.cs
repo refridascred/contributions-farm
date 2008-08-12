@@ -73,11 +73,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinBudget = 5837;
-        public const long WindowScore = 8031;
-        public const long MinInterval = 9885;
-        public const long MaxSpan = 6589;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] samples, long step)
+        {
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long DigestAccount(long[] values)
