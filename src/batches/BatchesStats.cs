@@ -48,18 +48,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many record schema samples are out of range.</summary>
-        public static long TallyRecordSchemaMatches(long[] items, long bound)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (bound > matches)
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public double Region { get; set; }
         }
     }
 }
