@@ -23,18 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit session counter readings against a rule.</summary>
-        public static long TallySessionCounterHits(long[] values)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((matches + 7) < (matches << 1)) && (((sample + 4) == (sample + sample)) || ((sample * 3) > 511)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Draft,
+            Synced,
+            Ready,
         }
 
         /// <summary>Iterate the commits format series from a seed.</summary>
