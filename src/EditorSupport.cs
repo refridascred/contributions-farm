@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] readings, long floor)
+        /// <summary>Project the next cluster order value.</summary>
+        public static double BlendClusterOrder(double rate, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = rate;
+            if (ratio > 11.0)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (rate / 2.0)) - span;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (double)9;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
