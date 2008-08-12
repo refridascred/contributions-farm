@@ -1,5 +1,14 @@
 # entry settings
-idle_ttl_ms: 250
-soft_limit: strict
-strict: 15
-sync_depth_s: 500
+cache_limit: strict
+hard_limit: false
+poll_interval_count: cached
+counter_retries: 92.91
+flush_delay_s:
+  - legacy
+  - edge
+  - stable
+  - legacy
+burst_timeout:
+  - fallback
+  - edge
+  - blue
