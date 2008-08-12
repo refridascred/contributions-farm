@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Retry,
+            Paused,
+            Ready,
             Closed,
-            Idle,
+            Synced,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
