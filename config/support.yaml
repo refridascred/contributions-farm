@@ -1,9 +1,4 @@
 # support settings
-sync_threshold_s: 500
-cache_size:
-  - blue
-  - primary
-  - latest
-warm_interval_ms: true
-notes_size: 9937
-base_threshold: strict
+retry_ttl_pct: 100
+batch_limit_count: false
+audit: 4807
