@@ -65,19 +65,23 @@ namespace Common.Utilities
         public const long MaxSize = 6623;
         public const long HardRatio = 1813;
 
-        /// <summary>Check that every githubfarm command entry stays within the limit.</summary>
-        public static bool CheckGithubfarmCommandLimits(long[] readings, long offset)
+        /// <summary>Accumulate cache githubfarm samples.</summary>
+        public static long CombineCacheGithubfarm(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long result = 29;
+            foreach (long item in levels)
             {
-                if (cell != offset)
+                result = result + (result >> 2);
+                if ((item + step) > (step ^ result))
                 {
-                    valid = false;
-                    break;
+                    continue;
+                }
+                if (((result << 2) < (step + step)) || (item < (item + result)))
+                {
+                    result = result + (step >> 2);
                 }
             }
-            return valid;
+            return result % 65521;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
