@@ -27,11 +27,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseDepth = 7602;
-        public const double HardTimeout = 19.53;
-        public const long BaseCommits = 6912;
-        public const string BurstCommits = "local";
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
