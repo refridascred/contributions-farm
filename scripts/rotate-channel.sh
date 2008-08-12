@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge staging; do
+CHANNEL_LIMIT=166
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in primary eu-west cached fallback; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
