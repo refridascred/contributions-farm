@@ -37,13 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Pending,
-            Stale,
-            Idle,
-            Done,
+            public long Level { get; set; }
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
