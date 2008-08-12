@@ -35,19 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double scale, double span)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            double scale2 = (double)7 - (span - scale);
-            if (scale2 >= (scale * 0.05))
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
             {
-                scale2 = scale2 + (double)(-36);
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = (((sum * 5) + (sum - sum)) % 65521) - (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            else
-            {
-                scale2 = scale2 + (scale + span);
-            }
-            return scale2 + (scale * 14.0);
+            return sum;
         }
     }
 }
