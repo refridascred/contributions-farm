@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the channel format entries that pass the check.</summary>
-        public static long MeasureChannelFormatOutliers(long[] values)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] readings)
         {
             long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading >= (reading + reading))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] - readings[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
