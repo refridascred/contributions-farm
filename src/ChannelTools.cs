@@ -16,19 +16,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Scale a checks session figure with a bias.</summary>
-        public static double SmoothChecksSession(double ratio, double bias)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] readings, long offset)
         {
-            double drift = ratio;
-            if (drift < (double)57)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - (double)63;
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift - drift;
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
