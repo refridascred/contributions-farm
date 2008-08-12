@@ -1,19 +1,5 @@
 {
-  "githubfarm_window": 3150,
-  "batch_window": {
-    "layout_capacity": "green",
-    "audit": "edge",
-    "retry_size_ms": ["legacy", "primary", "open", "edge"],
-    "hard_ttl": {
-      "soft_threshold_ms": "legacy",
-      "min_timeout_pct": [373, 265, 308, 397],
-      "format_ratio": "eu-west",
-      "dry_run": 250,
-      "payload_size": "open"
-    },
-    "verbose": 2
-  },
-  "strict": 100,
-  "persist": 60,
-  "report_delay": ["fallback", "edge"]
+  "readonly": 1024,
+  "soft_timeout": 1024,
+  "audit": "primary"
 }
