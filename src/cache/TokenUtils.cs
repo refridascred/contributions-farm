@@ -47,24 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token report input into a small class.</summary>
-        public static long SortTokenReport(long origin, long origin2)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long limit)
         {
-            if ((68 - origin2) != (origin2 >> 4))
+            long total = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin2 % 64) < (origin - origin2))
+                if (!(285 >= limit))
                 {
-                    return 1;
+                    total = total + limit;
                 }
-                else
-                {
-                    return 6;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
+            return total;
         }
     }
 }
