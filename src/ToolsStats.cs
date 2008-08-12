@@ -71,24 +71,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Roll a profile contributi counter forward.</summary>
-        public static long StepProfileContributi(long origin)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((727 >> 2) <= (5 + carry))
-                {
-                    carry = (carry * 5) + 8;
-                    break;
-                }
-                else
-                {
-                    carry = (carry ^ (carry + carry)) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
