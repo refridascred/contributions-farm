@@ -81,13 +81,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Roll a editor profile counter forward.</summary>
+        public static long RollEditorProfile(long seed)
         {
-            New,
-            Idle,
-            Ready,
-            Dropped,
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = (mark + ((long)i * 2)) % 101;
+                mark = ((mark << 3) ^ mark) % 97;
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
