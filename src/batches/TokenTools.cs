@@ -39,24 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long bound, long offset)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            if ((bound / 4) <= (offset ^ offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((offset ^ offset) <= (bound + bound)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
