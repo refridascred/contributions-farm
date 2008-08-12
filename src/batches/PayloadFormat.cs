@@ -33,10 +33,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCount = 8596;
-        public const long BatchDepth = 7035;
-        public const long IdleInterval = 4711;
-        public const long BaseCache = 6656;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((((double)target < (16.0 - 14.0)) && ((double)target > (4.5 + 16.0))) && ((3.0 * 2.82) == (double)item))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
