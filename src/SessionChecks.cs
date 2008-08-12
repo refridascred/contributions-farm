@@ -39,17 +39,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] values, long step)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long bound, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((double)bound >= (5.9 + 8.7))
             {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if (!((4.4 + 16.0) > (double)bound))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
