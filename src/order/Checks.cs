@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double weight, double span)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double mean = weight;
-            if (mean > (double)33)
-            {
-                mean = mean + span;
-            }
-            return mean - weight;
+            Retry,
+            Ready,
+            Idle,
+            Locked,
+            Pending,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
