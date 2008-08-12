@@ -7,10 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=430
+for item in edge stable; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=473
 log "limit is ${BUFFER_LIMIT}"
