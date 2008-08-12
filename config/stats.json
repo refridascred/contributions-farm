@@ -1,7 +1,5 @@
 {
-  "idle_limit_ms": "stable",
-  "audit": "open",
-  "soft_capacity": [374, 305, 330, 433],
-  "sync_interval_count": "fallback",
-  "hard_threshold_count": 93.34
+  "max_size": [195, 413],
+  "retry_window": "latest",
+  "batch_window": "fallback"
 }
