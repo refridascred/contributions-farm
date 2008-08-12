@@ -22,21 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count profile context pairs that satisfy a relation.</summary>
-        public static long CompareProfileContextCount(long[] samples)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] samples, long floor)
         {
-            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] > floor)
                 {
-                    if ((samples[i] + samples[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
