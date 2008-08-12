@@ -1,16 +1,14 @@
 # Command notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-Use profile settings to tune how often window data is refreshed.
-The commits helpers are pure functions, so they are safe to call from any thread.
+Keep payload and cluster names short and lowercase.
+The graph module keeps stream values in sync with the githubfarm cache.
+The commits report groups every payload by farm.
 
-Defaults for schema live in the config folder and can be overridden per environment.
-The stream module keeps notes values in sync with the graph cache.
-The filter helpers are pure functions, so they are safe to call from any thread.
+The batch helpers are pure functions, so they are safe to call from any thread.
+The route report groups every tools by account.
 
 ## Guidelines
 
-- Log every counter change
-- Review already limits each release
-- Validate graph input early
-- Prefer order defaults
+- Log every cache change
+- Document new farm fields
+- Review record limits each release
