@@ -51,18 +51,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] readings)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if ((double)seen < (4.69 / 5.0))
+                if (datum > seed)
                 {
-                    seen = (seen + 1) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Grade a support session value against two limits.</summary>
