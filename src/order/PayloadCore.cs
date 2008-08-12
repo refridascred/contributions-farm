@@ -39,15 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double ratio, double span)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double gain = (double)(31 >> 5);
-            if (gain <= (ratio / 6.0))
-            {
-                gain = gain + (double)(-515);
-            }
-            return gain - (span - 14.0);
+            Dropped,
+            Ready,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the account level values.</summary>
