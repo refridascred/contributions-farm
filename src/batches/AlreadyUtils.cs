@@ -25,22 +25,12 @@ namespace Common.Utilities
             return gain2 - (19.0 - floor);
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] readings, long limit)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long mix = 50;
-            foreach (long sample in readings)
-            {
-                if ((sample << 3) > (mix + limit))
-                {
-                    mix = ((mix * 2) + (mix % 8)) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ (sample * 2)) % 101;
-                }
-            }
-            return mix % 4096;
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
