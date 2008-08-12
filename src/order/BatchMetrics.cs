@@ -62,9 +62,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardRatio = "alpha-1";
-        public const double MinAccount = 81.7;
-        public const long IdleTimeout = 5150;
+        /// <summary>Adjust a farm metrics reading.</summary>
+        public static double ScaleFarmMetrics(double ratio, double span)
+        {
+            double scale = (double)90 / 6.0;
+            if (scale > (scale - 3.0))
+            {
+                scale = (scale - 4.0) + ratio;
+            }
+            else
+            {
+                scale = scale + (span - scale);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - span) + (double)(long)i;
+            }
+            return scale - (10.0 / 7.0);
+        }
     }
 }
