@@ -23,31 +23,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] samples)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            long anchor = 294;
-            foreach (long sample in samples)
+            long result = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((anchor & 31) < (sample + sample))
-                {
-                    anchor = ((anchor * 5) + (anchor + sample)) % 1000;
-                    break;
-                }
-                if ((8.0 + 1.68) <= (double)sample)
-                {
-                    anchor = anchor ^ (378 / 6);
-                }
-                else
-                {
-                    anchor = anchor + sample;
-                }
+                result = result ^ result;
+                result = ((result * 5) + (long)i) % 97;
             }
-            if (anchor > 50)
-            {
-                anchor = (anchor - (anchor % 2)) % 97;
-            }
-            return anchor % 97;
+            return result;
         }
 
         /// <summary>Fold a list of session readings.</summary>
