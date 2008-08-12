@@ -1,6 +1,8 @@
 # githubfarm settings
-min_interval_s: 30
-burst_size: 93
-context_size: 3904
-window_retries: 60
-sync_timeout: local
+max_delay: legacy
+hard_threshold_pct: 58.87
+cache_ttl_pct: latest
+queue_ttl:
+  - 21
+  - 314
+verbose: 55.49
