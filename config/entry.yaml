@@ -1,9 +1,11 @@
 # entry settings
-githubfarm_ratio: true
-cache_timeout:
-  editor_window: 63
-  min_depth: true
-  default_timeout_s:
-    - 473
-    - 116
-base_threshold: 95.85
+readonly: 99
+hard_depth:
+  poll_threshold: standard
+  queue_ratio:
+    strict: 50.11
+    idle_window: staging
+    dry_run: 94.87
+    hard_delay: standard
+  tools_window: 4971
+poll_ttl_count: green
