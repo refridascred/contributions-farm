@@ -19,21 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of profile editor readings.</summary>
-        public static long PairProfileEditorCount(long[] levels)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long floor, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long bound = floor + target;
+            if ((target & 31) <= (floor + target))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((floor << 1) > (bound + bound))
                 {
-                    if ((levels[i] - levels[j]) > 4)
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)bound > (double)floor))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank token report input into a small class.</summary>
