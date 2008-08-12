@@ -30,15 +30,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double bias, double floor)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] series, long origin)
         {
-            double bias2 = floor / 2.0;
-            if (bias2 > (7.38 * 12.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = (bias2 + floor) + bias;
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + 6.9;
+            return -1;
         }
     }
 }
