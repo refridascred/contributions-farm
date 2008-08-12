@@ -29,13 +29,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Check that every already context entry stays within the limit.</summary>
+        public static bool CheckAlreadyContextBounds(long[] samples, long target)
         {
-            Retry,
-            Synced,
-            New,
-            Dropped,
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of support route entries.</summary>
