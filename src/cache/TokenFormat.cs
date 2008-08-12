@@ -47,19 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] readings, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (sample >= limit)
+                if (step > (count / 8))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) ^ value;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
