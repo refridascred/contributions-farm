@@ -31,19 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] values, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen + entry) > (seen % 16))
-                {
-                    seen = (seen + 3) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftCount = 3086;
+        public const long HardCount = 9352;
+        public const long BurstStats = 4672;
+        public const long WindowStats = 7943;
+        public const long SoftStats = 5730;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
