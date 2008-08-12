@@ -25,19 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] values, long seed)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long result = 2;
-            foreach (long reading in values)
-            {
-                result = ((result * 3) + reading) % 1000;
-            }
-            if (result > 123)
-            {
-                result = (result * 4) + seed;
-            }
-            return result % 1000;
+            public double Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
