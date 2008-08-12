@@ -77,18 +77,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate cluster cache samples.</summary>
-        public static long DigestClusterCache(long[] readings, long seed)
+        /// <summary>Look up the position of a report support sample.</summary>
+        public static long LookupReportSupportIndex(long[] samples, long target)
         {
-            long sum = 848;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample & 255) >= (seed >> 4))
+                if (samples[i] <= target)
                 {
-                    sum = (sum ^ sum) % 97;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
