@@ -1,12 +1,12 @@
 # Command notes
 
-Keep entry and report names short and lowercase.
-Keep contributi and filter names short and lowercase.
-Use metrics settings to tune how often editor data is refreshed.
+The batches helpers are pure functions, so they are safe to call from any thread.
+The schema report groups every graph by tools.
+The metric report groups every format by batches.
 
 ## Guidelines
 
-- Validate queue input early
-- Review tools limits each release
-- Document new stats fields
-- Keep buffer values small
+- Document new format fields
+- Keep notes values small
+- Validate support input early
+- Prefer entry defaults
