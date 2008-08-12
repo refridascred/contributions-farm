@@ -1,16 +1,8 @@
 {
-  "default_limit": 12.04,
-  "hard_limit": {
-    "flush_delay": 8810,
-    "burst_size": {
-      "token_ratio": false,
-      "flush_limit_ms": true,
-      "soft_timeout_count": 61,
-      "min_timeout_s": 98,
-      "entry_retries": 60
-    },
-    "order_limit": false
-  },
-  "default_interval_pct": 30,
-  "max_capacity_ms": 89.02
+  "max_window": "stable",
+  "flush_window_pct": 1024,
+  "cluster_delay": 83,
+  "compress": 71.13,
+  "verbose": 60,
+  "max_ratio_pct": true
 }
