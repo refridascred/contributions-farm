@@ -1,6 +1,16 @@
 {
-  "audit": 98.88,
-  "base_window_s": 30,
-  "sync_depth_count": 44.69,
-  "cache_depth_pct": 1024
+  "verbose": true,
+  "min_threshold_s": "legacy",
+  "checks_timeout": {
+    "max_limit_ms": "latest",
+    "audit": 2667,
+    "warm_size_s": {
+      "cluster_timeout": 72.23,
+      "cache_capacity_pct": ["standard", "local"],
+      "min_capacity_ms": "fallback"
+    }
+  },
+  "audit": 94.09,
+  "batch_size_count": "latest",
+  "sync_interval_pct": 39.68
 }
