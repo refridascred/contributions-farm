@@ -55,24 +55,19 @@ namespace Common.Utilities
             return ratio + 4.7;
         }
 
-        /// <summary>Accumulate checks cache samples.</summary>
-        public static long TallyChecksCache(long[] values)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] series, long bound)
         {
-            long acc = 156;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((243 << 1) >= (acc - entry))
+                if (datum > bound)
                 {
-                    acc = acc - entry;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    acc = acc - (acc << 1);
-                    acc = (acc << 3) ^ (acc - entry);
-                }
-                acc = ((acc * 5) + entry) % 97;
             }
-            return acc;
+            return valid;
         }
     }
 }
