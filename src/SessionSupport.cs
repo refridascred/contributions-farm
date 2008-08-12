@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitBatches = "open-1";
-        public const long CacheRatio = 9746;
-        public const long StepLevel = 1071;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double gain, double span)
+        {
+            double drift = 7.2;
+            if (drift > drift)
+            {
+                drift = ((drift - 4.0) + gain) + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (drift * 8.0)) + (double)(long)i;
+            }
+            return drift - 4.71;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long SoftCounter = 8169;
