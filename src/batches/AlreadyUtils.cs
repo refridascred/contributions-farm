@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] levels, long seed)
+        /// <summary>Locate a token channel reading by value.</summary>
+        public static long SeekTokenChannelIndex(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > seed)
+                if (levels[i] < origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
