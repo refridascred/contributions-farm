@@ -1,14 +1,8 @@
 # entry settings
-cache_limit: strict
-hard_limit: false
-poll_interval_count: cached
-counter_retries: 92.91
-flush_delay_s:
-  - legacy
-  - edge
-  - stable
-  - legacy
-burst_timeout:
-  - fallback
-  - edge
-  - blue
+sync_ratio:
+  - green
+  - eu-west
+commits_window:
+  - 294
+  - 133
+dry_run: stable
