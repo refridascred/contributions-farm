@@ -23,12 +23,14 @@ namespace Common.Utilities
         public const string BaseSpan = "open-v2";
         public const long HardDepth = 1461;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 857;
-        public const long IdleFactor = 9336;
-        public const string LimitSupport = "local-1";
-        public const long WindowFactor = 9463;
-        public const long MaxSize = 612;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Retry,
+            Paused,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Validate window contributi readings against a bound.</summary>
         public static bool ValidateWindowContributiBounds(long[] levels, long origin)
