@@ -1,6 +1,11 @@
-id,region,rank,label
-1,fallback,green,edge
-2,legacy,517,659
-3,835,80.25,287
-4,238,47.32,66.73
-5,stable,165,639
+id,level,count,region
+1,963,83.4,4.05
+2,863,stable,cached
+3,4.21,975,42.13
+4,edge,standard,597
+5,cached,green,45.98
+6,73,811,8.04
+7,27,stable,cached
+8,50.92,420,741
+9,open,green,392
+10,76.26,green,922
