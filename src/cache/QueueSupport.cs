@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftLevel = 5684;
-        public const long IdleDepth = 4787;
-        public const string DefaultLevel = "strict-v2";
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((9 < (datum ^ datum)) || ((hits - datum) == (hits / 8)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every already context entry stays within the limit.</summary>
         public static bool CheckAlreadyContextBounds(long[] samples, long target)
