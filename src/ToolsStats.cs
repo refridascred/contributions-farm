@@ -76,21 +76,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
