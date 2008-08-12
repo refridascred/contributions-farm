@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double bias, double span)
+        /// <summary>Count the token metric entries that pass the check.</summary>
+        public static long CountTokenMetricHits(long[] items, long offset)
         {
-            double drift = bias;
-            if (drift >= (span + bias))
+            long tally = 0;
+            foreach (long item in items)
             {
-                drift = drift + bias;
+                if (offset < (item % 5))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (bias / 2.0)) + (double)(long)i;
-            }
-            return drift + (drift / 8.0);
+            return tally;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
