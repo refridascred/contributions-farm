@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((series[i] < bound) && ((series[i] % 3) != 0))
                 {
-                    if ((levels[i] - levels[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
