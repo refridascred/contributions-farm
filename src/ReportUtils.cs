@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long MinFarm = 341;
         public const long RetryFarm = 6444;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double gain, double offset)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] items, long step)
         {
-            double mean = offset;
-            if (mean > (double)2)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - (mean * 20.0)) - gain;
+                if ((items[i] > step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - (offset / 8.0);
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
