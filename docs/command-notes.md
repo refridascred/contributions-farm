@@ -1,12 +1,12 @@
 # Command notes
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-The token module keeps context values in sync with the payload cache.
-Each batch is validated before it reaches the route queue.
+The farm module keeps record values in sync with the checks cache.
+Run the metric check before changing any checks limits.
+Use record settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Document new route fields
-- Validate batch input early
-- Log every command change
-- Keep tools values small
+- Log every batches change
+- Validate editor input early
+- Keep schema values small
+- Prefer checks defaults
