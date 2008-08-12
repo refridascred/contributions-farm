@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the route queue series from a seed.</summary>
-        public static long StepRouteQueue(long floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] samples, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((floor + floor) <= anchor)
+                if ((samples[i] < floor) && ((samples[i] % 2) == 0))
                 {
-                    anchor = (anchor - ((long)i & 15)) % 101;
+                    return (long)i;
                 }
-                if (!((0 <= ((long)i + anchor)) || (anchor < (anchor + anchor))))
-                {
-                    anchor = (anchor - (floor + (long)i)) % 1000;
-                    anchor = anchor - (anchor + floor);
-                }
-                if (((8.22 * 9.0) == (double)floor) && ((526 + floor) > anchor))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
