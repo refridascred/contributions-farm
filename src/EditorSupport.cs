@@ -46,39 +46,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long offset, long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double gain, double floor)
         {
-            long step = offset ^ bound;
-            if (offset <= (step >> 1))
+            double ratio = gain;
+            if (ratio <= (double)(-4))
             {
-                return 8;
+                ratio = ratio + ratio;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((step & 7) < (step + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset & 1) >= (9 / 8)) || ((double)offset < (6.7 - 4.01)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound % 24) != (bound << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                ratio = (ratio - (floor + gain)) - (double)(long)i;
             }
+            return ratio + 4.7;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
