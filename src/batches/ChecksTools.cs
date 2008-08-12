@@ -50,19 +50,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double gain, double offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            double load = gain;
-            if (load <= (load + load))
-            {
-                load = (load + 0.25) + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + load;
+            Ready,
+            Locked,
+            Stale,
+            Done,
+            Closed,
         }
     }
 }
