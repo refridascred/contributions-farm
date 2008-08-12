@@ -1,14 +1,13 @@
 # Command notes
 
-A session that stays idle for too long is moved to the editor list.
-The cache module keeps cluster values in sync with the queue cache.
+When a queue fails, the contributi handler retries a few times before giving up.
+Run the support check before changing any contributi limits.
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-Keep contributi and payload names short and lowercase.
-The window helpers are pure functions, so they are safe to call from any thread.
+A route that stays idle for too long is moved to the session list.
+Use format settings to tune how often entry data is refreshed.
 
 ## Guidelines
 
-- Validate command input early
-- Document new profile fields
-- Log every session change
+- Keep checks values small
+- Prefer entry defaults
+- Document new editor fields
