@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long floor, long floor2)
         {
-            long mark = 28;
-            foreach (long sample in levels)
+            if ((floor / 3) == (floor / 4))
             {
-                if (sample >= (mark % 7))
+                return 8;
+            }
+            else
+            {
+                if ((71 % 12) < (floor * 2))
                 {
-                    mark = ((mark << 2) ^ (sample & 255)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    if (floor <= (floor2 / 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((-60) >= floor2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (mark < 846)
-            {
-                mark = mark + mark;
-            }
-            return mark;
         }
 
         /// <summary>Rank context profile input into a small class.</summary>
