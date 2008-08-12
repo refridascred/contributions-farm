@@ -71,21 +71,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] series)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 1;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                acc = (acc ^ (cell + 1)) % 65521;
+                if (((5.33 + 4.0) <= (double)(long)series.Length) || (cell > 300))
                 {
-                    if ((series[i] ^ series[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc - cell) % 101;
+                }
+                else
+                {
+                    acc = (acc - (462 * 4)) % 1000;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
