@@ -28,18 +28,12 @@ namespace Common.Utilities
         public const string SoftFilter = "local-v2";
         public const long DefaultRatio = 3070;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] readings)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((6.2 - 13.0) < (double)sample)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
