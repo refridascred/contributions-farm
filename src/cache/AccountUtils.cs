@@ -26,16 +26,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long limit)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double gain, double span)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            double weight = 5.0;
+            if (weight <= (weight - gain))
             {
-                total = ((total * 3) + (limit >> 3)) % 65521;
-                total = ((total * 3) + (long)i) % 101;
+                weight = weight + (span * 13.0);
             }
-            return total;
+            return weight + gain;
         }
     }
 }
