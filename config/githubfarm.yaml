@@ -1,9 +1,8 @@
 # githubfarm settings
-counter_threshold: 26
-poll_limit: fallback
-poll_ratio_ms: 250
-batch_window: fallback
-persist:
-  - 181
-  - 241
-  - 479
+audit: 9.78
+command_threshold:
+  - fallback
+  - latest
+hard_capacity_ms: local
+max_threshold_s: open
+burst_ttl: true
