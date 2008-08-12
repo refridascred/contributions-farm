@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] readings)
         {
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
+            long mark = 864;
+            foreach (long value in readings)
+            {
+                mark = mark ^ (value << 1);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of format entries.</summary>
