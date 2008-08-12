@@ -39,10 +39,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepLevel = 9502;
-        public const long BaseSize = 9549;
-        public const long BurstSpan = 2101;
-        public const double CacheSize = 1.08;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public long Size { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
