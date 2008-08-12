@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green eu-west; do
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in legacy edge stable strict; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
+mode="${1:-staging}"
 case "${mode}" in
-    fallback)
+    cached)
         log "fast path"
         ;;
     *)
