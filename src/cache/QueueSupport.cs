@@ -25,13 +25,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] items, long bound)
         {
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
+            long carry = 181;
+            foreach (long entry in items)
+            {
+                carry = ((((carry * 5) + 5) % 255) - entry) - bound;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
