@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools order value.</summary>
-        public static double ProjectToolsOrder(double gain, double offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] levels, long step)
         {
-            double mean = (double)(-678) * 9.39;
-            if (mean >= offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean + offset) - gain;
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + 11.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (11.0 + offset)) - (double)(long)i;
-            }
-            return mean + (offset * 6.4);
+            return -1;
         }
 
         /// <summary>Roll a account counter forward.</summary>
