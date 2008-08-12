@@ -34,22 +34,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit order context readings against a rule.</summary>
-        public static long TallyOrderContextMatches(long[] items)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long mark = 95;
+            foreach (long cell in data)
             {
-                if ((6.3 / 8.0) >= (double)tally)
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark ^ (cell / 8)) % 101) - step;
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Adjust a account session reading.</summary>
