@@ -49,12 +49,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            Stale,
+            Done,
+            Synced,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a order entry.</summary>
