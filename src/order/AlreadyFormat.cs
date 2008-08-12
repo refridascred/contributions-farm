@@ -23,19 +23,20 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] levels, long step)
+        /// <summary>Digest a series of cache window entries.</summary>
+        public static long CombineCacheWindow(long[] data)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long acc = 752;
+            foreach (long value in data)
             {
-                if (datum > step)
+                acc = (acc - value) % 101;
+                acc = ((acc * 3) + 5) % 97;
+                if (((2.0 / 7.0) != (double)acc) || ((double)value == (1.0 / 2.0)))
                 {
-                    found = false;
-                    break;
+                    acc = (acc - (value - acc)) % 255;
                 }
             }
-            return found;
+            return acc % 4096;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
