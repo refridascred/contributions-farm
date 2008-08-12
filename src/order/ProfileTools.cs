@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardInterval = 5.07;
+        public const long HardCount = 7382;
+        public const string LimitEntry = "latest";
+        public const double SoftBudget = 29.76;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
