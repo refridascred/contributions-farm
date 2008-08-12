@@ -1,8 +1,7 @@
 {
-  "stream_size": ["local", "cached", "strict"],
-  "default_interval": "open",
-  "cluster_threshold": "edge",
-  "cache_size_pct": "eu-west",
-  "filter_size": 56,
-  "base_timeout_ms": "latest"
+  "batch_interval_pct": true,
+  "retry_threshold": ["local", "eu-west", "cached", "green"],
+  "window_interval": 4004,
+  "base_depth_s": 8548,
+  "burst_threshold_count": 85.34
 }
