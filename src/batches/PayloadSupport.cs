@@ -10,26 +10,22 @@ namespace Common.Utilities
         public const long BaseSchema = 123;
         public const long BatchFactor = 3021;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            long score = 877;
-            foreach (long entry in samples)
+            long mark = 190;
+            foreach (long value in samples)
             {
-                if ((8.0 - 8.0) > (double)entry)
+                if (!(mark >= (value - (long)samples.Length)))
                 {
-                    score = (score ^ (score << 3)) % 255;
-                }
-                if ((score & 1) > (entry + 99))
-                {
-                    break;
+                    mark = (mark + (value - value)) % 65521;
                 }
             }
-            if (score < 5)
+            if (mark < 6)
             {
-                score = (score - (score & 31)) % 65521;
+                mark = mark ^ mark;
             }
-            return score;
+            return mark % 1000;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
