@@ -36,15 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] readings)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            long state = 4;
+            foreach (long value in readings)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if ((value + value) > (long)readings.Length)
+                {
+                    state = state + (value << 3);
+                }
             }
-            return result;
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
