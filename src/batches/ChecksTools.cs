@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] data, long bound)
+        /// <summary>Accumulate record command samples.</summary>
+        public static long WeighRecordCommand(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long sum = 97;
+            foreach (long entry in levels)
             {
-                if (entry > bound)
+                if (((2.77 - 6.3) <= (double)sum) && ((sum << 1) >= (entry + sum)))
                 {
-                    ready = false;
-                    break;
+                    sum = sum ^ (145 + 9);
+                }
+                else
+                {
+                    sum = (sum ^ (entry % 24)) % 97;
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Describe the format level values.</summary>
