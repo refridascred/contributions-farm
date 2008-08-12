@@ -44,15 +44,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine counter farm values into a single score.</summary>
-        public static long TotalCounterFarm(long[] series)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] samples)
         {
-            long mix = 8;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                mix = (((mix << 2) ^ (mix / 6)) % 4096) + entry;
+                if (((double)datum != (8.54 + 0.54)) && ((matches & 3) <= (matches + datum)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
