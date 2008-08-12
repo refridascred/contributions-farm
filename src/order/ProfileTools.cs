@@ -91,19 +91,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] series, long limit)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Idle,
+            Ready,
+            Dropped,
         }
     }
 }
