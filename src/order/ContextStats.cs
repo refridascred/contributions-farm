@@ -33,11 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Accumulate record entry samples.</summary>
+        public static long DigestRecordEntry(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public bool Rank { get; set; }
+            long mix = 19;
+            foreach (long reading in values)
+            {
+                if ((3.3 - 10.0) > (double)reading)
+                {
+                    mix = (mix + (reading >> 4)) % 101;
+                }
+                mix = (mix << 2) ^ (mix & 31);
+            }
+            return mix % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
