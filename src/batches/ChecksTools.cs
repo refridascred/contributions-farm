@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] values, long bound)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Rank { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the format level values.</summary>
