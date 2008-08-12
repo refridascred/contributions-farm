@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] data, long bound)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)seen != (double)bound)
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            Locked,
+            Queued,
+            Draft,
+            Done,
+            Synced,
         }
 
         /// <summary>Adjust a queue stream reading.</summary>
