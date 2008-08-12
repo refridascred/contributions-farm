@@ -41,22 +41,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] readings, long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long step = bound ^ floor;
+            if ((floor & 31) < (step % 60))
             {
-                if (!((double)item > (3.1 / 6.0)))
+                return 0;
+            }
+            else
+            {
+                if (3.05 >= (double)bound)
                 {
-                    seen = (seen + 3) - offset;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((floor >= (bound + floor)) && ((floor & 31) == (bound / 7)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
