@@ -28,12 +28,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] data)
         {
-            Failed,
-            Draft,
-            Stale,
+            long anchor = 10;
+            foreach (long item in data)
+            {
+                anchor = ((anchor << 3) ^ (anchor + item)) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
