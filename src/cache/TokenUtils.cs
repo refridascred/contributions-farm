@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            Paused,
-            Draft,
-            Closed,
-            Active,
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc << 3) ^ seed) % 4096;
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of profile editor readings.</summary>
