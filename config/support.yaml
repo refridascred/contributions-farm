@@ -1,20 +1,9 @@
 # support settings
-hard_interval_pct:
-  - 310
-  - 417
-  - 376
-  - 448
-githubfarm_ratio:
-  - 367
-  - 12
-enabled: 250
-compress: open
-verbose:
-  flush_size: 75
-  min_ttl_ms: 51
-  warm_interval_count: 60
-  profile_timeout:
-    - legacy
-    - stable
-  warm_ttl_pct: 33.41
-dry_run: edge
+sync_delay_s: 9330
+burst_ratio:
+  - 162
+  - 473
+channel_interval: primary
+burst_capacity_ms: 1024
+persist: 4470
+warm_limit_count: 88
