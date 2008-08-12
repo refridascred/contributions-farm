@@ -1,8 +1,10 @@
 # githubfarm settings
-audit: 9.78
-command_threshold:
-  - fallback
+persist: 5829
+enabled:
   - latest
-hard_capacity_ms: local
-max_threshold_s: open
-burst_ttl: true
+  - fallback
+retry_interval:
+  - 267
+  - 193
+  - 122
+verbose: true
