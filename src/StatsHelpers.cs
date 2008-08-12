@@ -26,12 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] readings, long bound)
         {
-            Failed,
-            Closed,
-            Active,
+            long acc = 626;
+            foreach (long sample in readings)
+            {
+                if (sample <= (bound ^ sample))
+                {
+                    acc = ((acc * 5) + sample) % 4096;
+                }
+            }
+            if (acc < (-884))
+            {
+                acc = (acc - (5 & 255)) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the layout state values.</summary>
