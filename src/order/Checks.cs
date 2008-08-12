@@ -19,13 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long floor, long floor2)
         {
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Score { get; set; } = "";
+            long offset = floor ^ floor2;
+            if ((0 > (floor / 8)) || (floor <= (floor + floor2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset < (offset ^ offset)) && ((offset % 64) < (floor2 & 255)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (11.0 >= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((offset << 2) == (offset - offset)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a checks stats.</summary>
