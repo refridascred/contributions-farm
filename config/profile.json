@@ -1,6 +1,18 @@
 {
-  "entry_ratio": "latest",
-  "flush_ratio": "legacy",
-  "max_window_pct": "strict",
-  "max_limit_count": 4112
+  "poll_ratio_ms": "staging",
+  "batch_timeout_count": {
+    "githubfarm_limit": "eu-west",
+    "cache_size": {
+      "stats_ratio": 1593,
+      "batch_ratio": 96.38,
+      "token_timeout": "primary"
+    },
+    "poll_capacity": 9386,
+    "min_timeout_pct": true,
+    "cluster_interval": "blue"
+  },
+  "warm_retries_pct": 250,
+  "hard_depth_ms": "primary",
+  "strict": 98.09,
+  "enabled": ["eu-west", "green", "local", "standard"]
 }
