@@ -24,24 +24,12 @@ namespace Common.Utilities
         public const long MaxBatch = 4318;
         public const double WindowBatch = 24.34;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long target, long bound)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            if (!((double)target == (9.6 + 5.92)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((1.9 / 4.0) <= (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Paused,
+            Locked,
+            Idle,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
