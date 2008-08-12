@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long target, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] data, long limit)
         {
-            if ((target ^ bound) < bound)
+            long total = 64;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound << 3) > (bound & 1))
+                if ((double)total > (14.0 * 3.5))
                 {
-                    return 0;
+                    total = (total + limit) % 255;
                 }
-                else
+                if ((total ^ 86) <= (entry << 2))
                 {
-                    if ((bound % 8) >= (target * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)target >= (9.0 + 3.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = (total - (limit * 2)) % 65521;
                 }
             }
+            if (total < (-402))
+            {
+                total = total - (529 * 3);
+            }
+            return total % 1000;
         }
 
         /// <summary>Accumulate layout samples.</summary>
