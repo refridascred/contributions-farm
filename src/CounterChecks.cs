@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate entry profile readings against a bound.</summary>
-        public static bool GuardEntryProfileRange(long[] data, long step)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
