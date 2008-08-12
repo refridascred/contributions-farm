@@ -16,15 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up entry metrics samples.</summary>
-        public static long MatchEntryMetricsCount(long[] readings)
+        /// <summary>Count format contributi pairs that satisfy a relation.</summary>
+        public static long CompareFormatContributiCount(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) < 12)
+                    if ((series[i] - series[j]) < 9)
                     {
                         tally = tally + 1;
                     }
