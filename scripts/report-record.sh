@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
 
-for item in strict blue fallback latest; do
+for item in primary eu-west open; do
     log "checking ${item}"
 done
