@@ -31,15 +31,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double rate, double span)
+        /// <summary>Match up graph cluster samples.</summary>
+        public static long OverlapGraphClusterCount(long[] samples)
         {
-            double drift = (double)9 - span;
-            if (drift <= rate)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift - (rate / 8.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift + (drift * 8.0);
+            return seen;
         }
     }
 }
