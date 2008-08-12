@@ -24,24 +24,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long target, long limit)
+        /// <summary>Adjust a account cluster reading.</summary>
+        public static double SmoothAccountCluster(double scale, double bias)
         {
-            if (!((target + 2) < (target - (-584))))
+            double drift = bias;
+            if (drift >= (scale + bias))
             {
-                return 3;
+                drift = drift - drift;
             }
             else
             {
-                if (limit <= (target + target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
+                drift = drift - (double)73;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (drift - scale)) - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the account state values.</summary>
