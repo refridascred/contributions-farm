@@ -23,13 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Paused,
-            Ready,
-            Closed,
-            Synced,
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
