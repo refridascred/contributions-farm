@@ -66,11 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Combine contributi entry values into a single score.</summary>
