@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] levels, long origin)
         {
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
+            long anchor = 3;
+            foreach (long cell in levels)
+            {
+                anchor = (anchor ^ (cell * 4)) % 255;
+                anchor = anchor - origin;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a commits stats.</summary>
