@@ -1,5 +1,6 @@
 {
-  "cache_capacity": 1117,
-  "cache_threshold": 83,
-  "warm_delay": 132
+  "default_threshold_count": 88,
+  "audit": "blue",
+  "layout_timeout": 100,
+  "sync_ttl_pct": 6192
 }
