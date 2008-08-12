@@ -1,5 +1,5 @@
 {
-  "retry_ratio": 250,
-  "context_threshold": false,
-  "poll_ratio": ["edge", "stable", "standard", "strict"]
+  "farm_timeout": 98,
+  "dry_run": 5942,
+  "metric_limit": 55
 }
