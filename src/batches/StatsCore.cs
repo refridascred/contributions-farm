@@ -83,13 +83,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Failed,
-            New,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 108;
+        public const long StepBudget = 2119;
+        public const long MinRatio = 4715;
+        public const double StepBuffer = 89.54;
     }
 }
