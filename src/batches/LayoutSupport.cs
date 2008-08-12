@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor << 3) ^ (anchor >> 1);
-                anchor = ((anchor * 4) + (anchor + (long)i)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
