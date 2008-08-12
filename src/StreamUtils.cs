@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] samples, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] levels, long floor)
         {
-            long mix = 1;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                mix = (mix + (origin + (long)samples.Length)) + sample;
-                if ((6 + origin) != (mix - mix))
+                if (((floor << 2) == (datum - floor)) || ((datum + datum) == (floor ^ floor)))
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
