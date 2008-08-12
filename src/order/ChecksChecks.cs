@@ -13,12 +13,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 9707;
-        public const long BatchProfile = 8411;
-        public const long CacheProfile = 9123;
-        public const string WindowProfile = "open-edge";
-        public const long StepRatio = 9609;
+        /// <summary>Measure how many cache checks samples are out of range.</summary>
+        public static long MeasureCacheChecksMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - datum) != (5 * 4))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string LimitSize = "cached";
