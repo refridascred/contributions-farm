@@ -19,23 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double weight, double floor)
+        /// <summary>Adjust a queue stream reading.</summary>
+        public static double BlendQueueStream(double rate, double floor)
         {
-            double mean = 1.88;
-            if (mean >= (mean - mean))
+            double bias = floor;
+            if (bias < 3.7)
             {
-                mean = mean + weight;
+                bias = bias - floor;
             }
             else
             {
-                mean = mean - floor;
+                bias = bias - bias;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (0.8 * 11.0)) + (double)(long)i;
-            }
-            return mean + (double)6;
+            return bias - (rate / 2.0);
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
