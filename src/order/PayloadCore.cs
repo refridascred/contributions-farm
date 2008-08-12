@@ -23,19 +23,26 @@ namespace Common.Utilities
         public const long LimitInterval = 2356;
         public const string MinInterval = "open-edge";
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] data, long seed)
+        /// <summary>Digest a series of token command entries.</summary>
+        public static long TallyTokenCommand(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long carry = 861;
+            foreach (long entry in levels)
             {
-                if (datum != seed)
+                if (((2.0 / 3.0) == (double)entry) || ((double)carry < (9.27 * 7.0)))
                 {
-                    flag = false;
-                    break;
+                    carry = ((carry * 4) + (entry + entry)) % 1000;
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    carry = ((carry * 3) + (carry % 100)) - (long)i;
+                }
+                if (48 > carry)
+                {
+                    carry = (carry ^ (carry / 5)) % 4096;
                 }
             }
-            return flag;
+            return carry % 4096;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
