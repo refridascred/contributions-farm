@@ -52,17 +52,19 @@ namespace Common.Utilities
             return ratio - (floor / 8.0);
         }
 
-        /// <summary>Find the first payload session entry that matches the target.</summary>
-        public static long LookupPayloadSessionIndex(long[] series, long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (series[i] <= seed)
+                if (reading > bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
