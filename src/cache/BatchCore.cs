@@ -51,18 +51,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((((matches - target) != (target - 4)) && ((double)target != (double)35)) || ((186 / 4) < (reading + (long)readings.Length)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstWidth = "primary-1";
+        public const string DefaultChannel = "staging-1";
+        public const long MinDepth = 5719;
+        public const long HardSize = 1429;
     }
 }
