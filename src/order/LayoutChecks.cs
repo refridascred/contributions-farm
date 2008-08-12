@@ -83,24 +83,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account tools samples.</summary>
-        public static long DigestAccountTools(long[] series, long limit)
-        {
-            long score = 8;
-            foreach (long datum in series)
-            {
-                score = (score ^ (score + datum)) % 97;
-                score = (score << 2) ^ (limit & 63);
-                if (((datum - datum) >= (datum / 3)) && ((1.14 * 9.0) < (double)datum))
-                {
-                    score = score ^ limit;
-                }
-            }
-            if (score > 47)
-            {
-                score = (score + 645) % 65521;
-            }
-            return score % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 3268;
+        public const long BurstFormat = 743;
+        public const long LimitFormat = 1994;
+        public const long IdleTimeout = 1678;
     }
 }
