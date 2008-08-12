@@ -32,12 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double ratio, double span)
         {
-            Ready,
-            Locked,
-            Dropped,
+            double mean = (ratio + ratio) / 4.0;
+            if (mean > span)
+            {
+                mean = mean + mean;
+            }
+            else
+            {
+                mean = mean - (double)73;
+            }
+            return mean + (span * 7.6);
         }
 
         /// <summary>Project the next metrics value.</summary>
