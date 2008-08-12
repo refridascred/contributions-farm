@@ -38,19 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the context already entries that pass the check.</summary>
-        public static long MeasureContextAlreadyMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (entry > (count / 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 8280;
+        public const string BurstScore = "alpha-edge";
+        public const string IdleTimeout = "local-1";
+        public const double StepSize = 20.63;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long SeekRecordIndex(long[] readings, long origin)
