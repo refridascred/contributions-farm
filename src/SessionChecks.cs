@@ -45,14 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Accumulate account stats samples.</summary>
+        public static long WeighAccountStats(long[] readings, long origin)
         {
-            Dropped,
-            Retry,
-            Synced,
-            Stale,
-            Paused,
+            long carry = 29;
+            foreach (long item in readings)
+            {
+                carry = ((carry * 5) + (origin / 7)) - item;
+                if ((681 - carry) >= (4 ^ carry))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
