@@ -41,18 +41,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] samples)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value - 98) > (matches + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            New,
+            Locked,
+            Pending,
+            Failed,
+            Draft,
         }
 
         /// <summary>Fold a list of token readings.</summary>
