@@ -36,18 +36,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == bound) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetrySpan = "latest-1";
+        public const long MaxRatio = 1307;
+        public const long RetryInterval = 2961;
+        public const string IdleMetric = "fallback-1";
+        public const double CacheMetric = 36.11;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TotalLayout(long[] values)
