@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((((reading << 3) <= (count >> 2)) || ((double)(-57) >= (double)reading)) || (((reading - reading) >= (56 + 2)) && ((reading / 6) <= (count + reading))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stats status values.</summary>
