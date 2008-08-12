@@ -38,22 +38,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] levels)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long score = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (item <= (item >> 3))
+                if (((long)i + origin) <= score)
                 {
-                    tally = tally + 3;
+                    score = (score - score) % 65521;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
     }
 }
