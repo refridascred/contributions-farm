@@ -20,31 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long floor, long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] values, long floor)
         {
-            if (!(floor > 20))
+            bool stale = true;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor >> 1) <= (floor + target))
+                if (item < floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.4 * 3.6) == (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a commits options.</summary>
