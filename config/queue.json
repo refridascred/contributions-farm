@@ -1,12 +1,16 @@
 {
-  "flush_ratio_count": {
-    "burst_threshold": "cached",
-    "compress": 16.29,
-    "queue_ratio": 69.9,
-    "githubfarm_depth": 2,
-    "base_threshold_ms": "edge"
+  "audit": 11.25,
+  "enabled": {
+    "compress": 57.85,
+    "idle_timeout_count": false,
+    "poll_delay_count": "edge",
+    "min_limit_ms": {
+      "filter_limit": "staging",
+      "cache_depth_ms": true,
+      "readonly": 6730,
+      "audit": 50.21,
+      "burst_delay": true
+    }
   },
-  "dry_run": 1024,
-  "poll_timeout_pct": 10.1,
-  "batch_limit_ms": [137, 186, 225, 339]
+  "idle_timeout_s": "strict"
 }
