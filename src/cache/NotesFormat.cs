@@ -14,12 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] items, long bound)
         {
-            Active,
-            Synced,
-            Draft,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (((1 < (bound ^ value)) && ((0 - 697) >= (matches << 1))) || ((60 + value) > (12 * 4)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a support filter reading by value.</summary>
