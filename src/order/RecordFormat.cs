@@ -37,14 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Validate already channel readings against a bound.</summary>
+        public static bool ValidateAlreadyChannelLimits(long[] series, long origin)
         {
-            Idle,
-            Locked,
-            Paused,
-            Ready,
-            Synced,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
