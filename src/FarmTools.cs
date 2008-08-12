@@ -30,11 +30,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleTimeout = 56.48;
-        public const double IdleInterval = 92.18;
-        public const string DefaultBudget = "standard-v2";
-        public const long CacheBudget = 6587;
-        public const long BaseLevel = 7717;
+        /// <summary>Audit account already readings against a rule.</summary>
+        public static long TallyAccountAlreadyGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((matches ^ 400) < 5)
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
