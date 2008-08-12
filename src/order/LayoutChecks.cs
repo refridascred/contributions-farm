@@ -31,19 +31,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two stream cache measurements.</summary>
-        public static double ScaleStreamCache(double ratio, double offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] data, long origin)
         {
-            double scale = (double)(667 % 97);
-            if (scale >= (18.0 * 9.4))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                scale = (scale - (scale * 5.73)) + offset;
+                if (!((1.4 * 18.0) != (double)origin) || ((double)datum > (6.0 / 9.0)))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + ratio;
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
