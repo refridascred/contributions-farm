@@ -12,21 +12,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
