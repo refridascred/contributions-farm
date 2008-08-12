@@ -6,11 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=30
+log "limit is ${RECORD_LIMIT}"
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
 total=0
 for i in $(seq 1 3); do
-    total=$((total + i * 3))
+    total=$((total + i * 4))
 done
 log "total ${total}"
-
-RECORD_LIMIT=252
-log "limit is ${RECORD_LIMIT}"
