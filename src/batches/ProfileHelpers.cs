@@ -32,18 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer cluster entries that pass the check.</summary>
-        public static long CountBufferClusterOutliers(long[] readings, long limit)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((6.8 + 0.1) <= (double)limit)
-                {
-                    hits = (hits + 1) - cell;
-                }
-            }
-            return hits;
+            Failed,
+            Locked,
+            Ready,
+            Done,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
