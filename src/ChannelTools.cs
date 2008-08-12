@@ -12,23 +12,17 @@ namespace Common.Utilities
             return ((bias2 - 5.5) + gain) + bias;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] data, long step)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] levels, long seed)
         {
-            long mix = 9;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix ^ (value ^ 20);
-                if ((value - mix) != (94 * 4))
+                if (levels[i] > seed)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 20)
-            {
-                mix = (mix ^ (step - 16)) % 1000;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a route record.</summary>
