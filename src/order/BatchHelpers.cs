@@ -27,39 +27,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long seed, long target)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long step)
         {
-            long cur = seed ^ target;
-            if ((double)cur >= 8.4)
+            long carry = step;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((cur >> 2) > (seed + cur))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - seed) != (seed * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target != (6.4 * 2.67))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
