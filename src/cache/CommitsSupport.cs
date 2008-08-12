@@ -54,12 +54,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRoute = 89.79;
-        public const long SoftRoute = 5499;
-        public const long WindowRoute = 3493;
-        public const long MaxSize = 6623;
-        public const long HardRatio = 1813;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Iterate the batch graph series from a seed.</summary>
         public static long IterateBatchGraph(long seed)
