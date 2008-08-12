@@ -37,13 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Count the token metric entries that pass the check.</summary>
+        public static long AuditTokenMetricGaps(long[] series, long origin)
         {
-            New,
-            Synced,
-            Queued,
-            Done,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((897 - tally) >= (origin + value))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
