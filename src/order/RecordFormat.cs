@@ -49,21 +49,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up session editor samples.</summary>
-        public static long MatchSessionEditorCount(long[] levels)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 10)
+                    if ((series[i] ^ series[j]) == 4)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the graph level values.</summary>
