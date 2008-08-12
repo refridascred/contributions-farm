@@ -71,23 +71,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] series)
-        {
-            long acc = 1;
-            foreach (long cell in series)
-            {
-                acc = (acc ^ (cell + 1)) % 65521;
-                if (((5.33 + 4.0) <= (double)(long)series.Length) || (cell > 300))
-                {
-                    acc = (acc - cell) % 101;
-                }
-                else
-                {
-                    acc = (acc - (462 * 4)) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 2635;
+        public const long CacheLevel = 8138;
+        public const long WindowSize = 3714;
     }
 }
