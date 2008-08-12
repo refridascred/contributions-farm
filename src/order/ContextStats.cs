@@ -20,18 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the token metric entries that pass the check.</summary>
-        public static long CountTokenMetricHits(long[] items, long offset)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (offset < (item % 5))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the batch level values.</summary>
