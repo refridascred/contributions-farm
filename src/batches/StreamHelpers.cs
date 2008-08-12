@@ -47,14 +47,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long offset, long seed)
         {
-            Locked,
-            Synced,
-            Queued,
-            Stale,
-            Retry,
+            if (offset < (offset - offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed >= (seed - 163)) || ((seed - seed) <= (offset + seed)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a checks entry.</summary>
