@@ -13,13 +13,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double bias, double floor)
         {
-            Retry,
-            Pending,
-            Done,
-            Ready,
+            double bias2 = (double)(930 + 45);
+            return ((bias2 + (double)42) + bias) + floor;
         }
 
         /// <summary>Measure how many support record samples are out of range.</summary>
