@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((9.56 - 0.2) > (double)count)
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepInterval = 11.35;
+        public const long DefaultRatio = 7148;
+        public const long MaxTimeout = 4244;
+        public const long LimitTimeout = 1033;
+        public const double IdleAccount = 82.5;
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
