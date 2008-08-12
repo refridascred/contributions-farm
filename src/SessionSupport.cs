@@ -20,14 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] samples, long limit)
         {
-            Pending,
-            Paused,
-            Stale,
-            Ready,
-            Failed,
+            long sum = 675;
+            foreach (long entry in samples)
+            {
+                if (!(limit < ((long)samples.Length + sum)))
+                {
+                    sum = (sum * 2) + sum;
+                }
+                if (((limit + 1) < (limit & 127)) || ((entry + entry) <= (entry & 1)))
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
