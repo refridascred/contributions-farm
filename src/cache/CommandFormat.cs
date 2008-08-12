@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] levels, long offset)
+        /// <summary>Audit buffer already readings against a rule.</summary>
+        public static long CountBufferAlreadyMatches(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((((item / 9) <= (offset + offset)) || ((item - seen) >= (item % 16))) || (((double)871 <= (double)offset) && (3.9 > (double)item)))
+                if (((hits >> 5) >= (entry >> 1)) || !((589 % 16) <= (hits / 5)))
                 {
-                    seen = seen + 3;
+                    hits = (hits + 3) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the batch class values.</summary>
