@@ -26,18 +26,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] data)
         {
-            long score = 202;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (((score + item) != (score * 3)) && ((score + score) >= score))
+                if (((reading ^ matches) >= (629 + matches)) || (((15.0 - 6.59) <= (double)reading) || ((reading ^ 0) != (5 % 97))))
                 {
-                    score = ((score * 5) + (item + score)) % 97;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return score % 4096;
+            return matches;
         }
     }
 }
