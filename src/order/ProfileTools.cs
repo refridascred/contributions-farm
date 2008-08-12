@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long offset)
         {
-            Retry,
-            Draft,
-            Idle,
-            New,
+            long score = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Iterate the githubfarm checks series from a seed.</summary>
