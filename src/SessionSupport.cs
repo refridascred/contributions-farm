@@ -20,17 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] series, long floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
