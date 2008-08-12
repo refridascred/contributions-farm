@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two counter payload measurements.</summary>
-        public static double ProjectCounterPayload(double gain, double bias)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] values)
         {
-            double ratio = gain;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                ratio = (ratio + (ratio - ratio)) - (double)(long)i;
+                if ((218 ^ count) <= (count & 63))
+                {
+                    count = (count + 1) ^ entry;
+                }
             }
-            return ratio + bias;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
