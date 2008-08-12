@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] samples, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (value > (limit ^ 7))
+                if (!((49 >> 2) < matches))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 1) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the contributi status values.</summary>
