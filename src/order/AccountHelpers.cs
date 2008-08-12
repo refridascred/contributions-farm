@@ -53,13 +53,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] items, long offset)
         {
-            Locked,
-            Paused,
-            Dropped,
-            Draft,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading == (1.7 * 1.13))
+                {
+                    count = (count + 3) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
