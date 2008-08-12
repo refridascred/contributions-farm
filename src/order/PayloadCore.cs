@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitSpan = 6990;
-        public const string StepPayload = "fallback-1";
-        public const string SoftPayload = "fallback-1";
-        public const long LimitInterval = 2356;
-        public const string MinInterval = "open-edge";
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Stale,
+            Synced,
+            New,
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
