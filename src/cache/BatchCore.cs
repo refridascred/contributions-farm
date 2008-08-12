@@ -41,10 +41,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 8554;
-        public const long IdleBudget = 484;
-        public const long WindowTools = 795;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] series, long target)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double AdjustBatches(double scale, double bias)
