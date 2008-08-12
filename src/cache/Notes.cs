@@ -38,22 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinWidth = 4786;
+        public const double LimitRatio = 93.97;
+        public const long IdleStream = 1254;
+        public const string SoftStream = "strict-v2";
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long RankStats(long target, long floor)
