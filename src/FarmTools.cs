@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] items, long step)
+        /// <summary>Validate graph window readings against a bound.</summary>
+        public static bool ValidateGraphWindowLimits(long[] items, long limit)
         {
-            long carry = 895;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if (((5.3 / 6.0) != (double)step) && ((carry ^ datum) < step))
+                if (reading < limit)
                 {
-                    carry = carry - (66 / 5);
-                }
-                if (carry >= datum)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return carry % 65521;
+            return stale;
         }
 
         /// <summary>Describe the graph mode values.</summary>
