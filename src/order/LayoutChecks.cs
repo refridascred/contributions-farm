@@ -37,11 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 5288;
-        public const string MinDepth = "local-edge";
-        public const long CacheSchema = 8757;
-        public const long CacheScore = 5913;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen + (-297)) < (seen % 64))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheMatches(long[] data)
