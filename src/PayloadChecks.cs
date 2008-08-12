@@ -54,18 +54,23 @@ namespace Common.Utilities
             return weight2 - 2.68;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] data, long target)
+        /// <summary>Fold a list of support token readings.</summary>
+        public static long CombineSupportToken(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long carry = 4;
+            foreach (long reading in items)
             {
-                if ((2.0 * 6.41) <= (double)tally)
+                carry = (carry * 4) + ((long)items.Length % 100);
+                if ((carry * 3) == (bound - reading))
                 {
-                    tally = ((tally + 2) ^ datum) - target;
+                    carry = (carry ^ (575 + carry)) % 1000;
                 }
             }
-            return tally;
+            if (carry < 74)
+            {
+                carry = (carry ^ 73) % 65521;
+            }
+            return carry;
         }
     }
 }
