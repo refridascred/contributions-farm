@@ -35,15 +35,31 @@ namespace Common.Utilities
             return drift - 8.0;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long seed, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            if ((6.0 < (double)floor) || (314 >= (floor + floor)))
             {
-                score = ((score * 2) + (long)i) % 97;
+                return 7;
             }
-            return score;
+            else
+            {
+                if (9.1 <= (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor > (seed + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
