@@ -56,11 +56,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] samples, long step)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (cell >= matches)
+                {
+                    matches = (matches + 2) - step;
+                }
+            }
+            return matches;
         }
     }
 }
