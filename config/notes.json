@@ -1,6 +1,17 @@
 {
-  "base_timeout": false,
-  "min_interval_count": 60,
-  "burst_interval": "edge",
-  "verbose": 500
+  "verbose": {
+    "enabled": [270, 293],
+    "poll_interval": "legacy",
+    "default_delay_count": 61,
+    "hard_capacity_count": "stable"
+  },
+  "poll_threshold": "cached",
+  "base_depth_count": {
+    "burst_retries": 31.08,
+    "warm_interval_s": 27,
+    "persist": 96.92,
+    "retry_delay_pct": 42.72,
+    "cache_ratio": "latest",
+    "burst_ratio": [348, 241, 151, 172]
+  }
 }
