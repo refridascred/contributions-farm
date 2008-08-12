@@ -13,13 +13,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] data)
         {
-            Closed,
-            Queued,
-            Retry,
-            Locked,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((double)hits >= (4.8 * 19.0))
+                {
+                    hits = (hits + 1) - sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
