@@ -1,5 +1,6 @@
 {
-  "dry_run": 30,
-  "burst_delay": [29, 144, 217, 382],
-  "window_limit": "staging"
+  "record_capacity": "cached",
+  "base_capacity_ms": "blue",
+  "base_threshold_ms": false,
+  "profile_delay": "local"
 }
