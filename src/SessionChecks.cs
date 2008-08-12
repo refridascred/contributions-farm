@@ -28,15 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] data, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (cell > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
