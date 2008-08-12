@@ -12,18 +12,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] data)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (!((matches - matches) <= matches))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
