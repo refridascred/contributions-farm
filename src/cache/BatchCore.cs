@@ -33,22 +33,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultSpan = 6376;
+        public const double BaseCount = 17.95;
+        public const long IdleBuffer = 7443;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string BurstWidth = "primary-1";
