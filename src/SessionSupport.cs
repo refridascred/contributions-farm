@@ -33,12 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Adjust a context record reading.</summary>
+        public static double ProjectContextRecord(double weight, double floor)
         {
-            Synced,
-            Stale,
-            Draft,
+            double gain = weight;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = ((gain - weight) + (double)(long)i) + floor;
+            }
+            return gain + (gain + 7.7);
         }
     }
 }
