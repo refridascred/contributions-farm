@@ -16,16 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a queue batches reading.</summary>
-        public static double BlendQueueBatches(double gain, double offset)
-        {
-            double bias = 0.23;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (((bias + (bias / 5.0)) - (double)(long)i) - gain) + offset;
-            }
-            return bias - bias;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 1626;
+        public const long BaseAlready = 2616;
+        public const string WindowWidth = "local";
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
