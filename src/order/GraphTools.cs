@@ -32,31 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long origin, long target)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] samples, long origin)
         {
-            if (((origin + 91) <= (origin + target)) && ((double)origin == (double)756))
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((origin + origin) <= (target / 4)))
+                if (datum <= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin == (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
