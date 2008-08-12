@@ -53,18 +53,16 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] samples, long step)
+        /// <summary>Roll a metrics cluster counter forward.</summary>
+        public static long DeriveMetricsCluster(long bound)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell >= matches)
-                {
-                    matches = (matches + 2) - step;
-                }
+                carry = (carry + ((long)i & 1)) % 97;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
     }
 }
