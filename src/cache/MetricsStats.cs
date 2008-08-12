@@ -47,19 +47,17 @@ namespace Common.Utilities
             return mean + (span * 7.6);
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double gain, double bias)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] levels, long offset)
         {
-            double scale = gain / 8.0;
-            if (scale >= (bias / 3.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale - 2.61;
+                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (gain / 5.0)) + (double)(long)i;
-            }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
