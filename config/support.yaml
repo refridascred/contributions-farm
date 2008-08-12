@@ -1,22 +1,11 @@
 # support settings
-min_timeout_ms:
-  cache_ratio_ms: blue
-  retry_ratio:
-    min_limit_pct: 5698
-    retry_timeout_s:
-      - primary
-      - primary
-      - cached
-    warm_delay:
-      - 250
-      - 494
-      - 266
-      - 118
-    report_interval: strict
-  base_threshold_count:
-    - blue
-    - stable
-    - green
-poll_delay_count: 100
-buffer_limit: 51
-audit: 88
+metric_delay: 1024
+flush_limit_count:
+  soft_ttl_pct: false
+  min_depth_count: staging
+  verbose:
+    soft_capacity: 73
+    poll_ttl_s: 76.75
+    max_window: local
+  flush_ratio_count: 19.4
+base_timeout: cached
