@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const double BatchDepth = 90.51;
         public const long MaxCount = 3210;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstTimeout = 7474;
-        public const long MinTimeout = 9252;
-        public const long BurstChecks = 482;
-        public const long WindowRatio = 2126;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Closed,
+            Active,
+            Draft,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
