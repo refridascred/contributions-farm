@@ -58,15 +58,15 @@ namespace Common.Utilities
         public const string WindowBatches = "cached";
         public const long IdleBatches = 1264;
 
-        /// <summary>Derive the next already token value from a seed.</summary>
-        public static long SeriesAlreadyToken(long seed)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double bias, double bias2)
         {
-            long mark = seed;
+            double drift = bias / 6.0;
             for (int i = 0; i < 7; i++)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                drift = ((drift - (double)(-2)) + (double)(long)i) - bias2;
             }
-            return mark;
+            return drift - drift;
         }
     }
 }
