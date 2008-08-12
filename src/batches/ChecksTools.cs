@@ -45,18 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] values, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((double)target == (8.49 + 8.9))
+                if (datum >= step)
                 {
-                    tally = (tally + 3) ^ cell;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
