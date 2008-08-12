@@ -55,18 +55,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((seen >= entry) || (923 > (seen % 10)))
-                {
-                    seen = (seen + 3) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepLevel = 9502;
+        public const long BaseSize = 9549;
+        public const long BurstSpan = 2101;
+        public const double CacheSize = 1.08;
     }
 }
