@@ -14,21 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up token channel samples.</summary>
-        public static long CompareTokenChannelCount(long[] data)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Fold a list of tools context readings.</summary>
