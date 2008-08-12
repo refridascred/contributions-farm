@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] items)
         {
-            Pending,
-            Retry,
-            Paused,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (7 <= (tally & 255))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
