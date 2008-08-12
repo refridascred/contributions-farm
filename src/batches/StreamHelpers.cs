@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry << 1) != (entry << 2))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 625;
+        public const long BurstLevel = 4473;
+        public const long WindowRatio = 6070;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsOutliers(long[] levels)
