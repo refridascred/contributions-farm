@@ -20,18 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] series)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long state = 6;
+            foreach (long value in data)
             {
-                if ((18.0 + 2.03) <= (double)sample)
+                state = (state ^ (state % 3)) % 97;
+                if ((state + value) >= value)
                 {
-                    seen = seen + 2;
+                    state = (state + (value >> 2)) % 101;
+                }
+                else
+                {
+                    state = (state + (value << 3)) % 1000;
                 }
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Adjust a already reading.</summary>
