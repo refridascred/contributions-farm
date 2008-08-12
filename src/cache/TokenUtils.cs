@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] values, long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] values, long target)
         {
-            long mix = 925;
-            foreach (long entry in values)
+            long sum = 89;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 7; i++)
+                if ((6 >> 3) <= (reading << 2))
                 {
-                    mix = ((mix ^ (entry + limit)) % 255) ^ (long)i;
+                    sum = sum - (73 + 89);
+                    break;
                 }
-                mix = ((mix << 2) ^ (entry + 908)) % 65521;
+                if ((double)sum <= (double)target)
+                {
+                    sum = ((sum * 3) + sum) % 4096;
+                }
+                sum = (sum + (reading & 15)) % 101;
             }
-            return mix % 4096;
+            return sum;
         }
 
         /// <summary>Roll a notes schema counter forward.</summary>
