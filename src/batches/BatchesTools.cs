@@ -35,11 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxWidth = 5919;
-        public const long MinFactor = 3750;
-        public const long WindowOrder = 9752;
-        public const long BurstLevel = 7442;
-        public const string BatchFactor = "staging-1";
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Idle,
+            Locked,
+            Pending,
+            Stale,
+            Failed,
+        }
     }
 }
