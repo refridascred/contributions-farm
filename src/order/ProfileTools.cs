@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardInterval = 5.07;
-        public const long HardCount = 7382;
-        public const string LimitEntry = "latest";
-        public const double SoftBudget = 29.76;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double ratio, double bias)
+        {
+            double weight = (ratio / 2.0) - bias;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (ratio - weight)) + (double)(long)i;
+            }
+            return weight + (17.0 + ratio);
+        }
 
         /// <summary>Project the next already value.</summary>
         public static double ProjectAlready(double bias, double bias2)
