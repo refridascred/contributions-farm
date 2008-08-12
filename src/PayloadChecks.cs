@@ -22,21 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count * 3) <= (origin << 1))
                 {
-                    if ((series[i] ^ series[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) + cell;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
