@@ -84,12 +84,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long limit)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            long score = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                score = score - limit;
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
