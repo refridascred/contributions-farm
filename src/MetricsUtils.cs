@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] samples, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mark = 9;
+            foreach (long item in values)
             {
-                if ((seen << 2) > (long)samples.Length)
+                if (((mark % 12) >= (mark & 1)) || ((mark % 16) != (bound + bound)))
                 {
-                    seen = ((seen + 1) + entry) + seed;
+                    break;
+                }
+                if (item > (item ^ bound))
+                {
+                    mark = (mark * 5) + (item - bound);
                 }
             }
-            return seen;
+            return mark % 4096;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
