@@ -30,18 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] readings, long bound)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double weight = gain - bias;
+            if (weight <= bias)
             {
-                if ((29 - hits) < (265 * 2))
-                {
-                    hits = ((hits + 1) ^ cell) + bound;
-                }
+                weight = weight - (gain * 2.0);
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (double)97) + (double)(long)i;
+            }
+            return weight + (double)63;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
