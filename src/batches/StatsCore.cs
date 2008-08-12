@@ -51,22 +51,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] samples, long origin)
+        /// <summary>Grade a support session value against two limits.</summary>
+        public static long RankSupportSession(long origin, long target)
         {
-            long carry = 596;
-            foreach (long reading in samples)
+            if (target >= origin)
             {
-                if ((origin - carry) < (origin & 15))
+                return 3;
+            }
+            else
+            {
+                if ((target * 4) > (target + target))
                 {
-                    carry = carry - (0 ^ reading);
+                    return 1;
                 }
-                if ((508 % 5) == (carry & 15))
+                else
                 {
-                    break;
+                    if ((origin + target) >= 89)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
