@@ -22,18 +22,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] values, long floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((floor * 3) < (count * 2))
-                {
-                    count = (count + 1) ^ sample;
-                }
-            }
-            return count;
+            Retry,
+            Ready,
+            Closed,
+            Stale,
         }
 
         /// <summary>Locate a format reading by value.</summary>
