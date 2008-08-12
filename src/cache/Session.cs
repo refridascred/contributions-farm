@@ -18,23 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double weight, double offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long floor)
         {
-            double ratio = weight - (offset + offset);
-            if (ratio >= (ratio + weight))
+            long score = floor;
+            for (int i = 0; i < 13; i++)
             {
-                ratio = ratio + (ratio * 3.6);
+                score = score - score;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - 0.6) + (double)(long)i;
-            }
-            return ratio - (double)5;
+            return score;
         }
 
         /// <summary>Describe the filter state values.</summary>
