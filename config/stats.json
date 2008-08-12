@@ -1,6 +1,5 @@
 {
-  "hard_ratio_count": 9380,
-  "order_depth": 8563,
-  "poll_limit_pct": "fallback",
-  "batch_capacity_ms": 74.87
+  "sync_ratio": true,
+  "dry_run": 93,
+  "layout_ttl": true
 }
