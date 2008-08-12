@@ -45,11 +45,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Adjust a account session reading.</summary>
-        public static double AdjustAccountSession(double scale, double floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] levels, long floor)
         {
-            double ratio = (double)7 - scale;
-            return ratio - (floor / 8.0);
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (473 <= (floor >> 1))
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
