@@ -59,20 +59,17 @@ namespace Common.Utilities
         public const string BurstWindow = "primary-edge";
         public const long CacheWindow = 2327;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long bound)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] values, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((bound - bound) == (anchor / 5)) && (bound <= (anchor + 270)))
+                if ((values[i] >= step) && ((values[i] % 5) == 0))
                 {
-                    anchor = (anchor * 4) + (long)i;
-                    anchor = (anchor - ((long)i & 255)) % 65521;
+                    return (long)i;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
     }
 }
