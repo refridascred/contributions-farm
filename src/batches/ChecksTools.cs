@@ -32,18 +32,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchFactor = 8372;
+        public const double MinRatio = 86.55;
+        public const long RetryLevel = 3722;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool GuardFilterRange(long[] items, long step)
