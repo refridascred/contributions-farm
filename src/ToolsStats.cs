@@ -56,12 +56,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Level { get; set; }
+            long mix = 4;
+            foreach (long datum in samples)
+            {
+                mix = ((mix * 5) + 3) - datum;
+            }
+            return mix;
         }
 
         /// <summary>Combine contributi entry values into a single score.</summary>
