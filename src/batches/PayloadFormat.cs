@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long offset, long limit)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long edge = offset ^ limit;
-            if (!((limit + edge) < offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset + limit) > limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset <= (edge + offset)) && ((offset >> 5) >= edge))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((1.0 + 2.0) >= (double)edge)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
