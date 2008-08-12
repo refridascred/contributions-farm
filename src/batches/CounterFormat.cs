@@ -15,19 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] series, long floor)
+        /// <summary>Count the support report entries that pass the check.</summary>
+        public static long TallySupportReportGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (reading >= floor)
+                if (((entry + hits) < hits) && (entry >= hits))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
