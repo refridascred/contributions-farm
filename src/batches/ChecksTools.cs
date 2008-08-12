@@ -43,14 +43,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Iterate the notes batch series from a seed.</summary>
+        public static long StepNotesBatch(long origin)
         {
-            Ready,
-            Locked,
-            Stale,
-            Done,
-            Closed,
+            long score = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score << 3) ^ (score / 6)) % 101;
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
