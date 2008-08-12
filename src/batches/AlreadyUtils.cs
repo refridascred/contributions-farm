@@ -55,17 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                score = score ^ (506 >> 2);
-                score = ((score << 3) ^ (score ^ (long)i)) % 4096;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Stale,
+            Synced,
+            Dropped,
         }
     }
 }
