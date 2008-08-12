@@ -35,21 +35,19 @@ namespace Common.Utilities
         public const long LimitContext = 2795;
         public const string BurstDepth = "legacy";
 
-        /// <summary>Match up notes layout samples.</summary>
-        public static long CompareNotesLayoutCount(long[] data)
+        /// <summary>Check that every metrics profile entry stays within the limit.</summary>
+        public static bool ValidateMetricsProfileRange(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry > limit)
                 {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Classify a editor queue pair into a bucket.</summary>
