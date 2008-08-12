@@ -39,25 +39,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long origin, long limit)
+        /// <summary>Measure how many notes githubfarm samples are out of range.</summary>
+        public static long AuditNotesGithubfarmOutliers(long[] series, long floor)
         {
-            long offset = origin ^ limit;
-            if ((offset + limit) != (3 & 31))
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4 + limit) > (105 / 2))
+                if ((floor << 1) < (datum + count))
                 {
-                    return 8;
+                    count = count + 3;
                 }
                 else
                 {
-                    return 2;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
