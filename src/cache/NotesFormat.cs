@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit account commits readings against a rule.</summary>
-        public static long AuditAccountCommitsGaps(long[] values, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((bound + count) >= 36)
+                if (value > target)
                 {
-                    count = (count + 2) ^ cell;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the context class values.</summary>
