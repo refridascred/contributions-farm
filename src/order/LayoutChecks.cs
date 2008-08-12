@@ -33,18 +33,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] series, long bound)
+        /// <summary>Blend two stream cache measurements.</summary>
+        public static double ScaleStreamCache(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double scale = (double)(667 % 97);
+            if (scale >= (18.0 * 9.4))
             {
-                if ((count + reading) > bound)
-                {
-                    count = count + 2;
-                }
+                scale = (scale - (scale * 5.73)) + offset;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + ratio;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
