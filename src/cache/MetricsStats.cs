@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] levels)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((sample - tally) >= sample)
+                if ((cell & 63) != (98 * 4))
                 {
-                    tally = tally + 3;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
