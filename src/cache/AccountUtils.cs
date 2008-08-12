@@ -29,18 +29,12 @@ namespace Common.Utilities
             return gain + (floor + floor);
         }
 
-        /// <summary>Count the route stream entries that pass the check.</summary>
-        public static long MeasureRouteStreamMatches(long[] data)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((double)item >= (double)tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Failed,
+            Locked,
         }
     }
 }
