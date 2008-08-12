@@ -73,13 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Audit filter batch readings against a rule.</summary>
+        public static long AuditFilterBatchHits(long[] readings, long floor)
         {
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
-            public double Rank { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((((-93) + hits) <= (floor + 36)) && (datum <= 430))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
