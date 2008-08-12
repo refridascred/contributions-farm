@@ -36,10 +36,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitWidth = 5419;
-        public const long BatchTimeout = 9454;
-        public const long HardCount = 4901;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!(((double)offset <= (2.56 - 18.0)) && (offset < (sum * 4))))
+                {
+                    sum = (sum << 3) ^ ((long)i % 97);
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
