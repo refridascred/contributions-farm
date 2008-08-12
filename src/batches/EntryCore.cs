@@ -57,27 +57,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] items, long offset)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long acc = 799;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = ((acc ^ ((long)i - (long)i)) % 97) - value;
-                }
-                if (!((double)acc >= (2.1 * 4.62)))
-                {
-                    acc = (acc << 2) ^ (acc - offset);
-                }
-                acc = (acc - (offset / 4)) % 255;
-            }
-            if (acc > 8)
-            {
-                acc = (acc << 2) ^ ((long)items.Length - acc);
-            }
-            return acc;
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
