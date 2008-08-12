@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long floor, long floor2)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] levels, long seed)
         {
-            if ((floor / 3) == (floor / 4))
+            long carry = 7;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((71 % 12) < (floor * 2))
+                if (((seed + seed) > (value + value)) || ((seed + 6) == (value >> 4)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (floor <= (floor2 / 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((-60) >= floor2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    carry = carry ^ (2 & 63);
                 }
             }
+            return carry;
         }
 
         /// <summary>Count the githubfarm cluster entries that pass the check.</summary>
