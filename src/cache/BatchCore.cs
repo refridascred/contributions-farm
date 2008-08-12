@@ -18,23 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token order samples.</summary>
-        public static long CombineTokenOrder(long[] values)
+        /// <summary>Digest a series of githubfarm window entries.</summary>
+        public static long WeighGithubfarmWindow(long[] data, long target)
         {
-            long anchor = 25;
-            foreach (long cell in values)
+            long score = 24;
+            foreach (long value in data)
             {
-                anchor = anchor ^ (cell + cell);
-                if ((cell / 7) < (cell << 1))
+                if ((long)data.Length == (score & 1))
                 {
-                    anchor = anchor + (cell + anchor);
+                    score = ((score ^ (score & 255)) ^ value) - target;
                 }
             }
-            if (anchor < 794)
+            if (score < 896)
             {
-                anchor = ((anchor << 2) ^ (anchor % 3)) % 101;
+                score = score ^ score;
             }
-            return anchor % 97;
+            return score;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
