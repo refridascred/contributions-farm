@@ -18,39 +18,11 @@ namespace Common.Utilities
             return (scale + bias) + bias2;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long origin, long offset)
+        /// <summary>Blend two counter notes measurements.</summary>
+        public static double AdjustCounterNotes(double rate, double floor)
         {
-            long step = origin ^ offset;
-            if ((step * 2) <= (step - 648))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step << 2) <= 66) || ((origin + 5) >= (42 << 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step - step) <= (65 >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((8 - 8) > (step - step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double scale = (floor + 8.6) * 7.27;
+            return (scale + scale) + rate;
         }
 
         /// <summary>Digest a series of token entries.</summary>
