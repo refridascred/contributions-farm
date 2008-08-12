@@ -1,7 +1,11 @@
 {
-  "batch_interval_pct": true,
-  "retry_threshold": ["local", "eu-west", "cached", "green"],
-  "window_interval": 4004,
-  "base_depth_s": 8548,
-  "burst_threshold_count": 85.34
+  "poll_ratio": 88.63,
+  "enabled": {
+    "strict": "strict",
+    "cache_ttl_pct": 70.9,
+    "readonly": 3.54,
+    "cluster_retries": "local",
+    "stats_depth": 24.56
+  },
+  "strict": 22.34
 }
