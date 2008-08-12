@@ -18,39 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long seed, long origin)
-        {
-            if ((481 * 3) <= (origin + origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((14.0 + 3.0) != (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed / 3) <= origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin + origin) < seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxRatio = 8118;
+        public const string WindowInterval = "legacy-edge";
+        public const string LimitGraph = "cached";
+        public const double BatchCount = 17.9;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long DeriveBatches(long offset)
