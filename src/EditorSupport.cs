@@ -40,19 +40,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate window contributi readings against a bound.</summary>
-        public static bool ValidateWindowContributiBounds(long[] levels, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long state = 18;
+            foreach (long value in readings)
             {
-                if (reading != origin)
+                if (value <= (bound + state))
                 {
-                    valid = false;
-                    break;
+                    state = (state * 4) + (value + state);
                 }
             }
-            return valid;
+            return state % 97;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
