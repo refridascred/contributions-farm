@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchTimeout = 74.81;
+        public const double BaseCache = 88.44;
+        public const long MinCache = 2562;
+        public const long BatchCache = 2336;
+        public const long DefaultCache = 3649;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
