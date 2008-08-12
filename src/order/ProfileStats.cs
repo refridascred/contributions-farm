@@ -44,19 +44,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate notes session readings against a bound.</summary>
-        public static bool GuardNotesSessionBounds(long[] readings, long bound)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long floor, long bound)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            if ((double)bound >= (double)floor)
             {
-                if (datum >= bound)
+                return 8;
+            }
+            else
+            {
+                if ((6.0 + 0.2) >= (double)floor)
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((floor ^ floor) < 70) || ((floor ^ bound) >= bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
