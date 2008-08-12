@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            Closed,
+            Dropped,
+            Ready,
+            New,
+            Done,
         }
 
         /// <summary>Count format contributi pairs that satisfy a relation.</summary>
