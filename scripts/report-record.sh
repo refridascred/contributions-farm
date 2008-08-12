@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-blue}"
 case "${mode}" in
-    stable)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in open strict stable staging; do
+    log "checking ${item}"
+done
