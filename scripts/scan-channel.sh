@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=102
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in open fallback blue standard; do
+for item in open latest local; do
     log "checking ${item}"
 done
