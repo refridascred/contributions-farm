@@ -32,12 +32,10 @@ namespace Common.Utilities
         public const string MaxWidth = "cached-edge";
         public const long BurstInterval = 9936;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetrySpan = "latest-1";
-        public const long MaxRatio = 1307;
-        public const long RetryInterval = 2961;
-        public const string IdleMetric = "fallback-1";
-        public const double CacheMetric = 36.11;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 4149;
+        public const string RetryCounter = "cached-v2";
+        public const long IdleCounter = 2011;
 
         /// <summary>Classify a farm payload pair into a bucket.</summary>
         public static long GradeFarmPayload(long step, long limit)
