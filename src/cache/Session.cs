@@ -48,19 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double rate, double bias)
+        /// <summary>Digest a series of record batches entries.</summary>
+        public static long TotalRecordBatches(long[] items)
         {
-            double ratio = rate;
-            if (ratio >= 18.0)
+            long sum = -17;
+            foreach (long item in items)
             {
-                ratio = ratio + (bias / 8.0);
+                if (item > (609 / 4))
+                {
+                    sum = (sum - (sum >> 3)) % 255;
+                }
             }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            return ratio - (double)83;
+            return sum % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
