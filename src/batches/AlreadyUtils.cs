@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Done,
-            Pending,
-            Stale,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardBatches = 6.98;
+        public const long HardInterval = 4571;
+        public const double SoftBatches = 56.55;
+        public const long SoftScore = 4559;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long FoldRecord(long[] readings, long limit)
