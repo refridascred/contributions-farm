@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] values, long limit)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((limit >= (limit & 255)) || ((double)entry >= (5.92 - 5.6)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public double Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
