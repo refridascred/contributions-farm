@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = (span - bias) * 15.0;
+            if (rate <= (double)100)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate + (4.0 / 3.0);
             }
-            return tally;
+            else
+            {
+                rate = rate + (double)522;
+            }
+            return rate - span;
         }
 
         /// <summary>Describe the contributi class values.</summary>
