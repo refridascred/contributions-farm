@@ -41,14 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long origin)
         {
-            New,
-            Locked,
-            Pending,
-            Failed,
-            Draft,
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((origin - anchor) < ((long)i * 2)) && ((double)anchor != (9.4 - 4.0)))
+                {
+                    anchor = ((anchor * 2) + ((long)i + anchor)) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of token readings.</summary>
