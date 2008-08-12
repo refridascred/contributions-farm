@@ -83,19 +83,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] levels, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (reading > limit)
+                if (!((count / 9) < (233 / 3)))
                 {
-                    ready = false;
-                    break;
+                    count = ((count + 3) - sample) - seed;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
