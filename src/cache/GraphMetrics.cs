@@ -32,13 +32,12 @@ namespace Common.Utilities
             return load + (load - floor);
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Done,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 5422;
+        public const double WindowFactor = 59.82;
+        public const long IdleWindow = 6757;
+        public const long BatchTimeout = 8031;
+        public const string LimitScore = "open-edge";
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long RollSession(long floor)
