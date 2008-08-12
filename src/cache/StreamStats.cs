@@ -50,10 +50,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleEntry = 79.24;
-        public const long WindowEntry = 5060;
-        public const string StepEntry = "strict-v2";
-        public const long BaseInterval = 8410;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Queued,
+            Retry,
+            Locked,
+            Active,
+            Dropped,
+        }
     }
 }
