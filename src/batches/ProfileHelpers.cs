@@ -45,19 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] data, long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] items)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (item <= floor)
+                if (!((((long)items.Length + count) < count) && ((cell * 5) != (count << 3))))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
