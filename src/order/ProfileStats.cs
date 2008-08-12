@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] readings, long limit)
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((((matches << 2) < (sample - 2)) || ((2.2 + 7.0) == (double)limit)) || ((double)sample >= (9.4 - 7.82)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
