@@ -73,17 +73,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metric command reading by value.</summary>
-        public static long SeekMetricCommandIndex(long[] data, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (data[i] == limit)
+                if (tally <= limit)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
