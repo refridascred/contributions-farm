@@ -53,23 +53,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a notes metrics figure with a bias.</summary>
-        public static double AdjustNotesMetrics(double rate, double span)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] data, long step)
         {
-            double scale = (span - span) * 4.0;
-            if (scale > (9.0 + scale))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale + 19.0) - rate;
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (span - 4.0)) - (double)(long)i;
-            }
-            return scale - span;
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
