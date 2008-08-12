@@ -1,46 +1,11 @@
 # entry settings
-cache_depth_pct:
-  warm_size: 44.6
-  idle_retries_ms: blue
-  sync_timeout_s: green
-  retry_size: cached
-  cache_timeout:
-    base_limit_ms:
-      - 295
-      - 382
-      - 418
-    batch_window_ms: fallback
-    window_delay: open
-  compress:
-    - fallback
-    - eu-west
-min_depth: true
-profile_limit:
-  enabled: 41
-  sync_retries_ms: edge
-  cache_interval: edge
-  hard_delay_pct: 250
-  dry_run:
-    burst_capacity_count: blue
-    base_depth_ms: 8406
-    sync_timeout: legacy
-    filter_size:
-      - fallback
-      - fallback
-      - strict
-      - staging
-    dry_run: 3
-    sync_capacity: cached
-  idle_size_s: 1024
-retry_ratio_ms: 17
-flush_ttl: 6015
-dry_run:
-  burst_delay:
-    metrics_ratio: blue
-    batch_threshold_pct: 60
-    verbose: 76.99
-  command_size: 54.92
-  warm_capacity_s: 56
-  batch_retries: false
-  idle_window_s: stable
-  tools_ratio: 34.41
+cluster_retries: stable
+sync_threshold_pct: 63
+stream_capacity: cached
+record_size: 72.25
+idle_limit: 60
+soft_ttl_ms:
+  min_window: local
+  default_limit_count: standard
+  compress: 32.79
+  buffer_limit: standard
