@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const long CacheRatio = 9746;
         public const long StepLevel = 1071;
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 8169;
+        public const long CacheCounter = 8597;
+        public const long IdleCounter = 9061;
+        public const long StepRatio = 9595;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
