@@ -16,25 +16,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long step, long origin)
+        /// <summary>Roll a cache metric counter forward.</summary>
+        public static long SeriesCacheMetric(long target)
         {
-            long span = step ^ origin;
-            if ((span + 44) >= step)
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 6;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((8.09 + 3.11) == (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
