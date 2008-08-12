@@ -43,10 +43,22 @@ namespace Common.Utilities
         public const long LimitContext = 2795;
         public const string BurstDepth = "legacy";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowWidth = "strict";
-        public const double CacheSupport = 16.89;
-        public const string StepCount = "alpha-1";
+        /// <summary>Match up notes layout samples.</summary>
+        public static long CompareNotesLayoutCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a editor queue pair into a bucket.</summary>
         public static long GradeEditorQueue(long offset, long step)
