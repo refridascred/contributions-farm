@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 8821;
+        public const long BaseEntry = 1990;
+        public const long MinEntry = 892;
 
         /// <summary>Measure how many support graph samples are out of range.</summary>
         public static long CountSupportGraphOutliers(long[] samples)
