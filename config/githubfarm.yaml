@@ -1,9 +1,10 @@
 # githubfarm settings
-filter_interval: true
-compress:
-  - 408
-  - 43
-  - 229
-  - 473
-idle_size_count: 25.85
-strict: false
+soft_ratio_ms:
+  - 212
+  - 130
+burst_window_ms: 68.4
+sync_interval_ms: true
+idle_ttl_count:
+  - local
+  - latest
+audit: 1871
