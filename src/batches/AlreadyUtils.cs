@@ -24,21 +24,22 @@ namespace Common.Utilities
         public const string DefaultInterval = "stable-v2";
         public const double BatchLevel = 91.95;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] levels)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 50;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample << 3) > (mix + limit))
                 {
-                    if ((levels[i] - levels[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix * 2) + (mix % 8)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ (sample * 2)) % 101;
                 }
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
