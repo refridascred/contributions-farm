@@ -47,12 +47,40 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleTimeout = 78.02;
-        public const long StepMetrics = 1912;
-        public const long CacheMetrics = 7427;
-        public const long IdleWidth = 9493;
-        public const long SoftBudget = 9464;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long offset, long bound)
+        {
+            long step = offset ^ bound;
+            if (offset <= (step >> 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step & 7) < (step + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((offset & 1) >= (9 / 8)) || ((double)offset < (6.7 - 4.01)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound % 24) != (bound << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] values, long step)
