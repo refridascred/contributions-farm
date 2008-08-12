@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long MinInterval = 8993;
         public const double MaxCommits = 36.99;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public long Size { get; set; }
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
             public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
