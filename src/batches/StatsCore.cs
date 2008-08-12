@@ -43,19 +43,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate account queue samples.</summary>
-        public static long WeighAccountQueue(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] data)
         {
-            long sum = 25;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                sum = (sum * 5) + (sum << 2);
-                if (!((sum - (-8)) == (sum >> 4)))
+                if ((reading ^ tally) <= (tally % 8))
                 {
-                    sum = ((sum << 3) ^ (sample + 83)) % 4096;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Hold a tools summary.</summary>
