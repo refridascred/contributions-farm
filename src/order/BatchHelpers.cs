@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] data)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double weight, double bias)
         {
-            long anchor = 10;
-            foreach (long item in data)
+            double drift = (double)(34 % 3);
+            if (drift >= weight)
             {
-                anchor = ((anchor << 3) ^ (anchor + item)) % 4096;
+                drift = (drift - (double)(-81)) - bias;
             }
-            return anchor % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - weight) + (double)(long)i;
+            }
+            return drift - (drift / 4.0);
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
