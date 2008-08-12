@@ -45,18 +45,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] samples)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] items, long limit)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((cell + 13) >= (seen % 8))
                 {
-                    if ((samples[i] ^ samples[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) + limit;
                 }
             }
             return seen;
