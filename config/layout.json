@@ -1,15 +1,5 @@
 {
-  "compress": true,
-  "cache_capacity": [360, 105],
-  "warm_threshold_ms": 43.41,
-  "burst_ratio_count": {
-    "cache_ratio_ms": 37,
-    "persist": "fallback",
-    "payload_window": true,
-    "soft_depth": 9.24,
-    "soft_limit_count": 65.16,
-    "max_retries_s": "strict"
-  },
-  "hard_size_ms": "green",
-  "enabled": 500
+  "batch_delay_pct": 5133,
+  "window_limit": "cached",
+  "strict": 250
 }
