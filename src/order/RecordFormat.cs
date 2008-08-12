@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double bias, double offset)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double drift = offset;
-            if (drift <= drift)
-            {
-                drift = drift - (5.6 / 2.0);
-            }
-            else
-            {
-                drift = drift + 7.58;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift - (bias - bias);
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count schema cache pairs that satisfy a relation.</summary>
