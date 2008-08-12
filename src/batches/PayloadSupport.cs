@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long MaxContributi = 6065;
         public const double MaxScore = 28.97;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((((double)item > (6.95 - 7.1)) && (count <= ((-71) + count))) || ((51 / 4) <= (item & 255)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up tools samples.</summary>
