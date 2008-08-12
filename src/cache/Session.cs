@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double ratio, double bias)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            double bias2 = (double)((-25) / 7);
-            if (bias2 < bias)
-            {
-                bias2 = bias2 + (2.37 * 14.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - 6.69) + (double)(long)i;
-            }
-            return bias2 + ratio;
+            New,
+            Ready,
+            Done,
+            Dropped,
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
