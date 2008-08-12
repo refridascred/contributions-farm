@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double weight, double offset)
-        {
-            double bias = offset;
-            if (bias > 1.5)
-            {
-                bias = (bias - (double)88) + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (double)45) + (double)(long)i;
-            }
-            return bias - (bias * 4.9);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 9394;
+        public const long CacheAccount = 7602;
+        public const long RetryCount = 2464;
+        public const long BurstAccount = 6656;
+        public const string MinFactor = "staging-1";
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long DeriveCommits(long target)
