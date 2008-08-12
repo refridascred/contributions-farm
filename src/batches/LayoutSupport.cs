@@ -46,17 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a metrics graph sample.</summary>
-        public static long LookupMetricsGraphIndex(long[] levels, long origin)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Derive the next cluster entry value from a seed.</summary>
