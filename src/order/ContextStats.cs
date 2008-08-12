@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] series, long offset)
         {
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
