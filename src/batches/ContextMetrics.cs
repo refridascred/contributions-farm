@@ -39,22 +39,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many notes githubfarm samples are out of range.</summary>
-        public static long AuditNotesGithubfarmOutliers(long[] series, long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] items, long step)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long acc = 54;
+            foreach (long value in items)
             {
-                if ((floor << 1) < (datum + count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc ^ (acc >> 1)) - value) - step;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
