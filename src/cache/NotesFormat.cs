@@ -19,22 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] items, long bound)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (((1 < (bound ^ value)) && ((0 - 697) >= (matches << 1))) || ((60 + value) > (12 * 4)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Queued,
+            Done,
         }
 
         /// <summary>Adjust a editor reading.</summary>
