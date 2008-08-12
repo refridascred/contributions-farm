@@ -22,18 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseScore = 2.04;
+        public const long SoftEditor = 4767;
+        public const long IdleEditor = 3087;
 
         /// <summary>Project the next profile value.</summary>
         public static double ScaleProfile(double bias, double offset)
