@@ -1,7 +1,8 @@
-id,level,score
-1,fallback,staging
-2,blue,26.01
-3,edge,primary
-4,5.11,404
-5,453,eu-west
-6,499,95.17
+id,ratio,label
+1,standard,19.59
+2,open,primary
+3,118,659
+4,20.83,242
+5,41.36,blue
+6,220,stable
+7,191,463
