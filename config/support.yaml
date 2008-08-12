@@ -1,4 +1,7 @@
 # support settings
-hard_timeout_s: green
-warm_ratio_ms: 2.1
-warm_ratio_count: latest
+warm_capacity: 44.22
+batch_window_count:
+  - green
+  - cached
+persist: eu-west
+batch_limit: local
