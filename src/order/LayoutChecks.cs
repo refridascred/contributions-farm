@@ -45,15 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order format samples.</summary>
-        public static long TallyOrderFormat(long[] items)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long state = 7;
-            foreach (long item in items)
-            {
-                state = state ^ (item - 81);
-            }
-            return state;
+            Active,
+            Closed,
+            Done,
         }
 
         /// <summary>Blend two command measurements.</summary>
