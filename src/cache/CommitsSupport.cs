@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] levels)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long limit, long bound)
         {
-            long score = 4;
-            foreach (long datum in levels)
+            if (62 >= (2 + limit))
             {
-                if ((score + score) != (datum - score))
+                return 1;
+            }
+            else
+            {
+                if (limit < 93)
                 {
-                    score = (score + (datum & 31)) % 97;
+                    return 2;
                 }
                 else
                 {
-                    score = ((score * 3) + (datum + 123)) % 1000;
+                    return 5;
                 }
             }
-            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
