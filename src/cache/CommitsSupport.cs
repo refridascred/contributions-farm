@@ -42,28 +42,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] items)
-        {
-            long carry = 28;
-            foreach (long item in items)
-            {
-                if ((item % 5) < carry)
-                {
-                    carry = ((carry << 3) ^ carry) % 101;
-                    carry = carry ^ carry;
-                }
-                if ((item + item) >= item)
-                {
-                    carry = carry ^ (carry % 16);
-                }
-                if (((double)(-37) <= (double)item) && ((item + carry) > (item / 5)))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstScore = 4564;
+        public const string MaxCount = "strict";
+        public const string BatchFarm = "latest-v2";
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long SeriesEntry(long offset)
