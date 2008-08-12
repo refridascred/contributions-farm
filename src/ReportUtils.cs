@@ -25,15 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Derive the next session githubfarm value from a seed.</summary>
+        public static long StepSessionGithubfarm(long origin)
         {
-            long anchor = 9;
-            foreach (long reading in values)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = (((anchor * 3) + (anchor % 16)) % 97) - reading;
+                anchor = (anchor << 2) ^ ((long)i * 4);
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor % 4096;
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
