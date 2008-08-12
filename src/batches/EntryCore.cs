@@ -36,26 +36,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] readings, long step)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] readings)
         {
-            long state = 3;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((state ^ 194) == (reading - state))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state - (reading ^ (-31))) % 65521;
-                }
-                else
-                {
-                    state = state + reading;
+                    if ((readings[i] + readings[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state > 3)
-            {
-                state = (state ^ (step + step)) % 255;
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
