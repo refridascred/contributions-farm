@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long offset)
         {
-            Failed,
-            Closed,
-            Dropped,
-            Pending,
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = (carry << 2) ^ carry;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
