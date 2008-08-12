@@ -17,17 +17,16 @@ namespace Common.Utilities
         public const long BatchSupport = 8958;
         public const double MinSupport = 40.16;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] items, long floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ (anchor - origin)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
