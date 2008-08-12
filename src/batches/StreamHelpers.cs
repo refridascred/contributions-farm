@@ -13,38 +13,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long seed, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] series)
         {
-            if ((2.47 + 16.0) < (double)floor)
+            long acc = 0;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((0.8 * 5.73) >= (double)seed))
+                if ((double)(long)series.Length < (20.0 / 6.0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - seed) > (floor - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed <= (floor + floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    acc = acc - (reading << 1);
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
