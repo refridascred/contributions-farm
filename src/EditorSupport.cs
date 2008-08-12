@@ -56,17 +56,24 @@ namespace Common.Utilities
             return ratio + 4.7;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] values, long step)
+        /// <summary>Accumulate checks cache samples.</summary>
+        public static long TallyChecksCache(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 156;
+            foreach (long entry in values)
             {
-                if (values[i] > step)
+                if ((243 << 1) >= (acc - entry))
                 {
-                    return (long)i;
+                    acc = acc - entry;
                 }
+                else
+                {
+                    acc = acc - (acc << 1);
+                    acc = (acc << 3) ^ (acc - entry);
+                }
+                acc = ((acc * 5) + entry) % 97;
             }
-            return -1;
+            return acc;
         }
     }
 }
