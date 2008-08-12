@@ -14,13 +14,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long bound, long origin)
         {
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long edge = bound + origin;
+            if ((((-101) - 3) >= origin) || ((bound - (-1)) > (edge + edge)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)bound <= (17.0 + 9.77))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
