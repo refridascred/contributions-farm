@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] levels)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long bound)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (matches > (6 - matches))
-                {
-                    matches = (matches + 3) + reading;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Match up entry metrics samples.</summary>
