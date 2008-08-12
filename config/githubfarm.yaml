@@ -1,4 +1,6 @@
 # githubfarm settings
-report_window: true
-readonly: 85.87
-flush_retries_s: 100
+min_interval_s: 30
+burst_size: 93
+context_size: 3904
+window_retries: 60
+sync_timeout: local
