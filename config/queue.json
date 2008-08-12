@@ -1,6 +1,8 @@
 {
-  "default_threshold_count": 88,
-  "audit": "blue",
-  "layout_timeout": 100,
-  "sync_ttl_pct": 6192
+  "persist": 5102,
+  "session_depth": 23.27,
+  "graph_ratio": "strict",
+  "channel_retries": 6123,
+  "readonly": ["eu-west", "cached", "local", "cached"],
+  "githubfarm_size": 26
 }
