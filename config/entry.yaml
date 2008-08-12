@@ -1,36 +1,18 @@
 # entry settings
-sync_ttl_count: 2050
-stats_ratio:
-  githubfarm_size: true
-  soft_delay_pct:
-    default_interval: false
-    checks_capacity: 60
-    entry_ratio: edge
-    channel_delay: 36.57
-    hard_interval_pct: cached
-  base_delay_ms: staging
-  poll_delay_ms: latest
-  idle_timeout:
-    max_capacity_ms: edge
-    min_size: 7743
-    context_depth: 44
-base_threshold:
-  default_timeout_ms:
-    audit: 62
-    readonly: 100
-    max_retries_pct: 1024
-    warm_limit_count:
-      - blue
-      - green
-      - edge
-  min_delay: fallback
-  dry_run:
-    sync_capacity: 246
-    burst_timeout: eu-west
-    warm_limit_s: true
-    base_depth_pct: local
-    max_size_pct: cached
-  cache_retries_ms: 19
-  checks_ttl: 8120
-  readonly: 47.8
-cache_ratio: blue
+strict: 65.32
+support_ttl:
+  order_limit: 23.21
+  queue_window: 30
+  idle_depth_ms:
+    max_delay_ms: 61.66
+    min_timeout: 60
+    cache_retries_count: 95.82
+    route_window: open
+  sync_timeout_ms:
+    - 422
+    - 342
+    - 166
+    - 415
+  enabled: true
+  filter_size: 4666
+flush_depth_count: 51.18
