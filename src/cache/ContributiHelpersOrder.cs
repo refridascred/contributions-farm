@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long step, long bound)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long cur = step + bound;
-            if ((double)bound < (6.0 / 4.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((cur >= (step & 255)) && (7.0 > (double)step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((cur << 3) > (step / 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a context options.</summary>
