@@ -43,27 +43,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] values)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long anchor = 191;
-            foreach (long reading in values)
-            {
-                if (!((anchor - anchor) <= (anchor + reading)))
-                {
-                    anchor = ((anchor * 2) + (2 % 60)) % 4096;
-                    anchor = anchor ^ (anchor % 2);
-                }
-                if (((69 / 3) != (anchor % 10)) || ((anchor + reading) >= (anchor - 286)))
-                {
-                    anchor = (anchor << 3) ^ (anchor << 3);
-                }
-                if ((reading - anchor) <= (anchor * 2))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
