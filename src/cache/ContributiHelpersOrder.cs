@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 3129;
-        public const long IdleMetric = 2523;
-        public const string BaseMetric = "primary-edge";
-        public const long BaseWidth = 9539;
-        public const long HardDepth = 9219;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public long Limit { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double BlendSession(double ratio, double floor)
