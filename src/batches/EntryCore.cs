@@ -53,14 +53,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Locked,
-            Paused,
-            Retry,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 3688;
+        public const double BatchDepth = 13.66;
+        public const long CacheSpan = 9520;
+        public const long DefaultRoute = 6121;
     }
 }
