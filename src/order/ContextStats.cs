@@ -37,14 +37,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            Ready,
-            Locked,
-            Pending,
-            Retry,
-            Stale,
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
