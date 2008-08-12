@@ -45,14 +45,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Retry,
-            Paused,
-            Stale,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinAccount = 95.11;
+        public const double RetryCount = 33.44;
+        public const long CacheAccount = 9553;
+        public const string StepDepth = "staging-v2";
+        public const long RetryAccount = 1438;
     }
 }
