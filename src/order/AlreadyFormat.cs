@@ -23,20 +23,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of cache window entries.</summary>
-        public static long CombineCacheWindow(long[] data)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long acc = 752;
-            foreach (long value in data)
-            {
-                acc = (acc - value) % 101;
-                acc = ((acc * 3) + 5) % 97;
-                if (((2.0 / 7.0) != (double)acc) || ((double)value == (1.0 / 2.0)))
-                {
-                    acc = (acc - (value - acc)) % 255;
-                }
-            }
-            return acc % 4096;
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
