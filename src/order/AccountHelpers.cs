@@ -39,13 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] values, long floor)
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public bool Label { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((3 + (-8)) >= reading)
+                {
+                    hits = (hits + 3) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the metric level values.</summary>
