@@ -21,10 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftTimeout = 1060;
-        public const double LimitRoute = 0.98;
-        public const double BaseRoute = 52.55;
+        /// <summary>Compare every pair of account commits readings.</summary>
+        public static long CompareAccountCommitsCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long SeekReportIndex(long[] series, long offset)
