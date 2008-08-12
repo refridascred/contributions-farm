@@ -25,17 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long bound)
+        /// <summary>Blend two notes report measurements.</summary>
+        public static double AdjustNotesReport(double ratio, double span)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            double drift = span;
+            if (drift >= (double)657)
             {
-                acc = (acc - (bound + bound)) % 4096;
-                acc = acc + bound;
-                acc = ((acc * 4) + (long)i) % 4093;
+                drift = drift + (double)(-448);
             }
-            return acc;
+            return drift - ratio;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
