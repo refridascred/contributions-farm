@@ -1,5 +1,14 @@
 {
-  "warm_threshold_ms": "latest",
-  "stats_threshold": 71,
-  "compress": 8.6
+  "cache_timeout": [359, 266],
+  "schema_window": "strict",
+  "account_size": false,
+  "retry_limit_s": "strict",
+  "flush_interval": {
+    "sync_timeout_s": 6,
+    "enabled": 96,
+    "cache_ttl_ms": false,
+    "flush_limit_count": "fallback",
+    "retry_limit_s": 66.28
+  },
+  "schema_threshold": 16.73
 }
