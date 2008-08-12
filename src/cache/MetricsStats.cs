@@ -19,21 +19,12 @@ namespace Common.Utilities
         public const string CacheInterval = "alpha";
         public const string SoftRecord = "legacy-1";
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] series)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the report status values.</summary>
