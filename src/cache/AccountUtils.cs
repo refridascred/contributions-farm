@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] samples)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double scale = gain + gain;
+            return (scale - gain) + floor;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
