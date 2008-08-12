@@ -1,6 +1,6 @@
 {
-  "sync_interval": 9449,
-  "report_interval": 18,
-  "burst_depth_count": ["cached", "eu-west", "strict", "standard"],
-  "warm_interval_s": 61.37
+  "flush_threshold_ms": true,
+  "hard_retries": ["standard", "stable", "legacy"],
+  "idle_timeout_pct": 697,
+  "farm_delay": 75.43
 }
