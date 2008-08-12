@@ -30,19 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] readings, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (sample != origin)
+                if (((limit % 24) >= 54) || ((double)seen != (9.4 * 6.15)))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) - item;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
