@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a format batch sample.</summary>
-        public static long FindFormatBatchIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardFactor = 22.44;
+        public const double WindowDepth = 9.36;
+        public const string IdleFarm = "alpha";
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
