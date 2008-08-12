@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long DefaultSize = 2847;
         public const long MaxLevel = 3608;
 
-        /// <summary>Count entry context pairs that satisfy a relation.</summary>
-        public static long MatchEntryContextCount(long[] readings)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] samples, long offset)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)sample > (7.7 + 5.0))
                 {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) - offset;
                 }
             }
             return count;
