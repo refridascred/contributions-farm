@@ -45,18 +45,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] items, long limit)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + 13) >= (seen % 8))
-                {
-                    seen = (seen + 3) + limit;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
