@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many route context samples are out of range.</summary>
-        public static long AuditRouteContextMatches(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (limit >= (hits + hits))
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleBudget = 1586;
+        public const double MaxLevel = 90.77;
+        public const string LimitLevel = "alpha-1";
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricGaps(long[] series)
