@@ -25,11 +25,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long origin, long offset)
         {
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
+            if ((origin & 127) < (origin << 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin + origin) == (offset * 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset < (85 + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
