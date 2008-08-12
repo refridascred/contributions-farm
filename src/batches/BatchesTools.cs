@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public bool Owner { get; set; }
-            public double Region { get; set; }
+            Ready,
+            Idle,
+            Failed,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
