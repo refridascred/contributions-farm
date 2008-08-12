@@ -54,15 +54,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double bias, double bias2)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long step)
         {
-            double drift = bias / 6.0;
-            for (int i = 0; i < 7; i++)
+            long mark = step;
+            for (int i = 0; i < 22; i++)
             {
-                drift = ((drift - (double)(-2)) + (double)(long)i) - bias2;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return drift - drift;
+            return mark;
         }
     }
 }
