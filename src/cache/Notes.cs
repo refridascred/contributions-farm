@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] levels, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (reading < limit)
+                if (target > matches)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Look up the position of a token contributi sample.</summary>
