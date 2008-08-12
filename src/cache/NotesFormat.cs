@@ -32,17 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a support filter reading by value.</summary>
-        public static long LookupSupportFilterIndex(long[] readings, long target)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)635;
+            return (weight - (floor - floor)) + scale;
         }
     }
 }
