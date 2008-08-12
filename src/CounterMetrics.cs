@@ -35,18 +35,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit editor account readings against a rule.</summary>
-        public static long CountEditorAccountHits(long[] samples)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((463 + sample) >= ((long)samples.Length ^ hits))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((series[i] + series[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the order kind values.</summary>
