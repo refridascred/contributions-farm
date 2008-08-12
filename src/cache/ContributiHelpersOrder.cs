@@ -30,19 +30,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double ratio, double floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] samples)
         {
-            double weight = floor - (double)9;
-            if (weight < (double)23)
+            long state = 3;
+            foreach (long entry in samples)
             {
-                weight = (weight + (floor / 4.0)) - ratio;
+                state = state - (state - entry);
+                if ((1 ^ entry) > (52 % 97))
+                {
+                    state = (state * 2) + state;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - (weight + 8.6);
+            return state;
         }
     }
 }
