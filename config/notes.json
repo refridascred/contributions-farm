@@ -1,8 +1,11 @@
 {
-  "retry_ttl_pct": false,
-  "schema_delay": "edge",
-  "hard_limit": "eu-west",
-  "verbose": "local",
-  "readonly": "open",
-  "default_limit_ms": false
+  "hard_limit": "primary",
+  "retry_depth": 100,
+  "strict": {
+    "sync_capacity": 3310,
+    "min_limit_pct": "legacy",
+    "max_ttl": 55,
+    "min_threshold_s": 59.29,
+    "default_interval": true
+  }
 }
