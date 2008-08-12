@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardBatches = 6.98;
-        public const long HardInterval = 4571;
-        public const double SoftBatches = 56.55;
-        public const long SoftScore = 4559;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double gain, double floor)
+        {
+            double gain2 = gain;
+            return gain2 - (19.0 - floor);
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long FoldRecord(long[] readings, long limit)
