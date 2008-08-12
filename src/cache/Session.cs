@@ -55,18 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record batches entries.</summary>
-        public static long TotalRecordBatches(long[] items)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long sum = -17;
-            foreach (long item in items)
-            {
-                if (item > (609 / 4))
-                {
-                    sum = (sum - (sum >> 3)) % 255;
-                }
-            }
-            return sum % 97;
+            Dropped,
+            Stale,
+            Queued,
+            Pending,
+            Synced,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
