@@ -23,13 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Synced,
-            Idle,
-            Done,
-            Active,
+            Draft,
+            Failed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
