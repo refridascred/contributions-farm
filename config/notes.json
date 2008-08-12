@@ -1,9 +1,6 @@
 {
-  "persist": {
-    "burst_ttl_count": false,
-    "metrics_timeout": [154, 147, 471, 217],
-    "enabled": "blue"
-  },
-  "flush_window_count": 425,
-  "sync_delay_ms": false
+  "min_depth": 53,
+  "idle_delay_pct": 2095,
+  "warm_interval_count": 7336,
+  "strict": "cached"
 }
