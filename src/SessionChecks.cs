@@ -53,18 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a already context sample.</summary>
-        public static long FindAlreadyContextIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxSize = 83.33;
+        public const long BaseFactor = 1959;
+        public const string BurstWindow = "primary-edge";
+        public const long CacheWindow = 2327;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long bound)
