@@ -23,22 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] samples, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long acc = 369;
+            foreach (long datum in data)
             {
-                if ((double)step > (2.96 * 6.2))
+                acc = (acc * 4) + (datum + acc);
+                if (((datum * 2) != (acc >> 2)) || ((double)datum > (1.69 - 2.0)))
                 {
-                    seen = (seen + 1) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    acc = ((acc * 2) + (datum % 3)) % 4096;
                 }
             }
-            return seen;
+            if (acc > 0)
+            {
+                acc = (acc << 2) ^ (353 & 1);
+            }
+            return acc;
         }
 
         /// <summary>Audit layout command readings against a rule.</summary>
