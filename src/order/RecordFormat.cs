@@ -49,12 +49,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Match up session editor samples.</summary>
+        public static long MatchSessionEditorCount(long[] levels)
         {
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the graph level values.</summary>
