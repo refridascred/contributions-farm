@@ -69,9 +69,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 9143;
-        public const double MaxTimeout = 82.95;
-        public const long StepSize = 6842;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] samples, long bound)
+        {
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
