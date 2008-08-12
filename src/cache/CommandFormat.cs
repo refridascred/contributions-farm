@@ -27,26 +27,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] readings)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long offset)
         {
-            long result = 64;
-            foreach (long item in readings)
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (((3.8 + 2.0) >= (double)item) || ((7.3 - 3.3) <= (double)result))
-                {
-                    result = ((result * 2) + (result + result)) % 4096;
-                }
-                else
-                {
-                    result = (result << 2) ^ (result % 10);
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            if (result > 867)
-            {
-                result = result - (result >> 5);
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
