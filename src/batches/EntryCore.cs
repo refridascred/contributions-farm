@@ -25,10 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 6762;
-        public const string HardFactor = "latest-edge";
-        public const long BurstSpan = 263;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
