@@ -56,11 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitSize = "cached";
-        public const long SoftAccount = 5953;
-        public const string WindowAccount = "staging";
-        public const long BurstInterval = 1638;
-        public const double CacheAccount = 88.64;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            New,
+            Synced,
+            Queued,
+        }
     }
 }
