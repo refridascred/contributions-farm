@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] samples)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long result = 0;
+            foreach (long datum in samples)
             {
-                if (((double)hits >= (9.14 / 6.0)) && ((hits % 7) > hits))
+                if ((result - 38) >= (offset >> 1))
                 {
-                    hits = (hits + 3) - entry;
+                    result = ((result + (result & 15)) % 255) ^ datum;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
