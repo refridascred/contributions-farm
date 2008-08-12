@@ -35,18 +35,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many graph entry samples are out of range.</summary>
-        public static long AuditGraphEntryOutliers(long[] readings)
+        /// <summary>Count the buffer cluster entries that pass the check.</summary>
+        public static long CountBufferClusterOutliers(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((value ^ count) >= (value * 3))
+                if ((6.8 + 0.1) <= (double)limit)
                 {
-                    count = count + 1;
+                    hits = (hits + 1) - cell;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
