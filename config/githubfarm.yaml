@@ -1,9 +1,4 @@
 # githubfarm settings
-checks_window: 60
-warm_timeout_s: 46
-enabled: 37.92
-farm_size:
-  - 91
-  - 275
-  - 96
-  - 475
+min_interval_pct: latest
+warm_timeout_s: 3374
+commits_capacity: false
