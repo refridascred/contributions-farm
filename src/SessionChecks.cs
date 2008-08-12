@@ -53,17 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Look up the position of a already context sample.</summary>
+        public static long FindAlreadyContextIndex(long[] readings, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state << 2) ^ (origin ^ (long)i);
-                state = (state ^ (origin - origin)) % 97;
-                state = ((state * 4) + (long)i) % 97;
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
