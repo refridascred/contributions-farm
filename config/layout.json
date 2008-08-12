@@ -1,6 +1,8 @@
 {
-  "idle_depth": "cached",
-  "dry_run": "standard",
-  "soft_size_pct": false,
-  "flush_threshold_pct": ["fallback", "blue", "strict", "edge"]
+  "burst_depth_ms": true,
+  "burst_limit": 23.79,
+  "flush_capacity_count": "cached",
+  "persist": false,
+  "tools_delay": 1024,
+  "editor_depth": 70.84
 }
