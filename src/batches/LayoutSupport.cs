@@ -24,13 +24,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] items)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((reading > ((long)items.Length - reading)) && (((596 ^ matches) < 85) && ((45 ^ matches) > (matches + 5))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
