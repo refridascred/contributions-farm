@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleBudget = 4852;
-        public const long DefaultChannel = 106;
-        public const long SoftRatio = 1688;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long bound, long seed)
+        {
+            long delta = bound + seed;
+            if (!(seed >= (seed << 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((7.0 - 7.0) >= (double)seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4 + bound) >= (bound >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((delta - delta) >= (seed + delta))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double MinScore = 46.27;
