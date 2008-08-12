@@ -88,11 +88,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Look up the position of a graph contributi sample.</summary>
+        public static long SeekGraphContributiIndex(long[] series, long seed)
         {
-            public bool Total { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate payload samples.</summary>
