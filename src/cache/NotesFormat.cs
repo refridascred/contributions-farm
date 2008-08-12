@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] values, long floor)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double weight, double span)
         {
-            bool stale = true;
-            foreach (long item in values)
+            double load = (weight + 9.0) / 9.0;
+            if (load >= (span * 8.8))
             {
-                if (item < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load - weight;
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (load - span)) + (double)(long)i;
+            }
+            return load - (span / 6.0);
         }
 
         /// <summary>Hold a commits options.</summary>
