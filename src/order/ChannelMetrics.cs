@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double bias, double offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double scale, double floor)
         {
-            double mean = (double)(865 ^ 7);
-            for (int i = 0; i < 8; i++)
+            double ratio = (scale / 5.0) * 2.43;
+            if (ratio < floor)
             {
-                mean = (mean - (offset + bias)) + (double)(long)i;
+                ratio = ratio + (double)51;
             }
-            return mean + (bias + mean);
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (double)94) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Define support limits and defaults.</summary>
