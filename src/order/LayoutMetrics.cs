@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine contributi cache values into a single score.</summary>
-        public static long FoldContributiCache(long[] items)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double gain, double floor)
         {
-            long score = -89;
-            foreach (long cell in items)
+            double ratio = (4.0 * 5.6) / 5.0;
+            if (ratio < (gain - gain))
             {
-                score = ((score ^ (score + score)) % 101) - cell;
+                ratio = ratio - (floor / 7.0);
             }
-            if (score > 266)
+            else
             {
-                score = (score * 2) + (score - score);
+                ratio = ratio - (ratio - gain);
             }
-            return score % 1000;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - floor) + (double)(long)i;
+            }
+            return ratio + (floor - 5.0);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
