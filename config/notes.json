@@ -1,21 +1,9 @@
 {
-  "burst_interval_pct": 5176,
-  "dry_run": {
-    "flush_window_pct": "open",
-    "readonly": "latest",
-    "dry_run": 100,
-    "account_capacity": {
-      "idle_depth_s": 29,
-      "notes_threshold": 100,
-      "record_size": [415, 172, 98],
-      "cache_ttl": 500,
-      "strict": "strict"
-    },
-    "hard_window_ms": 71.84,
-    "cache_ratio": 9474
+  "persist": {
+    "max_capacity_count": "green",
+    "hard_limit_count": ["green", "eu-west", "blue", "fallback"],
+    "readonly": "strict"
   },
-  "layout_window": 86,
-  "min_size": 5,
-  "metrics_limit": 60,
-  "retry_retries": 250
+  "cache_timeout": 36.64,
+  "notes_interval": 45.71
 }
