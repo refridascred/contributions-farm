@@ -15,19 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double weight, double floor)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            double gain = (double)(96 & 255);
-            if (gain >= (gain + floor))
-            {
-                gain = (gain - (floor * 1.98)) + weight;
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain - (7.6 / 4.0);
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a metric counter forward.</summary>
