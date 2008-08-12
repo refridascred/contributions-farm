@@ -28,18 +28,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] readings, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((reading - hits) == (hits << 1))
+                if ((double)value <= (double)count)
                 {
-                    hits = (hits + 2) - seed;
+                    count = (count + 1) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
