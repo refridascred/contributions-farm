@@ -20,25 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long bound, long seed)
+        /// <summary>Accumulate token order samples.</summary>
+        public static long CombineTokenOrder(long[] values)
         {
-            long slot = bound - seed;
-            if (((double)slot > 4.0) || (seed > (slot + bound)))
+            long anchor = 25;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0 & 3) <= (seed * 4))
+                anchor = anchor ^ (cell + cell);
+                if ((cell / 7) < (cell << 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    anchor = anchor + (cell + anchor);
                 }
             }
+            if (anchor < 794)
+            {
+                anchor = ((anchor << 2) ^ (anchor % 3)) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
