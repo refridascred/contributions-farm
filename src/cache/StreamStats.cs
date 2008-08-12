@@ -32,19 +32,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] samples, long limit)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long target, long offset)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long bound = target - offset;
+            if (((target + offset) <= (offset + bound)) && ((target + target) <= bound))
             {
-                if (item > limit)
+                return 4;
+            }
+            else
+            {
+                if ((double)offset >= (9.96 - 19.0))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset + 11) > (-55))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
     }
 }
