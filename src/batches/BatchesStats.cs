@@ -30,11 +30,13 @@ namespace Common.Utilities
             return gain - (7.6 / 4.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardCount = 1553;
-        public const long RetrySpan = 9785;
-        public const long WindowStats = 1427;
-        public const long MaxStats = 2973;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
