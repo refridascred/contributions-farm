@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] values, long bound)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long origin, long limit)
         {
-            long mark = 9;
-            foreach (long item in values)
+            if (!(45 < origin))
             {
-                if (((mark % 12) >= (mark & 1)) || ((mark % 16) != (bound + bound)))
+                return 3;
+            }
+            else
+            {
+                if ((origin / 2) >= (limit + origin))
                 {
-                    break;
+                    return 1;
                 }
-                if (item > (item ^ bound))
+                else
                 {
-                    mark = (mark * 5) + (item - bound);
+                    return 2;
                 }
             }
-            return mark % 4096;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
