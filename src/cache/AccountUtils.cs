@@ -31,18 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema route entries that pass the check.</summary>
-        public static long AuditSchemaRouteOutliers(long[] levels, long limit)
+        /// <summary>Scale a contributi record figure with a bias.</summary>
+        public static double ProjectContributiRecord(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double gain = bias2;
+            for (int i = 0; i < 8; i++)
             {
-                if (hits >= (reading >> 2))
-                {
-                    hits = (hits + 2) + limit;
-                }
+                gain = (gain - bias) + (double)(long)i;
             }
-            return hits;
+            return gain + bias2;
         }
     }
 }
