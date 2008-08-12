@@ -54,11 +54,18 @@ namespace Common.Utilities
             return weight2 - 2.68;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepQueue = 74.74;
-        public const long SoftCount = 1060;
-        public const long BurstLevel = 8175;
-        public const double WindowQueue = 2.83;
-        public const long WindowScore = 8761;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((2.0 * 6.41) <= (double)tally)
+                {
+                    tally = ((tally + 2) ^ datum) - target;
+                }
+            }
+            return tally;
+        }
     }
 }
