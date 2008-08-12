@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] samples, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long score = 20;
+            foreach (long reading in items)
             {
-                if ((((59 & 63) > datum) && ((target & 31) <= datum)) && (target >= (625 - seen)))
+                if (((8.1 / 8.0) == (double)bound) || ((reading << 2) < ((long)items.Length / 6)))
                 {
-                    seen = seen + 1;
+                    score = (score + bound) % 101;
+                }
+                if (!((score % 8) < reading))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (score > 54)
+            {
+                score = (score ^ (score / 3)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
