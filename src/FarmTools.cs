@@ -30,11 +30,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowLevel = 9396;
-        public const double MinGraph = 9.91;
-        public const double HardLevel = 71.77;
-        public const long MaxGraph = 673;
-        public const long BaseGraph = 4678;
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Retry,
+            Locked,
+            Synced,
+            Dropped,
+        }
     }
 }
