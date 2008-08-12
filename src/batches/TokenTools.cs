@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] readings)
         {
-            long sum = 373;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                sum = sum - value;
+                if (sample <= (tally * 5))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
