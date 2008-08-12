@@ -22,25 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long limit, long seed)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long delta = limit - seed;
-            if ((double)465 <= (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + delta) <= 67)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Pending,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
