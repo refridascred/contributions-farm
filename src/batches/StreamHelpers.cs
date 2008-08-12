@@ -67,12 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next record value.</summary>
