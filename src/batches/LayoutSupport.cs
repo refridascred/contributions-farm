@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 8821;
-        public const long BaseEntry = 1990;
-        public const long MinEntry = 892;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many support graph samples are out of range.</summary>
         public static long CountSupportGraphOutliers(long[] samples)
