@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryToken = 92.49;
-        public const long CacheToken = 9855;
-        public const long IdleInterval = 3448;
-        public const long BurstScore = 3316;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long seed, long limit)
+        {
+            if ((seed * 4) > 70)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit - seed) <= 347)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit <= (limit % 12)) || ((limit & 3) > (635 + seed)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed <= (limit - seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] levels)
