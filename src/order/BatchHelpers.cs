@@ -19,20 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long offset)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double weight, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            double mean = 1.88;
+            if (mean >= (mean - mean))
             {
-                if ((3.36 + 2.38) >= (double)offset)
-                {
-                    state = state + ((long)i - state);
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 97;
+                mean = mean + weight;
             }
-            return state;
+            else
+            {
+                mean = mean - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (0.8 * 11.0)) + (double)(long)i;
+            }
+            return mean + (double)6;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
