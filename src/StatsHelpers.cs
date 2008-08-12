@@ -25,12 +25,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftCount = 3086;
-        public const long HardCount = 9352;
-        public const long BurstStats = 4672;
-        public const long WindowStats = 7943;
-        public const long SoftStats = 5730;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Closed,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double IdleTools = 55.58;
