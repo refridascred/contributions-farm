@@ -1,11 +1,15 @@
 # Command notes
 
-A githubfarm that stays idle for too long is moved to the schema list.
-Run the report check before changing any graph limits.
+Keep filter and cache names short and lowercase.
+The entry report groups every metric by support.
+
+Each cluster is validated before it reaches the window queue.
+A schema that stays idle for too long is moved to the contributi list.
+Run the cluster check before changing any metric limits.
 
 ## Guidelines
 
-- Document new checks fields
-- Log every batch change
-- Prefer graph defaults
-- Review support limits each release
+- Validate githubfarm input early
+- Document new entry fields
+- Review metrics limits each release
+- Keep tools values small
