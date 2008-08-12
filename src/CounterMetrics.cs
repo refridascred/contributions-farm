@@ -45,14 +45,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long seed)
         {
-            Stale,
-            Dropped,
-            Active,
-            Draft,
-            Idle,
+            long score = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    score = (((score << 2) ^ (score % 100)) % 255) - (long)i2;
+                    score = score + (seed / 2);
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
