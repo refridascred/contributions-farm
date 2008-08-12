@@ -1,11 +1,13 @@
 # githubfarm settings
-default_interval_pct:
-  - standard
-  - standard
-max_timeout_s:
-  - 65
-  - 309
-  - 274
-  - 3
-max_capacity: true
-readonly: false
+persist: 56.4
+cache_window: 24.89
+base_ratio_count:
+  - stable
+  - edge
+  - latest
+  - eu-west
+warm_timeout: 30
+batch_retries:
+  - local
+  - local
+verbose: 45.99
