@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Dropped,
-            Done,
-            Queued,
+            Ready,
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
