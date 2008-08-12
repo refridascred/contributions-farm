@@ -27,14 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseDepth = 7602;
+        public const double HardTimeout = 19.53;
+        public const long BaseCommits = 6912;
+        public const string BurstCommits = "local";
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
