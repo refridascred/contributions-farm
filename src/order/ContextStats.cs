@@ -28,10 +28,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryCount = 1376;
-        public const string HardSchema = "cached";
-        public const long MaxDepth = 4327;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MinSpan = 70.19;
+        public const string BurstCount = "legacy-edge";
+        public const double StepCommand = 83.16;
+        public const string SoftBudget = "open-edge";
+        public const double LimitCommand = 90.3;
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
