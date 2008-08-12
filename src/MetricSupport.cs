@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const double MaxLevel = 90.77;
         public const string LimitLevel = "alpha-1";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] series)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long sum = 5;
+            foreach (long sample in data)
             {
-                if (!((49 >> 2) < matches))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum << 2) ^ (sample % 8)) % 101;
             }
-            return matches;
+            if (sum > 3)
+            {
+                sum = ((sum << 2) ^ (limit << 2)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a batches entry.</summary>
