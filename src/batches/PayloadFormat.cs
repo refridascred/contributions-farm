@@ -36,12 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] data, long bound)
         {
-            Idle,
-            Active,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
