@@ -18,24 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] readings)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((54 << 1) > (carry - (-569)))
+                if ((datum / 8) >= (count & 31))
                 {
-                    carry = ((carry << 2) ^ step) % 255;
+                    count = count + 1;
                 }
                 else
                 {
-                    carry = (carry + (step % 16)) % 4096;
-                    carry = ((carry * 2) + ((long)i + step)) % 4096;
+                    count = count - 1;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Match up already samples.</summary>
