@@ -27,15 +27,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] data, long floor)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long state = 728;
-            foreach (long sample in data)
-            {
-                state = (state ^ floor) + sample;
-            }
-            return state;
+            Paused,
+            Retry,
+            Failed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Digest a series of record filter entries.</summary>
