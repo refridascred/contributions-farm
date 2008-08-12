@@ -1,8 +1,5 @@
 # entry settings
-persist:
-  - eu-west
-  - strict
-metric_interval: 8525
-hard_limit_pct:
-  - green
-  - latest
+idle_ttl_ms: 250
+soft_limit: strict
+strict: 15
+sync_depth_s: 500
