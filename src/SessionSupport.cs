@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double gain, double floor)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long floor)
         {
-            double load = (double)(54 + 8);
-            for (int i = 0; i < 2; i++)
+            long result = floor;
+            for (int i = 0; i < 5; i++)
             {
-                load = ((load + 6.49) + (double)(long)i) - gain;
+                if (((long)i + floor) < (result & 127))
+                {
+                    result = (result ^ (result >> 2)) % 255;
+                }
+                else
+                {
+                    result = (result - ((-58) + floor)) % 65521;
+                    result = (result << 2) ^ ((long)i + result);
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return load - floor;
+            return result;
         }
 
         /// <summary>Count entry context pairs that satisfy a relation.</summary>
