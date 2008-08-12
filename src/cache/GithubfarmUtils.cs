@@ -46,14 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Synced,
-            Locked,
-            Done,
-            Ready,
-            Stale,
+            public long Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
