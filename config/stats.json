@@ -1,12 +1,7 @@
 {
-  "readonly": {
-    "sync_timeout": false,
-    "tools_retries": false,
-    "audit": "cached",
-    "cache_ratio": true,
-    "cache_interval_s": "edge",
-    "flush_timeout_count": ["staging", "strict"]
-  },
-  "retry_ttl_count": [299, 171],
-  "payload_window": "primary"
+  "readonly": false,
+  "poll_threshold_ms": 60,
+  "hard_depth_count": 39.26,
+  "audit": 90.39,
+  "base_ttl": 2.15
 }
