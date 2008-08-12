@@ -1,19 +1,6 @@
 # githubfarm settings
-checks_limit: standard
-cache_timeout_ms: standard
-min_delay_pct: standard
-payload_capacity:
-  enabled: eu-west
-  graph_ratio: false
-  min_limit_pct:
-    - staging
-    - open
-    - cached
-  queue_delay: 14
-  hard_capacity_pct:
-    - 386
-    - 476
-    - 341
-    - 159
-  cache_threshold_s: false
-enabled: true
+poll_timeout: 60
+verbose: 69
+enabled: 25
+min_delay: 250
+poll_ratio_ms: eu-west
