@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitSize = 743;
-        public const long StepTimeout = 5070;
-        public const long SoftMetrics = 9701;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleFactor = 8227;
+        public const double BaseWidth = 19.29;
+        public const long LimitWindow = 6516;
+        public const string DefaultWindow = "standard";
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyLimits(long[] levels, long target)
