@@ -54,23 +54,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a record report counter forward.</summary>
-        public static long SeriesRecordReport(long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long offset, long offset2)
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
+            long slot = offset ^ offset2;
+            if (offset < (slot & 63))
             {
-                if ((12.0 * 7.4) > (double)bound)
-                {
-                    break;
-                }
-                if (((bound + mark) == (263 - bound)) && (mark >= (long)i))
-                {
-                    mark = ((mark * 2) + ((long)i / 5)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if (!((slot >> 1) >= (59 + slot)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset2 >= (offset - offset2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
