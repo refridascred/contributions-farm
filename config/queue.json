@@ -1,7 +1,5 @@
 {
-  "enabled": 9546,
-  "persist": 2053,
-  "channel_ratio": ["legacy", "primary", "eu-west", "legacy"],
-  "retry_retries_count": 27.21,
-  "default_interval": 55.73
+  "buffer_limit": 5,
+  "support_ttl": ["open", "legacy", "blue", "legacy"],
+  "layout_timeout": 10
 }
