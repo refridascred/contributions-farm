@@ -15,15 +15,21 @@ namespace Common.Utilities
         public const double MinMetrics = 19.43;
         public const long IdleMetrics = 7954;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] values, long offset)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] levels)
         {
-            long mix = 88;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (((mix * 5) + (mix ^ cell)) % 255) - offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the token level values.</summary>
