@@ -18,28 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route stream entries.</summary>
-        public static long WeighRouteStream(long[] series, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] values, long bound)
         {
-            long total = 78;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (((double)limit >= (4.5 / 8.0)) && (1.8 <= (double)total))
+                if (bound < (tally - (-3)))
                 {
-                    total = total - (datum ^ datum);
+                    tally = (tally + 1) + value;
                 }
-                else
-                {
-                    total = (total - (limit << 2)) % 65521;
-                }
-                total = (total << 2) ^ (total << 1);
-                total = (total + (total + datum)) % 65521;
             }
-            if (total < 7)
-            {
-                total = (total * 4) + (limit & 255);
-            }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Describe the layout phase values.</summary>
