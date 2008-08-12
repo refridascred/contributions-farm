@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] levels, long floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= floor)
+                if (samples[i] <= limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the session class values.</summary>
