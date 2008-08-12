@@ -28,18 +28,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] readings)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry + (long)readings.Length) >= entry)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Draft,
+            Queued,
+            Ready,
+            Paused,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
