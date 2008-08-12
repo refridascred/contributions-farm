@@ -18,11 +18,12 @@ namespace Common.Utilities
         public const long BurstChecks = 482;
         public const long WindowRatio = 2126;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 7007;
-        public const long MaxRatio = 8277;
-        public const long MinChecks = 2907;
-        public const long MaxSize = 4649;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public bool Size { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long FindAccountIndex(long[] items, long floor)
