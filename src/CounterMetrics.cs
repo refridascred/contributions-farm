@@ -33,31 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next order counter value from a seed.</summary>
-        public static long RollOrderCounter(long origin)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] values, long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin + total) > (82 + 2))
+                if (values[i] < bound)
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    total = total + (total - total);
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = ((total << 2) ^ (origin >> 1)) + (long)i2;
-                }
-                if (6.0 >= (double)(long)i)
-                {
-                    total = (total + origin) % 255;
-                }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
