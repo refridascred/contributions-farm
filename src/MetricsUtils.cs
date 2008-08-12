@@ -52,11 +52,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepEditor = "strict-1";
-        public const long BaseCount = 4056;
-        public const string DefaultEditor = "staging-1";
-        public const long RetryEditor = 2272;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long origin, long seed)
+        {
+            if (!((4.81 * 8.9) > (double)seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin > ((-7) & 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long SeekClusterIndex(long[] levels, long step)
