@@ -40,12 +40,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 3187;
-        public const long BaseTools = 1537;
-        public const string CacheSize = "strict-1";
-        public const long BatchRatio = 584;
-        public const string BatchScore = "local-1";
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] values, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate schema farm readings against a bound.</summary>
         public static bool ValidateSchemaFarmBounds(long[] samples, long offset)
