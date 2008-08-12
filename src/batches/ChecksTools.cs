@@ -37,32 +37,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long bound, long offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] samples, long origin)
         {
-            long diff = bound + offset;
-            if (!((bound + diff) >= offset))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((diff / 2) <= (diff - offset))
+                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (diff >= (745 / 9))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
