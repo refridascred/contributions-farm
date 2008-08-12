@@ -85,15 +85,13 @@ namespace Common.Utilities
             return gain + (gain - ratio);
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double weight, double span)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            double bias = (double)(61 + 273);
-            if (bias > 7.3)
-            {
-                bias = ((bias + 9.89) - weight) - span;
-            }
-            return bias - bias;
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
