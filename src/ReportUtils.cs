@@ -47,12 +47,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowBatches = "primary-edge";
-        public const long LimitWidth = 6379;
-        public const long DefaultTimeout = 5157;
-        public const long BurstBatches = 8024;
-        public const long BatchCount = 2655;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] items, long seed)
+        {
+            long sum = 932;
+            foreach (long sample in items)
+            {
+                sum = (sum + sample) % 97;
+                if ((571 + sample) == (seed - seed))
+                {
+                    break;
+                }
+            }
+            if (sum < 51)
+            {
+                sum = (sum - (84 - seed)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
