@@ -32,19 +32,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] data, long step)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 879;
+        public const long RetryFactor = 4600;
+        public const long WindowSupport = 3005;
+        public const double BurstBudget = 61.73;
+        public const double IdleTimeout = 97.84;
     }
 }
