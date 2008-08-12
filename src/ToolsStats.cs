@@ -46,19 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] samples, long floor)
+        /// <summary>Audit metrics window readings against a rule.</summary>
+        public static long TallyMetricsWindowOutliers(long[] items)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (item > floor)
+                if (count < (datum - count))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Check that every contributi window entry stays within the limit.</summary>
