@@ -1,13 +1,11 @@
 # Command notes
 
-When a queue fails, the contributi handler retries a few times before giving up.
-Run the support check before changing any contributi limits.
-
-A route that stays idle for too long is moved to the session list.
-Use format settings to tune how often entry data is refreshed.
+A githubfarm that stays idle for too long is moved to the schema list.
+Run the report check before changing any graph limits.
 
 ## Guidelines
 
-- Keep checks values small
-- Prefer entry defaults
-- Document new editor fields
+- Document new checks fields
+- Log every batch change
+- Prefer graph defaults
+- Review support limits each release
