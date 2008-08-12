@@ -14,18 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] readings, long target)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double load = bias;
+            if (load <= bias)
             {
-                if ((entry + 2) < entry)
-                {
-                    hits = (hits + 2) - target;
-                }
+                load = (load - (double)89) + bias2;
             }
-            return hits;
+            else
+            {
+                load = load - (bias * 2.2);
+            }
+            return load + load;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
