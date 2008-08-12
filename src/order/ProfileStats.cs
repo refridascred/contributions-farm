@@ -19,18 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= bound) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryBatch = "primary";
+        public const long MaxBatch = 4318;
+        public const double WindowBatch = 24.34;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long RankSession(long target, long bound)
