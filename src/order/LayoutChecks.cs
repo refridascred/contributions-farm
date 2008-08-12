@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings, long step)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long acc = 28;
-            foreach (long value in readings)
-            {
-                acc = (((acc - (acc + 3)) % 101) - value) - step;
-            }
-            if (acc > 0)
-            {
-                acc = (acc + (acc << 2)) % 4096;
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
