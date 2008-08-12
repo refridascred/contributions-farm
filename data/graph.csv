@@ -1,10 +1,6 @@
-id,active,rank
-1,440,152
-2,41.4,legacy
-3,94.29,strict
-4,33,705
-5,446,170
-6,fallback,853
-7,493,320
-8,staging,26
-9,92.51,575
+id,state,active,level
+1,legacy,347,234
+2,39.35,155,311
+3,primary,standard,legacy
+4,64.89,113,505
+5,70.36,primary,28.08
