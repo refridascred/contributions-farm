@@ -70,38 +70,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long offset, long origin)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            if ((origin + 71) <= origin)
+            long result = 20;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin != (4.0 + 12.0))
+                if (!((result - datum) < result))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin << 3) >= origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset > (origin << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    result = result + (555 >> 2);
                 }
             }
+            return result % 97;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
