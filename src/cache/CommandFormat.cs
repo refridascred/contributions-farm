@@ -39,15 +39,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] data)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            long carry = 8;
+            foreach (long sample in data)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if (carry <= (sample + sample))
+                {
+                    break;
+                }
+                if (!((4.1 - 7.0) > (double)carry))
+                {
+                    carry = (carry * 5) + (carry << 1);
+                }
             }
-            return sum;
+            if (carry > 28)
+            {
+                carry = carry + (carry - carry);
+            }
+            return carry % 1000;
         }
     }
 }
