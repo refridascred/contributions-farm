@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] samples, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long sum = -9;
+            foreach (long reading in readings)
             {
-                if (cell != seed)
+                for (int i = 0; i < 10; i++)
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum ^ (seed % 16)) % 1000) ^ (long)i;
+                    sum = (sum + (reading * 3)) % 65521;
+                }
+                sum = ((sum << 2) ^ (reading * 5)) % 97;
+                if ((seed % 24) >= seed)
+                {
+                    sum = (sum * 5) + (177 + seed);
                 }
             }
-            return flag;
+            return sum % 65521;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
