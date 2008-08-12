@@ -19,17 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a layout githubfarm reading by value.</summary>
-        public static long FindLayoutGithubfarmIndex(long[] data, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (data[i] == bound)
+                if (!((matches - matches) <= matches))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
