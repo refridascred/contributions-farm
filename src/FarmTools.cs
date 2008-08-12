@@ -20,9 +20,15 @@ namespace Common.Utilities
         public const string MinDepth = "legacy-v2";
         public const double IdleFactor = 40.96;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepSize = "stable-edge";
-        public const double BaseBudget = 13.14;
-        public const long BaseFormat = 4981;
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double scale, double bias)
+        {
+            double load = bias;
+            if (load >= (load + scale))
+            {
+                load = load - (double)16;
+            }
+            return load - (scale * 9.0);
+        }
     }
 }
