@@ -61,12 +61,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double ratio, double floor)
         {
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            double scale = ratio;
+            if (scale >= (scale / 8.0))
+            {
+                scale = scale + (ratio / 4.0);
+            }
+            else
+            {
+                scale = scale - (2.2 + floor);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale - (ratio / 8.0);
         }
 
         /// <summary>Hold a cluster header.</summary>
