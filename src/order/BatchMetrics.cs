@@ -55,18 +55,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] data)
+        /// <summary>Digest a series of counter context entries.</summary>
+        public static long ScoreCounterContext(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long result = 67;
+            foreach (long item in series)
             {
-                if ((cell ^ cell) <= (cell - 44))
-                {
-                    hits = hits + 2;
-                }
+                result = ((result + ((-571) & 3)) % 1000) - item;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
