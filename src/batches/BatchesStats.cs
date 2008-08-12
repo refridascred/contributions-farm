@@ -30,20 +30,11 @@ namespace Common.Utilities
             return gain - (7.6 / 4.0);
         }
 
-        /// <summary>Roll a graph command counter forward.</summary>
-        public static long IterateGraphCommand(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i3 = 0; i3 < 3; i3++)
-                {
-                    mix = (((mix << 3) ^ (481 + mix)) % 4096) - (long)i3;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardCount = 1553;
+        public const long RetrySpan = 9785;
+        public const long WindowStats = 1427;
+        public const long MaxStats = 2973;
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
