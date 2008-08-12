@@ -96,12 +96,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] series, long limit)
         {
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
