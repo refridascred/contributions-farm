@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double bias, double span)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] readings)
         {
-            double rate = (span - bias) * 15.0;
-            if (rate <= (double)100)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate + (4.0 / 3.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (double)522;
-            }
-            return rate - span;
+            return tally;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
