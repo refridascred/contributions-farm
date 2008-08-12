@@ -100,15 +100,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long carry = 21;
-            foreach (long datum in items)
-            {
-                carry = ((carry << 3) ^ (carry & 127)) - datum;
-            }
-            return carry % 1000;
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
