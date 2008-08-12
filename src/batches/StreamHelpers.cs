@@ -16,18 +16,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] levels)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            if ((2.47 + 16.0) < (double)floor)
             {
-                if ((27 >> 3) >= cell)
+                return 4;
+            }
+            else
+            {
+                if (!((0.8 * 5.73) >= (double)seed))
                 {
-                    seen = seen + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - seed) > (floor - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed <= (floor + floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
