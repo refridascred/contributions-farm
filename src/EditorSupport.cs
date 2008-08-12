@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 229;
-        public const long DefaultScore = 5236;
-        public const long SoftRatio = 8372;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryRatio = 9743;
+        public const double HardCluster = 96.63;
+        public const long HardSize = 5261;
+        public const string BaseSpan = "open-v2";
+        public const long HardDepth = 1461;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetrySupport = 857;
