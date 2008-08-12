@@ -1,5 +1,6 @@
 {
-  "max_size": [195, 413],
-  "retry_window": "latest",
-  "batch_window": "fallback"
+  "hard_ratio_count": 9380,
+  "order_depth": 8563,
+  "poll_limit_pct": "fallback",
+  "batch_capacity_ms": 74.87
 }
