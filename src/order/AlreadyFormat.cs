@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the metric payload entries that pass the check.</summary>
-        public static long AuditMetricPayloadMatches(long[] data, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (((-979) & 7) <= (tally - tally))
+                if ((20 - datum) < (hits + datum))
                 {
-                    tally = ((tally + 2) - datum) + limit;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
