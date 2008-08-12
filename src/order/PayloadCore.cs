@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] data, long floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long seed, long step)
         {
-            long total = -738;
-            foreach (long entry in data)
+            if ((7.34 * 1.1) != (double)step)
             {
-                total = (((total - (54 + total)) % 4096) + entry) + floor;
+                return 8;
             }
-            return total % 65521;
+            else
+            {
+                if ((seed - 8) <= ((-5) - step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)step == (8.4 / 4.0)) || ((seed + 99) <= (seed + step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
