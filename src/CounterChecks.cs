@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinRatio = 5513;
-        public const double BaseBudget = 93.03;
-        public const long MinGithubfarm = 9523;
+        /// <summary>Validate entry profile readings against a bound.</summary>
+        public static bool GuardEntryProfileRange(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string RetrySpan = "primary-edge";
