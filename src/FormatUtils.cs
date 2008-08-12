@@ -19,13 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long offset)
         {
-            Synced,
-            Active,
-            Idle,
-            Queued,
+            long result = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the metrics status values.</summary>
