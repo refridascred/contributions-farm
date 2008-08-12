@@ -37,22 +37,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((reading ^ tally) <= (tally % 8))
+                if ((double)seen < (4.69 / 5.0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Blend two commits measurements.</summary>
