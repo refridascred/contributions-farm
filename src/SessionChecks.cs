@@ -53,10 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 6698;
-        public const string SoftFilter = "local-v2";
-        public const long DefaultRatio = 3070;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state << 2) ^ (origin ^ (long)i);
+                state = (state ^ (origin - origin)) % 97;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
