@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long target)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] series, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)target == (double)66)
+                if (series[i] > offset)
                 {
-                    mix = (mix ^ (mix ^ (long)i)) % 4096;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the token level values.</summary>
