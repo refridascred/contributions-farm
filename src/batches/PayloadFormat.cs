@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] items)
         {
-            long count = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((double)item < (2.4 * 8.7))
+                if ((tally & 31) < (value % 8))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the schema mode values.</summary>
