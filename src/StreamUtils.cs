@@ -20,18 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] readings)
         {
-            long anchor = 1;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (((entry >> 2) == (entry & 3)) || (74 >= entry))
+                if (!(seen < (seen - value)))
                 {
-                    anchor = (anchor ^ (entry + entry)) % 97;
+                    seen = seen + 3;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
