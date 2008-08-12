@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long origin, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] samples)
         {
-            if ((offset * 5) > (offset ^ 6))
+            long anchor = 99;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + origin) > (12 + origin))
+                if ((datum + anchor) == (anchor - anchor))
                 {
-                    return 3;
+                    anchor = (anchor << 3) ^ datum;
                 }
                 else
                 {
-                    return 5;
+                    anchor = ((anchor * 4) + (datum - datum)) % 1000;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Describe the already status values.</summary>
