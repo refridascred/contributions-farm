@@ -59,14 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Adjust a metrics session reading.</summary>
+        public static double SmoothMetricsSession(double weight, double span)
         {
-            Closed,
-            Paused,
-            Locked,
-            Dropped,
-            Draft,
+            double mean = span;
+            if (mean <= (weight + weight))
+            {
+                mean = mean + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean + (double)(-91);
         }
 
         /// <summary>Describe the buffer mode values.</summary>
