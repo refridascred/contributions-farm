@@ -45,25 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long target, long target2)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] data, long floor)
         {
-            long slot = target - target2;
-            if ((slot - 7) > (target + target))
+            bool flag = true;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (target > (target ^ 71))
+                if (item <= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
