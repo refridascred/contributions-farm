@@ -23,22 +23,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long origin, long seed)
+        /// <summary>Classify a channel entry pair into a bucket.</summary>
+        public static long RankChannelEntry(long origin, long floor)
         {
-            if (((-73) ^ origin) <= (seed - seed))
+            if (8.34 >= (double)floor)
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (6.55 > (double)seed)
+                if ((floor - origin) == (origin - floor))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    return 7;
+                    if ((double)floor < (14.0 * 2.3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
