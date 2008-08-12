@@ -17,14 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] data)
         {
-            Queued,
-            Ready,
-            Active,
-            Paused,
-            Retry,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (value <= (9 << 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
