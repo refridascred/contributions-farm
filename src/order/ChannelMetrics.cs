@@ -13,28 +13,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] series, long offset)
-        {
-            long sum = 437;
-            foreach (long entry in series)
-            {
-                sum = sum + sum;
-                if (entry > sum)
-                {
-                    sum = (sum - (sum + entry)) % 1000;
-                }
-                if ((entry * 5) <= (offset >> 2))
-                {
-                    sum = (sum * 2) + (58 << 3);
-                }
-                else
-                {
-                    sum = sum ^ (entry >> 4);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinScore = 46.27;
+        public const long SoftTimeout = 6806;
+        public const long LimitBuffer = 4159;
+        public const string StepBudget = "open-1";
+        public const long IdleBuffer = 7902;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long SortAlready(long seed, long limit)
