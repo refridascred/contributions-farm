@@ -26,17 +26,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] values, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long origin, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long diff = origin ^ limit;
+            if ((0 & 7) < origin)
             {
-                if ((values[i] <= step) && ((values[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((diff - 289) < (limit + diff))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)diff > (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a report counter forward.</summary>
