@@ -18,10 +18,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 1369;
-        public const long IdleBatches = 4095;
-        public const double BaseScore = 72.69;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long offset, long offset2)
+        {
+            long offset3 = offset + offset2;
+            if ((11.0 * 5.2) < (double)offset2)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset3 % 64) < 325)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((6.3 > (double)offset2) || ((499 / 8) != (offset2 / 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset * 5) == (offset + offset2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BurstFilter = 6698;
