@@ -46,32 +46,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long target, long offset)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long bound = target - offset;
-            if (((target + offset) <= (offset + bound)) && ((target + target) <= bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset >= (9.96 - 19.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset + 11) > (-55))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            New,
+            Retry,
+            Stale,
+            Active,
         }
     }
 }
