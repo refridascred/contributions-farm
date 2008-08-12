@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Locked,
-            Queued,
-            Draft,
-            Done,
-            Synced,
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Adjust a queue stream reading.</summary>
