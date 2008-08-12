@@ -33,21 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count queue checks pairs that satisfy a relation.</summary>
-        public static long CompareQueueChecksCount(long[] levels)
+        /// <summary>Look up the position of a token metric sample.</summary>
+        public static long FindTokenMetricIndex(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (series[i] == bound)
                 {
-                    if ((levels[i] ^ levels[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
