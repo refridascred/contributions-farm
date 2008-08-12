@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] readings, long offset)
+        /// <summary>Fold a list of cache order readings.</summary>
+        public static long DigestCacheOrder(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long mix = 82;
+            foreach (long datum in data)
             {
-                if ((datum + matches) == (datum * 3))
-                {
-                    matches = (matches + 1) + offset;
-                }
+                mix = (mix ^ 38) ^ datum;
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Measure how many buffer tools samples are out of range.</summary>
