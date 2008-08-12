@@ -1,18 +1,10 @@
 {
-  "soft_ratio_ms": 1504,
-  "hard_window_ms": "primary",
-  "idle_size_s": {
-    "sync_ratio": 3593,
-    "account_delay": "strict",
-    "flush_capacity_count": {
-      "stats_threshold": 9.15,
-      "queue_timeout": [414, 275],
-      "base_retries_count": "cached",
-      "burst_capacity_pct": "edge",
-      "readonly": 18.68,
-      "format_interval": false
-    }
-  },
-  "audit": false,
-  "session_ttl": 8785
+  "min_capacity_ms": 8,
+  "base_ttl_pct": 1024,
+  "burst_timeout_count": "legacy",
+  "retry_window_count": {
+    "min_limit": 41,
+    "hard_window": "green",
+    "poll_timeout_s": "legacy"
+  }
 }
