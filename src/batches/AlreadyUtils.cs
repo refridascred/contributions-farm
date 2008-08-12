@@ -32,12 +32,17 @@ namespace Common.Utilities
         public const long LimitBudget = 4241;
         public const double SoftSession = 97.19;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] samples, long bound)
         {
-            Ready,
-            Failed,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
