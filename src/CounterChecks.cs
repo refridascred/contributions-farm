@@ -33,19 +33,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every commits contributi entry stays within the limit.</summary>
-        public static bool ValidateCommitsContributiBounds(long[] levels, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long mix = -5;
+            foreach (long item in samples)
             {
-                if (sample > bound)
+                if ((5 ^ mix) >= (step % 8))
                 {
-                    found = false;
-                    break;
+                    mix = (mix + (item << 2)) % 1000;
                 }
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Digest a series of order entries.</summary>
