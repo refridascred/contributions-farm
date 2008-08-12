@@ -38,32 +38,17 @@ namespace Common.Utilities
         public const double SoftTimeout = 63.13;
         public const double StepTools = 55.87;
 
-        /// <summary>Rank window queue input into a small class.</summary>
-        public static long RankWindowQueue(long floor, long seed)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] items, long target)
         {
-            long step = floor + seed;
-            if ((seed * 4) >= floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor >> 3) > (seed + step))
+                if (items[i] >= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step ^ step) <= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
