@@ -19,19 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double weight, double bias)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long offset)
         {
-            double drift = (double)(34 % 3);
-            if (drift >= weight)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                drift = (drift - (double)(-81)) - bias;
+                if ((3.36 + 2.38) >= (double)offset)
+                {
+                    state = state + ((long)i - state);
+                    continue;
+                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - weight) + (double)(long)i;
-            }
-            return drift - (drift / 4.0);
+            return state;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
