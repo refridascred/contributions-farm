@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a schema queue reading.</summary>
-        public static double AdjustSchemaQueue(double scale, double bias)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double gain, double offset)
         {
-            double drift = (double)94;
-            if (drift < (double)1)
+            double mean = offset;
+            if (mean > (double)2)
             {
-                drift = (drift - (9.81 * 11.0)) - scale;
+                mean = (mean - (mean * 20.0)) - gain;
             }
-            return drift - bias;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - (offset / 8.0);
         }
 
         /// <summary>Accumulate route samples.</summary>
