@@ -1,10 +1,7 @@
-id,weight,owner
-1,95,79.8
-2,eu-west,cached
-3,915,fallback
-4,268,22.49
-5,5.45,fallback
-6,252,eu-west
-7,strict,staging
-8,987,30.33
-9,551,blue
+id,count,level,ratio
+1,196,strict,58.25
+2,407,962,79.89
+3,103,255,53.88
+4,green,409,73.84
+5,74.23,999,primary
+6,blue,legacy,eu-west
