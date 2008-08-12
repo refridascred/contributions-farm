@@ -1,7 +1,5 @@
 {
-  "batch_size_ms": true,
-  "persist": 15.55,
-  "audit": [255, 428, 216],
-  "contributi_size": 90,
-  "flush_delay_pct": 77.57
+  "checks_interval": 72.83,
+  "poll_size_pct": 42,
+  "stream_limit": true
 }
