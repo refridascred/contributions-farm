@@ -42,21 +42,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] levels)
+        /// <summary>Accumulate queue token samples.</summary>
+        public static long DigestQueueToken(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 907;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((5 * 3) <= (value >> 2))
                 {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum ^ (value << 2)) % 255;
+                }
+                if (!((double)offset >= (19.0 - 0.51)))
+                {
+                    sum = ((sum << 2) ^ (offset * 2)) % 4096;
                 }
             }
-            return matches;
+            if (sum > 1)
+            {
+                sum = (sum + (offset + sum)) % 255;
+            }
+            return sum % 97;
         }
     }
 }
