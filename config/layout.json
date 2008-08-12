@@ -1,8 +1,18 @@
 {
-  "sync_capacity_ms": ["fallback", "standard"],
-  "min_retries_count": "green",
-  "metrics_capacity": 49,
-  "min_depth_ms": "legacy",
-  "flush_depth": "stable",
-  "poll_depth_count": 100
+  "soft_ratio_ms": 1504,
+  "hard_window_ms": "primary",
+  "idle_size_s": {
+    "sync_ratio": 3593,
+    "account_delay": "strict",
+    "flush_capacity_count": {
+      "stats_threshold": 9.15,
+      "queue_timeout": [414, 275],
+      "base_retries_count": "cached",
+      "burst_capacity_pct": "edge",
+      "readonly": 18.68,
+      "format_interval": false
+    }
+  },
+  "audit": false,
+  "session_ttl": 8785
 }
