@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long floor, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long seed)
         {
-            if (!((double)floor > (6.4 + 5.9)))
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 7;
+                anchor = (anchor << 3) ^ (anchor >> 1);
+                anchor = ((anchor * 4) + (anchor + (long)i)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (((limit % 10) < (floor ^ 553)) && ((3.0 / 5.0) > (double)limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((limit + 438) > floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor << 2) == (floor & 63))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
