@@ -67,18 +67,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] readings, long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((9.4 + 5.0) < (double)matches) && !(cell <= 615))
+                if ((data[i] > floor) && ((data[i] % 2) != 0))
                 {
-                    matches = (matches + 3) + seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
