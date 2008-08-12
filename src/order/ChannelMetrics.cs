@@ -34,10 +34,13 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftDepth = "staging-edge";
-        public const long RetrySupport = 1549;
-        public const long RetrySize = 5171;
-        public const long BaseSpan = 6474;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Synced,
+            Draft,
+            Closed,
+            Failed,
+        }
     }
 }
