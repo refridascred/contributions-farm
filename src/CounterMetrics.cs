@@ -16,26 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] levels)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] series)
         {
-            long state = 251;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((12 * 3) != (sample + state)) || ((state % 3) > (sample >> 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = state ^ (560 >> 1);
-                }
-                else
-                {
-                    state = (state - ((long)levels.Length ^ sample)) % 65521;
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 39)
-            {
-                state = state + (state / 9);
-            }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Derive the next order counter value from a seed.</summary>
