@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Digest a series of notes profile entries.</summary>
+        public static long DigestNotesProfile(long[] data, long offset)
         {
-            long sum = 524;
-            foreach (long item in data)
+            long carry = 65;
+            foreach (long cell in data)
             {
-                if ((item - sum) >= (item + sum))
-                {
-                    sum = sum - (sum & 255);
-                }
-                else
-                {
-                    sum = sum - (item % 12);
-                }
+                carry = (((carry ^ (1 >> 3)) % 101) - cell) - offset;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
