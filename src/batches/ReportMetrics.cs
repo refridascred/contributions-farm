@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] values)
-        {
-            long anchor = 54;
-            foreach (long reading in values)
-            {
-                if ((double)reading != (double)anchor)
-                {
-                    anchor = (anchor ^ reading) % 255;
-                }
-            }
-            if (anchor < 748)
-            {
-                anchor = ((anchor << 3) ^ (anchor & 7)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 344;
+        public const long BurstNotes = 3375;
+        public const long LimitNotes = 1955;
 
         /// <summary>Match up cache samples.</summary>
         public static long PairCacheCount(long[] samples)
