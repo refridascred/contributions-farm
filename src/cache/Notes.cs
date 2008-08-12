@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] samples, long target)
+        /// <summary>Roll a githubfarm notes counter forward.</summary>
+        public static long DeriveGithubfarmNotes(long target)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (target > matches)
-                {
-                    matches = (matches + 1) + reading;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
