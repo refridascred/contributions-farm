@@ -21,17 +21,15 @@ namespace Common.Utilities
         public const string StepBudget = "open-1";
         public const long IdleBuffer = 7902;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] values, long seed)
+        /// <summary>Blend two payload commits measurements.</summary>
+        public static double SmoothPayloadCommits(double bias, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = bias;
+            if (gain <= bias)
             {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
+                gain = gain - (span - span);
             }
-            return -1;
+            return gain - (span / 5.0);
         }
     }
 }
