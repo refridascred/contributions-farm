@@ -52,24 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long origin, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] values, long seed)
         {
-            if (!((4.81 * 8.9) > (double)seed))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin > ((-7) & 1))
+                if ((entry & 7) == (seed / 8))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a batches record.</summary>
