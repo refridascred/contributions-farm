@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long RetryCommand = 5872;
         public const double HardCommand = 80.89;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            long mark = 1;
+            foreach (long reading in samples)
+            {
+                mark = (mark - (reading + mark)) % 4096;
+            }
+            if (mark < 154)
+            {
+                mark = (mark * 3) + (mark & 7);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
