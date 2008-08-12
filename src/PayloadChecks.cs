@@ -39,22 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] data, long bound)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long score = 52;
-            foreach (long sample in data)
-            {
-                if (bound <= (bound ^ sample))
-                {
-                    score = score - (score / 7);
-                }
-                else
-                {
-                    score = (score << 3) ^ (score >> 2);
-                }
-            }
-            return score;
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Look up the position of a support sample.</summary>
