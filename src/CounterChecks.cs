@@ -40,16 +40,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 3187;
+        public const long BaseTools = 1537;
+        public const string CacheSize = "strict-1";
+        public const long BatchRatio = 584;
+        public const string BatchScore = "local-1";
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsMatches(long[] series, long bound)
