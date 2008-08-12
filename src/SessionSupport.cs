@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count command stream pairs that satisfy a relation.</summary>
-        public static long MatchCommandStreamCount(long[] levels)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = offset * 0.67;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = ((mean + offset) + (double)(long)i) - weight;
             }
-            return matches;
+            return mean + offset;
         }
 
         /// <summary>Audit editor session readings against a rule.</summary>
