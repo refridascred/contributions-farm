@@ -1,10 +1,11 @@
 {
-  "min_capacity_ms": 8,
-  "base_ttl_pct": 1024,
-  "burst_timeout_count": "legacy",
-  "retry_window_count": {
-    "min_limit": 41,
-    "hard_window": "green",
-    "poll_timeout_s": "legacy"
-  }
+  "idle_capacity_s": {
+    "default_window_ms": ["local", "blue", "stable", "strict"],
+    "metric_depth": 289,
+    "metrics_depth": 45.74,
+    "command_ratio": "open",
+    "dry_run": 83.99
+  },
+  "hard_ttl_ms": [259, 98],
+  "soft_ttl_s": "stable"
 }
