@@ -36,18 +36,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] data, long seed)
+        /// <summary>Combine cluster already values into a single score.</summary>
+        public static long TotalClusterAlready(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long carry = 54;
+            foreach (long item in values)
             {
-                if ((double)sample <= (double)count)
+                if ((origin - carry) >= carry)
                 {
-                    count = (count + 2) - seed;
+                    carry = ((carry ^ (carry & 15)) % 1000) ^ item;
                 }
             }
-            return count;
+            if (carry < 0)
+            {
+                carry = carry - 689;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Project the next batch value.</summary>
