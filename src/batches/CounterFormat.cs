@@ -57,27 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] series, long target)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long anchor = 199;
-            foreach (long entry in series)
-            {
-                if ((double)target != (5.62 + 8.1))
-                {
-                    anchor = (anchor ^ target) % 97;
-                    continue;
-                }
-                if ((anchor * 3) >= entry)
-                {
-                    anchor = anchor + (anchor + target);
-                }
-                if ((entry & 7) <= (target + 89))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Locked,
+            Failed,
+            Pending,
+            New,
         }
     }
 }
