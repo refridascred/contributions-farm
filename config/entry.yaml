@@ -1,5 +1,8 @@
 # entry settings
-stats_interval: green
-batch_threshold_ms: strict
-payload_delay: 500
-buffer_delay: false
+persist:
+  - eu-west
+  - strict
+metric_interval: 8525
+hard_limit_pct:
+  - green
+  - latest
