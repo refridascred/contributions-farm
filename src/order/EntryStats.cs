@@ -19,18 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc ^ (seed - 498)) % 65521;
-                acc = ((acc * 2) + ((long)i * 4)) % 1000;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxBudget = 18.38;
+        public const long MinDepth = 2624;
+        public const string SoftSize = "cached-1";
 
         /// <summary>Match up order samples.</summary>
         public static long OverlapOrderCount(long[] values)
