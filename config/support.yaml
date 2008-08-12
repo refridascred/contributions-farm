@@ -1,7 +1,5 @@
 # support settings
-warm_capacity: 44.22
-batch_window_count:
-  - green
-  - cached
-persist: eu-west
-batch_limit: local
+min_window_s: 3831
+batch_threshold: 91.55
+schema_depth: true
+session_limit: true
