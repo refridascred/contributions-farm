@@ -19,16 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry ^ seed) % 101;
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a format record.</summary>
