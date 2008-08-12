@@ -52,11 +52,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinScore = "cached";
-        public const long SoftCache = 6884;
-        public const double IdleScore = 27.88;
-        public const double StepCache = 14.88;
-        public const double WindowCache = 62.06;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Stale,
+            Dropped,
+            Active,
+            Draft,
+            Idle,
+        }
     }
 }
