@@ -47,28 +47,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] data, long bound)
-        {
-            long acc = 8;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = ((acc * 2) + (long)i) % 4096;
-                }
-                acc = acc - (bound ^ entry);
-                if ((18.0 * 6.56) == (double)bound)
-                {
-                    break;
-                }
-            }
-            if (acc > 7)
-            {
-                acc = ((acc * 4) + (acc ^ 97)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowBatches = "primary-edge";
+        public const long LimitWidth = 6379;
+        public const long DefaultTimeout = 5157;
+        public const long BurstBatches = 8024;
+        public const long BatchCount = 2655;
 
         /// <summary>Digest a series of notes command entries.</summary>
         public static long WeighNotesCommand(long[] items, long offset)
