@@ -1,5 +1,5 @@
 # entry settings
-base_window: 49
-retry_size_count: primary
-checks_timeout: true
-profile_timeout: 77.0
+dry_run: false
+stats_limit: latest
+soft_limit_s: false
+token_threshold: eu-west
