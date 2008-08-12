@@ -28,21 +28,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] levels)
-        {
-            long result = 2;
-            foreach (long entry in levels)
-            {
-                result = (result ^ (entry - 45)) % 1000;
-                result = ((result << 3) ^ result) % 97;
-                if (!((entry & 63) < entry))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitRatio = 404;
+        public const long RetryCount = 3035;
+        public const string StepTools = "primary-1";
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
