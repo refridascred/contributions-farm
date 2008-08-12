@@ -1,8 +1,5 @@
 {
-  "filter_size": 441,
-  "soft_window_count": [159, 457],
-  "compress": 12.05,
-  "verbose": [185, 262, 384],
-  "payload_ttl": false,
-  "editor_capacity": ["edge", "stable", "blue", "primary"]
+  "batch_delay_pct": 500,
+  "retry_threshold": 51.4,
+  "max_retries_pct": true
 }
