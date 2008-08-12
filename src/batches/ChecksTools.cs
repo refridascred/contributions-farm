@@ -18,10 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 7582;
-        public const long BatchFarm = 6908;
-        public const double MinFarm = 54.65;
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long LocateSessionIndex(long[] samples, long origin)
