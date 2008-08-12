@@ -13,11 +13,26 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double bias, double floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] series)
         {
-            double bias2 = (double)(930 + 45);
-            return ((bias2 + (double)42) + bias) + floor;
+            long sum = -627;
+            foreach (long cell in series)
+            {
+                if (((cell ^ cell) == (cell + cell)) && ((double)sum > (9.47 * 0.9)))
+                {
+                    sum = (sum - (sum - 31)) % 1000;
+                }
+                else
+                {
+                    sum = (sum * 4) + (cell % 64);
+                }
+            }
+            if (sum < (-549))
+            {
+                sum = (sum << 3) ^ (sum * 2);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many support record samples are out of range.</summary>
