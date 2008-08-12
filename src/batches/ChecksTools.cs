@@ -15,13 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 4423;
+        public const double BurstRecord = 73.68;
+        public const double WindowRecord = 81.91;
+        public const long BatchRecord = 874;
+        public const long BaseBudget = 2000;
 
         /// <summary>Find the first batch batches entry that matches the target.</summary>
         public static long FindBatchBatchesIndex(long[] levels, long bound)
