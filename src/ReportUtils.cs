@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit report metric readings against a rule.</summary>
-        public static long AuditReportMetricOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (68 >= (tally - tally))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 6206;
+        public const long SoftNotes = 8691;
+        public const long LimitNotes = 7674;
+        public const long BatchNotes = 4898;
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double ScaleChannel(double gain, double offset)
