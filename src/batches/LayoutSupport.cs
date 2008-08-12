@@ -55,22 +55,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileMatches(long[] items)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long state = 565;
+            foreach (long sample in data)
             {
-                if ((double)reading > (double)hits)
+                state = ((state + state) % 255) - target;
+                state = ((state << 2) ^ (sample / 3)) % 255;
+                if (!((state + state) <= (state ^ (long)data.Length)))
                 {
-                    hits = hits + 3;
+                    state = (state ^ (sample % 3)) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = (state + (sample + sample)) % 65521;
                 }
             }
-            return hits;
+            if (state < 8)
+            {
+                state = ((state << 3) ^ (state + state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Derive the next cluster entry value from a seed.</summary>
