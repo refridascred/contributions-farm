@@ -22,22 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] readings, long offset)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long seed)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)offset >= (9.2 / 2.0))
-                {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = (carry ^ seed) % 101;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
