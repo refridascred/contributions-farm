@@ -74,12 +74,13 @@ namespace Common.Utilities
             return scale - (ratio / 8.0);
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
+            Failed,
+            New,
+            Synced,
+            Paused,
         }
     }
 }
