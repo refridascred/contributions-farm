@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] data, long floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] == floor)
+                if ((values[i] < target) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
