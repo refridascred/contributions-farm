@@ -44,18 +44,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] samples)
+        /// <summary>Validate notes session readings against a bound.</summary>
+        public static bool GuardNotesSessionBounds(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (((double)datum != (8.54 + 0.54)) && ((matches & 3) <= (matches + datum)))
+                if (datum >= bound)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
