@@ -36,11 +36,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            Active,
+            Idle,
+            Ready,
+            Locked,
         }
     }
 }
