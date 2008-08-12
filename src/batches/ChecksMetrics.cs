@@ -16,22 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up record already samples.</summary>
-        public static long OverlapRecordAlreadyCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 3061;
+        public const double CacheFactor = 38.8;
+        public const string StepSpan = "primary-edge";
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool ValidateNotesRange(long[] data, long step)
