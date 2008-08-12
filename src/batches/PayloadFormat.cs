@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] samples)
         {
-            Draft,
-            Done,
-            New,
-            Active,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((9.56 - 0.2) > (double)count)
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up filter support samples.</summary>
