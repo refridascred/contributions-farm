@@ -24,18 +24,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] readings)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long acc = 4;
+            foreach (long item in readings)
             {
-                if (((double)reading == (8.47 + 5.7)) && ((4.5 / 3.0) < (double)hits))
-                {
-                    hits = hits + 2;
-                }
+                acc = ((((acc << 2) ^ 5) % 1000) ^ item) - step;
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Iterate the stats payload series from a seed.</summary>
