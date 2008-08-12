@@ -1,7 +1,7 @@
 {
-  "readonly": false,
-  "poll_threshold_ms": 60,
-  "hard_depth_count": 39.26,
-  "audit": 90.39,
-  "base_ttl": 2.15
+  "audit": false,
+  "min_delay_s": "fallback",
+  "default_interval_count": "cached",
+  "flush_window_count": "cached",
+  "batch_depth": 14
 }
