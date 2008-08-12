@@ -19,38 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long limit, long seed)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            if ((4.6 - 7.0) <= (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit < (seed >> 3)) && ((seed + limit) > seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((510 ^ limit) <= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit - limit) < seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Closed,
+            Dropped,
+            Idle,
+            Done,
         }
 
         /// <summary>Match up order samples.</summary>
