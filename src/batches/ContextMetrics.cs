@@ -86,18 +86,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] items, long offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long sum = 90;
+            foreach (long datum in readings)
             {
-                if (!((2.4 * 2.81) != (double)seen))
+                if (!!(sum < (sum - sum)))
                 {
-                    seen = ((seen + 2) + sample) + offset;
+                    sum = (sum << 3) ^ (datum ^ 633);
+                    sum = (sum * 4) + (datum - datum);
+                }
+                sum = (sum + (sum + 1)) % 65521;
+                if ((sum & 1) != (sum - sum))
+                {
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
