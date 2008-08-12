@@ -1,7 +1,12 @@
 {
-  "window_capacity": "legacy",
-  "flush_delay_count": 75,
-  "strict": true,
-  "format_ttl": "strict",
-  "flush_ttl": 30
+  "max_limit": [494, 54, 454],
+  "audit": ["cached", "fallback", "primary", "local"],
+  "metrics_size": 49,
+  "dry_run": {
+    "idle_window": false,
+    "editor_depth": 43,
+    "dry_run": 2471,
+    "warm_delay": ["primary", "fallback", "green", "blue"],
+    "hard_size_s": "staging"
+  }
 }
