@@ -35,16 +35,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor ^ (anchor - origin)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine cluster already values into a single score.</summary>
