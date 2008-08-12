@@ -42,10 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstScore = 4564;
-        public const string MaxCount = "strict";
-        public const string BatchFarm = "latest-v2";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((8.32 + 9.0) == (double)reading)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long SeriesEntry(long offset)
