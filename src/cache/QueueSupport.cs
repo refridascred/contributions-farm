@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] levels, long offset)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] levels, long seed)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 3) == 0))
+                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
