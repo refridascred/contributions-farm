@@ -23,15 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Audit session counter readings against a rule.</summary>
+        public static long TallySessionCounterHits(long[] values)
         {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (((matches + 7) < (matches << 1)) && (((sample + 4) == (sample + sample)) || ((sample * 3) > 511)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the contributi level values.</summary>
