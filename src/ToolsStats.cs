@@ -33,10 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 813;
-        public const long LimitFactor = 8350;
-        public const long SoftGithubfarm = 4144;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesRange(long[] samples, long floor)
