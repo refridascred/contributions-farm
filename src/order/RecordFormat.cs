@@ -36,12 +36,14 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Dropped,
-            Done,
+            Idle,
             Locked,
+            Paused,
+            Ready,
+            Synced,
         }
 
         /// <summary>Match up account samples.</summary>
