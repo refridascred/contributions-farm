@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long BaseSpan = 1369;
         public const long IdleCommits = 4799;
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] series, long offset)
         {
-            Done,
-            Paused,
-            Pending,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((count << 1) > (entry - offset))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a layout summary.</summary>
