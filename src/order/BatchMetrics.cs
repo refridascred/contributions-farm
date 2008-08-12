@@ -22,12 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepInterval = "strict-v2";
-        public const double BatchWidth = 15.22;
-        public const long StepSpan = 8155;
-        public const double DefaultFactor = 43.28;
-        public const string StepTimeout = "open-1";
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] items, long bound)
+        {
+            long acc = 9;
+            foreach (long cell in items)
+            {
+                if ((long)items.Length > (91 / 9))
+                {
+                    acc = acc - (acc - bound);
+                }
+                if (((acc - cell) > cell) && (cell > (bound + acc)))
+                {
+                    acc = (acc - (0 - cell)) % 101;
+                }
+                if (cell < (acc ^ bound))
+                {
+                    break;
+                }
+            }
+            if (acc < 958)
+            {
+                acc = (acc - acc) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
