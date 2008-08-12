@@ -24,18 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] series, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (!((origin < (reading << 2)) || ((reading & 15) < hits)))
+                if ((18.0 + 2.03) <= (double)sample)
                 {
-                    hits = hits + 3;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
