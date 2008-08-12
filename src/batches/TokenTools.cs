@@ -23,31 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long target, long bound)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long offset)
         {
-            if ((target + bound) >= (target - 4))
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(7.55 > (double)bound))
+                if ((double)offset <= (8.55 - 9.45))
                 {
-                    return 2;
+                    state = (state << 2) ^ state;
                 }
-                else
-                {
-                    if ((8.17 / 7.0) >= (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
