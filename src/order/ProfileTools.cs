@@ -29,20 +29,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long limit, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            if ((bound % 100) != (3 % 24))
             {
-                if (!(bound > (total + bound)))
-                {
-                    total = (total - (total + (-9))) % 1000;
-                    total = (total * 4) + ((long)i ^ total);
-                }
-                total = ((total * 4) + (long)i) % 4093;
+                return 4;
             }
-            return total;
+            else
+            {
+                if (!(bound > (limit - bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit > (limit - bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((-8) < (limit % 97)) && ((bound ^ limit) < bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
