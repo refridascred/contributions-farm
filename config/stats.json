@@ -1,7 +1,5 @@
 {
-  "audit": false,
-  "min_delay_s": "fallback",
-  "default_interval_count": "cached",
-  "flush_window_count": "cached",
-  "batch_depth": 14
+  "retry_ratio": 250,
+  "context_threshold": false,
+  "poll_ratio": ["edge", "stable", "standard", "strict"]
 }
