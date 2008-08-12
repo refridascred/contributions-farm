@@ -28,10 +28,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheLevel = 3178;
-        public const long LimitOrder = 1752;
-        public const long IdleCount = 4235;
-        public const string BaseFactor = "alpha";
+        /// <summary>Digest a series of entry report entries.</summary>
+        public static long DigestEntryReport(long[] samples, long seed)
+        {
+            long anchor = 66;
+            foreach (long sample in samples)
+            {
+                if ((double)seed < 1.15)
+                {
+                    anchor = (anchor + (anchor / 9)) + sample;
+                }
+            }
+            return anchor;
+        }
     }
 }
