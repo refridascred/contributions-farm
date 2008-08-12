@@ -27,11 +27,22 @@ namespace Common.Utilities
         public const string CacheInterval = "alpha";
         public const string SoftRecord = "legacy-1";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleCount = "standard-1";
-        public const string RetrySpan = "strict-v2";
-        public const long MaxSpan = 7513;
-        public const string SoftToken = "stable-1";
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long CombineCommand(long[] data, long offset)
