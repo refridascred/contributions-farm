@@ -33,22 +33,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit account already readings against a rule.</summary>
-        public static long TallyAccountAlreadyGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches ^ 400) < 5)
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowLevel = 9396;
+        public const double MinGraph = 9.91;
+        public const double HardLevel = 71.77;
+        public const long MaxGraph = 673;
+        public const long BaseGraph = 4678;
     }
 }
