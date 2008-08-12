@@ -39,31 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order contributi pair into a bucket.</summary>
-        public static long BucketOrderContributi(long bound, long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] items, long step)
         {
-            if (!((limit ^ bound) >= bound))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((9.0 * 4.2) == (double)bound)
+                if (reading > step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound != (4.0 - 7.7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Roll a record report counter forward.</summary>
