@@ -37,13 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Iterate the commits format series from a seed.</summary>
+        public static long SeriesCommitsFormat(long seed)
         {
-            Locked,
-            Failed,
-            Pending,
-            New,
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
