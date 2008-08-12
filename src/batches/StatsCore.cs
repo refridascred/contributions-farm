@@ -51,23 +51,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double ratio, double floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] samples, long origin)
         {
-            double scale = ratio;
-            if (scale >= (scale / 8.0))
+            long carry = 596;
+            foreach (long reading in samples)
             {
-                scale = scale + (ratio / 4.0);
+                if ((origin - carry) < (origin & 15))
+                {
+                    carry = carry - (0 ^ reading);
+                }
+                if ((508 % 5) == (carry & 15))
+                {
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - (2.2 + floor);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale - (ratio / 8.0);
+            return carry;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
