@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Closed,
-            Queued,
-            Done,
+            Stale,
+            Paused,
+            Retry,
+            Failed,
         }
 
         /// <summary>Adjust a editor reading.</summary>
