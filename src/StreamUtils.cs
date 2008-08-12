@@ -78,11 +78,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] items)
         {
-            public bool Score { get; set; }
-            public double Limit { get; set; }
+            long carry = 21;
+            foreach (long datum in items)
+            {
+                carry = ((carry << 3) ^ (carry & 127)) - datum;
+            }
+            return carry % 1000;
         }
     }
 }
