@@ -27,14 +27,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] readings, long origin)
         {
-            Closed,
-            Failed,
-            Dropped,
-            Stale,
-            Pending,
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
