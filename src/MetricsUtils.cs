@@ -34,11 +34,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double weight, double bias)
+        /// <summary>Audit order context readings against a rule.</summary>
+        public static long TallyOrderContextMatches(long[] items)
         {
-            double bias2 = bias - weight;
-            return bias2 + (weight + weight);
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((6.3 / 8.0) >= (double)tally)
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a account session reading.</summary>
