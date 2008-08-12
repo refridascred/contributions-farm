@@ -42,19 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate already channel readings against a bound.</summary>
-        public static bool ValidateAlreadyChannelLimits(long[] series, long origin)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
