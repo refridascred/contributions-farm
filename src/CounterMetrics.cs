@@ -31,13 +31,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] readings, long target)
         {
-            Paused,
-            Stale,
-            Closed,
-            Ready,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (!((6.4 + 7.45) != (double)tally) && ((tally - target) <= ((-405) % 8)))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the order kind values.</summary>
