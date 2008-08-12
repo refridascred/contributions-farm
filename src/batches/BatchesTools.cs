@@ -35,15 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the stats payload series from a seed.</summary>
-        public static long SeriesStatsPayload(long seed)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Locked,
+            Active,
+            Queued,
+            New,
         }
     }
 }
