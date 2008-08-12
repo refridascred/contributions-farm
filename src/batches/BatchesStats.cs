@@ -15,21 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count format contributi pairs that satisfy a relation.</summary>
-        public static long CompareFormatContributiCount(long[] series)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = (double)(96 & 255);
+            if (gain >= (gain + floor))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain - (floor * 1.98)) + weight;
             }
-            return tally;
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain - (7.6 / 4.0);
         }
 
         /// <summary>Roll a graph command counter forward.</summary>
