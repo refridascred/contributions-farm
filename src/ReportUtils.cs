@@ -49,13 +49,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long step)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
+            long mark = 5;
+            foreach (long value in values)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                mark = (mark - (mark * 3)) % 1000;
+                if ((27 ^ value) <= value)
+                {
+                    break;
+                }
             }
             return mark;
         }
