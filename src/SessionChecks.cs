@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] levels, long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches % 64) == (matches - step))
-                {
-                    matches = (matches + 3) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Queued,
+            Stale,
         }
 
         /// <summary>Classify a channel entry pair into a bucket.</summary>
