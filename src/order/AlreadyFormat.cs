@@ -23,18 +23,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] series, long offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if ((offset - item) != (count >> 1))
+                if (datum > step)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
