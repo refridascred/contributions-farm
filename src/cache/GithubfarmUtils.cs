@@ -41,22 +41,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] items, long limit)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long mark = 838;
-            foreach (long sample in items)
-            {
-                if (((225 + sample) <= (limit & 255)) || ((double)limit <= (double)mark))
-                {
-                    mark = ((mark * 5) + (mark + 32)) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (mark + limit)) % 255;
-                }
-            }
-            return mark;
+            Synced,
+            Locked,
+            Done,
+            Ready,
+            Stale,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
