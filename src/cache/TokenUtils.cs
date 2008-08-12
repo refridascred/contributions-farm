@@ -28,19 +28,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long limit)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(285 >= limit))
+                sum = sum - (limit / 7);
+                if (!((double)limit < (double)(long)i))
                 {
-                    total = total + limit;
+                    sum = ((sum << 2) ^ sum) % 1000;
+                    sum = (sum ^ (limit - limit)) % 101;
                 }
-                total = ((total * 3) + (long)i) % 1000;
+                if ((double)limit == (2.43 / 8.0))
+                {
+                    sum = (sum * 4) + (sum + sum);
+                    sum = (sum * 3) + (5 & 255);
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return total;
+            return sum;
         }
     }
 }
