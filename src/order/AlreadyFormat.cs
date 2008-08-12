@@ -45,13 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Active,
-            Retry,
-            Stale,
-            Ready,
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
