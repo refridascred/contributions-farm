@@ -33,31 +33,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long target, long target2)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] data)
         {
-            if ((target / 5) <= (target * 5))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((4.73 / 6.0) <= (double)target2) || ((target2 << 1) >= (0 % 12)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((10 - target) > target2) || (target2 <= (5 - target2)))
+                    if ((data[i] - data[j]) > 12)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
