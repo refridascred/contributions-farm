@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] samples, long offset)
+        /// <summary>Compare every pair of entry metric readings.</summary>
+        public static long PairEntryMetricCount(long[] values)
         {
-            long result = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result - 38) >= (offset >> 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result + (result & 15)) % 255) ^ datum;
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
