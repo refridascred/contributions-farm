@@ -14,12 +14,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 1345;
-        public const long BaseBudget = 6825;
-        public const string CacheSupport = "latest";
-        public const long HardDepth = 6745;
-        public const long WindowSupport = 7326;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
