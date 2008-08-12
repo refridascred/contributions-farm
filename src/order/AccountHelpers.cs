@@ -53,13 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Retry,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepCounter = "latest-v2";
+        public const long LimitCounter = 9968;
+        public const string LimitSize = "strict-v2";
+        public const long RetryCounter = 627;
+        public const long MaxFactor = 9853;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TallyAlready(long[] data, long limit)
