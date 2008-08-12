@@ -1,6 +1,9 @@
 # githubfarm settings
-layout_ratio: false
-tools_ratio: 30
-contributi_depth: edge
-base_size: 100
-sync_limit_ms: 1024
+counter_threshold: 26
+poll_limit: fallback
+poll_ratio_ms: 250
+batch_window: fallback
+persist:
+  - 181
+  - 241
+  - 479
