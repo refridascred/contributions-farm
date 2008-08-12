@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double MaxWidth = 62.4;
         public const long CacheStream = 5160;
 
-        /// <summary>Measure how many profile order samples are out of range.</summary>
-        public static long TallyProfileOrderHits(long[] items)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((343 >> 4) < (count >> 1))
+                if ((entry + 2) < entry)
                 {
-                    count = (count + 2) + reading;
+                    hits = (hits + 2) - target;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of token entries.</summary>
