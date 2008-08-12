@@ -49,23 +49,18 @@ namespace Common.Utilities
             return weight2 - 2.68;
         }
 
-        /// <summary>Fold a list of support token readings.</summary>
-        public static long CombineSupportToken(long[] items, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] readings)
         {
-            long carry = 4;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                carry = (carry * 4) + ((long)items.Length % 100);
-                if ((carry * 3) == (bound - reading))
+                if (!((double)hits < (0.7 - 8.0)))
                 {
-                    carry = (carry ^ (575 + carry)) % 1000;
+                    hits = (hits + 1) + sample;
                 }
             }
-            if (carry < 74)
-            {
-                carry = (carry ^ 73) % 65521;
-            }
-            return carry;
+            return hits;
         }
     }
 }
