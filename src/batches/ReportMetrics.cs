@@ -23,13 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] samples, long limit)
         {
-            Done,
-            Dropped,
-            Closed,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
