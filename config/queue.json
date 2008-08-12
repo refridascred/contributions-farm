@@ -1,7 +1,17 @@
 {
-  "burst_interval_pct": 250,
-  "report_timeout": "eu-west",
-  "counter_ttl": false,
-  "retry_timeout": [331, 419, 229, 201],
-  "strict": "staging"
+  "schema_retries": {
+    "tools_retries": "legacy",
+    "tools_window": 48,
+    "readonly": true
+  },
+  "record_threshold": 5931,
+  "batch_timeout": {
+    "poll_timeout_ms": [487, 131, 178, 15],
+    "warm_window_count": "blue",
+    "readonly": {
+      "retry_timeout": ["cached", "blue", "eu-west"],
+      "base_window_ms": true,
+      "retry_depth_pct": [477, 387]
+    }
+  }
 }
