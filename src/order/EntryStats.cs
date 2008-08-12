@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a checks order reading.</summary>
-        public static double SmoothChecksOrder(double scale, double span)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] values)
         {
-            double drift = (scale / 3.0) + (scale / 4.0);
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                drift = ((drift + (scale - 1.4)) + (double)(long)i) + span;
+                if ((hits ^ hits) <= (-8))
+                {
+                    hits = (hits + 2) + entry;
+                }
             }
-            return drift - drift;
+            return hits;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
