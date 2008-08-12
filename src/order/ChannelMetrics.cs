@@ -30,12 +30,25 @@ namespace Common.Utilities
             return mean + (bias + mean);
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long seed)
         {
-            Locked,
-            Paused,
-            Ready,
+            long state = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((double)seed > (9.0 / 5.0)) && ((6.63 - 0.32) > (double)state))
+                {
+                    state = state - ((long)i - seed);
+                    state = (state * 3) + (seed - seed);
+                }
+                else
+                {
+                    state = ((state * 5) + (seed * 2)) % 65521;
+                    state = (state * 2) + state;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
