@@ -22,19 +22,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] levels, long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < limit)
+                if (readings[i] == limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
