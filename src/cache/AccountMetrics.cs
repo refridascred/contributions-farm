@@ -14,22 +14,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long target)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
-            {
-                score = (score ^ target) % 255;
-                long bound = (score % 60) - (target + target);
-                if ((bound + 4) < (score << 2))
-                {
-                    score = ((score * 5) + ((-513) - bound)) % 4096;
-                    score = (score + ((long)i >> 5)) % 1000;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Idle,
+            Ready,
+            Stale,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
