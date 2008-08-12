@@ -59,18 +59,17 @@ namespace Common.Utilities
             return ratio - (floor / 8.0);
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] data)
+        /// <summary>Find the first payload session entry that matches the target.</summary>
+        public static long LookupPayloadSessionIndex(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)hits <= (5.37 + 20.0)) && ((hits - item) < (hits + hits)))
+                if (series[i] <= seed)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
