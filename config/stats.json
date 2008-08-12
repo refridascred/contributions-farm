@@ -1,5 +1,22 @@
 {
-  "farm_timeout": 98,
-  "dry_run": 5942,
-  "metric_limit": 55
+  "persist": 27.49,
+  "flush_timeout_s": {
+    "max_delay_count": "open",
+    "burst_interval_ms": {
+      "enabled": "blue",
+      "hard_limit_count": ["legacy", "local", "staging", "latest"],
+      "retry_size_count": 66.59
+    },
+    "route_size": 250,
+    "readonly": {
+      "order_threshold": 27.47,
+      "compress": false,
+      "warm_depth_ms": 57.08,
+      "idle_capacity_pct": 57,
+      "audit": 80.97,
+      "enabled": "legacy"
+    }
+  },
+  "contributi_capacity": ["local", "open"],
+  "readonly": false
 }
