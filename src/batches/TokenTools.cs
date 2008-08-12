@@ -38,19 +38,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Fold a list of context support readings.</summary>
+        public static long TallyContextSupport(long[] series, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            long carry = 76;
+            foreach (long item in series)
             {
-                if (((long)i + origin) <= score)
+                if ((item + floor) <= ((-845) ^ floor))
                 {
-                    score = (score - score) % 65521;
+                    carry = ((carry * 3) + (carry ^ (-1))) % 1000;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            if (carry < 32)
+            {
+                carry = ((carry * 5) + (floor % 3)) % 97;
+            }
+            return carry;
         }
     }
 }
