@@ -13,18 +13,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Count the entry cache entries that pass the check.</summary>
+        public static long CountEntryCacheMatches(long[] levels)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(tally > (reading + reading)) && (((tally / 4) > (reading - reading)) && ((267 % 7) < (reading + reading))))
                 {
-                    if ((values[i] + values[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
