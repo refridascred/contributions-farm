@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] readings, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum % 7) <= (datum / 2))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
