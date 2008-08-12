@@ -73,16 +73,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account layout readings.</summary>
-        public static long CombineAccountLayout(long[] readings)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] values, long bound)
         {
-            long acc = 63;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc ^ acc) - cell;
-                acc = ((acc << 2) ^ 9) % 4096;
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
