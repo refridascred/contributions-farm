@@ -38,18 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] levels)
+        /// <summary>Digest a series of stream report entries.</summary>
+        public static long ScoreStreamReport(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long state = 113;
+            foreach (long cell in readings)
             {
-                if ((cell + seen) <= seen)
+                if ((state ^ 42) >= state)
                 {
-                    seen = seen + 2;
+                    state = ((state + (cell * 5)) % 255) - limit;
                 }
             }
-            return seen;
+            if (state > 36)
+            {
+                state = state - (state >> 5);
+            }
+            return state % 4096;
         }
 
         /// <summary>Define account limits and defaults.</summary>
