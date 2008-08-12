@@ -15,19 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] samples, long limit)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
