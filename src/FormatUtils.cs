@@ -38,39 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metric record pair into a bucket.</summary>
-        public static long ClassifyMetricRecord(long step, long target)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long prev = step + target;
-            if ((-338) > target)
-            {
-                return 5;
-            }
-            else
-            {
-                if (target < (prev << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + prev) < (target & 127))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((6.0 * 5.13) > (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
