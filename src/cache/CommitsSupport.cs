@@ -23,39 +23,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long origin, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            long diff = origin + limit;
-            if (((-9) >> 1) < origin)
+            long anchor = 294;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)diff >= 19.0))
+                if ((anchor & 31) < (sample + sample))
                 {
-                    return 0;
+                    anchor = ((anchor * 5) + (anchor + sample)) % 1000;
+                    break;
+                }
+                if ((8.0 + 1.68) <= (double)sample)
+                {
+                    anchor = anchor ^ (378 / 6);
                 }
                 else
                 {
-                    if (!((limit << 1) >= (limit + limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)diff >= (4.0 / 4.0)) || (12.0 <= (double)limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    anchor = anchor + sample;
                 }
             }
+            if (anchor > 50)
+            {
+                anchor = (anchor - (anchor % 2)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of session readings.</summary>
