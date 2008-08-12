@@ -1,7 +1,27 @@
 # entry settings
-entry_ttl: stable
-farm_retries: primary
-idle_capacity_s: 100
-cache_timeout:
-  - strict
-  - primary
+soft_limit_ms:
+  - 256
+  - 475
+  - 406
+  - 17
+min_delay_pct:
+  base_capacity:
+    - standard
+    - fallback
+    - local
+  account_ratio:
+    - 391
+    - 42
+  compress:
+    - standard
+    - edge
+    - green
+    - blue
+  batch_retries_ms: false
+  enabled: true
+  notes_delay:
+    persist: 22
+    warm_window: primary
+    warm_retries_count: local
+    session_capacity: standard
+burst_timeout: latest
