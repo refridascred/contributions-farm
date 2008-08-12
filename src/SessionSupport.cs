@@ -36,17 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] data, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (data[i] == bound)
+                if ((67 - value) != (315 - 3))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
