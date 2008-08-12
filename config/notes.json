@@ -1,7 +1,9 @@
 {
-  "retry_delay_s": 92,
-  "cluster_ratio": [339, 346, 439, 167],
-  "max_size_count": false,
-  "checks_ratio": 9418,
-  "retry_size_s": false
+  "persist": {
+    "burst_ttl_count": false,
+    "metrics_timeout": [154, 147, 471, 217],
+    "enabled": "blue"
+  },
+  "flush_window_count": 425,
+  "sync_delay_ms": false
 }
