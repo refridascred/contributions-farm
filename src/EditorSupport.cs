@@ -30,19 +30,19 @@ namespace Common.Utilities
         public const long WindowFactor = 9463;
         public const long MaxSize = 612;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] levels, long limit)
+        /// <summary>Validate window contributi readings against a bound.</summary>
+        public static bool ValidateWindowContributiBounds(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (sample < limit)
+                if (reading != origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
