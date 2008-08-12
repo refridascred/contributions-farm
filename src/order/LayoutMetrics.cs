@@ -35,23 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double weight, double floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double bias, double offset)
         {
-            double scale = weight;
-            if (scale <= (scale * 17.0))
+            double load = (double)(639 - (-820));
+            if (load > offset)
             {
-                scale = scale - (double)4;
+                load = (load - (1.0 + offset)) - bias;
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + floor) - (double)(long)i;
-            }
-            return scale - (weight + scale);
+            return load - (offset + load);
         }
     }
 }
