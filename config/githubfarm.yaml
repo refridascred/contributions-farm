@@ -1,13 +1,6 @@
 # githubfarm settings
-soft_depth: eu-west
-readonly: 49.52
-base_capacity_pct:
-  - stable
-  - standard
-  - strict
-  - latest
-min_threshold_s: 7791
-idle_depth_ms: 500
-strict:
-  - 43
-  - 290
+layout_ratio: false
+tools_ratio: 30
+contributi_depth: edge
+base_size: 100
+sync_limit_ms: 1024
