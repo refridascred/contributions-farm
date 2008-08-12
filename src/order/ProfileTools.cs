@@ -18,17 +18,32 @@ namespace Common.Utilities
             return (scale + bias) + bias2;
         }
 
-        /// <summary>Locate a payload metrics reading by value.</summary>
-        public static long LocatePayloadMetricsIndex(long[] series, long floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long step, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long span = step + floor;
+            if ((double)step < 0.8)
             {
-                if (series[i] > floor)
+                return 7;
+            }
+            else
+            {
+                if (((floor / 4) >= (span + step)) || ((span + span) > floor))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((span + floor) == (step + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
