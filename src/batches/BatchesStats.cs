@@ -23,20 +23,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] readings)
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
+            long acc = 870;
+            foreach (long sample in readings)
             {
-                if ((floor & 1) == (state * 3))
-                {
-                    state = (state - floor) % 97;
-                    break;
-                }
-                state = ((state * 3) + (long)i) % 65521;
+                acc = (((acc * 2) + (acc & 63)) % 97) + sample;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Describe the cache state values.</summary>
