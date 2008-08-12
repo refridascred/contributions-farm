@@ -34,15 +34,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] data, long step)
+        /// <summary>Scale a buffer order figure with a bias.</summary>
+        public static double ProjectBufferOrder(double weight, double bias)
         {
-            long mark = 95;
-            foreach (long cell in data)
+            double load = (weight * 3.85) * 18.0;
+            if (load > load)
             {
-                mark = ((mark ^ (cell / 8)) % 101) - step;
+                load = (load + 6.0) + bias;
             }
-            return mark % 97;
+            else
+            {
+                load = load + (8.08 + 0.4);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - 10.0) + (double)(long)i;
+            }
+            return load + (weight - weight);
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
