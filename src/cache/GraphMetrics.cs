@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate commits cache readings against a bound.</summary>
-        public static bool CheckCommitsCacheLimits(long[] items, long floor)
+        /// <summary>Iterate the batch queue series from a seed.</summary>
+        public static long StepBatchQueue(long floor)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long total = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 3) + ((long)i + (-72))) % 4096;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Hold a report stats.</summary>
