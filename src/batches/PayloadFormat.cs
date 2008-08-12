@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many batches notes samples are out of range.</summary>
-        public static long TallyBatchesNotesMatches(long[] data)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long total = 747;
+            foreach (long datum in series)
             {
-                if ((datum + datum) > tally)
+                if (((total % 10) > datum) || ((total - 665) == (datum * 3)))
                 {
-                    tally = tally + 1;
+                    total = ((total << 2) ^ (seed - total)) % 97;
                 }
             }
-            return tally;
+            if (total > 48)
+            {
+                total = (total + (-40)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a format channel sample.</summary>
