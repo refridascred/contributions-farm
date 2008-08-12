@@ -22,12 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardLevel = "stable-v2";
-        public const double BaseToken = 50.5;
-        public const double MaxToken = 66.5;
-        public const double CacheToken = 93.2;
-        public const long HardToken = 9586;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long target, long origin)
+        {
+            long next = target + origin;
+            if (target < (target << 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((target / 3) > (85 + (-286))) || (607 > (next - (-95))))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
