@@ -1,22 +1,4 @@
 # support settings
-soft_timeout_pct:
-  - open
-  - blue
-dry_run:
-  idle_retries_count: 55.94
-  default_ttl_pct: strict
-  dry_run: 7405
-  burst_threshold_pct: standard
-  default_timeout: 68.33
-  soft_timeout_ms: 39.26
-min_window_pct: false
-idle_capacity_s: 36
-sync_retries_ms:
-  hard_limit_count: fallback
-  flush_depth_ms: 234
-  min_ratio_s:
-    - 57
-    - 163
-  retry_ttl_count:
-    - eu-west
-    - legacy
+hard_timeout_s: green
+warm_ratio_ms: 2.1
+warm_ratio_count: latest
