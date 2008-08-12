@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long HardScore = 9078;
         public const long DefaultFactor = 2744;
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double bias, double bias2)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            double scale = (double)9 * 7.4;
-            return (scale + bias) + bias2;
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
