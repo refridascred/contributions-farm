@@ -1,6 +1,9 @@
-id,owner,state,ratio
-1,strict,stable,683
-2,68.25,566,62.03
-3,86.84,682,91
-4,blue,250,18.48
-5,green,43.42,green
+id,token,active,rank
+1,primary,latest,943
+2,31.95,994,stable
+3,638,550,81.45
+4,green,89.47,86.58
+5,149,58.14,31.84
+6,legacy,primary,395
+7,807,551,60.73
+8,403,legacy,standard
