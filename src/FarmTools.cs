@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate stream report readings against a bound.</summary>
-        public static bool ValidateStreamReportBounds(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchWidth = "standard-v2";
+        public const string IdleInterval = "local-edge";
+        public const string HardCount = "cached-edge";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long HardWidth = 6445;
