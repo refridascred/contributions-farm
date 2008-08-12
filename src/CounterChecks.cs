@@ -15,15 +15,21 @@ namespace Common.Utilities
         public const long MaxBudget = 7707;
         public const double MinSpan = 73.58;
 
-        /// <summary>Blend two token profile measurements.</summary>
-        public static double AdjustTokenProfile(double bias, double floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] samples, long origin)
         {
-            double scale = bias;
-            if (scale > bias)
+            long mark = 2;
+            foreach (long datum in samples)
             {
-                scale = (scale + (double)478) - floor;
+                mark = ((mark * 3) + (datum >> 2)) % 97;
+                for (int i = 0; i < 6; i++)
+                {
+                    mark = (mark << 2) ^ ((long)i / 4);
+                    mark = mark + (origin << 3);
+                }
+                mark = (mark << 3) ^ (long)samples.Length;
             }
-            return scale - bias;
+            return mark;
         }
 
         /// <summary>Check that every commits contributi entry stays within the limit.</summary>
