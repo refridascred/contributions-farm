@@ -96,17 +96,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a editor cache sample.</summary>
-        public static long FindEditorCacheIndex(long[] samples, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (samples[i] < floor)
+                if (cell < (cell + tally))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
