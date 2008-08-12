@@ -25,17 +25,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] items, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 88;
+            foreach (long cell in values)
             {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
+                mix = (((mix * 5) + (mix ^ cell)) % 255) - offset;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the order mode values.</summary>
