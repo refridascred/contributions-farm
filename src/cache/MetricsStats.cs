@@ -20,10 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 9353;
-        public const double MaxSpan = 33.74;
-        public const string IdleProfile = "legacy-1";
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] data)
+        {
+            long sum = 4;
+            foreach (long cell in data)
+            {
+                if ((sum - cell) > cell)
+                {
+                    sum = (sum - 43) % 4096;
+                }
+            }
+            if (sum > 0)
+            {
+                sum = sum - sum;
+            }
+            return sum;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BurstFactor = 667;
