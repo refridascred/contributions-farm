@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] levels, long floor)
         {
-            long anchor = 365;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                anchor = (anchor + (anchor - 3)) % 1000;
-                if (((-7) ^ anchor) <= reading)
+                if (reading > floor)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (anchor < 9)
-            {
-                anchor = ((anchor * 5) + (anchor ^ anchor)) % 101;
-            }
-            return anchor % 4096;
+            return valid;
         }
 
         /// <summary>Adjust a account cluster reading.</summary>
