@@ -58,31 +58,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long floor, long offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] data, long seed)
         {
-            if ((double)26 > (double)floor)
+            long carry = 9;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor < (offset / 4))
+                carry = (carry - (carry >> 4)) % 255;
+                carry = (carry + (carry >> 5)) % 101;
+                if ((seed << 1) <= carry)
                 {
-                    return 4;
+                    carry = (carry + (item - carry)) % 1000;
                 }
                 else
                 {
-                    if (offset > (floor + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = carry + (item + carry);
                 }
             }
+            if (carry < 416)
+            {
+                carry = carry ^ 9;
+            }
+            return carry % 97;
         }
 
         /// <summary>Audit filter batch readings against a rule.</summary>
