@@ -39,19 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi session entry stays within the limit.</summary>
-        public static bool ValidateContributiSessionRange(long[] items, long seed)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double gain, double offset)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            double drift = (double)(1 + 11);
+            if (drift >= (double)54)
             {
-                if (entry <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift - (gain - drift);
             }
-            return flag;
+            return drift - (drift + offset);
         }
 
         /// <summary>Roll a queue profile counter forward.</summary>
