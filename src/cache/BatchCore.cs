@@ -33,21 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] readings)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 77;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)offset > (5.8 + 7.71))
                 {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc ^ (offset % 60)) % 101) - entry;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
