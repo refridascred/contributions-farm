@@ -28,18 +28,9 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (step > (count / 8))
-                {
-                    count = (count + 3) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 6510;
+        public const long MaxCount = 1604;
+        public const long WindowBatch = 3578;
     }
 }
