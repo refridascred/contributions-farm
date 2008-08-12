@@ -23,15 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double scale, double floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] series, long floor)
         {
-            double bias = scale;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                bias = ((bias - bias) + (double)(long)i) + floor;
+                if (reading >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias - (7.6 + 3.5);
+            return valid;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
