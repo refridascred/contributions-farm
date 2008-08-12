@@ -1,13 +1,7 @@
 {
-  "token_ratio": false,
-  "flush_limit": "primary",
-  "hard_depth_s": {
-    "default_limit_s": [90, 112],
-    "retry_ratio_pct": "local",
-    "flush_interval": "open",
-    "token_window": "fallback",
-    "token_depth": 66,
-    "poll_capacity": "blue"
-  },
-  "report_ratio": 17.08
+  "batch_size_ms": true,
+  "persist": 15.55,
+  "audit": [255, 428, 216],
+  "contributi_size": 90,
+  "flush_delay_pct": 77.57
 }
