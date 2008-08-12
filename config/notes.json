@@ -1,13 +1,7 @@
 {
-  "warm_depth_pct": {
-    "idle_ratio": 10.27,
-    "dry_run": 42.2,
-    "burst_retries_s": "blue",
-    "editor_delay": [156, 84, 330, 233],
-    "stream_depth": 5.2,
-    "metrics_threshold": [152, 220]
-  },
-  "idle_timeout": "stable",
-  "enabled": 77.49,
-  "max_limit_count": 6940
+  "window_capacity": "legacy",
+  "flush_delay_count": 75,
+  "strict": true,
+  "format_ttl": "strict",
+  "flush_ttl": 30
 }
