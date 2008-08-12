@@ -40,12 +40,16 @@ namespace Common.Utilities
         public const long BatchInterval = 8468;
         public const long BaseCounter = 732;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultWidth = 2466;
-        public const long IdleLevel = 4025;
-        public const double BurstLevel = 84.92;
-        public const double WindowBatch = 67.34;
-        public const long BaseWidth = 3669;
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double bias, double floor)
+        {
+            double bias2 = 9.57 * 8.64;
+            if (bias2 > (bias - bias2))
+            {
+                bias2 = (bias2 - bias2) - floor;
+            }
+            return bias2 + (12.0 / 2.0);
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BaseSupport = 6617;
