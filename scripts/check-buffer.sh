@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west strict standard fallback; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=228
-log "limit is ${BUFFER_LIMIT}"
-
 total=0
 for i in $(seq 1 9); do
-    total=$((total + i * 3))
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+for item in eu-west latest blue; do
+    log "checking ${item}"
+done
