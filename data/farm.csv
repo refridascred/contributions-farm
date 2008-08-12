@@ -1,6 +1,6 @@
-id,ratio,label,token
-1,974,staging,729
-2,84.74,local,cached
-3,local,staging,17.94
-4,846,680,201
-5,342,latest,539
+id,label,score,token,weight
+1,staging,stable,stable,standard
+2,open,756,152,green
+3,870,62.03,29,647
+4,33.12,latest,local,330
+5,83.52,496,standard,strict
