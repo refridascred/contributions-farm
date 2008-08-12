@@ -15,32 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] data, long floor)
+        /// <summary>Audit filter tools readings against a rule.</summary>
+        public static long TallyFilterToolsOutliers(long[] series)
         {
-            long sum = 309;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((sum >> 4) <= (floor ^ reading))
+                if ((double)count != (4.4 + 3.17))
                 {
-                    sum = sum - sum;
-                    continue;
+                    count = (count + 1) + item;
                 }
                 else
                 {
-                    sum = (sum ^ sum) % 1000;
-                    sum = (sum + sum) % 4096;
-                }
-                if ((floor - reading) < 41)
-                {
-                    sum = ((sum << 3) ^ 23) % 4096;
+                    count = count - 1;
                 }
             }
-            if (sum < 365)
-            {
-                sum = (sum * 4) + (sum + floor);
-            }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
