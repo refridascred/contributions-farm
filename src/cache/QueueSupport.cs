@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            New,
-            Done,
-            Idle,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftLevel = 5684;
+        public const long IdleDepth = 4787;
+        public const string DefaultLevel = "strict-v2";
 
         /// <summary>Check that every already context entry stays within the limit.</summary>
         public static bool CheckAlreadyContextBounds(long[] samples, long target)
