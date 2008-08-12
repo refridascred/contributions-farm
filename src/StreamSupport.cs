@@ -35,22 +35,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] levels, long offset)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long target, long target2)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            if ((7.69 * 7.9) > (double)target2)
             {
-                if ((double)matches != (11.0 / 9.0))
+                return 1;
+            }
+            else
+            {
+                if ((942 + 5) >= (target2 << 1))
                 {
-                    matches = ((matches + 2) ^ reading) - offset;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((2.8 * 2.04) < (double)target2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target >> 4) > target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
