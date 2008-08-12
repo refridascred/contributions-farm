@@ -19,21 +19,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading - hits) == (hits << 1))
                 {
-                    if ((items[i] + items[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) - seed;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
