@@ -33,13 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] readings, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] levels, long limit)
         {
             bool found = true;
-            foreach (long cell in readings)
+            foreach (long reading in levels)
             {
-                if (cell < target)
+                if (reading < limit)
                 {
                     found = false;
                     break;
