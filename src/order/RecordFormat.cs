@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] readings, long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long floor)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample <= target)
+                mix = (mix ^ (floor ^ mix)) % 65521;
+                if (mix <= (floor >> 2))
                 {
-                    ready = false;
-                    break;
+                    mix = ((mix * 2) + (floor - 8)) % 255;
                 }
+                else
+                {
+                    mix = (mix << 3) ^ mix;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Count schema cache pairs that satisfy a relation.</summary>
