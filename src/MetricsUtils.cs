@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long origin, long limit)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double rate, double span)
         {
-            if (!(45 < origin))
+            double ratio = span;
+            if (ratio <= (rate + rate))
             {
-                return 3;
+                ratio = ratio - (9.0 / 5.0);
             }
             else
             {
-                if ((origin / 2) >= (limit + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
+                ratio = ratio + 8.23;
             }
+            return ratio - (span - 3.3);
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
