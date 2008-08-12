@@ -20,12 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryDepth = "fallback-v2";
-        public const double MinCommand = 34.16;
-        public const double RetryCommand = 2.67;
-        public const string DefaultCommand = "open-v2";
-        public const double LimitCount = 8.37;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Locked,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Audit editor account readings against a rule.</summary>
         public static long CountEditorAccountHits(long[] samples)
