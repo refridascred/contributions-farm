@@ -47,9 +47,11 @@ namespace Common.Utilities
         public const long LimitBudget = 4241;
         public const double SoftSession = 97.19;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 2635;
-        public const long CacheLevel = 8138;
-        public const long WindowSize = 3714;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+        }
     }
 }
