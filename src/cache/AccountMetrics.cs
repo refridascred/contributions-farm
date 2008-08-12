@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 667;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item <= (mark - mark)) || ((double)item >= 1.0))
                 {
-                    if ((levels[i] - levels[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark + (4 + mark)) % 4096;
+                }
+                if (item >= (item - item))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mark > 11)
+            {
+                mark = (mark - mark) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
