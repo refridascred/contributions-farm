@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 344;
-        public const long BurstNotes = 3375;
-        public const long LimitNotes = 1955;
+        /// <summary>Audit commits farm readings against a rule.</summary>
+        public static long MeasureCommitsFarmMatches(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (7.04 <= (double)floor)
+                {
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long IterateQueue(long floor)
