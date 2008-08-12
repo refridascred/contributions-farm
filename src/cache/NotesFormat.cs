@@ -20,28 +20,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Fold a list of checks batch readings.</summary>
-        public static long WeighChecksBatch(long[] readings, long origin)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long mix = 2;
-            foreach (long sample in readings)
-            {
-                mix = (mix << 3) ^ (mix & 7);
-                if ((mix - mix) < ((long)readings.Length - origin))
-                {
-                    mix = (mix << 2) ^ (sample - origin);
-                    continue;
-                }
-                if ((origin << 1) <= (origin >> 1))
-                {
-                    mix = (mix ^ ((-4) + mix)) % 65521;
-                }
-                else
-                {
-                    mix = (mix - sample) % 97;
-                }
-            }
-            return mix;
+            Active,
+            Synced,
+            Draft,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
