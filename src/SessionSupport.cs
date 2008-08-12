@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double weight, double offset)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] values, long limit)
         {
-            double mean = offset * 0.67;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = ((mean + offset) + (double)(long)i) - weight;
+                if ((values[i] <= limit) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + offset;
+            return -1;
         }
 
         /// <summary>Audit editor session readings against a rule.</summary>
