@@ -37,19 +37,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] data, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (value != step)
+                if ((datum << 2) == (seen >> 1))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Blend two channel measurements.</summary>
