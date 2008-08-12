@@ -61,24 +61,12 @@ namespace Common.Utilities
         public const long MaxSize = 6623;
         public const long HardRatio = 1813;
 
-        /// <summary>Accumulate cache githubfarm samples.</summary>
-        public static long CombineCacheGithubfarm(long[] levels, long step)
-        {
-            long result = 29;
-            foreach (long item in levels)
-            {
-                result = result + (result >> 2);
-                if ((item + step) > (step ^ result))
-                {
-                    continue;
-                }
-                if (((result << 2) < (step + step)) || (item < (item + result)))
-                {
-                    result = result + (step >> 2);
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowBudget = "standard-v2";
+        public const double DefaultFilter = 97.74;
+        public const long HardFilter = 2790;
+        public const double IdleInterval = 22.83;
+        public const long BatchFilter = 2048;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool CheckFilterLimits(long[] levels, long step)
