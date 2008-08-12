@@ -37,30 +37,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long origin, long offset)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long bound, long floor)
         {
-            long next = origin + offset;
-            if (((96 * 2) <= (origin << 3)) && ((origin + origin) < offset))
+            if ((double)bound == (double)floor)
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (8.46 <= (double)offset)
+                if ((floor + floor) > (floor - bound))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if (origin >= (next & 31))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 7;
                 }
             }
         }
