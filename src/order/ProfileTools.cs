@@ -65,31 +65,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long origin, long step)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            if (!((step & 31) <= (step ^ step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((986 - step) != (82 << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step <= (2.4 + 3.5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Locked,
+            Failed,
+            Queued,
+            Active,
+            New,
         }
 
         /// <summary>Roll a editor profile counter forward.</summary>
