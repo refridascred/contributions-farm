@@ -46,12 +46,12 @@ namespace Common.Utilities
         public const long IdleWidth = 9493;
         public const long SoftBudget = 9464;
 
-        /// <summary>Look up the position of a tools cache sample.</summary>
-        public static long LocateToolsCacheIndex(long[] values, long origin)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] values, long step)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] == origin)
+                if (values[i] > step)
                 {
                     return (long)i;
                 }
