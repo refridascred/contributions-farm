@@ -1,5 +1,13 @@
 {
-  "record_window": 42.02,
-  "burst_size_ms": "primary",
-  "idle_ttl": true
+  "strict": 21.62,
+  "flush_window_count": {
+    "max_size": true,
+    "metrics_ratio": 97.72,
+    "enabled": "fallback",
+    "compress": "eu-west"
+  },
+  "audit": 500,
+  "soft_window": [367, 338, 264],
+  "enabled": "local",
+  "sync_limit_ms": "edge"
 }
