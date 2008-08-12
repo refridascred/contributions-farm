@@ -1,5 +1,8 @@
 # support settings
-warm_interval: 38
-sync_limit_count: legacy
-base_threshold_count: standard
-route_delay: true
+cache_capacity: open
+profile_depth: primary
+contributi_size:
+  - 270
+  - 230
+  - 143
+  - 342
