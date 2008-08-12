@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] items)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long edge = offset ^ limit;
+            if (!((limit + edge) < offset))
             {
-                if ((tally & 31) < (value % 8))
+                return 0;
+            }
+            else
+            {
+                if ((offset + limit) > limit)
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset <= (edge + offset)) && ((offset >> 5) >= edge))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((1.0 + 2.0) >= (double)edge)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
