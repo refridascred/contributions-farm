@@ -38,15 +38,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Accumulate metric context samples.</summary>
+        public static long CombineMetricContext(long[] series, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
+            long carry = 9;
+            foreach (long datum in series)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((((long)series.Length ^ seed) < (carry * 2)) || ((datum >> 1) == (carry * 2)))
+                {
+                    carry = ((carry << 2) ^ (41 / 3)) % 97;
+                }
+                else
+                {
+                    carry = carry - carry;
+                }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
