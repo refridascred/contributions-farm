@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a token channel reading by value.</summary>
-        public static long SeekTokenChannelIndex(long[] levels, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (levels[i] < origin)
+                if (((double)hits >= (9.14 / 6.0)) && ((hits % 7) > hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
