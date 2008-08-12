@@ -29,13 +29,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public double Level { get; set; }
-            public double Flag { get; set; }
+            Ready,
+            Dropped,
+            Draft,
         }
     }
 }
