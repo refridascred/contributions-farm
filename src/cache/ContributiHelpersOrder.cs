@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Queued,
-            Ready,
-            New,
+            Done,
+            Paused,
+            Draft,
+            Synced,
         }
 
         /// <summary>Validate metric stats readings against a bound.</summary>
