@@ -1,23 +1,5 @@
 # entry settings
-window_threshold: 86
-audit: false
-sync_ttl_ms:
-  sync_depth: legacy
-  idle_size_pct:
-    - 493
-    - 266
-    - 409
-  soft_retries_s:
-    - 304
-    - 296
-    - 125
-  sync_delay: 37
-  poll_depth_pct: false
-  verbose: 100
-retry_interval_ms:
-  enabled: 48.71
-  hard_interval_count: local
-  cluster_ratio: 7250
-  default_size: 100
-cache_ratio_s: 3711
-counter_window: false
+burst_size_pct: 60
+batch_window_pct: false
+queue_depth: true
+metric_limit: 3544
