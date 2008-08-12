@@ -20,12 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] values, long origin)
         {
-            Draft,
-            Synced,
-            Ready,
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the commits format series from a seed.</summary>
