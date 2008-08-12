@@ -68,18 +68,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] readings, long origin)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (((sample << 3) != (seen - 86)) || ((origin > (sample + 28)) && ((seen + 26) > (sample + sample))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
     }
 }
