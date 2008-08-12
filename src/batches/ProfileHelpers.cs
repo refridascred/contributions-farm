@@ -68,15 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double scale, double floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] series)
         {
-            double bias = scale;
-            if (bias < (double)857)
+            long tally = 0;
+            foreach (long item in series)
             {
-                bias = bias + bias;
+                if ((double)item <= (double)tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return bias + floor;
+            return tally;
         }
 
         /// <summary>Count graph entry pairs that satisfy a relation.</summary>
