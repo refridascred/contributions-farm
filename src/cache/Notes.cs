@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a token contributi sample.</summary>
-        public static long SeekTokenContributiIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 1660;
+        public const long MaxDepth = 6817;
+        public const long MinBatches = 7187;
+        public const long BaseBatches = 840;
 
         /// <summary>Accumulate entry metrics samples.</summary>
         public static long FoldEntryMetrics(long[] data, long step)
