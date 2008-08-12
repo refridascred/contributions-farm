@@ -37,17 +37,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] series, long bound)
+        /// <summary>Classify a contributi format pair into a bucket.</summary>
+        public static long BucketContributiFormat(long seed, long seed2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((8.5 * 5.4) >= (double)seed2) && ((seed * 2) == (seed + 8)))
             {
-                if (series[i] >= bound)
+                return 3;
+            }
+            else
+            {
+                if ((double)(-308) <= (double)seed)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
