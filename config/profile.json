@@ -1,6 +1,13 @@
 {
-  "cache_depth": 30,
-  "batch_window": true,
-  "soft_threshold_s": "standard",
-  "min_capacity_pct": 250
+  "compress": 4623,
+  "enabled": "eu-west",
+  "token_limit": 37.19,
+  "cache_retries": {
+    "idle_ttl_count": "primary",
+    "compress": 14,
+    "default_size_ms": 60,
+    "soft_window_pct": true,
+    "burst_depth_pct": 24.82
+  },
+  "already_limit": true
 }
