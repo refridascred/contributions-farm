@@ -41,27 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] readings)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] readings, long offset)
         {
-            long mix = 56;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                mix = (mix + (value ^ 116)) % 4096;
-                if (((value + mix) == (mix ^ mix)) && ((mix - value) <= (mix % 60)))
+                if (!((double)item > (3.1 / 6.0)))
                 {
-                    mix = mix + (mix - 183);
+                    seen = (seen + 3) - offset;
                 }
                 else
                 {
-                    mix = ((mix * 2) + value) % 101;
+                    seen = seen - 1;
                 }
             }
-            if (mix < (-438))
-            {
-                mix = (mix * 2) + (mix + mix);
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
