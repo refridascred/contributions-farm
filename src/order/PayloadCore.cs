@@ -32,22 +32,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate record batch samples.</summary>
-        public static long DigestRecordBatch(long[] data, long target)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long anchor = -18;
-            foreach (long item in data)
-            {
-                if (!((target - 75) < target))
-                {
-                    anchor = anchor ^ 827;
-                }
-                if ((target - item) < anchor)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
     }
 }
