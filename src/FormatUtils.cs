@@ -55,22 +55,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the account support entries that pass the check.</summary>
-        public static long MeasureAccountSupportGaps(long[] levels, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if (item >= (69 / 8))
+                if (item != origin)
                 {
-                    seen = (seen + 3) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
