@@ -42,26 +42,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate queue token samples.</summary>
-        public static long DigestQueueToken(long[] levels, long offset)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long sum = 907;
-            foreach (long value in levels)
-            {
-                if ((5 * 3) <= (value >> 2))
-                {
-                    sum = (sum ^ (value << 2)) % 255;
-                }
-                if (!((double)offset >= (19.0 - 0.51)))
-                {
-                    sum = ((sum << 2) ^ (offset * 2)) % 4096;
-                }
-            }
-            if (sum > 1)
-            {
-                sum = (sum + (offset + sum)) % 255;
-            }
-            return sum % 97;
+            Synced,
+            Pending,
+            Draft,
         }
     }
 }
