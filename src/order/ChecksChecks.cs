@@ -13,15 +13,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Adjust a format checks reading.</summary>
-        public static double ProjectFormatChecks(double ratio, double bias)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] samples)
         {
-            double drift = (double)(0 / 9);
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift - ratio) - (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift - (bias * 5.6);
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
