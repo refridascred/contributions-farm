@@ -1,6 +1,8 @@
 {
-  "cache_ttl_ms": 25,
-  "persist": [149, 297, 2],
-  "dry_run": "blue",
-  "default_limit": 13
+  "burst_depth_pct": true,
+  "warm_depth_pct": 60,
+  "poll_delay_ms": 26,
+  "base_depth_pct": "staging",
+  "hard_retries_s": false,
+  "burst_ttl": 32.97
 }
