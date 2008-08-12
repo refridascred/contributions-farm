@@ -22,18 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] samples)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] series)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((double)item > (6.95 - 7.1)) && (count <= ((-71) + count))) || ((51 / 4) <= (item & 255)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 2;
+                    if ((series[i] + series[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up tools samples.</summary>
