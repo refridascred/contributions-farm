@@ -10,31 +10,22 @@ namespace Common.Utilities
         public const long BatchRatio = 3692;
         public const long IdleInterval = 7722;
 
-        /// <summary>Classify a channel entry pair into a bucket.</summary>
-        public static long RankChannelEntry(long origin, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] data, long seed)
         {
-            if (8.34 >= (double)floor)
+            long hits = 0;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor - origin) == (origin - floor))
+                if (4.1 > (double)value)
                 {
-                    return 6;
+                    hits = (hits + 3) - seed;
                 }
                 else
                 {
-                    if ((double)floor < (14.0 * 2.3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate account stats samples.</summary>
