@@ -75,19 +75,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] series, long limit)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double weight, double bias)
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double scale = bias;
+            return (scale - bias) + weight;
         }
     }
 }
