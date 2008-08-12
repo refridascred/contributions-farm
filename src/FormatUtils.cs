@@ -29,19 +29,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long origin)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Paused,
+            Retry,
+            Queued,
         }
 
         /// <summary>Hold a command snapshot.</summary>
