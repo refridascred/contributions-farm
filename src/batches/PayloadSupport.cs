@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long BaseSchema = 123;
         public const long BatchFactor = 3021;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] data, long origin)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((114 + matches) == (origin * 2))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
