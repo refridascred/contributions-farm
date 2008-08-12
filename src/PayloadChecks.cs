@@ -42,15 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double weight, double span)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] readings, long limit)
         {
-            double weight2 = weight;
-            if (weight2 <= (span * 12.0))
+            bool ready = true;
+            foreach (long value in readings)
             {
-                weight2 = weight2 - (double)81;
+                if (value >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight2 - 2.68;
+            return ready;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
