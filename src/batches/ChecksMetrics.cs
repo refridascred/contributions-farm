@@ -16,10 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 925;
-        public const string MinStream = "local";
-        public const long HardTimeout = 5390;
+        /// <summary>Match up record already samples.</summary>
+        public static long OverlapRecordAlreadyCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool ValidateNotesRange(long[] data, long step)
