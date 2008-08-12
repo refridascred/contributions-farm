@@ -31,10 +31,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryInterval = "alpha-edge";
-        public const long DefaultCount = 119;
-        public const long StepDepth = 9444;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 4790;
+        public const string DefaultDepth = "strict-v2";
+        public const long HardDepth = 689;
+        public const double RetryInterval = 3.34;
+        public const string HardProfile = "standard";
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long IterateRoute(long seed)
