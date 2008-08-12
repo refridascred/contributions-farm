@@ -65,26 +65,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] series, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (((double)offset <= 13.0) || (offset < (total * 4)))
+                if (item < limit)
                 {
-                    total = total + total;
-                    total = (total ^ total) % 255;
+                    found = false;
                     break;
                 }
-                if (((total ^ total) > (offset + offset)) && ((offset % 60) > offset))
-                {
-                    total = (total ^ offset) % 255;
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return found;
         }
     }
 }
