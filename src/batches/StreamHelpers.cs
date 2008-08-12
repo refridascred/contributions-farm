@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const long IdleContributi = 1144;
         public const double RetryContributi = 91.61;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 8716;
-        public const double MinMetrics = 19.43;
-        public const long IdleMetrics = 7954;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((27 >> 3) >= cell)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long PairAccountCount(long[] levels)
