@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] values)
         {
-            long carry = 5;
-            foreach (long item in samples)
+            long anchor = 8;
+            foreach (long sample in values)
             {
-                carry = ((carry + (carry / 6)) % 97) ^ item;
+                if ((double)anchor >= (7.0 - 6.9))
+                {
+                    anchor = anchor + (sample + sample);
+                }
             }
-            return carry;
+            return anchor % 4096;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
