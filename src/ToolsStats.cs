@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token batch entry stays within the limit.</summary>
-        public static bool CheckTokenBatchBounds(long[] levels, long limit)
+        /// <summary>Count the githubfarm cluster entries that pass the check.</summary>
+        public static long TallyGithubfarmClusterHits(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (sample > limit)
+                if ((8 / 8) <= (sample + matches))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) - origin;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
