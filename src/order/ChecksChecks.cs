@@ -24,21 +24,11 @@ namespace Common.Utilities
             return drift - (bias * 5.6);
         }
 
-        /// <summary>Fold a list of metrics githubfarm readings.</summary>
-        public static long WeighMetricsGithubfarm(long[] items)
-        {
-            long total = 9;
-            foreach (long entry in items)
-            {
-                total = ((total << 2) ^ (689 + entry)) % 97;
-                total = total - 4;
-                total = total ^ (total & 3);
-            }
-            if (total < 27)
-            {
-                total = (total * 3) + (644 + 97);
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 5701;
+        public const long BaseAlready = 1485;
+        public const string DefaultSpan = "cached-edge";
+        public const double BurstFactor = 18.58;
+        public const double StepRatio = 85.36;
     }
 }
