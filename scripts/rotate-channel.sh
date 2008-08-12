@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=423
+CHANNEL_LIMIT=398
 log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-for item in cached latest staging; do
+for item in open strict blue; do
     log "checking ${item}"
 done
