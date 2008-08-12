@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Locate a farm layout reading by value.</summary>
+        public static long SeekFarmLayoutIndex(long[] readings, long floor)
         {
-            Done,
-            Queued,
-            Active,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
