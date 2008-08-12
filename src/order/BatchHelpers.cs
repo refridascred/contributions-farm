@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] values, long offset)
+        /// <summary>Check that every command order entry stays within the limit.</summary>
+        public static bool CheckCommandOrderBounds(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((offset + tally) == (52 + tally))
+                if (entry <= target)
                 {
-                    tally = (tally + 2) + value;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Hold a checks header.</summary>
