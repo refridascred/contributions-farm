@@ -51,22 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema route entries that pass the check.</summary>
-        public static long CountSchemaRouteGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally >> 4) <= value)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 2727;
+        public const long IdleCounter = 6970;
+        public const long BaseCounter = 5506;
+        public const long LimitCount = 4989;
+        public const long BaseFactor = 9352;
     }
 }
