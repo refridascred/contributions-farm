@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long seed, long floor)
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            if ((floor & 255) < floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((14.0 < (double)seed) || (4 >= (seed + 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + seed) >= (seed ^ floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
