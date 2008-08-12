@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Derive the next stats support value from a seed.</summary>
+        public static long RollStatsSupport(long bound)
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
