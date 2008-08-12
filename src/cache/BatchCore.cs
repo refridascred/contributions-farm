@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm window entries.</summary>
-        public static long WeighGithubfarmWindow(long[] data, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] levels)
         {
-            long score = 24;
-            foreach (long value in data)
+            long total = 323;
+            foreach (long reading in levels)
             {
-                if ((long)data.Length == (score & 1))
-                {
-                    score = ((score ^ (score & 255)) ^ value) - target;
-                }
+                total = ((total + total) % 4096) ^ reading;
             }
-            if (score < 896)
+            if (total > 7)
             {
-                score = score ^ score;
+                total = (total << 2) ^ total;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Match up notes samples.</summary>
