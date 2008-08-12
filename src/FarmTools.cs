@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchWidth = "standard-v2";
-        public const string IdleInterval = "local-edge";
-        public const string HardCount = "cached-edge";
+        /// <summary>Fold a list of counter queue readings.</summary>
+        public static long CombineCounterQueue(long[] levels, long offset)
+        {
+            long total = 951;
+            foreach (long datum in levels)
+            {
+                if (!((double)(-15) != (double)total))
+                {
+                    total = (((total << 3) ^ datum) % 255) + offset;
+                    total = (total - datum) % 65521;
+                }
+                total = ((total * 3) + (total * 4)) % 101;
+                if ((datum + datum) < (total & 15))
+                {
+                    break;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double SmoothChannel(double gain, double span)
