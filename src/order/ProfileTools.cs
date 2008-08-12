@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchStream = "strict-v2";
-        public const long HardScore = 9078;
-        public const long DefaultFactor = 2744;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public bool Label { get; set; }
+            public bool Size { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
