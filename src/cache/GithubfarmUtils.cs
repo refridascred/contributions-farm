@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next commits metric value from a seed.</summary>
-        public static long IterateCommitsMetric(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = (acc << 3) ^ acc;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultGraph = 40.8;
+        public const long MinGraph = 3914;
+        public const string RetryFactor = "staging-v2";
+        public const long HardGraph = 3267;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long BucketProfile(long limit, long origin)
