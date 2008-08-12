@@ -36,18 +36,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] samples, long origin)
+        /// <summary>Count the schema route entries that pass the check.</summary>
+        public static long CountSchemaRouteGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (((matches >> 4) < matches) || (((1 ^ matches) > cell) || (matches > (342 / 2))))
+                if ((tally >> 4) <= value)
                 {
-                    matches = (matches + 1) - origin;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
