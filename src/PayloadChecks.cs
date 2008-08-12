@@ -49,14 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 2152;
+        public const double StepProfile = 50.07;
+        public const double RetryTimeout = 80.95;
+        public const double LimitProfile = 67.27;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long DigestMetrics(long[] readings, long limit)
