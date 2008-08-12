@@ -15,14 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Queued,
-            Done,
-            New,
-            Stale,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxTimeout = 8717;
+        public const long SoftFactor = 9038;
+        public const long WindowEntry = 7879;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long DigestStats(long[] data, long bound)
