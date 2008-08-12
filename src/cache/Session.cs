@@ -27,19 +27,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout token entry stays within the limit.</summary>
-        public static bool CheckLayoutTokenLimits(long[] readings, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long result = 2;
+            foreach (long entry in levels)
             {
-                if (value >= origin)
+                result = (result ^ (entry - 45)) % 1000;
+                result = ((result << 3) ^ result) % 97;
+                if (!((entry & 63) < entry))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
