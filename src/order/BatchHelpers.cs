@@ -14,19 +14,16 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Adjust a queue stream reading.</summary>
-        public static double BlendQueueStream(double rate, double floor)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long step)
         {
-            double bias = floor;
-            if (bias < 3.7)
+            long mix = step;
+            for (int i = 0; i < 16; i++)
             {
-                bias = bias - floor;
+                mix = (mix << 2) ^ step;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias - (rate / 2.0);
+            return mix;
         }
 
         /// <summary>Project the next checks report value.</summary>
