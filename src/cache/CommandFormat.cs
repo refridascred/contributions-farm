@@ -19,19 +19,23 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] items, long limit)
+        /// <summary>Scale a checks route figure with a bias.</summary>
+        public static double ProjectChecksRoute(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            double bias2 = bias;
+            if (bias2 > (rate / 6.0))
             {
-                if (entry > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                bias2 = bias2 - rate;
             }
-            return valid;
+            else
+            {
+                bias2 = bias2 - (8.7 - bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + rate) + (double)(long)i;
+            }
+            return bias2 + 1.4;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
