@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepCount = 8687;
-        public const long IdleContributi = 1144;
-        public const double RetryContributi = 91.61;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry << 1) != (entry << 2))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsOutliers(long[] levels)
