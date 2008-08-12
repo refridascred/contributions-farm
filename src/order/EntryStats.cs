@@ -26,12 +26,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseEditor = 27.99;
-        public const long MinEditor = 2444;
-        public const long LimitEditor = 4492;
-        public const long BaseTimeout = 4720;
-        public const string RetryDepth = "local-1";
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long HardQueue = 8340;
