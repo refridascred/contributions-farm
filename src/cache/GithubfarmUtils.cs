@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] data, long offset)
         {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long carry = 80;
+            foreach (long datum in data)
+            {
+                if (carry > offset)
+                {
+                    carry = (carry + (carry ^ offset)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + (datum + carry)) % 1000;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
