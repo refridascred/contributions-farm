@@ -31,13 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Idle,
-            Stale,
-            Failed,
-            Closed,
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
