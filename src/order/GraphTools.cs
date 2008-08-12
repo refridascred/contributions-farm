@@ -54,18 +54,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] items, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] levels)
         {
-            long carry = 80;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((carry + seed) < (carry % 100))
+                if (matches >= (datum + 4))
                 {
-                    carry = (((carry * 2) + (95 & 3)) % 65521) ^ value;
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
