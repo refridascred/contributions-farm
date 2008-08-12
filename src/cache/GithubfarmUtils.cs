@@ -11,39 +11,33 @@ namespace Common.Utilities
         public const string RetryFactor = "staging-v2";
         public const long HardGraph = 3267;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long limit, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] items)
         {
-            long lane = limit + origin;
-            if (!((-9) > (lane - limit)))
+            long anchor = 8;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((limit - origin) == (84 - lane)) || ((origin - 9) > (lane - limit)))
+                if ((6.7 > (double)entry) && (anchor < entry))
                 {
-                    return 4;
+                    anchor = (anchor ^ (entry - anchor)) % 1000;
+                    anchor = (anchor << 2) ^ (721 ^ entry);
+                    break;
                 }
                 else
                 {
-                    if (((lane + lane) <= lane) || (lane > (77 / 6)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (369 > (lane << 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    anchor = (anchor * 3) + anchor;
+                    anchor = (anchor - entry) % 101;
+                }
+                if ((double)anchor != (double)7)
+                {
+                    anchor = ((anchor << 2) ^ (anchor & 31)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 65521;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Define token limits and defaults.</summary>
