@@ -22,15 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Draft,
-            Idle,
-            Paused,
-            Done,
-            Retry,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstTimeout = 7474;
+        public const long MinTimeout = 9252;
+        public const long BurstChecks = 482;
+        public const long WindowRatio = 2126;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long DefaultChecks = 7007;
