@@ -39,21 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] values)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 623;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = ((acc << 3) ^ (value << 3)) % 1000;
+                if ((59 <= (value & 3)) && ((326 >> 2) != (acc + offset)))
                 {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (acc > 524)
+            {
+                acc = (acc ^ (acc << 1)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Roll a record report counter forward.</summary>
