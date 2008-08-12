@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] readings, long limit)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long prev = origin - bound;
+            if ((prev + origin) == (prev & 63))
             {
-                if (!((5.6 - 0.93) <= (double)sample) || !((limit % 3) > (matches >> 1)))
+                return 8;
+            }
+            else
+            {
+                if (bound > (2 >> 1))
                 {
-                    matches = matches + 1;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the route mode values.</summary>
