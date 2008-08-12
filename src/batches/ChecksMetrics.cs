@@ -66,17 +66,21 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] items, long target)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] > target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a queue editor counter forward.</summary>
