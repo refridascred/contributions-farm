@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate report context readings against a bound.</summary>
-        public static bool ValidateReportContextLimits(long[] samples, long limit)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            double bias2 = (double)((-25) / 7);
+            if (bias2 < bias)
             {
-                if (entry <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = bias2 + (2.37 * 14.0);
             }
-            return flag;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - 6.69) + (double)(long)i;
+            }
+            return bias2 + ratio;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
