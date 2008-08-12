@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] data, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
+            long total = 78;
+            foreach (long item in data)
             {
-                anchor = anchor ^ anchor;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                total = ((total * 5) + (item % 2)) + seed;
+                if (total <= (8 ^ item))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Locate a window reading by value.</summary>
