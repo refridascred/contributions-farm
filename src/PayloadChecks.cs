@@ -38,18 +38,17 @@ namespace Common.Utilities
         public const long MinChecks = 2907;
         public const long MaxSize = 4649;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] readings)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally + tally) < value)
+                if ((items[i] > floor) && ((items[i] % 3) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Project the next channel value.</summary>
