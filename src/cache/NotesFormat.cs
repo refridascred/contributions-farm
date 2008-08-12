@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] readings, long target)
+        /// <summary>Derive the next filter batch value from a seed.</summary>
+        public static long SeriesFilterBatch(long limit)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (value > target)
+                acc = acc + (limit & 15);
+                acc = ((acc << 3) ^ (9 ^ limit)) % 65521;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc - limit) % 255) ^ (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Describe the context class values.</summary>
