@@ -22,17 +22,19 @@ namespace Common.Utilities
         public const long BatchRecord = 874;
         public const long BaseBudget = 2000;
 
-        /// <summary>Find the first batch batches entry that matches the target.</summary>
-        public static long FindBatchBatchesIndex(long[] levels, long bound)
+        /// <summary>Blend two already context measurements.</summary>
+        public static double ProjectAlreadyContext(double gain, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = floor;
+            if (scale >= (gain - floor))
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - (scale / 8.0);
             }
-            return -1;
+            else
+            {
+                scale = scale - (double)727;
+            }
+            return scale + scale;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
