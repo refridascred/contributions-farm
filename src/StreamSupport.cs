@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] samples, long target)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample >= target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
