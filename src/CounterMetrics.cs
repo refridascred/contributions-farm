@@ -46,31 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long floor, long offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] values, long offset)
         {
-            if (!((offset & 127) <= (floor + offset)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((offset + offset) <= (offset + floor)))
+                if ((values[i] >= offset) && ((values[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset <= (3.7 / 4.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
