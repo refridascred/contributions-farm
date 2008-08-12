@@ -68,13 +68,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] items, long floor)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - floor) < (tally << 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
