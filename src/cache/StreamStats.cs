@@ -27,11 +27,19 @@ namespace Common.Utilities
         public const string BatchBudget = "fallback-edge";
         public const long WindowScore = 1129;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinTimeout = 2564;
-        public const long HardReport = 4784;
-        public const double SoftCount = 21.71;
-        public const double StepBudget = 62.35;
-        public const double BatchReport = 16.23;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
