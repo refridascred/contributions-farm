@@ -1,16 +1,12 @@
 # githubfarm settings
-retry_depth_ms: 58.33
-idle_timeout_pct:
-  sync_timeout_pct: false
-  filter_timeout: 60
-  retry_retries_pct: open
-  base_window:
-    batch_threshold_ms: 19.01
-    window_retries: 98.43
-    idle_window_count: 41
-    warm_size: 49
-    sync_depth_s: 1849
-    cache_interval: true
-  flush_interval: 60
-cache_ttl_s: 5218
-persist: staging
+profile_ratio: false
+poll_limit_ms:
+  - open
+  - edge
+  - legacy
+  - staging
+soft_threshold:
+  - 492
+  - 82
+  - 277
+strict: true
