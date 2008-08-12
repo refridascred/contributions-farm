@@ -25,22 +25,24 @@ namespace Common.Utilities
             return gain + (floor + floor);
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] items, long floor)
+        /// <summary>Derive the next githubfarm farm value from a seed.</summary>
+        public static long RollGithubfarmFarm(long limit)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((sample >> 3) <= sample) && ((1 & 3) >= (sample >> 5)))
+                if ((double)limit <= (3.65 + 2.4))
                 {
-                    count = (count + 1) - floor;
+                    carry = (carry ^ 26) % 65521;
+                    carry = ((carry << 3) ^ (limit % 8)) % 65521;
                 }
                 else
                 {
-                    count = count - 1;
+                    carry = (carry - (carry ^ carry)) % 97;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
     }
 }
