@@ -72,17 +72,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Roll a editor profile counter forward.</summary>
-        public static long RollEditorProfile(long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
+            long state = 347;
+            foreach (long value in series)
             {
-                mark = (mark + ((long)i * 2)) % 101;
-                mark = ((mark << 3) ^ mark) % 97;
-                mark = ((mark * 3) + (long)i) % 1000;
+                state = ((state + (9 % 97)) % 255) - value;
+                if ((double)state < (4.0 / 5.0))
+                {
+                    state = (state - state) % 1000;
+                }
+                else
+                {
+                    state = state - state;
+                }
             }
-            return mark;
+            return state;
         }
     }
 }
