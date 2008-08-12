@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const long BurstNotes = 3375;
         public const long LimitNotes = 1955;
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Iterate the payload cache series from a seed.</summary>
+        public static long StepPayloadCache(long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Find the first route checks entry that matches the target.</summary>
