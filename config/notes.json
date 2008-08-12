@@ -1,6 +1,8 @@
 {
-  "route_interval": "edge",
-  "persist": 43.09,
-  "filter_size": 41,
-  "readonly": "legacy"
+  "context_delay": [386, 453, 187],
+  "queue_retries": true,
+  "payload_limit": "latest",
+  "profile_ratio": 58.76,
+  "route_limit": false,
+  "flush_ratio_ms": ["stable", "staging", "blue", "standard"]
 }
