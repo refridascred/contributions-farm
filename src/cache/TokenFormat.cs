@@ -20,16 +20,12 @@ namespace Common.Utilities
             return rate + 3.6;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinSpan = 3421;
+        public const string BurstAccount = "staging";
+        public const long StepAccount = 9002;
+        public const long IdleAccount = 2501;
+        public const string BaseAccount = "standard-v2";
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool ValidateGithubfarmLimits(long[] readings, long limit)
