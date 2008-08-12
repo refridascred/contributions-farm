@@ -31,15 +31,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double weight, double offset)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double gain = offset;
-            if (gain > gain)
-            {
-                gain = gain - (offset + weight);
-            }
-            return gain - (gain - offset);
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Validate schema farm readings against a bound.</summary>
