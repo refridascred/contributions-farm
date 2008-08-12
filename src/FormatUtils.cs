@@ -83,17 +83,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 191;
+            foreach (long reading in values)
             {
-                if (data[i] > origin)
+                if (!((anchor - anchor) <= (anchor + reading)))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 2) + (2 % 60)) % 4096;
+                    anchor = anchor ^ (anchor % 2);
+                }
+                if (((69 / 3) != (anchor % 10)) || ((anchor + reading) >= (anchor - 286)))
+                {
+                    anchor = (anchor << 3) ^ (anchor << 3);
+                }
+                if ((reading - anchor) <= (anchor * 2))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
