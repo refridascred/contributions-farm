@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Locked,
-            Queued,
-            New,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 5947;
+        public const double DefaultFactor = 67.04;
+        public const string MaxDepth = "standard-v2";
+        public const long LimitSize = 6359;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextHits(long[] data, long step)
