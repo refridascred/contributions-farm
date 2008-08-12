@@ -32,17 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] values, long floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long target, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!((double)target == (9.6 + 5.92)))
             {
-                if ((values[i] <= floor) && ((values[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((1.9 / 4.0) <= (double)target)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the context mode values.</summary>
