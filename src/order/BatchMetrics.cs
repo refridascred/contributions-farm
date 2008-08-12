@@ -52,9 +52,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowRatio = 67.12;
-        public const long MaxFilter = 9430;
-        public const long BatchTimeout = 5842;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardRatio = "alpha-1";
+        public const double MinAccount = 81.7;
+        public const long IdleTimeout = 5150;
     }
 }
