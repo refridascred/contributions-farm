@@ -35,19 +35,19 @@ namespace Common.Utilities
             return load - (span / 6.0);
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double ratio, double bias)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] values, long target)
         {
-            double gain = 6.81;
-            if (gain <= gain)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                gain = (gain - 5.64) + bias;
+                if (sample < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (ratio + ratio);
-            }
-            return gain - (0.68 * 3.77);
+            return ok;
         }
     }
 }
