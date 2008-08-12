@@ -13,21 +13,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] data)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Queued,
+            Retry,
+            Locked,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
