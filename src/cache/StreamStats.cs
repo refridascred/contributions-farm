@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                mix = (mix ^ (long)i) % 97;
+                if ((double)17 == (double)target)
+                {
+                    mix = (mix - (target >> 3)) % 4096;
+                    mix = (mix ^ (mix - 3)) % 65521;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Blend two notes measurements.</summary>
