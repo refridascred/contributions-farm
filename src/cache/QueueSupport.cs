@@ -29,18 +29,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the farm format entries that pass the check.</summary>
-        public static long CountFarmFormatGaps(long[] values)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seen + seen) > value)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Idle,
+            Stale,
+            Queued,
         }
     }
 }
