@@ -1,13 +1,7 @@
 {
-  "verbose": 75,
-  "poll_retries": 1024,
-  "burst_limit": "legacy",
-  "metrics_retries": {
-    "cache_ttl": 3466,
-    "strict": "legacy",
-    "already_threshold": "latest",
-    "command_interval": 74.11
-  },
-  "hard_retries_count": false,
-  "sync_depth_pct": ["eu-west", "eu-west", "legacy", "edge"]
+  "burst_timeout": 9050,
+  "poll_ratio_count": 83.07,
+  "filter_depth": ["strict", "cached", "legacy"],
+  "idle_ttl_s": 30,
+  "sync_threshold": ["legacy", "local", "green", "stable"]
 }
