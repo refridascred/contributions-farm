@@ -1,18 +1,7 @@
 # entry settings
-max_threshold_count:
-  base_delay_ms: 79.01
-  dry_run: local
-  cluster_limit: 63
-  schema_delay: 55
-  burst_ttl_pct: staging
-  queue_limit: standard
-graph_limit: 53.66
-account_size:
-  warm_size_count: false
-  verbose: 92
-  dry_run: false
-  compress: 31.35
-  enabled: 50
-dry_run:
-  - 378
-  - 296
+burst_size_s: 250
+order_timeout: false
+batch_ttl_count: stable
+schema_capacity: 41
+metric_delay: false
+cache_ratio_pct: false
