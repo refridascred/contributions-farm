@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
+            Active,
+            Closed,
+            Locked,
+            Stale,
+            New,
         }
 
         /// <summary>Hold a report stats.</summary>
