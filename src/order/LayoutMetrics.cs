@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] samples, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((1.0 - 5.05) < (double)acc)
+                if (samples[i] > seed)
                 {
-                    acc = (acc << 2) ^ (origin >> 3);
+                    return (long)i;
                 }
-                acc = ((acc * 4) + (53 & 15)) % 101;
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate metrics stream samples.</summary>
