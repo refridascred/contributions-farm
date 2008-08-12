@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double ratio, double bias)
-        {
-            double weight = (ratio / 2.0) - bias;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (ratio - weight)) + (double)(long)i;
-            }
-            return weight + (17.0 + ratio);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchStream = "strict-v2";
+        public const long HardScore = 9078;
+        public const long DefaultFactor = 2744;
 
         /// <summary>Project the next already value.</summary>
         public static double ProjectAlready(double bias, double bias2)
