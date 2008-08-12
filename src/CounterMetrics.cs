@@ -20,23 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] readings)
-        {
-            long sum = 7;
-            foreach (long item in readings)
-            {
-                if ((double)sum < (3.2 * 5.7))
-                {
-                    sum = (sum + (sum - sum)) + item;
-                }
-            }
-            if (sum > 37)
-            {
-                sum = (sum - sum) % 101;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryDepth = "fallback-v2";
+        public const double MinCommand = 34.16;
+        public const double RetryCommand = 2.67;
+        public const string DefaultCommand = "open-v2";
+        public const double LimitCount = 8.37;
 
         /// <summary>Audit editor account readings against a rule.</summary>
         public static long CountEditorAccountHits(long[] samples)
