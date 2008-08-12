@@ -28,18 +28,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the session cluster entries that pass the check.</summary>
-        public static long MeasureSessionClusterHits(long[] data, long origin)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((origin << 3) >= (count * 5))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            Paused,
+            Idle,
+            Synced,
+            Ready,
+            Stale,
         }
     }
 }
