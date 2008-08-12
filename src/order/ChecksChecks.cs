@@ -20,18 +20,21 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Measure how many cache checks samples are out of range.</summary>
-        public static long MeasureCacheChecksMatches(long[] items)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum - datum) != (5 * 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] - items[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
