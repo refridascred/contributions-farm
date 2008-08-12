@@ -23,11 +23,40 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheTools = 34.29;
-        public const string MaxSpan = "stable-edge";
-        public const long LimitTools = 5713;
-        public const long RetryCount = 2040;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long limit, long origin)
+        {
+            long lane = limit + origin;
+            if (!((-9) > (lane - limit)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((limit - origin) == (84 - lane)) || ((origin - 9) > (lane - limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((lane + lane) <= lane) || (lane > (77 / 6)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (369 > (lane << 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
