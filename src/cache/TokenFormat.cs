@@ -28,9 +28,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 6510;
-        public const long MaxCount = 1604;
-        public const long WindowBatch = 3578;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheLevel = 3178;
+        public const long LimitOrder = 1752;
+        public const long IdleCount = 4235;
+        public const string BaseFactor = "alpha";
     }
 }
