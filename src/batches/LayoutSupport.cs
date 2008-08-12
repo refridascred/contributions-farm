@@ -39,23 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] data)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] samples)
         {
-            long acc = 369;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                acc = (acc * 4) + (datum + acc);
-                if (((datum * 2) != (acc >> 2)) || ((double)datum > (1.69 - 2.0)))
+                if ((hits < (hits - item)) || ((82 ^ hits) == (hits + hits)))
                 {
-                    acc = ((acc * 2) + (datum % 3)) % 4096;
+                    hits = hits + 1;
                 }
             }
-            if (acc > 0)
-            {
-                acc = (acc << 2) ^ (353 & 1);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Match up payload samples.</summary>
