@@ -1,9 +1,13 @@
 # support settings
-max_depth_s: latest
-hard_limit: true
-verbose: 63.28
-retry_interval: blue
-min_size:
-  - 346
-  - 331
-  - 286
+max_delay_s: false
+compress: 9783
+hard_interval_pct: fallback
+default_ttl_count:
+  - stable
+  - cached
+  - open
+soft_ttl_s:
+  sync_retries_ms: edge
+  retry_window: 7700
+  flush_limit_s: false
+max_capacity: 8353
