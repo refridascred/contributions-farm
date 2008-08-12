@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long bound, long offset)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long seed, long offset)
         {
-            if ((bound - offset) == ((-33) >> 5))
+            if (((double)offset <= (2.53 / 5.0)) || ((offset & 3) < (seed % 100)))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if (((double)offset >= (12.0 * 8.0)) && ((offset % 10) > (bound ^ bound)))
+                if (!((offset & 127) > (offset + offset)))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if (bound >= (offset << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset <= 2.1)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
