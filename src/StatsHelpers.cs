@@ -45,10 +45,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxCount = 612;
-        public const long SoftRecord = 3814;
-        public const long StepRecord = 2219;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Level { get; set; }
+            public double Token { get; set; }
+            public bool Total { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Count the counter support entries that pass the check.</summary>
         public static long MeasureCounterSupportMatches(long[] samples, long offset)
