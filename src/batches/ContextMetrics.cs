@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank already support input into a small class.</summary>
-        public static long ClassifyAlreadySupport(long bound, long seed)
+        /// <summary>Derive the next route format value from a seed.</summary>
+        public static long StepRouteFormat(long step)
         {
-            if ((double)bound == (3.7 + 5.4))
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound % 8) > (bound >> 2)) || ((seed * 2) >= (seed % 97)))
+                if (((step & 3) <= step) && ((mix / 8) == (mix << 1)))
                 {
-                    return 2;
+                    mix = ((mix << 3) ^ (step & 127)) % 255;
                 }
-                else
+                if (!(403 <= (mix ^ step)))
                 {
-                    if ((seed >= (seed ^ seed)) && ((705 - bound) == (bound + bound)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed ^ 3) != (bound % 64))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mix = mix ^ (mix % 60);
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
