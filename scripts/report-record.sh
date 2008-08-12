@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+RECORD_LIMIT=140
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-open}"
 case "${mode}" in
-    green)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in open strict stable staging; do
-    log "checking ${item}"
-done
