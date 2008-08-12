@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < target) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSize = 2577;
+        public const long MinSchema = 6288;
+        public const string DefaultSchema = "strict-1";
+        public const long BaseSpan = 9349;
+        public const double MaxDepth = 40.03;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LookupSchemaIndex(long[] levels, long step)
