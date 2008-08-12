@@ -1,11 +1,20 @@
 {
-  "persist": 59,
-  "channel_capacity": ["blue", "strict", "green"],
-  "dry_run": {
-    "default_retries": "cached",
-    "persist": 16,
-    "idle_ttl_count": 43.71
+  "min_depth_s": {
+    "cache_depth": {
+      "schema_limit": 3373,
+      "base_timeout": ["open", "green", "primary", "staging"],
+      "base_interval_ms": 3490,
+      "idle_timeout_pct": true,
+      "default_delay": 54.13,
+      "enabled": 26.9
+    },
+    "payload_ratio": 67,
+    "githubfarm_delay": false,
+    "idle_ttl_ms": "green",
+    "default_timeout": "fallback"
   },
-  "session_depth": 1024,
-  "batch_delay_ms": false
+  "base_delay_count": false,
+  "batch_size_count": true,
+  "soft_threshold": true,
+  "persist": 2652
 }
