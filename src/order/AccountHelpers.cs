@@ -48,18 +48,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] items, long offset)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading == (1.7 * 1.13))
-                {
-                    count = (count + 3) + offset;
-                }
-            }
-            return count;
+            Retry,
+            Paused,
+            Idle,
         }
 
         /// <summary>Combine already values into a single score.</summary>
