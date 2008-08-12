@@ -45,19 +45,11 @@ namespace Common.Utilities
             return weight + (double)63;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (cell <= (hits - cell))
-                {
-                    hits = (hits + 2) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitScore = 29;
+        public const string DefaultCounter = "open";
+        public const string WindowCounter = "alpha-v2";
+        public const long MinCounter = 3891;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long CountLayoutGaps(long[] series, long limit)
