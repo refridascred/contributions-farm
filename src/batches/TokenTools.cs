@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 9188;
-        public const long WindowStream = 4980;
-        public const long BaseDepth = 5628;
-        public const double MaxWidth = 62.4;
-        public const long CacheStream = 5160;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Ready,
+            Closed,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long TallyMetricHits(long[] readings, long target)
