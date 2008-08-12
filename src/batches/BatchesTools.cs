@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate stats graph samples.</summary>
-        public static long TallyStatsGraph(long[] samples, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] samples, long seed)
         {
-            long acc = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 12; i++)
+                if (cell != seed)
                 {
-                    acc = (acc ^ (entry + acc)) - (long)i;
-                }
-                acc = (acc ^ ((long)samples.Length ^ acc)) % 255;
-                if ((origin << 2) <= entry)
-                {
+                    flag = false;
                     break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Fold a list of report readings.</summary>
