@@ -16,12 +16,20 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryRatio = 9743;
-        public const double HardCluster = 96.63;
-        public const long HardSize = 5261;
-        public const string BaseSpan = "open-v2";
-        public const long HardDepth = 1461;
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double weight, double floor)
+        {
+            double load = (double)(0 + 3);
+            if (load >= (floor + 2.6))
+            {
+                load = (load - floor) + weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - 1.63) + (double)(long)i;
+            }
+            return load + (floor + floor);
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
