@@ -35,17 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a filter githubfarm reading by value.</summary>
-        public static long LookupFilterGithubfarmIndex(long[] items, long step)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Done,
+            Queued,
         }
     }
 }
