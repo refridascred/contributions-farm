@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long bound, long seed)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double scale, double offset)
         {
-            long prev = bound + seed;
-            if ((687 + 0) < (prev + bound))
+            double ratio = scale + (scale * 11.0);
+            if (ratio < (double)111)
             {
-                return 7;
+                ratio = (ratio + (3.28 * 5.5)) + offset;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (bound > (bound / 7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (1.12 > (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed >> 1) == (57 / 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                ratio = ratio - (double)(long)i;
             }
+            return ratio + (ratio + scale);
         }
 
         /// <summary>Describe the window level values.</summary>
