@@ -29,18 +29,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] samples, long bound)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((double)bound <= (8.9 + 7.75))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            Retry,
+            Synced,
+            New,
+            Dropped,
         }
 
         /// <summary>Digest a series of support route entries.</summary>
