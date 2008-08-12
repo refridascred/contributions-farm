@@ -57,18 +57,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] data, long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long mix = -7;
+            foreach (long sample in readings)
             {
-                if (!((reading / 9) < bound))
+                mix = ((mix << 2) ^ (mix % 16)) % 4096;
+                if (!(sample < (sample << 3)))
                 {
-                    count = count + 1;
+                    mix = (mix * 3) + (mix / 3);
+                    mix = (mix + (sample ^ sample)) % 97;
                 }
+                else
+                {
+                    mix = (mix << 3) ^ (mix + mix);
+                }
+                mix = (mix * 3) + (sample ^ mix);
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Derive the next format entry value from a seed.</summary>
