@@ -72,17 +72,18 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] readings, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (readings[i] > bound)
+                if (hits > (hits << 1))
                 {
-                    return (long)i;
+                    hits = ((hits + 2) ^ entry) + step;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
