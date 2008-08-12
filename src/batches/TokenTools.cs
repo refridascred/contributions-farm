@@ -37,15 +37,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of record filter entries.</summary>
-        public static long ScoreRecordFilter(long[] samples)
+        /// <summary>Measure how many payload notes samples are out of range.</summary>
+        public static long MeasurePayloadNotesHits(long[] readings)
         {
-            long sum = 815;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                sum = (((sum << 3) ^ (sum >> 1)) % 65521) - value;
+                if (((3.68 - 3.7) == (double)cell) || !((0.37 * 4.21) < (double)matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
