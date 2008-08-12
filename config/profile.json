@@ -1,19 +1,14 @@
 {
-  "persist": false,
-  "commits_delay": {
-    "cache_window": "open",
-    "commits_delay": true,
-    "strict": {
-      "enabled": [86, 20, 254],
-      "schema_timeout": 60,
-      "default_ratio_count": [325, 455, 127, 109],
-      "sync_capacity_count": 15.23
+  "batch_limit": false,
+  "token_window": {
+    "cluster_depth": 83.34,
+    "soft_capacity": {
+      "idle_interval": true,
+      "min_window_ms": ["standard", "legacy", "green"],
+      "profile_delay": 17
     },
-    "max_size_pct": ["strict", "cached", "edge"],
-    "format_ttl": false
+    "batch_interval": 2975
   },
-  "soft_delay": 100,
-  "already_timeout": 1024,
-  "cache_retries_s": false,
-  "enabled": [176, 17]
+  "account_timeout": true,
+  "warm_delay": [426, 481, 352]
 }
