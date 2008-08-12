@@ -18,10 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "primary-v2";
-        public const long LimitFactor = 3196;
-        public const long MinInterval = 4945;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long seed, long origin)
+        {
+            if ((481 * 3) <= (origin + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((14.0 + 3.0) != (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed / 3) <= origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin + origin) < seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long DeriveBatches(long offset)
