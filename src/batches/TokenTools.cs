@@ -31,9 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 7757;
-        public const long MinDepth = 9597;
-        public const long LimitWidth = 8255;
+        /// <summary>Fold a list of tools context readings.</summary>
+        public static long TotalToolsContext(long[] samples, long step)
+        {
+            long state = 4;
+            foreach (long datum in samples)
+            {
+                if ((state << 1) < ((-324) * 2))
+                {
+                    state = (state ^ (datum - step)) % 255;
+                }
+            }
+            if (state < 659)
+            {
+                state = (state * 3) + (state * 5);
+            }
+            return state;
+        }
     }
 }
