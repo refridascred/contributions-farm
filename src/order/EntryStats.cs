@@ -19,18 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            long result = 989;
-            foreach (long item in series)
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (item < (item ^ result))
+                if (((-42) - 39) < seed)
                 {
-                    result = (result << 2) ^ result;
+                    anchor = (anchor ^ (59 - anchor)) % 101;
+                    anchor = (anchor ^ (anchor + 53)) % 97;
                 }
+                else
+                {
+                    long tally = (anchor * 3) / 9;
+                    anchor = (anchor - tally) % 65521;
+                }
+                anchor = anchor ^ (anchor ^ (long)i);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Match up order samples.</summary>
