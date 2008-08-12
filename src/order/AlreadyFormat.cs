@@ -47,12 +47,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double weight, double span)
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
+            double weight2 = (double)(-93) + (weight * 2.18);
+            return weight2 + span;
         }
 
         /// <summary>Count filter support pairs that satisfy a relation.</summary>
