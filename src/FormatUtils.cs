@@ -50,15 +50,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] items, long floor)
+        /// <summary>Compare every pair of counter record readings.</summary>
+        public static long PairCounterRecordCount(long[] values)
         {
             long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell - floor) < (tally << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
