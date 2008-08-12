@@ -16,19 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] samples, long floor)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
