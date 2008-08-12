@@ -35,19 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (score > (bound ^ (-1)))
                 {
-                    sum = (((sum * 5) + (sum - sum)) % 65521) - (long)i2;
+                    score = score ^ bound;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return sum;
+            return score;
         }
     }
 }
