@@ -1,11 +1,22 @@
 # support settings
-metric_delay: 1024
-flush_limit_count:
-  soft_ttl_pct: false
-  min_depth_count: staging
-  verbose:
-    soft_capacity: 73
-    poll_ttl_s: 76.75
-    max_window: local
-  flush_ratio_count: 19.4
-base_timeout: cached
+soft_timeout_pct:
+  - open
+  - blue
+dry_run:
+  idle_retries_count: 55.94
+  default_ttl_pct: strict
+  dry_run: 7405
+  burst_threshold_pct: standard
+  default_timeout: 68.33
+  soft_timeout_ms: 39.26
+min_window_pct: false
+idle_capacity_s: 36
+sync_retries_ms:
+  hard_limit_count: fallback
+  flush_depth_ms: 234
+  min_ratio_s:
+    - 57
+    - 163
+  retry_ttl_count:
+    - eu-west
+    - legacy
