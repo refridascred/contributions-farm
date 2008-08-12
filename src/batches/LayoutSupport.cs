@@ -53,21 +53,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (count > (count + count))
                 {
-                    if ((series[i] ^ series[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Look up the position of a metrics graph sample.</summary>
