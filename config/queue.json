@@ -1,6 +1,7 @@
 {
-  "cache_depth_pct": 23,
-  "cache_size_count": [452, 103, 430, 376],
-  "readonly": [332, 442, 360],
-  "already_depth": "staging"
+  "warm_delay": true,
+  "compress": true,
+  "burst_retries_count": false,
+  "dry_run": true,
+  "idle_delay_ms": false
 }
