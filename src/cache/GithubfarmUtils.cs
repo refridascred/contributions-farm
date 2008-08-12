@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] data, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] readings)
         {
-            long carry = 80;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (carry > offset)
+                if ((matches - matches) != (datum ^ datum))
                 {
-                    carry = (carry + (carry ^ offset)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + (datum + carry)) % 1000;
+                    matches = matches + 3;
                 }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
