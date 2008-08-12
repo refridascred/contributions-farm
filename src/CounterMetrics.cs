@@ -20,18 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] samples)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long sum = 7;
+            foreach (long item in readings)
             {
-                if ((matches + datum) <= datum)
+                if ((double)sum < (3.2 * 5.7))
                 {
-                    matches = matches + 1;
+                    sum = (sum + (sum - sum)) + item;
                 }
             }
-            return matches;
+            if (sum > 37)
+            {
+                sum = (sum - sum) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the profile state values.</summary>
