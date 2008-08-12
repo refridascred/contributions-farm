@@ -1,8 +1,12 @@
 # entry settings
-sync_ratio:
-  - green
-  - eu-west
-commits_window:
-  - 294
-  - 133
-dry_run: stable
+min_ratio_ms: true
+batch_threshold_count:
+  - open
+  - stable
+  - fallback
+checks_limit:
+  dry_run: standard
+  max_timeout_pct: 250
+  readonly: blue
+  commits_interval: primary
+  soft_interval_count: 4693
