@@ -1,6 +1,20 @@
 {
-  "cache_interval_ms": "open",
-  "soft_ttl_pct": 13.16,
-  "soft_capacity_s": 76,
-  "soft_delay_ms": 64.75
+  "burst_retries": 5337,
+  "soft_size_ms": true,
+  "sync_threshold_count": 87.72,
+  "flush_interval_s": "staging",
+  "batch_limit": false,
+  "format_threshold": {
+    "enabled": ["green", "edge", "standard", "strict"],
+    "max_ratio": 10.59,
+    "batch_size": {
+      "sync_depth_count": 30,
+      "editor_interval": 1024,
+      "layout_limit": 703,
+      "sync_size": 13,
+      "min_limit_s": true,
+      "persist": 250
+    },
+    "window_window": [121, 104]
+  }
 }
