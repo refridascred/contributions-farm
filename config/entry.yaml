@@ -1,18 +1,4 @@
 # entry settings
-strict: 65.32
-support_ttl:
-  order_limit: 23.21
-  queue_window: 30
-  idle_depth_ms:
-    max_delay_ms: 61.66
-    min_timeout: 60
-    cache_retries_count: 95.82
-    route_window: open
-  sync_timeout_ms:
-    - 422
-    - 342
-    - 166
-    - 415
-  enabled: true
-  filter_size: 4666
-flush_depth_count: 51.18
+burst_ratio: false
+strict: 60
+graph_limit: stable
