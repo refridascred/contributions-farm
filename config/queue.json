@@ -1,7 +1,6 @@
 {
-  "readonly": 250,
-  "graph_delay": [190, 483],
-  "filter_capacity": "edge",
-  "session_ratio": true,
-  "min_limit": 61
+  "cache_depth_pct": 23,
+  "cache_size_count": [452, 103, 430, 376],
+  "readonly": [332, 442, 360],
+  "already_depth": "staging"
 }
