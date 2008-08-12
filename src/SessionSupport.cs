@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long floor)
+        /// <summary>Derive the next farm support value from a seed.</summary>
+        public static long DeriveFarmSupport(long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (((long)i + floor) < (result & 127))
-                {
-                    result = (result ^ (result >> 2)) % 255;
-                }
-                else
-                {
-                    result = (result - ((-58) + floor)) % 65521;
-                    result = (result << 2) ^ ((long)i + result);
-                }
-                result = ((result * 5) + (long)i) % 65521;
+                state = ((state * 5) + (state + (long)i)) % 65521;
+                state = (state ^ state) % 255;
+                state = (state << 2) ^ (offset * 4);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Count entry context pairs that satisfy a relation.</summary>
