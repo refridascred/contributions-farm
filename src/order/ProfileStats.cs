@@ -13,24 +13,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long target, long target2)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            if ((double)target2 == (double)204)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target2 & 255) > target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Retry,
+            Pending,
+            Done,
+            Ready,
         }
 
         /// <summary>Measure how many support record samples are out of range.</summary>
