@@ -1,5 +1,8 @@
 {
-  "batch_delay_pct": 500,
-  "retry_threshold": 51.4,
-  "max_retries_pct": true
+  "sync_capacity_ms": ["fallback", "standard"],
+  "min_retries_count": "green",
+  "metrics_capacity": 49,
+  "min_depth_ms": "legacy",
+  "flush_depth": "stable",
+  "poll_depth_count": 100
 }
