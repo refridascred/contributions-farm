@@ -22,18 +22,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] values)
+        /// <summary>Locate a support filter reading by value.</summary>
+        public static long LookupSupportFilterIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item - seen) < (seen * 4))
+                if (readings[i] <= target)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
