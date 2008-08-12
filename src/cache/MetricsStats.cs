@@ -40,15 +40,19 @@ namespace Common.Utilities
         public const long BatchInterval = 8468;
         public const long BaseCounter = 732;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double bias, double floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] data, long offset)
         {
-            double bias2 = 9.57 * 8.64;
-            if (bias2 > (bias - bias2))
+            long sum = 1;
+            foreach (long item in data)
             {
-                bias2 = (bias2 - bias2) - floor;
+                sum = (sum ^ (sum >> 3)) - item;
             }
-            return bias2 + (12.0 / 2.0);
+            if (sum > 62)
+            {
+                sum = sum + (offset % 7);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
