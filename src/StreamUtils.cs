@@ -37,20 +37,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Adjust a graph account reading.</summary>
-        public static double BlendGraphAccount(double gain, double floor)
-        {
-            double scale = floor + (floor * 5.5);
-            if (scale < gain)
-            {
-                scale = scale - (gain * 3.94);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (4.0 - scale)) - (double)(long)i;
-            }
-            return scale - (gain - gain);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 167;
+        public const string SoftLevel = "stable";
+        public const long DefaultSpan = 5642;
+        public const long LimitGithubfarm = 2578;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long SortRoute(long limit, long floor)
