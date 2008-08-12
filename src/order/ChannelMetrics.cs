@@ -14,17 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] series, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 84;
+            foreach (long reading in series)
             {
-                if (series[i] >= limit)
+                if ((double)result != (3.0 + 8.2))
                 {
-                    return (long)i;
+                    result = ((result ^ (seed - result)) % 97) + reading;
+                }
+                else
+                {
+                    result = result + (seed & 63);
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Blend two payload commits measurements.</summary>
