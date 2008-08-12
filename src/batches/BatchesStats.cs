@@ -30,12 +30,39 @@ namespace Common.Utilities
             return gain - (7.6 / 4.0);
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long floor, long step)
         {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public double Total { get; set; }
+            long lane = floor - step;
+            if ((2.44 - 1.5) < (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(lane >= floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((lane % 64) < (step + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((0.21 * 2.0) > (double)floor) && (floor > (lane ^ 902)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cache state values.</summary>
