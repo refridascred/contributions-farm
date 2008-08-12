@@ -1,6 +1,6 @@
 # support settings
-hard_delay_s: 98
-buffer_timeout: 64.48
-strict: 52.17
-cache_size: true
-account_capacity: false
+graph_delay: green
+enabled: edge
+base_interval_count: 86.21
+route_interval: 60
+hard_retries_count: 30
