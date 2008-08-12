@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const string SoftRatio = "latest-edge";
         public const long DefaultQueue = 8400;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] levels, long floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((2.29 * 2.8) == (double)count)
+                if (cell >= limit)
                 {
-                    count = ((count + 3) + value) + floor;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Hold a profile options.</summary>
