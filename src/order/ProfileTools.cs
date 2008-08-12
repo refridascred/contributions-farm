@@ -16,19 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the githubfarm checks series from a seed.</summary>
-        public static long IterateGithubfarmChecks(long origin)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = ((result + (634 & 31)) % 255) ^ (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            Failed,
+            Active,
+            Ready,
+            Done,
+            New,
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
