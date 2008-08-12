@@ -33,18 +33,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] levels)
-        {
-            long acc = 5;
-            foreach (long datum in levels)
-            {
-                if (!((7.02 + 0.76) > (double)datum))
-                {
-                    acc = (acc - (datum / 5)) % 97;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCount = 8596;
+        public const long BatchDepth = 7035;
+        public const long IdleInterval = 4711;
+        public const long BaseCache = 6656;
     }
 }
