@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] items, long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] samples, long floor)
         {
-            long state = 122;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                state = (state - (origin % 10)) ^ item;
+                if (item != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (state > 313)
-            {
-                state = state ^ (state + 7);
-            }
-            return state % 1000;
+            return flag;
         }
 
         /// <summary>Describe the cache class values.</summary>
