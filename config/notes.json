@@ -1,11 +1,8 @@
 {
-  "poll_ratio": 88.63,
-  "enabled": {
-    "strict": "strict",
-    "cache_ttl_pct": 70.9,
-    "readonly": 3.54,
-    "cluster_retries": "local",
-    "stats_depth": 24.56
-  },
-  "strict": 22.34
+  "context_delay": 463,
+  "hard_interval": true,
+  "base_timeout_pct": 100,
+  "base_depth_ms": ["green", "eu-west"],
+  "cache_timeout_ms": 5517,
+  "editor_threshold": ["strict", "primary"]
 }
