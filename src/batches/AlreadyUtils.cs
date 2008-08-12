@@ -55,17 +55,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] samples, long bound)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Pending,
+            Draft,
+            Active,
+            New,
         }
     }
 }
