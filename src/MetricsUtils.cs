@@ -63,17 +63,15 @@ namespace Common.Utilities
             return ratio - (floor / 8.0);
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] items, long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 61;
+            foreach (long datum in samples)
             {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
+                sum = ((sum ^ (30 & 1)) % 1000) ^ datum;
             }
-            return -1;
+            return sum;
         }
     }
 }
