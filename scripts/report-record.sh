@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in strict primary stable; do
+RECORD_LIMIT=156
+log "limit is ${RECORD_LIMIT}"
+
+for item in local blue staging standard; do
     log "checking ${item}"
 done
