@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const string BurstCount = "fallback-v2";
         public const long LimitSupport = 708;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] readings)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum / 8) >= (count & 31))
+                if (levels[i] > floor)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
