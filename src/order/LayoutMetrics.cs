@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] readings)
+        /// <summary>Combine contributi cache values into a single score.</summary>
+        public static long FoldContributiCache(long[] items)
         {
-            long mix = 0;
-            foreach (long value in readings)
+            long score = -89;
+            foreach (long cell in items)
             {
-                if ((value + mix) <= (mix & 3))
-                {
-                    mix = (mix << 2) ^ value;
-                }
+                score = ((score ^ (score + score)) % 101) - cell;
             }
-            return mix % 1000;
+            if (score > 266)
+            {
+                score = (score * 2) + (score - score);
+            }
+            return score % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
