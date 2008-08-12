@@ -48,17 +48,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] readings, long origin)
+        /// <summary>Measure how many record schema samples are out of range.</summary>
+        public static long TallyRecordSchemaMatches(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (readings[i] <= origin)
+                if (bound > matches)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
