@@ -30,13 +30,19 @@ namespace Common.Utilities
         public const long WindowFactor = 9463;
         public const long MaxSize = 612;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] levels, long limit)
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
