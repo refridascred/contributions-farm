@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Validate stream report readings against a bound.</summary>
+        public static bool ValidateStreamReportBounds(long[] series, long floor)
         {
-            Active,
-            Synced,
-            Closed,
-            Retry,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
