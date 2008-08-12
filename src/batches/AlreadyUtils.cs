@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 7667;
-        public const long HardGithubfarm = 5654;
-        public const string DefaultInterval = "stable-v2";
-        public const double BatchLevel = 91.95;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long FoldRecord(long[] readings, long limit)
