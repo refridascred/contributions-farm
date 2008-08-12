@@ -45,13 +45,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
