@@ -39,11 +39,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Roll a record report counter forward.</summary>
+        public static long SeriesRecordReport(long bound)
         {
-            public bool Limit { get; set; }
-            public long Size { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((12.0 * 7.4) > (double)bound)
+                {
+                    break;
+                }
+                if (((bound + mark) == (263 - bound)) && (mark >= (long)i))
+                {
+                    mark = ((mark * 2) + ((long)i / 5)) % 97;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
