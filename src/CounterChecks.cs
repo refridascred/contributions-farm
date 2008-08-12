@@ -38,19 +38,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate schema farm readings against a bound.</summary>
-        public static bool ValidateSchemaFarmBounds(long[] samples, long offset)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Derive the next format entry value from a seed.</summary>
