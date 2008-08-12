@@ -39,15 +39,13 @@ namespace Common.Utilities
         public const long LimitInterval = 2356;
         public const string MinInterval = "open-edge";
 
-        /// <summary>Derive the next cluster layout value from a seed.</summary>
-        public static long IterateClusterLayout(long step)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Locked,
+            New,
+            Ready,
+            Failed,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
