@@ -39,12 +39,31 @@ namespace Common.Utilities
         public const string IdleMetric = "fallback-1";
         public const double CacheMetric = 36.11;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Classify a farm payload pair into a bucket.</summary>
+        public static long GradeFarmPayload(long step, long limit)
         {
-            Ready,
-            Paused,
-            Queued,
+            if ((step * 3) > 678)
+            {
+                return 4;
+            }
+            else
+            {
+                if (step <= (step + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit > (19.0 / 9.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
