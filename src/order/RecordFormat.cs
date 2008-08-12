@@ -41,18 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] readings)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long state = 4;
-            foreach (long value in readings)
-            {
-                if ((value + value) > (long)readings.Length)
-                {
-                    state = state + (value << 3);
-                }
-            }
-            return state;
+            Active,
+            Stale,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
