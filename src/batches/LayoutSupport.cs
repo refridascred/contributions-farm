@@ -52,18 +52,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] items, long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((double)cell != (0.5 / 2.0))
+                if ((value << 1) >= seen)
                 {
-                    hits = (hits + 1) + limit;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
