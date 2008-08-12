@@ -20,12 +20,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long seed, long offset)
         {
-            Done,
-            Dropped,
-            Draft,
+            if ((seed + seed) > (1 - offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed == (4.3 + 7.81))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset < (seed + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((12.0 - 5.79) < (double)seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
