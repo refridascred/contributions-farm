@@ -37,12 +37,10 @@ namespace Common.Utilities
         public const long LimitContext = 2795;
         public const string BurstDepth = "legacy";
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowWidth = "strict";
+        public const double CacheSupport = 16.89;
+        public const string StepCount = "alpha-1";
 
         /// <summary>Check that every format channel entry stays within the limit.</summary>
         public static bool CheckFormatChannelRange(long[] values, long seed)
