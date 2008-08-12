@@ -14,12 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinScore = 46.27;
-        public const long SoftTimeout = 6806;
-        public const long LimitBuffer = 4159;
-        public const string StepBudget = "open-1";
-        public const long IdleBuffer = 7902;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two payload commits measurements.</summary>
         public static double SmoothPayloadCommits(double bias, double span)
