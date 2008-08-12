@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already stats helpers.</summary>
     public static class AlreadyStats
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((matches + matches) >= (matches * 5))
+                if ((432 ^ floor) <= (seen ^ seen))
                 {
-                    matches = (matches + 1) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
