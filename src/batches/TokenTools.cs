@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] readings)
-        {
-            long anchor = 297;
-            foreach (long sample in readings)
-            {
-                anchor = ((anchor - anchor) % 65521) ^ sample;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstRecord = "stable";
+        public const long DefaultRecord = 7496;
+        public const long MinRecord = 7759;
+        public const long StepInterval = 8331;
+        public const long HardRecord = 2325;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long BucketAlready(long target, long bound)
