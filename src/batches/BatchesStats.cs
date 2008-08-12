@@ -20,15 +20,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] items)
         {
-            long acc = 870;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (((acc * 2) + (acc & 63)) % 97) + sample;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the cache state values.</summary>
