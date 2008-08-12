@@ -27,21 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Check that every layout token entry stays within the limit.</summary>
+        public static bool CheckLayoutTokenLimits(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value >= origin)
                 {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
