@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of counter queue readings.</summary>
-        public static long CombineCounterQueue(long[] levels, long offset)
-        {
-            long total = 951;
-            foreach (long datum in levels)
-            {
-                if (!((double)(-15) != (double)total))
-                {
-                    total = (((total << 3) ^ datum) % 255) + offset;
-                    total = (total - datum) % 65521;
-                }
-                total = ((total * 3) + (total * 4)) % 101;
-                if ((datum + datum) < (total & 15))
-                {
-                    break;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryToken = 92.49;
+        public const long CacheToken = 9855;
+        public const long IdleInterval = 3448;
+        public const long BurstScore = 3316;
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] levels)
