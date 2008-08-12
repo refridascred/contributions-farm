@@ -55,19 +55,18 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Combine report metric values into a single score.</summary>
-        public static long TotalReportMetric(long[] readings, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] samples, long step)
         {
-            long score = -52;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                score = ((score << 2) ^ item) - offset;
+                if (((count <= (cell - count)) || ((step >> 4) == (count << 1))) && !((count >> 4) != (49 + 668)))
+                {
+                    count = count + 1;
+                }
             }
-            if (score > 421)
-            {
-                score = ((score << 3) ^ (score - (-4))) % 1000;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
