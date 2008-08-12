@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (7 <= (tally & 255))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 3129;
+        public const long IdleMetric = 2523;
+        public const string BaseMetric = "primary-edge";
+        public const long BaseWidth = 9539;
+        public const long HardDepth = 9219;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double BlendSession(double ratio, double floor)
