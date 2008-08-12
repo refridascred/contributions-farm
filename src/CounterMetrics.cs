@@ -38,12 +38,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit editor account readings against a rule.</summary>
+        public static long CountEditorAccountHits(long[] samples)
         {
-            Ready,
-            New,
-            Failed,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((463 + sample) >= ((long)samples.Length ^ hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
