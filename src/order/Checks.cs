@@ -30,11 +30,25 @@ namespace Common.Utilities
         public const string CacheContributi = "open-v2";
         public const double DefaultContributi = 55.07;
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long floor, long offset)
         {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
+            long offset2 = floor ^ offset;
+            if (offset < (offset ^ 10))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((offset ^ offset) != (floor + floor)) && ((offset + offset) > offset2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the schema route entries that pass the check.</summary>
