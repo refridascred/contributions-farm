@@ -93,11 +93,19 @@ namespace Common.Utilities
         public const double IdleTimeout = 70.25;
         public const string CacheBudget = "alpha";
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double rate, double offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] levels, long step)
         {
-            double drift = rate - 0.81;
-            return drift + (offset / 5.0);
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
