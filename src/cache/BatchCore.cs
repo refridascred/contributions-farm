@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Validate record batch readings against a bound.</summary>
+        public static bool GuardRecordBatchRange(long[] data, long step)
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
