@@ -19,13 +19,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Failed,
-            New,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinSize = 87.74;
+        public const long HardWidth = 7352;
+        public const long WindowRoute = 2251;
     }
 }
