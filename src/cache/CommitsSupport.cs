@@ -61,12 +61,17 @@ namespace Common.Utilities
         public const long MaxSize = 6623;
         public const long HardRatio = 1813;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowBudget = "standard-v2";
-        public const double DefaultFilter = 97.74;
-        public const long HardFilter = 2790;
-        public const double IdleInterval = 22.83;
-        public const long BatchFilter = 2048;
+        /// <summary>Iterate the batch graph series from a seed.</summary>
+        public static long IterateBatchGraph(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc << 2) ^ (seed + seed)) % 97;
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool CheckFilterLimits(long[] levels, long step)
