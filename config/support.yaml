@@ -1,26 +1,6 @@
 # support settings
-batch_delay: 76.79
-sync_ratio_s:
-  flush_ratio: 47.81
-  hard_ratio_count: true
-  default_delay: standard
-stats_depth: 70
-queue_ttl: 8608
-retry_ttl_count: 2.14
-route_interval:
-  min_interval_count: 2278
-  record_size: eu-west
-  readonly:
-    - standard
-    - stable
-    - green
-    - strict
-  flush_ttl:
-    profile_interval: 75.49
-    schema_limit: 500
-    verbose: 9.94
-    hard_ttl_ms: 52
-    flush_interval_s: 85
-  base_ttl:
-    - 318
-    - 452
+hard_delay_s: 98
+buffer_timeout: 64.48
+strict: 52.17
+cache_size: true
+account_capacity: false
