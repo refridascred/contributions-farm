@@ -1,13 +1,4 @@
 # githubfarm settings
-compress: staging
-default_interval_count:
-  - primary
-  - strict
-  - standard
-  - local
-cache_limit:
-  base_window_count: open
-  session_size: strict
-  audit: green
-  channel_delay: open
-idle_interval: primary
+warm_delay_s: 1024
+persist: strict
+max_capacity: 67.6
