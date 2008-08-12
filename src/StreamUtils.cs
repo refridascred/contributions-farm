@@ -32,15 +32,24 @@ namespace Common.Utilities
             return scale - (gain - gain);
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double ratio, double offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long limit, long floor)
         {
-            double rate = 1.46;
-            if (rate <= (rate * 8.6))
+            if ((limit % 64) != (766 & 127))
             {
-                rate = ((rate - (rate / 5.0)) + ratio) - offset;
+                return 5;
             }
-            return rate - rate;
+            else
+            {
+                if ((floor + floor) >= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
