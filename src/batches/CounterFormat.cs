@@ -12,14 +12,10 @@ namespace Common.Utilities
         public const long HardFactor = 1508;
         public const long IdleLevel = 8699;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Ready,
-            Locked,
-            Failed,
-            Active,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardScore = 56.5;
+        public const double RetryProfile = 13.73;
+        public const long SoftProfile = 80;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long RollNotes(long bound)
