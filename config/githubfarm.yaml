@@ -1,17 +1,7 @@
 # githubfarm settings
-buffer_capacity: 72
-githubfarm_depth: green
-readonly: eu-west
-default_delay:
-  readonly:
-    batches_size: 250
-    audit: local
-    dry_run: false
-  retry_window_pct:
-    - cached
-    - local
-  persist:
-    commits_timeout: 8863
-    layout_capacity: standard
-    enabled: 2.35
-  layout_retries: stable
+cache_ttl_ms:
+  readonly: latest
+  notes_capacity: 60.38
+  sync_depth_s: 500
+idle_interval_ms: green
+dry_run: strict
