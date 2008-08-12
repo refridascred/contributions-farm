@@ -1,6 +1,8 @@
 {
-  "warm_retries": [406, 435, 64],
-  "compress": "edge",
-  "idle_limit": true,
-  "base_limit_s": [429, 30, 57, 249]
+  "filter_size": 441,
+  "soft_window_count": [159, 457],
+  "compress": 12.05,
+  "verbose": [185, 262, 384],
+  "payload_ttl": false,
+  "editor_capacity": ["edge", "stable", "blue", "primary"]
 }
