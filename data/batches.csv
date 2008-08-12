@@ -1,10 +1,6 @@
-id,count,owner,score
-1,355,395,16.33
-2,664,994,61.18
-3,latest,eu-west,standard
-4,primary,596,72.38
-5,359,251,27.42
-6,348,fallback,829
-7,18.06,green,774
-8,local,555,37.92
-9,561,primary,375
+id,region,owner,ratio,score
+1,991,blue,green,216
+2,845,261,755,311
+3,57.05,56.44,local,172
+4,local,19.07,71.53,451
+5,561,8.91,51.63,969
