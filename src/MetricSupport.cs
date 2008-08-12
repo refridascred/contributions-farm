@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token metrics entry stays within the limit.</summary>
-        public static bool VerifyTokenMetricsBounds(long[] values, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (reading >= offset)
+                if (value > (limit ^ 7))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the contributi status values.</summary>
