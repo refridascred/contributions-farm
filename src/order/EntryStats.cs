@@ -26,19 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (matches < 667)
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseEditor = 27.99;
+        public const long MinEditor = 2444;
+        public const long LimitEditor = 4492;
+        public const long BaseTimeout = 4720;
+        public const string RetryDepth = "local-1";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long HardQueue = 8340;
