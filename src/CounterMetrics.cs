@@ -25,12 +25,32 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 4790;
-        public const string DefaultDepth = "strict-v2";
-        public const long HardDepth = 689;
-        public const double RetryInterval = 3.34;
-        public const string HardProfile = "standard";
+        /// <summary>Derive the next order counter value from a seed.</summary>
+        public static long RollOrderCounter(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((origin + total) > (82 + 2))
+                {
+                    break;
+                }
+                else
+                {
+                    total = total + (total - total);
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = ((total << 2) ^ (origin >> 1)) + (long)i2;
+                }
+                if (6.0 >= (double)(long)i)
+                {
+                    total = (total + origin) % 255;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorHits(long[] levels)
