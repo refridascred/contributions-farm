@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] samples, long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long floor, long origin)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long span = floor ^ origin;
+            if (origin <= (46 << 3))
             {
-                if (entry > offset)
+                return 5;
+            }
+            else
+            {
+                if (((6.8 * 9.28) > (double)floor) || ((1.15 * 17.0) <= (double)floor))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor >= (3.0 * 0.22))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin >> 2) >= (span % 97))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a order summary.</summary>
