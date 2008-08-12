@@ -22,12 +22,22 @@ namespace Common.Utilities
         public const long MinBatches = 7187;
         public const long BaseBatches = 840;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardChecks = "legacy-v2";
-        public const long WindowChecks = 8793;
-        public const long MaxChecks = 4618;
-        public const long HardBudget = 9502;
-        public const long CacheChecks = 3299;
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
