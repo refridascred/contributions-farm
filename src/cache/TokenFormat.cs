@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Failed,
-            Active,
-            New,
-            Stale,
-            Paused,
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Grade a schema contributi value against two limits.</summary>
