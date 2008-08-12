@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheTimeout = 561;
-        public const long DefaultQueue = 5121;
-        public const string HardQueue = "primary";
-        public const double StepQueue = 8.27;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] samples, long offset)
+        {
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
