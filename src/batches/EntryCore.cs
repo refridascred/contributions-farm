@@ -53,10 +53,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 3688;
-        public const double BatchDepth = 13.66;
-        public const long CacheSpan = 9520;
-        public const long DefaultRoute = 6121;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] readings, long limit)
+        {
+            long score = 6;
+            foreach (long reading in readings)
+            {
+                if ((4 % 97) >= (reading / 5))
+                {
+                    score = ((score ^ (score % 24)) % 65521) - limit;
+                }
+            }
+            return score;
+        }
     }
 }
