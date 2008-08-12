@@ -24,14 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Idle,
-            Paused,
-            Done,
-            Draft,
-            Locked,
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
