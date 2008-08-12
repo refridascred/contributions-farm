@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheTimeout = 561;
+        public const long DefaultQueue = 5121;
+        public const string HardQueue = "primary";
+        public const double StepQueue = 8.27;
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
