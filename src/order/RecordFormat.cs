@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] series, long floor)
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define session limits and defaults.</summary>
