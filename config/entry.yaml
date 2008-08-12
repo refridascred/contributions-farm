@@ -1,11 +1,14 @@
 # entry settings
-cluster_retries: stable
-sync_threshold_pct: 63
-stream_capacity: cached
-record_size: 72.25
-idle_limit: 60
-soft_ttl_ms:
-  min_window: local
-  default_limit_count: standard
-  compress: 32.79
-  buffer_limit: standard
+metrics_ratio:
+  batch_ratio: 24.42
+  flush_capacity_pct: cached
+  contributi_timeout: blue
+readonly:
+  - strict
+  - standard
+  - blue
+  - local
+retry_size_s: 63.17
+soft_capacity_s: 500
+cache_delay: true
+report_depth: fallback
