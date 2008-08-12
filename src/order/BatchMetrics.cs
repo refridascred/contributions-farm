@@ -68,17 +68,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowRatio = 67.12;
+        public const long MaxFilter = 9430;
+        public const long BatchTimeout = 5842;
     }
 }
