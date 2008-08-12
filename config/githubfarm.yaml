@@ -1,4 +1,10 @@
 # githubfarm settings
-min_interval_pct: latest
-warm_timeout_s: 3374
-commits_capacity: false
+max_capacity_s: 9046
+enabled: fallback
+default_capacity:
+  - 272
+  - 236
+  - 101
+strict:
+  - 421
+  - 469
