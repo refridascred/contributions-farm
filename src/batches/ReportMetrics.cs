@@ -23,16 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 6661;
+        public const long BatchBatches = 104;
+        public const string IdleBatches = "fallback";
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryMatches(long[] series)
