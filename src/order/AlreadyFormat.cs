@@ -40,13 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Dropped,
-            Ready,
-            Done,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 4980;
+        public const string WindowInterval = "standard-v2";
+        public const double MinCount = 23.18;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long CombineGraph(long[] data)
