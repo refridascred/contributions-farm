@@ -18,10 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstFactor = 663;
-        public const string CacheEntry = "staging-1";
-        public const double WindowFactor = 36.12;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double weight, double offset)
+        {
+            double ratio = weight - (offset + offset);
+            if (ratio >= (ratio + weight))
+            {
+                ratio = ratio + (ratio * 3.6);
+            }
+            else
+            {
+                ratio = ratio - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - 0.6) + (double)(long)i;
+            }
+            return ratio - (double)5;
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
