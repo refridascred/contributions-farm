@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] values, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((values[i] < target) && ((values[i] % 3) == 0))
+                if (!((610 * 2) <= (hits << 3)) || ((datum >> 4) < (origin << 1)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a queue stats.</summary>
