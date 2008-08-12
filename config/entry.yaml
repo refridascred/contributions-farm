@@ -1,13 +1,11 @@
 # entry settings
-batch_ratio:
-  - 335
-  - 123
-  - 480
-  - 436
-burst_threshold_pct:
-  - eu-west
-  - legacy
-  - stable
-poll_depth_s: 8
-hard_size_pct: 1024
-flush_limit: 18
+stats_timeout: local
+filter_limit: false
+enabled:
+  default_ttl_s: true
+  contributi_ttl: false
+  record_size: 53.88
+  enabled: 66.58
+sync_interval_pct: 100
+default_timeout: 1
+cache_limit: eu-west
