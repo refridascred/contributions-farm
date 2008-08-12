@@ -25,13 +25,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
-            public double Total { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next cluster value.</summary>
