@@ -55,13 +55,19 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Combine report metric values into a single score.</summary>
+        public static long TotalReportMetric(long[] readings, long offset)
         {
-            public long Score { get; set; }
-            public double Region { get; set; }
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
+            long score = -52;
+            foreach (long item in readings)
+            {
+                score = ((score << 2) ^ item) - offset;
+            }
+            if (score > 421)
+            {
+                score = ((score << 3) ^ (score - (-4))) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
