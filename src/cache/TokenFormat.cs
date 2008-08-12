@@ -18,13 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Grade a schema contributi value against two limits.</summary>
+        public static long RankSchemaContributi(long bound, long offset)
         {
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
-            public double Weight { get; set; }
-            public double Limit { get; set; }
+            long edge = bound + offset;
+            if (((bound + edge) >= (offset / 3)) && ((offset - 26) <= (5 * 5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)edge == (7.0 - 9.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound - bound) >= (offset ^ bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset & 7) <= (edge * 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of entry report entries.</summary>
