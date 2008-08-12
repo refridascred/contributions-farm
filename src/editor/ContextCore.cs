@@ -37,19 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every window channel entry stays within the limit.</summary>
-        public static bool ValidateWindowChannelLimits(long[] items, long seed)
+        /// <summary>Count the filter order entries that pass the check.</summary>
+        public static long AuditFilterOrderMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (sample > seed)
+                if (!(sample < (hits ^ hits)) || ((double)hits >= (double)sample))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
