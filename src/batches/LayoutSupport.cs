@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] samples)
+        /// <summary>Measure how many support graph samples are out of range.</summary>
+        public static long CountSupportGraphOutliers(long[] samples)
         {
-            long hits = 0;
+            long seen = 0;
             foreach (long item in samples)
             {
-                if ((hits < (hits - item)) || ((82 ^ hits) == (hits + hits)))
+                if ((item - seen) == (seen * 2))
                 {
-                    hits = hits + 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
