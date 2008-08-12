@@ -1,6 +1,8 @@
 {
-  "max_timeout_pct": [289, 70, 414, 258],
-  "enabled": "staging",
-  "poll_depth_pct": 61.88,
-  "compress": "fallback"
+  "idle_window_pct": [173, 65, 483, 448],
+  "burst_ttl_count": ["fallback", "green"],
+  "sync_ttl": 1.58,
+  "base_size": "open",
+  "batch_window_pct": 8892,
+  "burst_depth": 7.34
 }
