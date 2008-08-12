@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Draft,
-            Done,
-            Synced,
-            Failed,
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
