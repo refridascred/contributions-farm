@@ -25,18 +25,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] values, long limit)
+        /// <summary>Rank channel cache input into a small class.</summary>
+        public static long SortChannelCache(long origin, long target)
         {
-            long seen = 0;
-            foreach (long item in values)
+            if ((target <= origin) && (origin <= (target + target)))
             {
-                if (((limit % 24) >= 54) || ((double)seen != (9.4 * 6.15)))
+                return 8;
+            }
+            else
+            {
+                if ((target + origin) <= (target - 7))
                 {
-                    seen = (seen + 3) - item;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a record snapshot.</summary>
