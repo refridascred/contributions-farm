@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double gain, double offset)
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
+            double gain2 = (double)(60 + (-3));
+            if (gain2 < (gain / 9.0))
             {
-                score = ((score * 5) + (long)i) % 1000;
+                gain2 = gain2 + offset;
             }
-            return score;
+            return gain2 + 6.1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
