@@ -1,5 +1,5 @@
 {
-  "buffer_limit": 5,
-  "support_ttl": ["open", "legacy", "blue", "legacy"],
-  "layout_timeout": 10
+  "cache_capacity": 1117,
+  "cache_threshold": 83,
+  "warm_delay": 132
 }
