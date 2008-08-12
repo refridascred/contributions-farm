@@ -25,27 +25,32 @@ namespace Common.Utilities
         public const long MinBatches = 7187;
         public const long BaseBatches = 840;
 
-        /// <summary>Accumulate entry metrics samples.</summary>
-        public static long FoldEntryMetrics(long[] data, long step)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long step, long bound)
         {
-            long state = 46;
-            foreach (long item in data)
+            long cur = step ^ bound;
+            if (((bound + cur) == (cur - cur)) || ((double)step == (9.78 - 1.0)))
             {
-                if ((6 >> 1) == (step / 9))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound == (4.7 * 9.63))
                 {
-                    state = state - (item + step);
-                    state = (state ^ (-190)) % 255;
+                    return 5;
                 }
-                if ((state / 4) != (item >> 4))
+                else
                 {
-                    state = (state + (43 / 3)) % 65521;
-                }
-                if (state >= (item + 56))
-                {
-                    break;
+                    if ((cur / 9) == (step & 31))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Hold a cluster header.</summary>
