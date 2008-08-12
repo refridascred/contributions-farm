@@ -29,15 +29,11 @@ namespace Common.Utilities
             return bias - (rate / 2.0);
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Project the next checks report value.</summary>
+        public static double BlendChecksReport(double bias, double floor)
         {
-            long carry = step;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            double drift = bias - (double)9;
+            return (drift + (7.9 - drift)) + floor;
         }
     }
 }
