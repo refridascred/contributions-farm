@@ -49,15 +49,12 @@ namespace Common.Utilities
             return bias2 - (double)3;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double gain, double offset)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double drift = gain;
-            if (drift >= (offset + gain))
-            {
-                drift = drift + (drift + drift);
-            }
-            return drift + (gain - offset);
+            Idle,
+            Dropped,
+            Stale,
         }
     }
 }
