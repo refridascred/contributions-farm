@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Rank already support input into a small class.</summary>
+        public static long ClassifyAlreadySupport(long bound, long seed)
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            if ((double)bound == (3.7 + 5.4))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((bound % 8) > (bound >> 2)) || ((seed * 2) >= (seed % 97)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed >= (seed ^ seed)) && ((705 - bound) == (bound + bound)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed ^ 3) != (bound % 64))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up batches samples.</summary>
