@@ -36,21 +36,23 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 727;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix ^ (limit - entry)) ^ (long)i;
                 }
+                mix = (mix - (entry ^ entry)) % 65521;
             }
-            return matches;
+            if (mix < 0)
+            {
+                mix = (mix * 4) + mix;
+            }
+            return mix;
         }
     }
 }
