@@ -33,12 +33,14 @@ namespace Common.Utilities
         public const string HardSchema = "cached";
         public const long MaxDepth = 4327;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
+            Ready,
+            Locked,
+            Pending,
+            Retry,
+            Stale,
         }
     }
 }
