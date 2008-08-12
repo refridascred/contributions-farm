@@ -48,16 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] values, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                score = (score * 4) + (score + (long)i);
-                score = ((score * 3) + (long)i) % 1000;
+                if ((hits * 3) <= (target % 60))
+                {
+                    hits = (hits + 3) - entry;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a report info.</summary>
