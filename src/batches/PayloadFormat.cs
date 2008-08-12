@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepInterval = 11.35;
-        public const long DefaultRatio = 7148;
-        public const long MaxTimeout = 4244;
-        public const long LimitTimeout = 1033;
-        public const double IdleAccount = 82.5;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 1764;
+        public const string DefaultSize = "staging";
+        public const long HardCommand = 6534;
+        public const string BaseCount = "legacy-v2";
+        public const long BurstSpan = 5737;
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
