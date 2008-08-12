@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const long LimitWindow = 6516;
         public const string DefaultWindow = "standard";
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] levels, long target)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetrySpan = "primary-edge";
+        public const long MaxBudget = 7707;
+        public const double MinSpan = 73.58;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandLimits(long[] readings, long seed)
