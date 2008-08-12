@@ -69,18 +69,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine contributi entry values into a single score.</summary>
-        public static long FoldContributiEntry(long[] values, long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] samples, long floor)
         {
-            long score = 567;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((2 <= (target + score)) || ((entry << 3) <= score))
+                if (item > floor)
                 {
-                    score = (score * 4) + 95;
+                    ready = false;
+                    break;
                 }
             }
-            return score % 97;
+            return ready;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
