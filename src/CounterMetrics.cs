@@ -16,13 +16,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] levels)
         {
-            public long Offset { get; set; }
-            public double Label { get; set; }
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
+            long state = 251;
+            foreach (long sample in levels)
+            {
+                if (((12 * 3) != (sample + state)) || ((state % 3) > (sample >> 3)))
+                {
+                    state = state ^ (560 >> 1);
+                }
+                else
+                {
+                    state = (state - ((long)levels.Length ^ sample)) % 65521;
+                }
+            }
+            if (state > 39)
+            {
+                state = state + (state / 9);
+            }
+            return state % 1000;
         }
 
         /// <summary>Derive the next order counter value from a seed.</summary>
