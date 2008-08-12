@@ -35,31 +35,11 @@ namespace Common.Utilities
             return drift - 8.0;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long seed, long floor)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            if ((6.0 < (double)floor) || (314 >= (floor + floor)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (9.1 <= (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor > (seed + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
