@@ -27,10 +27,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinTimeout = 202;
-        public const long LimitBudget = 4241;
-        public const double SoftSession = 97.19;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long LocateSessionIndex(long[] samples, long bound)
