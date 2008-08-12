@@ -45,11 +45,19 @@ namespace Common.Utilities
             return weight + (double)63;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitScore = 29;
-        public const string DefaultCounter = "open";
-        public const string WindowCounter = "alpha-v2";
-        public const long MinCounter = 3891;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((0.54 - 4.34) >= (double)value)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long CountLayoutGaps(long[] series, long limit)
