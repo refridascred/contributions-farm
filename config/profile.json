@@ -1,14 +1,5 @@
 {
-  "sync_interval_count": 80.23,
-  "base_size_count": "open",
-  "hard_interval_pct": false,
-  "tools_delay": {
-    "min_limit_pct": "strict",
-    "flush_window": [311, 50, 150],
-    "checks_capacity": ["local", "local", "staging"],
-    "batch_depth": 3,
-    "cache_retries": "blue"
-  },
-  "max_timeout": 8320,
-  "burst_window": 78.38
+  "compress": "open",
+  "profile_limit": "fallback",
+  "min_delay_count": false
 }
