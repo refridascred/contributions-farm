@@ -6,7 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+for item in edge standard latest legacy; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=220
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-edge}"
 case "${mode}" in
     standard)
         log "fast path"
@@ -15,12 +22,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-BUFFER_LIMIT=85
-log "limit is ${BUFFER_LIMIT}"
