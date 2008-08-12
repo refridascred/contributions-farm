@@ -1,12 +1,12 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-The schema report groups every graph by tools.
-The metric report groups every format by batches.
+The filter helpers are pure functions, so they are safe to call from any thread.
+The token module keeps context values in sync with the payload cache.
+Each batch is validated before it reaches the route queue.
 
 ## Guidelines
 
-- Document new format fields
-- Keep notes values small
-- Validate support input early
-- Prefer entry defaults
+- Document new route fields
+- Validate batch input early
+- Log every command change
+- Keep tools values small
