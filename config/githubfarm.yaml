@@ -1,11 +1,9 @@
 # githubfarm settings
-soft_timeout_s: false
-profile_retries: 1.99
-min_depth: 60
-batch_retries_count:
-  - 486
-  - 463
-  - 97
-  - 375
-session_ratio: 56.58
-verbose: primary
+filter_interval: true
+compress:
+  - 408
+  - 43
+  - 229
+  - 473
+idle_size_count: 25.85
+strict: false
