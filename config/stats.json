@@ -1,19 +1,6 @@
 {
-  "min_depth_pct": true,
-  "session_threshold": 34,
-  "poll_capacity_pct": {
-    "buffer_interval": 72.22,
-    "max_timeout_ms": 1024,
-    "warm_threshold_ms": 74,
-    "soft_threshold_pct": 60,
-    "audit": {
-      "farm_depth": [203, 56],
-      "idle_ratio_ms": 30,
-      "poll_size_pct": "stable",
-      "editor_depth": 37,
-      "batch_threshold_ms": 10.26
-    }
-  },
-  "checks_ratio": "cached",
-  "dry_run": 500
+  "audit": 98.88,
+  "base_window_s": 30,
+  "sync_depth_count": 44.69,
+  "cache_depth_pct": 1024
 }
