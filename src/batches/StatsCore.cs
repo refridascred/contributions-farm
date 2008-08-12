@@ -67,13 +67,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] readings, long step)
+        /// <summary>Iterate the counter command series from a seed.</summary>
+        public static long DeriveCounterCommand(long floor)
         {
-            long anchor = 573;
-            foreach (long datum in readings)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor + (anchor >> 2)) ^ datum) - step;
+                anchor = anchor + anchor;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
             return anchor;
         }
