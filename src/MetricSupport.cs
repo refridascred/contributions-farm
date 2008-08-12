@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleBudget = 1586;
-        public const double MaxLevel = 90.77;
-        public const string LimitLevel = "alpha-1";
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Draft,
+            Done,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
