@@ -17,23 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a tools contributi reading.</summary>
-        public static double SmoothToolsContributi(double scale, double offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double weight = offset;
-            if (weight <= offset)
-            {
-                weight = (weight - (6.8 * 9.01)) - scale;
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (weight + offset)) + (double)(long)i;
-            }
-            return weight - weight;
+            Idle,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the report state values.</summary>
