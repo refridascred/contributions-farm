@@ -35,14 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Iterate the payload metrics series from a seed.</summary>
+        public static long RollPayloadMetrics(long bound)
         {
-            Idle,
-            Locked,
-            Pending,
-            Stale,
-            Failed,
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((77 + bound) == (mark * 5))
+                {
+                    mark = ((mark * 2) + ((long)i - bound)) % 65521;
+                    mark = mark - (bound & 7);
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
