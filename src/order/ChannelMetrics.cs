@@ -14,12 +14,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long offset)
         {
-            New,
-            Failed,
-            Active,
+            long state = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                state = state + offset;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
