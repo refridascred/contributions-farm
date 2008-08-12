@@ -22,20 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Iterate the githubfarm checks series from a seed.</summary>
+        public static long IterateGithubfarmChecks(long origin)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    score = (score ^ score) ^ (long)i2;
+                    result = ((result + (634 & 31)) % 255) ^ (long)i2;
                 }
-                score = ((score << 3) ^ (target - target)) % 101;
-                score = ((score * 3) + (long)i) % 101;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
