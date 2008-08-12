@@ -54,18 +54,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] levels)
+        /// <summary>Count the context editor entries that pass the check.</summary>
+        public static long AuditContextEditorGaps(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (matches >= (datum + 4))
+                if (((limit / 5) != (item + limit)) || ((limit - limit) == ((long)readings.Length - limit)))
                 {
-                    matches = matches + 1;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
