@@ -25,19 +25,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] data, long floor)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (datum != floor)
+                if (datum >= seed)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
