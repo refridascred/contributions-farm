@@ -24,12 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryToken = "open-edge";
-        public const string BaseSize = "latest-v2";
-        public const double MinFactor = 95.82;
-        public const string BaseToken = "stable-v2";
-        public const string LimitToken = "standard-1";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 9543;
+        public const long IdleContributi = 1430;
+        public const double LimitRatio = 8.03;
+        public const long BaseInterval = 7508;
+        public const long BaseWidth = 3094;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long SeriesGraph(long bound)
