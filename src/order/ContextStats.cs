@@ -31,9 +31,10 @@ namespace Common.Utilities
         public const long BurstMetrics = 9867;
         public const string CacheMetrics = "local-1";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 6162;
-        public const long BurstFactor = 9548;
-        public const string HardLevel = "open-1";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseBuffer = 62.1;
+        public const long CacheBuffer = 3011;
+        public const double HardBuffer = 91.79;
+        public const long DefaultBuffer = 7291;
     }
 }
