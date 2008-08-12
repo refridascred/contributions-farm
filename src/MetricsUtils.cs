@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double rate, double span)
+        /// <summary>Audit report stream readings against a rule.</summary>
+        public static long CountReportStreamGaps(long[] levels, long origin)
         {
-            double ratio = span;
-            if (ratio <= (rate + rate))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                ratio = ratio - (9.0 / 5.0);
+                if ((8 >= (57 - count)) || ((origin > (reading >> 1)) || ((reading % 60) < count)))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                ratio = ratio + 8.23;
-            }
-            return ratio - (span - 3.3);
+            return count;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
