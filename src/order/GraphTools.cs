@@ -39,19 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] samples, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (datum <= origin)
+                if ((double)sample <= (double)count)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) - seed;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a token record.</summary>
