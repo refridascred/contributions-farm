@@ -46,18 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics window readings against a rule.</summary>
-        public static long TallyMetricsWindowOutliers(long[] items)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (count < (datum - count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Draft,
+            Closed,
+            Locked,
         }
 
         /// <summary>Check that every contributi window entry stays within the limit.</summary>
