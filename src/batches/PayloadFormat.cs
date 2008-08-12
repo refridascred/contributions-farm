@@ -33,18 +33,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the token metric entries that pass the check.</summary>
-        public static long AuditTokenMetricGaps(long[] series, long origin)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((897 - tally) >= (origin + value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
