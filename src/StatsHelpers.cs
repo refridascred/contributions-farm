@@ -26,32 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long origin, long limit)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long diff = origin ^ limit;
-            if ((0 & 7) < origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((diff - 289) < (limit + diff))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)diff > (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Failed,
+            Closed,
+            Active,
         }
 
         /// <summary>Describe the layout state values.</summary>
