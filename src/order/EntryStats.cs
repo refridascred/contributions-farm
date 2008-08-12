@@ -33,18 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((double)cell != (4.04 - 9.8))
+                if (matches < 667)
                 {
-                    tally = tally + 1;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the stats state values.</summary>
