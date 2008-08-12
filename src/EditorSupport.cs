@@ -16,15 +16,11 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long target)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the farm status values.</summary>
