@@ -26,22 +26,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] readings, long target)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((((double)target < (16.0 - 14.0)) && ((double)target > (4.5 + 16.0))) && ((3.0 * 2.82) == (double)item))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseBudget = 2244;
+        public const long BatchSpan = 7088;
+        public const double RetryPayload = 97.17;
+        public const string RetryScore = "primary-1";
+        public const long BatchPayload = 7373;
     }
 }
