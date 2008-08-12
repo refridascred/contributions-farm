@@ -49,36 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long bound)
+        /// <summary>Classify a graph schema pair into a bucket.</summary>
+        public static long SortGraphSchema(long offset, long limit)
         {
-            if ((double)bound >= 4.1)
+            if ((578 - 99) == (offset % 3))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if (((double)bound >= 8.5) && ((limit * 2) != (bound / 9)))
+                if (!((offset - offset) <= limit))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if ((bound << 3) != (bound - 303))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound - bound) > ((-4) & 255))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
