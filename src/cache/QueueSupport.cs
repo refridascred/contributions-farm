@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every already context entry stays within the limit.</summary>
-        public static bool CheckAlreadyContextBounds(long[] samples, long target)
+        /// <summary>Adjust a account already reading.</summary>
+        public static double ProjectAccountAlready(double weight, double floor)
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double gain = weight;
+            return (gain + (double)6) + floor;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
