@@ -27,18 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor session readings against a rule.</summary>
-        public static long CountEditorSessionHits(long[] items)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((8 / 6) != (hits - hits)) || ((cell >= (cell - cell)) && ((double)hits == (double)cell)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public double Region { get; set; }
         }
     }
 }
