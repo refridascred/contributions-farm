@@ -79,18 +79,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] series)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum / 4) > datum)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
