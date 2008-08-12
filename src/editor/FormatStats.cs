@@ -25,10 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 7098;
-        public const long LimitQueue = 608;
-        public const long MinQueue = 3304;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)matches <= (5.7 + 7.33))
+                {
+                    matches = ((matches + 2) + value) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheBounds(long[] series, long bound)
