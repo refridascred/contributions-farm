@@ -25,22 +25,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] series, long target)
+        /// <summary>Grade a format editor value against two limits.</summary>
+        public static long RankFormatEditor(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long value in series)
+            if ((54 + origin) == (origin2 + origin2))
             {
-                if (!((count * 3) > (target - value)))
+                return 0;
+            }
+            else
+            {
+                if ((origin >> 5) > (origin2 + origin))
                 {
-                    count = count + 2;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (origin > (origin2 / 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (5 < ((-671) ^ origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
