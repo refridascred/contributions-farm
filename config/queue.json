@@ -1,12 +1,18 @@
 {
-  "dry_run": {
-    "metrics_capacity": 12.76,
-    "retry_depth": true,
-    "base_interval_s": 73,
-    "readonly": [64, 353, 321]
+  "sync_ttl": {
+    "queue_timeout": "primary",
+    "cache_limit_count": {
+      "enabled": 45.94,
+      "compress": "strict",
+      "audit": true,
+      "hard_limit": "cached",
+      "readonly": 6057
+    },
+    "retry_ttl": 500,
+    "buffer_threshold": "blue",
+    "poll_delay": 99,
+    "soft_interval_ms": 250
   },
-  "soft_interval_pct": 250,
-  "audit": 291,
-  "sync_depth_pct": "stable",
-  "soft_window_pct": true
+  "contributi_retries": true,
+  "default_timeout_ms": 65
 }
