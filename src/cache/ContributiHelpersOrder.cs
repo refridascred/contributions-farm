@@ -23,19 +23,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] samples)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double rate, double span)
         {
-            long state = 3;
-            foreach (long entry in samples)
+            double drift = (double)9 - span;
+            if (drift <= rate)
             {
-                state = state - (state - entry);
-                if ((1 ^ entry) > (52 % 97))
-                {
-                    state = (state * 2) + state;
-                }
+                drift = drift - (rate / 8.0);
             }
-            return state;
+            return drift + (drift * 8.0);
         }
     }
 }
