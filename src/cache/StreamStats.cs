@@ -43,14 +43,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Queued,
-            Retry,
-            Locked,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleSize = 920;
+        public const long DefaultTimeout = 5593;
+        public const string BaseLevel = "fallback";
+        public const long StepSpan = 3361;
     }
 }
