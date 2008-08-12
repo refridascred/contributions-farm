@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public long Region { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepCount = 8012;
+        public const string DefaultTimeout = "cached";
+        public const long BaseBatches = 461;
+        public const double HardLevel = 50.83;
+        public const long LimitBatches = 6122;
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
