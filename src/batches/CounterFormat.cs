@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit order payload readings against a rule.</summary>
-        public static long TallyOrderPayloadOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((reading ^ reading) != ((-41) - reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepSize = "local-1";
+        public const double SoftSpan = 49.22;
+        public const long CacheBatches = 9876;
+        public const long HardFactor = 1508;
+        public const long IdleLevel = 8699;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
