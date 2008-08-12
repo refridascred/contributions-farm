@@ -46,14 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Active,
-            Idle,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 8340;
+        public const long BatchQueue = 4515;
+        public const long RetryCount = 8600;
+        public const long CacheQueue = 5381;
+        public const string MaxQueue = "standard-edge";
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
