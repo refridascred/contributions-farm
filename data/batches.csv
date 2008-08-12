@@ -1,7 +1,10 @@
-id,region,state,count
-1,889,0.08,249
-2,local,658,69.38
-3,edge,762,54.05
-4,green,52.31,729
-5,984,35.44,14.24
-6,staging,eu-west,885
+id,owner,region,rank
+1,47.62,stable,94.13
+2,685,534,strict
+3,19.4,107,green
+4,467,7.33,strict
+5,fallback,22.09,37.28
+6,7.92,edge,fallback
+7,742,71.69,12.39
+8,831,204,854
+9,787,460,legacy
