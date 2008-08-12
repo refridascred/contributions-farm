@@ -20,12 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Count command stream pairs that satisfy a relation.</summary>
+        public static long MatchCommandStreamCount(long[] levels)
         {
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
