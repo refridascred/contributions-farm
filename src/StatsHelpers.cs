@@ -14,15 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long target)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long seed)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Describe the checks level values.</summary>
