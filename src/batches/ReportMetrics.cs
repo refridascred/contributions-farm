@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const long HardMetrics = 2308;
         public const string MaxMetrics = "strict-v2";
 
-        /// <summary>Look up the position of a notes layout sample.</summary>
-        public static long FindNotesLayoutIndex(long[] readings, long origin)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > origin) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
