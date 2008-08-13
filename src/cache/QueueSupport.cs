@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxInterval = "cached-1";
+        public const long StepFarm = 9223;
+        public const long CacheFarm = 1770;
+        public const long IdleSize = 5050;
+        public const long BurstFarm = 4347;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelMatches(long[] samples)
