@@ -66,19 +66,19 @@ namespace Common.Utilities
         public const long WindowNotes = 3276;
         public const double MaxWidth = 24.17;
 
-        /// <summary>Check that every farm profile entry stays within the limit.</summary>
-        public static bool ValidateFarmProfileRange(long[] readings, long floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long floor)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample >= floor)
+                if (((long)i % 3) <= (floor + floor))
                 {
-                    found = false;
-                    break;
+                    sum = (sum - ((long)i << 1)) % 4096;
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return found;
+            return sum;
         }
     }
 }
