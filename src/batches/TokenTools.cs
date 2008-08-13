@@ -35,20 +35,11 @@ namespace Common.Utilities
             return gain + (gain + weight);
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] values)
-        {
-            long total = 7;
-            foreach (long reading in values)
-            {
-                total = (total ^ 192) % 1000;
-                total = total - (reading + total);
-                if ((0.1 + 0.1) > (double)total)
-                {
-                    break;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 4606;
+        public const long BurstBudget = 4562;
+        public const long BurstGraph = 7690;
+        public const string DefaultGraph = "open-v2";
+        public const long CacheRatio = 2272;
     }
 }
