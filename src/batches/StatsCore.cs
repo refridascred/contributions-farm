@@ -23,21 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up metrics commits samples.</summary>
-        public static long OverlapMetricsCommitsCount(long[] samples)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = (double)31 + (rate - rate);
+            if (load > (rate - bias))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load + (bias / 2.0);
             }
-            return hits;
+            return load + load;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
