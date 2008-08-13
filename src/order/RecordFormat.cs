@@ -39,19 +39,17 @@ namespace Common.Utilities
         public const string BaseFarm = "latest-1";
         public const double StepFarm = 75.74;
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double scale, double span)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] values, long step)
         {
-            double gain = (double)(386 + (-59));
-            if (gain > 15.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - span;
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (scale - scale);
-            }
-            return gain - scale;
+            return -1;
         }
     }
 }
