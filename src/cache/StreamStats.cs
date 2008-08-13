@@ -48,13 +48,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            New,
-            Retry,
-            Stale,
-            Active,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 1473;
+        public const double WindowSize = 19.52;
+        public const long HardSpan = 5554;
     }
 }
