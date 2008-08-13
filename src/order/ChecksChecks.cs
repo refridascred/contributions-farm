@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] series)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] items)
         {
-            long anchor = 604;
-            foreach (long datum in series)
+            long score = 86;
+            foreach (long item in items)
             {
-                anchor = ((anchor * 5) + datum) % 1000;
-                if ((datum >> 3) <= (datum + datum))
-                {
-                    anchor = (anchor - datum) % 255;
-                }
-                else
-                {
-                    anchor = anchor - (datum + datum);
-                }
+                score = ((score * 4) + (item & 7)) % 101;
             }
-            return anchor % 1000;
+            if (score > (-586))
+            {
+                score = score ^ (score & 255);
+            }
+            return score;
         }
 
         /// <summary>Count the batches window entries that pass the check.</summary>
