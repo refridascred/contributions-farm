@@ -1,19 +1,11 @@
 # githubfarm settings
-flush_depth_pct:
-  schema_limit: 1024
-  compress: 4023
-  session_threshold: false
-  max_limit: 89.56
-strict:
-  - 51
-  - 195
-  - 242
-retry_size_ms: 87.94
-cache_retries_ms:
-  - legacy
-  - blue
-dry_run: false
-support_window:
-  soft_depth_s: 1024
-  soft_threshold: staging
-  flush_timeout: open
+burst_ttl_count:
+  - 6
+  - 441
+  - 347
+  - 338
+warm_limit_ms: cached
+idle_ratio: strict
+idle_delay_count: primary
+poll_interval_ms: green
+strict: 7913
