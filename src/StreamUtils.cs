@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] levels, long floor)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((floor << 2) == (datum - floor)) || ((datum + datum) == (floor ^ floor)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Locked,
+            Idle,
+            Closed,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
