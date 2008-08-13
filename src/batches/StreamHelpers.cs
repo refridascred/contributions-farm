@@ -20,14 +20,11 @@ namespace Common.Utilities
         public const string MaxSpan = "local-v2";
         public const string CacheAccount = "fallback-edge";
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Locked,
-            Pending,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 9360;
+        public const long BatchAccount = 5227;
+        public const string MaxCount = "staging-edge";
+        public const long MaxAccount = 3716;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TallyAccount(long[] items, long bound)
