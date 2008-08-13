@@ -20,12 +20,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] samples, long step)
         {
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (((step ^ cell) == (step % 10)) || ((step + 85) >= (-19)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a support snapshot.</summary>
