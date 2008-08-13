@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] data, long floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long origin, long floor)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long offset = origin + floor;
+            if ((3.0 * 9.1) > (double)floor)
             {
-                if (cell <= floor)
+                return 3;
+            }
+            else
+            {
+                if (((double)origin >= (19.0 - 8.0)) || (offset < (4 - floor)))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((5 & 1) > (offset - 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset - 18) > (87 - floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
