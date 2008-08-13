@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Idle,
-            Synced,
-            Draft,
-            Done,
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
