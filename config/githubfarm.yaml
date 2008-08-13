@@ -1,8 +1,4 @@
 # githubfarm settings
-tools_threshold: staging
-verbose: latest
-audit: 8561
-cache_capacity:
-  - edge
-  - legacy
-  - standard
+dry_run: 99
+window_retries: true
+audit: 79.73
