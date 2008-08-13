@@ -28,21 +28,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count stats already pairs that satisfy a relation.</summary>
-        public static long OverlapStatsAlreadyCount(long[] levels)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample > step)
                 {
-                    if ((levels[i] + levels[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Adjust a layout reading.</summary>
