@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] levels)
+        /// <summary>Combine checks notes values into a single score.</summary>
+        public static long TallyChecksNotes(long[] readings)
         {
-            long score = 47;
-            foreach (long reading in levels)
+            long result = 1;
+            foreach (long sample in readings)
             {
-                if ((score >> 1) <= (reading << 3))
+                if ((double)result > (7.08 + 1.25))
                 {
-                    score = (score + reading) % 97;
+                    result = (result * 3) + (sample / 5);
                 }
-                if (((reading % 100) > score) || (3.9 <= (double)reading))
+                if (!((sample - result) != (sample + result)))
                 {
                     break;
                 }
             }
-            return score;
+            if (result < 52)
+            {
+                result = (result ^ result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
