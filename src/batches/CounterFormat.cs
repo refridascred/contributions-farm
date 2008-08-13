@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long origin, long target)
         {
-            Closed,
-            New,
-            Pending,
+            long lane = origin - target;
+            if ((target / 7) <= target)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((lane << 3) > (11 ^ target)) && ((origin - 510) != (63 << 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(69 < (2 + lane)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2.63 + 18.0) <= (double)lane)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics summary.</summary>
