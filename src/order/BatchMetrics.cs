@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            Retry,
+            Active,
+            Done,
+            Dropped,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
