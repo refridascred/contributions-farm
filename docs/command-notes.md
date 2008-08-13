@@ -1,14 +1,10 @@
 # Command notes
 
-The farm module keeps route values in sync with the report cache.
-Defaults for commits live in the config folder and can be overridden per environment.
-
-Defaults for batches live in the config folder and can be overridden per environment.
-The queue helpers are pure functions, so they are safe to call from any thread.
+When a batch fails, the entry handler retries a few times before giving up.
+Defaults for profile live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new batch fields
-- Validate record input early
-- Log every farm change
-- Review graph limits each release
+- Keep order values small
+- Prefer format defaults
+- Document new contributi fields
