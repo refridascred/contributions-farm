@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long target)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
-            {
-                score = score ^ (31 + 3);
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
