@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double SoftLevel = 97.49;
         public const long LimitLevel = 8342;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] levels, long bound)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (bound >= count)
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
