@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] values)
         {
-            public bool Score { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((datum & 31) >= hits) || ((datum + hits) > hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
