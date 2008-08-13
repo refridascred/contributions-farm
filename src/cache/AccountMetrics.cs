@@ -28,19 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema buffer entry stays within the limit.</summary>
-        public static bool ValidateSchemaBufferRange(long[] samples, long origin)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Synced,
+            Locked,
+            Closed,
         }
 
         /// <summary>Classify a route record pair into a bucket.</summary>
