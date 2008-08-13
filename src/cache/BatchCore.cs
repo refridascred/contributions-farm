@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Measure how many notes already samples are out of range.</summary>
+        public static long CountNotesAlreadyOutliers(long[] readings, long limit)
         {
-            Queued,
-            New,
-            Active,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((seen - limit) <= 1) && (limit >= (seen - limit)))
+                {
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next order value.</summary>
