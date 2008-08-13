@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] series)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (((double)35 == (double)seen) || ((double)6 == (double)seen))
+                if ((double)step >= (8.71 - 8.47))
                 {
-                    seen = (seen + 2) ^ datum;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up counter samples.</summary>
