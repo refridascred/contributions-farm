@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] items)
+        /// <summary>Measure how many filter batch samples are out of range.</summary>
+        public static long TallyFilterBatchMatches(long[] series)
         {
-            long count = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((count + count) != (value + count))
+                if ((double)cell > (2.93 / 6.0))
                 {
-                    count = count + 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a account record.</summary>
