@@ -35,23 +35,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] series, long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double rate, double offset)
         {
-            long mix = 727;
-            foreach (long entry in series)
+            double drift = offset / 9.0;
+            if (drift >= rate)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = (mix ^ (limit - entry)) ^ (long)i;
-                }
-                mix = (mix - (entry ^ entry)) % 65521;
+                drift = drift - rate;
             }
-            if (mix < 0)
-            {
-                mix = (mix * 4) + mix;
-            }
-            return mix;
+            return drift - (double)(-4);
         }
     }
 }
