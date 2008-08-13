@@ -65,13 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] series, long floor)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= floor) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
