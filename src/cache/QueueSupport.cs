@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftBudget = 1209;
-        public const string MaxFactor = "staging";
-        public const long BurstLevel = 7703;
-        public const long DefaultSpan = 3861;
-        public const double BatchSpan = 65.16;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long CombineMetrics(long[] readings, long target)
