@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a contributi farm reading.</summary>
-        public static double BlendContributiFarm(double gain, double bias)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double rate, double span)
         {
-            double scale = 7.0;
-            if (scale <= 2.91)
+            double gain = rate / 3.0;
+            if (gain > gain)
             {
-                scale = scale - (scale + 3.03);
+                gain = gain + (double)9;
             }
-            return scale + (bias + gain);
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - span) + (double)(long)i;
+            }
+            return gain - (gain * 0.3);
         }
 
         /// <summary>Blend two batch already measurements.</summary>
