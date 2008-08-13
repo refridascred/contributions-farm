@@ -1,8 +1,23 @@
 # githubfarm settings
-sync_threshold_count: false
-readonly: 250
-support_delay:
-  - blue
-  - primary
-batches_limit: 1024
-persist: 87
+min_window_pct: latest
+sync_timeout_ms:
+  flush_capacity_s: false
+  format_ratio: 80
+  warm_delay_pct: eu-west
+  readonly:
+    default_ratio_pct: primary
+    retry_delay:
+      - staging
+      - cached
+      - legacy
+    strict: true
+    min_window: stable
+  command_size: 78.19
+  warm_delay_ms: blue
+dry_run:
+  - staging
+  - edge
+  - green
+batch_depth_ms: standard
+cache_limit: 16.97
+enabled: 80
