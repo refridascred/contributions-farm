@@ -59,19 +59,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] series, long offset)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long target)
         {
-            long total = 39;
-            foreach (long datum in series)
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
             {
-                total = (((total << 3) ^ (total % 16)) % 65521) - datum;
-                if ((double)offset > (0.65 * 4.52))
-                {
-                    total = (total << 3) ^ (offset + 94);
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
