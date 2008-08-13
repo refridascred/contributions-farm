@@ -30,38 +30,23 @@ namespace Common.Utilities
         public const string CacheCount = "staging-edge";
         public const long MinFormat = 3198;
 
-        /// <summary>Rank window batches input into a small class.</summary>
-        public static long BucketWindowBatches(long target, long step)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double gain, double offset)
         {
-            if (target < (target / 3))
+            double scale = 6.3;
+            if (scale > (gain + offset))
             {
-                return 2;
+                scale = scale - gain;
             }
             else
             {
-                if ((step * 4) >= (target >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (2.13 <= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((9 % 16) != (target + target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                scale = scale + offset;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (gain + offset)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Audit layout record readings against a rule.</summary>
