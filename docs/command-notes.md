@@ -1,14 +1,12 @@
 # Command notes
 
-The notes module keeps token values in sync with the window cache.
-When a context fails, the schema handler retries a few times before giving up.
-Each account is validated before it reaches the format queue.
-
-The stats report groups every record by farm.
-Run the tools check before changing any channel limits.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Keep record and queue names short and lowercase.
+The schema report groups every counter by batch.
 
 ## Guidelines
 
-- Review session limits each release
-- Keep batches values small
-- Prefer commits defaults
+- Log every commits change
+- Keep schema values small
+- Validate filter input early
+- Document new schema fields
