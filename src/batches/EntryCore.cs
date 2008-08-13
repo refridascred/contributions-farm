@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 5947;
-        public const double DefaultFactor = 67.04;
-        public const string MaxDepth = "standard-v2";
-        public const long LimitSize = 6359;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long offset, long bound)
+        {
+            long span = offset ^ bound;
+            if (!((span ^ bound) > span))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)span > 8.53)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset ^ span) <= (span - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatMatches(long[] readings, long limit)
