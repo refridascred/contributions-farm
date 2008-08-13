@@ -35,18 +35,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] values, long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if ((double)datum < (11.0 - 2.8))
+                if (entry > target)
                 {
-                    tally = (tally + 2) + floor;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
