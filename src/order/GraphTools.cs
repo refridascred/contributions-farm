@@ -12,19 +12,31 @@ namespace Common.Utilities
         public const long BaseSize = 168;
         public const double BurstCluster = 58.97;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] data, long origin)
+        /// <summary>Rank cache queue input into a small class.</summary>
+        public static long BucketCacheQueue(long limit, long offset)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            if ((double)offset < (9.78 - 18.0))
             {
-                if (reading != origin)
+                return 3;
+            }
+            else
+            {
+                if ((offset % 8) < (offset + offset))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + offset) > limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
