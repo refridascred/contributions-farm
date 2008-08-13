@@ -26,21 +26,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = 3.0;
+            if (bias <= offset)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias - 3.32;
             }
-            return seen;
+            else
+            {
+                bias = bias + offset;
+            }
+            return bias - rate;
         }
 
         /// <summary>Hold a metric stats.</summary>
