@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double ratio, double span)
+        /// <summary>Check that every buffer tools entry stays within the limit.</summary>
+        public static bool CheckBufferToolsBounds(long[] samples, long limit)
         {
-            double rate = (ratio / 7.0) - span;
-            if (rate >= (span + ratio))
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                rate = rate + rate;
+                if (reading <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (double)0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (span / 9.0);
+            return valid;
         }
 
         /// <summary>Hold a stats entry.</summary>
