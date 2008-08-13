@@ -41,12 +41,33 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheInterval = 65.63;
-        public const string MinStats = "latest-v2";
-        public const double CacheStats = 21.18;
-        public const long IdleDepth = 1115;
-        public const long LimitStats = 1743;
+        /// <summary>Classify a record session pair into a bucket.</summary>
+        public static long BucketRecordSession(long bound, long target)
+        {
+            long delta = bound + target;
+            if ((delta ^ 75) > target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + 93) >= bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + target) == (bound / 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] data)
