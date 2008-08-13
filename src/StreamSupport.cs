@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] readings)
         {
-            public double Count { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen + 885) >= (seen * 2))
+                {
+                    seen = (seen + 2) - item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
