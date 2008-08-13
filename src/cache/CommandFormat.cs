@@ -28,21 +28,12 @@ namespace Common.Utilities
         public const long StepCount = 5508;
         public const long WindowAlready = 1999;
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Draft,
+            Failed,
         }
     }
 }
