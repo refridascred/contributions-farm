@@ -33,18 +33,19 @@ namespace Common.Utilities
         public const long MinInterval = 7124;
         public const string StepWidth = "open";
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] samples)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (((9.89 - 4.17) != (double)(long)samples.Length) && (seen > (seen << 1)))
+                if (sample < target)
                 {
-                    seen = (seen + 2) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Locate a report reading by value.</summary>
