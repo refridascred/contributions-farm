@@ -42,32 +42,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long step, long limit)
+        /// <summary>Iterate the token stream series from a seed.</summary>
+        public static long StepTokenStream(long floor)
         {
-            long gap = step + limit;
-            if ((limit + step) > step)
+            long total = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((limit - gap) != (step - step)))
+                if ((floor * 4) > (total - floor))
                 {
-                    return 7;
+                    total = total - floor;
+                    continue;
                 }
                 else
                 {
-                    if ((253 % 24) != (gap + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = (total ^ floor) % 255;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
+            return total;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
