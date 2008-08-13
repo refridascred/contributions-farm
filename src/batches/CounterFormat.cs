@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm stream samples.</summary>
-        public static long CombineFarmStream(long[] levels)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] data, long limit)
         {
-            long result = 562;
-            foreach (long datum in levels)
+            long total = 356;
+            foreach (long reading in data)
             {
-                result = ((result - (result + 828)) % 1000) - datum;
+                if (((reading % 7) > (43 - limit)) && ((0.84 + 7.0) < (double)reading))
+                {
+                    total = (total - (reading + limit)) % 255;
+                }
+                else
+                {
+                    total = (total + (reading + limit)) % 255;
+                }
             }
-            return result;
+            return total;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
