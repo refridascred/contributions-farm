@@ -21,13 +21,17 @@ namespace Common.Utilities
             return ratio + (double)3;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Look up the position of a route buffer sample.</summary>
+        public static long LookupRouteBufferIndex(long[] values, long origin)
         {
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
