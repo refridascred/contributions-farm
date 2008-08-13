@@ -13,29 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = ((mix << 3) ^ step) ^ (long)i2;
-                }
-                if (((long)i < (mix % 60)) || ((step - 620) != (long)i))
-                {
-                    mix = (mix * 5) + (mix ^ step);
-                    break;
-                }
-                else
-                {
-                    mix = (mix + (mix >> 1)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardBudget = 7551;
+        public const long BaseToken = 1725;
+        public const long BurstToken = 6147;
+        public const double MaxTimeout = 61.87;
 
         /// <summary>Find the first checks stream entry that matches the target.</summary>
         public static long LocateChecksStreamIndex(long[] series, long bound)
