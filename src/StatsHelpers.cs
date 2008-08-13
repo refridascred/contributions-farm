@@ -19,13 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
+            Failed,
+            Stale,
             Done,
-            Idle,
-            Dropped,
-            Synced,
+            Ready,
+            Closed,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
