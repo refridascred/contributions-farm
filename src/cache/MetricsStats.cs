@@ -40,17 +40,38 @@ namespace Common.Utilities
             return mean + (span * 7.6);
         }
 
-        /// <summary>Locate a buffer githubfarm reading by value.</summary>
-        public static long FindBufferGithubfarmIndex(long[] items, long target)
+        /// <summary>Rank window batches input into a small class.</summary>
+        public static long BucketWindowBatches(long target, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (target < (target / 3))
             {
-                if (items[i] <= target)
+                return 2;
+            }
+            else
+            {
+                if ((step * 4) >= (target >> 1))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (2.13 <= (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((9 % 16) != (target + target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
