@@ -39,18 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardScore = "open-1";
+        public const long HardCommits = 4670;
+        public const double LimitFactor = 63.16;
 
         /// <summary>Count the already session entries that pass the check.</summary>
         public static long MeasureAlreadySessionHits(long[] values)
