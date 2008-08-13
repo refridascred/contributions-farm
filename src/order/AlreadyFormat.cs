@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] values)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((20 - datum) < (hits + datum))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Retry,
+            Pending,
+            Dropped,
+            Active,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
