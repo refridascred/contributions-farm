@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] values)
+        /// <summary>Rank channel account input into a small class.</summary>
+        public static long GradeChannelAccount(long target, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long bound = target ^ seed;
+            if (target > bound)
             {
-                if (!((5.8 / 8.0) < (double)count) || (2.3 >= (double)count))
+                return 7;
+            }
+            else
+            {
+                if ((double)seed != (6.95 + 0.38))
                 {
-                    count = (count + 1) - reading;
+                    return 5;
+                }
+                else
+                {
+                    if (!(target > (bound >> 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the report kind values.</summary>
