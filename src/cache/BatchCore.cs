@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] items, long seed)
+        /// <summary>Adjust a counter farm reading.</summary>
+        public static double BlendCounterFarm(double rate, double span)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            double rate2 = rate + (double)63;
+            for (int i = 0; i < 4; i++)
             {
-                if ((seed - sample) > (hits + sample))
-                {
-                    hits = hits + 3;
-                }
+                rate2 = ((rate2 - rate) + (double)(long)i) + span;
             }
-            return hits;
+            return rate2 - 7.0;
         }
 
         /// <summary>Describe the token status values.</summary>
