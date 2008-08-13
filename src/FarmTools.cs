@@ -27,19 +27,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] items, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] levels, long bound)
         {
-            long anchor = 807;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor + anchor) % 255) + item;
+                if (bound >= count)
+                {
+                    count = (count + 1) + sample;
+                }
             }
-            if (anchor < 6)
-            {
-                anchor = ((anchor << 3) ^ (seed - seed)) % 4096;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a cache stats.</summary>
