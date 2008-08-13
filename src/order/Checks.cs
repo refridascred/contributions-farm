@@ -78,18 +78,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] series)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            double gain2 = bias;
+            if (gain2 <= gain2)
             {
-                if (((-426) + datum) > (tally >> 3))
-                {
-                    tally = tally + 3;
-                }
+                gain2 = (gain2 + 18.0) - gain;
             }
-            return tally;
+            return gain2 + bias;
         }
     }
 }
