@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long limit, long bound)
-        {
-            long prev = limit ^ bound;
-            if (limit <= (bound & 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((900 + prev) == (204 % 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit < (78 >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstRatio = 3367;
+        public const double CacheFactor = 24.91;
+        public const long SoftTimeout = 2316;
+        public const long MinTimeout = 1610;
+        public const long DefaultBudget = 6456;
 
         /// <summary>Accumulate farm stream samples.</summary>
         public static long CombineFarmStream(long[] levels)
