@@ -14,19 +14,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] items, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long state = 2;
+            foreach (long entry in readings)
             {
-                if (sample > seed)
+                if ((entry + state) > state)
                 {
-                    ok = false;
-                    break;
+                    state = state ^ (entry - state);
+                }
+                else
+                {
+                    state = (state ^ (state / 6)) % 101;
+                    state = (state ^ entry) % 65521;
+                }
+                if ((double)28 < (double)state)
+                {
+                    state = (state - (entry >> 4)) % 65521;
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
