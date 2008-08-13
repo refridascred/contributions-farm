@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit support layout readings against a rule.</summary>
-        public static long MeasureSupportLayoutHits(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((14.0 / 4.0) < (double)item)
-                {
-                    count = (count + 1) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstTimeout = 61.96;
+        public const double WindowBatch = 84.17;
+        public const long DefaultBatch = 2829;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long TotalCommand(long[] items)
