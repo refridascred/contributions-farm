@@ -55,17 +55,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] values, long origin)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
