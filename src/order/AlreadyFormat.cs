@@ -35,31 +35,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long origin, long limit)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long bound)
         {
-            if ((double)limit >= (8.8 / 3.0))
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin + limit) != (limit >> 4))
+                if ((state + (long)i) < (state % 7))
                 {
-                    return 5;
+                    state = ((state << 2) ^ 495) % 4096;
                 }
                 else
                 {
-                    if (((10.0 * 5.2) >= (double)origin) || ((origin & 255) > (origin - 367)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    state = (state ^ state) % 1000;
+                    state = state + (bound & 63);
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Measure how many tools contributi samples are out of range.</summary>
