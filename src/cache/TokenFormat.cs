@@ -15,18 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] levels)
+        /// <summary>Count channel metric pairs that satisfy a relation.</summary>
+        public static long PairChannelMetricCount(long[] items)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (matches > (matches ^ matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) + item;
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the graph level values.</summary>
