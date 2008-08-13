@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long StepBuffer = 5499;
         public const string BaseSize = "legacy-1";
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] levels)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double rate, double offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double weight = (6.0 / 5.0) + (rate * 6.37);
+            if (weight <= (offset * 8.23))
             {
-                if ((reading & 3) >= 0)
-                {
-                    count = count + 1;
-                }
+                weight = weight - weight;
             }
-            return count;
+            else
+            {
+                weight = weight + (rate - offset);
+            }
+            return weight + (double)78;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
