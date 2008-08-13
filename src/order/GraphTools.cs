@@ -74,10 +74,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardTimeout = "cached";
-        public const long StepWindow = 3540;
-        public const long BatchScore = 7415;
-        public const long LimitLevel = 4668;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] data, long origin)
+        {
+            long score = 0;
+            foreach (long cell in data)
+            {
+                score = ((score + ((long)data.Length << 1)) % 1000) ^ cell;
+            }
+            if (score > 50)
+            {
+                score = (score << 3) ^ (origin + origin);
+            }
+            return score;
+        }
     }
 }
