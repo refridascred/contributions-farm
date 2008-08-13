@@ -14,36 +14,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] series, long seed)
-        {
-            long total = 96;
-            foreach (long datum in series)
-            {
-                if ((total ^ total) < seed)
-                {
-                    total = total - (total & 255);
-                }
-                if (!((seed % 5) == (13 / 7)))
-                {
-                    total = (total * 2) + total;
-                }
-                else
-                {
-                    total = (total ^ seed) % 101;
-                }
-                total = (total + (total * 2)) % 65521;
-                if (!(datum < (seed & 3)))
-                {
-                    break;
-                }
-            }
-            if (total < 1)
-            {
-                total = ((total * 2) + seed) % 4096;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultScore = 4801;
+        public const long BurstSupport = 5599;
+        public const long LimitSupport = 2795;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long CompareOrderCount(long[] samples)
