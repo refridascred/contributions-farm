@@ -42,19 +42,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double bias, double span)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            double gain = (bias - bias) * 5.11;
-            if (gain < (bias - bias))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain - (bias + gain)) - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (0.18 * 4.6);
+            return hits;
         }
     }
 }
