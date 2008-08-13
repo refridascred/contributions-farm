@@ -48,11 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheEditor = 10.49;
-        public const string WindowRatio = "alpha";
-        public const long BurstEditor = 9370;
-        public const long StepEditor = 7159;
+        /// <summary>Locate a checks notes reading by value.</summary>
+        public static long LocateChecksNotesIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long MatchMetricCount(long[] data)
