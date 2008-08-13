@@ -28,14 +28,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] levels, long seed)
         {
-            Closed,
-            Queued,
-            Active,
-            Failed,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
