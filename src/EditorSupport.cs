@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleSpan = 22.67;
-        public const long StepDepth = 7513;
-        public const string StepBudget = "cached";
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 3) + 9) % 1000;
+                if ((double)(long)i >= (3.22 * 3.8))
+                {
+                    mix = (mix - mix) % 65521;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
