@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
             Synced,
-            Failed,
-            Queued,
+            Retry,
+            Draft,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a commits snapshot.</summary>
