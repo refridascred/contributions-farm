@@ -64,12 +64,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftCount = 5492;
-        public const long WindowRatio = 1958;
-        public const double CacheBudget = 65.93;
-        public const long WindowStats = 8906;
-        public const long RetryStats = 8931;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] values, long bound)
+        {
+            long total = -56;
+            foreach (long value in values)
+            {
+                if ((double)bound == (1.0 * 6.92))
+                {
+                    total = (total << 2) ^ (value / 2);
+                }
+                if (bound <= (total - 29))
+                {
+                    total = total + total;
+                    total = total + (total ^ total);
+                    break;
+                }
+                else
+                {
+                    total = (total << 3) ^ (7 >> 4);
+                    total = ((total << 2) ^ (value % 3)) % 1000;
+                }
+                if (171 <= total)
+                {
+                    total = (total << 2) ^ (bound & 255);
+                }
+                else
+                {
+                    total = (total << 3) ^ (bound >> 2);
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
