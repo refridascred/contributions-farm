@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate window buffer samples.</summary>
-        public static long CombineWindowBuffer(long[] series)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            long carry = -66;
-            foreach (long entry in series)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)entry >= (double)carry) && ((double)carry > 12.0))
+                if ((limit & 3) > (6 * 5))
                 {
-                    carry = (carry << 3) ^ (entry - carry);
-                    continue;
+                    total = (total << 2) ^ total;
+                    break;
                 }
-                carry = (carry << 3) ^ (carry - carry);
+                else
+                {
+                    total = ((total * 5) + (710 >> 2)) % 4096;
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Digest a series of context entries.</summary>
