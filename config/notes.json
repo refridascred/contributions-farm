@@ -1,9 +1,7 @@
 {
-  "hard_retries": true,
-  "warm_limit_s": 12.31,
-  "readonly": {
-    "sync_delay_count": "legacy",
-    "audit": 97.45,
-    "batch_capacity": "primary"
-  }
+  "cache_capacity_count": "blue",
+  "account_window": "standard",
+  "base_limit_count": "eu-west",
+  "default_delay_count": 30,
+  "flush_depth": ["strict", "local"]
 }
