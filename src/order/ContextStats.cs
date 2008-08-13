@@ -19,10 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 8670;
-        public const long SoftBudget = 8886;
-        public const long SoftOrder = 4747;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] samples, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
