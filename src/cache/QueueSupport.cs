@@ -12,12 +12,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double rate, double floor)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            double drift = (floor * 3.7) - (rate - floor);
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + floor) - (double)(long)i;
+            }
+            return drift + (double)28;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
