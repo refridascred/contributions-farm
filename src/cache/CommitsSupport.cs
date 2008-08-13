@@ -14,21 +14,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] readings)
+        /// <summary>Validate contributi layout readings against a bound.</summary>
+        public static bool CheckContributiLayoutBounds(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell > step)
                 {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Compare every pair of window stream readings.</summary>
