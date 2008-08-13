@@ -22,20 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 3967;
+        public const long MinDepth = 1625;
+        public const long SoftStats = 906;
+        public const string WindowSpan = "local-1";
+        public const double CacheStats = 67.99;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long IterateNotes(long step)
