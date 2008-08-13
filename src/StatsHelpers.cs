@@ -39,32 +39,22 @@ namespace Common.Utilities
         public const string HardTimeout = "standard-1";
         public const long BaseNotes = 9475;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long offset, long floor)
+        /// <summary>Measure how many tools support samples are out of range.</summary>
+        public static long MeasureToolsSupportHits(long[] levels, long origin)
         {
-            long diff = offset ^ floor;
-            if ((double)diff < (6.1 / 5.0))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((diff + 32) >= (offset ^ diff))
+                if (((origin & 255) == (reading - origin)) || (((double)origin < 9.4) || ((seen % 12) <= origin)))
                 {
-                    return 4;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((2.16 - 5.2) > (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
