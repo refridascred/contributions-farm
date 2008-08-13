@@ -28,13 +28,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Paused,
-            Failed,
-            Synced,
-            New,
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define layout limits and defaults.</summary>
