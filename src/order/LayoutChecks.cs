@@ -78,22 +78,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] samples, long origin)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((4.6 * 6.3) > (double)origin))
+                if ((values[i] >= offset) && ((values[i] % 3) != 0))
                 {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
