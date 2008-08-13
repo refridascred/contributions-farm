@@ -17,12 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a already format sample.</summary>
-        public static long LocateAlreadyFormatIndex(long[] series, long limit)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] == limit)
+                if (readings[i] > target)
                 {
                     return (long)i;
                 }
