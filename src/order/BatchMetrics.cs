@@ -60,22 +60,13 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Digest a series of stream report entries.</summary>
-        public static long ScoreStreamReport(long[] readings, long limit)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long state = 113;
-            foreach (long cell in readings)
-            {
-                if ((state ^ 42) >= state)
-                {
-                    state = ((state + (cell * 5)) % 255) - limit;
-                }
-            }
-            if (state > 36)
-            {
-                state = state - (state >> 5);
-            }
-            return state % 4096;
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Roll a entry counter forward.</summary>
