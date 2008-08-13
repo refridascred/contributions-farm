@@ -48,21 +48,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] data)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((6 + 35) >= sample)
                 {
-                    if ((data[i] - data[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
