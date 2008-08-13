@@ -36,19 +36,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a tools notes reading.</summary>
-        public static double BlendToolsNotes(double bias, double bias2)
-        {
-            double bias3 = (bias / 9.0) * 17.0;
-            if (bias3 <= bias3)
-            {
-                bias3 = (bias3 + (bias * 9.1)) + bias2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias3 = (bias3 + (bias3 / 3.0)) + (double)(long)i;
-            }
-            return bias3 + (bias * 9.64);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstDepth = "staging-1";
+        public const long MinWindow = 3520;
+        public const double RetryWindow = 14.54;
     }
 }
