@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a queue tools reading.</summary>
-        public static double ProjectQueueTools(double rate, double offset)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] data, long origin)
         {
-            double drift = (rate * 2.94) / 7.0;
-            if (drift > 1.68)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + offset;
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (double)935) + (double)(long)i;
-            }
-            return drift - (double)460;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
