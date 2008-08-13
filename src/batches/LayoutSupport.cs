@@ -49,13 +49,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long bound, long floor)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            if (floor >= (floor % 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((floor * 4) != (floor & 127)) || ((14.0 - 6.98) == (double)floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor * 2) != (bound + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
