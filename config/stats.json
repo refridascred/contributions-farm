@@ -1,10 +1,7 @@
 {
-  "filter_limit": false,
-  "min_interval_s": {
-    "token_interval": 71.49,
-    "layout_ttl": 79.8,
-    "batch_threshold": 56
-  },
-  "format_threshold": false,
-  "verbose": "edge"
+  "min_window_ms": 47.86,
+  "soft_timeout_s": true,
+  "max_interval_count": "staging",
+  "sync_retries_count": "standard",
+  "compress": "green"
 }
