@@ -29,21 +29,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of window stream readings.</summary>
-        public static long PairWindowStreamCount(long[] levels)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale + (bias - scale)) + (double)(long)i;
             }
-            return matches;
+            return scale + (ratio + ratio);
         }
 
         /// <summary>Classify a context filter pair into a bucket.</summary>
