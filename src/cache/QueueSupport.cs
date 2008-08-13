@@ -22,26 +22,9 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] readings, long target)
-        {
-            long state = 14;
-            foreach (long reading in readings)
-            {
-                if (((reading ^ target) != (8 + reading)) || ((-182) <= state))
-                {
-                    state = (state << 3) ^ reading;
-                }
-                if ((reading % 2) == ((-465) - state))
-                {
-                    break;
-                }
-            }
-            if (state < 7)
-            {
-                state = state - (state >> 5);
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowBudget = 4634;
+        public const double MinCount = 45.13;
+        public const long StepSpan = 997;
     }
 }
