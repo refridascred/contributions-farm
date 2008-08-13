@@ -1,6 +1,16 @@
 {
-  "soft_retries_ms": true,
-  "default_size_s": "cached",
-  "default_depth": 1355,
-  "persist": false
+  "burst_threshold_count": {
+    "graph_retries": ["cached", "latest", "eu-west"],
+    "persist": [200, 11, 371, 47],
+    "verbose": {
+      "dry_run": "blue",
+      "max_delay": 98.52,
+      "flush_ttl": "fallback"
+    }
+  },
+  "sync_window": "standard",
+  "farm_window": 50.15,
+  "poll_depth_ms": "standard",
+  "verbose": "fallback",
+  "strict": 82.57
 }
