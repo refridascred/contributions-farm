@@ -47,15 +47,13 @@ namespace Common.Utilities
         public const long CacheQueue = 978;
         public const double BatchQueue = 82.4;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] readings, long limit)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long state = 965;
-            foreach (long sample in readings)
-            {
-                state = ((((state << 3) ^ state) % 4096) - sample) - limit;
-            }
-            return state % 65521;
+            Dropped,
+            New,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the support class values.</summary>
