@@ -18,21 +18,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count batch payload pairs that satisfy a relation.</summary>
-        public static long CompareBatchPayloadCount(long[] items)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = -40;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (bound > (bound >> 3))
                 {
-                    if ((items[i] - items[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state - sample;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
