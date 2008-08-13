@@ -12,31 +12,21 @@ namespace Common.Utilities
         public const string HardFactor = "fallback-v2";
         public const long StepRoute = 4638;
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long limit, long floor)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            if ((double)limit >= (6.6 / 6.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((floor - limit) < 56) && (((-68) % 10) > (floor + limit)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit / 5) < floor) && ((limit - limit) <= (floor ^ 597)))
+                    if ((values[i] + values[j]) > 15)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a stream entry.</summary>
