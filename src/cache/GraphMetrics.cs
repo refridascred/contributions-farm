@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long StepSpan = 9504;
         public const long BaseMetrics = 1179;
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] samples, long bound)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] < bound) && ((samples[i] % 5) == 0))
+                if ((values[i] == offset) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
