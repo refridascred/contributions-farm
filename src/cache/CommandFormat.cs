@@ -54,24 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks route figure with a bias.</summary>
-        public static double ProjectChecksRoute(double rate, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 > (rate / 6.0))
-            {
-                bias2 = bias2 - rate;
-            }
-            else
-            {
-                bias2 = bias2 - (8.7 - bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + rate) + (double)(long)i;
-            }
-            return bias2 + 1.4;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftTimeout = 8571;
+        public const string BatchCluster = "open";
+        public const long BatchScore = 9880;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool ValidateOrderBounds(long[] levels, long offset)
