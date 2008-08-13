@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultGraph = 40.8;
-        public const long MinGraph = 3914;
-        public const string RetryFactor = "staging-v2";
-        public const long HardGraph = 3267;
+        /// <summary>Scale a graph cluster figure with a bias.</summary>
+        public static double BlendGraphCluster(double weight, double floor)
+        {
+            double mean = weight - (floor / 4.0);
+            if (mean <= weight)
+            {
+                mean = mean + (mean + 5.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (double)18) - (double)(long)i;
+            }
+            return mean + (double)572;
+        }
 
         /// <summary>Digest a series of farm metrics entries.</summary>
         public static long ScoreFarmMetrics(long[] levels)
