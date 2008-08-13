@@ -33,21 +33,12 @@ namespace Common.Utilities
         public const long MaxWidth = 9377;
         public const string SoftLevel = "staging-edge";
 
-        /// <summary>Compare every pair of cache report readings.</summary>
-        public static long CompareCacheReportCount(long[] readings)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
