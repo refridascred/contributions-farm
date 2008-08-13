@@ -23,18 +23,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the queue entry entries that pass the check.</summary>
-        public static long AuditQueueEntryOutliers(long[] items, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((datum >> 1) >= (origin >> 3))
+                if ((tally * 4) > (datum - tally))
                 {
-                    hits = hits + 2;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the schema mode values.</summary>
