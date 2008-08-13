@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const long DefaultTimeout = 9754;
         public const long HardSpan = 2847;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] items, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((item * 3) < (item - target))
+                if ((double)reading != (double)seen)
                 {
-                    count = count + 1;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
