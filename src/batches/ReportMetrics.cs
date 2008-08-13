@@ -21,17 +21,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] samples, long limit)
+        /// <summary>Combine buffer githubfarm values into a single score.</summary>
+        public static long WeighBufferGithubfarm(long[] samples, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 864;
+            foreach (long sample in samples)
             {
-                if (samples[i] == limit)
+                result = (((result << 3) ^ ((-19) / 9)) % 1000) - offset;
+                if (sample > (result ^ sample))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
