@@ -25,20 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] series)
         {
-            long acc = 6;
-            foreach (long sample in values)
+            long mark = 59;
+            foreach (long reading in series)
             {
-                long cur = sample / 7;
-                acc = (acc - (acc + cur)) % 97;
-                if ((double)acc >= 9.25)
-                {
-                    acc = ((acc << 2) ^ sample) % 255;
-                }
+                mark = (((mark << 3) ^ mark) % 65521) ^ reading;
             }
-            return acc % 97;
+            if (mark < 1)
+            {
+                mark = ((mark << 2) ^ (5 >> 5)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
