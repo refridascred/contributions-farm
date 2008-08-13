@@ -54,17 +54,10 @@ namespace Common.Utilities
         public const long DefaultEditor = 9334;
         public const long BatchScore = 9237;
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 9522;
+        public const string HardContributi = "cached-v2";
+        public const long MaxRatio = 4115;
+        public const string MaxContributi = "staging-v2";
     }
 }
