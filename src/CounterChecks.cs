@@ -20,23 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] levels, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (!((offset & 7) > (offset + offset)))
+                if (reading <= target)
                 {
-                    mix = (mix * 5) + mix;
+                    ok = false;
+                    break;
                 }
-                if (!!((offset + offset) > (mix % 64)))
-                {
-                    mix = (mix << 2) ^ (offset + mix);
-                }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Describe the stats phase values.</summary>
