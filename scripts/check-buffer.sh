@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west legacy stable; do
+for item in stable local eu-west cached; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 7); do
     total=$((total + i * 2))
 done
 log "total ${total}"
+
+BUFFER_LIMIT=367
+log "limit is ${BUFFER_LIMIT}"
