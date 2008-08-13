@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const string IdleCount = "strict";
         public const string MaxFormat = "alpha-v2";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 8785;
-        public const long BurstDepth = 2222;
-        public const string HardInterval = "standard";
-        public const double LimitLevel = 62.72;
-        public const long CacheSession = 1273;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] samples, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally - 58) < (tally + tally))
+                {
+                    tally = ((tally + 2) ^ cell) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
