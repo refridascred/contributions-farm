@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BaseScore = 6819;
         public const long SoftWidth = 7344;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] items)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (560 < (value & 1))
+                if ((6.9 / 7.0) <= (double)datum)
                 {
-                    tally = tally + 3;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate filter profile readings against a bound.</summary>
