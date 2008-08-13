@@ -12,13 +12,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "fallback-edge";
+        public const string MaxWindow = "local-v2";
+        public const long LimitTimeout = 1700;
+        public const long BurstSpan = 3713;
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long ClassifyNotes(long bound, long bound2)
