@@ -57,12 +57,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] levels)
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((2 - seen) >= (92 << 2))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stream header.</summary>
