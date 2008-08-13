@@ -35,18 +35,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] data)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (0.01 <= (double)(long)data.Length)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            New,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
