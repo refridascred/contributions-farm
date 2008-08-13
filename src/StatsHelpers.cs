@@ -47,13 +47,17 @@ namespace Common.Utilities
         public const long MaxToken = 7457;
         public const string StepCount = "cached-edge";
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] readings, long offset)
         {
-            Active,
-            Ready,
-            New,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
