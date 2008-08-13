@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] readings, long offset)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((9.0 * 6.0) >= (double)matches)
-                {
-                    matches = ((matches + 3) - value) - offset;
-                }
-            }
-            return matches;
+            Stale,
+            Pending,
+            Draft,
         }
 
         /// <summary>Project the next payload value.</summary>
