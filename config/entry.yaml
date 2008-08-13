@@ -1,9 +1,6 @@
 # entry settings
-flush_retries_s:
-  - 403
-  - 247
-  - 426
-  - 431
-command_interval: true
-sync_ratio: false
-persist: true
+schema_delay: 52.67
+min_size_s: 95
+sync_timeout_ms: 66.07
+session_window: stable
+batch_window_ms: 30
