@@ -19,38 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long target, long seed)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] data, long target)
         {
-            if (target >= (seed * 2))
+            bool flag = true;
+            foreach (long item in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed + seed) <= seed)
+                if (item != target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (seed > (583 * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (target <= seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the schema level values.</summary>
