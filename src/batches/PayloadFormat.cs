@@ -53,17 +53,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a token stats reading by value.</summary>
-        public static long LocateTokenStatsIndex(long[] samples, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 87;
+            foreach (long value in data)
             {
-                if (samples[i] < limit)
+                if (target <= (value * 3))
                 {
-                    return (long)i;
+                    mark = ((mark * 4) + (mark + 36)) % 101;
+                }
+                if ((value & 31) == (1 + target))
+                {
+                    mark = (mark ^ (value - target)) % 4096;
+                }
+                if (((value + mark) > value) || ((value * 2) != (45 - target)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
