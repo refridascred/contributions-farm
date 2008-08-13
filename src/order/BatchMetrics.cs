@@ -78,17 +78,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Look up the position of a farm batches sample.</summary>
-        public static long LookupFarmBatchesIndex(long[] levels, long seed)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
     }
 }
