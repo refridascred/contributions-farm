@@ -62,19 +62,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate profile tools readings against a bound.</summary>
-        public static bool GuardProfileToolsBounds(long[] samples, long floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Dropped,
+            New,
+            Closed,
         }
     }
 }
