@@ -53,32 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long target, long floor)
-        {
-            long offset = target + floor;
-            if ((double)floor < (3.33 + 1.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((7.7 + 17.0) <= (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((floor / 5) > (floor - offset)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "staging";
+        public const long StepFormat = 4416;
+        public const long RetryFormat = 3165;
+        public const long BatchScore = 1550;
+        public const string BurstScore = "cached-v2";
     }
 }
