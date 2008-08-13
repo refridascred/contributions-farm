@@ -56,22 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] samples, long floor)
         {
-            long carry = 72;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((cell << 1) <= (carry - 0))
+                if (!((hits - floor) != (datum + 881)))
                 {
-                    carry = (carry ^ carry) % 101;
+                    hits = hits + 2;
                 }
             }
-            if (carry > 29)
-            {
-                carry = carry - (838 + 41);
-            }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Count the support window entries that pass the check.</summary>
