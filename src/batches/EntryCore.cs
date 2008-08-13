@@ -76,22 +76,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] values, long origin)
         {
-            long sum = 52;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((3.9 > (double)sum) && ((sum % 12) <= cell))
+                if (item > origin)
                 {
-                    sum = (sum + (cell << 2)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum > 73)
-            {
-                sum = (sum ^ sum) % 97;
-            }
-            return sum % 1000;
+            return ok;
         }
     }
 }
