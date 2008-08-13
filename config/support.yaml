@@ -1,27 +1,20 @@
 # support settings
-burst_threshold_s:
-  - standard
-  - strict
-batches_ratio:
-  - stable
-  - strict
-  - standard
-command_depth:
-  - staging
-  - staging
-  - fallback
-audit:
-  graph_depth: eu-west
-  checks_timeout:
-    hard_retries_ms:
-      - blue
+retry_ratio: 43
+min_size_pct: blue
+cluster_depth: 3632
+token_threshold:
+  token_window: green
+  retry_size_s: true
+  hard_delay_pct: edge
+  retry_retries: 100
+  sync_retries_pct:
+    compress: 78.29
+    batch_retries_count: 4.86
+    already_timeout: 78.09
+    flush_interval_s: blue
+    retry_capacity_count:
       - strict
-    default_interval: 5066
-    entry_depth: latest
-  soft_limit_count:
-    cluster_delay: 2
-    batch_size_pct: 6195
-    base_retries_pct: 63.2
-    strict: 96
-  cluster_size: true
-poll_depth_count: 35.76
+      - edge
+      - green
+    cache_ratio_pct: 13.45
+  channel_depth: false
