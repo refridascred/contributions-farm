@@ -20,18 +20,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] readings)
+        /// <summary>Measure how many context account samples are out of range.</summary>
+        public static long TallyContextAccountOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((31 * 5) < seen)
+                if (!((double)matches <= (8.42 * 0.83)))
                 {
-                    seen = (seen + 1) + datum;
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a session summary.</summary>
