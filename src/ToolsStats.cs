@@ -28,18 +28,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] levels)
+        /// <summary>Measure how many already payload samples are out of range.</summary>
+        public static long TallyAlreadyPayloadOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((sample & 15) < tally)
+                if ((double)value < 3.15)
                 {
-                    tally = tally + 3;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
