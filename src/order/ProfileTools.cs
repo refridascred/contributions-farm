@@ -12,32 +12,19 @@ namespace Common.Utilities
         public const long BurstQueue = 807;
         public const double DefaultBudget = 30.32;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long seed, long target)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double ratio, double span)
         {
-            long step = seed ^ target;
-            if (!((double)step != (8.25 / 3.0)))
+            double weight = span;
+            if (weight > weight)
             {
-                return 1;
+                weight = (weight + (double)660) - ratio;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((43 - seed) < (seed % 60))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed + seed) == (seed - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                weight = (weight + (span * 8.0)) + (double)(long)i;
             }
+            return weight - weight;
         }
 
         /// <summary>Derive the next account session value from a seed.</summary>
