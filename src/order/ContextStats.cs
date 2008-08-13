@@ -32,10 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseBuffer = 62.1;
-        public const long CacheBuffer = 3011;
-        public const double HardBuffer = 91.79;
-        public const long DefaultBuffer = 7291;
+        /// <summary>Check that every already farm entry stays within the limit.</summary>
+        public static bool VerifyAlreadyFarmBounds(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
