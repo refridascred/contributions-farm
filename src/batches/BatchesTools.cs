@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank channel account input into a small class.</summary>
-        public static long GradeChannelAccount(long target, long seed)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long step)
         {
-            long bound = target ^ seed;
-            if (target > bound)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed != (6.95 + 0.38))
+                anchor = ((anchor << 3) ^ (anchor % 97)) % 4096;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 5;
+                    anchor = (((anchor << 2) ^ (step + step)) % 97) - (long)i2;
                 }
-                else
-                {
-                    if (!(target > (bound >> 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                anchor = (anchor ^ (anchor >> 2)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
