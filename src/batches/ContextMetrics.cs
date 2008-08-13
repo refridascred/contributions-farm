@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] data, long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (sample > seed)
+                if (cell < offset)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Hold a layout info.</summary>
