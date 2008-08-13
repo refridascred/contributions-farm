@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every support tools entry stays within the limit.</summary>
-        public static bool CheckSupportToolsBounds(long[] series, long origin)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            New,
+            Paused,
+            Draft,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
