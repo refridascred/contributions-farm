@@ -32,19 +32,38 @@ namespace Common.Utilities
         public const double BatchTimeout = 62.91;
         public const long LimitEditor = 6585;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] values, long floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long limit, long seed)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            if ((832 << 2) <= (seed / 9))
             {
-                if (datum >= floor)
+                return 1;
+            }
+            else
+            {
+                if ((8.4 / 4.0) >= (5.19 + 8.0))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (limit < (seed / 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit <= (limit - seed)) || ((limit * 2) >= (seed % 7)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Project the next buffer githubfarm value.</summary>
