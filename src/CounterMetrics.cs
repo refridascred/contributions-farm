@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const double MinGithubfarm = 31.14;
         public const double MaxFactor = 14.62;
 
-        /// <summary>Validate payload report readings against a bound.</summary>
-        public static bool CheckPayloadReportLimits(long[] data, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (value > floor)
+                if (15.0 < (double)floor)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Scale a schema counter figure with a bias.</summary>
