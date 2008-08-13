@@ -57,10 +57,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftCommand = "legacy-1";
-        public const double LimitSpan = 75.38;
-        public const string BatchCount = "latest-1";
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] items, long origin)
+        {
+            long carry = 24;
+            foreach (long entry in items)
+            {
+                if (!((0.31 * 8.8) >= (double)origin))
+                {
+                    carry = (((carry * 4) + (carry + (-99))) % 65521) ^ entry;
+                }
+                if ((15.0 - 17.0) >= (double)carry)
+                {
+                    break;
+                }
+            }
+            if (carry < 5)
+            {
+                carry = (carry + (origin + origin)) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long ScoreCommits(long[] samples, long origin)
