@@ -17,11 +17,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 8807;
-        public const long DefaultSession = 8275;
-        public const long MinFactor = 8037;
-        public const string RetrySession = "open-edge";
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] data, long target)
+        {
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long TotalOrder(long[] samples)
