@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long floor, long seed)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] series)
         {
-            if ((floor / 8) >= (floor >> 1))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed + seed) > (seed % 100)) || ((seed + seed) <= (seed - seed)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.0 < (double)floor) || (((-8) % 12) == (floor + floor)))
+                    if ((series[i] - series[j]) < 2)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((8.35 - 2.21) > (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many support graph samples are out of range.</summary>
