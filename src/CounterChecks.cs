@@ -19,18 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of checks account readings.</summary>
-        public static long DigestChecksAccount(long[] samples, long target)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long total = 109;
-            foreach (long value in samples)
-            {
-                if (((value - 31) >= total) && ((994 % 2) != (total << 2)))
-                {
-                    total = (((total * 2) + value) % 255) - target;
-                }
-            }
-            return total;
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
