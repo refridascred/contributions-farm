@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two support metrics measurements.</summary>
-        public static double SmoothSupportMetrics(double scale, double offset)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            double drift = 12.0 - scale;
-            if (drift <= (double)84)
-            {
-                drift = drift + (drift * 3.28);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (offset * 14.0)) - (double)(long)i;
-            }
-            return drift - offset;
+            Paused,
+            Dropped,
+            Pending,
+            Failed,
+            Closed,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
