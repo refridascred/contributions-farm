@@ -23,13 +23,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long floor, long step)
         {
-            Ready,
-            Queued,
-            Closed,
-            Failed,
+            if ((step & 63) > (step & 31))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step - step) >= (881 % 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((floor & 31) <= (floor ^ step)) && (floor >= 14))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(floor <= (floor + floor)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a tools notes reading.</summary>
