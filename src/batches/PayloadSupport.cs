@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Pending,
+            Retry,
+            Ready,
+            New,
+            Draft,
         }
 
         /// <summary>Hold a metric snapshot.</summary>
