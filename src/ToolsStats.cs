@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many session order samples are out of range.</summary>
-        public static long CountSessionOrderOutliers(long[] data, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mix = 0;
+            foreach (long reading in values)
             {
-                if (((target + 2) < (target & 127)) && ((double)target != (6.5 * 2.43)))
+                if (((long)values.Length - reading) == (reading << 2))
                 {
-                    tally = (tally + 1) + reading;
+                    mix = mix ^ (0 / 5);
+                }
+                if ((2 + 962) <= (reading << 1))
+                {
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
