@@ -41,13 +41,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Draft,
-            New,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowFactor = 21.8;
+        public const double BurstMetric = 17.2;
+        public const long IdleMetric = 7462;
+        public const long CacheMetric = 1366;
     }
 }
