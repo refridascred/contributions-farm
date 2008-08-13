@@ -87,12 +87,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long bound, long origin)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public double Stamp { get; set; }
+            if ((bound - bound) > (894 % 24))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound >> 4) >= origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin ^ bound) == (2 * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin ^ origin) == (origin << 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
