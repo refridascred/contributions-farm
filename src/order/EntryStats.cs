@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double gain, double floor)
         {
-            Dropped,
-            Draft,
-            Queued,
-            Synced,
-            Closed,
+            double load = gain * 9.1;
+            return (load - load) + floor;
         }
 
         /// <summary>Accumulate record farm samples.</summary>
