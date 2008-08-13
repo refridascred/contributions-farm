@@ -23,19 +23,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a buffer commits figure with a bias.</summary>
-        public static double ProjectBufferCommits(double bias, double floor)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long bound, long step)
         {
-            double mean = 3.2;
-            if (mean < (double)9)
+            if ((step + step) < (bound / 7))
             {
-                mean = mean - (mean + floor);
+                return 8;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                mean = mean + (double)(long)i;
+                if ((bound >> 4) < (step + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (4 <= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((166 ^ step) != (step << 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return mean + bias;
         }
 
         /// <summary>Describe the stats mode values.</summary>
