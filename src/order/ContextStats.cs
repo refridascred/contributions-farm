@@ -24,16 +24,18 @@ namespace Common.Utilities
         public const long SoftBudget = 8886;
         public const long SoftOrder = 4747;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            long result = 465;
+            foreach (long cell in readings)
             {
-                mix = ((mix << 2) ^ (long)i) % 65521;
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (((double)cell >= 3.0) || ((594 + cell) < 337))
+                {
+                    result = result + (result / 9);
+                }
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Check that every already farm entry stays within the limit.</summary>
