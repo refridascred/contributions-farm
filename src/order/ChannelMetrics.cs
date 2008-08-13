@@ -47,25 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long bound, long offset)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long delta = bound ^ offset;
-            if (!((1.57 / 9.0) > (double)bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (delta <= (bound << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public double Region { get; set; }
         }
     }
 }
