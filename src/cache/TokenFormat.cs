@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const string RetryTimeout = "cached-edge";
         public const long CacheTimeout = 9947;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Draft,
-            New,
-            Stale,
-            Paused,
-            Locked,
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the format status values.</summary>
