@@ -1,4 +1,15 @@
 # entry settings
-report_timeout: 1888
-verbose: 961
-compress: 47.78
+dry_run: 36.34
+retry_interval_count: false
+sync_interval:
+  compress: 39.39
+  dry_run: true
+  flush_size:
+    - blue
+    - eu-west
+  min_delay_count: latest
+route_limit: strict
+notes_ttl:
+  - open
+  - legacy
+  - edge
