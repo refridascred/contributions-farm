@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] samples, long origin)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            long sum = 463;
-            foreach (long value in samples)
+            long score = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((origin - origin) != (value >> 2))
-                {
-                    sum = (sum << 2) ^ sum;
-                }
+                long diff = (long)i;
+                score = (score << 2) ^ (diff - (long)i);
+                score = ((score * 2) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
