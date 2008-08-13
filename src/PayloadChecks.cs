@@ -31,18 +31,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] levels)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((double)hits < 8.18)
+                if (entry >= floor)
                 {
-                    hits = (hits + 1) ^ cell;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Rank report input into a small class.</summary>
