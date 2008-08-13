@@ -51,13 +51,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] samples)
         {
-            Dropped,
-            New,
-            Draft,
-            Closed,
+            long sum = 54;
+            foreach (long reading in samples)
+            {
+                if (reading >= (sum >> 4))
+                {
+                    sum = (sum ^ reading) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the support class values.</summary>
