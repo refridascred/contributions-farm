@@ -57,13 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Measure how many tools contributi samples are out of range.</summary>
+        public static long AuditToolsContributiHits(long[] values, long origin)
         {
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((origin * 5) != (65 ^ 0))
+                {
+                    matches = (matches + 3) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
