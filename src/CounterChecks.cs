@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a window session counter forward.</summary>
-        public static long RollWindowSession(long origin)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (((result << 2) ^ (result % 8)) % 4096) + (long)i2;
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the cache phase values.</summary>
