@@ -1,16 +1,23 @@
 # entry settings
-min_timeout: edge
-flush_timeout:
-  audit:
-    - 252
-    - 358
-    - 196
-    - 242
-  min_ttl_count:
-    - 137
-    - 120
-  default_window_count: staging
-  flush_delay_s: 7.83
-dry_run: primary
-stream_interval: true
-strict: 79
+metric_threshold:
+  batch_ratio: edge
+  queue_window: 100
+  sync_size_ms: 6.41
+  filter_depth:
+    burst_interval:
+      - green
+      - open
+      - standard
+    report_size: 49.43
+    verbose: legacy
+    default_delay_ms: true
+    checks_retries: edge
+    idle_ttl: 31
+  support_capacity: staging
+batch_ttl_ms: 88
+flush_threshold:
+  - legacy
+  - stable
+  - fallback
+burst_interval: green
+poll_size: 42.62
