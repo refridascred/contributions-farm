@@ -15,10 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 3983;
-        public const double StepChannel = 70.35;
-        public const long StepTimeout = 8734;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] readings, long limit)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((((2.4 - 5.74) >= (double)limit) || (count > (count % 2))) || ((double)count >= (9.3 + 7.52)))
+                {
+                    count = (count + 1) - reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
