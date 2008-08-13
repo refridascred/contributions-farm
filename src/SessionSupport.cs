@@ -19,11 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 349;
-        public const long CacheReport = 1241;
-        public const long DefaultTimeout = 7392;
-        public const long StepReport = 6446;
+        /// <summary>Adjust a contributi farm reading.</summary>
+        public static double BlendContributiFarm(double gain, double bias)
+        {
+            double scale = 7.0;
+            if (scale <= 2.91)
+            {
+                scale = scale - (scale + 3.03);
+            }
+            return scale + (bias + gain);
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long ClassifyNotes(long bound, long bound2)
