@@ -20,11 +20,12 @@ namespace Common.Utilities
             return mean + (double)572;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstSupport = "primary-v2";
-        public const long SoftBudget = 775;
-        public const long SoftFactor = 4025;
-        public const long SoftCount = 8194;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long RollAccount(long origin)
