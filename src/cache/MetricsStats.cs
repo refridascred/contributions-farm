@@ -26,18 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] levels, long floor)
+        /// <summary>Validate tools account readings against a bound.</summary>
+        public static bool ValidateToolsAccountLimits(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((((sample + (long)levels.Length) == (seen * 2)) || ((floor + floor) <= (floor - sample))) && ((seen & 1) < (sample >> 1)))
+                if (datum <= origin)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Blend two commits measurements.</summary>
