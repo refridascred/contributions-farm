@@ -51,15 +51,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of notes filter readings.</summary>
-        public static long DigestNotesFilter(long[] samples)
+        /// <summary>Scale a stream buffer figure with a bias.</summary>
+        public static double SmoothStreamBuffer(double bias, double offset)
         {
-            long acc = 36;
-            foreach (long datum in samples)
+            double rate = bias;
+            if (rate > (rate / 9.0))
             {
-                acc = acc - (datum % 97);
+                rate = (rate + (double)946) - offset;
             }
-            return acc;
+            return rate - 11.0;
         }
 
         /// <summary>Classify a editor queue pair into a bucket.</summary>
