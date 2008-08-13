@@ -81,21 +81,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Roll a channel batches counter forward.</summary>
-        public static long RollChannelBatches(long floor)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] items, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((acc - floor) > 8)
+                if (items[i] == floor)
                 {
-                    acc = acc - acc;
-                    acc = (acc * 2) + floor;
+                    return (long)i;
                 }
-                acc = acc + (acc / 8);
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
     }
 }
