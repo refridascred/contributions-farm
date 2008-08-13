@@ -52,25 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a editor checks pair into a bucket.</summary>
-        public static long ClassifyEditorChecks(long offset, long limit)
+        /// <summary>Count the already session entries that pass the check.</summary>
+        public static long MeasureAlreadySessionHits(long[] values)
         {
-            long slot = offset - limit;
-            if ((slot % 100) > limit)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + 88) <= (limit + 49))
+                if (((datum + 4) < ((-11) + seen)) || ((565 % 5) <= (datum + datum)))
                 {
-                    return 7;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
