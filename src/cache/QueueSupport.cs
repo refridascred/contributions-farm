@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxInterval = "cached-1";
-        public const long StepFarm = 9223;
-        public const long CacheFarm = 1770;
-        public const long IdleSize = 5050;
-        public const long BurstFarm = 4347;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((score ^ (long)i) <= (target - score))
+                {
+                    continue;
+                }
+                score = ((score << 2) ^ (score / 8)) % 1000;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
