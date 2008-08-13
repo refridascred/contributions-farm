@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] series)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            long count = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((double)item == (3.89 / 5.0)) && (count < (item & 255))) && ((696 / 9) < count))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] - data[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
