@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] samples, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
