@@ -68,17 +68,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] values, long offset)
+        /// <summary>Audit record session readings against a rule.</summary>
+        public static long AuditRecordSessionHits(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((values[i] >= offset) && ((values[i] % 3) != 0))
+                if ((((datum >> 3) > tally) && ((datum + datum) != (tally ^ tally))) && (datum < (datum * 4)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
