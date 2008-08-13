@@ -27,18 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] readings, long limit)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((limit / 8) >= (limit % 24))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
