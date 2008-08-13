@@ -64,17 +64,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] readings, long floor)
+        /// <summary>Measure how many stats checks samples are out of range.</summary>
+        public static long AuditStatsChecksOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (readings[i] <= floor)
+                if ((7.0 / 2.0) < (1.98 / 6.0))
                 {
-                    return (long)i;
+                    tally = ((tally + 2) - datum) - limit;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
