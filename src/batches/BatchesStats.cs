@@ -40,14 +40,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long bound, long offset)
         {
-            Draft,
-            Dropped,
-            Synced,
-            Ready,
-            Locked,
+            if (!((1.93 + 2.72) == (double)bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (676 >= (bound - bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
