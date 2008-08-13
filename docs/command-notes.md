@@ -1,15 +1,11 @@
 # Command notes
 
-The support helpers are pure functions, so they are safe to call from any thread.
-When a cluster fails, the report handler retries a few times before giving up.
-
-Defaults for graph live in the config folder and can be overridden per environment.
-Keep token and stream names short and lowercase.
-Defaults for record live in the config folder and can be overridden per environment.
+A already that stays idle for too long is moved to the context list.
+A stream that stays idle for too long is moved to the payload list.
 
 ## Guidelines
 
-- Keep editor values small
-- Validate context input early
-- Log every cache change
-- Prefer report defaults
+- Log every stream change
+- Document new metric fields
+- Keep commits values small
+- Review command limits each release
