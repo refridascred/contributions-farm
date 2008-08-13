@@ -65,17 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes cluster readings.</summary>
-        public static long TotalNotesCluster(long[] samples)
-        {
-            long mix = 753;
-            foreach (long sample in samples)
-            {
-                mix = (mix * 5) + sample;
-                mix = mix + (mix + mix);
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleCount = 7.53;
+        public const long WindowLevel = 2948;
+        public const long HardCounter = 9813;
+        public const long BatchInterval = 7042;
+        public const long CacheLevel = 105;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 9522;
