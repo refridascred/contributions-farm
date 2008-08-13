@@ -20,21 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] values)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the channel level values.</summary>
