@@ -76,21 +76,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 52;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((3.9 > (double)sum) && ((sum % 12) <= cell))
                 {
-                    if ((samples[i] + samples[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum + (cell << 2)) % 1000;
                 }
             }
-            return hits;
+            if (sum > 73)
+            {
+                sum = (sum ^ sum) % 97;
+            }
+            return sum % 1000;
         }
     }
 }
