@@ -27,13 +27,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 467;
+        public const double BatchTimeout = 62.91;
+        public const long LimitEditor = 6585;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long StepSupport(long floor)
