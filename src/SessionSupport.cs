@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] data, long step)
+        /// <summary>Check that every order contributi entry stays within the limit.</summary>
+        public static bool VerifyOrderContributiLimits(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if ((reading < step) || ((matches >> 1) >= (step >> 1)))
+                if (entry >= limit)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Adjust a contributi farm reading.</summary>
