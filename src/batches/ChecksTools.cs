@@ -23,24 +23,22 @@ namespace Common.Utilities
         public const string MinWidth = "latest-1";
         public const long MinCount = 986;
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long limit, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] data)
         {
-            if ((bound * 3) > bound)
+            long state = 54;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit + 99) < bound) || (9 > bound))
+                if (((datum % 64) >= (state & 31)) && (state > (629 ^ (long)data.Length)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    state = (state - (datum + 759)) % 1000;
                 }
             }
+            if (state < 9)
+            {
+                state = (state ^ (state - state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
