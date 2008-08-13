@@ -22,14 +22,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] readings, long step)
         {
-            Active,
-            Paused,
-            Locked,
-            Stale,
-            Draft,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((993 - 52) >= step)
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats info.</summary>
