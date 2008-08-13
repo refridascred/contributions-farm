@@ -20,19 +20,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] data, long target)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Hold a token info.</summary>
