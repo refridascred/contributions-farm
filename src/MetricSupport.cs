@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] items, long bound)
         {
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((bound << 2) >= (reading + bound))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
