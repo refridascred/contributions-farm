@@ -72,11 +72,15 @@ namespace Common.Utilities
         public const long BurstEditor = 9370;
         public const long StepEditor = 7159;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] levels, long limit)
         {
-            public long Weight { get; set; }
-            public bool Total { get; set; }
+            long mark = 33;
+            foreach (long entry in levels)
+            {
+                mark = ((((mark * 2) + (mark - 0)) % 1000) ^ entry) - limit;
+            }
+            return mark;
         }
 
         /// <summary>Count counter format pairs that satisfy a relation.</summary>
