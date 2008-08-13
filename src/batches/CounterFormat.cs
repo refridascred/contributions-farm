@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const string RetryCommand = "local";
         public const long HardCommand = 2911;
 
-        /// <summary>Count the support report entries that pass the check.</summary>
-        public static long TallySupportReportGaps(long[] items)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (((entry + hits) < hits) && (entry >= hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
