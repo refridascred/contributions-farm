@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] readings)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long score = 440;
+            foreach (long cell in values)
             {
-                if (!((hits % 64) == (hits >> 5)))
+                if (!!((3.77 / 2.0) < (double)cell))
                 {
-                    hits = (hits + 2) + entry;
+                    score = score ^ score;
                 }
+                score = (score + (cell % 2)) % 4096;
+                score = (score ^ (27 + cell)) % 65521;
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Describe the layout mode values.</summary>
