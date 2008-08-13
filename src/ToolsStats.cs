@@ -42,22 +42,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] values)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long floor)
         {
-            long acc = 81;
-            foreach (long value in values)
+            long score = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (acc <= (acc / 8))
+                if (floor > (floor * 3))
                 {
-                    acc = (((acc * 5) + (7 + acc)) % 101) ^ value;
+                    score = (score - (58 + 655)) % 255;
                 }
+                else
+                {
+                    score = ((score * 5) + (score - floor)) % 101;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            if (acc < 2)
-            {
-                acc = ((acc * 5) + acc) % 97;
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
