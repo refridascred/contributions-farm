@@ -20,23 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            long result = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(((18 * 2) > (total + total)) && ((total + origin) < ((long)i ^ total))))
+                long lane = result;
+                if ((lane ^ result) < (result << 2))
                 {
-                    total = (total ^ (long)i) % 101;
+                    lane = (lane << 2) ^ (217 ^ offset);
                 }
-                if ((570 + origin) != (total << 1))
-                {
-                    total = total - total;
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Check that every window context entry stays within the limit.</summary>
