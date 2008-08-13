@@ -13,16 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] items)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                mix = (mix ^ (251 * 5)) % 1000;
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (((double)datum != (1.0 * 5.0)) && (count < (897 * 5)))
+                {
+                    count = count + 2;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
