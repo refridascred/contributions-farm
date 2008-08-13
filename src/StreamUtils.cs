@@ -54,21 +54,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Grade a cache context value against two limits.</summary>
+        public static long ClassifyCacheContext(long floor, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((floor / 9) != (limit - 719)) && ((205 + floor) <= (7 + limit)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((limit * 2) < (floor * 2)) || ((142 - limit) < (21 - limit)))
                 {
-                    if ((values[i] + values[j]) > 4)
+                    return 3;
+                }
+                else
+                {
+                    if (floor > (limit + floor))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((7.8 * 10.0) != (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate session profile samples.</summary>
