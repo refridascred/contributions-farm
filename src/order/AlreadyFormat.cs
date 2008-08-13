@@ -31,26 +31,18 @@ namespace Common.Utilities
         public const string WindowInterval = "standard-v2";
         public const double MinCount = 23.18;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Audit command support readings against a rule.</summary>
+        public static long TallyCommandSupportMatches(long[] values, long step)
         {
-            long mix = 9;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (((value + value) <= (mix % 3)) || ((mix % 97) >= (value % 60)))
+                if (((double)step < (4.7 - 7.7)) && (step < (value + step)))
                 {
-                    mix = (mix << 2) ^ (value ^ mix);
-                }
-                else
-                {
-                    mix = ((mix * 2) + (mix / 6)) % 4096;
+                    tally = tally + 3;
                 }
             }
-            if (mix < 95)
-            {
-                mix = ((mix << 3) ^ mix) % 1000;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Count filter support pairs that satisfy a relation.</summary>
