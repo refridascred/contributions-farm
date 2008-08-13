@@ -57,21 +57,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] values)
+        /// <summary>Audit report channel readings against a rule.</summary>
+        public static long CountReportChannelOutliers(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (308 >= (item >> 5))
                 {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) + target;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
