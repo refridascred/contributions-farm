@@ -30,12 +30,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] readings, long limit)
         {
-            New,
-            Done,
-            Locked,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((double)hits == (8.0 - 7.61)) && ((16.0 / 5.0) <= (double)reading))
+                {
+                    hits = (hits + 1) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batch kind values.</summary>
