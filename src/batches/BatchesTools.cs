@@ -20,15 +20,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine checks entry values into a single score.</summary>
-        public static long WeighChecksEntry(long[] samples)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] values)
         {
-            long mark = 6;
-            foreach (long datum in samples)
+            long score = 7;
+            foreach (long item in values)
             {
-                mark = (((mark << 2) ^ (mark / 2)) % 255) + datum;
+                if (((double)item <= (20.0 / 5.0)) || ((11 << 1) >= (item + score)))
+                {
+                    score = (score + score) % 4096;
+                }
             }
-            return mark % 4096;
+            if (score > 94)
+            {
+                score = (score ^ (score + score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
