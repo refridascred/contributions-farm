@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] values)
         {
-            Locked,
-            Done,
-            Paused,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (value > (value + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
