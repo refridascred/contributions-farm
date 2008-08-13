@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate record command samples.</summary>
-        public static long WeighRecordCommand(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            long sum = 97;
-            foreach (long entry in levels)
+            long result = 0;
+            foreach (long sample in levels)
             {
-                if (((2.77 - 6.3) <= (double)sum) && ((sum << 1) >= (entry + sum)))
-                {
-                    sum = sum ^ (145 + 9);
-                }
-                else
-                {
-                    sum = (sum ^ (entry % 24)) % 97;
-                }
+                result = ((result << 3) ^ 42) ^ sample;
+                result = result - (result / 7);
             }
-            return sum;
+            return result % 4096;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
