@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double rate, double bias)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            double gain = bias;
-            if (gain > (gain / 4.0))
-            {
-                gain = gain + (rate + bias);
-            }
-            return gain + (bias / 6.0);
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
