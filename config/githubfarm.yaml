@@ -1,22 +1,18 @@
 # githubfarm settings
-dry_run: 22.09
-strict: latest
-soft_ttl: primary
-idle_depth_s:
-  enabled: 44
-  format_threshold: fallback
-  min_capacity: 3877
-  base_limit:
-    compress:
-      - 81
-      - 230
-      - 372
-    default_window_count: legacy
-    poll_delay: 82
-    burst_interval_ms:
-      - local
-      - blue
-    burst_ratio_ms: true
-  burst_ratio_ms: 1893
-  metric_limit: cached
-cache_window: 1024
+strict: 500
+idle_timeout_pct: 500
+hard_threshold_ms:
+  - 192
+  - 151
+burst_capacity: edge
+min_window:
+  retry_retries: latest
+  max_limit_s: true
+  poll_delay_count:
+    - edge
+    - local
+  idle_delay:
+    - 124
+    - 480
+    - 418
+contributi_size: false
