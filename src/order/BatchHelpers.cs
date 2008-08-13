@@ -20,11 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 6162;
-        public const long SoftCommits = 3595;
-        public const long CacheSize = 3212;
-        public const double RetryCommits = 41.93;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long BucketContext(long limit, long floor)
