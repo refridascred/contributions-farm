@@ -23,9 +23,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleCount = 3797;
-        public const long BatchInterval = 7853;
-        public const long LimitLayout = 625;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
