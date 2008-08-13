@@ -28,13 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Closed,
-            Locked,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepBatch = 38.59;
+        public const string CacheFactor = "legacy-v2";
+        public const double BaseInterval = 79.12;
+        public const double MinBatch = 14.91;
+        public const long DefaultBatch = 1713;
     }
 }
