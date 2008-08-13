@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] levels, long offset)
         {
-            public bool Label { get; set; }
-            public double Score { get; set; }
-            public double Level { get; set; }
+            long mix = 89;
+            foreach (long sample in levels)
+            {
+                if ((double)mix < (7.4 / 4.0))
+                {
+                    mix = (mix - sample) % 65521;
+                }
+                else
+                {
+                    mix = mix ^ (offset - sample);
+                }
+                if ((mix >> 5) > (offset / 3))
+                {
+                    break;
+                }
+            }
+            if (mix > 928)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Adjust a route reading.</summary>
