@@ -1,4 +1,8 @@
 # entry settings
-strict: latest
-retry_interval_ms: false
-sync_depth_pct: true
+cache_window: fallback
+max_threshold: cached
+compress: false
+idle_window_ms:
+  - staging
+  - standard
+record_capacity: green
