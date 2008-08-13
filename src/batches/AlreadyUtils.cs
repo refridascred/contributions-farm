@@ -15,19 +15,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long origin)
         {
-            long mix = -72;
-            foreach (long reading in samples)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                mix = ((mix << 3) ^ (reading & 15)) % 97;
+                mix = (mix << 3) ^ mix;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            if (mix > 31)
-            {
-                mix = mix ^ (mix / 7);
-            }
-            return mix % 97;
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
