@@ -16,19 +16,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] series, long floor)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long bound, long limit)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            if ((0.2 - 0.8) < (double)limit)
             {
-                if (datum >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((limit >> 1) == (bound - limit))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (bound <= ((-743) % 64))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
