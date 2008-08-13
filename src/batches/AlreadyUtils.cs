@@ -27,17 +27,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a counter channel sample.</summary>
-        public static long LookupCounterChannelIndex(long[] items, long target)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (items[i] > target)
+                if (item <= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
