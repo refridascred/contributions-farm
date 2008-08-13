@@ -27,31 +27,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Rank cache queue input into a small class.</summary>
-        public static long BucketCacheQueue(long limit, long offset)
+        /// <summary>Count cluster githubfarm pairs that satisfy a relation.</summary>
+        public static long PairClusterGithubfarmCount(long[] data)
         {
-            if ((double)offset < (9.78 - 18.0))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset % 8) < (offset + offset))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit + offset) > limit)
+                    if ((data[i] + data[j]) != 11)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
