@@ -1,5 +1,5 @@
 {
-  "batch_ratio": true,
-  "dry_run": 15.26,
-  "session_threshold": "latest"
+  "min_ttl_s": 54.51,
+  "account_ratio": "primary",
+  "default_interval_ms": ["local", "green"]
 }
