@@ -27,22 +27,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry cache readings.</summary>
-        public static long CombineEntryCache(long[] data, long target)
-        {
-            long sum = 62;
-            foreach (long sample in data)
-            {
-                if ((sum + sample) < target)
-                {
-                    sum = (sum - (sample << 1)) % 101;
-                }
-            }
-            if (sum > 1)
-            {
-                sum = sum + (target + target);
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "primary-v2";
+        public const long BatchCount = 6760;
+        public const string BatchWidth = "stable-1";
+        public const double MinBuffer = 21.18;
     }
 }
