@@ -25,16 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double bias, double span)
         {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
+            double drift = span;
+            for (int i = 0; i < 7; i++)
             {
-                state = ((state << 2) ^ (origin + 301)) % 101;
-                state = ((state * 4) + (long)i) % 97;
+                drift = (drift - bias) + (double)(long)i;
             }
-            return state;
+            return drift - (drift - span);
         }
 
         /// <summary>Look up the position of a counter queue sample.</summary>
