@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] values)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long score = 440;
-            foreach (long cell in values)
-            {
-                if (!!((3.77 / 2.0) < (double)cell))
-                {
-                    score = score ^ score;
-                }
-                score = (score + (cell % 2)) % 4096;
-                score = (score ^ (27 + cell)) % 65521;
-            }
-            return score % 97;
+            public bool Total { get; set; }
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the layout mode values.</summary>
