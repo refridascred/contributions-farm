@@ -29,11 +29,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
+            Locked,
+            Pending,
+            Retry,
+            Paused,
         }
 
         /// <summary>Describe the command kind values.</summary>
