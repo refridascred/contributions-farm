@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit report stream readings against a rule.</summary>
-        public static long CountReportStreamGaps(long[] levels, long origin)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] items)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8 >= (57 - count)) || ((origin > (reading >> 1)) || ((reading % 60) < count)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
+                    if ((items[i] - items[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
