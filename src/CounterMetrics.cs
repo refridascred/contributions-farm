@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] series, long floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (15.0 < (double)floor)
+                if (sample > seed)
                 {
-                    matches = (matches + 1) + reading;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
