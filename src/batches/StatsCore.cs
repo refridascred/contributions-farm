@@ -54,11 +54,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long bound)
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
+            long state = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 5) + (5 + state)) % 4096;
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the window phase values.</summary>
