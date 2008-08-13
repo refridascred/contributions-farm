@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] levels, long seed)
         {
-            Pending,
-            Synced,
-            Dropped,
-            Ready,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (count > (count & 1))
+                {
+                    count = ((count + 1) + item) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the schema state values.</summary>
