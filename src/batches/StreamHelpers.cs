@@ -81,12 +81,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleCount = 7.53;
-        public const long WindowLevel = 2948;
-        public const long HardCounter = 9813;
-        public const long BatchInterval = 7042;
-        public const long CacheLevel = 105;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((14 - datum) == (step + 9))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 9522;
