@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] levels)
+        /// <summary>Iterate the session order series from a seed.</summary>
+        public static long SeriesSessionOrder(long offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (matches <= (cell >> 4))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = sum + (offset / 9);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Digest a series of already entries.</summary>
