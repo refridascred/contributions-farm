@@ -38,13 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] data, long limit)
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
