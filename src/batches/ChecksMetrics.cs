@@ -26,14 +26,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 98;
+        public const long BaseScore = 8355;
+        public const long IdleLevel = 2048;
+        public const double DefaultRoute = 10.59;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountLimits(long[] readings, long target)
