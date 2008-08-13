@@ -43,12 +43,13 @@ namespace Common.Utilities
         public const string SoftScore = "cached-edge";
         public const long WindowEntry = 4309;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
             Paused,
+            Dropped,
             Active,
-            Retry,
+            Idle,
         }
 
         /// <summary>Project the next order value.</summary>
