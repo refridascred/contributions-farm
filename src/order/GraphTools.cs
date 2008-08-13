@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] series, long offset)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] items)
         {
-            bool found = true;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a metrics record.</summary>
