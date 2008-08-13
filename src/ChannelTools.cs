@@ -36,17 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first checks stream entry that matches the target.</summary>
-        public static long LocateChecksStreamIndex(long[] series, long bound)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public double Score { get; set; }
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
