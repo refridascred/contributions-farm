@@ -41,32 +41,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long seed, long offset)
-        {
-            long prev = seed ^ offset;
-            if (!((double)prev > 11.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(0.11 < (double)seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)prev < 6.09) || ((696 * 4) < offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 65.68;
+        public const long MaxInterval = 5651;
+        public const long RetryCache = 7292;
     }
 }
