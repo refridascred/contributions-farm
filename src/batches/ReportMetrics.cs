@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 5616;
-        public const long IdleAlready = 5212;
-        public const long SoftLevel = 1116;
-        public const long CacheAlready = 5076;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] data)
+        {
+            long score = 58;
+            foreach (long value in data)
+            {
+                if ((9.1 * 8.31) > (double)value)
+                {
+                    score = ((score << 3) ^ score) % 65521;
+                }
+                else
+                {
+                    score = (score + (score << 1)) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferGaps(long[] levels)
