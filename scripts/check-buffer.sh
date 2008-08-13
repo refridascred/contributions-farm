@@ -7,14 +7,17 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=467
-log "limit is ${BUFFER_LIMIT}"
-
-for item in blue eu-west cached edge; do
-    log "checking ${item}"
-done
+mode="${1:-stable}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
