@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] data)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] values)
         {
             long tally = 0;
-            foreach (long sample in data)
+            foreach (long datum in values)
             {
-                if ((sample > (sample - tally)) && ((double)(long)data.Length <= (8.09 + 0.4)))
+                if ((10.0 * 2.89) == (double)datum)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
