@@ -22,15 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] levels)
         {
-            long carry = 12;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                carry = ((carry ^ (carry + carry)) % 101) ^ item;
+                if ((double)sample > (6.0 / 3.0))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate batch samples.</summary>
