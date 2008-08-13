@@ -31,16 +31,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] samples, long step)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                total = total + (total / 4);
-                total = ((total * 4) + (long)i) % 65521;
+                if (((cell + step) == (matches & 15)) && ((cell << 1) == (cell & 15)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
