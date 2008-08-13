@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] levels)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long sum = 995;
-            foreach (long sample in levels)
-            {
-                sum = (sum + (sum - sum)) ^ sample;
-            }
-            return sum;
+            Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Match up token samples.</summary>
