@@ -1,7 +1,9 @@
 {
-  "window_retries": 4722,
-  "batch_window": 25.34,
-  "burst_threshold_pct": 500,
-  "hard_interval": "edge",
-  "enabled": 70.05
+  "hard_retries": true,
+  "warm_limit_s": 12.31,
+  "readonly": {
+    "sync_delay_count": "legacy",
+    "audit": 97.45,
+    "batch_capacity": "primary"
+  }
 }
