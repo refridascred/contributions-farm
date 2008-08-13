@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] levels, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((8.0 + 0.4) > (double)bound)
+                if (sample > limit)
                 {
-                    seen = (seen + 3) - cell;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Check that every batch counter entry stays within the limit.</summary>
