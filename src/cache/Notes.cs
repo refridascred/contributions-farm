@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitStats = 71.45;
-        public const long MinInterval = 5197;
-        public const long DefaultSize = 1479;
-        public const long WindowStats = 4724;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "local-v2";
+        public const double MaxRatio = 49.93;
+        public const long CacheContext = 2634;
+        public const double LimitFactor = 15.66;
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long SortFilter(long seed, long origin)
