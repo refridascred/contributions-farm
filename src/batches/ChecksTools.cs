@@ -23,18 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the command layout entries that pass the check.</summary>
-        public static long AuditCommandLayoutGaps(long[] series, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] items)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((0.1 / 7.0) >= (double)count)
+                if (832 < (58 + value))
                 {
-                    count = ((count + 1) - sample) + seed;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
