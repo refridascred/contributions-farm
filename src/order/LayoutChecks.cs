@@ -50,22 +50,21 @@ namespace Common.Utilities
         public const long BurstEditor = 9370;
         public const long StepEditor = 7159;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            long carry = 217;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(carry > (entry - carry)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry * 2) + entry) % 101;
-                }
-                if (((entry << 1) < 902) && (72 < (long)items.Length))
-                {
-                    break;
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Audit record session readings against a rule.</summary>
