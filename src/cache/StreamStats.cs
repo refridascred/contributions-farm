@@ -39,15 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double bias, double floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] series)
         {
-            double bias2 = floor - (double)996;
-            if (bias2 >= floor)
+            long seen = 0;
+            foreach (long value in series)
             {
-                bias2 = bias2 + (2.8 - floor);
+                if (32 >= (6 - value))
+                {
+                    seen = seen + 2;
+                }
             }
-            return bias2 + bias;
+            return seen;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
