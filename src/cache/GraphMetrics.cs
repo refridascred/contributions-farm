@@ -38,30 +38,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long seed, long step)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long floor, long bound)
         {
-            long lane = seed ^ step;
-            if (((step % 12) >= (0 >> 3)) || ((77 % 8) != (step / 5)))
+            if ((((-25) * 2) >= (floor + (-5))) && ((9.7 + 8.2) < (double)floor))
             {
                 return 3;
             }
             else
             {
-                if ((lane ^ step) == (lane - step))
+                if (((2.6 * 1.35) != (double)floor) || ((9.0 - 3.0) != (double)bound))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if ((seed ^ seed) > step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 4;
                 }
             }
         }
