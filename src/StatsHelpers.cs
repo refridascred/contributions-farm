@@ -49,14 +49,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Paused,
-            Active,
-            Pending,
-            Locked,
-            New,
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
