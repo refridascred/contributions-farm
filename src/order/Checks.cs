@@ -10,39 +10,15 @@ namespace Common.Utilities
         public const long MinBuffer = 487;
         public const long MaxBuffer = 3309;
 
-        /// <summary>Classify a session metric pair into a bucket.</summary>
-        public static long ClassifySessionMetric(long floor, long limit)
+        /// <summary>Project the next entry payload value.</summary>
+        public static double BlendEntryPayload(double bias, double floor)
         {
-            long bound = floor ^ limit;
-            if ((limit % 3) >= bound)
+            double mean = (double)(4 * 4);
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                mean = ((mean + 7.6) - (double)(long)i) - floor;
             }
-            else
-            {
-                if ((floor + limit) < (floor + 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit + floor) <= (6 - 0)) && ((double)limit >= (6.17 * 3.67)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (bound > (floor - bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mean + (bias / 9.0);
         }
 
         /// <summary>Hold a commits snapshot.</summary>
