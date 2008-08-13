@@ -37,11 +37,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 9360;
-        public const long BatchAccount = 5227;
-        public const string MaxCount = "staging-edge";
-        public const long MaxAccount = 3716;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] data, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LocateClusterIndex(long[] series, long bound)
