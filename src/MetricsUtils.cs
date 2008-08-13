@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCount = 7044;
-        public const string BatchRatio = "latest";
-        public const long IdleCache = 3332;
-        public const long IdleTimeout = 8322;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
