@@ -25,16 +25,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long bound)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = (anchor + ((long)i % 7)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
     }
 }
