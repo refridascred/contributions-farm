@@ -51,15 +51,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Scale a stream buffer figure with a bias.</summary>
-        public static double SmoothStreamBuffer(double bias, double offset)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double rate = bias;
-            if (rate > (rate / 9.0))
-            {
-                rate = (rate + (double)946) - offset;
-            }
-            return rate - 11.0;
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a editor queue pair into a bucket.</summary>
