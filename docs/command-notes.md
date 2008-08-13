@@ -1,15 +1,12 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Run the channel check before changing any entry limits.
-Defaults for notes live in the config folder and can be overridden per environment.
-
-A metrics that stays idle for too long is moved to the farm list.
-A entry that stays idle for too long is moved to the record list.
+Run the checks check before changing any tools limits.
+Use queue settings to tune how often commits data is refreshed.
+The stats report groups every already by order.
 
 ## Guidelines
 
-- Log every editor change
-- Document new queue fields
-- Validate cache input early
-- Prefer counter defaults
+- Review layout limits each release
+- Prefer report defaults
+- Document new tools fields
+- Keep metric values small
