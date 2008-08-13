@@ -14,22 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] values)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long score = 7;
-            foreach (long item in values)
-            {
-                if (((double)item <= (20.0 / 5.0)) || ((11 << 1) >= (item + score)))
-                {
-                    score = (score + score) % 4096;
-                }
-            }
-            if (score > 94)
-            {
-                score = (score ^ (score + score)) % 97;
-            }
-            return score;
+            Retry,
+            Closed,
+            Active,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
