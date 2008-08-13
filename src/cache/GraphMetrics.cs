@@ -23,25 +23,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long limit, long bound)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long gap = limit - bound;
-            if ((double)limit != (1.6 + 2.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)gap > 4.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Stale,
+            Paused,
+            Done,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
