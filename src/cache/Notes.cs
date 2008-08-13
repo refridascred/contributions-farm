@@ -43,11 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] levels, long floor)
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
