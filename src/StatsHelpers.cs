@@ -14,26 +14,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a githubfarm cluster value against two limits.</summary>
-        public static long GradeGithubfarmCluster(long seed, long bound)
-        {
-            long bound2 = seed + bound;
-            if (!((bound2 ^ seed) != (bound2 - 61)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)bound < (6.8 / 7.0)) && (bound2 <= (seed % 7)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultScore = 1371;
+        public const long BaseFormat = 5246;
+        public const long MinFormat = 9759;
+        public const string StepBudget = "stable-1";
+        public const long MinInterval = 189;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long WeighWindow(long[] samples)
