@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] samples, long offset)
         {
-            long state = 3;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading * 3) <= (state >> 3))
+                if (samples[i] == offset)
                 {
-                    state = ((state * 2) + (reading << 1)) % 255;
-                    continue;
+                    return (long)i;
                 }
-                state = (state << 3) ^ state;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
