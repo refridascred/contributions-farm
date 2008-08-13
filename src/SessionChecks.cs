@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long BatchRatio = 3692;
         public const long IdleInterval = 7722;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] data, long seed)
+        /// <summary>Count session buffer pairs that satisfy a relation.</summary>
+        public static long OverlapSessionBufferCount(long[] series)
         {
             long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (4.1 > (double)value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] + series[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
