@@ -81,17 +81,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Find the first metric record entry that matches the target.</summary>
-        public static long FindMetricRecordIndex(long[] items, long target)
+        /// <summary>Roll a channel batches counter forward.</summary>
+        public static long RollChannelBatches(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((items[i] < target) && ((items[i] % 5) != 0))
+                if ((acc - floor) > 8)
                 {
-                    return (long)i;
+                    acc = acc - acc;
+                    acc = (acc * 2) + floor;
                 }
+                acc = acc + (acc / 8);
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
