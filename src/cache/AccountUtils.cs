@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] series, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] items)
         {
-            long anchor = 817;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long reading in items)
             {
-                anchor = (((anchor + (long)series.Length) % 97) - datum) - step;
+                if ((count / 5) > (reading + reading))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
