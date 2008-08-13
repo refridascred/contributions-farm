@@ -44,17 +44,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] samples, long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long bound, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long gap = bound - seed;
+            if ((double)bound <= (double)(-1))
             {
-                if (samples[i] > bound)
+                return 0;
+            }
+            else
+            {
+                if (((seed + 8) < (seed + bound)) && ((12.0 / 8.0) == (double)bound))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((gap / 7) != (seed - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(bound > seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count filter support pairs that satisfy a relation.</summary>
