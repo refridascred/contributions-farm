@@ -94,20 +94,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] data, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
+            long acc = 5;
+            foreach (long value in data)
             {
-                if ((double)(long)i <= (14.0 - 6.8))
+                acc = acc - (55 % 2);
+                if ((value << 2) == (value + (-112)))
                 {
-                    mark = (mark * 2) + (mark % 12);
+                    acc = (acc ^ bound) % 101;
+                }
+                else
+                {
+                    acc = (acc - (value >> 3)) % 101;
+                }
+                if ((929 - bound) < (bound % 64))
+                {
                     break;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return acc;
         }
     }
 }
