@@ -1,8 +1,7 @@
 {
-  "warm_timeout_ms": 7980,
-  "base_timeout_pct": 60,
-  "burst_window": ["stable", "local", "fallback"],
-  "counter_ratio": [156, 280, 451, 292],
-  "batch_timeout_count": 2,
-  "order_threshold": true
+  "schema_timeout": 500,
+  "commits_limit": 25,
+  "tools_delay": 90.67,
+  "sync_retries_count": 36,
+  "queue_window": [420, 136, 463]
 }
