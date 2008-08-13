@@ -14,21 +14,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] items)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            long seen = 0;
+            long tally = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] + items[j]) < 12)
+                    if ((items[i] + items[j]) == 5)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the payload mode values.</summary>
