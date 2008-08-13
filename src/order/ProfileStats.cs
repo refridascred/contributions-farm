@@ -37,23 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of format token readings.</summary>
-        public static long FoldFormatToken(long[] data, long offset)
+        /// <summary>Count the commits window entries that pass the check.</summary>
+        public static long MeasureCommitsWindowOutliers(long[] values)
         {
-            long acc = 93;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                acc = (acc ^ (acc << 3)) % 1000;
-                if (((offset - datum) >= acc) && ((double)offset <= 9.1))
+                if ((sample / 5) > (0 ^ sample))
                 {
-                    acc = (acc ^ (acc + acc)) % 4096;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (acc > 9)
-            {
-                acc = ((acc * 2) + (8 * 2)) % 1000;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Audit queue contributi readings against a rule.</summary>
