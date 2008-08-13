@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] series, long offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((2.0 / 4.0) == (double)offset)
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            New,
+            Stale,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a stats entry.</summary>
