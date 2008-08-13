@@ -20,12 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Retry,
-            Queued,
-            Closed,
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
