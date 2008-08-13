@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a githubfarm format reading by value.</summary>
-        public static long FindGithubfarmFormatIndex(long[] readings, long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 382;
+            foreach (long item in samples)
             {
-                if (readings[i] < step)
+                if ((carry + limit) < (item + carry))
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ (57 + carry);
+                }
+                if ((carry * 5) >= (item - limit))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the farm state values.</summary>
