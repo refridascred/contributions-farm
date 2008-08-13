@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const double BatchLevel = 80.56;
         public const long SoftLevel = 1469;
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double gain, double floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] data, long offset)
         {
-            double weight = gain;
-            if (weight >= (double)2)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                weight = (weight - weight) + floor;
+                if (cell < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (8.6 / 7.0)) - (double)(long)i;
-            }
-            return weight + gain;
+            return ready;
         }
 
         /// <summary>Project the next buffer stream value.</summary>
