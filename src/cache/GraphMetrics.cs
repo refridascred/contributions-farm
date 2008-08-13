@@ -42,24 +42,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long floor, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] samples, long limit)
         {
-            if ((((-25) * 2) >= (floor + (-5))) && ((9.7 + 8.2) < (double)floor))
+            bool valid = true;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((2.6 * 1.35) != (double)floor) || ((9.0 - 3.0) != (double)bound))
+                if (value < limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Combine order values into a single score.</summary>
