@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of checks record readings.</summary>
-        public static long DigestChecksRecord(long[] items)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            long acc = 552;
-            foreach (long item in items)
+            long mark = 7;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    acc = (((acc << 3) ^ (acc ^ item)) % 65521) + (long)i;
-                }
-                if ((acc / 2) == (acc ^ 2))
-                {
-                    acc = ((acc * 5) + ((long)items.Length / 4)) % 65521;
-                }
+                mark = (((mark << 3) ^ 214) % 101) - entry;
             }
-            if (acc < 5)
+            if (mark > 773)
             {
-                acc = ((acc * 4) + acc) % 101;
+                mark = (mark * 2) + (mark * 4);
             }
-            return acc % 1000;
+            return mark;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
