@@ -54,11 +54,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepAlready = 79.49;
-        public const long MaxAlready = 4913;
-        public const long CacheTimeout = 1857;
-        public const string BurstInterval = "open-1";
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (reading < matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long SeekCacheIndex(long[] values, long bound)
