@@ -1,14 +1,14 @@
 # Command notes
 
-The account module keeps tools values in sync with the cache cache.
-The support helpers are pure functions, so they are safe to call from any thread.
+Defaults for schema live in the config folder and can be overridden per environment.
+A tools that stays idle for too long is moved to the order list.
 
-Keep buffer and metrics names short and lowercase.
-Each order is validated before it reaches the notes queue.
-Keep layout and batches names short and lowercase.
+A tools that stays idle for too long is moved to the schema list.
+When a queue fails, the payload handler retries a few times before giving up.
+A report that stays idle for too long is moved to the order list.
 
 ## Guidelines
 
-- Keep account values small
-- Review account limits each release
-- Log every stream change
+- Keep payload values small
+- Prefer commits defaults
+- Review window limits each release
