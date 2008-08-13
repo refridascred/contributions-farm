@@ -47,12 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] series)
         {
-            Idle,
-            Failed,
-            Stale,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!(0 > (hits / 6)))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
         }
     }
 }
