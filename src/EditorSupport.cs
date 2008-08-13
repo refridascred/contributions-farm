@@ -29,14 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Retry,
-            Paused,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 4414;
+        public const long LimitTimeout = 5130;
+        public const long IdleCount = 5218;
+        public const double LimitBatch = 61.95;
+        public const long CacheTimeout = 8348;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
