@@ -36,21 +36,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 32;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell >> 3) != (acc * 4))
                 {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc << 3) ^ (15 & 31);
+                }
+                else
+                {
+                    acc = acc ^ (acc << 2);
                 }
             }
-            return count;
+            if (acc > 41)
+            {
+                acc = acc + (7 - (-100));
+            }
+            return acc;
         }
     }
 }
