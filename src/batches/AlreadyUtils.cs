@@ -17,14 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Validate queue graph readings against a bound.</summary>
+        public static bool ValidateQueueGraphRange(long[] data, long offset)
         {
-            Active,
-            Retry,
-            New,
-            Queued,
-            Paused,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the contributi state values.</summary>
