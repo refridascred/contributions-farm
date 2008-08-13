@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const long StepCount = 3886;
         public const long IdleRoute = 8150;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 3967;
-        public const long MinDepth = 1625;
-        public const long SoftStats = 906;
-        public const string WindowSpan = "local-1";
-        public const double CacheStats = 67.99;
+        /// <summary>Derive the next stream contributi value from a seed.</summary>
+        public static long RollStreamContributi(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)state != (8.0 + 3.1))
+                {
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountMatches(long[] values, long floor)
