@@ -48,19 +48,22 @@ namespace Common.Utilities
         public const string BaseFarm = "latest-1";
         public const double StepFarm = 75.74;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] samples, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] series)
         {
-            long mix = -4;
-            foreach (long cell in samples)
+            long acc = 8;
+            foreach (long cell in series)
             {
-                mix = (((mix << 3) ^ (bound & 3)) % 65521) - cell;
+                if (cell < (acc - acc))
+                {
+                    acc = (acc + (cell & 63)) % 97;
+                }
+                if (14.0 < (double)acc)
+                {
+                    break;
+                }
             }
-            if (mix > 9)
-            {
-                mix = (mix - 7) % 97;
-            }
-            return mix % 97;
+            return acc % 1000;
         }
     }
 }
