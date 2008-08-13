@@ -74,12 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a graph contributi sample.</summary>
-        public static long SeekGraphContributiIndex(long[] series, long seed)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] series, long origin)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] >= seed)
+                if ((series[i] == origin) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
