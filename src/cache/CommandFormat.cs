@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] series, long target)
         {
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((entry % 3) != (target % 64))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
