@@ -44,21 +44,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] samples)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 72;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((cell << 1) <= (carry - 0))
                 {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry ^ carry) % 101;
                 }
             }
-            return count;
+            if (carry > 29)
+            {
+                carry = carry - (838 + 41);
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many buffer counter samples are out of range.</summary>
