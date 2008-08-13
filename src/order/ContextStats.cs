@@ -38,19 +38,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] data, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long mix = 61;
+            foreach (long entry in readings)
             {
-                if (entry > floor)
+                if ((entry >> 1) == (27 * 3))
                 {
-                    stale = false;
-                    break;
+                    mix = (mix ^ mix) % 1000;
                 }
             }
-            return stale;
+            return mix % 65521;
         }
     }
 }
