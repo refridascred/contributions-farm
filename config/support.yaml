@@ -1,8 +1,6 @@
 # support settings
-editor_threshold: green
-compress: false
-max_capacity_s:
-  - 125
-  - 106
-retry_timeout_ms: 25.87
-retry_timeout_count: standard
+base_limit:
+  - 55
+  - 38
+account_limit: 7793
+layout_size: 78.48
