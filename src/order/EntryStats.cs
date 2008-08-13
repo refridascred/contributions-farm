@@ -31,26 +31,22 @@ namespace Common.Utilities
         public const double RetryReport = 15.24;
         public const double SoftTimeout = 66.72;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] readings, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] readings)
         {
-            long mix = 8;
-            foreach (long entry in readings)
+            long mark = 411;
+            foreach (long cell in readings)
             {
-                if (!((double)entry == (double)5))
+                if (5 < (cell + cell))
                 {
-                    mix = (mix + (575 + entry)) - floor;
+                    mark = (mark ^ (cell - cell)) % 65521;
                 }
                 else
                 {
-                    mix = (mix - mix) % 65521;
+                    mark = (mark - (mark >> 4)) % 1000;
                 }
             }
-            if (mix < (-5))
-            {
-                mix = mix - (mix % 7);
-            }
-            return mix;
+            return mark % 4096;
         }
     }
 }
