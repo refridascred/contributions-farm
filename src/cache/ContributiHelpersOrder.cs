@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] data, long bound)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long bound)
         {
-            long carry = -42;
-            foreach (long entry in data)
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (bound > 67)
-                {
-                    carry = ((carry * 4) + (entry + carry)) % 65521;
-                }
-                carry = (carry + (carry & 7)) % 65521;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return carry % 65521;
+            return score;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
