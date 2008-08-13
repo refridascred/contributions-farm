@@ -1,19 +1,5 @@
 {
-  "min_depth": "fallback",
-  "cache_threshold_ms": "cached",
-  "idle_window_count": [449, 291, 317, 459],
-  "hard_limit_pct": 250,
-  "max_depth_pct": {
-    "dry_run": false,
-    "commits_threshold": "local",
-    "farm_capacity": "green",
-    "hard_interval": 60,
-    "soft_size_ms": {
-      "idle_depth_count": 48.93,
-      "batch_limit_s": "standard",
-      "payload_limit": ["blue", "latest", "primary"],
-      "githubfarm_delay": 767
-    }
-  },
-  "idle_capacity": "blue"
+  "min_retries_ms": 20.29,
+  "account_window": false,
+  "idle_limit_s": 50.45
 }
