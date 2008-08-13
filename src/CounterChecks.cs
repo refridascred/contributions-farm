@@ -22,12 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Synced,
-            Ready,
-            Stale,
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
