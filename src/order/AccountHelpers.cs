@@ -39,15 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] values, long floor)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] values)
         {
             long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3 + (-8)) >= reading)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) - floor;
+                    if ((values[i] + values[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
