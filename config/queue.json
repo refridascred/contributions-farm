@@ -1,8 +1,9 @@
 {
-  "retry_ttl_count": "stable",
-  "counter_delay": 93,
-  "channel_ratio": false,
-  "compress": 93.27,
-  "burst_ttl_count": [43, 444, 173],
-  "report_ratio": "edge"
+  "warm_retries_pct": {
+    "payload_timeout": [2, 220],
+    "poll_retries_ms": "open",
+    "compress": 69
+  },
+  "format_size": 60,
+  "retry_delay_count": 78.43
 }
