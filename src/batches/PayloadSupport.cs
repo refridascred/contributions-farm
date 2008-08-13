@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            Pending,
             Retry,
-            Ready,
-            New,
-            Draft,
+            Active,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
