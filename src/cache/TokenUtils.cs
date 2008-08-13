@@ -35,12 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            Closed,
+            Pending,
+            Locked,
         }
     }
 }
