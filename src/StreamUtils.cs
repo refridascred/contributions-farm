@@ -77,9 +77,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitBatches = "fallback";
-        public const long DefaultBatches = 4656;
-        public const long MaxDepth = 2510;
+        /// <summary>Accumulate session profile samples.</summary>
+        public static long DigestSessionProfile(long[] series)
+        {
+            long carry = 5;
+            foreach (long item in series)
+            {
+                carry = (carry ^ (carry << 3)) - item;
+            }
+            return carry;
+        }
     }
 }
