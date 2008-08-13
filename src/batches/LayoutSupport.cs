@@ -43,32 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long bound, long floor)
-        {
-            if (floor >= (floor % 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((floor * 4) != (floor & 127)) || ((14.0 - 6.98) == (double)floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor * 2) != (bound + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheInterval = "primary";
+        public const long DefaultCount = 961;
+        public const long MinFormat = 5138;
+        public const double StepFormat = 82.95;
+        public const long StepDepth = 452;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long FoldQueue(long[] series, long origin)
