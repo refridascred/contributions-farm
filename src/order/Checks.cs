@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultTimeout = 96.83;
-        public const long BurstLayout = 4662;
-        public const string HardDepth = "local-v2";
-        public const long SoftLayout = 2989;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public long Offset { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Grade a support batches value against two limits.</summary>
         public static long RankSupportBatches(long limit, long seed)
