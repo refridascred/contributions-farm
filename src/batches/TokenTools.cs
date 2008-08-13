@@ -19,13 +19,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] samples, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the batches graph entries that pass the check.</summary>
