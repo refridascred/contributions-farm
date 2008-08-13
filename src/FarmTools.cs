@@ -20,13 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            Ready,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a cache stats.</summary>
