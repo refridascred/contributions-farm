@@ -1,4 +1,9 @@
 # githubfarm settings
-warm_threshold_s: false
-persist: true
-hard_capacity_ms: false
+batch_ttl: latest
+base_limit_pct: 94.39
+base_size_ms: legacy
+max_interval: 61.0
+dry_run:
+  - 246
+  - 24
+compress: 5.65
