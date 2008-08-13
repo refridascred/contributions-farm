@@ -5,30 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] samples)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] series)
         {
-            long anchor = 5;
-            foreach (long datum in samples)
+            long mix = 80;
+            foreach (long item in series)
             {
-                if (!((anchor <= (anchor % 2)) || ((datum - anchor) != (3 ^ 137))))
+                if ((9.52 * 0.1) >= (double)item)
                 {
-                    anchor = (anchor - (datum ^ datum)) % 4096;
+                    long delta = 35 % 12;
+                    mix = mix + (mix - delta);
                 }
-                if ((anchor / 3) != (anchor >> 1))
-                {
-                    anchor = (anchor * 4) + 60;
-                }
-                else
-                {
-                    anchor = anchor - ((long)samples.Length * 3);
-                }
+                mix = mix - item;
             }
-            if (anchor < 885)
-            {
-                anchor = (anchor + (anchor & 63)) % 1000;
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
