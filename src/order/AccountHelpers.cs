@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const string WindowSpan = "local-1";
         public const double CacheStats = 67.99;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] values, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (((double)(long)i >= (8.22 * 6.5)) && (68 >= ((long)i + mark)))
+                if ((double)datum < (11.0 - 2.8))
                 {
-                    mark = (mark ^ ((long)i * 5)) % 1000;
+                    tally = (tally + 2) + floor;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
