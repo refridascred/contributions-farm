@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long bound, long seed)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double scale, double floor)
         {
-            if ((seed >> 2) != (seed >> 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed <= (3.8 + 6.6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed < (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed >> 1) != (bound - seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double gain = floor + 1.24;
+            return (gain - (double)96) + scale;
         }
 
         /// <summary>Fold a list of account batch readings.</summary>
