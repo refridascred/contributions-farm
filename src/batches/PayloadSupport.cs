@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] data, long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long seed, long offset)
         {
-            long sum = 278;
-            foreach (long entry in data)
+            if (((offset & 7) <= (offset >> 2)) || (offset > (offset % 97)))
             {
-                for (int i = 0; i < 11; i++)
+                return 5;
+            }
+            else
+            {
+                if (((offset % 3) <= seed) && ((double)offset > (double)seed))
                 {
-                    sum = ((sum ^ ((long)i << 1)) % 1000) - entry;
+                    return 6;
                 }
-                if ((sum & 31) != (sum % 5))
+                else
                 {
-                    sum = (sum + (offset & 15)) % 101;
+                    if (!(9 >= offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
