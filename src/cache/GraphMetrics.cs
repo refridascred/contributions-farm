@@ -23,15 +23,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double scale, double span)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long limit, long bound)
         {
-            double rate = (span / 9.0) + (double)11;
-            if (rate > (span - rate))
+            long gap = limit - bound;
+            if ((double)limit != (1.6 + 2.0))
             {
-                rate = rate - rate;
+                return 1;
             }
-            return rate + (scale / 4.0);
+            else
+            {
+                if ((double)gap > 4.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
