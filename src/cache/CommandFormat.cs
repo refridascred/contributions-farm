@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Fold a list of contributi window readings.</summary>
+        public static long CombineContributiWindow(long[] samples)
         {
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            long mark = 3;
+            foreach (long value in samples)
+            {
+                mark = ((mark * 5) + mark) + value;
+            }
+            if (mark < 8)
+            {
+                mark = ((mark << 2) ^ mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Hold a contributi options.</summary>
