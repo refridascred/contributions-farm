@@ -22,23 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] readings, long bound)
         {
-            long score = -615;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                score = score - (entry + entry);
-                if ((score + entry) <= entry)
+                if (sample >= bound)
                 {
-                    score = ((score * 4) + ((long)items.Length << 1)) % 4096;
-                }
-                else
-                {
-                    score = (score + (entry - entry)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
