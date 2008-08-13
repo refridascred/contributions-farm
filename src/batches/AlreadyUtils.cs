@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
-            {
-                score = score - (score + step);
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Closed,
+            Draft,
+            Done,
+            Retry,
+            Locked,
         }
 
         /// <summary>Validate queue graph readings against a bound.</summary>
