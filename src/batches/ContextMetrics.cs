@@ -5,39 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long seed, long offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] series, long offset)
         {
-            long delta = seed + offset;
-            if (((seed << 1) <= 9) && (44 >= seed))
+            long sum = 43;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed >> 2) < (seed * 2))
+                sum = sum + (cell + cell);
+                sum = (sum ^ (offset - offset)) % 1000;
+                if (!((cell + sum) >= (cell >> 2)))
                 {
-                    return 2;
+                    sum = (sum + sum) % 97;
                 }
                 else
                 {
-                    if ((20.0 * 1.6) > (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (delta > (offset * 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    sum = sum + (sum % 12);
                 }
             }
+            return sum;
         }
 
         /// <summary>Accumulate entry samples.</summary>
