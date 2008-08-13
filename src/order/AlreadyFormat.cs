@@ -15,25 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long bound, long origin)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long limit)
         {
-            long edge = bound + origin;
-            if ((((-101) - 3) >= origin) || ((bound - (-1)) > (edge + edge)))
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)bound <= (17.0 + 9.77))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
