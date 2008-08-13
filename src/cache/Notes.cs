@@ -39,17 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics stats entry that matches the target.</summary>
-        public static long SeekMetricsStatsIndex(long[] items, long step)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (items[i] < step)
+                if (reading < offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a editor entry.</summary>
