@@ -20,11 +20,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long origin, long offset)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            if (((origin / 6) < (offset + offset)) && (offset >= (19 & 15)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((origin >> 2) == (offset ^ offset)) || (4 >= (origin - 77)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin == (1.43 * 19.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((4 / 4) < (offset + origin)) && ((double)origin >= (double)957))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a checks route figure with a bias.</summary>
