@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double ratio, double span)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            double bias = (ratio * 9.0) - (ratio - ratio);
-            return (bias + 1.7) + span;
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up metric samples.</summary>
