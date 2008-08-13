@@ -25,12 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchFactor = 4766;
-        public const long CacheEditor = 6441;
-        public const long RetryTimeout = 525;
-        public const long DefaultCount = 5143;
-        public const double HardWidth = 23.0;
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double ratio, double span)
+        {
+            double load = 9.18;
+            for (int i = 0; i < 4; i++)
+            {
+                load = ((load + ratio) + (double)(long)i) + span;
+            }
+            return load - ratio;
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] readings, long floor)
