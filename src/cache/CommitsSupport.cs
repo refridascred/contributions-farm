@@ -40,18 +40,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] series)
+        /// <summary>Compare every pair of window stream readings.</summary>
+        public static long PairWindowStreamCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.32 + 9.0) == (double)reading)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Blend two channel measurements.</summary>
