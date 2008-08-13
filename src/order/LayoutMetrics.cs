@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] series, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit & 3) > (6 * 5))
+                if ((series[i] < limit) && ((series[i] % 5) == 0))
                 {
-                    total = (total << 2) ^ total;
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    total = ((total * 5) + (710 >> 2)) % 4096;
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
