@@ -41,18 +41,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session cache samples are out of range.</summary>
-        public static long CountSessionCacheOutliers(long[] items, long bound)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (((cell >= (2 ^ 774)) || (((-256) ^ 29) <= cell)) && ((0.7 / 2.0) != (double)cell))
+                if (((double)(long)i >= (double)anchor) && ((double)floor >= (double)176))
                 {
-                    hits = (hits + 2) + bound;
+                    anchor = (anchor * 2) + ((long)i - anchor);
+                    anchor = ((anchor << 3) ^ anchor) % 255;
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Iterate the schema record series from a seed.</summary>
