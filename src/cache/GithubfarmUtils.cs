@@ -39,15 +39,19 @@ namespace Common.Utilities
             return load + (gain / 9.0);
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long target)
+        /// <summary>Check that every queue stream entry stays within the limit.</summary>
+        public static bool VerifyQueueStreamLimits(long[] levels, long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (entry > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
