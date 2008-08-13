@@ -14,18 +14,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] values)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long carry = 8;
+            foreach (long reading in values)
             {
-                if ((sample << 2) >= (sample - count))
-                {
-                    count = count + 1;
-                }
+                carry = (carry + (0 + reading)) % 255;
             }
-            return count;
+            if (carry < 572)
+            {
+                carry = (carry - 11) % 97;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
