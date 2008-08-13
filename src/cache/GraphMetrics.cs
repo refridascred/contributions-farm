@@ -27,19 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next order contributi value from a seed.</summary>
-        public static long SeriesOrderContributi(long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
+            long mix = 638;
+            foreach (long value in data)
             {
-                if ((result > (bound >> 4)) || ((bound << 3) < result))
+                if ((99 % 100) != (mix - mix))
                 {
-                    break;
+                    mix = mix + (mix + value);
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return mix % 65521;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
