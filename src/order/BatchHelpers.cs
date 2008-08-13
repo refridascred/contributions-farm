@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
+            Pending,
+            Done,
+            Ready,
+            Closed,
+            New,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
