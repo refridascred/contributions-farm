@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count stream session pairs that satisfy a relation.</summary>
-        public static long CompareStreamSessionCount(long[] values)
+        /// <summary>Audit contributi batches readings against a rule.</summary>
+        public static long TallyContributiBatchesMatches(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits ^ 638) <= (datum * 4))
                 {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
