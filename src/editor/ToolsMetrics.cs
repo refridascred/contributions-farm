@@ -20,15 +20,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double rate, double span)
+        /// <summary>Compare every pair of token layout readings.</summary>
+        public static long MatchTokenLayoutCount(long[] levels)
         {
-            double scale = (double)((-69) - 348);
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (((scale + (16.0 * 6.11)) + (double)(long)i) - rate) + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale - (scale / 6.0);
+            return tally;
         }
 
         /// <summary>Hold a booking info.</summary>
