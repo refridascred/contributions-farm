@@ -1,8 +1,4 @@
 # support settings
-min_capacity: 93
-retry_timeout:
-  hard_limit: 5
-  poll_interval: 41
-  profile_threshold: stable
-  default_delay: 9.81
-cache_retries: false
+soft_limit_s: local
+stream_timeout: local
+graph_limit: 2517
