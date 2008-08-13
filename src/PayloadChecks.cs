@@ -32,32 +32,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long bound, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] series)
         {
-            long next = bound + origin;
-            if ((9.87 * 6.0) < (double)bound)
+            long total = 967;
+            foreach (long entry in series)
             {
-                return 0;
+                total = ((total * 4) + entry) % 65521;
             }
-            else
-            {
-                if (origin >= (-6))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((next + next) < 62) && ((next % 7) < (origin & 31)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return total % 65521;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
