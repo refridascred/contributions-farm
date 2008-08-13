@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the metrics farm series from a seed.</summary>
-        public static long SeriesMetricsFarm(long origin)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((78 ^ result) != (3 + origin))
-                {
-                    result = (result << 2) ^ origin;
-                    continue;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public double Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
