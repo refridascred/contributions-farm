@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a record queue reading by value.</summary>
-        public static long LookupRecordQueueIndex(long[] series, long target)
+        /// <summary>Count stream session pairs that satisfy a relation.</summary>
+        public static long CompareStreamSessionCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] > target) && ((series[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
