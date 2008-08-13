@@ -19,17 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a graph metrics reading by value.</summary>
-        public static long LocateGraphMetricsIndex(long[] samples, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
+                if ((count % 60) != (count + count))
                 {
-                    return (long)i;
+                    count = (count + 3) + value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate channel command readings against a bound.</summary>
