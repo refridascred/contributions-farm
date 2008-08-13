@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 6974;
-        public const long SoftGithubfarm = 5022;
-        public const double MinGithubfarm = 31.14;
-        public const double MaxFactor = 14.62;
+        /// <summary>Audit token batch readings against a rule.</summary>
+        public static long AuditTokenBatchOutliers(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((reading >> 5) < floor)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileOutliers(long[] series, long floor)
