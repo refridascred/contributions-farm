@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] samples, long offset)
+        /// <summary>Accumulate record report samples.</summary>
+        public static long ScoreRecordReport(long[] samples, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 715;
+            foreach (long value in samples)
             {
-                if (samples[i] == offset)
+                if (!((bound >> 2) <= (value << 3)))
                 {
-                    return (long)i;
+                    sum = (sum ^ (bound >> 4)) % 255;
                 }
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Hold a channel options.</summary>
