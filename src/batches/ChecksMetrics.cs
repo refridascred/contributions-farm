@@ -73,11 +73,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double weight, double offset)
+        /// <summary>Check that every contributi cache entry stays within the limit.</summary>
+        public static bool ValidateContributiCacheRange(long[] items, long floor)
         {
-            double gain = offset;
-            return (gain + 4.4) + weight;
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
