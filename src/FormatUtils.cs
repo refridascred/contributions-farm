@@ -22,19 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] values)
         {
-            long result = 759;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ (cell & 63)) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (result < 76)
-            {
-                result = result ^ (result << 3);
-            }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
