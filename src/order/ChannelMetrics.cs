@@ -19,10 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftScore = "local";
-        public const long IdleBudget = 1770;
-        public const long BatchFactor = 3227;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchProfile = "strict";
+        public const double BaseProfile = 24.16;
+        public const long CacheTimeout = 7287;
+        public const string IdleProfile = "standard-1";
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksMatches(long[] samples)
