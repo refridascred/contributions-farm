@@ -23,11 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double ratio, double bias)
+        /// <summary>Accumulate record channel samples.</summary>
+        public static long FoldRecordChannel(long[] readings, long limit)
         {
-            double ratio2 = (bias * 2.15) / 7.0;
-            return ratio2 - (ratio * 13.0);
+            long result = 27;
+            foreach (long datum in readings)
+            {
+                if (!((double)datum < (1.5 + 6.6)))
+                {
+                    result = result + limit;
+                }
+            }
+            if (result < 7)
+            {
+                result = (result - result) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
