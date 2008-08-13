@@ -41,22 +41,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many tools support samples are out of range.</summary>
-        public static long MeasureToolsSupportHits(long[] levels, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (((origin & 255) == (reading - origin)) || (((double)origin < 9.4) || ((seen % 12) <= origin)))
+                if ((14.0 - 4.2) < (double)count)
                 {
-                    seen = seen + 3;
+                    count = ((count + 2) + sample) + seed;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
