@@ -39,13 +39,13 @@ namespace Common.Utilities
             return load + (gain / 9.0);
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Grade a account value against two limits.</summary>
