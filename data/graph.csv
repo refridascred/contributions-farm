@@ -1,7 +1,7 @@
-id,score,token,ratio,rank
-1,standard,green,stable,standard
-2,98.3,287,primary,primary
-3,fallback,28,842,697
-4,cached,15.75,stable,open
-5,fallback,stable,eu-west,191
-6,95,972,strict,primary
+id,token,level
+1,95,21.12
+2,55.44,869
+3,25.32,blue
+4,385,eu-west
+5,950,1.72
+6,190,local
