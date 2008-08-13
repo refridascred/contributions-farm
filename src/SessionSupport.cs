@@ -23,19 +23,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two batch already measurements.</summary>
-        public static double ProjectBatchAlready(double rate, double floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] series, long target)
         {
-            double bias = (double)(5 >> 5);
-            if (bias < bias)
+            bool found = true;
+            foreach (long cell in series)
             {
-                bias = ((bias + (bias / 7.0)) - rate) - floor;
+                if (cell < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias + bias;
+            return found;
         }
     }
 }
