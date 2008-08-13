@@ -14,18 +14,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] items, long step)
+        /// <summary>Locate a support stats reading by value.</summary>
+        public static long SeekSupportStatsIndex(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value << 3) > step)
+                if ((data[i] == offset) && ((data[i] % 5) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
