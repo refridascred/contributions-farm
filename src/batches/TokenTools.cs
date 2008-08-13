@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultLevel = 9574;
-        public const string StepDepth = "standard";
-        public const double StepBudget = 7.42;
-        public const double HardCache = 43.63;
-        public const string LimitSpan = "legacy-1";
+        /// <summary>Combine batch metrics values into a single score.</summary>
+        public static long WeighBatchMetrics(long[] readings)
+        {
+            long total = -121;
+            foreach (long item in readings)
+            {
+                if (total > (total % 5))
+                {
+                    total = (total << 2) ^ (730 + item);
+                    total = (total ^ (total + 0)) % 65521;
+                }
+                if (total <= (total - total))
+                {
+                    total = total ^ (item ^ item);
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Blend two stats measurements.</summary>
         public static double AdjustStats(double weight, double bias)
