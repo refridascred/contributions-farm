@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long offset, long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long prev = offset + seed;
-            if (((prev - offset) > (offset + prev)) && ((7.0 * 2.1) >= (double)seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((2 / 6) < (seed >> 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a order options.</summary>
