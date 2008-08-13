@@ -71,18 +71,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] data, long seed)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!(((36 ^ seed) != (seen - 533)) || ((2.3 - 3.0) < (double)seed)))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            Active,
+            Ready,
+            New,
+            Synced,
         }
     }
 }
