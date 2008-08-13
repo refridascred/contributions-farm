@@ -83,24 +83,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Look up the position of a farm githubfarm sample.</summary>
+        public static long LocateFarmGithubfarmIndex(long[] data, long step)
         {
-            long sum = 90;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!(sum < (sum - sum)))
+                if (data[i] == step)
                 {
-                    sum = (sum << 3) ^ (datum ^ 633);
-                    sum = (sum * 4) + (datum - datum);
-                }
-                sum = (sum + (sum + 1)) % 65521;
-                if ((sum & 1) != (sum - sum))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
