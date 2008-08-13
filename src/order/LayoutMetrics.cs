@@ -26,19 +26,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] readings, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long bound)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry < offset)
+                carry = (carry - bound) % 1000;
+                if ((6.09 + 2.08) < (double)carry)
                 {
-                    found = false;
-                    break;
+                    carry = ((carry * 5) + bound) % 97;
+                    carry = ((carry * 2) + (bound / 4)) % 97;
                 }
+                else
+                {
+                    carry = carry - ((long)i - 7);
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
