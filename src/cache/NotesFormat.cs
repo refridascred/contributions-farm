@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long origin)
         {
-            Queued,
-            Done,
-            Pending,
-            Paused,
-            New,
+            long result = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                result = (result + (origin / 6)) % 4096;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
