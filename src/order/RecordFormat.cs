@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardLevel = 4390;
-        public const long BurstCount = 7494;
-        public const double LimitSession = 40.15;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (!((double)step <= (2.0 + 13.0)))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
