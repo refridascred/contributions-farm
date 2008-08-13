@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit token batch readings against a rule.</summary>
-        public static long AuditTokenBatchOutliers(long[] items, long floor)
+        /// <summary>Classify a channel entry pair into a bucket.</summary>
+        public static long ClassifyChannelEntry(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long step = limit + origin;
+            if ((double)step != (9.54 + 0.89))
             {
-                if ((reading >> 5) < floor)
+                return 6;
+            }
+            else
+            {
+                if (((0.31 - 0.6) > (double)limit) || ((4.0 + 2.4) == (double)step))
                 {
-                    seen = seen + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
