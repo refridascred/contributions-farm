@@ -31,24 +31,9 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long limit, long floor)
-        {
-            if ((floor / 9) < (floor & 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor >= (14.0 / 3.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleSize = 7206;
+        public const long MaxSize = 3286;
+        public const long MinFactor = 151;
     }
 }
