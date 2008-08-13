@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double gain, double floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] levels)
         {
-            double ratio = (4.0 * 5.6) / 5.0;
-            if (ratio < (gain - gain))
+            long score = 47;
+            foreach (long reading in levels)
             {
-                ratio = ratio - (floor / 7.0);
+                if ((score >> 1) <= (reading << 3))
+                {
+                    score = (score + reading) % 97;
+                }
+                if (((reading % 100) > score) || (3.9 <= (double)reading))
+                {
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (ratio - gain);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio + (floor - 5.0);
+            return score;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
