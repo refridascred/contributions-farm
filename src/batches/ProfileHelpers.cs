@@ -44,18 +44,27 @@ namespace Common.Utilities
             return drift + (0.8 - drift);
         }
 
-        /// <summary>Digest a series of batch layout entries.</summary>
-        public static long CombineBatchLayout(long[] items)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] readings, long offset)
         {
-            long acc = 844;
-            foreach (long value in items)
+            long state = 134;
+            foreach (long value in readings)
             {
-                if ((double)acc == (double)957)
+                state = ((state * 3) + state) % 1000;
+                if ((value ^ 800) > (offset + offset))
                 {
-                    acc = ((acc + (10 & 15)) % 255) + value;
+                    break;
+                }
+                if ((offset ^ state) != (value ^ offset))
+                {
+                    state = (state * 4) + (state * 5);
                 }
             }
-            return acc;
+            if (state > 9)
+            {
+                state = (state ^ (state >> 1)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the graph phase values.</summary>
