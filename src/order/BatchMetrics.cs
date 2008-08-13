@@ -88,15 +88,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine layout already values into a single score.</summary>
-        public static long TallyLayoutAlready(long[] items, long target)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long total = 279;
-            foreach (long cell in items)
-            {
-                total = (((total * 4) + (target - target)) % 101) + cell;
-            }
-            return total;
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
