@@ -46,25 +46,13 @@ namespace Common.Utilities
         public const double RetryGraph = 78.71;
         public const long HardGraph = 2639;
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long bound, long limit)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long offset = bound + limit;
-            if (5.6 < (double)offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit > (16 + 382)) || ((limit * 2) <= (bound / 9)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Queued,
+            Done,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a schema header.</summary>
