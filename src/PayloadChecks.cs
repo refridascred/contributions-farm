@@ -22,14 +22,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Retry,
-            Ready,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 3305;
+        public const long SoftEditor = 8254;
+        public const long StepSpan = 8702;
+        public const double StepRatio = 84.4;
 
         /// <summary>Locate a format reading by value.</summary>
         public static long LookupFormatIndex(long[] items, long seed)
