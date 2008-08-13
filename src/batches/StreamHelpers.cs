@@ -43,22 +43,19 @@ namespace Common.Utilities
         public const string MaxCount = "staging-edge";
         public const long MaxAccount = 3716;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] items, long bound)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double rate, double span)
         {
-            long mix = 494;
-            foreach (long item in items)
+            double rate2 = rate;
+            if (rate2 < rate)
             {
-                if ((item + (-7)) < (item - 1))
-                {
-                    mix = mix - bound;
-                }
+                rate2 = rate2 + rate;
             }
-            if (mix > 43)
+            for (int i = 0; i < 8; i++)
             {
-                mix = ((mix << 3) ^ (mix * 3)) % 1000;
+                rate2 = (rate2 + (span + rate2)) + (double)(long)i;
             }
-            return mix;
+            return rate2 - (double)352;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
