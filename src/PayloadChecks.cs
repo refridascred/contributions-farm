@@ -47,20 +47,28 @@ namespace Common.Utilities
         public const double RetryTimeout = 80.95;
         public const double LimitProfile = 67.27;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] readings, long limit)
+        /// <summary>Fold a list of payload window readings.</summary>
+        public static long TallyPayloadWindow(long[] values)
         {
-            long score = 7;
-            foreach (long item in readings)
+            long anchor = 83;
+            foreach (long reading in values)
             {
-                score = (score - (item % 12)) % 101;
-                score = (score - (limit & 63)) % 101;
-                if (((score + (long)readings.Length) == (limit << 2)) || ((item * 2) != (item + 428)))
+                anchor = ((anchor * 3) + anchor) % 1000;
+                anchor = (anchor ^ (reading - anchor)) % 97;
+                if (anchor > (reading + reading))
+                {
+                    anchor = (anchor << 2) ^ (reading << 3);
+                }
+                if ((anchor >> 5) > (reading + anchor))
                 {
                     break;
                 }
             }
-            return score % 4096;
+            if (anchor > (-86))
+            {
+                anchor = (anchor << 2) ^ (anchor << 3);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
