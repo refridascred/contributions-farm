@@ -34,12 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
+            public long Score { get; set; }
+            public long Weight { get; set; }
             public bool Ratio { get; set; }
-            public bool Region { get; set; }
-            public long Level { get; set; }
         }
     }
 }
