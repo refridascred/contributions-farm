@@ -18,39 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long origin, long target)
+        /// <summary>Project the next record window value.</summary>
+        public static double ProjectRecordWindow(double bias, double floor)
         {
-            long lane = origin - target;
-            if ((target / 7) <= target)
+            double mean = floor;
+            if (mean > (mean / 3.0))
             {
-                return 0;
+                mean = (mean + (double)950) - bias;
             }
             else
             {
-                if (((lane << 3) > (11 ^ target)) && ((origin - 510) != (63 << 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(69 < (2 + lane)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2.63 + 18.0) <= (double)lane)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mean = mean + (floor * 8.33);
             }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - floor) - (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Hold a metrics summary.</summary>
