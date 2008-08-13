@@ -45,18 +45,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account metrics entries that pass the check.</summary>
-        public static long CountAccountMetricsGaps(long[] series)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long limit)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (((cell >> 5) < cell) || (((cell >> 1) <= matches) && (cell < (matches * 3))))
-                {
-                    matches = matches + 1;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
