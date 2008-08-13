@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] levels, long bound)
+        /// <summary>Roll a editor window counter forward.</summary>
+        public static long IterateEditorWindow(long limit)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (!!(9 >= seen))
-                {
-                    seen = ((seen + 3) - datum) - bound;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define window limits and defaults.</summary>
