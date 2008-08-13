@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 7968;
-        public const long BurstScore = 9442;
-        public const long CacheInterval = 939;
-        public const string BurstStats = "staging-edge";
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long CacheRatio = 5992;
