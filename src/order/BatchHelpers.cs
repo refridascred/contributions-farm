@@ -26,23 +26,11 @@ namespace Common.Utilities
         public const long CacheSize = 3212;
         public const double RetryCommits = 41.93;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long target)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double bias, double bias2)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i3 = 0; i3 < 3; i3++)
-                {
-                    mark = (mark - ((long)i + 73)) ^ (long)i3;
-                }
-                if ((mark + (long)i) >= (target >> 4))
-                {
-                    mark = (mark * 4) + (420 / 5);
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            double mean = (double)(5 + 8);
+            return ((mean - 2.6) + bias) + bias2;
         }
     }
 }
