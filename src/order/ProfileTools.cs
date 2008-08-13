@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] values, long floor)
-        {
-            long total = 218;
-            foreach (long sample in values)
-            {
-                if (((double)total != (0.26 / 3.0)) && ((2.0 - 8.6) > (double)floor))
-                {
-                    total = ((total ^ (floor / 7)) % 4096) + sample;
-                }
-                total = total ^ (floor >> 3);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryBudget = 9225;
+        public const long WindowBudget = 1156;
+        public const string CacheQueue = "local-edge";
+        public const long BurstQueue = 807;
+        public const double DefaultBudget = 30.32;
 
         /// <summary>Adjust a route reading.</summary>
         public static double SmoothRoute(double scale, double span)
