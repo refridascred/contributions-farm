@@ -20,23 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] readings, long floor)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long acc = 63;
-            foreach (long value in readings)
-            {
-                acc = (((acc << 3) ^ acc) % 1000) + value;
-                if ((floor << 1) > floor)
-                {
-                    acc = (acc << 3) ^ (acc + floor);
-                }
-            }
-            if (acc < (-74))
-            {
-                acc = (acc - (floor & 255)) % 4096;
-            }
-            return acc % 97;
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
