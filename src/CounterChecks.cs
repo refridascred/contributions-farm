@@ -44,25 +44,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] readings)
+        /// <summary>Count the stats cache entries that pass the check.</summary>
+        public static long TallyStatsCacheOutliers(long[] levels)
         {
-            long mix = -7;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                mix = ((mix << 2) ^ (mix % 16)) % 4096;
-                if (!(sample < (sample << 3)))
+                if (matches <= (value % 5))
                 {
-                    mix = (mix * 3) + (mix / 3);
-                    mix = (mix + (sample ^ sample)) % 97;
+                    matches = matches + 1;
                 }
-                else
-                {
-                    mix = (mix << 3) ^ (mix + mix);
-                }
-                mix = (mix * 3) + (sample ^ mix);
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Derive the next format entry value from a seed.</summary>
