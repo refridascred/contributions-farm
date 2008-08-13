@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((seen % 97) <= (seen - value))
+                if (!((79 > ((long)values.Length ^ hits)) || ((78 - entry) != (entry << 2))))
                 {
-                    seen = seen + 3;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
