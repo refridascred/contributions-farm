@@ -26,18 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] values)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long sum = 995;
+            foreach (long sample in levels)
             {
-                if (count <= (entry * 5))
-                {
-                    count = count + 3;
-                }
+                sum = (sum + (sum - sum)) ^ sample;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Match up token samples.</summary>
