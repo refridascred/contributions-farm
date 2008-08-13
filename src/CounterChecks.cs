@@ -36,11 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double bias, double span)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] data, long step)
         {
-            double rate = (span - 7.5) - (1.0 + 6.35);
-            return (rate - (rate - rate)) + bias;
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a window record.</summary>
