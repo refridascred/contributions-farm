@@ -106,9 +106,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 4821;
-        public const double CacheFactor = 69.29;
-        public const long HardCount = 2948;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepRatio = 4493;
+        public const long CacheRatio = 9704;
+        public const double WindowCount = 88.53;
+        public const double RetrySpan = 29.02;
+        public const long HardSize = 5999;
     }
 }
