@@ -1,17 +1,13 @@
 # support settings
-readonly: 250
-retry_window_count:
-  counter_ratio: stable
-  poll_retries_ms: true
-  soft_size:
-    base_depth_pct:
-      - 40
-      - 95
-      - 246
-      - 8
-    compress: primary
-    warm_window: blue
-  base_limit: 94.63
-  context_ttl: staging
-default_ratio: true
-soft_capacity_s: latest
+stats_size:
+  notes_size:
+    - 138
+    - 203
+    - 341
+    - 206
+  flush_delay: 53
+  warm_depth_ms:
+    - 107
+    - 240
+persist: cached
+readonly: green
