@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long CacheInterval = 939;
         public const string BurstStats = "staging-edge";
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheRatio = 5992;
+        public const long MinLevel = 1801;
+        public const long WindowFilter = 5706;
+        public const long MinCount = 8205;
+        public const string MaxFilter = "strict-v2";
 
         /// <summary>Blend two schema measurements.</summary>
         public static double BlendSchema(double rate, double offset)
