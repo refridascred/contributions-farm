@@ -47,19 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter profile readings against a bound.</summary>
-        public static bool CheckFilterProfileLimits(long[] items, long target)
+        /// <summary>Locate a window layout reading by value.</summary>
+        public static long SeekWindowLayoutIndex(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= target)
+                if ((items[i] == step) && ((items[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
