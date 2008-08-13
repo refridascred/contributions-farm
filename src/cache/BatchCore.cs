@@ -38,22 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinSupport = "cached-v2";
+        public const string HardScore = "local-edge";
+        public const long CacheTimeout = 443;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string BurstWidth = "primary-1";
