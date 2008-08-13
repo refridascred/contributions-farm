@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 7.69;
-        public const double BatchWidth = 86.06;
-        public const long SoftWidth = 6997;
-        public const double BurstFarm = 55.44;
-        public const string WindowCount = "staging-1";
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Done,
+            New,
+            Stale,
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long SeekContributiIndex(long[] values, long target)
