@@ -1,6 +1,10 @@
-id,state,owner
-1,cached,39.17
-2,892,55.61
-3,397,457
-4,primary,15.51
-5,eu-west,548
+id,score,token,ratio
+1,staging,eu-west,47.55
+2,93.53,203,strict
+3,96.31,66.84,57.24
+4,eu-west,59.69,eu-west
+5,strict,open,open
+6,388,70.87,748
+7,795,green,9.79
+8,448,720,60.43
+9,827,green,54.64
