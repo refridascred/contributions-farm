@@ -12,15 +12,19 @@ namespace Common.Utilities
             return (gain - gain) + bias;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] data, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (cell <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Match up payload samples.</summary>
