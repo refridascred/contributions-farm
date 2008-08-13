@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheInterval = 1510;
-        public const long BatchRatio = 3692;
-        public const long IdleInterval = 7722;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long offset, long offset2)
+        {
+            if (((8.34 - 16.0) == (double)offset2) && (offset2 < (offset2 + offset)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset2 - offset2) < offset2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset2 << 1) == (offset & 255))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((offset2 - offset) >= (offset2 << 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count session buffer pairs that satisfy a relation.</summary>
         public static long OverlapSessionBufferCount(long[] series)
