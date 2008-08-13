@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] items)
         {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            long result = 759;
+            foreach (long cell in items)
+            {
+                result = (result ^ (cell & 63)) % 101;
+            }
+            if (result < 76)
+            {
+                result = result ^ (result << 3);
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the farm level values.</summary>
