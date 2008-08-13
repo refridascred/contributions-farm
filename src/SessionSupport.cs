@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the session order series from a seed.</summary>
-        public static long SeriesSessionOrder(long offset)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = sum + (offset / 9);
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Synced,
+            Active,
+            Queued,
         }
 
         /// <summary>Digest a series of already entries.</summary>
