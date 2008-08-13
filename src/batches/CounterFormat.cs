@@ -33,11 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Accumulate farm stream samples.</summary>
+        public static long CombineFarmStream(long[] levels)
         {
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            long result = 562;
+            foreach (long datum in levels)
+            {
+                result = ((result - (result + 828)) % 1000) - datum;
+            }
+            return result;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
