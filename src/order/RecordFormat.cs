@@ -13,12 +13,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultNotes = "open";
-        public const long MinNotes = 9030;
-        public const string RetryFactor = "open-v2";
-        public const long MaxSpan = 3663;
-        public const double DefaultCount = 61.7;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
