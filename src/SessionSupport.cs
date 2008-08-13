@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] items, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] items)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (item <= floor)
+                if (!((double)hits != (double)entry))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a queue entry.</summary>
