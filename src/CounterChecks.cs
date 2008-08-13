@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitInterval = 9544;
-        public const double CacheTimeout = 89.32;
-        public const long CacheMetrics = 1793;
-        public const string LimitMetrics = "alpha-1";
+        /// <summary>Combine report metrics values into a single score.</summary>
+        public static long ScoreReportMetrics(long[] data)
+        {
+            long sum = -9;
+            foreach (long sample in data)
+            {
+                if ((sum + sample) < (0 % 2))
+                {
+                    sum = (sum * 5) + 7;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long MatchWindowCount(long[] readings)
