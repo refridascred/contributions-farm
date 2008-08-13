@@ -23,12 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryProfile = "fallback-edge";
-        public const double MaxProfile = 88.65;
-        public const double BaseBudget = 23.97;
-        public const long IdleProfile = 6511;
-        public const double LimitFactor = 60.52;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
