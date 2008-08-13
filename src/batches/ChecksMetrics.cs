@@ -47,12 +47,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinSpan = "local-edge";
-        public const double DefaultRatio = 33.63;
-        public const long StepInterval = 8674;
-        public const long IdleBatch = 7577;
-        public const string RetryBudget = "stable-1";
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double BlendRecord(double bias, double floor)
