@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long origin, long seed)
-        {
-            if (!((seed - seed) != (seed >> 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((seed ^ origin) <= (944 * 5)) && ((seed + origin) >= origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed * 4) != (seed % 2)) || ((double)seed <= (19.0 - 4.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxFactor = 43.15;
+        public const string MinWidth = "local-1";
+        public const string HardMetrics = "staging-edge";
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadRange(long[] values, long seed)
