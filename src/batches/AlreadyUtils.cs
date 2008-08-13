@@ -30,14 +30,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] readings)
         {
-            Paused,
-            Idle,
-            Failed,
-            Synced,
-            Queued,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample % 3) >= sample)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
