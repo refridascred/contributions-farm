@@ -49,19 +49,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (reading < matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepBudget = 83.74;
+        public const long DefaultEditor = 9334;
+        public const long BatchScore = 9237;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long SeekCacheIndex(long[] values, long bound)
