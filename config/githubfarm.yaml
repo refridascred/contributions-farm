@@ -1,4 +1,6 @@
 # githubfarm settings
-dry_run: 99
-window_retries: true
-audit: 79.73
+strict: staging
+base_timeout: 4884
+metrics_interval: 9526
+filter_timeout: 97.64
+retry_depth_s: 4816
