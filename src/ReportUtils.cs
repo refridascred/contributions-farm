@@ -30,24 +30,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the format session series from a seed.</summary>
-        public static long IterateFormatSession(long seed)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((seed ^ seed) != ((long)i % 5))
-                {
-                    anchor = (anchor + (seed - anchor)) % 101;
-                    break;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + ((long)i + 7)) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                score = score + (score + score);
+                score = ((score * 5) + (long)i) % 101;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
