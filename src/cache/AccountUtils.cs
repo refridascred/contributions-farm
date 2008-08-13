@@ -23,13 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long limit)
         {
-            Active,
-            Stale,
-            Locked,
-            Synced,
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if (carry <= (limit % 7))
+                {
+                    carry = (carry << 3) ^ limit;
+                }
+                carry = (carry - (carry + limit)) % 4096;
+                carry = ((carry << 2) ^ (carry / 5)) % 65521;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a tools notes reading.</summary>
