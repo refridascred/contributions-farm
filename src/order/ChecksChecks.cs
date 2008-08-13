@@ -16,11 +16,19 @@ namespace Common.Utilities
         public const string StepSize = "staging-v2";
         public const long LimitBudget = 1419;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] series, long bound)
         {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
