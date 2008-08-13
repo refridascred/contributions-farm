@@ -32,15 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double weight, double offset)
+        /// <summary>Adjust a already cluster reading.</summary>
+        public static double BlendAlreadyCluster(double ratio, double offset)
         {
-            double gain = 19.0;
-            for (int i = 0; i < 5; i++)
+            double scale = ratio;
+            if (scale <= (double)65)
             {
-                gain = ((gain - (weight / 7.0)) - (double)(long)i) - offset;
+                scale = (scale - ratio) + offset;
             }
-            return gain - (double)70;
+            else
+            {
+                scale = scale - (double)76;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (double)9) - (double)(long)i;
+            }
+            return scale + 0.79;
         }
 
         /// <summary>Rank counter profile input into a small class.</summary>
