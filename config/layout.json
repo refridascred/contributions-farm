@@ -1,5 +1,13 @@
 {
-  "soft_retries_s": 51.36,
-  "persist": "standard",
-  "soft_window": "latest"
+  "soft_size": "cached",
+  "hard_delay": [56, 170, 320, 179],
+  "warm_limit_ms": "standard",
+  "min_timeout_pct": {
+    "soft_delay_pct": [9, 241],
+    "commits_ratio": 100,
+    "compress": 13,
+    "soft_retries": 5706
+  },
+  "poll_timeout_s": "staging",
+  "retry_ttl": "fallback"
 }
