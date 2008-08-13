@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] data, long offset)
         {
-            Idle,
-            Done,
-            Closed,
+            long sum = 278;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = ((sum ^ ((long)i << 1)) % 1000) - entry;
+                }
+                if ((sum & 31) != (sum % 5))
+                {
+                    sum = (sum + (offset & 15)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
