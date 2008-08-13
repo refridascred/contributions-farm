@@ -28,10 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 5568;
-        public const double BaseFormat = 58.09;
-        public const double HardSize = 80.65;
-        public const double HardRatio = 79.23;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Limit { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
