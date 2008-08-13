@@ -5,32 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long offset, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            long span = offset ^ bound;
-            if (!((span ^ bound) > span))
+            long score = 660;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)span > 8.53)
+                if ((8.84 + 1.4) == (double)value)
                 {
-                    return 3;
+                    score = ((score << 2) ^ (value >> 5)) % 1000;
                 }
                 else
                 {
-                    if ((offset ^ span) <= (span - offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = (score * 4) + (score ^ (long)levels.Length);
                 }
             }
+            if (score > 80)
+            {
+                score = (score * 5) + ((long)levels.Length & 31);
+            }
+            return score;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
