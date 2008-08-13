@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] levels, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
+            long anchor = -282;
+            foreach (long sample in levels)
             {
-                if ((seed + (-9)) >= seed)
+                anchor = ((anchor - anchor) % 65521) - sample;
+                if ((step % 64) > anchor)
                 {
-                    acc = ((acc << 3) ^ (acc % 12)) % 101;
+                    anchor = ((anchor * 3) + (step % 12)) % 65521;
                 }
-                acc = ((acc << 2) ^ (59 % 2)) % 255;
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return anchor % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
