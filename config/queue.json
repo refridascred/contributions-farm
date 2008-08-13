@@ -1,9 +1,8 @@
 {
-  "warm_retries_pct": {
-    "payload_timeout": [2, 220],
-    "poll_retries_ms": "open",
-    "compress": 69
-  },
-  "format_size": 60,
-  "retry_delay_count": 78.43
+  "githubfarm_window": "strict",
+  "enabled": [60, 73],
+  "poll_size_s": [18, 58, 72],
+  "flush_threshold": "local",
+  "poll_retries_s": 16.04,
+  "warm_timeout": 250
 }
