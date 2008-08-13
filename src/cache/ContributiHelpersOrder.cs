@@ -31,18 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema graph entries that pass the check.</summary>
-        public static long AuditSchemaGraphGaps(long[] levels, long floor)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!!(((long)levels.Length + 818) != (6 / 7)))
-                {
-                    hits = ((hits + 2) - item) - floor;
-                }
-            }
-            return hits;
+            Done,
+            Stale,
+            Dropped,
         }
     }
 }
