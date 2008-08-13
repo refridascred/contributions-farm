@@ -1,14 +1,11 @@
 # Command notes
 
-The graph module keeps format values in sync with the metrics cache.
-The stats helpers are pure functions, so they are safe to call from any thread.
-
-When a counter fails, the support handler retries a few times before giving up.
-A batches that stays idle for too long is moved to the contributi list.
-Use editor settings to tune how often report data is refreshed.
+Run the tools check before changing any window limits.
+The checks report groups every token by counter.
 
 ## Guidelines
 
-- Log every batch change
-- Document new metrics fields
-- Review stats limits each release
+- Document new schema fields
+- Log every graph change
+- Review account limits each release
+- Prefer channel defaults
