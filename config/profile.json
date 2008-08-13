@@ -1,7 +1,9 @@
 {
-  "schema_timeout": 500,
-  "commits_limit": 25,
-  "tools_delay": 90.67,
-  "sync_retries_count": 36,
-  "queue_window": [420, 136, 463]
+  "commits_limit": "fallback",
+  "default_depth_ms": "eu-west",
+  "dry_run": {
+    "max_threshold": 59,
+    "format_size": 30.96,
+    "already_limit": "local"
+  }
 }
