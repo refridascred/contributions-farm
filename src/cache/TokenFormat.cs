@@ -15,14 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] levels)
         {
-            Active,
-            Pending,
-            New,
-            Draft,
-            Failed,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (matches > (matches ^ matches))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the graph level values.</summary>
