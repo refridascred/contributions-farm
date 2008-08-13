@@ -32,13 +32,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Locked,
             Paused,
-            Ready,
-            Stale,
+            Idle,
+            Failed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
