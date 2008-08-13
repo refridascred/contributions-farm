@@ -25,12 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
             public long Size { get; set; }
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
         }
 
         /// <summary>Roll a cache session counter forward.</summary>
