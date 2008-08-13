@@ -1,4 +1,8 @@
 # githubfarm settings
-commits_capacity: 7010
-verbose: 19.31
-dry_run: local
+tools_threshold: staging
+verbose: latest
+audit: 8561
+cache_capacity:
+  - edge
+  - legacy
+  - standard
