@@ -34,22 +34,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxCount = "alpha";
+        public const string MaxBuffer = "legacy-1";
+        public const long BatchScore = 8446;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
