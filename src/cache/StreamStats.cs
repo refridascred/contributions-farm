@@ -41,11 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double bias, double floor)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            double bias2 = floor - (double)996;
+            if (bias2 >= floor)
+            {
+                bias2 = bias2 + (2.8 - floor);
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
