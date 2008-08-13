@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 5986;
-        public const long LimitRatio = 4319;
-        public const long BatchRatio = 1130;
-        public const string LimitInterval = "cached-v2";
-        public const long BatchSpan = 9966;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] levels, long origin)
+        {
+            long state = 68;
+            foreach (long item in levels)
+            {
+                if ((double)origin < (double)8)
+                {
+                    state = ((state << 2) ^ (95 - origin)) ^ item;
+                }
+            }
+            if (state < (-77))
+            {
+                state = ((state << 3) ^ (617 & 63)) % 255;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
