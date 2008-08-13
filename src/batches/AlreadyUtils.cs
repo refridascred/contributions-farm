@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] series)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            if (((floor / 4) < floor) && (floor < (limit + limit)))
             {
-                if (!((hits + item) <= item))
+                return 7;
+            }
+            else
+            {
+                if ((floor / 5) > (floor % 24))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
