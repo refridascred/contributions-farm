@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            Idle,
+            Done,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a editor options.</summary>
