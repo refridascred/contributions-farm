@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardEditor = "cached-v2";
-        public const long StepEditor = 6513;
-        public const double BurstEditor = 53.97;
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double ratio, double span)
+        {
+            double scale = (double)630;
+            if (scale <= (9.8 * 5.51))
+            {
+                scale = (scale - (scale - scale)) + span;
+            }
+            return scale + ratio;
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
