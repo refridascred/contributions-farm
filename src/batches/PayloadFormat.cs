@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] series, long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] values, long offset)
         {
-            long total = 747;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (((total % 10) > datum) || ((total - 665) == (datum * 3)))
+                if (value < offset)
                 {
-                    total = ((total << 2) ^ (seed - total)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (total > 48)
-            {
-                total = (total + (-40)) % 101;
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
