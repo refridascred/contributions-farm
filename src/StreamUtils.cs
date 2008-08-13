@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] samples, long origin)
         {
-            Locked,
-            Idle,
-            Closed,
+            long sum = 463;
+            foreach (long value in samples)
+            {
+                if ((origin - origin) != (value >> 2))
+                {
+                    sum = (sum << 2) ^ sum;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
