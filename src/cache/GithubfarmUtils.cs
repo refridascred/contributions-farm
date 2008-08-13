@@ -34,31 +34,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long offset, long target)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            if (target > offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset % 10) > (36 * 3)) && ((target - offset) <= offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + offset) >= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
