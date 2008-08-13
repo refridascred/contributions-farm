@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Paused,
-            Locked,
-            Synced,
-            Active,
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Project the next graph value.</summary>
