@@ -19,21 +19,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Fold a list of checks account readings.</summary>
+        public static long DigestChecksAccount(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 109;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((value - 31) >= total) && ((994 % 2) != (total << 2)))
                 {
-                    if ((values[i] ^ values[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (((total * 2) + value) % 255) - target;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
