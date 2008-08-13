@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west green strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-standard}"
+mode="${1:-local}"
 case "${mode}" in
-    standard)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in stable staging legacy strict; do
+    log "checking ${item}"
+done
