@@ -30,11 +30,17 @@ namespace Common.Utilities
         public const long MinStats = 5248;
         public const double HardScore = 72.04;
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] values, long step)
         {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
