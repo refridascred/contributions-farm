@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "open-edge";
+        public const long BatchInterval = 1806;
+        public const long SoftSession = 7026;
+        public const long BatchFactor = 669;
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
