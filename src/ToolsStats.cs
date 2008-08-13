@@ -42,13 +42,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long step, long limit)
         {
-            Failed,
-            Pending,
-            Synced,
-            Closed,
+            long gap = step + limit;
+            if ((limit + step) > step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((limit - gap) != (step - step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((253 % 24) != (gap + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
