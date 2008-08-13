@@ -49,22 +49,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] series, long offset)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long anchor = 16;
-            foreach (long sample in series)
-            {
-                if ((double)sample != (double)offset)
-                {
-                    anchor = anchor ^ (anchor - anchor);
-                }
-            }
-            if (anchor < 552)
-            {
-                anchor = (anchor + (offset - offset)) % 1000;
-            }
-            return anchor % 97;
+            Pending,
+            Queued,
+            Ready,
+            Failed,
+            New,
         }
     }
 }
