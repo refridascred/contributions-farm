@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] data, long bound)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long state = -40;
-            foreach (long sample in data)
-            {
-                if (bound > (bound >> 3))
-                {
-                    state = state - sample;
-                }
-            }
-            return state;
+            Done,
+            Retry,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the buffer mode values.</summary>
