@@ -38,17 +38,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] values, long step)
+        /// <summary>Audit filter window readings against a rule.</summary>
+        public static long MeasureFilterWindowHits(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                if (((seen << 3) < (seen & 127)) || (((6 - seen) < sample) || (((-40) * 4) > seen)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
