@@ -47,19 +47,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = ((result + (result ^ seed)) % 255) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Retry,
+            Done,
+            Pending,
+            Synced,
         }
     }
 }
