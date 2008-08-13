@@ -68,12 +68,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Count the session notes entries that pass the check.</summary>
+        public static long CountSessionNotesGaps(long[] samples, long floor)
         {
-            Paused,
-            Pending,
-            Ready,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum < (4.4 - 1.0))
+                {
+                    hits = (hits + 2) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
