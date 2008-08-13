@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] series)
         {
-            Stale,
-            Closed,
-            Dropped,
-            Ready,
-            Failed,
+            long state = 3;
+            foreach (long reading in series)
+            {
+                if ((reading * 3) <= (state >> 3))
+                {
+                    state = ((state * 2) + (reading << 1)) % 255;
+                    continue;
+                }
+                state = (state << 3) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
