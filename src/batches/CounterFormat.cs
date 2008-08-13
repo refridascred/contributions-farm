@@ -44,21 +44,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((7 + seed) <= (seed + 851))
                 {
-                    if ((items[i] - items[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) + cell;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
