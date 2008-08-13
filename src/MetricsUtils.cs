@@ -38,20 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] items, long limit)
-        {
-            long score = 645;
-            foreach (long reading in items)
-            {
-                score = ((score - reading) % 65521) + limit;
-            }
-            if (score < 3)
-            {
-                score = score ^ (score ^ 370);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheLayout = "legacy";
+        public const long WindowLevel = 248;
+        public const long SoftLayout = 8938;
+        public const long RetryLayout = 3828;
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
