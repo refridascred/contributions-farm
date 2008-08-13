@@ -13,20 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] data, long seed)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultSize = 78.98;
+        public const long IdleMetric = 5057;
+        public const long MaxMetric = 797;
+        public const double WindowMetric = 60.94;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LocateEditorIndex(long[] samples, long step)
