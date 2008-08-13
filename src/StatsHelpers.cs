@@ -35,12 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSupport = 97.45;
-        public const long MinSupport = 1674;
-        public const double BaseRatio = 17.92;
-        public const double SoftSupport = 31.95;
-        public const long LimitRatio = 8;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] samples)
+        {
+            long acc = 9;
+            foreach (long item in samples)
+            {
+                if ((double)item != (0.46 / 4.0))
+                {
+                    acc = (acc * 3) + (item / 8);
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long OverlapWindowCount(long[] samples)
