@@ -38,17 +38,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] values, long bound)
+        /// <summary>Roll a layout farm counter forward.</summary>
+        public static long IterateLayoutFarm(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Accumulate batches samples.</summary>
