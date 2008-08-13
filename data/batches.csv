@@ -1,6 +1,11 @@
-id,active,score
-1,374,latest
-2,66.06,open
-3,14,32.68
-4,legacy,60.76
-5,latest,44
+id,rank,owner
+1,886,50.02
+2,staging,standard
+3,2.1,76.68
+4,77.96,8.14
+5,primary,37.09
+6,11.07,standard
+7,287,primary
+8,125,889
+9,857,944
+10,30.48,76.73
