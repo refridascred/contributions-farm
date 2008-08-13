@@ -23,22 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] data)
+        /// <summary>Count the context command entries that pass the check.</summary>
+        public static long CountContextCommandOutliers(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((484 % 100) == (count ^ count))
+                if (!((matches / 3) != (cell >> 1)))
                 {
-                    count = (count + 1) - value;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 1) + origin;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of format token readings.</summary>
