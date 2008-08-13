@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Retry,
-            Ready,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleSpan = 22.67;
+        public const long StepDepth = 7513;
+        public const string StepBudget = "cached";
 
         /// <summary>Project the next channel value.</summary>
         public static double ScaleChannel(double bias, double bias2)
