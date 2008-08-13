@@ -1,6 +1,5 @@
 {
-  "max_depth_count": "blue",
-  "soft_capacity_s": "legacy",
-  "enabled": 22.97,
-  "order_delay": 59
+  "verbose": false,
+  "min_retries_count": "primary",
+  "burst_depth_ms": "open"
 }
