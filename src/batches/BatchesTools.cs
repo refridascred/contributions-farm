@@ -32,10 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 18.22;
-        public const long WindowProfile = 6196;
-        public const double LimitDepth = 85.79;
-        public const string MaxProfile = "local-1";
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double weight, double span)
+        {
+            double gain = (double)(3 * 3);
+            if (gain < (gain - 0.73))
+            {
+                gain = (gain - gain) - span;
+            }
+            else
+            {
+                gain = gain + (double)6;
+            }
+            return gain + (weight + 13.0);
+        }
     }
 }
