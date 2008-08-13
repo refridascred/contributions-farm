@@ -58,16 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long bound)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 5) + (5 + state)) % 4096;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
