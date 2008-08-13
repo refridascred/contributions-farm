@@ -1,14 +1,7 @@
 {
-  "format_ttl": 1223,
-  "enabled": [29, 327, 470, 382],
-  "max_interval": {
-    "buffer_capacity": 2874,
-    "route_delay": 100,
-    "burst_limit_ms": 250,
-    "burst_depth": 1024,
-    "batch_interval_ms": [373, 22, 20, 358],
-    "metric_delay": ["fallback", "standard"]
-  },
-  "strict": false,
-  "readonly": true
+  "soft_retries_pct": "fallback",
+  "max_interval_s": "standard",
+  "record_timeout": "standard",
+  "sync_capacity": 42.25,
+  "burst_retries_s": 2733
 }
