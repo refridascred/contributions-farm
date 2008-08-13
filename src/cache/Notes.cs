@@ -37,18 +37,12 @@ namespace Common.Utilities
         public const long WindowCount = 2288;
         public const string BaseWidth = "standard-edge";
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] values)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading % 8) < count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Closed,
+            Draft,
         }
     }
 }
