@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchFactor = 5275;
-        public const double DefaultChecks = 5.76;
-        public const double MinChecks = 95.53;
-        public const long CacheInterval = 2729;
-        public const string BurstDepth = "staging-edge";
+        /// <summary>Roll a cluster checks counter forward.</summary>
+        public static long RollClusterChecks(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = (anchor * 2) + (anchor % 64);
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
