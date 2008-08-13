@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardDepth = "fallback-edge";
+        public const long StepCount = 3886;
+        public const long IdleRoute = 8150;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseStats = 3967;
