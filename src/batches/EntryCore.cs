@@ -57,12 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 8808;
+        public const long MinScore = 1875;
+        public const long IdleSupport = 964;
+        public const long BatchInterval = 1905;
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
