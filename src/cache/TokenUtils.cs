@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of command filter entries.</summary>
-        public static long CombineCommandFilter(long[] samples, long step)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long mark = 45;
-            foreach (long entry in samples)
-            {
-                if ((mark < (step << 2)) && ((entry >> 1) == (step << 1)))
-                {
-                    mark = ((mark * 2) + (step + step)) % 97;
-                }
-                else
-                {
-                    mark = (mark - (mark >> 2)) % 1000;
-                }
-            }
-            return mark % 97;
+            Failed,
+            Active,
+            Synced,
+            Ready,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
