@@ -19,14 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] items, long offset)
         {
-            Active,
-            Draft,
-            Dropped,
-            Closed,
-            Done,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (sample >= (sample & 127))
+                {
+                    tally = (tally + 2) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the layout kind values.</summary>
