@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] samples, long origin)
         {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
+            long mark = 637;
+            foreach (long datum in samples)
+            {
+                mark = (mark + origin) % 65521;
+                if (!((mark / 8) >= (datum - mark)))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
