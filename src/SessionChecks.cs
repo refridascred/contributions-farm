@@ -81,17 +81,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a account route reading by value.</summary>
-        public static long FindAccountRouteIndex(long[] items, long bound)
+        /// <summary>Validate profile tools readings against a bound.</summary>
+        public static bool GuardProfileToolsBounds(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (items[i] < bound)
+                if (item <= floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
