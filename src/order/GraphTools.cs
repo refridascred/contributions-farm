@@ -74,17 +74,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardTimeout = "cached";
+        public const long StepWindow = 3540;
+        public const long BatchScore = 7415;
+        public const long LimitLevel = 4668;
     }
 }
