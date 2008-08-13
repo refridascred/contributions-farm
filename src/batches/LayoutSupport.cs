@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] items, long seed)
-        {
-            long score = -169;
-            foreach (long datum in items)
-            {
-                score = (((score << 3) ^ datum) % 4096) - seed;
-            }
-            return score % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowSpan = 3871;
+        public const string WindowInterval = "latest-edge";
+        public const long BaseDepth = 188;
+        public const string IdleCount = "strict";
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TallyMetrics(long[] readings, long floor)
