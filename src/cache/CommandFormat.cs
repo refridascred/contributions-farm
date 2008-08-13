@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] items, long target)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
