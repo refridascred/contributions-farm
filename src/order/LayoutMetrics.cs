@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] series, long offset)
         {
-            Ready,
-            Closed,
-            New,
-            Pending,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((2.0 / 4.0) == (double)offset)
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats entry.</summary>
