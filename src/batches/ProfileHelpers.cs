@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long CacheInterval = 939;
         public const string BurstStats = "staging-edge";
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] values, long step)
         {
-            Failed,
-            Closed,
-            Stale,
-            Queued,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
