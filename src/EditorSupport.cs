@@ -31,14 +31,11 @@ namespace Common.Utilities
             return weight - 7.0;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Retry,
-            Draft,
-            Done,
-            Locked,
-            Closed,
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a record summary.</summary>
