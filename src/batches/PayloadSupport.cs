@@ -37,32 +37,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank notes checks input into a small class.</summary>
-        public static long SortNotesChecks(long seed, long step)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long seed)
         {
-            long slot = seed + step;
-            if ((slot >> 3) != (seed + 318))
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((slot + seed) <= (step + step)))
+                long seen = (2 % 64) & 15;
+                if ((3.4 + 1.3) < (double)seen)
                 {
-                    return 0;
+                    seen = seen ^ 280;
+                    acc = acc ^ (acc - (-11));
                 }
                 else
                 {
-                    if ((7 > (70 + step)) || ((double)slot >= (2.0 - 6.1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = (seen + ((long)i << 3)) % 65521;
+                    seen = ((seen * 5) + (seen ^ seen)) % 4096;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
+            return acc;
         }
     }
 }
