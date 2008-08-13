@@ -54,20 +54,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a queue profile counter forward.</summary>
-        public static long RollQueueProfile(long limit)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(mark < (mark - mark)))
+                state = ((state << 2) ^ limit) % 255;
+                if ((((long)i & 7) >= (state ^ state)) && ((4.2 * 4.53) < (double)limit))
                 {
-                    mark = (mark ^ mark) % 101;
+                    state = state + limit;
                 }
-                mark = (mark * 3) + (850 * 3);
-                mark = ((mark * 4) + (long)i) % 4093;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return mark;
+            return state;
         }
     }
 }
