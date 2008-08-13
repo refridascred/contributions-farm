@@ -45,18 +45,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] readings, long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] series, long limit)
         {
-            long state = 7;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (((double)bound >= (6.69 * 13.0)) || ((double)state >= 15.0))
+                if (item >= limit)
                 {
-                    state = ((state << 2) ^ bound) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return ready;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
