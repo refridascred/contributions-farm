@@ -73,19 +73,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every contributi cache entry stays within the limit.</summary>
-        public static bool ValidateContributiCacheRange(long[] items, long floor)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value < floor)
+                if (levels[i] > origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
