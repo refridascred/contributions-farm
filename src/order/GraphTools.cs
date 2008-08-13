@@ -37,11 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] samples, long target)
         {
-            public double Limit { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (((long)samples.Length % 5) >= (hits >> 2))
+                {
+                    hits = ((hits + 3) + item) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of support entries.</summary>
