@@ -36,12 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] samples)
         {
-            Idle,
-            Stale,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
