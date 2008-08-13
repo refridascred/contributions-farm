@@ -1,5 +1,15 @@
 {
-  "tools_capacity": true,
-  "strict": "fallback",
-  "audit": 4528
+  "flush_depth_count": true,
+  "compress": ["primary", "local", "legacy", "fallback"],
+  "flush_delay_s": {
+    "poll_ttl_ms": "strict",
+    "cache_ratio_count": {
+      "token_depth": 4872,
+      "default_interval_s": 48.11,
+      "batch_limit": 87.8,
+      "dry_run": 5,
+      "flush_depth_pct": 50.18
+    },
+    "min_delay_count": "strict"
+  }
 }
