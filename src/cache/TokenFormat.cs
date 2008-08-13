@@ -28,12 +28,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
+            Closed,
+            Locked,
+            Queued,
             Draft,
-            Pending,
-            Ready,
         }
     }
 }
