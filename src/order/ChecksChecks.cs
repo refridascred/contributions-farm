@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public bool Total { get; set; }
             public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the batches window entries that pass the check.</summary>
