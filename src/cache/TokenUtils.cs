@@ -23,10 +23,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 4666;
-        public const string SoftTimeout = "strict-v2";
-        public const double MinNotes = 53.8;
+        /// <summary>Count the queue entry entries that pass the check.</summary>
+        public static long AuditQueueEntryOutliers(long[] items, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((datum >> 1) >= (origin >> 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
