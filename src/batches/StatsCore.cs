@@ -60,13 +60,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] levels, long bound)
         {
-            Queued,
-            Pending,
-            New,
-            Done,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
