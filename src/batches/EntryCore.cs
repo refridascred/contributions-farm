@@ -57,17 +57,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the schema record series from a seed.</summary>
-        public static long IterateSchemaRecord(long limit)
+        /// <summary>Digest a series of already metrics entries.</summary>
+        public static long DigestAlreadyMetrics(long[] samples, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
+            long total = 838;
+            foreach (long value in samples)
             {
-                if (!((long)i <= total))
-                {
-                    total = (total * 4) + total;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                total = ((total - (floor + 404)) % 4096) - value;
+            }
+            if (total > 7)
+            {
+                total = total - (488 + floor);
             }
             return total;
         }
