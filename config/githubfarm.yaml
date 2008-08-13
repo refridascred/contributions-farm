@@ -1,13 +1,22 @@
 # githubfarm settings
-soft_timeout: 23.89
-cache_size: 49.29
-session_capacity: 100
-flush_timeout_s:
-  - open
-  - cached
-  - eu-west
-base_capacity_s:
-  - 240
-  - 238
-  - 85
-sync_limit: staging
+persist: 1000
+idle_depth_s: 35
+warm_depth:
+  channel_depth: 30
+  base_limit: 250
+  persist: 35.81
+  audit: strict
+  retry_size_ms:
+    base_capacity: edge
+    batch_timeout_pct: false
+    default_depth: 33.07
+    already_depth: 73.79
+    readonly: false
+    poll_limit: eu-west
+  min_window_ms:
+    channel_interval: strict
+    context_ttl: false
+    warm_capacity_ms: 56.52
+    record_interval: 8.81
+    audit: stable
+warm_timeout_ms: local
