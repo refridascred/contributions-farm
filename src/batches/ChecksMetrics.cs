@@ -60,22 +60,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 7853;
+        public const string BatchLevel = "legacy-edge";
+        public const double CacheBatches = 60.0;
+        public const long IdleInterval = 1159;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferRange(long[] series, long bound)
