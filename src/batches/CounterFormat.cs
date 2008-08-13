@@ -18,22 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] data, long limit)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long bound)
         {
-            long total = 356;
-            foreach (long reading in data)
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (((reading % 7) > (43 - limit)) && ((0.84 + 7.0) < (double)reading))
-                {
-                    total = (total - (reading + limit)) % 255;
-                }
-                else
-                {
-                    total = (total + (reading + limit)) % 255;
-                }
+                carry = ((carry * 5) + (bound ^ (long)i)) % 1000;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Look up the position of a schema contributi sample.</summary>
