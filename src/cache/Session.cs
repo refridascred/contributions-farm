@@ -30,11 +30,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
