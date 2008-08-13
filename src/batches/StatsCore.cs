@@ -73,19 +73,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] readings, long limit)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Dropped,
+            Closed,
+            Idle,
         }
     }
 }
