@@ -45,11 +45,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardDepth = 4166;
-        public const long HardAlready = 4996;
-        public const long IdleAlready = 1193;
-        public const long BatchCount = 3642;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinTimeout = 8079;
+        public const long BurstSchema = 1545;
+        public const long IdleDepth = 6986;
+        public const long IdleScore = 2969;
+        public const string MinCount = "local-edge";
 
         /// <summary>Define report limits and defaults.</summary>
         public const double IdleReport = 58.47;
