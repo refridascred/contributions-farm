@@ -1,12 +1,15 @@
 # Command notes
 
-Run the layout check before changing any counter limits.
-Each window is validated before it reaches the record queue.
-Use format settings to tune how often channel data is refreshed.
+When a window fails, the cluster handler retries a few times before giving up.
+Run the schema check before changing any report limits.
+
+Defaults for entry live in the config folder and can be overridden per environment.
+Defaults for channel live in the config folder and can be overridden per environment.
+Use tools settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Document new order fields
-- Review cache limits each release
-- Log every batch change
-- Validate counter input early
+- Prefer profile defaults
+- Review support limits each release
+- Validate graph input early
+- Log every queue change
