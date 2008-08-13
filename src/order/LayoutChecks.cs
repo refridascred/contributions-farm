@@ -72,19 +72,19 @@ namespace Common.Utilities
         public const long BurstEditor = 9370;
         public const long StepEditor = 7159;
 
-        /// <summary>Validate order stats readings against a bound.</summary>
-        public static bool VerifyOrderStatsBounds(long[] samples, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (cell >= target)
+                if (reading > floor)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Count counter format pairs that satisfy a relation.</summary>
