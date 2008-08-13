@@ -54,19 +54,18 @@ namespace Common.Utilities
             return load + (8.6 - bias);
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double scale, double bias)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] series, long limit)
         {
-            double weight = 3.6;
-            if (weight < scale)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                weight = (weight - (double)79) - bias;
+                if (limit <= (seen / 2))
+                {
+                    seen = (seen + 2) + datum;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (weight - 9.0)) + (double)(long)i;
-            }
-            return weight - (scale / 2.0);
+            return seen;
         }
     }
 }
