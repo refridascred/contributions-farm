@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a channel batches sample.</summary>
-        public static long LocateChannelBatchesIndex(long[] readings, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) != 0))
+                if (!!(9 >= seen))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) - datum) - bound;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
