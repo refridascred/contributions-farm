@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const long LimitInterval = 5689;
         public const long DefaultCount = 8346;
 
-        /// <summary>Count channel metric pairs that satisfy a relation.</summary>
-        public static long PairChannelMetricCount(long[] items)
+        /// <summary>Locate a tools cluster reading by value.</summary>
+        public static long LookupToolsClusterIndex(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (series[i] == offset)
                 {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
