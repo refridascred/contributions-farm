@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] data, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (data[i] <= target)
+                if (((-339) - seen) < origin)
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
