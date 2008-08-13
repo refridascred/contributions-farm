@@ -80,19 +80,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseScore = "alpha-v2";
+        public const long BatchFactor = 3136;
+        public const long DefaultCount = 1220;
     }
 }
