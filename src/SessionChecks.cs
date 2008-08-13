@@ -39,21 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count session buffer pairs that satisfy a relation.</summary>
-        public static long OverlapSessionBufferCount(long[] series)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long limit, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)limit >= (6.6 / 6.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((floor - limit) < 56) && (((-68) % 10) > (floor + limit)))
                 {
-                    if ((series[i] + series[j]) > 6)
+                    return 0;
+                }
+                else
+                {
+                    if (((limit / 5) < floor) && ((limit - limit) <= (floor ^ 597)))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
