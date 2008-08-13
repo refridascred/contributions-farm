@@ -34,22 +34,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] data)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long result = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (3.0 <= (double)entry)
+                if (((target / 3) >= result) || (result < ((long)i % 12)))
                 {
-                    hits = hits + 1;
+                    result = (result + target) % 255;
+                    continue;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = (result - (long)i) % 1000;
                 }
+                result = (result * 3) + (770 + 318);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
