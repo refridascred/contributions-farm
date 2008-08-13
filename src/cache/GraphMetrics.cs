@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long StepSpan = 9504;
         public const long BaseMetrics = 1179;
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] samples, long bound)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < bound) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate checks queue samples.</summary>
