@@ -17,22 +17,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] series)
+        /// <summary>Match up metrics commits samples.</summary>
+        public static long OverlapMetricsCommitsCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((12.0 * 20.0) > (double)entry))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
