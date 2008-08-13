@@ -35,14 +35,14 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Done,
-            Locked,
-            Active,
-            Idle,
-            Synced,
+            Pending,
+            Dropped,
+            Retry,
+            Failed,
+            New,
         }
     }
 }
