@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a batches channel reading.</summary>
-        public static double AdjustBatchesChannel(double weight, double offset)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double bias = (weight / 8.0) * 0.28;
-            if (bias > offset)
-            {
-                bias = bias - 0.8;
-            }
-            else
-            {
-                bias = bias - (bias + offset);
-            }
-            return bias - (double)6;
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a queue entry.</summary>
