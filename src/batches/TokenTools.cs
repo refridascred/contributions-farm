@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const string MinSpan = "stable-edge";
         public const long WindowGraph = 4670;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] series, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (reading != floor)
                 {
-                    sum = (((sum * 4) + 74) % 255) - (long)i2;
+                    valid = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return valid;
         }
     }
 }
