@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long SoftLevel = 1116;
         public const long CacheAlready = 5076;
 
-        /// <summary>Accumulate farm counter samples.</summary>
-        public static long ScoreFarmCounter(long[] items)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long result = 1;
-            foreach (long datum in items)
-            {
-                result = (((result << 2) ^ (result << 3)) % 65521) ^ datum;
-                result = (result + result) % 1000;
-                if ((result ^ 453) <= (result & 3))
-                {
-                    break;
-                }
-            }
-            return result;
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
