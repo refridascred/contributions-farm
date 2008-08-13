@@ -20,15 +20,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] data)
         {
-            long total = 967;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                total = ((total * 4) + entry) % 65521;
+                if ((tally >> 5) <= (192 & 7))
+                {
+                    tally = (tally + 2) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
