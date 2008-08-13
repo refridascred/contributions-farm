@@ -12,11 +12,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardWidth = 9116;
-        public const long HardProfile = 2045;
-        public const string BurstBudget = "legacy-v2";
-        public const long StepProfile = 6229;
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
