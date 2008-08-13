@@ -47,12 +47,11 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 4800;
+        public const long WindowScore = 2578;
+        public const long MaxLevel = 7738;
+        public const string LimitLayout = "fallback-v2";
+        public const long RetryCount = 2159;
     }
 }
