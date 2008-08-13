@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] samples, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 5;
+            foreach (long cell in levels)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix + (cell % 2)) % 101;
             }
-            return -1;
+            if (mix > 9)
+            {
+                mix = (mix * 2) + (mix - mix);
+            }
+            return mix;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
