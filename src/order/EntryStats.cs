@@ -31,22 +31,27 @@ namespace Common.Utilities
         public const double RetryReport = 15.24;
         public const double SoftTimeout = 66.72;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] samples, long seed)
         {
-            long mark = 411;
-            foreach (long cell in readings)
+            long acc = 1;
+            foreach (long item in samples)
             {
-                if (5 < (cell + cell))
+                if (((double)item != (6.0 / 8.0)) && ((seed + item) != (acc >> 2)))
                 {
-                    mark = (mark ^ (cell - cell)) % 65521;
+                    acc = acc + (52 * 3);
                 }
                 else
                 {
-                    mark = (mark - (mark >> 4)) % 1000;
+                    acc = (acc << 3) ^ (item >> 2);
                 }
+                acc = acc + item;
             }
-            return mark % 4096;
+            if (acc > 631)
+            {
+                acc = (acc + (acc % 7)) % 255;
+            }
+            return acc;
         }
     }
 }
