@@ -39,19 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] readings, long limit)
+        /// <summary>Check that every window context entry stays within the limit.</summary>
+        public static bool CheckWindowContextRange(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (value < limit)
+                if (entry > target)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Match up cache samples.</summary>
