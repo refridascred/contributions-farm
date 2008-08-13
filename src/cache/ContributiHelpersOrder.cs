@@ -23,14 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Check that every notes cluster entry stays within the limit.</summary>
+        public static bool ValidateNotesClusterLimits(long[] samples, long target)
         {
-            Done,
-            Idle,
-            Dropped,
-            Draft,
-            Failed,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
