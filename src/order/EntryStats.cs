@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] values, long limit)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (seen < (cell & 127))
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
+            Dropped,
+            Draft,
+            Queued,
+            Synced,
+            Closed,
         }
 
         /// <summary>Accumulate record farm samples.</summary>
