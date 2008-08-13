@@ -45,11 +45,31 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long offset, long target)
         {
-            public bool Level { get; set; }
-            public double Region { get; set; }
+            if (target > offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((offset % 10) > (36 * 3)) && ((target - offset) <= offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target + offset) >= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
