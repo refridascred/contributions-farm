@@ -26,22 +26,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] data)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (((reading ^ matches) >= (629 + matches)) || (((15.0 - 6.59) <= (double)reading) || ((reading ^ 0) != (5 % 97))))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
     }
 }
