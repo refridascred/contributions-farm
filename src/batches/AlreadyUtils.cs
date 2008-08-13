@@ -27,22 +27,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] levels, long limit)
+        /// <summary>Look up the position of a counter channel sample.</summary>
+        public static long LookupCounterChannelIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample >= (limit % 100)) || ((sample << 2) != (sample * 4)))
+                if (items[i] > target)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
