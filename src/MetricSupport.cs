@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long floor, long target)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] readings, long offset)
         {
-            if ((floor & 31) > (floor >> 4))
+            long mix = 5;
+            foreach (long datum in readings)
             {
-                return 1;
+                mix = (mix ^ (mix << 1)) ^ datum;
+                mix = (mix - mix) % 65521;
             }
-            else
+            if (mix < 0)
             {
-                if ((5.4 + 6.1) == (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
+                mix = mix - (offset >> 5);
             }
+            return mix;
         }
 
         /// <summary>Project the next route value.</summary>
