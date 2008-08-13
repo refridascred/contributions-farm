@@ -1,7 +1,27 @@
 # support settings
-poll_window_ms:
-  - cached
-  - local
-  - green
-min_ttl: blue
-githubfarm_limit: true
+soft_capacity_s: standard
+session_window:
+  flush_timeout_count: 50.07
+  max_window_s: latest
+  enabled:
+    default_delay: open
+    verbose: 48.36
+    cache_retries_count: 1024
+    persist: 30.76
+    warm_timeout_pct: 30
+    burst_ttl: 76.26
+  hard_capacity_count: 250
+route_retries:
+  poll_delay_count: 6094
+  default_delay_ms: true
+  compress: false
+audit:
+  hard_size_pct:
+    flush_retries_pct: fallback
+    readonly: legacy
+    batch_window_s: 61.1
+  default_depth: local
+  base_ratio_ms: 9151
+  soft_timeout: false
+  max_timeout_pct: 79
+strict: staging
