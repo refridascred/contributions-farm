@@ -20,21 +20,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Combine checks entry values into a single score.</summary>
+        public static long WeighChecksEntry(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 6;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (((mark << 2) ^ (mark / 2)) % 255) + datum;
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
