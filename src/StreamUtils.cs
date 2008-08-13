@@ -27,14 +27,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Derive the next notes cache value from a seed.</summary>
+        public static long RollNotesCache(long target)
         {
-            Ready,
-            Done,
-            Failed,
-            Synced,
-            Queued,
+            long mix = target;
+            for (int i = 0; i < 21; i++)
+            {
+                long count = (mix - target) + (target & 63);
+                if ((mix ^ mix) < (283 ^ count))
+                {
+                    count = count ^ mix;
+                }
+                else
+                {
+                    mix = (mix ^ (count ^ target)) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
