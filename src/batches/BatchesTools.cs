@@ -30,11 +30,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultSpan = 26.82;
-        public const long CacheDepth = 9767;
-        public const double HardCount = 89.22;
-        public const double DefaultBudget = 74.78;
-        public const long BaseLevel = 1850;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepFactor = 36.69;
+        public const long HardCount = 1798;
+        public const long DefaultFactor = 4542;
     }
 }
