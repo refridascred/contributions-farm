@@ -40,12 +40,14 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
+            Dropped,
             Retry,
-            Done,
-            Ready,
+            Active,
+            Paused,
+            Failed,
         }
     }
 }
