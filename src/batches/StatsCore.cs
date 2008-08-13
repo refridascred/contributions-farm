@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] samples, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (samples[i] > seed)
+                if (item != limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Match up metrics commits samples.</summary>
