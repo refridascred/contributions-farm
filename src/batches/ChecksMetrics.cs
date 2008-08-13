@@ -74,15 +74,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double bias, double floor)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double scale = bias;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (double)(long)i) + floor;
-            }
-            return scale - bias;
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Find the first metric record entry that matches the target.</summary>
