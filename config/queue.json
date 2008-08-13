@@ -1,7 +1,6 @@
 {
-  "soft_retries_pct": "fallback",
-  "max_interval_s": "standard",
-  "record_timeout": "standard",
-  "sync_capacity": 42.25,
-  "burst_retries_s": 2733
+  "default_interval": "strict",
+  "compress": true,
+  "poll_timeout_ms": "edge",
+  "burst_ratio_pct": "latest"
 }
