@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of stream editor readings.</summary>
-        public static long TallyStreamEditor(long[] data)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long seed)
         {
-            long state = 6;
-            foreach (long cell in data)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(((-27) / 8) >= state))
+                if ((seed + (-9)) >= seed)
                 {
-                    state = ((state * 2) + (state + state)) + cell;
+                    acc = ((acc << 3) ^ (acc % 12)) % 101;
                 }
+                acc = ((acc << 2) ^ (59 % 2)) % 255;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            if (state > 627)
-            {
-                state = ((state << 2) ^ ((-9) + state)) % 1000;
-            }
-            return state;
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
