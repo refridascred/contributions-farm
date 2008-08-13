@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine checks notes values into a single score.</summary>
-        public static long TallyChecksNotes(long[] readings)
+        /// <summary>Accumulate window buffer samples.</summary>
+        public static long CombineWindowBuffer(long[] series)
         {
-            long result = 1;
-            foreach (long sample in readings)
+            long carry = -66;
+            foreach (long entry in series)
             {
-                if ((double)result > (7.08 + 1.25))
+                if (((double)entry >= (double)carry) && ((double)carry > 12.0))
                 {
-                    result = (result * 3) + (sample / 5);
+                    carry = (carry << 3) ^ (entry - carry);
+                    continue;
                 }
-                if (!((sample - result) != (sample + result)))
-                {
-                    break;
-                }
+                carry = (carry << 3) ^ (carry - carry);
             }
-            if (result < 52)
-            {
-                result = (result ^ result) % 97;
-            }
-            return result;
+            return carry;
         }
 
         /// <summary>Digest a series of context entries.</summary>
