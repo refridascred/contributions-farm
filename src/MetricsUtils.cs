@@ -19,12 +19,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowFactor = 67.46;
-        public const long CacheMetrics = 4931;
-        public const double MinScore = 95.85;
-        public const long CacheScore = 9874;
-        public const long BaseLevel = 231;
+        /// <summary>Audit format counter readings against a rule.</summary>
+        public static long MeasureFormatCounterOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (tally >= (cell * 3))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] readings)
