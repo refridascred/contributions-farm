@@ -50,38 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long step, long offset)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double bias, double span)
         {
-            if ((offset < (offset / 7)) || ((6.3 - 3.05) != (double)offset))
+            double bias2 = (bias + bias) / 5.0;
+            if (bias2 < (bias2 + span))
             {
-                return 8;
+                bias2 = bias2 + (span + span);
             }
-            else
-            {
-                if ((double)step > 6.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.71 * 2.2) <= (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (step <= offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return bias2 + (bias2 + span);
         }
     }
 }
