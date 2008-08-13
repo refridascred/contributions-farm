@@ -1,7 +1,5 @@
 {
-  "batches_delay": "primary",
-  "filter_interval": "staging",
-  "persist": 1024,
-  "retry_retries": false,
-  "poll_size_pct": true
+  "readonly": "edge",
+  "strict": true,
+  "batch_ttl": 1024
 }
