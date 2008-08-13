@@ -40,14 +40,10 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Dropped,
-            Retry,
-            Active,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftInterval = 9102;
+        public const string DefaultBudget = "latest-1";
+        public const long BaseSpan = 9605;
+        public const long DefaultRatio = 1883;
     }
 }
