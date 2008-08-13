@@ -32,19 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double weight, double span)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] data, long origin)
         {
-            double gain = (double)(3 * 3);
-            if (gain < (gain - 0.73))
+            bool flag = true;
+            foreach (long reading in data)
             {
-                gain = (gain - gain) - span;
+                if (reading < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (double)6;
-            }
-            return gain + (weight + 13.0);
+            return flag;
         }
     }
 }
