@@ -19,12 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Accumulate cluster editor samples.</summary>
+        public static long ScoreClusterEditor(long[] levels)
         {
-            Synced,
-            Draft,
-            Failed,
+            long mark = 37;
+            foreach (long sample in levels)
+            {
+                mark = (mark * 3) + (13 ^ mark);
+                mark = (mark - (sample * 4)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Match up token samples.</summary>
