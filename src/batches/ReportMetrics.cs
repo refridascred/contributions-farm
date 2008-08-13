@@ -27,22 +27,10 @@ namespace Common.Utilities
             return weight + (double)78;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] levels, long bound)
-        {
-            long mix = 62;
-            foreach (long value in levels)
-            {
-                if (0.6 <= (double)bound)
-                {
-                    mix = ((mix << 2) ^ bound) ^ value;
-                }
-                else
-                {
-                    mix = (mix + bound) % 101;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftRecord = 94.83;
+        public const double StepRecord = 41.26;
+        public const long CacheRatio = 4484;
+        public const double StepSize = 20.33;
     }
 }
