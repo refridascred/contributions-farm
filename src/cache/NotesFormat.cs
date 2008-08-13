@@ -35,21 +35,16 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Derive the next metric editor value from a seed.</summary>
-        public static long RollMetricEditor(long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (((-795) - (long)i) >= (mark + mark))
-                {
-                    mark = mark + (offset % 16);
-                    mark = (mark << 3) ^ offset;
-                }
-                mark = mark ^ (mark - (long)i);
-                mark = ((mark * 4) + (long)i) % 1000;
+                anchor = (anchor + (587 + (-61))) % 101;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return mark;
+            return anchor;
         }
     }
 }
