@@ -1,7 +1,6 @@
-id,state,count
-1,standard,100
-2,47.45,903
-3,latest,67
-4,24.22,23.09
-5,primary,469
-6,strict,blue
+id,ratio,token
+1,90.18,93.97
+2,288,open
+3,14.96,590
+4,standard,535
+5,482,33.98
