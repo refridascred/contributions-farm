@@ -36,13 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Compare every pair of cache window readings.</summary>
+        public static long MatchCacheWindowCount(long[] levels)
         {
-            public double Count { get; set; }
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
