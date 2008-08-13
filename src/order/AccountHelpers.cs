@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardDepth = "fallback-edge";
-        public const long StepCount = 3886;
-        public const long IdleRoute = 8150;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] data, long origin)
+        {
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Derive the next stream contributi value from a seed.</summary>
         public static long RollStreamContributi(long limit)
