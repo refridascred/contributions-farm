@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const string CacheRatio = "staging-edge";
         public const string CacheDepth = "strict-1";
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] values)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] values, long limit)
         {
-            long matches = 0;
+            long tally = 0;
             foreach (long cell in values)
             {
-                if ((double)matches != (double)6)
+                if ((18.0 + 4.9) != (double)cell)
                 {
-                    matches = (matches + 3) + cell;
+                    tally = (tally + 2) - limit;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Locate a support reading by value.</summary>
