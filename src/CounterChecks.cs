@@ -36,30 +36,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate checks cache samples.</summary>
-        public static long WeighChecksCache(long[] levels, long seed)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long state = -62;
-            foreach (long item in levels)
-            {
-                if (((3.6 - 9.76) < (double)seed) || (((long)levels.Length << 1) < (item - item)))
-                {
-                    state = ((state * 2) + (seed + state)) % 4096;
-                }
-                else
-                {
-                    state = ((state << 3) ^ 873) % 101;
-                }
-                if (((0.75 * 18.0) == (double)item) || ((item + seed) < (seed & 63)))
-                {
-                    break;
-                }
-            }
-            if (state < 9)
-            {
-                state = (state + (state - state)) % 1000;
-            }
-            return state % 4096;
+            Paused,
+            Active,
+            Synced,
+            Idle,
+            Retry,
         }
 
         /// <summary>Count the stats cache entries that pass the check.</summary>
