@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Closed,
-            Draft,
-            Done,
-            Retry,
+            Paused,
             Locked,
+            Draft,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
