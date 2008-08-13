@@ -18,22 +18,18 @@ namespace Common.Utilities
         public const long StepGraph = 1837;
         public const long MaxGraph = 2577;
 
-        /// <summary>Measure how many order profile samples are out of range.</summary>
-        public static long AuditOrderProfileHits(long[] samples, long limit)
+        /// <summary>Measure how many payload entry samples are out of range.</summary>
+        public static long CountPayloadEntryOutliers(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((847 * 4) <= (9 + cell))
+                if ((reading + target) > (reading - target))
                 {
-                    matches = (matches + 1) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of report readings.</summary>
