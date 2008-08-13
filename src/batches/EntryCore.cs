@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const string MaxDepth = "standard-v2";
         public const long LimitSize = 6359;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] data, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((step - seen) > (35 << 3))
+                if ((limit / 8) >= (limit % 24))
                 {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 1) ^ cell;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
