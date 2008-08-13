@@ -34,18 +34,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] samples)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= (seen + sample))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
