@@ -88,10 +88,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 8803;
-        public const long DefaultScore = 2321;
-        public const long BatchCommand = 1219;
-        public const double WindowRatio = 56.1;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
