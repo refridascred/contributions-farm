@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double scale, double span)
-        {
-            double ratio = (double)7 + scale;
-            if (ratio <= ratio)
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - span;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 86.81;
+        public const string HardBudget = "cached-v2";
+        public const string MaxFactor = "staging-edge";
+        public const string RetryTimeout = "cached-edge";
+        public const long CacheTimeout = 9947;
 
         /// <summary>Roll a cluster layout counter forward.</summary>
         public static long RollClusterLayout(long target)
