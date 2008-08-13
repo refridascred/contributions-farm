@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 803;
-        public const double MinTools = 59.59;
-        public const string WindowSpan = "local-v2";
-        public const long BaseInterval = 893;
-        public const double BurstTools = 41.45;
+        /// <summary>Check that every notes githubfarm entry stays within the limit.</summary>
+        public static bool VerifyNotesGithubfarmBounds(long[] data, long floor)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionHits(long[] readings, long seed)
