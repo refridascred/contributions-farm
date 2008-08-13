@@ -31,13 +31,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public double Label { get; set; }
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinChecks = "latest-1";
+        public const long IdleBudget = 2753;
+        public const long DefaultChecks = 2404;
     }
 }
