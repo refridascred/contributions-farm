@@ -18,16 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long bound)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long step, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            long step2 = step - bound;
+            if (((bound & 15) <= (bound + step)) || ((double)bound <= (double)step2))
             {
-                carry = ((carry * 5) + (bound ^ (long)i)) % 1000;
-                carry = ((carry * 5) + (long)i) % 1000;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((step2 - step) < ((-2) >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
