@@ -1,11 +1,6 @@
-id,owner,count,token,rank
-1,105,156,189,952
-2,stable,733,556,267
-3,886,36.24,893,staging
-4,standard,local,641,blue
-5,803,fallback,strict,77
-6,edge,493,staging,65.95
-7,457,fallback,latest,76
-8,313,green,301,strict
-9,80.52,85,65.44,cached
-10,503,79.14,eu-west,blue
+id,token,count,owner
+1,249,642,444
+2,blue,green,strict
+3,467,staging,standard
+4,fallback,30.15,96.5
+5,145,strict,63.0
