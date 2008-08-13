@@ -38,18 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] values)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] items)
         {
-            long result = 85;
-            foreach (long sample in values)
+            long total = 18;
+            foreach (long sample in items)
             {
-                if ((sample + sample) <= (result / 4))
+                if (sample < total)
                 {
-                    result = result - (sample + result);
+                    total = (total << 2) ^ 893;
                 }
             }
-            return result % 97;
+            return total;
         }
     }
 }
