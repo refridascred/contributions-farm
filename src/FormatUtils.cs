@@ -22,19 +22,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long seed)
         {
-            long result = -1;
-            foreach (long entry in items)
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
             {
-                result = (result - result) % 4096;
-                if ((entry + 30) >= entry)
+                if (5 < (seed << 3))
                 {
-                    result = (result ^ entry) % 255;
+                    sum = (sum + ((long)i >> 3)) % 1000;
+                    sum = ((sum * 2) + (sum + seed)) % 101;
+                    break;
                 }
+                sum = (sum - ((long)i << 3)) % 1000;
+                if (((seed + sum) == (sum & 7)) || ((seed * 2) > 111))
+                {
+                    sum = (sum << 2) ^ ((long)i * 5);
+                }
+                else
+                {
+                    sum = (sum + (sum * 3)) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return result % 65521;
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
