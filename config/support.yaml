@@ -1,10 +1,7 @@
 # support settings
-verbose: 4883
-burst_ttl_pct: fallback
-burst_size_ms: latest
-commits_threshold: 8054
-notes_size:
+poll_window_ms:
+  - cached
+  - local
   - green
-  - eu-west
-  - edge
-format_interval: 100
+min_ttl: blue
+githubfarm_limit: true
