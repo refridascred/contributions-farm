@@ -72,15 +72,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double gain, double bias)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            double gain2 = bias;
-            if (gain2 <= gain2)
-            {
-                gain2 = (gain2 + 18.0) - gain;
-            }
-            return gain2 + bias;
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
