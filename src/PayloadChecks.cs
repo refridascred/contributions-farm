@@ -21,11 +21,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 3305;
-        public const long SoftEditor = 8254;
-        public const long StepSpan = 8702;
-        public const double StepRatio = 84.4;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = ((total ^ (long)i) % 97) + (long)i2;
+                }
+                total = ((total << 3) ^ (total ^ (long)i)) % 255;
+                if (!((seed / 2) < (total * 2)))
+                {
+                    total = (total - (long)i) % 101;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountHits(long[] items, long seed)
