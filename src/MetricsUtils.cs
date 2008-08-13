@@ -51,13 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] items, long floor)
         {
-            public long Level { get; set; }
-            public double Region { get; set; }
-            public double Score { get; set; }
-            public string Rank { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
