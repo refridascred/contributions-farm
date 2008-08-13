@@ -65,22 +65,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] levels)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((long)levels.Length < (seen - seen))
-                {
-                    seen = (seen + 3) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            New,
+            Draft,
+            Idle,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
