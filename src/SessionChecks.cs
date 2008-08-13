@@ -33,15 +33,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] series, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            long acc = -64;
+            foreach (long datum in series)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if ((datum % 64) == (636 % 97))
+                {
+                    acc = ((acc * 2) + (target + acc)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (791 >> 3)) % 97;
+                }
             }
-            return state;
+            return acc;
         }
     }
 }
