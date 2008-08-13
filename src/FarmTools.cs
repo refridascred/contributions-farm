@@ -41,22 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command token samples are out of range.</summary>
-        public static long CountCommandTokenGaps(long[] samples, long origin)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((origin + origin) == (reading * 3))
+                if (sample <= target)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
