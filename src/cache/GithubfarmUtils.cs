@@ -20,20 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long step)
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                long lane = result;
-                if ((lane ^ result) < (result << 2))
-                {
-                    lane = (lane << 2) ^ (217 ^ offset);
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                acc = (acc ^ 11) % 101;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Roll a window counter forward.</summary>
