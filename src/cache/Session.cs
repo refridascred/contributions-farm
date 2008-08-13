@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "cached-v2";
+        public const long StepEditor = 6513;
+        public const double BurstEditor = 53.97;
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
