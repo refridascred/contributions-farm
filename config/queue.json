@@ -1,14 +1,6 @@
 {
-  "soft_timeout": "latest",
-  "readonly": ["fallback", "fallback", "stable"],
-  "cluster_depth": 500,
-  "tools_depth": {
-    "default_threshold_count": "latest",
-    "notes_threshold": true,
-    "burst_size": false,
-    "soft_delay_pct": "stable",
-    "idle_ratio_ms": 12.2
-  },
-  "sync_retries": "open",
-  "min_timeout": 500
+  "max_retries_ms": 70.41,
+  "enabled": ["latest", "local"],
+  "sync_retries_ms": "cached",
+  "base_capacity": 0.17
 }
