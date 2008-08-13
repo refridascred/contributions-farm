@@ -40,11 +40,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long bound, long origin)
         {
-            public double Score { get; set; }
-            public string Level { get; set; } = "";
+            long next = bound + origin;
+            if ((9.87 * 6.0) < (double)bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin >= (-6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((next + next) < 62) && ((next % 7) < (origin & 31)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
