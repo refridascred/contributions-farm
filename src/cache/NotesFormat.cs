@@ -23,19 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] data, long target)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long limit)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long score = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample != target)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Combine order values into a single score.</summary>
