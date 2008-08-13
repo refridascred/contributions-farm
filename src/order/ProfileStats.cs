@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepInterval = 8985;
+        public const double BatchReport = 17.06;
+        public const long RetryInterval = 6184;
+        public const string MaxInterval = "staging-v2";
+        public const long LimitLevel = 8418;
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
