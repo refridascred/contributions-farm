@@ -30,17 +30,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a counter queue sample.</summary>
-        public static long SeekCounterQueueIndex(long[] readings, long target)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long step, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((step + origin) == (step * 5))
             {
-                if ((readings[i] > target) && ((readings[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if (origin >= (origin - origin))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin - step) == (origin + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
