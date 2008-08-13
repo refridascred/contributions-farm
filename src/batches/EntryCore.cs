@@ -27,13 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
