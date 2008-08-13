@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double ratio, double span)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] levels, long floor)
         {
-            double load = span * 8.02;
-            return (load + load) + ratio;
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((((sample + (long)levels.Length) == (seen * 2)) || ((floor + floor) <= (floor - sample))) && ((seen & 1) < (sample >> 1)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two commits measurements.</summary>
