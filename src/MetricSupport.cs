@@ -32,10 +32,17 @@ namespace Common.Utilities
         public const long DefaultCount = 5143;
         public const double HardWidth = 23.0;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetryMetrics = "fallback-v2";
-        public const double MinCount = 47.95;
-        public const long HardMetrics = 4012;
-        public const long CacheSpan = 8505;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                total = total - (-92);
+                total = (total + total) % 101;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
