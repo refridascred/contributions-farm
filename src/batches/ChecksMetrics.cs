@@ -50,27 +50,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] series, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] series)
         {
-            long result = 8;
-            foreach (long value in series)
+            long score = 2;
+            foreach (long datum in series)
             {
-                result = (result * 5) + (value + value);
-                if (((result - result) >= (bound & 63)) && ((33 % 7) != (bound + value)))
-                {
-                    result = (result - (result >> 4)) % 101;
-                }
-                if ((bound + result) > (value & 3))
-                {
-                    break;
-                }
+                score = (score - (score + 94)) - datum;
             }
-            if (result > 662)
-            {
-                result = result + result;
-            }
-            return result % 4096;
+            return score % 65521;
         }
 
         /// <summary>Locate a report reading by value.</summary>
