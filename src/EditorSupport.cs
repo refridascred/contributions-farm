@@ -61,19 +61,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] levels, long floor)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Stale,
+            Closed,
+            Pending,
+            Failed,
         }
     }
 }
