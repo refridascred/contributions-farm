@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] series, long seed)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell >= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a order summary.</summary>
