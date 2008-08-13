@@ -60,18 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] items)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] readings, long origin)
         {
-            long result = 219;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (!((result * 5) < (item >> 5)))
+                if (entry > origin)
                 {
-                    result = (result * 2) + result;
+                    stale = false;
+                    break;
                 }
             }
-            return result % 97;
+            return stale;
         }
     }
 }
