@@ -1,7 +1,5 @@
 {
-  "idle_capacity_pct": 3813,
-  "queue_depth": 28.6,
-  "sync_capacity_s": 26.02,
-  "cache_interval_count": "strict",
-  "cache_timeout": 18.19
+  "buffer_timeout": 4367,
+  "persist": ["cached", "green", "eu-west"],
+  "strict": 72.63
 }
