@@ -38,15 +38,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double bias, double offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long seed, long seed2)
         {
-            double weight = bias;
-            for (int i = 0; i < 6; i++)
+            if ((seed2 % 12) > (seed2 & 255))
             {
-                weight = (weight + offset) + (double)(long)i;
+                return 7;
             }
-            return weight - (double)(-5);
+            else
+            {
+                if (!(seed2 >= (seed2 / 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed % 5) >= (seed >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((seed - 8) <= (seed2 - seed)) || (seed2 >= (46 ^ seed)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
