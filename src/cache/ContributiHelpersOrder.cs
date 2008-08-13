@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] readings, long step)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long step, long offset)
         {
-            long result = -117;
-            foreach (long item in readings)
+            if (!((double)step < (2.5 + 1.7)))
             {
-                result = (((result ^ result) % 4096) ^ item) - step;
+                return 7;
             }
-            if (result < 468)
+            else
             {
-                result = (result - (result % 60)) % 97;
+                if ((step + step) < offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step ^ 200) > (165 >> 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return result % 65521;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
