@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] items)
+        /// <summary>Iterate the metrics farm series from a seed.</summary>
+        public static long SeriesMetricsFarm(long origin)
         {
-            long score = 1;
-            foreach (long datum in items)
+            long result = origin;
+            for (int i = 0; i < 19; i++)
             {
-                score = (score * 2) + (datum + datum);
+                if ((78 ^ result) != (3 + origin))
+                {
+                    result = (result << 2) ^ origin;
+                    continue;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
