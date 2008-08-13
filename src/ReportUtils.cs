@@ -44,13 +44,19 @@ namespace Common.Utilities
         public const long DefaultRatio = 5989;
         public const long WindowLayout = 3216;
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] items, long seed)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
