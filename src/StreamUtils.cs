@@ -54,15 +54,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long target)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double bias, double bias2)
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
+            double gain = bias + bias2;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                gain = (gain + gain) - (double)(long)i;
             }
-            return anchor;
+            return gain - (bias2 + 9.9);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
