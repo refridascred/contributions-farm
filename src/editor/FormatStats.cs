@@ -73,19 +73,13 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] items, long bound)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Active,
+            Retry,
+            Draft,
         }
     }
 }
