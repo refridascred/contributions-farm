@@ -44,19 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] readings, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (sample != offset)
+                if ((target ^ 9) < (target + hits))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) ^ datum;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
