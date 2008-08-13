@@ -40,18 +40,18 @@ namespace Common.Utilities
             return ((rate + (14.0 / 6.0)) + ratio) + bias;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((3.03 - 17.0) > (double)tally)
+                if (19 >= (hits - 1))
                 {
-                    tally = (tally + 3) + value;
+                    hits = ((hits + 2) ^ cell) + seed;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
