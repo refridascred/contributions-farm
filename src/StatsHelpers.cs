@@ -31,25 +31,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long step, long target)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long cur = step + target;
-            if (step < (cur % 64))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)60 < (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Synced,
+            Retry,
+            Locked,
+            New,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
