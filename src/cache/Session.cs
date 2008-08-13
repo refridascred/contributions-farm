@@ -34,15 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of queue contributi entries.</summary>
-        public static long FoldQueueContributi(long[] samples, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] items)
         {
-            long state = 22;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long item in items)
             {
-                state = ((state * 5) + (limit / 5)) + sample;
+                if (8 <= (item / 8))
+                {
+                    tally = tally + 2;
+                }
             }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Describe the report level values.</summary>
