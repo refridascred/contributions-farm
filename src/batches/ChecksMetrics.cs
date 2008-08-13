@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            long mark = 0;
+            foreach (long datum in readings)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                mark = ((mark * 4) + (datum + datum)) % 97;
             }
-            return acc;
+            return mark % 97;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
