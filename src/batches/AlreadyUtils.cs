@@ -58,12 +58,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            Stale,
-            Synced,
-            Dropped,
+            Closed,
+            Active,
+            Ready,
+            New,
         }
     }
 }
