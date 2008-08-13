@@ -1,6 +1,7 @@
 {
-  "burst_retries_pct": 78,
-  "entry_window": 11.54,
-  "retry_limit_ms": "fallback",
-  "cache_window": true
+  "batches_delay": "primary",
+  "filter_interval": "staging",
+  "persist": 1024,
+  "retry_retries": false,
+  "poll_size_pct": true
 }
