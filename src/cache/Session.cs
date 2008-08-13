@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] samples, long target)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((hits << 3) <= (hits % 16))
+                {
+                    hits = ((hits + 3) + value) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
