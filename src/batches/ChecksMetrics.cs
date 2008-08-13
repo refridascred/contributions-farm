@@ -23,15 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] levels, long offset)
         {
-            long score = 2;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                score = (score - (score + 94)) - datum;
+                if (cell >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score % 65521;
+            return ready;
         }
 
         /// <summary>Locate a report reading by value.</summary>
