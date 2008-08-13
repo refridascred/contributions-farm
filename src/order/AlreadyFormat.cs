@@ -32,16 +32,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            long score = 28;
+            foreach (long item in readings)
             {
-                result = result + 31;
-                result = ((result * 5) + (long)i) % 101;
+                score = ((score << 3) ^ item) % 1000;
             }
-            return result;
+            if (score < 4)
+            {
+                score = ((score << 3) ^ (6 / 2)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
