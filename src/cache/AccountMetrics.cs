@@ -37,25 +37,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a route record pair into a bucket.</summary>
-        public static long BucketRouteRecord(long limit, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] levels, long bound)
         {
-            long diff = limit + seed;
-            if (!((double)diff != (5.4 - 7.14)))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((78 << 1) <= (limit - diff))
+                if ((double)bound > 8.0)
                 {
-                    return 2;
+                    tally = (tally + 1) + sample;
                 }
                 else
                 {
-                    return 3;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the profile phase values.</summary>
