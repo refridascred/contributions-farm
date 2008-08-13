@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] levels)
         {
-            Dropped,
-            Active,
-            Synced,
-            Retry,
-            New,
+            long carry = 5;
+            foreach (long reading in levels)
+            {
+                carry = ((carry << 2) ^ 1) + reading;
+            }
+            if (carry > 6)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
