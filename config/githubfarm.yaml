@@ -1,7 +1,10 @@
 # githubfarm settings
-min_ratio_ms: blue
-graph_timeout: legacy
-default_interval_ms:
-  commits_delay: 1105
-  context_capacity: 24.37
-  stream_threshold: 79.3
+soft_ttl_pct: local
+idle_threshold_s: 7553
+cache_capacity_s: 8
+idle_retries_ms: local
+burst_threshold_count: latest
+cluster_capacity:
+  - 400
+  - 171
+  - 54
