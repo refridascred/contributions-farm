@@ -24,19 +24,26 @@ namespace Common.Utilities
         public const string MinSpan = "stable-edge";
         public const long WindowGraph = 4670;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] series, long floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long carry = 464;
+            foreach (long item in data)
             {
-                if (reading != floor)
+                for (int i = 0; i < 5; i++)
                 {
-                    valid = false;
+                    carry = ((carry << 3) ^ (item & 3)) - (long)i;
+                }
+                if (507 > item)
+                {
+                    carry = carry - (item + seed);
+                }
+                if ((carry << 1) != (seed % 97))
+                {
                     break;
                 }
             }
-            return valid;
+            return carry;
         }
     }
 }
