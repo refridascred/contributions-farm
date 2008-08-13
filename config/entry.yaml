@@ -1,6 +1,8 @@
 # entry settings
-schema_delay: 52.67
-min_size_s: 95
-sync_timeout_ms: 66.07
-session_window: stable
-batch_window_ms: 30
+sync_window_s: 8651
+retry_ratio_s: eu-west
+hard_size:
+  default_retries_pct: 91.25
+  sync_delay: true
+  flush_limit_pct: staging
+  hard_interval_ms: 43
