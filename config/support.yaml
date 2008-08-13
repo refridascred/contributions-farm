@@ -1,5 +1,59 @@
 # support settings
-base_ttl_count: 2522
-command_limit: 24.35
-layout_ttl: 3.75
-support_window: 250
+batch_threshold_s:
+  warm_limit_pct:
+    - 162
+    - 352
+    - 122
+    - 299
+  compress: green
+  flush_ttl: false
+  checks_retries:
+    - edge
+    - stable
+    - legacy
+  contributi_size:
+    - 140
+    - 381
+    - 443
+  min_size: 87.87
+soft_timeout_s:
+  channel_limit: open
+  verbose:
+    sync_ttl_s: true
+    base_size:
+      - 368
+      - 186
+      - 37
+      - 322
+    tools_ttl: 4139
+    audit:
+      - 77
+      - 376
+      - 467
+      - 37
+    counter_capacity: 6084
+    editor_delay: blue
+  min_depth:
+    persist: edge
+    poll_capacity_s:
+      - stable
+      - open
+      - open
+    batch_delay:
+      - open
+      - primary
+  default_delay_ms:
+    - 68
+    - 370
+    - 127
+  context_delay: 54
+max_ratio_s: staging
+retry_interval:
+  retry_timeout_count: 250
+  notes_limit: 3687
+  batches_depth:
+    - 85
+    - 338
+    - 341
+    - 375
+  batch_window: 83.6
