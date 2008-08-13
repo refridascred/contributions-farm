@@ -19,12 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 562;
-        public const long BaseCount = 5993;
-        public const double HardAlready = 54.07;
-        public const double StepSize = 47.09;
-        public const long BurstAlready = 3597;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 8670;
+        public const long SoftBudget = 8886;
+        public const long SoftOrder = 4747;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long DeriveBuffer(long bound)
