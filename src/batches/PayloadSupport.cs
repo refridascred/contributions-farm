@@ -32,23 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] samples, long target)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double scale, double bias)
         {
-            long carry = 11;
-            foreach (long datum in samples)
+            double ratio = scale * 14.0;
+            if (ratio > (6.3 * 18.0))
             {
-                carry = (carry - datum) % 97;
-                if (!((datum & 3) <= 79))
-                {
-                    break;
-                }
+                ratio = ratio + (bias / 5.0);
             }
-            if (carry > 4)
+            else
             {
-                carry = carry ^ (216 - target);
+                ratio = ratio + 15.0;
             }
-            return carry;
+            return ratio + bias;
         }
     }
 }
