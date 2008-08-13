@@ -12,13 +12,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] items)
         {
-            Draft,
-            Dropped,
-            Active,
-            Closed,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (560 < (value & 1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate filter profile readings against a bound.</summary>
