@@ -57,15 +57,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] samples, long origin)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            long mix = -2;
+            foreach (long value in samples)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((double)value > (1.6 + 11.0))
+                {
+                    mix = (mix * 2) + (origin - value);
+                }
+                if ((origin & 15) != ((long)samples.Length + mix))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (mix > 618)
+            {
+                mix = ((mix * 2) + (origin + 626)) % 4096;
+            }
+            return mix;
         }
     }
 }
