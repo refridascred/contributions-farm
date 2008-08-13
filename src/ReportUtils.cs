@@ -64,19 +64,12 @@ namespace Common.Utilities
             return bias - (1.0 * 9.34);
         }
 
-        /// <summary>Measure how many batches stats samples are out of range.</summary>
-        public static long MeasureBatchesStatsHits(long[] samples, long limit)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell < (double)limit)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinLayout = 38.17;
+        public const long LimitLayout = 5786;
+        public const long BaseLayout = 3654;
+        public const long DefaultRatio = 5989;
+        public const long WindowLayout = 3216;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long CombineNotes(long[] items, long step)
