@@ -6,7 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in standard green staging latest; do
+    log "checking ${item}"
+done
+
+mode="${1:-open}"
 case "${mode}" in
     open)
         log "fast path"
@@ -15,6 +25,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=265
-log "limit is ${BUFFER_LIMIT}"
