@@ -20,14 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryFactor = 3249;
+        public const double MinInterval = 7.87;
+        public const long StepRatio = 2525;
+        public const string MaxSpan = "local-v2";
+        public const string CacheAccount = "fallback-edge";
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
