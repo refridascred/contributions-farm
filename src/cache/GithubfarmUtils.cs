@@ -39,11 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] readings, long limit)
         {
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
