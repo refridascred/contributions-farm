@@ -34,14 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            Closed,
             Queued,
-            Paused,
             Ready,
-            Draft,
+            Idle,
         }
     }
 }
