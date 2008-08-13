@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = bias + gain;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = bias2 - (double)(long)i;
             }
-            return tally;
+            return bias2 + (double)(-40);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
