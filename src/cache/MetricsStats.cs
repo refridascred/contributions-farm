@@ -25,15 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double rate, double floor)
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double ratio, double span)
         {
-            double bias = (double)((-87) << 2);
-            if (bias < (double)(-4))
-            {
-                bias = (bias - (double)799) - floor;
-            }
-            return bias - (rate - rate);
+            double load = span * 8.02;
+            return (load + load) + ratio;
         }
 
         /// <summary>Blend two commits measurements.</summary>
