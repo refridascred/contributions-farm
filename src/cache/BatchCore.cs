@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a route githubfarm pair into a bucket.</summary>
-        public static long SortRouteGithubfarm(long bound, long step)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] samples, long bound)
         {
-            long prev = bound - step;
-            if (8.8 > (double)prev)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)step >= (9.3 / 5.0)) || ((double)step < (double)prev))
+                if ((samples[i] >= bound) && ((samples[i] % 5) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
