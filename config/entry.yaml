@@ -1,26 +1,9 @@
 # entry settings
-payload_timeout: 33.06
-hard_capacity: 25.54
-burst_interval_pct: 96
-retry_timeout_ms:
-  payload_interval:
-    - fallback
-    - primary
-  counter_threshold:
-    - 379
-    - 243
-    - 120
-  base_ttl_ms:
-    window_ttl: blue
-    batch_delay_s: 49
-    default_capacity: 24
-    hard_ratio:
-      - latest
-      - edge
-    channel_size: true
-    soft_retries: 9507
-  enabled: 1870
-  notes_interval: false
-  compress: 2355
-base_delay: cached
-flush_capacity_count: open
+flush_retries_s:
+  - 403
+  - 247
+  - 426
+  - 431
+command_interval: true
+sync_ratio: false
+persist: true
