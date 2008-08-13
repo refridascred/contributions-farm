@@ -14,10 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardScore = "open-1";
-        public const long HardCommits = 4670;
-        public const double LimitFactor = 63.16;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = (mix ^ (251 * 5)) % 1000;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BatchMetrics = "latest-1";
