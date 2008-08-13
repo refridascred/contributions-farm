@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] samples, long seed)
+        /// <summary>Fold a list of record order readings.</summary>
+        public static long TallyRecordOrder(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long carry = 374;
+            foreach (long entry in levels)
             {
-                if (item >= seed)
+                if (!((entry ^ entry) <= entry))
                 {
-                    stale = false;
-                    break;
+                    carry = (((carry << 3) ^ entry) % 65521) - origin;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (entry >> 3)) % 1000;
                 }
             }
-            return stale;
+            if (carry < 2)
+            {
+                carry = ((carry * 3) + (carry * 4)) % 101;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Match up record samples.</summary>
