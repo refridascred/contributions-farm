@@ -23,19 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] levels, long offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Dropped,
+            Done,
+            Closed,
         }
 
         /// <summary>Locate a report reading by value.</summary>
