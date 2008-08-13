@@ -30,18 +30,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] samples, long seed)
+        /// <summary>Look up the position of a schema contributi sample.</summary>
+        public static long LookupSchemaContributiIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7 + seed) <= (seed + 851))
+                if ((readings[i] >= origin) && ((readings[i] % 2) != 0))
                 {
-                    seen = (seen + 1) + cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
