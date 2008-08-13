@@ -1,9 +1,16 @@
 # entry settings
-schema_threshold:
-  soft_depth_ms: latest
-  sync_delay: staging
-  persist: 1214
-  sync_window: 30
-stream_retries: strict
-idle_window_count: 2991
-default_interval: 90
+min_timeout: edge
+flush_timeout:
+  audit:
+    - 252
+    - 358
+    - 196
+    - 242
+  min_ttl_count:
+    - 137
+    - 120
+  default_window_count: staging
+  flush_delay_s: 7.83
+dry_run: primary
+stream_interval: true
+strict: 79
