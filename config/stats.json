@@ -1,7 +1,15 @@
 {
-  "min_retries": 100,
-  "retry_window_count": true,
-  "batch_retries": true,
-  "min_ttl": 45,
-  "max_capacity_ms": false
+  "soft_timeout_count": ["blue", "fallback", "stable", "green"],
+  "min_depth_pct": {
+    "schema_capacity": true,
+    "poll_size_pct": [190, 322],
+    "soft_capacity_ms": 100
+  },
+  "flush_ratio_count": {
+    "poll_ratio": 9422,
+    "burst_limit_count": [369, 68],
+    "hard_threshold_count": 6968,
+    "min_ratio": "eu-west"
+  },
+  "verbose": true
 }
