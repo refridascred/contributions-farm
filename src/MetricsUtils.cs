@@ -19,13 +19,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double ratio, double offset)
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            double drift = (double)((-8) - 178);
+            if (drift >= (double)37)
+            {
+                drift = drift - (offset + ratio);
+            }
+            else
+            {
+                drift = drift + offset;
+            }
+            return drift - (9.0 / 5.0);
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
