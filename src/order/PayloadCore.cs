@@ -40,11 +40,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long limit, long origin)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
+            if (((4.61 - 1.0) == (double)limit) || ((origin + limit) <= (limit + limit)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((851 - origin) < (origin << 3)) || ((origin - 764) >= (limit + (-112))))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of support readings.</summary>
