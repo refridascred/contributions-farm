@@ -1,5 +1,8 @@
 {
-  "buffer_timeout": 4367,
-  "persist": ["cached", "green", "eu-west"],
-  "strict": 72.63
+  "route_retries": [31, 37, 61, 22],
+  "strict": 95.28,
+  "githubfarm_retries": "local",
+  "sync_size_ms": 74,
+  "compress": true,
+  "token_threshold": 100
 }
