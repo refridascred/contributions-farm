@@ -10,13 +10,10 @@ namespace Common.Utilities
         public const string IdleFormat = "latest-edge";
         public const double RetryBudget = 65.89;
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Pending,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstDepth = "staging-edge";
+        public const string StepSize = "staging-v2";
+        public const long LimitBudget = 1419;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
