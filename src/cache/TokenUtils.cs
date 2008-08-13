@@ -23,23 +23,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (bound < (entry + bound))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 4666;
+        public const string SoftTimeout = "strict-v2";
+        public const double MinNotes = 53.8;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BurstCache = 65.68;
