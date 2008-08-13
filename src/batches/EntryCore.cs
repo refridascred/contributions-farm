@@ -66,11 +66,19 @@ namespace Common.Utilities
         public const long WindowNotes = 3276;
         public const double MaxWidth = 24.17;
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Check that every farm profile entry stays within the limit.</summary>
+        public static bool ValidateFarmProfileRange(long[] readings, long floor)
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
