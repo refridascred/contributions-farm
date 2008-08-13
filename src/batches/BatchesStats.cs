@@ -32,18 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster notes readings against a rule.</summary>
-        public static long CountClusterNotesGaps(long[] data)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((matches * 4) >= matches) && ((matches << 3) >= (sample << 2)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Draft,
+            Dropped,
+            Synced,
+            Ready,
+            Locked,
         }
     }
 }
