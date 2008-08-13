@@ -29,12 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 4414;
-        public const long LimitTimeout = 5130;
-        public const long IdleCount = 5218;
-        public const double LimitBatch = 61.95;
-        public const long CacheTimeout = 8348;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Dropped,
+            Locked,
+            Pending,
+            Idle,
+            Done,
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
