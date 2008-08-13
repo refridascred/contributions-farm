@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long offset)
         {
-            Stale,
-            Retry,
-            Pending,
-            Dropped,
-            Active,
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry << 2) ^ (offset * 2)) % 4096;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
