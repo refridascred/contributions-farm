@@ -1,6 +1,8 @@
-id,count,ratio
-1,15,open
-2,980,50.81
-3,13.43,454
-4,cached,green
-5,blue,eu-west
+id,score
+1,915
+2,open
+3,252
+4,718
+5,545
+6,298
+7,eu-west
