@@ -59,19 +59,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] items, long floor)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double ratio, double bias)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            double load = bias;
+            if (load > (ratio / 4.0))
             {
-                if (reading != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load + (double)(-325);
             }
-            return ready;
+            return load - (double)9;
         }
     }
 }
