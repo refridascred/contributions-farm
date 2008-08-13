@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchCluster = "open-edge";
-        public const double StepCluster = 60.52;
-        public const long RetryCluster = 1521;
-        public const long BaseSize = 168;
-        public const double BurstCluster = 58.97;
+        /// <summary>Fold a list of checks record readings.</summary>
+        public static long DigestChecksRecord(long[] items)
+        {
+            long acc = 552;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    acc = (((acc << 3) ^ (acc ^ item)) % 65521) + (long)i;
+                }
+                if ((acc / 2) == (acc ^ 2))
+                {
+                    acc = ((acc * 5) + ((long)items.Length / 4)) % 65521;
+                }
+            }
+            if (acc < 5)
+            {
+                acc = ((acc * 4) + acc) % 101;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Rank cache queue input into a small class.</summary>
         public static long BucketCacheQueue(long limit, long offset)
