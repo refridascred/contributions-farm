@@ -1,9 +1,8 @@
 # support settings
-poll_depth: 7487
-sync_capacity_pct: 46
-sync_window_count: 64.0
-cache_threshold:
-  - 293
-  - 232
-cluster_interval: open
-poll_timeout_ms: eu-west
+min_capacity: 93
+retry_timeout:
+  hard_limit: 5
+  poll_interval: 41
+  profile_threshold: stable
+  default_delay: 9.81
+cache_retries: false
