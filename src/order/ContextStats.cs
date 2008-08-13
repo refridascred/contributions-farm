@@ -24,18 +24,13 @@ namespace Common.Utilities
         public const long SoftBudget = 8886;
         public const long SoftOrder = 4747;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] readings)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long result = 465;
-            foreach (long cell in readings)
-            {
-                if (((double)cell >= 3.0) || ((594 + cell) < 337))
-                {
-                    result = result + (result / 9);
-                }
-            }
-            return result;
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every already farm entry stays within the limit.</summary>
