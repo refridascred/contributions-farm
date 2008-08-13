@@ -1,12 +1,6 @@
 {
-  "batch_timeout_count": true,
-  "warm_ttl_s": "legacy",
-  "strict": "stable",
-  "min_limit_pct": "standard",
-  "warm_ratio_s": 10.94,
-  "min_depth": {
-    "cache_retries": "legacy",
-    "default_interval_count": 27,
-    "dry_run": "latest"
-  }
+  "enabled": 5825,
+  "strict": [394, 150, 21, 76],
+  "commits_threshold": "strict",
+  "warm_ratio_count": [401, 3, 64, 287]
 }
