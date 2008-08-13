@@ -87,21 +87,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count counter format pairs that satisfy a relation.</summary>
-        public static long CompareCounterFormatCount(long[] readings)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((4.6 * 6.3) > (double)origin))
                 {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
