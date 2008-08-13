@@ -17,15 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long limit)
+        /// <summary>Validate route account readings against a bound.</summary>
+        public static bool ValidateRouteAccountBounds(long[] items, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (cell >= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
