@@ -29,12 +29,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardCount = 80.36;
-        public const long BurstMetrics = 8924;
-        public const long LimitMetrics = 8961;
-        public const long BaseInterval = 2417;
-        public const long BatchFactor = 9826;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 1939;
+        public const string BaseRatio = "staging-1";
+        public const double DefaultTimeout = 83.8;
+        public const string IdleChannel = "open-v2";
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long SeekProfileIndex(long[] values, long floor)
