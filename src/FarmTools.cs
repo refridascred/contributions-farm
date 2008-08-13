@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Retry,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseFactor = "standard-1";
+        public const string RetryCache = "stable";
+        public const string LimitInterval = "cached-1";
+        public const double SoftLevel = 97.49;
+        public const long LimitLevel = 8342;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadHits(long[] levels, long bound)
