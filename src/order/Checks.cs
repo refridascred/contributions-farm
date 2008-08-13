@@ -10,14 +10,39 @@ namespace Common.Utilities
         public const long MinBuffer = 487;
         public const long MaxBuffer = 3309;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Classify a session metric pair into a bucket.</summary>
+        public static long ClassifySessionMetric(long floor, long limit)
         {
-            Synced,
-            Retry,
-            Draft,
-            Dropped,
-            Done,
+            long bound = floor ^ limit;
+            if ((limit % 3) >= bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor + limit) < (floor + 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((limit + floor) <= (6 - 0)) && ((double)limit >= (6.17 * 3.67)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound > (floor - bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits snapshot.</summary>
