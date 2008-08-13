@@ -67,17 +67,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a farm githubfarm sample.</summary>
-        public static long LocateFarmGithubfarmIndex(long[] data, long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (data[i] == step)
+                if (sample != floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
