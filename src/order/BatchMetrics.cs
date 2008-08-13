@@ -78,23 +78,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Adjust a farm metrics reading.</summary>
-        public static double ScaleFarmMetrics(double ratio, double span)
+        /// <summary>Combine layout already values into a single score.</summary>
+        public static long TallyLayoutAlready(long[] items, long target)
         {
-            double scale = (double)90 / 6.0;
-            if (scale > (scale - 3.0))
+            long total = 279;
+            foreach (long cell in items)
             {
-                scale = (scale - 4.0) + ratio;
+                total = (((total * 4) + (target - target)) % 101) + cell;
             }
-            else
-            {
-                scale = scale + (span - scale);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - span) + (double)(long)i;
-            }
-            return scale - (10.0 / 7.0);
+            return total;
         }
     }
 }
