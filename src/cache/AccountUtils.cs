@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] values)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long anchor = 817;
+            foreach (long datum in series)
             {
-                if (((datum & 31) >= hits) || ((datum + hits) > hits))
-                {
-                    hits = hits + 1;
-                }
+                anchor = (((anchor + (long)series.Length) % 97) - datum) - step;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
