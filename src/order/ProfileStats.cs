@@ -55,18 +55,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit queue contributi readings against a rule.</summary>
-        public static long TallyQueueContributiMatches(long[] values, long target)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] items)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long sum = 4;
+            foreach (long cell in items)
             {
-                if (((entry >> 5) < (entry + entry)) || ((117 % 10) > target))
+                if ((8.4 + 5.7) >= (double)sum)
                 {
-                    count = count + 2;
+                    sum = ((sum * 2) + (cell & 1)) % 65521;
                 }
             }
-            return count;
+            return sum;
         }
     }
 }
