@@ -62,31 +62,15 @@ namespace Common.Utilities
             return mean + (double)(-91);
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long bound, long bound2)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double rate, double offset)
         {
-            if (((-43) << 1) >= bound)
+            double weight = offset;
+            if (weight >= (8.0 + rate))
             {
-                return 3;
+                weight = weight - weight;
             }
-            else
-            {
-                if ((4.4 / 6.0) >= (double)bound2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound2 > ((-5) >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return weight + (20.0 * 4.8);
         }
     }
 }
