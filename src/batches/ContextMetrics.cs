@@ -50,21 +50,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Match up entry graph samples.</summary>
-        public static long PairEntryGraphCount(long[] series)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 965;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((((state << 3) ^ state) % 4096) - sample) - limit;
             }
-            return count;
+            return state % 65521;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
