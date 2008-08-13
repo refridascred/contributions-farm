@@ -64,15 +64,23 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double scale, double floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] samples)
         {
-            double scale2 = (9.09 * 0.09) / 3.0;
-            if (scale2 < (scale - scale2))
+            long carry = 63;
+            foreach (long reading in samples)
             {
-                scale2 = (scale2 - (scale / 2.0)) - floor;
+                carry = (carry - (carry & 7)) % 97;
+                if (reading < (930 - carry))
+                {
+                    break;
+                }
             }
-            return scale2 - (scale2 * 0.09);
+            if (carry < 1)
+            {
+                carry = carry + (carry ^ 67);
+            }
+            return carry;
         }
     }
 }
