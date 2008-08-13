@@ -77,20 +77,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a queue editor counter forward.</summary>
-        public static long SeriesQueueEditor(long offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] series, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (!((offset - score) > ((long)i * 5)))
+                if (reading <= bound)
                 {
-                    score = (score + (score >> 3)) % 4096;
+                    ready = false;
+                    break;
                 }
-                score = (score - (score & 7)) % 1000;
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return ready;
         }
     }
 }
