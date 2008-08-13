@@ -31,10 +31,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleFactor = 83.05;
-        public const string MinWidth = "latest-1";
-        public const long MinCount = 986;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] samples)
+        {
+            long carry = 0;
+            foreach (long item in samples)
+            {
+                carry = carry - (carry ^ carry);
+                carry = (carry ^ (item + 1)) % 97;
+                carry = carry - (carry + item);
+            }
+            if (carry > 4)
+            {
+                carry = ((carry * 2) + (carry & 127)) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long TallyBatches(long[] data)
