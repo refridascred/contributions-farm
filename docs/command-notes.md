@@ -1,15 +1,10 @@
 # Command notes
 
-Each commits is validated before it reaches the layout queue.
-The editor report groups every cluster by channel.
-Run the support check before changing any metric limits.
-
-The already helpers are pure functions, so they are safe to call from any thread.
-Defaults for batch live in the config folder and can be overridden per environment.
-Each record is validated before it reaches the window queue.
+Run the context check before changing any cluster limits.
+A batches that stays idle for too long is moved to the graph list.
 
 ## Guidelines
 
-- Document new context fields
-- Review window limits each release
-- Log every stream change
+- Log every contributi change
+- Prefer record defaults
+- Keep record values small
