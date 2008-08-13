@@ -1,4 +1,5 @@
 # support settings
-idle_limit_ms: 21
-retry_interval_count: 500
-contributi_ttl: legacy
+base_ttl_count: 2522
+command_limit: 24.35
+layout_ttl: 3.75
+support_window: 250
