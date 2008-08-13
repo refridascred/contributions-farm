@@ -30,12 +30,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultTimeout = 5504;
-        public const long HardMetrics = 5084;
-        public const long LimitMetrics = 1432;
-        public const string RetryMetrics = "strict-1";
-        public const double CacheInterval = 94.89;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] levels)
+        {
+            long anchor = 0;
+            foreach (long cell in levels)
+            {
+                anchor = (anchor << 2) ^ anchor;
+                anchor = ((anchor * 3) + (-5)) % 1000;
+                if ((cell - cell) <= cell)
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Audit queue contributi readings against a rule.</summary>
         public static long TallyQueueContributiMatches(long[] values, long target)
