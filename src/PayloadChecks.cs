@@ -31,18 +31,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] items)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((matches >> 2) == ((long)items.Length + reading))
+                if ((double)hits < 8.18)
                 {
-                    matches = matches + 3;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Rank report input into a small class.</summary>
