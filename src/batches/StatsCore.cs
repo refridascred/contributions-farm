@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] series, long limit)
+        /// <summary>Audit support layout readings against a rule.</summary>
+        public static long MeasureSupportLayoutHits(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (item != limit)
+                if ((14.0 / 4.0) < (double)item)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Match up metrics commits samples.</summary>
