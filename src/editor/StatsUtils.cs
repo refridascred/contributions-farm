@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats utils helpers.</summary>
     public static class StatsUtils
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] readings)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((long)readings.Length >= reading)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((readings[i] ^ readings[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Validate record payload readings against a bound.</summary>
