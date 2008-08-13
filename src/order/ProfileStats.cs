@@ -33,20 +33,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] values, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)(long)i < 1.3)
+                if (values[i] <= target)
                 {
-                    mark = mark - (mark & 15);
-                    mark = (mark << 2) ^ (22 + origin);
+                    return (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
     }
 }
