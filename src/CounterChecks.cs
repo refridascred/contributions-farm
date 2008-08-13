@@ -44,14 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Paused,
-            Active,
-            Synced,
-            Idle,
-            Retry,
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the context state values.</summary>
