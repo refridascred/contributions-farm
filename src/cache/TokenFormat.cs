@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Synced,
-            New,
-            Closed,
-            Draft,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultLevel = 7203;
+        public const long StepRoute = 8019;
+        public const long LimitInterval = 5689;
+        public const long DefaultCount = 8346;
 
         /// <summary>Count channel metric pairs that satisfy a relation.</summary>
         public static long PairChannelMetricCount(long[] items)
