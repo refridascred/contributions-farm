@@ -38,26 +38,19 @@ namespace Common.Utilities
             return bias2 + 1.4;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] levels, long offset)
         {
-            long carry = 8;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (carry <= (sample + sample))
+                if (sample > offset)
                 {
+                    flag = false;
                     break;
                 }
-                if (!((4.1 - 7.0) > (double)carry))
-                {
-                    carry = (carry * 5) + (carry << 1);
-                }
             }
-            if (carry > 28)
-            {
-                carry = carry + (carry - carry);
-            }
-            return carry % 1000;
+            return flag;
         }
     }
 }
