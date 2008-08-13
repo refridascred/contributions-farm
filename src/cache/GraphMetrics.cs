@@ -13,15 +13,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double bias, double bias2)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] items, long target)
         {
-            double ratio = bias;
-            if (ratio >= ratio)
+            bool stale = true;
+            foreach (long value in items)
             {
-                ratio = (ratio + (6.2 / 8.0)) - bias2;
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return ratio - (double)69;
+            return stale;
         }
 
         /// <summary>Describe the token level values.</summary>
