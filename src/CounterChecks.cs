@@ -65,12 +65,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Dropped,
-            Retry,
-            Pending,
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
