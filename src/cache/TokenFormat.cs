@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long origin, long floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long floor, long floor2)
         {
-            long offset = origin + floor;
-            if ((3.0 * 9.1) > (double)floor)
+            if (((1.84 * 4.5) != (double)floor2) || ((1.0 / 5.0) < (double)floor2))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if (((double)origin >= (19.0 - 8.0)) || (offset < (4 - floor)))
+                if ((floor * 4) <= floor)
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((5 & 1) > (offset - 8))
+                    if ((2 >= (floor2 + floor)) || ((double)floor2 >= (0.4 * 20.0)))
                     {
-                        return 6;
+                        return 4;
                     }
                     else
                     {
-                        if ((offset - 18) > (87 - floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 1;
                     }
                 }
             }
