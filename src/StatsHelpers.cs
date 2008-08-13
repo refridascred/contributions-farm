@@ -33,11 +33,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardNotes = 9.79;
-        public const double CacheNotes = 60.75;
-        public const string HardTimeout = "standard-1";
-        public const long BaseNotes = 9475;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Measure how many tools support samples are out of range.</summary>
         public static long MeasureToolsSupportHits(long[] levels, long origin)
