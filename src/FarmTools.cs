@@ -33,11 +33,19 @@ namespace Common.Utilities
             return scale - (scale * 6.07);
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double ratio, double span)
         {
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
+            double weight = ratio * 7.64;
+            if (weight > (double)181)
+            {
+                weight = weight - span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (ratio / 8.0)) + (double)(long)i;
+            }
+            return weight + span;
         }
     }
 }
