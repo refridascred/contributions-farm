@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] levels, long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] values, long floor)
         {
-            long mix = 89;
-            foreach (long sample in levels)
+            long total = 218;
+            foreach (long sample in values)
             {
-                if ((double)mix < (7.4 / 4.0))
+                if (((double)total != (0.26 / 3.0)) && ((2.0 - 8.6) > (double)floor))
                 {
-                    mix = (mix - sample) % 65521;
+                    total = ((total ^ (floor / 7)) % 4096) + sample;
                 }
-                else
-                {
-                    mix = mix ^ (offset - sample);
-                }
-                if ((mix >> 5) > (offset / 3))
-                {
-                    break;
-                }
+                total = total ^ (floor >> 3);
             }
-            if (mix > 928)
-            {
-                mix = (mix + mix) % 97;
-            }
-            return mix % 97;
+            return total % 65521;
         }
 
         /// <summary>Adjust a route reading.</summary>
