@@ -24,38 +24,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long floor, long floor2)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] series, long bound)
         {
-            if (((floor / 4) >= floor2) || ((double)floor != (double)floor2))
+            long result = 8;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor2 < 135)
+                result = (result * 5) + (value + value);
+                if (((result - result) >= (bound & 63)) && ((33 % 7) != (bound + value)))
                 {
-                    return 6;
+                    result = (result - (result >> 4)) % 101;
                 }
-                else
+                if ((bound + result) > (value & 3))
                 {
-                    if ((floor - floor) < floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor < 568)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (result > 662)
+            {
+                result = result + result;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
