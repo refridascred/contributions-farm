@@ -50,25 +50,10 @@ namespace Common.Utilities
         public const long WindowCount = 2288;
         public const string BaseWidth = "standard-edge";
 
-        /// <summary>Roll a filter already counter forward.</summary>
-        public static long SeriesFilterAlready(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 2) + (bound ^ bound)) % 65521;
-                if (((long)i <= (score / 5)) || ((bound + score) >= (score & 255)))
-                {
-                    break;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (bound - 99)) % 97;
-                    score = ((score << 3) ^ bound) % 1000;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitDepth = 6869;
+        public const string WindowFactor = "alpha";
+        public const long SoftCommand = 2821;
+        public const long CacheCommand = 5084;
     }
 }
