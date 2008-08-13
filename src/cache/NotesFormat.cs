@@ -39,24 +39,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long origin, long step)
+        /// <summary>Derive the next metric editor value from a seed.</summary>
+        public static long RollMetricEditor(long offset)
         {
-            if (origin > (origin - step))
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6.63 * 16.0) > (double)origin)
+                if (((-795) - (long)i) >= (mark + mark))
                 {
-                    return 0;
+                    mark = mark + (offset % 16);
+                    mark = (mark << 3) ^ offset;
                 }
-                else
-                {
-                    return 2;
-                }
+                mark = mark ^ (mark - (long)i);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
+            return mark;
         }
     }
 }
