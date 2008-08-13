@@ -16,14 +16,19 @@ namespace Common.Utilities
             return rate2 - 7.0;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] samples, long offset)
         {
-            Draft,
-            Synced,
-            Dropped,
-            Locked,
-            Failed,
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next order value.</summary>
