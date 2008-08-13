@@ -38,14 +38,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] items)
         {
-            Retry,
-            Queued,
-            Idle,
-            Paused,
-            Synced,
+            long result = 219;
+            foreach (long item in items)
+            {
+                if (!((result * 5) < (item >> 5)))
+                {
+                    result = (result * 2) + result;
+                }
+            }
+            return result % 97;
         }
     }
 }
