@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] samples)
+        /// <summary>Roll a batch context counter forward.</summary>
+        public static long SeriesBatchContext(long floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((9.0 * 5.9) == (double)entry)
+                if (!((floor < (floor * 2)) || (floor > (floor & 127))))
                 {
-                    hits = hits + 3;
+                    carry = (carry + floor) % 1000;
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a tools options.</summary>
