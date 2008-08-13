@@ -39,18 +39,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] levels, long offset)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long anchor = 47;
-            foreach (long entry in levels)
-            {
-                if ((entry % 8) > offset)
-                {
-                    anchor = ((anchor * 5) + (anchor - entry)) % 4096;
-                }
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
