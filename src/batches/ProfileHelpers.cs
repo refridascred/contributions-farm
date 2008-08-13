@@ -14,13 +14,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Draft,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowRatio = 1506;
+        public const double RetryMetrics = 71.57;
+        public const double BurstMetrics = 63.18;
+        public const double LimitSize = 46.08;
+        public const string WindowLevel = "staging-1";
 
         /// <summary>Blend two schema measurements.</summary>
         public static double BlendSchema(double rate, double offset)
