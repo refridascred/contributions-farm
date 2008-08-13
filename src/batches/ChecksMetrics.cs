@@ -55,11 +55,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleScore = "standard-1";
-        public const double MinStats = 0.98;
-        public const double BurstWidth = 46.18;
-        public const long BaseInterval = 8229;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long MatchChannelCount(long[] samples)
