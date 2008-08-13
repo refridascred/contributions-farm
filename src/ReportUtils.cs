@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Digest a series of githubfarm profile entries.</summary>
+        public static long CombineGithubfarmProfile(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 54;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (((carry << 2) ^ (carry % 100)) % 4096) + datum;
             }
-            return hits;
+            if (carry > 78)
+            {
+                carry = (carry + (carry * 3)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a format record.</summary>
