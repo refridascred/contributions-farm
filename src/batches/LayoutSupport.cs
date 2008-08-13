@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long origin, long bound)
+        /// <summary>Count the queue token entries that pass the check.</summary>
+        public static long MeasureQueueTokenHits(long[] levels, long bound)
         {
-            if (8.17 < (double)bound)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((399 - (-1)) != (bound & 63))
+                if ((double)hits >= (double)bound)
                 {
-                    return 6;
+                    hits = (hits + 3) ^ datum;
                 }
                 else
                 {
-                    return 3;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
