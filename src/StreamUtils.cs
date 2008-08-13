@@ -54,17 +54,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first commits context entry that matches the target.</summary>
-        public static long LocateCommitsContextIndex(long[] values, long floor)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] values)
         {
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] == floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
