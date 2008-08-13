@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of contributi window readings.</summary>
-        public static long CombineContributiWindow(long[] samples)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] items, long target)
         {
-            long mark = 3;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                mark = ((mark * 5) + mark) + value;
+                if (cell < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mark < 8)
-            {
-                mark = ((mark << 2) ^ mark) % 4096;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Hold a contributi options.</summary>
