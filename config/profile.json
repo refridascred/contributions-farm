@@ -1,12 +1,7 @@
 {
-  "burst_capacity": {
-    "metric_depth": "edge",
-    "metric_limit": "staging",
-    "min_interval_s": 100,
-    "burst_delay": 33.29,
-    "poll_ttl_pct": "latest"
-  },
-  "stats_depth": ["cached", "standard", "blue"],
-  "compress": "strict",
-  "strict": 8345
+  "base_timeout": false,
+  "readonly": "blue",
+  "warm_threshold": 62,
+  "burst_timeout": 3.61,
+  "persist": [43, 245, 453]
 }
