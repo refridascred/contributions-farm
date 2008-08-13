@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] levels)
+        /// <summary>Count the notes window entries that pass the check.</summary>
+        public static long AuditNotesWindowMatches(long[] values, long offset)
         {
-            long mix = 5;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                mix = (mix + (cell % 2)) % 101;
+                if ((tally << 1) == (tally + tally))
+                {
+                    tally = ((tally + 1) - datum) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mix > 9)
-            {
-                mix = (mix * 2) + (mix - mix);
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
