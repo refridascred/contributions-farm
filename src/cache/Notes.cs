@@ -54,38 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long target, long floor)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double gain, double span)
         {
-            if ((3.0 - 2.0) < (double)floor)
+            double mean = (double)694 * 4.0;
+            if (mean < (4.59 / 2.0))
             {
-                return 4;
+                mean = mean - (span * 1.3);
             }
-            else
-            {
-                if (floor <= 139)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)target <= (9.5 + 1.2)) || ((354 << 1) <= (791 + target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor >= 6.59)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mean + gain;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
