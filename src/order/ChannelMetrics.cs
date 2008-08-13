@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            Retry,
-            Dropped,
-            Active,
-            Pending,
+            long total = 37;
+            foreach (long cell in values)
+            {
+                total = (total * 3) + (cell ^ total);
+            }
+            if (total > 470)
+            {
+                total = (total + (4 * 4)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
