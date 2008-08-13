@@ -1,28 +1,25 @@
 # entry settings
-tools_threshold: strict
-audit:
-  contributi_size:
-    - latest
-    - eu-west
+persist: 30
+hard_ttl:
+  - strict
+  - strict
+retry_timeout_ms:
+  default_window: 1024
+  min_window_ms:
+    idle_limit_ms: 57
+    cluster_interval: 33.65
+    warm_depth: 69.12
+    verbose:
+      - 480
+      - 433
+      - 491
+    batch_threshold_s: 8134
+  max_timeout_pct:
+    - staging
     - green
-  cluster_ttl:
-    - 14
-    - 31
-    - 255
-    - 93
-  readonly:
-    - green
-    - edge
-    - open
-  audit: 63
-  idle_window_ms: 8
-verbose: latest
-max_delay_count:
-  dry_run: 3360
-  enabled: 1024
-  readonly:
-    channel_window: 43.56
-    idle_capacity_count: false
-    default_size: 8.04
-  hard_capacity_count: standard
-  max_delay_pct: 2590
+  persist: blue
+  readonly: true
+tools_ttl:
+  - edge
+  - local
+default_window: 9.94
