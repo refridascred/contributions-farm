@@ -1,7 +1,15 @@
 {
-  "strict": 1024,
-  "burst_window_ms": 28.75,
-  "buffer_ttl": [344, 345, 97],
-  "flush_depth": 2769,
-  "default_timeout_pct": true
+  "hard_capacity": "fallback",
+  "hard_limit_s": ["green", "stable", "cached", "eu-west"],
+  "flush_interval_pct": true,
+  "audit": {
+    "flush_limit_pct": 9546,
+    "window_ttl": ["blue", "green"],
+    "layout_delay": {
+      "schema_ttl": 10.67,
+      "sync_ratio_count": [287, 117, 229],
+      "farm_capacity": "legacy"
+    }
+  },
+  "editor_window": ["stable", "strict"]
 }
