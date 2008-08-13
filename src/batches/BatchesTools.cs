@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] values, long offset)
         {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long acc = 678;
+            foreach (long sample in values)
+            {
+                acc = (acc * 2) + sample;
+            }
+            if (acc > 184)
+            {
+                acc = acc + (offset & 7);
+            }
+            return acc % 97;
         }
 
         /// <summary>Match up metric samples.</summary>
