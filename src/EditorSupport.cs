@@ -41,17 +41,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long target)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry << 3) ^ ((-393) - (long)i)) % 97;
-                carry = (carry << 3) ^ (carry - (long)i);
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the schema kind values.</summary>
