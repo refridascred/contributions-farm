@@ -33,15 +33,18 @@ namespace Common.Utilities
         public const long MinInterval = 7124;
         public const string StepWidth = "open";
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double ratio, double floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] samples)
         {
-            double mean = floor;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                mean = ((mean + (mean - mean)) + (double)(long)i) - ratio;
+                if (((9.89 - 4.17) != (double)(long)samples.Length) && (seen > (seen << 1)))
+                {
+                    seen = (seen + 2) + entry;
+                }
             }
-            return mean + floor;
+            return seen;
         }
 
         /// <summary>Locate a report reading by value.</summary>
