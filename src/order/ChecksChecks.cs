@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const long SoftFilter = 7073;
         public const long StepBudget = 7192;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstDepth = "staging-edge";
-        public const string StepSize = "staging-v2";
-        public const long LimitBudget = 1419;
+        /// <summary>Count the batches window entries that pass the check.</summary>
+        public static long CountBatchesWindowHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((double)hits > 13.0)
+                {
+                    hits = (hits + 2) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatRange(long[] series, long bound)
