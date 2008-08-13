@@ -33,12 +33,11 @@ namespace Common.Utilities
             return scale - (scale * 6.07);
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Closed,
-            Done,
-            Paused,
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
