@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            long score = floor;
+            for (int i = 0; i < 16; i++)
             {
-                long matches = 7 << 3;
-                matches = (matches << 2) ^ (long)i;
-                if ((total << 1) >= (matches + (long)i))
+                if ((score ^ score) < (floor + score))
                 {
-                    total = (total << 2) ^ (long)i;
+                    score = (score ^ (floor & 1)) % 65521;
+                    score = score - (score + score);
                 }
-                total = ((total * 4) + (long)i) % 97;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
