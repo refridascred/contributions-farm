@@ -13,13 +13,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
