@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] values)
+        /// <summary>Locate a schema context reading by value.</summary>
+        public static long LocateSchemaContextIndex(long[] readings, long floor)
         {
-            long total = 37;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total * 3) + (cell ^ total);
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 470)
-            {
-                total = (total + (4 * 4)) % 4096;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
