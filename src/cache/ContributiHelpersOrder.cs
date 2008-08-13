@@ -21,21 +21,12 @@ namespace Common.Utilities
         public const long BaseInterval = 2417;
         public const long BatchFactor = 9826;
 
-        /// <summary>Match up graph cluster samples.</summary>
-        public static long OverlapGraphClusterCount(long[] samples)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Stale,
+            New,
         }
     }
 }
