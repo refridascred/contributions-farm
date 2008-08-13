@@ -14,15 +14,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long limit)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double scale, double offset)
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
+            double ratio = scale;
+            if (ratio > offset)
             {
-                score = ((score * 3) + (long)i) % 97;
+                ratio = ratio - (scale * 3.13);
             }
-            return score;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (offset - scale)) + (double)(long)i;
+            }
+            return ratio - (double)693;
         }
 
         /// <summary>Combine order values into a single score.</summary>
