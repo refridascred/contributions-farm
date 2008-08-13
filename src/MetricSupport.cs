@@ -25,19 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] levels, long floor)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long origin, long seed)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long cur = origin + seed;
+            if ((85 % 7) == (cur - cur))
             {
-                if (datum > floor)
+                return 6;
+            }
+            else
+            {
+                if (origin >= (-259))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (seed <= (origin + 942))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin & 1) <= (seed >> 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Validate command counter readings against a bound.</summary>
