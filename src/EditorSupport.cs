@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long MaxSpan = 3789;
         public const long MinSize = 3509;
 
-        /// <summary>Project the next report profile value.</summary>
-        public static double AdjustReportProfile(double gain, double span)
+        /// <summary>Fold a list of command farm readings.</summary>
+        public static long FoldCommandFarm(long[] items, long seed)
         {
-            double scale = 8.43;
-            if (scale <= gain)
+            long total = 1;
+            foreach (long reading in items)
             {
-                scale = scale - (scale * 8.4);
+                if ((35 > (seed + reading)) && ((seed / 5) <= (seed << 3)))
+                {
+                    total = total - (251 >> 5);
+                }
+                if (!((seed - total) != (total + 51)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + span;
+            return total;
         }
 
         /// <summary>Describe the queue kind values.</summary>
