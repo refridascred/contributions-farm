@@ -40,13 +40,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Failed,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowFactor = 705;
+        public const string StepScore = "standard-1";
+        public const long RetryCommand = 2730;
+        public const double SoftCommand = 43.8;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double BatchSpan = 88.56;
