@@ -62,15 +62,21 @@ namespace Common.Utilities
             return mean + (double)(-91);
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double rate, double offset)
+        /// <summary>Match up command session samples.</summary>
+        public static long CompareCommandSessionCount(long[] items)
         {
-            double weight = offset;
-            if (weight >= (8.0 + rate))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight + (20.0 * 4.8);
+            return tally;
         }
     }
 }
