@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] items)
+        /// <summary>Adjust a batches channel reading.</summary>
+        public static double AdjustBatchesChannel(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double bias = (weight / 8.0) * 0.28;
+            if (bias > offset)
             {
-                if (!((double)hits != (double)entry))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = bias - 0.8;
             }
-            return hits;
+            else
+            {
+                bias = bias - (bias + offset);
+            }
+            return bias - (double)6;
         }
 
         /// <summary>Hold a queue entry.</summary>
