@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] items)
+        /// <summary>Validate payload batch readings against a bound.</summary>
+        public static bool ValidatePayloadBatchLimits(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (((double)datum != (1.0 * 5.0)) && (count < (897 * 5)))
+                if (sample < seed)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
