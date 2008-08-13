@@ -51,22 +51,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] items)
-        {
-            long score = 47;
-            foreach (long reading in items)
-            {
-                if (reading < (reading << 1))
-                {
-                    score = (score - (0 * 5)) % 4096;
-                }
-            }
-            if (score > (-31))
-            {
-                score = (score ^ (score >> 1)) % 101;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitSpan = 7760;
+        public const long HardDepth = 9203;
+        public const long BatchSize = 3989;
+        public const string HardScore = "strict-edge";
+        public const long WindowDepth = 779;
     }
 }
