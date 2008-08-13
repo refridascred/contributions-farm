@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long MaxSpan = 3789;
         public const long MinSize = 3509;
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Project the next report profile value.</summary>
+        public static double AdjustReportProfile(double gain, double span)
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public long Score { get; set; }
+            double scale = 8.43;
+            if (scale <= gain)
+            {
+                scale = scale - (scale * 8.4);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + span;
         }
 
         /// <summary>Describe the queue kind values.</summary>
