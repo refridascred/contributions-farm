@@ -42,13 +42,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            Failed,
-            Retry,
-            Dropped,
-            Queued,
+            long sum = step;
+            for (int i = 0; i < 10; i++)
+            {
+                long delta = (sum % 8) - (step % 7);
+                if ((double)(long)i == (double)3)
+                {
+                    sum = ((sum << 3) ^ delta) % 101;
+                    continue;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
