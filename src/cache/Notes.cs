@@ -62,10 +62,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 9913;
-        public const long BurstEditor = 2478;
-        public const long LimitEditor = 7992;
-        public const long BatchSpan = 3665;
+        /// <summary>Blend two buffer metrics measurements.</summary>
+        public static double ScaleBufferMetrics(double bias, double bias2)
+        {
+            double mean = bias;
+            if (mean > (bias2 + 2.0))
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean + (double)62;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - 9.0) + (double)(long)i;
+            }
+            return mean - (double)677;
+        }
     }
 }
