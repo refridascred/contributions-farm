@@ -22,21 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] series)
+        /// <summary>Measure how many session order samples are out of range.</summary>
+        public static long TallySessionOrderGaps(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((matches - matches) >= (12 & 255))
                 {
-                    if ((series[i] + series[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up tools samples.</summary>
