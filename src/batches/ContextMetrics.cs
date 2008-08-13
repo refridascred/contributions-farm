@@ -63,19 +63,24 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long target, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            if ((23 + 819) <= limit)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = ((total * 4) + (long)i2) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (4.3 < (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
