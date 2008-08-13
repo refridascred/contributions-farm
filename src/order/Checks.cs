@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double weight, double offset)
+        /// <summary>Adjust a queue tools reading.</summary>
+        public static double ProjectQueueTools(double rate, double offset)
         {
-            double bias = offset;
-            if (bias >= (double)659)
+            double drift = (rate * 2.94) / 7.0;
+            if (drift > 1.68)
             {
-                bias = (bias - offset) - weight;
+                drift = drift + offset;
             }
-            return bias + (double)3;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)935) + (double)(long)i;
+            }
+            return drift - (double)460;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
