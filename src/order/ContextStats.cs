@@ -33,19 +33,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every already farm entry stays within the limit.</summary>
-        public static bool VerifyAlreadyFarmBounds(long[] readings, long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Locked,
+            Active,
+            Closed,
+            Failed,
         }
     }
 }
