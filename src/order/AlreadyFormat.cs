@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry << 2) ^ (offset * 2)) % 4096;
-                carry = ((carry * 3) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
