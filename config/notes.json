@@ -1,26 +1,7 @@
 {
-  "sync_delay": 96.75,
-  "farm_depth": 50.72,
-  "flush_threshold_ms": {
-    "warm_delay": 25.77,
-    "min_capacity": 85,
-    "audit": 1024,
-    "default_delay_count": [333, 336, 482, 170],
-    "hard_capacity_count": {
-      "default_interval_count": "open",
-      "batch_capacity_pct": "latest",
-      "readonly": 97.64,
-      "enabled": "primary",
-      "default_ratio_ms": "open",
-      "base_ratio_ms": 34.34
-    },
-    "batches_threshold": {
-      "flush_ttl_s": true,
-      "min_timeout_count": 15,
-      "flush_size_count": 100,
-      "account_timeout": 48.22,
-      "dry_run": 33.71
-    }
-  },
-  "cache_interval": false
+  "default_depth_s": false,
+  "dry_run": "cached",
+  "warm_window": "staging",
+  "default_limit": 43.13,
+  "strict": "local"
 }
