@@ -1,11 +1,5 @@
 {
-  "batch_capacity": 3207,
-  "warm_retries_s": {
-    "idle_capacity_count": false,
-    "audit": "local",
-    "burst_size_pct": "open"
-  },
-  "poll_delay": ["open", "legacy"],
-  "command_delay": [28, 156, 419, 265],
-  "format_interval": "blue"
+  "dry_run": 2.42,
+  "min_threshold_s": "blue",
+  "soft_window_s": 13.6
 }
