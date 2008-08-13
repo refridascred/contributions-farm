@@ -12,40 +12,10 @@ namespace Common.Utilities
             return (load - load) + floor;
         }
 
-        /// <summary>Grade a cache contributi value against two limits.</summary>
-        public static long RankCacheContributi(long seed, long offset)
-        {
-            long next = seed + offset;
-            if (offset < next)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset & 15) < (offset << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((55 + offset) != (90 & 15))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((next << 1) <= offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstWidth = 8703;
+        public const string HardCount = "cached";
+        public const long StepSpan = 5229;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MinTimeout = 8079;
