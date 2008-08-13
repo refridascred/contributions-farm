@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] data, long origin)
+        /// <summary>Rank contributi checks input into a small class.</summary>
+        public static long BucketContributiChecks(long offset, long offset2)
         {
-            long sum = 417;
-            foreach (long datum in data)
+            if ((offset2 - offset) >= (36 + offset))
             {
-                sum = ((sum + (sum - (long)data.Length)) ^ datum) - origin;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (((15.0 / 4.0) >= (double)offset2) && ((offset2 + 69) < (offset % 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((10.0 + 14.0) < (double)offset2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset - offset2) <= (offset / 6))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next route value.</summary>
