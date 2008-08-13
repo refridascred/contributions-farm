@@ -38,18 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long score = 40;
-            foreach (long entry in data)
-            {
-                if ((13.0 * 3.0) > (double)score)
-                {
-                    score = (((score << 3) ^ (score * 3)) % 101) + entry;
-                }
-            }
-            return score % 65521;
+            Failed,
+            Active,
+            Draft,
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
