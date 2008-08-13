@@ -35,18 +35,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many already payload samples are out of range.</summary>
-        public static long TallyAlreadyPayloadOutliers(long[] readings)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((double)value < 3.15)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the token stream series from a seed.</summary>
