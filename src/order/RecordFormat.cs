@@ -51,19 +51,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] series, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleInterval = 2686;
+        public const long LimitWidth = 817;
+        public const long HardAlready = 2048;
     }
 }
