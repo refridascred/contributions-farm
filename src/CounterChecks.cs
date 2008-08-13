@@ -58,20 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next format entry value from a seed.</summary>
-        public static long SeriesFormatEntry(long limit)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((limit << 3) <= ((long)i / 8))
-                {
-                    acc = acc + acc;
-                }
-                acc = ((acc * 5) + (acc & 7)) % 255;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Dropped,
+            Retry,
+            Pending,
         }
     }
 }
