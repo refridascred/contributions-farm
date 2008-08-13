@@ -23,11 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 1939;
-        public const string BaseRatio = "staging-1";
-        public const double DefaultTimeout = 83.8;
-        public const string IdleChannel = "open-v2";
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result << 2) ^ origin) % 1000;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long StepCommits(long floor)
