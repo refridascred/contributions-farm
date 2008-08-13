@@ -15,28 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((seed << 1) == ((long)i ^ seed))
-                {
-                    acc = acc - ((long)i << 1);
-                    break;
-                }
-                if ((acc * 4) > ((long)i << 1))
-                {
-                    acc = ((acc << 2) ^ (seed >> 5)) % 97;
-                }
-                else
-                {
-                    acc = (acc - (seed + (long)i)) % 4096;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Active,
+            Pending,
+            New,
+            Draft,
+            Failed,
         }
 
         /// <summary>Describe the graph level values.</summary>
