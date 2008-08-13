@@ -1,9 +1,10 @@
 {
-  "soft_retries_count": 42,
-  "metric_size": 1024,
-  "max_delay_pct": {
-    "cache_timeout_s": 60,
-    "strict": 68,
-    "burst_window": ["primary", "blue", "latest", "standard"]
+  "flush_depth": 49,
+  "max_window": false,
+  "hard_threshold": {
+    "poll_retries": 94.75,
+    "batch_ttl_s": 65.95,
+    "default_ratio_ms": "latest",
+    "compress": 40.69
   }
 }
