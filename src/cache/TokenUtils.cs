@@ -32,20 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a context stats counter forward.</summary>
-        public static long StepContextStats(long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] data, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (((carry - carry) < (carry / 6)) && ((carry & 255) <= (carry % 97)))
+                if (entry <= offset)
                 {
-                    carry = (carry - (84 * 4)) % 65521;
+                    flag = false;
+                    break;
                 }
-                carry = (carry - ((long)i + target)) % 65521;
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return flag;
         }
     }
 }
