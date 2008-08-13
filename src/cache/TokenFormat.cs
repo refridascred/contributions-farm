@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Project the next farm queue value.</summary>
+        public static double ProjectFarmQueue(double ratio, double span)
         {
-            Synced,
-            Queued,
-            Done,
+            double mean = (double)(1 / 4);
+            if (mean < span)
+            {
+                mean = mean - (double)5;
+            }
+            return mean + ratio;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
