@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] values, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((double)step >= (8.71 - 8.47))
+                if (sample <= (origin & 127))
                 {
-                    tally = (tally + 3) ^ datum;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Match up counter samples.</summary>
