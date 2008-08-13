@@ -1,12 +1,14 @@
 # Command notes
 
-The stream module keeps metric values in sync with the layout cache.
-When a stream fails, the metrics handler retries a few times before giving up.
-A queue that stays idle for too long is moved to the filter list.
+Run the checks check before changing any route limits.
+When a command fails, the entry handler retries a few times before giving up.
+
+Each batch is validated before it reaches the record queue.
+Use farm settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Keep batch values small
-- Review batch limits each release
-- Validate farm input early
-- Document new order fields
+- Prefer metric defaults
+- Keep report values small
+- Validate format input early
+- Document new checks fields
