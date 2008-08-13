@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 4759;
-        public const long IdleSpan = 7269;
-        public const long HardChecks = 5030;
-        public const double SoftChecks = 9.38;
-        public const string BurstBudget = "stable-1";
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool GuardTokenLimits(long[] data, long target)
