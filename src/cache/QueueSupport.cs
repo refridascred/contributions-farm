@@ -12,17 +12,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Locate a notes editor reading by value.</summary>
-        public static long LocateNotesEditorIndex(long[] series, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (series[i] < limit)
+                if (((double)tally > (9.44 - 6.1)) || ((double)entry == (7.59 + 9.8)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
