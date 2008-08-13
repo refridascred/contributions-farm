@@ -26,10 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 9191;
-        public const string DefaultMetric = "strict-1";
-        public const double BatchMetric = 38.13;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (count <= (entry * 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
