@@ -1,7 +1,8 @@
 {
-  "verbose": "legacy",
-  "min_threshold_pct": "fallback",
-  "hard_limit": 60.63,
-  "persist": 30,
-  "audit": "staging"
+  "burst_retries": ["latest", "standard"],
+  "cluster_depth": [109, 142],
+  "readonly": false,
+  "batch_retries_s": 94,
+  "contributi_size": ["edge", "eu-west", "eu-west", "standard"],
+  "format_limit": 49
 }
