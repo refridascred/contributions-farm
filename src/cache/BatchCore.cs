@@ -38,38 +38,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long seed, long seed2)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            if ((seed2 % 12) > (seed2 & 255))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(seed2 >= (seed2 / 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed % 5) >= (seed >> 5))
+                    if ((data[i] - data[j]) == 9)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((seed - 8) <= (seed2 - seed)) || (seed2 >= (46 ^ seed)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
