@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] values, long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if ((values[i] < origin) && ((values[i] % 3) != 0))
+                if (entry < step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Match up counter samples.</summary>
