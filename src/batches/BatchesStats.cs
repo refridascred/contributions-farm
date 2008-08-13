@@ -33,18 +33,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] items)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((6.9 / 7.0) <= (double)datum)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Draft,
+            Retry,
+            Failed,
+            Idle,
         }
 
         /// <summary>Locate a window layout reading by value.</summary>
