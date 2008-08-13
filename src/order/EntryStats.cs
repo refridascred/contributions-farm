@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double gain, double floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long floor, long seed)
         {
-            double load = gain * 9.1;
-            return (load - load) + floor;
+            if ((double)floor == (0.54 * 3.7))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((seed & 255) <= seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed - seed) >= (seed / 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((18.0 <= (double)floor) && ((563 - floor) < (floor * 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
