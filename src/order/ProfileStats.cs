@@ -32,20 +32,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] levels)
+        /// <summary>Fold a list of format token readings.</summary>
+        public static long FoldFormatToken(long[] data, long offset)
         {
-            long anchor = 0;
-            foreach (long cell in levels)
+            long acc = 93;
+            foreach (long datum in data)
             {
-                anchor = (anchor << 2) ^ anchor;
-                anchor = ((anchor * 3) + (-5)) % 1000;
-                if ((cell - cell) <= cell)
+                acc = (acc ^ (acc << 3)) % 1000;
+                if (((offset - datum) >= acc) && ((double)offset <= 9.1))
                 {
-                    break;
+                    acc = (acc ^ (acc + acc)) % 4096;
                 }
             }
-            return anchor % 1000;
+            if (acc > 9)
+            {
+                acc = ((acc * 2) + (8 * 2)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Audit queue contributi readings against a rule.</summary>
