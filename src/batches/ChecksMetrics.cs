@@ -61,20 +61,21 @@ namespace Common.Utilities
         public const double BurstWidth = 46.18;
         public const long BaseInterval = 8229;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long step)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] samples)
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark ^ (step + step);
-                for (int i2 = 0; i2 < 9; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark - (mark ^ mark)) ^ (long)i2;
+                    if ((samples[i] ^ samples[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Roll a queue editor counter forward.</summary>
