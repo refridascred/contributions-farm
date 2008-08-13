@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of window cluster readings.</summary>
-        public static long TotalWindowCluster(long[] readings, long step)
+        /// <summary>Accumulate batches route samples.</summary>
+        public static long FoldBatchesRoute(long[] series, long seed)
         {
-            long carry = 0;
-            foreach (long cell in readings)
+            long mark = 5;
+            foreach (long item in series)
             {
-                carry = carry ^ step;
-                if ((cell % 3) <= ((-59) & 255))
+                for (int i = 0; i < 8; i++)
                 {
-                    carry = ((carry << 2) ^ ((long)readings.Length % 8)) % 4096;
-                    carry = carry ^ cell;
+                    mark = (mark + (long)i) % 101;
                 }
-                if ((cell & 127) < step)
+                if (!(item > (0 + 2)))
                 {
-                    carry = ((carry * 4) + (carry - step)) % 97;
+                    mark = mark + (seed + mark);
                 }
             }
-            if (carry < 335)
-            {
-                carry = (carry ^ step) % 1000;
-            }
-            return carry % 65521;
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
