@@ -76,18 +76,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Audit layout record readings against a rule.</summary>
+        public static long CountLayoutRecordOutliers(long[] items, long origin)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((count >> 1) < entry))
                 {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) - origin;
                 }
             }
             return count;
