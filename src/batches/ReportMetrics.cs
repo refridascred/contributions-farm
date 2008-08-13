@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Check that every batch counter entry stays within the limit.</summary>
+        public static bool GuardBatchCounterBounds(long[] values, long bound)
         {
-            Dropped,
-            Synced,
-            Done,
-            Queued,
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a cluster record.</summary>
