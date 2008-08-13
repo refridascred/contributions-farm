@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepInterval = 8985;
-        public const double BatchReport = 17.06;
-        public const long RetryInterval = 6184;
-        public const string MaxInterval = "staging-v2";
-        public const long LimitLevel = 8418;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Draft,
+            Queued,
+            Pending,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
