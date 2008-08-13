@@ -33,12 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long floor, long offset)
         {
-            Retry,
-            Closed,
-            Active,
+            if (!((offset + 143) >= 43))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor / 3) <= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
