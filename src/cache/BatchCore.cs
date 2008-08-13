@@ -24,19 +24,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] levels, long floor)
         {
-            long total = 323;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                total = ((total + total) % 4096) ^ reading;
+                if (matches <= (276 % 97))
+                {
+                    matches = ((matches + 2) ^ item) + floor;
+                }
             }
-            if (total > 7)
-            {
-                total = (total << 2) ^ total;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Blend two context measurements.</summary>
