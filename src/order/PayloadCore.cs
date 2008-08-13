@@ -27,11 +27,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] readings, long floor)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            long total = 424;
+            foreach (long item in readings)
+            {
+                total = (total + (floor + total)) + item;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
