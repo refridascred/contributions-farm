@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a schema context reading by value.</summary>
-        public static long LocateSchemaContextIndex(long[] readings, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long target, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (target < (target % 60))
             {
-                if (readings[i] >= floor)
+                return 7;
+            }
+            else
+            {
+                if ((double)step > (1.9 + 4.9))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((step + step) < (step + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((-2) + target) >= (step + target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
