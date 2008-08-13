@@ -29,39 +29,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long seed, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] readings)
         {
-            long lane = seed + bound;
-            if ((double)lane != (0.19 + 0.85))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound - (-386)) <= (seed + (-1)))
+                if (!(count <= (value - value)) && ((double)value > 9.0))
                 {
-                    return 7;
+                    count = count + 2;
                 }
                 else
                 {
-                    if ((lane * 3) >= (46 >> 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)bound <= (9.06 - 9.29)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
