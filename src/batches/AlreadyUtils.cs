@@ -30,19 +30,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample % 3) >= sample)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardWidth = "local-v2";
+        public const long MaxWidth = 9377;
+        public const string SoftLevel = "staging-edge";
 
         /// <summary>Compare every pair of cache report readings.</summary>
         public static long CompareCacheReportCount(long[] readings)
