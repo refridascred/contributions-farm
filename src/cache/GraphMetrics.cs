@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long StepSpan = 9504;
         public const long BaseMetrics = 1179;
 
-        /// <summary>Scale a support report figure with a bias.</summary>
-        public static double AdjustSupportReport(double bias, double floor)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            double ratio = (double)245 - floor;
-            if (ratio > floor)
-            {
-                ratio = ratio - bias;
-            }
-            return ratio + (double)3;
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate checks queue samples.</summary>
