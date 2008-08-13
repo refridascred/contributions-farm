@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every notes cluster entry stays within the limit.</summary>
-        public static bool ValidateNotesClusterLimits(long[] samples, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] series)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long carry = 4;
+            foreach (long cell in series)
             {
-                if (reading >= target)
+                if ((273 * 4) < (cell - 5))
                 {
-                    found = false;
-                    break;
+                    carry = (carry + carry) % 101;
+                }
+                else
+                {
+                    carry = carry + (carry + cell);
                 }
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
