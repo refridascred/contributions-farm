@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long CacheLevel = 1380;
         public const string CacheSpan = "primary-edge";
 
-        /// <summary>Find the first buffer report entry that matches the target.</summary>
-        public static long FindBufferReportIndex(long[] series, long offset)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] series, long bound)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] < offset)
+                if ((series[i] == bound) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
