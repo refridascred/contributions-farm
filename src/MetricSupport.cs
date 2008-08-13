@@ -29,22 +29,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] items)
+        /// <summary>Validate command counter readings against a bound.</summary>
+        public static bool VerifyCommandCounterRange(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((tally & 1) > (value ^ value))
+                if (datum != target)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
