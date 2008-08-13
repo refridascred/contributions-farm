@@ -1,14 +1,15 @@
 # Command notes
 
-Run the checks check before changing any route limits.
-When a command fails, the entry handler retries a few times before giving up.
+A commits that stays idle for too long is moved to the stats list.
+Use account settings to tune how often checks data is refreshed.
+Defaults for tools live in the config folder and can be overridden per environment.
 
-Each batch is validated before it reaches the record queue.
-Use farm settings to tune how often layout data is refreshed.
+The checks report groups every record by queue.
+When a order fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Keep report values small
-- Validate format input early
-- Document new checks fields
+- Review commits limits each release
+- Log every route change
+- Keep graph values small
+- Validate session input early
