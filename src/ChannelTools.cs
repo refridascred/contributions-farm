@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many cache counter samples are out of range.</summary>
-        public static long CountCacheCounterOutliers(long[] series)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (!((hits << 1) > (datum / 3)) && ((6 ^ (long)series.Length) == (datum << 2)))
+                if (!((double)count < (6.26 - 7.0)))
                 {
-                    hits = hits + 3;
+                    count = (count + 1) + entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
