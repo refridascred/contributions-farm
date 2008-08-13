@@ -1,8 +1,6 @@
-id,owner,rank
-1,33.97,stable
-2,854,198
-3,0.35,blue
-4,eu-west,25.12
-5,55.61,5.61
-6,446,491
-7,75.27,31.87
+id,active,score
+1,374,latest
+2,66.06,open
+3,14,32.68
+4,legacy,60.76
+5,latest,44
