@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryTimeout = 5731;
-        public const long BaseLevel = 7141;
-        public const long WindowProfile = 3051;
-        public const long MinSize = 9782;
-        public const double CacheProfile = 10.25;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long FoldContext(long[] data, long limit)
