@@ -33,14 +33,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long origin, long floor)
         {
-            Synced,
-            Draft,
-            Retry,
-            Failed,
-            Idle,
+            long slot = origin - floor;
+            if (((origin ^ 962) >= floor) && (slot >= (0 / 7)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin & 15) < (origin >> 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + origin) > (origin - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
