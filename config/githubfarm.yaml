@@ -1,6 +1,8 @@
 # githubfarm settings
-default_interval_s: 2099
-base_delay_pct: false
-account_retries: true
-format_size: open
-poll_depth_count: false
+sync_threshold_count: false
+readonly: 250
+support_delay:
+  - blue
+  - primary
+batches_limit: 1024
+persist: 87
