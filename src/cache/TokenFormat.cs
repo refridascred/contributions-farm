@@ -20,19 +20,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] data, long seed)
+        /// <summary>Adjust a graph batch reading.</summary>
+        public static double BlendGraphBatch(double scale, double span)
         {
-            bool stale = true;
-            foreach (long value in data)
+            double mean = (double)491 - scale;
+            if (mean <= span)
             {
-                if (value > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean - span;
             }
-            return stale;
+            else
+            {
+                mean = mean - span;
+            }
+            return mean - (double)39;
         }
     }
 }
