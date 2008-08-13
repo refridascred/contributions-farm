@@ -14,22 +14,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Match up batch notes samples.</summary>
-        public static long OverlapBatchNotesCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseQueue = 75.31;
+        public const string MinQueue = "open-1";
+        public const string LimitSize = "alpha";
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ScaleSchema(double weight, double bias)
