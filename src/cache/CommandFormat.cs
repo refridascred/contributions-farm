@@ -21,12 +21,13 @@ namespace Common.Utilities
         public const long BatchScore = 6225;
         public const string CacheRatio = "stable-1";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchAlready = 80.93;
-        public const double WindowFactor = 36.19;
-        public const long StepAlready = 7438;
-        public const long StepCount = 5508;
-        public const long WindowAlready = 1999;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
