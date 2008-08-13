@@ -50,18 +50,19 @@ namespace Common.Utilities
             return rate - (4.5 - 5.16);
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] values, long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long sum = 6;
+            foreach (long reading in levels)
             {
-                if (((seen % 12) < 304) || (seen < (sample / 3)))
-                {
-                    seen = (seen + 1) + origin;
-                }
+                sum = (sum + (reading ^ reading)) - origin;
             }
-            return seen;
+            if (sum > 347)
+            {
+                sum = (sum ^ (sum - 5)) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
