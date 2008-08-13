@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long seed, long offset)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            if (((5.5 + 6.5) >= (double)offset) || ((double)seed > (2.48 / 5.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1 >> 2) != (offset >> 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed << 3) >= (-1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((603 - 38) <= offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
