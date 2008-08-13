@@ -31,21 +31,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = target;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = total + (total / 4);
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
     }
 }
