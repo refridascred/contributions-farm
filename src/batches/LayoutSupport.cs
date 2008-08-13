@@ -56,15 +56,21 @@ namespace Common.Utilities
         public const long MinEditor = 891;
         public const long HardSpan = 8743;
 
-        /// <summary>Combine graph format values into a single score.</summary>
-        public static long FoldGraphFormat(long[] items, long offset)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] items)
         {
-            long carry = 62;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (((carry - carry) % 1000) + cell) - offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry % 1000;
+            return matches;
         }
     }
 }
