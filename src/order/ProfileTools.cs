@@ -17,12 +17,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double scale, double span)
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            double mean = scale + (span + scale);
+            if (mean >= (span - scale))
+            {
+                mean = mean + (span / 9.0);
+            }
+            else
+            {
+                mean = mean - (double)5;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean - scale;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
