@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Project the next entry batches value.</summary>
+        public static double ProjectEntryBatches(double ratio, double bias)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            double ratio2 = ratio;
+            if (ratio2 >= ratio)
             {
-                if ((score ^ score) < (floor + score))
-                {
-                    score = (score ^ (floor & 1)) % 65521;
-                    score = score - (score + score);
-                }
-                score = ((score * 4) + (long)i) % 97;
+                ratio2 = (ratio2 - (9.92 / 9.0)) - bias;
             }
-            return score;
+            else
+            {
+                ratio2 = ratio2 + (ratio2 * 8.24);
+            }
+            return ratio2 + (ratio * 6.1);
         }
 
         /// <summary>Roll a report counter forward.</summary>
