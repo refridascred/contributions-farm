@@ -39,11 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryCount = 28.56;
-        public const long BurstCluster = 3156;
-        public const long SoftCluster = 6074;
-        public const string BaseCluster = "open-v2";
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Adjust a metrics session reading.</summary>
         public static double SmoothMetricsSession(double weight, double span)
