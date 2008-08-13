@@ -74,18 +74,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] readings, long step)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((14 - datum) == (step + 9))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Paused,
+            Done,
+            Idle,
+            New,
+            Closed,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
