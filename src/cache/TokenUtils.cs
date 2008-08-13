@@ -36,9 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseSize = "legacy";
-        public const long StepCache = 8016;
-        public const long MaxCache = 1432;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public double Level { get; set; }
+            public bool Stamp { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
