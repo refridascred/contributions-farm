@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] levels, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            long anchor = -282;
-            foreach (long sample in levels)
+            long mix = 7;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor - anchor) % 65521) - sample;
-                if ((step % 64) > anchor)
-                {
-                    anchor = ((anchor * 3) + (step % 12)) % 65521;
-                }
+                mix = (mix + entry) % 1000;
             }
-            return anchor % 65521;
+            return mix;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
