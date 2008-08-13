@@ -13,27 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] series, long offset)
+        /// <summary>Check that every format order entry stays within the limit.</summary>
+        public static bool GuardFormatOrderRange(long[] samples, long origin)
         {
-            long total = 6;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                total = total ^ (total - datum);
-                if ((-28) <= offset)
+                if (cell != origin)
                 {
-                    total = (total << 3) ^ (offset - offset);
-                }
-                else
-                {
-                    total = total ^ offset;
+                    found = false;
+                    break;
                 }
             }
-            if (total > 266)
-            {
-                total = (total - 341) % 4096;
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Roll a record stream counter forward.</summary>
