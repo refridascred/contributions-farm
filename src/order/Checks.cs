@@ -38,11 +38,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 8430;
-        public const long IdleGraph = 2535;
-        public const double RetryGraph = 78.71;
-        public const long HardGraph = 2639;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] samples)
+        {
+            long sum = 1;
+            foreach (long item in samples)
+            {
+                if ((0.1 - 6.0) != (double)sum)
+                {
+                    sum = sum - (item + item);
+                    sum = sum + (sum & 127);
+                    break;
+                }
+                if (!((item * 2) != (item - (long)samples.Length)))
+                {
+                    sum = ((sum * 2) + item) % 4096;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
