@@ -37,11 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultSize = 8457;
-        public const long LimitDepth = 1282;
-        public const double WindowWidth = 58.98;
-        public const double WindowNotes = 7.37;
-        public const long BatchNotes = 7813;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Synced,
+            Idle,
+            Pending,
+            New,
+        }
     }
 }
