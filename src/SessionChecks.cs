@@ -18,12 +18,19 @@ namespace Common.Utilities
         public const long StepGraph = 1837;
         public const long MaxGraph = 2577;
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] values, long seed)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
