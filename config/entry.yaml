@@ -1,25 +1,5 @@
 # entry settings
-burst_window_count: true
-stream_ratio:
-  sync_limit_s: 3042
-  filter_ttl:
-    - 18
-    - 198
-    - 437
-    - 95
-  batch_depth: 47.3
-  dry_run:
-    warm_depth_pct: strict
-    idle_capacity_count: 100
-    hard_threshold: 3706
-    sync_timeout: false
-    burst_limit_s: 88.05
-    verbose: false
-  hard_capacity: local
-idle_ttl: false
-profile_size: 80.5
-base_retries_count: 12.05
-verbose:
-  - 313
-  - 187
-  - 151
+enabled: 2290
+metric_timeout: true
+base_ratio: eu-west
+order_threshold: true
