@@ -32,26 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] items)
+        /// <summary>Validate channel command readings against a bound.</summary>
+        public static bool VerifyChannelCommandBounds(long[] data, long limit)
         {
-            long score = 35;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (((52 + cell) >= (score + cell)) && ((cell - (-6)) > (8 & 15)))
+                if (reading <= limit)
                 {
-                    score = (score ^ score) % 65521;
-                }
-                else
-                {
-                    score = (score ^ (long)items.Length) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (score < 84)
-            {
-                score = (score ^ (score + score)) % 255;
-            }
-            return score % 65521;
+            return stale;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
