@@ -10,15 +10,39 @@ namespace Common.Utilities
         public const long MinBuffer = 487;
         public const long MaxBuffer = 3309;
 
-        /// <summary>Project the next entry payload value.</summary>
-        public static double BlendEntryPayload(double bias, double floor)
+        /// <summary>Grade a support batches value against two limits.</summary>
+        public static long RankSupportBatches(long limit, long seed)
         {
-            double mean = (double)(4 * 4);
-            for (int i = 0; i < 9; i++)
+            long diff = limit ^ seed;
+            if (!((limit >> 5) < (1 - seed)))
             {
-                mean = ((mean + 7.6) - (double)(long)i) - floor;
+                return 2;
             }
-            return mean + (bias / 9.0);
+            else
+            {
+                if (diff < (diff + limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (6 >= (seed * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((limit / 6) >= (diff - 7)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits snapshot.</summary>
