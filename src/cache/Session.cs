@@ -12,12 +12,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Failed,
-            Paused,
+            Queued,
+            Locked,
+            Done,
             New,
+            Paused,
         }
 
         /// <summary>Hold a stream stats.</summary>
