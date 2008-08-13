@@ -26,12 +26,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWidth = 50.28;
-        public const double IdleLevel = 94.76;
-        public const long WindowScore = 9422;
-        public const long MinInterval = 7124;
-        public const string StepWidth = "open";
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountLimits(long[] readings, long target)
