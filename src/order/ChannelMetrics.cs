@@ -19,15 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long target)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Rank batch input into a small class.</summary>
