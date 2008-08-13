@@ -20,20 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if (5 > ((long)i >> 2))
-                {
-                    acc = ((acc * 5) + (200 - acc)) % 65521;
-                    acc = (acc * 4) + (acc ^ bound);
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
