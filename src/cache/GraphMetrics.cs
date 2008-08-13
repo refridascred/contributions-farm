@@ -23,22 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks queue samples.</summary>
-        public static long TallyChecksQueue(long[] items)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double scale, double span)
         {
-            long carry = 53;
-            foreach (long reading in items)
+            double rate = (span / 9.0) + (double)11;
+            if (rate > (span - rate))
             {
-                if ((reading % 7) > (carry + carry))
-                {
-                    carry = (carry ^ reading) % 4096;
-                }
+                rate = rate - rate;
             }
-            if (carry > 84)
-            {
-                carry = (carry + (9 + carry)) % 101;
-            }
-            return carry;
+            return rate + (scale / 4.0);
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
