@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = (carry << 2) ^ carry;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Score { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
