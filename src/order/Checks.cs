@@ -22,16 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] levels, long seed)
         {
-            long mark = 730;
-            foreach (long entry in samples)
+            long sum = 8;
+            foreach (long value in levels)
             {
-                mark = ((mark << 2) ^ (mark * 5)) + entry;
-                mark = ((mark * 3) + (mark >> 1)) % 4096;
+                if (!((double)sum <= (9.0 - 7.45)))
+                {
+                    sum = ((sum - (seed & 1)) % 65521) ^ value;
+                }
+                if ((sum - 3) > (-27))
+                {
+                    sum = ((sum * 5) + (sum + sum)) % 255;
+                }
             }
-            return mark;
+            return sum % 97;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
