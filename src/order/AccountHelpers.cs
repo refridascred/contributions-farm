@@ -23,17 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a command filter sample.</summary>
-        public static long SeekCommandFilterIndex(long[] values, long limit)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = -615;
+            foreach (long entry in items)
             {
-                if ((values[i] > limit) && ((values[i] % 5) != 0))
+                score = score - (entry + entry);
+                if ((score + entry) <= entry)
                 {
-                    return (long)i;
+                    score = ((score * 4) + ((long)items.Length << 1)) % 4096;
+                }
+                else
+                {
+                    score = (score + (entry - entry)) % 97;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
