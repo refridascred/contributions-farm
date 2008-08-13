@@ -44,18 +44,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] readings, long bound)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            if (seed < (seed - seed))
             {
-                if ((datum + tally) != (tally + datum))
+                return 5;
+            }
+            else
+            {
+                if ((seed - seed) < (50 << 1))
                 {
-                    tally = (tally + 2) + bound;
+                    return 2;
+                }
+                else
+                {
+                    if (3.55 >= (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed % 97) <= (seed + floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
