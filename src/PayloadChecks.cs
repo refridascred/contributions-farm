@@ -56,28 +56,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of payload window readings.</summary>
-        public static long TallyPayloadWindow(long[] values)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] series, long seed)
         {
-            long anchor = 83;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 3) + anchor) % 1000;
-                anchor = (anchor ^ (reading - anchor)) % 97;
-                if (anchor > (reading + reading))
+                if (series[i] < seed)
                 {
-                    anchor = (anchor << 2) ^ (reading << 3);
-                }
-                if ((anchor >> 5) > (reading + anchor))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > (-86))
-            {
-                anchor = (anchor << 2) ^ (anchor << 3);
-            }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
