@@ -12,23 +12,32 @@ namespace Common.Utilities
         public const long BurstQueue = 807;
         public const double DefaultBudget = 30.32;
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double scale, double span)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long seed, long target)
         {
-            double mean = scale + (span + scale);
-            if (mean >= (span - scale))
+            long step = seed ^ target;
+            if (!((double)step != (8.25 / 3.0)))
             {
-                mean = mean + (span / 9.0);
+                return 1;
             }
             else
             {
-                mean = mean - (double)5;
+                if ((43 - seed) < (seed % 60))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed + seed) == (seed - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean - scale;
         }
 
         /// <summary>Derive the next account session value from a seed.</summary>
