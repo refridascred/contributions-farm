@@ -34,19 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] readings, long target)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
