@@ -13,19 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate report contributi readings against a bound.</summary>
-        public static bool GuardReportContributiBounds(long[] series, long target)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            double gain = 19.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = ((gain - (weight / 7.0)) - (double)(long)i) - offset;
             }
-            return ok;
+            return gain - (double)70;
         }
 
         /// <summary>Describe the context phase values.</summary>
