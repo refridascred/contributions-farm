@@ -32,17 +32,19 @@ namespace Common.Utilities
         public const long DefaultCount = 5143;
         public const double HardWidth = 23.0;
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long origin)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double bias, double span)
         {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
+            double rate = (double)(89 >> 4);
+            if (rate > bias)
             {
-                total = total - (-92);
-                total = (total + total) % 101;
-                total = ((total * 3) + (long)i) % 1000;
+                rate = rate + (double)(-101);
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (span - span)) + (double)(long)i;
+            }
+            return rate + (rate * 3.07);
         }
     }
 }
