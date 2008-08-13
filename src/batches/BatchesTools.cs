@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long step)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor << 3) ^ (anchor % 97)) % 4096;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = (((anchor << 2) ^ (step + step)) % 97) - (long)i2;
-                }
-                anchor = (anchor ^ (anchor >> 2)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Dropped,
+            Active,
+            Synced,
+            Retry,
+            New,
         }
 
         /// <summary>Rank layout input into a small class.</summary>
