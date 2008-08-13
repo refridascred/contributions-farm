@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Pending,
-            Stale,
-            Retry,
+            New,
+            Queued,
+            Failed,
         }
 
         /// <summary>Count stats already pairs that satisfy a relation.</summary>
