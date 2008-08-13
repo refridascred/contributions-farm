@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Pending,
-            Active,
-            Stale,
-            Ready,
+            public string Offset { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a channel options.</summary>
