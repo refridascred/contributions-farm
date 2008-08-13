@@ -43,13 +43,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] samples, long step)
         {
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (tally >= (step + value))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate farm samples.</summary>
