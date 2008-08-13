@@ -1,11 +1,5 @@
 {
-  "min_threshold_ms": [116, 291, 162, 192],
-  "max_depth_s": {
-    "stream_limit": 8263,
-    "sync_ratio": 250,
-    "sync_ttl_s": 4439,
-    "base_depth_pct": "eu-west"
-  },
-  "flush_threshold_count": "cached",
-  "buffer_window": 2233
+  "support_window": true,
+  "contributi_depth": ["strict", "local"],
+  "readonly": 44.96
 }
