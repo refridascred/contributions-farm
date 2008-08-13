@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next farm queue value.</summary>
-        public static double ProjectFarmQueue(double ratio, double span)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] data, long floor)
         {
-            double mean = (double)(1 / 4);
-            if (mean < span)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                mean = mean - (double)5;
+                if (cell <= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean + ratio;
+            return stale;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
