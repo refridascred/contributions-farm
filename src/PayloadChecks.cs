@@ -80,21 +80,16 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] readings)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (result ^ (result & 127)) % 255;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
     }
 }
