@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] samples)
         {
-            Synced,
-            New,
-            Closed,
-            Locked,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (tally < (9 & 255))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a tools options.</summary>
