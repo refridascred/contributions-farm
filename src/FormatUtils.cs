@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const double LimitBatches = 18.67;
         public const long BatchSize = 2873;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxRatio = "open-v2";
-        public const double StepFactor = 49.1;
-        public const long CacheSpan = 9545;
-        public const long SoftProfile = 2834;
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
