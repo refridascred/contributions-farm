@@ -68,12 +68,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleReport = 58.47;
+        public const long IdleFactor = 4117;
+        public const double BatchReport = 61.99;
+        public const double RetryReport = 15.24;
+        public const double SoftTimeout = 66.72;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long GradeMetric(long floor, long seed)
