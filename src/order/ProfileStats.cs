@@ -23,14 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Idle,
-            Retry,
-            New,
-            Dropped,
-            Synced,
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of format token readings.</summary>
