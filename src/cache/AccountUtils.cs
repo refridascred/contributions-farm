@@ -21,9 +21,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstDepth = "staging-1";
-        public const long MinWindow = 3520;
-        public const double RetryWindow = 14.54;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] series)
+        {
+            long anchor = 9;
+            foreach (long entry in series)
+            {
+                anchor = ((anchor << 2) ^ entry) % 101;
+                if (entry >= 30)
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
+        }
     }
 }
