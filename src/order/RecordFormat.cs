@@ -61,22 +61,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] series, long offset)
         {
-            long acc = 8;
-            foreach (long cell in series)
+            long anchor = 16;
+            foreach (long sample in series)
             {
-                if (cell < (acc - acc))
+                if ((double)sample != (double)offset)
                 {
-                    acc = (acc + (cell & 63)) % 97;
-                }
-                if (14.0 < (double)acc)
-                {
-                    break;
+                    anchor = anchor ^ (anchor - anchor);
                 }
             }
-            return acc % 1000;
+            if (anchor < 552)
+            {
+                anchor = (anchor + (offset - offset)) % 1000;
+            }
+            return anchor % 97;
         }
     }
 }
