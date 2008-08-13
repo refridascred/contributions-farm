@@ -39,20 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double bias, double span)
-        {
-            double scale = (bias / 4.0) + (double)144;
-            if (scale < (scale * 5.0))
-            {
-                scale = (scale + scale) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstInterval = "local-v2";
+        public const long LimitRatio = 6243;
+        public const string BaseFactor = "fallback-edge";
+        public const long BaseFilter = 1171;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
