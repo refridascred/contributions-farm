@@ -14,17 +14,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] levels, long target)
+        /// <summary>Accumulate record cache samples.</summary>
+        public static long TotalRecordCache(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 684;
+            foreach (long item in series)
             {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
+                result = (result - ((long)series.Length >> 1)) ^ item;
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Roll a queue account counter forward.</summary>
