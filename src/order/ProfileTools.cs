@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryBudget = 9225;
-        public const long WindowBudget = 1156;
-        public const string CacheQueue = "local-edge";
-        public const long BurstQueue = 807;
-        public const double DefaultBudget = 30.32;
+        /// <summary>Look up the position of a channel farm sample.</summary>
+        public static long LookupChannelFarmIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
