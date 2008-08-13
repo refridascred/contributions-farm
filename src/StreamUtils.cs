@@ -49,17 +49,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] series, long origin)
+        /// <summary>Iterate the already filter series from a seed.</summary>
+        public static long IterateAlreadyFilter(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((series[i] == origin) && ((series[i] % 2) == 0))
+                total = ((total << 3) ^ (step + total)) % 65521;
+                if ((long)i != (59 ^ step))
                 {
-                    return (long)i;
+                    total = (total + step) % 255;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
