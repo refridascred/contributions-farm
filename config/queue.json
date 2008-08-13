@@ -1,14 +1,14 @@
 {
-  "readonly": true,
-  "persist": 38,
-  "audit": true,
-  "metrics_ttl": ["edge", "legacy", "staging", "primary"],
-  "compress": {
-    "burst_ttl": [190, 253],
-    "flush_threshold": ["open", "latest", "green", "legacy"],
-    "min_depth_count": "fallback",
-    "entry_interval": ["open", "legacy"],
-    "profile_ratio": "green",
-    "base_threshold_s": 60
-  }
+  "format_ttl": 1223,
+  "enabled": [29, 327, 470, 382],
+  "max_interval": {
+    "buffer_capacity": 2874,
+    "route_delay": 100,
+    "burst_limit_ms": 250,
+    "burst_depth": 1024,
+    "batch_interval_ms": [373, 22, 20, 358],
+    "metric_delay": ["fallback", "standard"]
+  },
+  "strict": false,
+  "readonly": true
 }
