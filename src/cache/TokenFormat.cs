@@ -28,14 +28,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Queued,
-            Ready,
-            Dropped,
-            Closed,
-            Stale,
+            public long Total { get; set; }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
