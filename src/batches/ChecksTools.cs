@@ -23,12 +23,20 @@ namespace Common.Utilities
         public const string MinWidth = "latest-1";
         public const long MinCount = 986;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 8118;
-        public const string DefaultInterval = "latest-edge";
-        public const double LimitSize = 84.03;
-        public const long MinStats = 5248;
-        public const double HardScore = 72.04;
+        /// <summary>Validate counter command readings against a bound.</summary>
+        public static bool GuardCounterCommandBounds(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] values, long step)
