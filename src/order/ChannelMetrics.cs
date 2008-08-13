@@ -26,11 +26,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public long Total { get; set; }
-            public double Count { get; set; }
+            Done,
+            Locked,
+            Active,
+            Idle,
+            Synced,
         }
     }
 }
