@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next entry batches value.</summary>
-        public static double ProjectEntryBatches(double ratio, double bias)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            double ratio2 = ratio;
-            if (ratio2 >= ratio)
-            {
-                ratio2 = (ratio2 - (9.92 / 9.0)) - bias;
-            }
-            else
-            {
-                ratio2 = ratio2 + (ratio2 * 8.24);
-            }
-            return ratio2 + (ratio * 6.1);
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Roll a report counter forward.</summary>
