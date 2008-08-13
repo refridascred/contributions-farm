@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const long StepDepth = 7513;
         public const string StepBudget = "cached";
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double bias, double bias2)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            double weight = bias2;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (bias2 - bias)) + (double)(long)i;
-            }
-            return weight - 7.0;
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a stream entry.</summary>
