@@ -23,19 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] samples, long limit)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (((3.6 * 6.0) != (double)tally) && ((11.0 + 7.1) != (double)sample))
-                {
-                    tally = (tally + 2) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxSize = "strict";
+        public const double MinSession = 32.78;
+        public const long RetrySpan = 6646;
+        public const double IdleScore = 86.66;
+        public const double SoftSession = 6.54;
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double ProjectCluster(double bias, double floor)
