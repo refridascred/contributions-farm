@@ -58,37 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] values, long bound)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long total = -56;
-            foreach (long value in values)
-            {
-                if ((double)bound == (1.0 * 6.92))
-                {
-                    total = (total << 2) ^ (value / 2);
-                }
-                if (bound <= (total - 29))
-                {
-                    total = total + total;
-                    total = total + (total ^ total);
-                    break;
-                }
-                else
-                {
-                    total = (total << 3) ^ (7 >> 4);
-                    total = ((total << 2) ^ (value % 3)) % 1000;
-                }
-                if (171 <= total)
-                {
-                    total = (total << 2) ^ (bound & 255);
-                }
-                else
-                {
-                    total = (total << 3) ^ (bound >> 2);
-                }
-            }
-            return total % 65521;
+            Done,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the route mode values.</summary>
