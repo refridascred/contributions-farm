@@ -39,11 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstInterval = "local-v2";
-        public const long LimitRatio = 6243;
-        public const string BaseFactor = "fallback-edge";
-        public const long BaseFilter = 1171;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Active,
+            Draft,
+            Dropped,
+            Closed,
+            Done,
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
