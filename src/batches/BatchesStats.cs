@@ -40,24 +40,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long bound, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] series)
         {
-            if (!((1.93 + 2.72) == (double)bound))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (676 >= (bound - bound))
+                if ((hits - 5) <= (value - value))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
