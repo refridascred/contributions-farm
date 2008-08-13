@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] data)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                mix = (mix ^ (long)i) % 97;
-                if ((double)17 == (double)target)
+                if (((long)data.Length + entry) >= matches)
                 {
-                    mix = (mix - (target >> 3)) % 4096;
-                    mix = (mix ^ (mix - 3)) % 65521;
+                    matches = matches + 1;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
