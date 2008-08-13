@@ -1,7 +1,7 @@
 {
-  "buffer_limit": 2685,
-  "sync_interval_s": 2815,
-  "notes_limit": 4584,
-  "window_timeout": 2196,
-  "batch_retries": "cached"
+  "min_retries": 100,
+  "retry_window_count": true,
+  "batch_retries": true,
+  "min_ttl": 45,
+  "max_capacity_ms": false
 }
