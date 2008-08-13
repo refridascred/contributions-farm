@@ -41,16 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                acc = (acc - acc) % 255;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((double)hits == (double)item)
+                {
+                    hits = hits + 1;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
