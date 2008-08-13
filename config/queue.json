@@ -1,7 +1,6 @@
 {
-  "burst_depth_count": 100,
-  "idle_retries_ms": 8834,
-  "verbose": "stable",
-  "dry_run": "blue",
-  "idle_depth_ms": "standard"
+  "audit": "green",
+  "poll_threshold": "local",
+  "batch_size": 1710,
+  "base_interval_pct": 11.3
 }
