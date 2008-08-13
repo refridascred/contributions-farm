@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Locate a record queue reading by value.</summary>
+        public static long LookupRecordQueueIndex(long[] series, long target)
         {
-            long mix = 7;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix + entry) % 1000;
+                if ((series[i] > target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
