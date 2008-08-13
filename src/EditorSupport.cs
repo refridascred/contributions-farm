@@ -29,15 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Dropped,
-            Locked,
-            Pending,
-            Idle,
-            Done,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepWidth = 3471;
+        public const double MinProfile = 54.79;
+        public const long BatchBudget = 437;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
