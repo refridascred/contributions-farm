@@ -1,19 +1,5 @@
 {
-  "default_ttl_pct": 60,
-  "base_interval_count": {
-    "audit": true,
-    "cache_capacity_s": 675,
-    "enabled": 8.24,
-    "min_retries_s": 80.77,
-    "poll_limit": {
-      "hard_delay": "stable",
-      "batches_ratio": "blue",
-      "record_interval": "edge",
-      "compress": 250,
-      "batch_threshold": 59.33
-    },
-    "stats_window": 5381
-  },
-  "batches_timeout": 38.07,
-  "max_size_ms": false
+  "graph_depth": "cached",
+  "metric_capacity": false,
+  "support_capacity": true
 }
