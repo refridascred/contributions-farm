@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] values, long step)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            long score = 5;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (((score * 2) + (score % 24)) % 255) + datum;
-                score = score - (step + score);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Match up metrics commits samples.</summary>
