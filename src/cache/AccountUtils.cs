@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long floor)
         {
-            long anchor = 7;
-            foreach (long entry in samples)
+            long score = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((anchor + anchor) < entry)
-                {
-                    anchor = (anchor + (entry / 8)) % 97;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            if (anchor < 663)
-            {
-                anchor = (anchor - (anchor & 127)) % 97;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Describe the profile status values.</summary>
