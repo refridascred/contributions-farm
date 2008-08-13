@@ -64,18 +64,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((origin * 2) < datum)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBatches = "fallback";
+        public const long DefaultBatches = 4656;
+        public const long MaxDepth = 2510;
     }
 }
