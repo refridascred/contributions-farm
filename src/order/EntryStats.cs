@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] readings)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((6 ^ tally) <= 5)
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Accumulate record farm samples.</summary>
