@@ -28,10 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 153;
-        public const string BatchCommand = "primary-1";
-        public const long BurstWidth = 7915;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Failed,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
