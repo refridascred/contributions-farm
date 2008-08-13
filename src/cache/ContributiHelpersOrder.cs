@@ -33,19 +33,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] series, long seed)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long offset)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum > seed)
+                if (carry >= (long)i)
                 {
-                    ready = false;
-                    break;
+                    carry = (carry << 3) ^ (187 << 2);
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return ready;
+            return carry;
         }
     }
 }
