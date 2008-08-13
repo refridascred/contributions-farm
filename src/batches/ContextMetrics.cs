@@ -60,19 +60,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] levels, long floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Pending,
+            Retry,
+            New,
         }
     }
 }
