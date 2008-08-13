@@ -50,22 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] data, long target)
         {
-            long anchor = 310;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (((double)item > 8.0) || ((long)samples.Length >= anchor))
+                if ((double)reading < (6.0 / 4.0))
                 {
-                    anchor = ((anchor * 5) + (anchor ^ anchor)) % 65521;
-                }
-                if ((anchor - (long)samples.Length) <= (item + item))
-                {
-                    anchor = ((anchor << 2) ^ item) % 101;
+                    hits = (hits + 3) + target;
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
