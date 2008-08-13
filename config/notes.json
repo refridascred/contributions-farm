@@ -1,6 +1,7 @@
 {
-  "verbose": "legacy",
-  "hard_interval_count": ["stable", "latest", "cached", "stable"],
-  "batch_delay_pct": [134, 365],
-  "contributi_retries": 3229
+  "compress": "standard",
+  "warm_limit_ms": [237, 107],
+  "base_capacity": [434, 421, 139, 402],
+  "cache_delay_count": 26.45,
+  "flush_ratio_ms": ["fallback", "local", "fallback"]
 }
