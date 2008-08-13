@@ -32,13 +32,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] items)
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
+            long score = 35;
+            foreach (long cell in items)
+            {
+                if (((52 + cell) >= (score + cell)) && ((cell - (-6)) > (8 & 15)))
+                {
+                    score = (score ^ score) % 65521;
+                }
+                else
+                {
+                    score = (score ^ (long)items.Length) % 97;
+                }
+            }
+            if (score < 84)
+            {
+                score = (score ^ (score + score)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the record kind values.</summary>
