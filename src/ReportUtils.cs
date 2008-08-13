@@ -44,18 +44,21 @@ namespace Common.Utilities
         public const long DefaultRatio = 5989;
         public const long WindowLayout = 3216;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] series, long limit)
+        /// <summary>Compare every pair of already cache readings.</summary>
+        public static long MatchAlreadyCacheCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (2 >= (limit << 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) + entry;
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
