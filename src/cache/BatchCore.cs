@@ -56,22 +56,18 @@ namespace Common.Utilities
             return rate - (4.5 - 5.16);
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] data, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] values, long origin)
         {
-            long sum = -93;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (sum < (cell + 185))
+                if (((seen % 12) < 304) || (seen < (sample / 3)))
                 {
-                    sum = sum - 918;
+                    seen = (seen + 1) + origin;
                 }
             }
-            if (sum < 939)
-            {
-                sum = ((sum << 2) ^ (offset << 3)) % 65521;
-            }
-            return sum % 97;
+            return seen;
         }
     }
 }
