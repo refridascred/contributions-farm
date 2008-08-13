@@ -40,13 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Count the layout commits entries that pass the check.</summary>
+        public static long TallyLayoutCommitsMatches(long[] data)
         {
-            Idle,
-            Closed,
-            Synced,
-            Dropped,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (entry >= (tally & 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
