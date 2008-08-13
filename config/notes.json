@@ -1,6 +1,12 @@
 {
-  "layout_limit": "local",
-  "batch_depth_count": [13, 43, 244],
-  "flush_limit": true,
-  "idle_capacity_ms": "cached"
+  "account_ttl": "green",
+  "idle_window": "local",
+  "flush_ratio_count": {
+    "enabled": "open",
+    "soft_delay_s": 12.15,
+    "burst_timeout": ["green", "open", "cached"],
+    "cache_retries_count": false,
+    "batch_ttl_ms": 250
+  },
+  "cache_capacity_s": "green"
 }
