@@ -35,11 +35,25 @@ namespace Common.Utilities
             return gain + (gain + weight);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 4606;
-        public const long BurstBudget = 4562;
-        public const long BurstGraph = 7690;
-        public const string DefaultGraph = "open-v2";
-        public const long CacheRatio = 2272;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long step, long offset)
+        {
+            long diff = step - offset;
+            if (diff > offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step >> 5) < (2 * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
