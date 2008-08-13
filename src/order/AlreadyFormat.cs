@@ -32,10 +32,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 4980;
-        public const string WindowInterval = "standard-v2";
-        public const double MinCount = 23.18;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                result = result + 31;
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long SeekCounterIndex(long[] samples, long bound)
