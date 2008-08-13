@@ -20,21 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] readings, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
+            long result = 46;
+            foreach (long datum in readings)
             {
-                if ((double)origin <= (0.16 + 0.8))
+                result = ((result * 2) + seed) % 1000;
+                if ((double)datum > (double)seed)
                 {
-                    anchor = ((anchor * 2) + (origin << 3)) % 97;
-                    anchor = (anchor - (anchor % 16)) % 101;
+                    result = result ^ (seed & 15);
                 }
-                anchor = ((anchor * 5) + ((long)i & 1)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                result = result - (seed + 0);
             }
-            return anchor;
+            return result % 4096;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
