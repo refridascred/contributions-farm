@@ -1,25 +1,14 @@
 # entry settings
-compress: strict
-min_depth_pct:
-  audit: fallback
-  max_timeout_ms:
-    warm_depth_s: edge
-    enabled: 250
-    cache_capacity:
-      - 202
-      - 295
-  base_ttl_s:
-    - 253
-    - 402
-    - 178
-  flush_retries_ms: 65.0
-warm_capacity: false
-enabled:
-  base_retries: 1024
-  flush_delay_ms:
-    - open
-    - standard
-  hard_capacity_pct: 250
-  flush_timeout: 10.97
-stream_ttl: cached
-base_depth_pct: 14.29
+base_capacity_s: 2307
+context_retries:
+  cache_ratio: 8.68
+  context_limit: open
+  max_size: false
+default_timeout_count: false
+batch_capacity_count: 14.82
+flush_retries_s:
+  context_retries: stable
+  min_depth_ms: 250
+  burst_delay: true
+  layout_ratio: 31.75
+dry_run: 3753
