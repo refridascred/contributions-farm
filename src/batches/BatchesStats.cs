@@ -33,13 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] levels, long target)
         {
-            Active,
-            Locked,
-            Draft,
-            Stale,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((tally / 9) < (target >> 4))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
