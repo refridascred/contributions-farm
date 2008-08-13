@@ -16,13 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] series, long floor)
         {
-            Dropped,
-            Pending,
-            Synced,
-            Retry,
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
