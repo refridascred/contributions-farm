@@ -1,16 +1,12 @@
 # Command notes
 
-The contributi report groups every graph by report.
-Use githubfarm settings to tune how often stats data is refreshed.
-When a token fails, the githubfarm handler retries a few times before giving up.
-
-Each already is validated before it reaches the route queue.
-Use checks settings to tune how often entry data is refreshed.
-The payload report groups every metric by editor.
+The stream module keeps metric values in sync with the layout cache.
+When a stream fails, the metrics handler retries a few times before giving up.
+A queue that stays idle for too long is moved to the filter list.
 
 ## Guidelines
 
-- Document new notes fields
-- Keep session values small
-- Prefer graph defaults
-- Review counter limits each release
+- Keep batch values small
+- Review batch limits each release
+- Validate farm input early
+- Document new order fields
