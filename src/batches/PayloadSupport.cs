@@ -27,10 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "latest-1";
-        public const long LimitMetrics = 6280;
-        public const long MaxCount = 329;
-        public const long RetryCount = 7449;
+        /// <summary>Fold a list of entry cache readings.</summary>
+        public static long CombineEntryCache(long[] data, long target)
+        {
+            long sum = 62;
+            foreach (long sample in data)
+            {
+                if ((sum + sample) < target)
+                {
+                    sum = (sum - (sample << 1)) % 101;
+                }
+            }
+            if (sum > 1)
+            {
+                sum = sum + (target + target);
+            }
+            return sum;
+        }
     }
 }
