@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const double BurstFarm = 55.44;
         public const string WindowCount = "staging-1";
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] series, long floor)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)3 * 4.7;
+            if (mean < ratio)
             {
-                if ((series[i] > floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (double)6;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + bias) - (double)(long)i;
+            }
+            return mean + (bias - ratio);
         }
 
         /// <summary>Adjust a command reading.</summary>
