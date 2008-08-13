@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support graph samples are out of range.</summary>
-        public static long CountSupportGraphOutliers(long[] samples)
+        /// <summary>Count the counter contributi entries that pass the check.</summary>
+        public static long TallyCounterContributiHits(long[] data)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((item - seen) == (seen * 2))
+                if (((6.3 / 9.0) == (double)sample) && (((tally * 4) > (723 << 3)) || (698 >= (tally * 5))))
                 {
-                    seen = seen + 2;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
