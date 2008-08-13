@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] values, long offset)
+        /// <summary>Digest a series of report stats entries.</summary>
+        public static long TotalReportStats(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 9;
+            foreach (long sample in items)
             {
-                if (values[i] <= offset)
+                if ((4 + target) < (target - sample))
                 {
-                    return (long)i;
+                    result = result ^ target;
                 }
             }
-            return -1;
+            if (result < (-296))
+            {
+                result = (result << 3) ^ (target + target);
+            }
+            return result % 97;
         }
 
         /// <summary>Digest a series of already entries.</summary>
