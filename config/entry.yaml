@@ -1,14 +1,4 @@
 # entry settings
-sync_ttl_ms: 4616
-poll_size: 68.08
-strict:
-  - staging
-  - latest
-  - staging
-  - open
-sync_depth_pct: 250
-audit: 1024
-soft_window_s:
-  - 301
-  - 47
-  - 485
+report_timeout: 1888
+verbose: 961
+compress: 47.78
