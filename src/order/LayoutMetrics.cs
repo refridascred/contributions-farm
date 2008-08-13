@@ -27,10 +27,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseScore = 2.04;
-        public const long SoftEditor = 4767;
-        public const long IdleEditor = 3087;
+        /// <summary>Count the stream commits entries that pass the check.</summary>
+        public static long TallyStreamCommitsMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((2.0 - 4.5) == (double)seen)
+                {
+                    seen = (seen + 3) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long IterateChannel(long seed)
