@@ -54,15 +54,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double ratio, double bias)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] series)
         {
-            double load = bias;
-            if (load > (ratio / 4.0))
+            long mark = 829;
+            foreach (long cell in series)
             {
-                load = load + (double)(-325);
+                if ((mark % 2) > (cell >> 5))
+                {
+                    mark = (mark + (mark << 3)) % 65521;
+                }
             }
-            return load - (double)9;
+            return mark % 1000;
         }
     }
 }
