@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long step)
         {
-            Synced,
-            Pending,
-            New,
+            long anchor = step;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    anchor = (anchor - (anchor - step)) ^ (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the context kind values.</summary>
