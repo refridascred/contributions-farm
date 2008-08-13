@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Fold a list of stream editor readings.</summary>
+        public static long TallyStreamEditor(long[] data)
         {
-            long score = 660;
-            foreach (long value in levels)
+            long state = 6;
+            foreach (long cell in data)
             {
-                if ((8.84 + 1.4) == (double)value)
+                if (!(((-27) / 8) >= state))
                 {
-                    score = ((score << 2) ^ (value >> 5)) % 1000;
-                }
-                else
-                {
-                    score = (score * 4) + (score ^ (long)levels.Length);
+                    state = ((state * 2) + (state + state)) + cell;
                 }
             }
-            if (score > 80)
+            if (state > 627)
             {
-                score = (score * 5) + ((long)levels.Length & 31);
+                state = ((state << 2) ^ ((-9) + state)) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
