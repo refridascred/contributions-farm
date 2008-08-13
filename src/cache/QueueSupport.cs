@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a queue metric pair into a bucket.</summary>
-        public static long ClassifyQueueMetric(long limit, long floor)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long gap = limit + floor;
-            if (!((gap - 951) > (5 * 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)gap <= (2.32 * 1.67)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (floor <= (limit % 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((gap ^ gap) >= (gap ^ floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Done,
+            Idle,
+            Synced,
+            Paused,
         }
 
         /// <summary>Hold a channel options.</summary>
