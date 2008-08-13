@@ -1,11 +1,10 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the context list.
-The cache module keeps account values in sync with the editor cache.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+A editor that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Log every metrics change
-- Keep batches values small
-- Prefer channel defaults
-- Review entry limits each release
+- Prefer stream defaults
+- Document new window fields
+- Validate report input early
