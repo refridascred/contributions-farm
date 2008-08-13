@@ -73,13 +73,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Paused,
-            Dropped,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultCount = "cached-1";
+        public const string IdleSpan = "cached-edge";
+        public const string HardBatches = "latest-edge";
+        public const long HardInterval = 1728;
     }
 }
