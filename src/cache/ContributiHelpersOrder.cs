@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a queue format figure with a bias.</summary>
-        public static double ScaleQueueFormat(double weight, double bias)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] items, long limit)
         {
-            double rate = (bias / 4.0) * 6.0;
-            if (rate < (weight + bias))
+            bool flag = true;
+            foreach (long reading in items)
             {
-                rate = rate - weight;
+                if (reading >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (double)23;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate + weight;
+            return flag;
         }
 
         /// <summary>Describe the farm state values.</summary>
