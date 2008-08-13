@@ -36,10 +36,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 4149;
-        public const string RetryCounter = "cached-v2";
-        public const long IdleCounter = 2011;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long GradeGraph(long step, long offset)
