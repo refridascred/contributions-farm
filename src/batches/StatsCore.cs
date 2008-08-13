@@ -39,11 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] readings, long bound)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long state = 7;
+            foreach (long cell in readings)
+            {
+                if (((double)bound >= (6.69 * 13.0)) || ((double)state >= 15.0))
+                {
+                    state = ((state << 2) ^ bound) ^ cell;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Fold a list of notes filter readings.</summary>
