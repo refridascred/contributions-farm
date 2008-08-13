@@ -28,18 +28,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] samples, long step)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long bound, long bound2)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            if (((double)bound2 <= 0.2) && ((bound2 % 3) < bound))
             {
-                if (((cell + step) == (matches & 15)) && ((cell << 1) == (cell & 15)))
+                return 2;
+            }
+            else
+            {
+                if (bound > 56)
                 {
-                    matches = matches + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
     }
 }
