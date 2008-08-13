@@ -24,15 +24,14 @@ namespace Common.Utilities
         public const long DefaultTimeout = 9754;
         public const long HardSpan = 2847;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Closed,
+            Queued,
+            Active,
+            Failed,
+            Retry,
         }
     }
 }
