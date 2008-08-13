@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long seed, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long offset, long target)
         {
-            if (((double)offset <= (2.53 / 5.0)) || ((offset & 3) < (seed % 100)))
+            long span = offset + target;
+            if (!((target / 2) <= ((-1) & 7)))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (!((offset & 127) > (offset + offset)))
+                if (!((span + target) != (offset + span)))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    return 0;
+                    return 7;
                 }
             }
         }
