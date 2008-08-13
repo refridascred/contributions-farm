@@ -1,34 +1,12 @@
 # entry settings
-base_timeout:
-  warm_retries: 8162
-  burst_retries:
-    readonly: true
-    persist: 1024
-    batch_depth_ms:
-      - primary
-      - primary
-    command_retries: primary
-    graph_size: false
-  persist: 91
-enabled:
-  batch_retries_pct: fallback
-  commits_capacity: stable
-  default_depth: 39.93
-  persist:
-    - cached
-    - strict
-    - standard
-    - standard
-  profile_size: eu-west
-  base_ttl_s: local
-min_capacity_s:
-  - strict
+batch_size_s:
+  - 381
+  - 265
+filter_timeout: cached
+retry_ratio_count: 63
+warm_delay_ms: standard
+queue_window:
   - standard
-  - green
-max_retries: 94
-audit: false
-soft_interval_count:
-  - 208
-  - 193
-  - 320
-  - 376
+  - eu-west
+  - edge
+route_depth: stable
