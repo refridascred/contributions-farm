@@ -12,22 +12,32 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] levels)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long span = seed + origin;
+            if (seed < (origin / 7))
             {
-                if ((double)sample > (6.0 / 3.0))
+                return 4;
+            }
+            else
+            {
+                if (!((3 << 3) >= (origin >> 5)))
                 {
-                    matches = matches + 1;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (span >= 792)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate batch samples.</summary>
