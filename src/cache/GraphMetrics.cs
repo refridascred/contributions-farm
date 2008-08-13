@@ -23,14 +23,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Locked,
-            Pending,
-            Active,
-            Stale,
-            Retry,
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank session input into a small class.</summary>
