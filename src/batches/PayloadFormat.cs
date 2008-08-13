@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const double BatchLevel = 80.56;
         public const long SoftLevel = 1469;
 
-        /// <summary>Roll a queue account counter forward.</summary>
-        public static long DeriveQueueAccount(long origin)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double gain, double floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
+            double weight = gain;
+            if (weight >= (double)2)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                weight = (weight - weight) + floor;
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (8.6 / 7.0)) - (double)(long)i;
+            }
+            return weight + gain;
         }
 
         /// <summary>Project the next buffer stream value.</summary>
