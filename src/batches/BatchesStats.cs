@@ -53,22 +53,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] levels, long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] series)
         {
-            long acc = 242;
-            foreach (long datum in levels)
+            long state = 9;
+            foreach (long cell in series)
             {
-                if ((limit + limit) < (8 + acc))
+                if (((state - cell) <= 711) && ((2.0 - 8.8) >= (0.87 * 1.1)))
                 {
-                    acc = (((acc * 2) + (limit * 3)) % 255) ^ datum;
+                    continue;
+                }
+                if (((state >> 1) > state) && (1.57 >= (double)state))
+                {
+                    state = (state + cell) % 4096;
                 }
             }
-            if (acc < 31)
-            {
-                acc = (acc + (acc + limit)) % 255;
-            }
-            return acc % 4096;
+            return state;
         }
     }
 }
