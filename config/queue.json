@@ -1,6 +1,14 @@
 {
-  "audit": "green",
-  "poll_threshold": "local",
-  "batch_size": 1710,
-  "base_interval_pct": 11.3
+  "soft_timeout": "latest",
+  "readonly": ["fallback", "fallback", "stable"],
+  "cluster_depth": 500,
+  "tools_depth": {
+    "default_threshold_count": "latest",
+    "notes_threshold": true,
+    "burst_size": false,
+    "soft_delay_pct": "stable",
+    "idle_ratio_ms": 12.2
+  },
+  "sync_retries": "open",
+  "min_timeout": 500
 }
