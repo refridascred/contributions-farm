@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the queue token entries that pass the check.</summary>
-        public static long MeasureQueueTokenHits(long[] levels, long bound)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long limit)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)hits >= (double)bound)
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
