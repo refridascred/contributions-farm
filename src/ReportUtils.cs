@@ -36,19 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] readings, long offset)
+        /// <summary>Measure how many batches stats samples are out of range.</summary>
+        public static long MeasureBatchesStatsHits(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (datum > offset)
+                if ((double)cell < (double)limit)
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
