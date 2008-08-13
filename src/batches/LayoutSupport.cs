@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = -169;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (((score << 3) ^ datum) % 4096) - seed;
             }
-            return tally;
+            return score % 97;
         }
 
         /// <summary>Count the counter contributi entries that pass the check.</summary>
