@@ -38,15 +38,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long seed)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
