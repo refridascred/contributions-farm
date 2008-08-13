@@ -39,20 +39,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a cache session counter forward.</summary>
-        public static long SeriesCacheSession(long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] items, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                sum = (sum ^ sum) % 4096;
-                if (((sum + sum) != (sum / 2)) && ((sum + bound) >= (bound << 1)))
+                if (reading >= origin)
                 {
-                    sum = (sum ^ (sum - sum)) % 65521;
+                    flag = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return flag;
         }
     }
 }
