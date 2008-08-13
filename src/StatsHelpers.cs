@@ -33,12 +33,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
+            Paused,
+            Active,
+            Pending,
+            Locked,
+            New,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
