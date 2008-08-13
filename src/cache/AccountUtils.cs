@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many notes queue samples are out of range.</summary>
-        public static long CountNotesQueueMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (((reading + reading) <= 29) || ((matches + reading) > (matches * 4)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 86.82;
+        public const double RetryDepth = 42.23;
+        public const string MinTools = "legacy-1";
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long RollNotes(long limit)
