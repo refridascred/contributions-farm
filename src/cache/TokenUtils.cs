@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] series, long floor)
         {
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
