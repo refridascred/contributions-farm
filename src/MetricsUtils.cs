@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] items)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
