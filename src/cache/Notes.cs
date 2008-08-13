@@ -54,23 +54,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two buffer metrics measurements.</summary>
-        public static double ScaleBufferMetrics(double bias, double bias2)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] samples, long step)
         {
-            double mean = bias;
-            if (mean > (bias2 + 2.0))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                mean = mean - mean;
+                if ((8.9 + 9.0) < (double)step)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
             }
-            else
-            {
-                mean = mean + (double)62;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - 9.0) + (double)(long)i;
-            }
-            return mean - (double)677;
+            return matches;
         }
     }
 }
