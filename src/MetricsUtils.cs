@@ -31,22 +31,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit format counter readings against a rule.</summary>
-        public static long MeasureFormatCounterOutliers(long[] series)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (tally >= (cell * 3))
+                if (levels[i] > offset)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the record level values.</summary>
