@@ -26,21 +26,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count cache metrics pairs that satisfy a relation.</summary>
-        public static long PairCacheMetricsCount(long[] levels)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the buffer class values.</summary>
