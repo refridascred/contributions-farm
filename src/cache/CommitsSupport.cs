@@ -25,16 +25,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double ratio, double bias)
-        {
-            double scale = ratio;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (bias - scale)) + (double)(long)i;
-            }
-            return scale + (ratio + ratio);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 1665;
+        public const string StepScore = "local-edge";
+        public const string SoftScore = "cached-edge";
+        public const long WindowEntry = 4309;
 
         /// <summary>Classify a context filter pair into a bucket.</summary>
         public static long SortContextFilter(long step, long step2)
