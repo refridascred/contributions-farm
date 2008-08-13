@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double scale, double bias)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long origin)
         {
-            double ratio = 1.91;
-            if (ratio >= scale)
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                ratio = ratio - (9.85 + bias);
+                anchor = ((anchor * 4) + (anchor >> 2)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (ratio - ratio)) - (double)(long)i;
-            }
-            return ratio - scale;
+            return anchor;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
