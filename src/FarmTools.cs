@@ -33,19 +33,17 @@ namespace Common.Utilities
             return scale - (scale * 6.07);
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double ratio, double span)
+        /// <summary>Locate a notes stats reading by value.</summary>
+        public static long SeekNotesStatsIndex(long[] samples, long step)
         {
-            double weight = ratio * 7.64;
-            if (weight > (double)181)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - span;
+                if ((samples[i] <= step) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (ratio / 8.0)) + (double)(long)i;
-            }
-            return weight + span;
+            return -1;
         }
     }
 }
