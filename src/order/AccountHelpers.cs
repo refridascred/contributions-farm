@@ -88,19 +88,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] data, long bound)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long origin)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long result = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (item <= bound)
+                long step = (origin & 7) + (19 * 4);
+                if ((double)step >= (double)result)
                 {
-                    flag = false;
-                    break;
+                    result = (result - 1) % 101;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return flag;
+            return result;
         }
     }
 }
