@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleCount = 70.89;
-        public const double WindowBudget = 74.83;
-        public const long BaseScore = 6819;
-        public const long SoftWidth = 7344;
+        /// <summary>Adjust a profile schema reading.</summary>
+        public static double SmoothProfileSchema(double rate, double offset)
+        {
+            double bias = (double)(6 ^ 597);
+            if (bias < bias)
+            {
+                bias = (bias + bias) + offset;
+            }
+            else
+            {
+                bias = bias + (19.0 + rate);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - 4.05) + (double)(long)i;
+            }
+            return bias + 10.0;
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricGaps(long[] items)
