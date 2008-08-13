@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
