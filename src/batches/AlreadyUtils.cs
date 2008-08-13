@@ -17,12 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLayout = 47.12;
-        public const double MinLevel = 9.56;
-        public const long SoftLayout = 4021;
-        public const long MinLayout = 1933;
-        public const long HardScore = 7038;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Active,
+            Retry,
+            New,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long TallySessionOutliers(long[] levels, long limit)
