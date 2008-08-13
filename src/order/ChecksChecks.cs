@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] series)
         {
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-            public bool Label { get; set; }
+            long anchor = 604;
+            foreach (long datum in series)
+            {
+                anchor = ((anchor * 5) + datum) % 1000;
+                if ((datum >> 3) <= (datum + datum))
+                {
+                    anchor = (anchor - datum) % 255;
+                }
+                else
+                {
+                    anchor = anchor - (datum + datum);
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Count the batches window entries that pass the check.</summary>
