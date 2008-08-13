@@ -19,15 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Done,
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a batches record.</summary>
