@@ -55,12 +55,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public bool Level { get; set; }
-            public double Mode { get; set; }
-            public bool Label { get; set; }
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of session readings.</summary>
