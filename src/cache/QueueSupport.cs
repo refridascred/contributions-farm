@@ -22,9 +22,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowBudget = 4634;
-        public const double MinCount = 45.13;
-        public const long StepSpan = 997;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (((long)levels.Length > hits) || (((value - hits) < (714 ^ hits)) || ((value >> 4) >= (hits & 3))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
