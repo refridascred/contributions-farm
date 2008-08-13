@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] series, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long origin, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (8.17 < (double)bound)
             {
-                if (series[i] == target)
+                return 5;
+            }
+            else
+            {
+                if ((399 - (-1)) != (bound & 63))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the context state values.</summary>
