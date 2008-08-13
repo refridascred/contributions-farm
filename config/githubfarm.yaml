@@ -1,9 +1,13 @@
 # githubfarm settings
-payload_interval: local
-strict: 25
-warm_timeout: 48.87
-account_capacity: 100
-githubfarm_size:
-  - staging
-  - edge
-  - latest
+soft_timeout: 23.89
+cache_size: 49.29
+session_capacity: 100
+flush_timeout_s:
+  - open
+  - cached
+  - eu-west
+base_capacity_s:
+  - 240
+  - 238
+  - 85
+sync_limit: staging
