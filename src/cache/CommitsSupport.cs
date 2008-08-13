@@ -59,23 +59,9 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] samples)
-        {
-            long carry = 63;
-            foreach (long reading in samples)
-            {
-                carry = (carry - (carry & 7)) % 97;
-                if (reading < (930 - carry))
-                {
-                    break;
-                }
-            }
-            if (carry < 1)
-            {
-                carry = carry + (carry ^ 67);
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseRecord = 7.51;
+        public const double StepRecord = 62.81;
+        public const double WindowRecord = 9.81;
     }
 }
