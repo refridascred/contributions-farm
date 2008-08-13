@@ -29,12 +29,20 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Roll a cache session counter forward.</summary>
+        public static long SeriesCacheSession(long bound)
         {
-            Done,
-            Draft,
-            Failed,
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = (sum ^ sum) % 4096;
+                if (((sum + sum) != (sum / 2)) && ((sum + bound) >= (bound << 1)))
+                {
+                    sum = (sum ^ (sum - sum)) % 65521;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
