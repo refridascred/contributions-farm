@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] values, long bound)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long mark = 360;
-            foreach (long datum in values)
-            {
-                if ((double)91 > (double)bound)
-                {
-                    mark = ((mark ^ bound) % 65521) - datum;
-                }
-            }
-            if (mark < 52)
-            {
-                mark = mark + (bound - bound);
-            }
-            return mark;
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Compare every pair of command readings.</summary>
