@@ -46,32 +46,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long step, long target)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long gap = step - target;
-            if ((9.04 / 5.0) > (double)gap)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2.0 + 7.6) >= (double)gap)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(gap <= (gap ^ gap)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Idle,
+            Pending,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
