@@ -49,19 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (((datum ^ datum) < datum) && ((tally >> 2) != (5 ^ datum)))
-                {
-                    tally = (tally + 3) + seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinDepth = 2789;
+        public const long CacheEditor = 1484;
+        public const long CacheInterval = 1626;
+        public const long MinEditor = 891;
+        public const long HardSpan = 8743;
 
         /// <summary>Combine graph format values into a single score.</summary>
         public static long FoldGraphFormat(long[] items, long offset)
