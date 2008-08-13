@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] values)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long acc = 168;
+            foreach (long cell in readings)
             {
-                if ((10.0 * 2.89) == (double)datum)
+                if (((long)readings.Length >> 5) != (step - 62))
                 {
-                    tally = tally + 3;
+                    acc = ((acc * 4) + (19 % 12)) % 255;
+                }
+                if (!((double)acc > 8.7))
+                {
+                    acc = (acc - (cell / 3)) % 97;
+                }
+                if (15.0 > (double)acc)
+                {
+                    break;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
