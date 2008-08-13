@@ -16,13 +16,16 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Roll a cluster layout counter forward.</summary>
+        public static long RollClusterLayout(long target)
         {
-            Stale,
-            Retry,
-            Failed,
-            Closed,
+            long acc = target;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = (acc << 2) ^ (long)i;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
