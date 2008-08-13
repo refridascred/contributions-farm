@@ -21,17 +21,22 @@ namespace Common.Utilities
             return ratio + (double)3;
         }
 
-        /// <summary>Look up the position of a route buffer sample.</summary>
-        public static long LookupRouteBufferIndex(long[] values, long origin)
+        /// <summary>Accumulate checks queue samples.</summary>
+        public static long TallyChecksQueue(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 53;
+            foreach (long reading in items)
             {
-                if ((values[i] > origin) && ((values[i] % 2) == 0))
+                if ((reading % 7) > (carry + carry))
                 {
-                    return (long)i;
+                    carry = (carry ^ reading) % 4096;
                 }
             }
-            return -1;
+            if (carry > 84)
+            {
+                carry = (carry + (9 + carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
