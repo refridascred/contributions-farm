@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] levels, long bound)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public double Mode { get; set; }
+            long result = 324;
+            foreach (long reading in levels)
+            {
+                result = (((result << 2) ^ (result * 3)) % 255) ^ reading;
+            }
+            if (result < 72)
+            {
+                result = (result + (bound / 3)) % 1000;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a layout stats.</summary>
