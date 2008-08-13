@@ -1,23 +1,24 @@
 # githubfarm settings
-min_window_pct: latest
-sync_timeout_ms:
-  flush_capacity_s: false
-  format_ratio: 80
-  warm_delay_pct: eu-west
-  readonly:
-    default_ratio_pct: primary
-    retry_delay:
-      - staging
-      - cached
-      - legacy
-    strict: true
-    min_window: stable
-  command_size: 78.19
-  warm_delay_ms: blue
-dry_run:
-  - staging
+retry_interval_pct:
+  batch_timeout: 21.45
+  soft_timeout_s: false
+  command_threshold:
+    - standard
+    - local
+    - green
+  poll_delay_count: 1024
+  entry_ttl: 4.49
+audit:
+  burst_capacity_s: 58.47
+  window_capacity: 96
+  compress:
+    - stable
+    - legacy
+    - open
+idle_interval: 6936
+min_timeout_ms:
+  - latest
   - edge
-  - green
-batch_depth_ms: standard
-cache_limit: 16.97
-enabled: 80
+  - fallback
+  - eu-west
+soft_window: 500
