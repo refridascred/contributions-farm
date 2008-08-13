@@ -28,21 +28,26 @@ namespace Common.Utilities
         public const long DefaultSpan = 3861;
         public const double BatchSpan = 65.16;
 
-        /// <summary>Compare every pair of cache window readings.</summary>
-        public static long MatchCacheWindowCount(long[] levels)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 14;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((reading ^ target) != (8 + reading)) || ((-182) <= state))
                 {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state << 3) ^ reading;
+                }
+                if ((reading % 2) == ((-465) - state))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (state < 7)
+            {
+                state = state - (state >> 5);
+            }
+            return state;
         }
     }
 }
