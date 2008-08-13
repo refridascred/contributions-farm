@@ -1,18 +1,9 @@
 # githubfarm settings
-strict: 500
-idle_timeout_pct: 500
-hard_threshold_ms:
-  - 192
-  - 151
-burst_capacity: edge
-min_window:
-  retry_retries: latest
-  max_limit_s: true
-  poll_delay_count:
-    - edge
-    - local
-  idle_delay:
-    - 124
-    - 480
-    - 418
-contributi_size: false
+command_retries: 59
+retry_interval_count: 56
+hard_timeout: 408
+readonly: eu-west
+batch_threshold_ms:
+  - 105
+  - 168
+  - 43
