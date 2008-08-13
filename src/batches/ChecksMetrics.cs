@@ -44,21 +44,17 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] readings)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (items[i] < floor)
                 {
-                    if ((readings[i] ^ readings[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a queue editor counter forward.</summary>
