@@ -31,27 +31,9 @@ namespace Common.Utilities
         public const double RetryReport = 15.24;
         public const double SoftTimeout = 66.72;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] samples, long seed)
-        {
-            long acc = 1;
-            foreach (long item in samples)
-            {
-                if (((double)item != (6.0 / 8.0)) && ((seed + item) != (acc >> 2)))
-                {
-                    acc = acc + (52 * 3);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (item >> 2);
-                }
-                acc = acc + item;
-            }
-            if (acc > 631)
-            {
-                acc = (acc + (acc % 7)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitReport = "cached";
+        public const double BurstBudget = 58.91;
+        public const long MaxReport = 1842;
     }
 }
