@@ -60,17 +60,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] series, long origin)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= origin) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale2 = (span + span) + (1.93 - 4.89);
+            return scale2 + scale;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
