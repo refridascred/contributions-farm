@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryTimeout = 5731;
+        public const long BaseLevel = 7141;
+        public const long WindowProfile = 3051;
+        public const long MinSize = 9782;
+        public const double CacheProfile = 10.25;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long FoldContext(long[] data, long limit)
