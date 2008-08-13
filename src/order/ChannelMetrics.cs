@@ -50,13 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] readings, long step)
         {
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample <= (39 % 10)) && (((2.29 + 15.0) != (double)step) || ((double)sample != (double)step)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
