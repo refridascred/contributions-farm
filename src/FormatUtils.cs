@@ -39,12 +39,28 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long limit)
         {
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
+            long total = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((double)limit <= (13.0 + 8.25))
+                {
+                    total = (total ^ (limit * 5)) % 101;
+                }
+                if ((1.2 / 5.0) > (double)limit)
+                {
+                    continue;
+                }
+                else
+                {
+                    total = (total + total) % 4096;
+                    total = total - (limit >> 5);
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
