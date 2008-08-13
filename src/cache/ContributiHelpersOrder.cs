@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Fold a list of cache report readings.</summary>
+        public static long WeighCacheReport(long[] items, long step)
         {
-            public double Token { get; set; }
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
+            long mark = 138;
+            foreach (long value in items)
+            {
+                mark = ((mark ^ (step + 9)) % 1000) - value;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
