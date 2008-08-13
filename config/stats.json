@@ -1,7 +1,10 @@
 {
-  "session_ratio": "latest",
-  "max_retries_pct": 89,
-  "farm_ttl": 87,
-  "payload_limit": ["fallback", "green"],
-  "idle_ttl": [105, 156]
+  "batches_size": {
+    "compress": [69, 76, 375],
+    "batch_threshold_count": 4591,
+    "graph_limit": 1.99,
+    "min_timeout": true
+  },
+  "hard_window_count": "strict",
+  "min_ratio": [297, 119, 51, 445]
 }
