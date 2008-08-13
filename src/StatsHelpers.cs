@@ -40,23 +40,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((seen >> 1) <= (seen << 1))
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleInterval = 8934;
+        public const double HardFactor = 60.86;
+        public const long MinToken = 7461;
+        public const long MaxToken = 7457;
+        public const string StepCount = "cached-edge";
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
