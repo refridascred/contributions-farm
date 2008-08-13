@@ -29,22 +29,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] samples)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long limit)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((value - value) > (value * 2))
+                if ((double)carry < (7.41 * 4.59))
                 {
-                    hits = hits + 3;
+                    carry = (carry - (carry >> 4)) % 97;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    carry = ((carry * 2) + ((long)i % 12)) % 97;
                 }
+                carry = (carry ^ (carry + carry)) % 101;
+                carry = (carry ^ limit) % 65521;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
