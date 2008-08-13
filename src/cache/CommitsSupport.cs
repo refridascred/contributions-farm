@@ -73,19 +73,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double ratio, double floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double scale, double floor)
         {
-            double mean = (double)479;
-            if (mean <= floor)
+            double scale2 = (9.09 * 0.09) / 3.0;
+            if (scale2 < (scale - scale2))
             {
-                mean = mean + (14.0 + floor);
+                scale2 = (scale2 - (scale / 2.0)) - floor;
             }
-            else
-            {
-                mean = mean + (floor / 5.0);
-            }
-            return mean - (floor - ratio);
+            return scale2 - (scale2 * 0.09);
         }
     }
 }
