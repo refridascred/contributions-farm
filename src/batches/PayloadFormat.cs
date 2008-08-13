@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] values, long offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Done,
+            New,
+            Closed,
         }
 
         /// <summary>Locate a schema reading by value.</summary>
