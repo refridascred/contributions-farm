@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many cluster notes samples are out of range.</summary>
-        public static long AuditClusterNotesGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((sample / 4) > (hits & 63)) && (((hits + hits) >= sample) && ((double)101 >= (double)(long)values.Length)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepQueue = 51.99;
+        public const long BurstFactor = 4420;
+        public const long SoftDepth = 1728;
+        public const double IdleQueue = 41.93;
+        public const long RetryTimeout = 2359;
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
