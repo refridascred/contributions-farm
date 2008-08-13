@@ -1,7 +1,7 @@
 {
-  "min_window_ms": 47.86,
-  "soft_timeout_s": true,
-  "max_interval_count": "staging",
-  "sync_retries_count": "standard",
-  "compress": "green"
+  "strict": 1024,
+  "burst_window_ms": 28.75,
+  "buffer_ttl": [344, 345, 97],
+  "flush_depth": 2769,
+  "default_timeout_pct": true
 }
