@@ -20,28 +20,29 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long origin, long step)
+        /// <summary>Classify a batch checks pair into a bucket.</summary>
+        public static long SortBatchChecks(long origin, long bound)
         {
-            if (((-42) + origin) >= (origin >> 2))
+            long gap = origin - bound;
+            if (((bound * 5) > 8) && ((bound + gap) != (52 + gap)))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if (((double)step > (3.77 + 20.0)) && ((7 - 911) > (step + (-969))))
+                if (109 <= (bound + gap))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)step <= (6.59 + 8.0))
+                    if ((gap - 12) <= (gap * 3))
                     {
-                        return 7;
+                        return 8;
                     }
                     else
                     {
-                        return 3;
+                        return 2;
                     }
                 }
             }
