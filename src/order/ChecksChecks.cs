@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session farm samples.</summary>
-        public static long CombineSessionFarm(long[] values, long origin)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long anchor = 47;
-            foreach (long item in values)
-            {
-                anchor = ((anchor * 3) + (item * 2)) - origin;
-            }
-            if (anchor > 1)
-            {
-                anchor = (anchor << 3) ^ (anchor - anchor);
-            }
-            return anchor;
+            Pending,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the batch class values.</summary>
