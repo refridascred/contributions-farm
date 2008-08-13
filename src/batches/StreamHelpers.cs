@@ -20,21 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] values)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long origin, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((-42) + origin) >= (origin >> 2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((double)step > (3.77 + 20.0)) && ((7 - 911) > (step + (-969))))
                 {
-                    if ((values[i] ^ values[j]) > 17)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step <= (6.59 + 8.0))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
