@@ -32,12 +32,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            Ready,
+            Done,
+            Failed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the metrics level values.</summary>
