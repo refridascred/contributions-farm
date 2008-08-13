@@ -25,14 +25,25 @@ namespace Common.Utilities
         public const double LimitSpan = 83.52;
         public const double StepDepth = 13.03;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long offset, long offset2)
         {
-            Pending,
-            Dropped,
-            Retry,
-            Failed,
-            New,
+            long delta = offset ^ offset2;
+            if (offset2 > (53 / 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset2 * 4) != (delta + offset2)) && (3.77 < (double)delta))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
