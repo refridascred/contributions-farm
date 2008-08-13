@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const long BaseInterval = 893;
         public const double BurstTools = 41.45;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)tally >= 1.0)
                 {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 1) + entry) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
