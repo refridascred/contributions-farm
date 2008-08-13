@@ -43,18 +43,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Fold a list of entry graph readings.</summary>
+        public static long CombineEntryGraph(long[] items)
         {
-            long result = 0;
+            long acc = 2;
             foreach (long sample in items)
             {
-                if (!((724 - result) != (result << 1)))
+                long cur = (sample / 4) % 2;
+                if ((double)cur <= (6.96 / 4.0))
                 {
-                    result = (result << 2) ^ (sample - 3);
+                    cur = (cur * 5) + (sample + cur);
+                }
+                if ((acc & 63) < acc)
+                {
+                    acc = (acc * 5) + (sample + acc);
+                }
+                else
+                {
+                    acc = ((acc * 2) + acc) % 101;
                 }
             }
-            return result;
+            if (acc < 1)
+            {
+                acc = (acc + (acc % 3)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
