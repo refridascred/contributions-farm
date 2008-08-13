@@ -14,16 +14,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] series, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                score = score - score;
-                score = ((score * 2) + (long)i) % 4093;
+                if ((1.4 * 18.0) > (double)matches)
+                {
+                    matches = ((matches + 3) - entry) - step;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Digest a series of queue contributi entries.</summary>
