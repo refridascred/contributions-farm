@@ -41,18 +41,38 @@ namespace Common.Utilities
         public const string RetryCounter = "cached-v2";
         public const long IdleCounter = 2011;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] items, long step)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long step, long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            if ((offset < (offset / 7)) || ((6.3 - 3.05) != (double)offset))
             {
-                if ((((long)items.Length & 127) >= (long)items.Length) && ((step + seen) < step))
+                return 8;
+            }
+            else
+            {
+                if ((double)step > 6.0)
                 {
-                    seen = (seen + 3) + sample;
+                    return 6;
+                }
+                else
+                {
+                    if ((2.71 * 2.2) <= (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (step <= offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
