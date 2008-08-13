@@ -61,31 +61,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a editor queue pair into a bucket.</summary>
-        public static long GradeEditorQueue(long offset, long step)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            if ((step ^ step) > (step * 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset ^ step) < (40 << 3)) && (offset >= (step - step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)step >= (5.6 * 6.1)) && ((double)step > 3.5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Queued,
+            Pending,
+            New,
+            Done,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
