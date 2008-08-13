@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 5616;
+        public const long IdleAlready = 5212;
+        public const long SoftLevel = 1116;
+        public const long CacheAlready = 5076;
 
         /// <summary>Accumulate farm counter samples.</summary>
         public static long ScoreFarmCounter(long[] items)
