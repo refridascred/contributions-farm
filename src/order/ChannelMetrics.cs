@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] items, long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (sample >= (sample & 127))
+                if ((matches / 6) <= matches)
                 {
-                    tally = (tally + 2) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = ((matches + 2) + reading) + step;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the layout kind values.</summary>
