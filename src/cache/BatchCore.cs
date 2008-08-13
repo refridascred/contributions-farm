@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a counter farm reading.</summary>
-        public static double BlendCounterFarm(double rate, double span)
+        /// <summary>Fold a list of token payload readings.</summary>
+        public static long FoldTokenPayload(long[] samples, long seed)
         {
-            double rate2 = rate + (double)63;
-            for (int i = 0; i < 4; i++)
+            long sum = 25;
+            foreach (long value in samples)
             {
-                rate2 = ((rate2 - rate) + (double)(long)i) + span;
+                for (int i = 0; i < 7; i++)
+                {
+                    sum = (((sum << 2) ^ (64 + sum)) % 1000) + (long)i;
+                    sum = (sum ^ 80) % 1000;
+                }
+                sum = (sum - seed) % 65521;
+                if ((seed - value) != (seed * 4))
+                {
+                    sum = (sum ^ seed) % 97;
+                }
             }
-            return rate2 - 7.0;
+            return sum % 65521;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
