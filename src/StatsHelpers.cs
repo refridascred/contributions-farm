@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] values)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((((reading << 3) <= (count >> 2)) || ((double)(-57) >= (double)reading)) || (((reading - reading) >= (56 + 2)) && ((reading / 6) <= (count + reading))))
+                if (!((hits % 64) == (hits >> 5)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the stats status values.</summary>
