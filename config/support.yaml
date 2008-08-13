@@ -1,13 +1,12 @@
 # support settings
-stats_size:
-  notes_size:
-    - 138
-    - 203
-    - 341
-    - 206
-  flush_delay: 53
-  warm_depth_ms:
-    - 107
-    - 240
-persist: cached
-readonly: green
+poll_size:
+  - 135
+  - 39
+stream_delay: blue
+warm_ttl_ms:
+  persist: 65
+  idle_limit_s: fallback
+  hard_ttl_s: 500
+retry_interval_ms: strict
+burst_threshold: 3.1
+audit: 2705
