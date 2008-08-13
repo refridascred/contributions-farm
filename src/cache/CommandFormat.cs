@@ -14,39 +14,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long origin, long offset)
-        {
-            if (((origin / 6) < (offset + offset)) && (offset >= (19 & 15)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((origin >> 2) == (offset ^ offset)) || (4 >= (origin - 77)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin == (1.43 * 19.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((4 / 4) < (offset + origin)) && ((double)origin >= (double)957))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 968;
+        public const long CacheContributi = 1174;
+        public const long IdleLevel = 9825;
+        public const long BatchScore = 6225;
+        public const string CacheRatio = "stable-1";
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BatchAlready = 80.93;
