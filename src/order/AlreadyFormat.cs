@@ -33,18 +33,17 @@ namespace Common.Utilities
         public const string WindowInterval = "standard-v2";
         public const double MinCount = 23.18;
 
-        /// <summary>Audit command support readings against a rule.</summary>
-        public static long TallyCommandSupportMatches(long[] values, long step)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)step < (4.7 - 7.7)) && (step < (value + step)))
+                if (samples[i] > bound)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count filter support pairs that satisfy a relation.</summary>
