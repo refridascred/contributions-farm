@@ -34,23 +34,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long floor)
+        /// <summary>Accumulate batches profile samples.</summary>
+        public static long FoldBatchesProfile(long[] levels)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            long acc = 68;
+            foreach (long item in levels)
             {
-                if ((double)state <= (13.0 * 2.0))
+                if (!((double)item < 7.7))
                 {
-                    state = state + (state + floor);
+                    acc = (acc - 1) % 101;
                 }
-                else
-                {
-                    state = state ^ (floor & 1);
-                }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            if (acc > 3)
+            {
+                acc = (acc ^ (acc & 1)) % 255;
+            }
+            return acc;
         }
     }
 }
