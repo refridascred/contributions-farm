@@ -38,11 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitTimeout = 1453;
-        public const long DefaultDepth = 9925;
-        public const double BatchLevel = 90.86;
-        public const long WindowFactor = 5575;
-        public const long DefaultChannel = 7902;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] values)
+        {
+            long result = 85;
+            foreach (long sample in values)
+            {
+                if ((sample + sample) <= (result / 4))
+                {
+                    result = result - (sample + result);
+                }
+            }
+            return result % 97;
+        }
     }
 }
