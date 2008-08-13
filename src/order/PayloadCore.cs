@@ -19,16 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cluster editor samples.</summary>
-        public static long ScoreClusterEditor(long[] levels)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long mark = 37;
-            foreach (long sample in levels)
-            {
-                mark = (mark * 3) + (13 ^ mark);
-                mark = (mark - (sample * 4)) % 101;
-            }
-            return mark;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Match up token samples.</summary>
