@@ -66,10 +66,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitDepth = 6869;
-        public const string WindowFactor = "alpha";
-        public const long SoftCommand = 2821;
-        public const long CacheCommand = 5084;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 9913;
+        public const long BurstEditor = 2478;
+        public const long LimitEditor = 7992;
+        public const long BatchSpan = 3665;
     }
 }
