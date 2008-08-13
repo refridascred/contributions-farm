@@ -12,32 +12,12 @@ namespace Common.Utilities
         public const long BurstQueue = 807;
         public const double DefaultBudget = 30.32;
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long step, long seed)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long prev = step + seed;
-            if ((double)prev <= (9.0 / 4.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)seed >= (double)prev))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.8 * 5.0) >= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next account session value from a seed.</summary>
