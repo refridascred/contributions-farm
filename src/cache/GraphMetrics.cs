@@ -12,19 +12,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] items, long target)
+        /// <summary>Fold a list of support cluster readings.</summary>
+        public static long DigestSupportCluster(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long state = 2;
+            foreach (long value in values)
             {
-                if (value > target)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state << 2) ^ (seed % 2)) + value;
             }
-            return stale;
+            return state % 1000;
         }
 
         /// <summary>Describe the token level values.</summary>
