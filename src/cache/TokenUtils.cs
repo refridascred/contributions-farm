@@ -36,13 +36,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Synced,
-            Idle,
-            Pending,
-            New,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseSize = "legacy";
+        public const long StepCache = 8016;
+        public const long MaxCache = 1432;
     }
 }
