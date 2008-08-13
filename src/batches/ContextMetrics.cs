@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] series, long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (sample < target)
+                if (sample > seed)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Hold a layout info.</summary>
