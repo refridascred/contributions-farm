@@ -29,11 +29,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinDepth = 7307;
-        public const long LimitBatch = 7280;
-        public const long CacheDepth = 3825;
-        public const long StepBatch = 3071;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            New,
+            Done,
+            Locked,
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
