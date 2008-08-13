@@ -54,12 +54,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Locked,
-            Retry,
-            Done,
+            public long Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a account summary.</summary>
