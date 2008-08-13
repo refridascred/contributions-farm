@@ -62,15 +62,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double bias, double floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] samples)
         {
-            double scale = floor;
-            if (scale < (scale * 8.11))
+            long total = 1;
+            foreach (long reading in samples)
             {
-                scale = (scale - (double)0) + bias;
+                if ((double)reading < (14.0 / 4.0))
+                {
+                    total = (total ^ (991 - reading)) % 255;
+                }
             }
-            return scale + scale;
+            return total;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
