@@ -20,14 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double bias, double bias2)
         {
-            Done,
-            Queued,
-            Pending,
-            Stale,
-            Ready,
+            double weight = bias2;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (bias2 - bias)) + (double)(long)i;
+            }
+            return weight - 7.0;
         }
 
         /// <summary>Describe the queue kind values.</summary>
