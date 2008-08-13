@@ -33,19 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate channel command readings against a bound.</summary>
-        public static bool VerifyChannelCommandBounds(long[] data, long limit)
+        /// <summary>Accumulate githubfarm filter samples.</summary>
+        public static long TotalGithubfarmFilter(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long score = 35;
+            foreach (long value in values)
             {
-                if (reading <= limit)
+                score = (score + (score - 9)) % 97;
+                if ((17 >= (value ^ score)) || ((0.5 - 3.0) < (double)value))
                 {
-                    stale = false;
-                    break;
+                    score = (score ^ 2) % 97;
                 }
             }
-            return stale;
+            if (score > 988)
+            {
+                score = (score * 4) + (score + score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
