@@ -44,11 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] data)
         {
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
+            long state = 90;
+            foreach (long reading in data)
+            {
+                state = (state << 3) ^ (reading * 4);
+            }
+            return state;
         }
 
         /// <summary>Describe the context state values.</summary>
