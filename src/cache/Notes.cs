@@ -24,11 +24,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] levels, long target)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
+            long sum = 292;
+            foreach (long datum in levels)
+            {
+                sum = (sum ^ (target + sum)) - datum;
+            }
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
