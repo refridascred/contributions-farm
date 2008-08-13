@@ -37,9 +37,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepFactor = 36.69;
-        public const long HardCount = 1798;
-        public const long DefaultFactor = 4542;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] readings)
+        {
+            long result = -8;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    long gap = 9;
+                    result = ((result + (gap & 255)) % 4096) ^ (long)i;
+                }
+                if (((double)result >= (10.0 / 8.0)) && (result <= (item + (long)readings.Length)))
+                {
+                    result = result ^ item;
+                }
+            }
+            return result % 65521;
+        }
     }
 }
