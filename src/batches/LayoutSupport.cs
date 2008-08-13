@@ -79,17 +79,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] readings, long offset)
+        /// <summary>Combine metric format values into a single score.</summary>
+        public static long FoldMetricFormat(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 28;
+            foreach (long entry in items)
             {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + 7) ^ entry;
             }
-            return -1;
+            if (acc < 68)
+            {
+                acc = (acc << 2) ^ (bound << 3);
+            }
+            return acc % 4096;
         }
     }
 }
