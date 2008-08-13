@@ -55,31 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long limit, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] items)
         {
-            if ((5.0 * 9.0) < (double)step)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + limit) >= 21)
+                if ((matches >> 2) == ((long)items.Length + reading))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step <= (17.0 + 6.8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of payload window readings.</summary>
