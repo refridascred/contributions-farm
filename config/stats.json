@@ -1,8 +1,5 @@
 {
-  "idle_interval": 6,
-  "cache_size_pct": false,
-  "sync_ttl": [181, 84, 137],
-  "burst_ttl_pct": 1993,
-  "hard_ttl_s": 50,
-  "cache_retries": "edge"
+  "flush_retries_pct": "strict",
+  "compress": 4561,
+  "format_delay": "local"
 }
