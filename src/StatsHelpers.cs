@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Audit command channel readings against a rule.</summary>
+        public static long AuditCommandChannelHits(long[] values)
         {
-            public bool Total { get; set; }
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (((double)cell == (double)matches) || (matches <= (6 << 3)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a githubfarm cluster value against two limits.</summary>
