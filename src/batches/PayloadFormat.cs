@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double rate, double bias)
         {
-            Stale,
-            Done,
-            New,
-            Closed,
+            double gain = bias;
+            if (gain > (gain / 4.0))
+            {
+                gain = gain + (rate + bias);
+            }
+            return gain + (bias / 6.0);
         }
 
         /// <summary>Locate a schema reading by value.</summary>
