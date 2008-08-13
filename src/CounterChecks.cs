@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine report metrics values into a single score.</summary>
-        public static long ScoreReportMetrics(long[] data)
-        {
-            long sum = -9;
-            foreach (long sample in data)
-            {
-                if ((sum + sample) < (0 % 2))
-                {
-                    sum = (sum * 5) + 7;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchFactor = 5275;
+        public const double DefaultChecks = 5.76;
+        public const double MinChecks = 95.53;
+        public const long CacheInterval = 2729;
+        public const string BurstDepth = "staging-edge";
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
