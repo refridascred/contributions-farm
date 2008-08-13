@@ -1,4 +1,32 @@
 # entry settings
-cache_depth_count: eu-west
-warm_size_count: 34.98
-batch_ttl: local
+idle_limit_count:
+  retry_window: false
+  graph_timeout: 32.12
+  burst_limit:
+    min_ratio_s: 1024
+    route_capacity: 60
+    compress: 783
+    hard_interval_ms:
+      - 280
+      - 6
+  idle_threshold: staging
+default_delay:
+  - standard
+  - cached
+  - primary
+audit:
+  - stable
+  - local
+  - green
+  - staging
+cache_timeout_pct: 4840
+dry_run:
+  - latest
+  - legacy
+  - local
+  - eu-west
+commits_retries:
+  - staging
+  - local
+  - cached
+  - fallback
