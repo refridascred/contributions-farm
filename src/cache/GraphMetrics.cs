@@ -36,17 +36,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] readings, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (readings[i] >= target)
+                if (!(((hits + hits) < floor) || ((sample % 24) > (floor & 1))))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
