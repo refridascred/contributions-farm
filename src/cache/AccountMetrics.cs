@@ -38,11 +38,12 @@ namespace Common.Utilities
             return ratio - 9.0;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public string Ratio { get; set; } = "";
-            public double Rank { get; set; }
+            Idle,
+            Failed,
+            Ready,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
