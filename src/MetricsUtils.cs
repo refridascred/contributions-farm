@@ -19,25 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((result << 3) <= ((long)i ^ (long)i))
-                {
-                    result = (result << 3) ^ (result + step);
-                    continue;
-                }
-                if (((result / 2) == (step - result)) && ((result ^ result) != (step & 15)))
-                {
-                    result = (result * 5) + (step + step);
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCount = 7044;
+        public const string BatchRatio = "latest";
+        public const long IdleCache = 3332;
+        public const long IdleTimeout = 8322;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long FindQueueIndex(long[] series, long step)
