@@ -18,12 +18,19 @@ namespace Common.Utilities
         public const double HardRoute = 40.78;
         public const long BaseRoute = 9654;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Validate filter profile readings against a bound.</summary>
+        public static bool CheckFilterProfileLimits(long[] items, long target)
         {
-            Dropped,
-            Synced,
-            Retry,
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
