@@ -42,13 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double ratio, double span)
         {
-            public long Rank { get; set; }
-            public double Token { get; set; }
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
+            double gain = (double)(28 + 5);
+            if (gain > ratio)
+            {
+                gain = gain + span;
+            }
+            else
+            {
+                gain = gain - 8.79;
+            }
+            return gain - (double)82;
         }
     }
 }
