@@ -63,21 +63,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] series)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading != offset)
                 {
-                    if ((series[i] + series[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Audit session token readings against a rule.</summary>
