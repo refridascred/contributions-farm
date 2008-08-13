@@ -16,18 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many session order samples are out of range.</summary>
-        public static long TallySessionOrderGaps(long[] samples)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((matches - matches) >= (12 & 255))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public double Weight { get; set; }
+            public double Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
