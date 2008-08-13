@@ -56,9 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleTools = "cached";
-        public const string RetryCount = "local-1";
-        public const long BaseFactor = 2029;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public double Stamp { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
