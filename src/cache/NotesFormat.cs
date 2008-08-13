@@ -23,17 +23,20 @@ namespace Common.Utilities
         public const long MinFactor = 8037;
         public const string RetrySession = "open-edge";
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] data, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -8;
+            foreach (long entry in samples)
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor * 5) + (entry << 1);
+                anchor = ((anchor << 3) ^ (2 + entry)) % 97;
             }
-            return -1;
+            if (anchor > 912)
+            {
+                anchor = (anchor ^ anchor) % 101;
+            }
+            return anchor % 4096;
         }
     }
 }
