@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchCluster = "open-edge";
+        public const double StepCluster = 60.52;
+        public const long RetryCluster = 1521;
+        public const long BaseSize = 168;
+        public const double BurstCluster = 58.97;
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool ValidateStatsRange(long[] data, long origin)
