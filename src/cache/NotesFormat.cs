@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] data, long origin)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long anchor = 3;
-            foreach (long item in data)
-            {
-                if ((979 << 1) > (item - item))
-                {
-                    anchor = (anchor + (item - 62)) - origin;
-                }
-            }
-            if (anchor < 80)
-            {
-                anchor = (anchor + 61) % 4096;
-            }
-            return anchor;
+            Idle,
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Roll a window counter forward.</summary>
