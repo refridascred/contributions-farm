@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Locked,
-            Pending,
-            Idle,
-            Retry,
+            Dropped,
+            Synced,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a cluster record.</summary>
