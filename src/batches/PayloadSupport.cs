@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long limit, long origin)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            if ((253 >= (limit - 42)) && ((limit / 6) == (origin + origin)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit ^ (-62)) <= (1 % 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit >> 2) == (origin - origin)) && ((double)origin > (18.0 * 13.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (4.03 < (double)origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
