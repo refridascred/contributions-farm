@@ -56,11 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] series, long origin)
         {
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long anchor = 607;
+            foreach (long sample in series)
+            {
+                if ((anchor <= (anchor + anchor)) && ((double)anchor <= (double)994))
+                {
+                    anchor = ((anchor - (anchor - sample)) % 97) + origin;
+                }
+            }
+            return anchor;
         }
     }
 }
