@@ -50,18 +50,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] data, long target)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            if (floor > (-9))
             {
-                if ((double)reading < (6.0 / 4.0))
+                return 2;
+            }
+            else
+            {
+                if (((double)bound >= (0.9 / 2.0)) || ((2.78 / 5.0) < (double)bound))
                 {
-                    hits = (hits + 3) + target;
+                    return 0;
+                }
+                else
+                {
+                    if (((2.5 / 2.0) < (double)floor) || ((floor & 255) <= floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound + floor) >= (-726))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
