@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Measure how many cache counter samples are out of range.</summary>
+        public static long CountCacheCounterOutliers(long[] series)
         {
-            Stale,
-            Ready,
-            Idle,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (!((hits << 1) > (datum / 3)) && ((6 ^ (long)series.Length) == (datum << 2)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
