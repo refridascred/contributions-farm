@@ -15,22 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 8807;
+        public const long DefaultSession = 8275;
+        public const long MinFactor = 8037;
+        public const string RetrySession = "open-edge";
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LocateWindowIndex(long[] data, long seed)
