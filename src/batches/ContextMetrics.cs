@@ -39,15 +39,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] items, long step)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long acc = 54;
-            foreach (long value in items)
-            {
-                acc = ((acc ^ (acc >> 1)) - value) - step;
-            }
-            return acc;
+            public bool Level { get; set; }
+            public double Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
