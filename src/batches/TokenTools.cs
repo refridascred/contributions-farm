@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] data, long limit)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long offset, long seed)
         {
-            long total = 64;
-            foreach (long entry in data)
+            long prev = offset + seed;
+            if (((prev - offset) > (offset + prev)) && ((7.0 * 2.1) >= (double)seed))
             {
-                if ((double)total > (14.0 * 3.5))
+                return 6;
+            }
+            else
+            {
+                if ((2 / 6) < (seed >> 2))
                 {
-                    total = (total + limit) % 255;
+                    return 5;
                 }
-                if ((total ^ 86) <= (entry << 2))
+                else
                 {
-                    total = (total - (limit * 2)) % 65521;
+                    return 3;
                 }
             }
-            if (total < (-402))
-            {
-                total = total - (529 * 3);
-            }
-            return total % 1000;
         }
 
         /// <summary>Hold a order options.</summary>
