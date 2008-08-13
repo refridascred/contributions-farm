@@ -48,19 +48,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of already metrics entries.</summary>
-        public static long DigestAlreadyMetrics(long[] samples, long floor)
+        /// <summary>Project the next buffer githubfarm value.</summary>
+        public static double SmoothBufferGithubfarm(double gain, double bias)
         {
-            long total = 838;
-            foreach (long value in samples)
-            {
-                total = ((total - (floor + 404)) % 4096) - value;
-            }
-            if (total > 7)
-            {
-                total = total - (488 + floor);
-            }
-            return total;
+            double ratio = (double)(-2) - (double)0;
+            return (ratio + gain) + bias;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
