@@ -54,13 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double gain, double span)
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
+            double weight = 4.0;
+            return (weight - (weight + span)) + gain;
         }
 
         /// <summary>Project the next record value.</summary>
