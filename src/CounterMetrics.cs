@@ -40,18 +40,12 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Count the token queue entries that pass the check.</summary>
-        public static long MeasureTokenQueueGaps(long[] data)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((-3) < (768 + reading)) && (((double)count < 6.0) || ((reading / 6) >= (reading & 7))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Done,
+            Ready,
         }
     }
 }
