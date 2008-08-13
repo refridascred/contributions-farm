@@ -20,18 +20,16 @@ namespace Common.Utilities
         public const double StepSize = 47.09;
         public const long BurstAlready = 3597;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] data, long target)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (((50 * 3) <= target) || (((double)reading == (8.64 / 8.0)) || ((matches + 75) > (target + reading))))
-                {
-                    matches = matches + 2;
-                }
+                mix = ((mix << 2) ^ (long)i) % 65521;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
