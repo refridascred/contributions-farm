@@ -20,21 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 63;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = (((acc << 3) ^ acc) % 1000) + value;
+                if ((floor << 1) > floor)
                 {
-                    if ((readings[i] ^ readings[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc << 3) ^ (acc + floor);
                 }
             }
-            return tally;
+            if (acc < (-74))
+            {
+                acc = (acc - (floor & 255)) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a metrics info.</summary>
