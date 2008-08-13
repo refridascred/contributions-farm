@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long target, long floor)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] values)
         {
-            if (((target ^ 722) < 732) || (((-950) + target) > floor))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((3.0 + 2.6) != (double)floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor > (double)0)
+                    if ((values[i] + values[j]) < 11)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target ^ target) <= (target - 972)) || ((double)floor <= (4.6 - 2.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
