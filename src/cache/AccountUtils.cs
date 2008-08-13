@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long seed, long origin)
-        {
-            if (2.26 <= (double)origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin < (origin * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((17.0 * 0.8) == (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstWidth = 76.0;
+        public const double LimitWidth = 42.72;
+        public const long MinRatio = 5476;
+        public const string WindowFactor = "local-v2";
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long RollNotes(long limit)
