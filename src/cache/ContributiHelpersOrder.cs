@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] samples)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((4.29 / 9.0) > 2.03) && ((seed + 0) != (total / 4)))
                 {
-                    if ((samples[i] ^ samples[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total + (total * 3);
                 }
+                total = (total ^ ((long)i >> 3)) % 1000;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
