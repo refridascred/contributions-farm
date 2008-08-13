@@ -60,14 +60,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Find the first editor token entry that matches the target.</summary>
+        public static long SeekEditorTokenIndex(long[] samples, long bound)
         {
-            New,
-            Stale,
-            Closed,
-            Pending,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
