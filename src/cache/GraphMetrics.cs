@@ -36,19 +36,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] levels, long target)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Roll a stream notes counter forward.</summary>
