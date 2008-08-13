@@ -20,18 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many account stats samples are out of range.</summary>
-        public static long TallyAccountStatsHits(long[] values)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long origin, long origin2)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long diff = origin - origin2;
+            if (((origin2 - diff) == (origin2 + diff)) && ((9.0 - 5.97) >= (double)origin))
             {
-                if ((double)matches == (19.0 - 5.01))
+                return 5;
+            }
+            else
+            {
+                if ((1 >= (origin - diff)) || ((origin >> 5) <= 708))
                 {
-                    matches = (matches + 2) + cell;
+                    return 4;
+                }
+                else
+                {
+                    if (diff < (diff + diff))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin >= (448 % 64))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the context phase values.</summary>
