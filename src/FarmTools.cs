@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] samples, long seed)
         {
-            Idle,
-            Done,
-            Stale,
-            Closed,
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a editor options.</summary>
