@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = offset;
+            if (bias >= (double)659)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = (bias - offset) - weight;
             }
-            return hits;
+            return bias + (double)3;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
