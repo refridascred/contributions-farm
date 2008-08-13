@@ -16,19 +16,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] levels, long bound)
+        /// <summary>Blend two session queue measurements.</summary>
+        public static double SmoothSessionQueue(double gain, double span)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            double scale = gain - gain;
+            if (scale < 16.0)
             {
-                if (sample > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale + scale;
             }
-            return flag;
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (span * 1.0)) - (double)(long)i;
+            }
+            return scale + (4.7 - 15.0);
         }
 
         /// <summary>Audit format readings against a rule.</summary>
