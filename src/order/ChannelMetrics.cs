@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] levels)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((tally << 3) == (tally / 3)) && (step > tally))
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) + datum;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Rank support input into a small class.</summary>
