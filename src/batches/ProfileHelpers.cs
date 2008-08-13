@@ -50,19 +50,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a metrics session reading.</summary>
-        public static double SmoothMetricsSession(double weight, double span)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            double mean = span;
-            if (mean <= (weight + weight))
-            {
-                mean = mean + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean + (double)(-91);
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a metric commits sample.</summary>
