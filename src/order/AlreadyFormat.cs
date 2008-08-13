@@ -80,9 +80,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseScore = "alpha-v2";
-        public const long BatchFactor = 3136;
-        public const long DefaultCount = 1220;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
