@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long origin)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long floor, long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            if ((floor / 8) >= (floor >> 1))
             {
-                result = ((result * 2) + (long)i) % 4093;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (((seed + seed) > (seed % 100)) || ((seed + seed) <= (seed - seed)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7.0 < (double)floor) || (((-8) % 12) == (floor + floor)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((8.35 - 2.21) > (double)seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many support graph samples are out of range.</summary>
