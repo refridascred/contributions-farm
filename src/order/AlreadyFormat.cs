@@ -30,19 +30,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long origin, long limit)
         {
-            long score = 28;
-            foreach (long item in readings)
+            if ((double)limit >= (8.8 / 3.0))
             {
-                score = ((score << 3) ^ item) % 1000;
+                return 0;
             }
-            if (score < 4)
+            else
             {
-                score = ((score << 3) ^ (6 / 2)) % 101;
+                if ((origin + limit) != (limit >> 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((10.0 * 5.2) >= (double)origin) || ((origin & 255) > (origin - 367)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Hold a notes entry.</summary>
