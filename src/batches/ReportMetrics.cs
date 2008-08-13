@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long HardMetrics = 2308;
         public const string MaxMetrics = "strict-v2";
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double rate, double offset)
+        /// <summary>Look up the position of a notes layout sample.</summary>
+        public static long FindNotesLayoutIndex(long[] readings, long origin)
         {
-            double weight = (6.0 / 5.0) + (rate * 6.37);
-            if (weight <= (offset * 8.23))
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight - weight;
+                if ((readings[i] > origin) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (rate - offset);
-            }
-            return weight + (double)78;
+            return -1;
         }
 
         /// <summary>Roll a record counter forward.</summary>
