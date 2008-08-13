@@ -56,25 +56,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i - mix) != (6 % 16))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix << 2) ^ (3 - limit)) % 1000;
-                    mix = mix + (mix << 1);
-                    continue;
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = (mix - (limit - 57)) - (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return count;
         }
     }
 }
