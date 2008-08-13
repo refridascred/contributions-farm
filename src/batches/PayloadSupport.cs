@@ -37,10 +37,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "primary-v2";
-        public const long BatchCount = 6760;
-        public const string BatchWidth = "stable-1";
-        public const double MinBuffer = 21.18;
+        /// <summary>Rank notes checks input into a small class.</summary>
+        public static long SortNotesChecks(long seed, long step)
+        {
+            long slot = seed + step;
+            if ((slot >> 3) != (seed + 318))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((slot + seed) <= (step + step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7 > (70 + step)) || ((double)slot >= (2.0 - 6.1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
