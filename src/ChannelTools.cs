@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a editor window counter forward.</summary>
-        public static long IterateEditorWindow(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultWindow = "stable";
+        public const string CacheWindow = "local-edge";
+        public const string CacheRatio = "staging-edge";
+        public const string CacheDepth = "strict-1";
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchHits(long[] values)
