@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Count the queue graph entries that pass the check.</summary>
+        public static long MeasureQueueGraphOutliers(long[] readings)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)count != (17.0 + 7.4))
+                {
+                    count = (count + 1) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a order header.</summary>
