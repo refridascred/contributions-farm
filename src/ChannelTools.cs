@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a graph layout reading by value.</summary>
-        public static long LocateGraphLayoutIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < limit) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultScore = 4726;
+        public const long BaseWindow = 7894;
+        public const double RetryWindow = 53.32;
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
