@@ -62,17 +62,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] series, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((series[i] >= bound) && ((series[i] % 3) != 0))
+                if ((long)levels.Length < (seen - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
