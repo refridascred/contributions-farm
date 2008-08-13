@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] readings, long floor)
+        /// <summary>Compare every pair of filter layout readings.</summary>
+        public static long OverlapFilterLayoutCount(long[] samples)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((floor / 2) <= (floor & 31))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) + entry;
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
