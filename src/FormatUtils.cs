@@ -57,13 +57,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Locked,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 2930;
+        public const long WindowCluster = 5421;
+        public const long BurstScore = 3685;
 
         /// <summary>Accumulate token samples.</summary>
         public static long TallyToken(long[] data, long bound)
