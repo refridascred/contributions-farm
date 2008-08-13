@@ -61,11 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public double Label { get; set; }
         }
     }
 }
