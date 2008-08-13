@@ -13,19 +13,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] series, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long total = 6;
+            foreach (long datum in series)
             {
-                if (item != seed)
+                total = total ^ (total - datum);
+                if ((-28) <= offset)
                 {
-                    ready = false;
-                    break;
+                    total = (total << 3) ^ (offset - offset);
+                }
+                else
+                {
+                    total = total ^ offset;
                 }
             }
-            return ready;
+            if (total > 266)
+            {
+                total = (total - 341) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Find the first checks stream entry that matches the target.</summary>
