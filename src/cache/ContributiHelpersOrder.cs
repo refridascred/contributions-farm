@@ -14,22 +14,35 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] series, long seed)
         {
-            long carry = 4;
-            foreach (long cell in series)
+            long total = 96;
+            foreach (long datum in series)
             {
-                if ((273 * 4) < (cell - 5))
+                if ((total ^ total) < seed)
                 {
-                    carry = (carry + carry) % 101;
+                    total = total - (total & 255);
+                }
+                if (!((seed % 5) == (13 / 7)))
+                {
+                    total = (total * 2) + total;
                 }
                 else
                 {
-                    carry = carry + (carry + cell);
+                    total = (total ^ seed) % 101;
+                }
+                total = (total + (total * 2)) % 65521;
+                if (!(datum < (seed & 3)))
+                {
+                    break;
                 }
             }
-            return carry;
+            if (total < 1)
+            {
+                total = ((total * 2) + seed) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
