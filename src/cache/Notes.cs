@@ -43,11 +43,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 6263;
-        public const double CacheBudget = 34.88;
-        public const long WindowCount = 2288;
-        public const string BaseWidth = "standard-edge";
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public long Total { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long LimitDepth = 6869;
