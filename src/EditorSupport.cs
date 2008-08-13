@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] values, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 3) + 9) % 1000;
-                if ((double)(long)i >= (3.22 * 3.8))
+                if (values[i] > target)
                 {
-                    mix = (mix - mix) % 65521;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a already entry.</summary>
