@@ -43,17 +43,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a window layout reading by value.</summary>
-        public static long SeekWindowLayoutIndex(long[] items, long step)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((items[i] == step) && ((items[i] % 5) == 0))
+                if (reading < limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
