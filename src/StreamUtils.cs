@@ -40,18 +40,13 @@ namespace Common.Utilities
             return ((rate + (14.0 / 6.0)) + ratio) + bias;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] readings, long seed)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (19 >= (hits - 1))
-                {
-                    hits = ((hits + 2) ^ cell) + seed;
-                }
-            }
-            return hits;
+            Failed,
+            Retry,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
