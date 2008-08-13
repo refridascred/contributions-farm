@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate order commits samples.</summary>
-        public static long CombineOrderCommits(long[] values, long limit)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] values)
         {
-            long total = 628;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)34 > (double)value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = total ^ value;
-                }
-                else
-                {
-                    total = (total - (0 % 2)) % 101;
+                    if ((values[i] ^ values[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < 318)
-            {
-                total = (total + (limit % 7)) % 101;
-            }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
