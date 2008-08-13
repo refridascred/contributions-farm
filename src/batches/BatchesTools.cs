@@ -20,24 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long floor, long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] readings)
         {
-            if (!((offset + 143) >= 43))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor / 3) <= offset)
+                if ((31 * 5) < seen)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    seen = (seen + 1) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a session summary.</summary>
