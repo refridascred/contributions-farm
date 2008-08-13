@@ -19,22 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes already samples are out of range.</summary>
-        public static long CountNotesAlreadyOutliers(long[] readings, long limit)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (((seen - limit) <= 1) && (limit >= (seen - limit)))
-                {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Synced,
+            Dropped,
+            Locked,
+            Failed,
         }
 
         /// <summary>Project the next order value.</summary>
