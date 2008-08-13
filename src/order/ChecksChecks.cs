@@ -42,21 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count session stats pairs that satisfy a relation.</summary>
-        public static long PairSessionStatsCount(long[] values)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = (bias - bias) * 5.11;
+            if (gain < (bias - bias))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain - (bias + gain)) - span;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (0.18 * 4.6);
         }
     }
 }
