@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a context already counter forward.</summary>
-        public static long StepContextAlready(long offset)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = sum - (offset - (long)i);
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Label { get; set; }
+            public double Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Adjust a route reading.</summary>
