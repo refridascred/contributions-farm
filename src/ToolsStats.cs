@@ -19,18 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm cluster entries that pass the check.</summary>
-        public static long TallyGithubfarmClusterHits(long[] values, long origin)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long target, long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            if (target >= (seed * 2))
             {
-                if ((8 / 8) <= (sample + matches))
+                return 6;
+            }
+            else
+            {
+                if ((seed + seed) <= seed)
                 {
-                    matches = (matches + 2) - origin;
+                    return 3;
+                }
+                else
+                {
+                    if (seed > (583 * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (target <= seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the schema level values.</summary>
