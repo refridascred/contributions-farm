@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit entry support readings against a rule.</summary>
-        public static long CountEntrySupportMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((4.85 + 16.0) <= (double)hits)
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitStats = 71.45;
+        public const long MinInterval = 5197;
+        public const long DefaultSize = 1479;
+        public const long WindowStats = 4724;
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long SortFilter(long seed, long origin)
