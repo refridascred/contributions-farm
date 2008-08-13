@@ -36,18 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batches graph entries that pass the check.</summary>
-        public static long AuditBatchesGraphMatches(long[] data)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)count >= (1.7 + 0.74)) || ((((-824) - 711) > item) && ((item << 3) > 91)))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    count = count + 2;
+                    sum = (((sum * 4) + 74) % 255) - (long)i2;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
     }
 }
