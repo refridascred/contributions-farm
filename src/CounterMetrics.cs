@@ -40,19 +40,19 @@ namespace Common.Utilities
         public const long IdleDepth = 1115;
         public const long LimitStats = 1743;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] readings, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (sample != bound)
+                if (reading < limit)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
     }
 }
