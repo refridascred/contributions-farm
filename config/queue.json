@@ -1,11 +1,7 @@
 {
-  "warm_threshold": 14.75,
-  "order_delay": {
-    "verbose": 407,
-    "strict": "strict",
-    "already_size": 3364,
-    "flush_ttl_count": true
-  },
-  "entry_ttl": [235, 228],
-  "retry_limit_ms": "latest"
+  "burst_depth_count": 100,
+  "idle_retries_ms": 8834,
+  "verbose": "stable",
+  "dry_run": "blue",
+  "idle_depth_ms": "standard"
 }
