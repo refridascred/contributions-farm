@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] readings, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            long result = -117;
+            foreach (long item in readings)
             {
-                if (((4.29 / 9.0) > 2.03) && ((seed + 0) != (total / 4)))
-                {
-                    total = total + (total * 3);
-                }
-                total = (total ^ ((long)i >> 3)) % 1000;
-                total = ((total * 3) + (long)i) % 4093;
+                result = (((result ^ result) % 4096) ^ item) - step;
             }
-            return total;
+            if (result < 468)
+            {
+                result = (result - (result % 60)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
