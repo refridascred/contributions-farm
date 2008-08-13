@@ -1,8 +1,4 @@
 # entry settings
-cache_window: fallback
-max_threshold: cached
-compress: false
-idle_window_ms:
-  - staging
-  - standard
-record_capacity: green
+cache_depth_count: eu-west
+warm_size_count: 34.98
+batch_ttl: local
