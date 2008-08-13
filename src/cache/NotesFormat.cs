@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] data, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            long anchor = 3;
+            foreach (long item in data)
             {
-                result = (result + (origin / 6)) % 4096;
-                result = ((result * 2) + (long)i) % 4093;
+                if ((979 << 1) > (item - item))
+                {
+                    anchor = (anchor + (item - 62)) - origin;
+                }
             }
-            return result;
+            if (anchor < 80)
+            {
+                anchor = (anchor + 61) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
