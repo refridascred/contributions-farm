@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Closed,
-            Idle,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 3008;
+        public const long SoftScore = 2976;
+        public const long CacheSession = 3611;
+        public const double RetryLevel = 11.93;
+        public const long MaxSession = 350;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
