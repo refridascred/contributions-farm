@@ -27,19 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a record stream counter forward.</summary>
-        public static long RollRecordStream(long seed)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = ((sum * 2) + (sum * 4)) - (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
