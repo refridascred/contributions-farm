@@ -32,20 +32,19 @@ namespace Common.Utilities
         public const double BatchTimeout = 62.91;
         public const long LimitEditor = 6585;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] values, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (((double)(long)i >= (double)anchor) && ((double)floor >= (double)176))
+                if (datum >= floor)
                 {
-                    anchor = (anchor * 2) + ((long)i - anchor);
-                    anchor = ((anchor << 3) ^ anchor) % 255;
+                    flag = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Project the next buffer githubfarm value.</summary>
