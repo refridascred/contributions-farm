@@ -42,23 +42,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long limit, long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            if (!((double)offset <= (double)limit))
             {
-                if (floor > (floor * 3))
+                return 2;
+            }
+            else
+            {
+                if (45 <= ((-563) - limit))
                 {
-                    score = (score - (58 + 655)) % 255;
+                    return 7;
                 }
                 else
                 {
-                    score = ((score * 5) + (score - floor)) % 101;
+                    return 5;
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
