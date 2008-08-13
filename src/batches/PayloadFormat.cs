@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const double RetryLevel = 11.93;
         public const long MaxSession = 350;
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
+            Active,
+            Failed,
+            Ready,
         }
 
         /// <summary>Describe the farm kind values.</summary>
