@@ -13,17 +13,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] values, long offset)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double bias, double bias2)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = bias;
+            if (ratio >= ratio)
             {
-                if ((values[i] == offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (6.2 / 8.0)) - bias2;
             }
-            return -1;
+            return ratio - (double)69;
         }
 
         /// <summary>Describe the token level values.</summary>
