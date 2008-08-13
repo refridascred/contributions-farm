@@ -44,18 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] data, long floor)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (!(((hits + hits) < floor) || ((sample % 24) > (floor & 1))))
+                if (sample != offset)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
