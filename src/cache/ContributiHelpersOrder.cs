@@ -28,18 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] samples)
+        /// <summary>Count the schema graph entries that pass the check.</summary>
+        public static long AuditSchemaGraphGaps(long[] levels, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!!(((long)levels.Length + 818) != (6 / 7)))
                 {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 2) - item) - floor;
                 }
             }
             return hits;
