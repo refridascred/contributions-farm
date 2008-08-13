@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double weight, double span)
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
+            double scale = span + (weight * 4.51);
+            if (scale <= scale)
+            {
+                scale = scale - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (span * 9.0)) + (double)(long)i;
+            }
+            return scale + (span / 8.0);
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
