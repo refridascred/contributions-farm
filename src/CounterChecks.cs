@@ -20,13 +20,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long offset)
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((offset & 7) > (offset + offset)))
+                {
+                    mix = (mix * 5) + mix;
+                }
+                if (!!((offset + offset) > (mix % 64)))
+                {
+                    mix = (mix << 2) ^ (offset + mix);
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the stats phase values.</summary>
