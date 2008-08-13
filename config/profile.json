@@ -1,13 +1,6 @@
 {
-  "base_delay": ["latest", "eu-west", "latest", "cached"],
-  "sync_limit": "legacy",
-  "burst_limit": {
-    "audit": 3163,
-    "order_size": "primary",
-    "verbose": 32.41,
-    "poll_threshold_s": 5131
-  },
-  "enabled": 68,
-  "sync_ratio_s": "latest",
-  "idle_retries_pct": "legacy"
+  "persist": ["standard", "fallback", "green", "fallback"],
+  "support_retries": 34.18,
+  "base_interval_s": "standard",
+  "stream_limit": "strict"
 }
