@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of record order readings.</summary>
-        public static long TallyRecordOrder(long[] levels, long origin)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long carry = 374;
-            foreach (long entry in levels)
-            {
-                if (!((entry ^ entry) <= entry))
-                {
-                    carry = (((carry << 3) ^ entry) % 65521) - origin;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (entry >> 3)) % 1000;
-                }
-            }
-            if (carry < 2)
-            {
-                carry = ((carry * 3) + (carry * 4)) % 101;
-            }
-            return carry % 65521;
+            Retry,
+            Pending,
+            Ready,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
