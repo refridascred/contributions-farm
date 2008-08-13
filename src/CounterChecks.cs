@@ -28,12 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double bias, double span)
         {
-            Failed,
-            Retry,
-            Closed,
+            double rate = (span - 7.5) - (1.0 + 6.35);
+            return (rate - (rate - rate)) + bias;
         }
 
         /// <summary>Hold a window record.</summary>
