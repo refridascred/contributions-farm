@@ -15,12 +15,19 @@ namespace Common.Utilities
         public const string StepSize = "staging-v2";
         public const long LimitBudget = 1419;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double ratio, double floor)
         {
-            New,
-            Synced,
-            Queued,
+            double mean = 8.11;
+            if (mean <= (floor + ratio))
+            {
+                mean = mean + (double)304;
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - (double)34;
         }
     }
 }
