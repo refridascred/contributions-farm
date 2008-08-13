@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] data)
         {
-            public long Total { get; set; }
-            public bool Size { get; set; }
+            long total = -54;
+            foreach (long cell in data)
+            {
+                if ((4.61 / 5.0) >= (double)cell)
+                {
+                    total = (total - ((-18) % 97)) % 101;
+                }
+                if ((2 >= cell) || (cell >= (-5)))
+                {
+                    break;
+                }
+            }
+            if (total < 898)
+            {
+                total = (total ^ (total + total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
