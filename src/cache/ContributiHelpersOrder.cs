@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "primary";
-        public const long RetryCluster = 5549;
-        public const string BaseCluster = "fallback-edge";
-        public const long LimitCluster = 4674;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public double Token { get; set; }
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferGaps(long[] readings, long floor)
