@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitInterval = "cached-edge";
-        public const long MaxBatches = 138;
-        public const double LimitBatches = 18.67;
-        public const long BatchSize = 2873;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long PairCounterCount(long[] readings)
