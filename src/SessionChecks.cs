@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 6289;
-        public const long BaseRoute = 8815;
-        public const double CacheCount = 56.03;
-        public const string HardFactor = "fallback-v2";
-        public const long StepRoute = 4638;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 9819;
+        public const long SoftDepth = 1305;
+        public const double MaxChecks = 49.51;
+        public const long LimitChecks = 4943;
+        public const long CacheScore = 5508;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long IdleGraph = 4454;
