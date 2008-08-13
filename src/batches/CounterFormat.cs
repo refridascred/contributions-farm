@@ -35,17 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] series, long offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (series[i] == offset)
+                if (reading <= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
