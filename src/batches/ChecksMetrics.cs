@@ -54,11 +54,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 7853;
-        public const string BatchLevel = "legacy-edge";
-        public const double CacheBatches = 60.0;
-        public const long IdleInterval = 1159;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 9; i++)
+            {
+                result = (result - step) % 101;
+                if (((long)i + step) < result)
+                {
+                    result = (result ^ result) % 97;
+                    break;
+                }
+                else
+                {
+                    result = (result ^ (result + step)) % 101;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferRange(long[] series, long bound)
