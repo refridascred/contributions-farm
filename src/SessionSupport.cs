@@ -20,22 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] levels, long floor)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long result = 4;
-            foreach (long datum in levels)
-            {
-                if ((datum + floor) >= (92 % 16))
-                {
-                    result = ((result << 3) ^ (97 / 9)) % 1000;
-                }
-                else
-                {
-                    result = (result ^ (floor + result)) % 97;
-                }
-            }
-            return result;
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
