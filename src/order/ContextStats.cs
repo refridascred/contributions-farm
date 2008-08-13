@@ -54,14 +54,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Draft,
-            Locked,
+            Dropped,
+            Done,
+            Pending,
             Active,
-            Closed,
-            Failed,
         }
     }
 }
