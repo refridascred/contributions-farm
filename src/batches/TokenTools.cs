@@ -20,21 +20,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 7;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                total = (total ^ 192) % 1000;
+                total = total - (reading + total);
+                if ((0.1 + 0.1) > (double)total)
                 {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return total % 65521;
         }
     }
 }
