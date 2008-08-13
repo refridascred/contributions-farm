@@ -56,18 +56,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((1.0 + 1.0) != (double)reading)
-                {
-                    seen = (seen + 3) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 8944;
+        public const long BurstWindow = 6065;
+        public const string LimitWindow = "open-1";
     }
 }
