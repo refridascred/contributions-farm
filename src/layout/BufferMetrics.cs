@@ -35,12 +35,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowRoute = 32.95;
-        public const double BurstRoute = 89.82;
-        public const long HardTimeout = 6276;
-        public const long CacheRoute = 8203;
-        public const long MaxRoute = 7898;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            Retry,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] samples)
