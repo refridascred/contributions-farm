@@ -62,11 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer githubfarm value.</summary>
-        public static double SmoothBufferGithubfarm(double gain, double bias)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            double ratio = (double)(-2) - (double)0;
-            return (ratio + gain) + bias;
+            public bool Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a route stats.</summary>
