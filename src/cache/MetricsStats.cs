@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Ready,
-            Dropped,
-            Done,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 4628;
+        public const long SoftCommand = 7839;
+        public const double MinCommand = 54.87;
+        public const string DefaultRatio = "local-v2";
+        public const long BatchScore = 4780;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LocateNotesIndex(long[] series, long floor)
