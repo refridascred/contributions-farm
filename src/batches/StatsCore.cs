@@ -82,17 +82,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a order metric reading by value.</summary>
-        public static long SeekOrderMetricIndex(long[] readings, long floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
+                if (!((1.0 * 10.0) == (double)matches))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
