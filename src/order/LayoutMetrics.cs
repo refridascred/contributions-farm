@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] series, long limit)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < limit) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Closed,
+            New,
+            Pending,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
