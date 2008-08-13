@@ -21,19 +21,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] samples, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((48 ^ seed) > (long)i)
+                if (samples[i] == limit)
                 {
-                    mark = ((mark * 3) + ((long)i >> 1)) % 65521;
+                    return (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
     }
 }
