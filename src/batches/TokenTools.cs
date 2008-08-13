@@ -19,22 +19,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftDepth = 5880;
+        public const string MinSpan = "stable-edge";
+        public const long WindowGraph = 4670;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long RollCommand(long origin)
