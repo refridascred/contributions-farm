@@ -1,5 +1,6 @@
 {
-  "min_retries_ms": 20.29,
-  "account_window": false,
-  "idle_limit_s": 50.45
+  "min_timeout_s": 500,
+  "warm_size_pct": "standard",
+  "profile_interval": 61,
+  "strict": "eu-west"
 }
