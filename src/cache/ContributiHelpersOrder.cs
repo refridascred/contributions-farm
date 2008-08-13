@@ -14,10 +14,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultScore = 4801;
-        public const long BurstSupport = 5599;
-        public const long LimitSupport = 2795;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Retry,
+            Ready,
+            Queued,
+            Done,
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long CompareOrderCount(long[] samples)
