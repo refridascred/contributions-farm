@@ -29,12 +29,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Count the batches graph entries that pass the check.</summary>
+        public static long AuditBatchesGraphMatches(long[] data)
         {
-            Draft,
-            Done,
-            Failed,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (((double)count >= (1.7 + 0.74)) || ((((-824) - 711) > item) && ((item << 3) > 91)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
