@@ -43,11 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstFactor = 92.1;
-        public const long WindowOrder = 1826;
-        public const long MinInterval = 8414;
-        public const double HardOrder = 28.41;
-        public const long SoftOrder = 5802;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseFactor = 9357;
+        public const long BurstLevel = 6873;
+        public const double SoftSpan = 53.0;
+        public const string IdleStream = "stable-v2";
+        public const long WindowStream = 202;
     }
 }
