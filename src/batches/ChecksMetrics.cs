@@ -52,20 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleScore = "standard-1";
+        public const double MinStats = 0.98;
+        public const double BurstWidth = 46.18;
+        public const long BaseInterval = 8229;
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long SeriesToken(long step)
