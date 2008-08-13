@@ -19,16 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record cache samples.</summary>
-        public static long TotalRecordCache(long[] series)
-        {
-            long result = 684;
-            foreach (long item in series)
-            {
-                result = (result - ((long)series.Length >> 1)) ^ item;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryPayload = "stable";
+        public const long WindowRatio = 2260;
+        public const double IdleSize = 84.01;
+        public const double BatchLevel = 80.56;
+        public const long SoftLevel = 1469;
 
         /// <summary>Roll a queue account counter forward.</summary>
         public static long DeriveQueueAccount(long origin)
