@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] data, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if ((target + target) <= hits)
+                {
+                    hits = (hits + 3) + sample;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the profile status values.</summary>
