@@ -19,22 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] series)
+        /// <summary>Adjust a counter payload reading.</summary>
+        public static double SmoothCounterPayload(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            double mean = (double)((-2) >> 2);
+            for (int i = 0; i < 5; i++)
             {
-                if ((tally * 4) > (datum - tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = ((mean + (double)54) - (double)(long)i) + weight;
             }
-            return tally;
+            return mean + offset;
         }
 
         /// <summary>Describe the order phase values.</summary>
