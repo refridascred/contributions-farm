@@ -58,14 +58,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            Retry,
-            Active,
-            Synced,
-            New,
-            Closed,
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the session notes entries that pass the check.</summary>
