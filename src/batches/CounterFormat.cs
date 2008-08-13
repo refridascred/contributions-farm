@@ -40,19 +40,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every checks schema entry stays within the limit.</summary>
-        public static bool GuardChecksSchemaRange(long[] values, long bound)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
