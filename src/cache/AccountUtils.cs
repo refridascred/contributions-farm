@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Measure how many notes queue samples are out of range.</summary>
+        public static long CountNotesQueueMatches(long[] data)
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (((reading + reading) <= 29) || ((matches + reading) > (matches * 4)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the profile status values.</summary>
