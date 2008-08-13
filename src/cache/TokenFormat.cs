@@ -22,19 +22,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a graph batch reading.</summary>
-        public static double BlendGraphBatch(double scale, double span)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double mean = (double)491 - scale;
-            if (mean <= span)
-            {
-                mean = mean - span;
-            }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean - (double)39;
+            Queued,
+            Ready,
+            Dropped,
+            Closed,
+            Stale,
         }
     }
 }
