@@ -34,19 +34,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] series, long target)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < target)
+                if (samples[i] == floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
