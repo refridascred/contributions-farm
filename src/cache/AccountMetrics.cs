@@ -61,11 +61,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] levels)
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
+            long acc = 97;
+            foreach (long value in levels)
+            {
+                if ((7.11 / 4.0) != (double)acc)
+                {
+                    acc = (acc << 3) ^ (value / 2);
+                }
+                else
+                {
+                    acc = (acc ^ (value - value)) % 1000;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = ((acc * 5) + acc) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the session notes entries that pass the check.</summary>
