@@ -36,19 +36,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] levels, long offset)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > offset)
+                if (readings[i] >= target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
