@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] series)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long carry = 37;
-            foreach (long sample in series)
-            {
-                carry = carry - (sample >> 1);
-            }
-            if (carry < 5)
-            {
-                carry = (carry * 4) + (carry << 2);
-            }
-            return carry;
+            Paused,
+            Locked,
+            Synced,
+            Active,
         }
 
         /// <summary>Accumulate checks tools samples.</summary>
