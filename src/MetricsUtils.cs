@@ -27,39 +27,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long target, long seed)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            long next = target ^ seed;
-            if ((seed / 2) != (5 + 3))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((next ^ next) >= (4 - (-5))) || ((9.1 - 9.0) <= (double)seed))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (next <= seed)
+                    if ((readings[i] - readings[j]) == 3)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4.72 - 0.83) >= (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a batches record.</summary>
