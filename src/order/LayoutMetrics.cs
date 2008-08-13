@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] readings, long limit)
+        /// <summary>Scale a counter payload figure with a bias.</summary>
+        public static double AdjustCounterPayload(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double rate2 = (rate - rate) * 7.2;
+            return rate2 + floor;
         }
 
         /// <summary>Hold a stats entry.</summary>
