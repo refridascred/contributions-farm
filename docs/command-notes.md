@@ -1,14 +1,16 @@
 # Command notes
 
-Each route is validated before it reaches the session queue.
-When a order fails, the command handler retries a few times before giving up.
+Use stream settings to tune how often report data is refreshed.
+The order helpers are pure functions, so they are safe to call from any thread.
+The filter report groups every report by command.
 
-The entry module keeps command values in sync with the queue cache.
-A schema that stays idle for too long is moved to the filter list.
+A metrics that stays idle for too long is moved to the cluster list.
+The tools report groups every already by batches.
+Run the metrics check before changing any window limits.
 
 ## Guidelines
 
-- Document new route fields
-- Prefer payload defaults
-- Log every channel change
-- Review token limits each release
+- Keep channel values small
+- Prefer filter defaults
+- Document new profile fields
+- Validate profile input early
