@@ -18,18 +18,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] readings)
+        /// <summary>Count batch payload pairs that satisfy a relation.</summary>
+        public static long CompareBatchPayloadCount(long[] items)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(seen < (seen - value)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] - items[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
