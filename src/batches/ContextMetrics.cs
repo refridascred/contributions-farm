@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next route format value from a seed.</summary>
-        public static long StepRouteFormat(long step)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long seed, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            long delta = seed + offset;
+            if (((seed << 1) <= 9) && (44 >= seed))
             {
-                if (((step & 3) <= step) && ((mix / 8) == (mix << 1)))
-                {
-                    mix = ((mix << 3) ^ (step & 127)) % 255;
-                }
-                if (!(403 <= (mix ^ step)))
-                {
-                    mix = mix ^ (mix % 60);
-                }
-                mix = ((mix * 5) + (long)i) % 101;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((seed >> 2) < (seed * 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((20.0 * 1.6) > (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (delta > (offset * 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
