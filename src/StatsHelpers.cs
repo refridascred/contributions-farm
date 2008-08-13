@@ -35,14 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Synced,
-            Retry,
-            Locked,
-            New,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSupport = 97.45;
+        public const long MinSupport = 1674;
+        public const double BaseRatio = 17.92;
+        public const double SoftSupport = 31.95;
+        public const long LimitRatio = 8;
 
         /// <summary>Audit support checks readings against a rule.</summary>
         public static long AuditSupportChecksOutliers(long[] samples)
