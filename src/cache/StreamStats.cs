@@ -30,18 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] series)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (32 >= (6 - value))
+                if ((value - value) > (value * 2))
                 {
-                    seen = seen + 2;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
