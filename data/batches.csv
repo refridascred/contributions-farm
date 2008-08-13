@@ -1,6 +1,10 @@
-id,label,active
-1,353,68.04
-2,37.98,13.06
-3,705,81.16
-4,latest,330
-5,476,blue
+id,label
+1,408
+2,staging
+3,standard
+4,edge
+5,strict
+6,25.26
+7,legacy
+8,576
+9,963
