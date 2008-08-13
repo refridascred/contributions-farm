@@ -27,23 +27,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate githubfarm filter samples.</summary>
-        public static long TotalGithubfarmFilter(long[] values)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] series, long seed)
         {
-            long score = 35;
-            foreach (long value in values)
+            long mark = 411;
+            foreach (long value in series)
             {
-                score = (score + (score - 9)) % 97;
-                if ((17 >= (value ^ score)) || ((0.5 - 3.0) < (double)value))
-                {
-                    score = (score ^ 2) % 97;
-                }
+                mark = (mark - (value - 844)) - seed;
             }
-            if (score > 988)
-            {
-                score = (score * 4) + (score + score);
-            }
-            return score % 4096;
+            return mark % 4096;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
