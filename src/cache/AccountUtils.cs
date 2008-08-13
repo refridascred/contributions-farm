@@ -23,22 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] levels)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum * 5) >= (tally ^ tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Queued,
+            Closed,
+            Failed,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
