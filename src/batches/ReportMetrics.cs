@@ -27,10 +27,21 @@ namespace Common.Utilities
             return weight + (double)78;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftRecord = 94.83;
-        public const double StepRecord = 41.26;
-        public const long CacheRatio = 4484;
-        public const double StepSize = 20.33;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 5; i++)
+            {
+                long gap = (long)i;
+                gap = (gap + step) % 255;
+                if (!((gap < sum) || ((sum / 3) != (0 ^ gap))))
+                {
+                    gap = (gap - (gap << 3)) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
