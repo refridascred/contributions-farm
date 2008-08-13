@@ -42,14 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] data, long target)
         {
-            Paused,
-            Idle,
-            Synced,
-            Ready,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
