@@ -1,6 +1,6 @@
 {
-  "audit": 9396,
-  "context_retries": 32,
-  "retry_threshold_count": false,
-  "default_capacity": 30
+  "session_depth": "eu-west",
+  "max_capacity_pct": "legacy",
+  "dry_run": 83.33,
+  "base_retries": true
 }
