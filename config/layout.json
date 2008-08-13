@@ -1,7 +1,5 @@
 {
-  "idle_size_s": true,
-  "support_delay": false,
-  "cache_size": 8451,
-  "cluster_interval": 60,
-  "dry_run": "cached"
+  "soft_retries_s": 51.36,
+  "persist": "standard",
+  "soft_window": "latest"
 }
