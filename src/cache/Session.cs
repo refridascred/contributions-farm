@@ -60,25 +60,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a layout command pair into a bucket.</summary>
-        public static long ClassifyLayoutCommand(long seed, long seed2)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long bound)
         {
-            long step = seed ^ seed2;
-            if (((seed2 / 6) != (seed2 + seed2)) || ((step - seed2) == (seed & 63)))
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (!(step <= (154 - seed)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return anchor;
         }
     }
 }
