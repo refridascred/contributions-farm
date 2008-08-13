@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] readings)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long mark = 864;
-            foreach (long value in readings)
-            {
-                mark = mark ^ (value << 1);
-            }
-            return mark;
+            Synced,
+            New,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a tools options.</summary>
