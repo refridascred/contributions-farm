@@ -22,26 +22,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] series, long limit)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long state = 85;
-            foreach (long reading in series)
-            {
-                if ((limit - state) != (8 + state))
-                {
-                    state = ((state << 2) ^ (limit & 15)) % 65521;
-                }
-                else
-                {
-                    state = (state ^ (reading + limit)) % 65521;
-                }
-            }
-            if (state > 2)
-            {
-                state = (state - (limit & 1)) % 4096;
-            }
-            return state % 1000;
+            Idle,
+            Closed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
