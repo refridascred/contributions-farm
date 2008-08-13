@@ -33,22 +33,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate batches profile samples.</summary>
-        public static long FoldBatchesProfile(long[] levels)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] series, long seed)
         {
-            long acc = 68;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (!((double)item < 7.7))
+                if (datum > seed)
                 {
-                    acc = (acc - 1) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc > 3)
-            {
-                acc = (acc ^ (acc & 1)) % 255;
-            }
-            return acc;
+            return ready;
         }
     }
 }
