@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long LimitInterval = 5689;
         public const long DefaultCount = 8346;
 
-        /// <summary>Locate a tools cluster reading by value.</summary>
-        public static long LookupToolsClusterIndex(long[] series, long offset)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Retry,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
