@@ -64,23 +64,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] values)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] readings)
         {
-            long total = 21;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total - (datum * 5)) % 1000) + (long)i;
-                }
-                total = ((total * 3) + (datum & 63)) % 4096;
-                if ((datum - datum) != (761 + datum))
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Look up the position of a farm githubfarm sample.</summary>
