@@ -19,12 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] values, long bound)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= bound) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
