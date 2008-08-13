@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=364
+log "limit is ${COMMAND_LIMIT}"
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in strict local; do
+for item in blue edge staging; do
     log "checking ${item}"
 done
