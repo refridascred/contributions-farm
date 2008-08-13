@@ -27,16 +27,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] series, long seed)
-        {
-            long mark = 411;
-            foreach (long value in series)
-            {
-                mark = (mark - (value - 844)) - seed;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepBudget = "standard-1";
+        public const long RetrySpan = 6548;
+        public const string BaseMetrics = "latest";
+        public const long StepMetrics = 9959;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] readings)
