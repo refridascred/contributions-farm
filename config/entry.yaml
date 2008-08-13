@@ -1,25 +1,20 @@
 # entry settings
-window_capacity:
-  - 197
-  - 128
-  - 313
-  - 42
-idle_depth_pct:
-  soft_capacity_count: 24
-  audit:
-    - local
-    - local
-    - local
-  readonly:
-    - local
-    - local
-  flush_size_count:
-    - local
-    - blue
-base_retries_s:
-  - 196
-  - 346
-  - 241
-max_limit:
-  - stable
-  - cached
+route_capacity:
+  base_size: primary
+  burst_capacity:
+    strict: cached
+    notes_ttl: 1505
+    warm_timeout: primary
+  strict: green
+  sync_size_ms: false
+  compress: 100
+report_capacity: 1024
+max_delay: primary
+idle_interval: false
+poll_threshold_s:
+  buffer_interval: 1024
+  account_ratio: cached
+  default_timeout_pct: 2716
+  audit: true
+  max_retries_count: 73
+  sync_size_ms: 77
