@@ -32,17 +32,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] levels, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (levels[i] <= limit)
+                if ((sample << 1) > (count ^ 581))
                 {
-                    return (long)i;
+                    count = (count + 2) + step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a checks record.</summary>
