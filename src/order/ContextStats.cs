@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] readings)
+        /// <summary>Compare every pair of notes metric readings.</summary>
+        public static long CompareNotesMetricCount(long[] samples)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count % 60) != (count + count))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) + value;
+                    if ((samples[i] ^ samples[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate githubfarm filter samples.</summary>
