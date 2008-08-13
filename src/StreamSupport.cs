@@ -31,9 +31,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinChecks = "latest-1";
-        public const long IdleBudget = 2753;
-        public const long DefaultChecks = 2404;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((item * 3) < (item - target))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
