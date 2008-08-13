@@ -31,38 +31,26 @@ namespace Common.Utilities
         public const double RetryReport = 15.24;
         public const double SoftTimeout = 66.72;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long floor, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] readings, long floor)
         {
-            if ((seed >> 4) != (seed + floor))
+            long mix = 8;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor + floor) > (6 / 9))
+                if (!((double)entry == (double)5))
                 {
-                    return 8;
+                    mix = (mix + (575 + entry)) - floor;
                 }
                 else
                 {
-                    if ((seed + floor) > (floor + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor * 3) > (floor * 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mix = (mix - mix) % 65521;
                 }
             }
+            if (mix < (-5))
+            {
+                mix = mix - (mix % 7);
+            }
+            return mix;
         }
     }
 }
