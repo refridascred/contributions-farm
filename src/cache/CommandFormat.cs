@@ -34,13 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Derive the next session format value from a seed.</summary>
+        public static long DeriveSessionFormat(long offset)
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 2) + offset) % 4096;
+                sum = (sum * 3) + (sum & 31);
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
