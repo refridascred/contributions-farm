@@ -12,15 +12,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of support cluster readings.</summary>
-        public static long DigestSupportCluster(long[] values, long seed)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] readings, long limit)
         {
-            long state = 2;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                state = ((state << 2) ^ (seed % 2)) + value;
+                if (cell < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state % 1000;
+            return valid;
         }
 
         /// <summary>Hold a token entry.</summary>
