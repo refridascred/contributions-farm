@@ -33,11 +33,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitRatio = 823;
-        public const double WindowCache = 63.95;
-        public const string HardCache = "primary";
-        public const string WindowSize = "alpha-v2";
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Active,
+            Locked,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchLimits(long[] items, long limit)
