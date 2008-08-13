@@ -32,13 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] data, long target)
         {
-            public double Label { get; set; }
-            public double Token { get; set; }
-            public bool Level { get; set; }
-            public double Count { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
