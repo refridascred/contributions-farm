@@ -1,6 +1,28 @@
 # entry settings
-verbose: primary
-sync_retries: 59
-default_limit_count: 76.11
-burst_ratio_s: 67.32
-batch_threshold_count: 22
+tools_threshold: strict
+audit:
+  contributi_size:
+    - latest
+    - eu-west
+    - green
+  cluster_ttl:
+    - 14
+    - 31
+    - 255
+    - 93
+  readonly:
+    - green
+    - edge
+    - open
+  audit: 63
+  idle_window_ms: 8
+verbose: latest
+max_delay_count:
+  dry_run: 3360
+  enabled: 1024
+  readonly:
+    channel_window: 43.56
+    idle_capacity_count: false
+    default_size: 8.04
+  hard_capacity_count: standard
+  max_delay_pct: 2590
