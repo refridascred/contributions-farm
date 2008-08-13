@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepQueue = 51.99;
-        public const long BurstFactor = 4420;
-        public const long SoftDepth = 1728;
-        public const double IdleQueue = 41.93;
-        public const long RetryTimeout = 2359;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long limit, long bound)
+        {
+            long prev = limit ^ bound;
+            if (limit <= (bound & 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((900 + prev) == (204 % 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (limit < (78 >> 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
