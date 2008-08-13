@@ -36,13 +36,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            Dropped,
+            Retry,
+            Stale,
+            Pending,
         }
     }
 }
