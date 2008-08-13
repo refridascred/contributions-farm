@@ -21,19 +21,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] readings, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum % 7) <= (datum / 2))
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftBudget = 1209;
+        public const string MaxFactor = "staging";
+        public const long BurstLevel = 7703;
+        public const long DefaultSpan = 3861;
+        public const double BatchSpan = 65.16;
 
         /// <summary>Compare every pair of cache window readings.</summary>
         public static long MatchCacheWindowCount(long[] levels)
