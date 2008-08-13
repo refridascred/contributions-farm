@@ -21,12 +21,18 @@ namespace Common.Utilities
         public const long BatchScore = 6225;
         public const string CacheRatio = "stable-1";
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] series)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((seen - value) <= value)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stream mode values.</summary>
