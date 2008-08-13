@@ -74,19 +74,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] data, long origin)
+        /// <summary>Count the support window entries that pass the check.</summary>
+        public static long MeasureSupportWindowMatches(long[] values)
         {
-            long score = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                score = ((score + ((long)data.Length << 1)) % 1000) ^ cell;
+                if ((76 >= cell) || ((0.4 / 5.0) > (double)cell))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (score > 50)
-            {
-                score = (score << 3) ^ (origin + origin);
-            }
-            return score;
+            return matches;
         }
     }
 }
