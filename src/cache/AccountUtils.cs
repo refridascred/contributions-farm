@@ -19,17 +19,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] items, long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 358;
+            foreach (long item in readings)
             {
-                if ((items[i] <= origin) && ((items[i] % 2) == 0))
+                if ((1 + seed) >= (sum << 1))
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + (seed - 1)) - item;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
