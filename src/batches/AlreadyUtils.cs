@@ -27,19 +27,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] data, long target)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Paused,
+            Ready,
+            Stale,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
