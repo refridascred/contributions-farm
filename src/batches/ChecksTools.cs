@@ -23,17 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] items, long step)
+        /// <summary>Count the command layout entries that pass the check.</summary>
+        public static long AuditCommandLayoutGaps(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((items[i] < step) && ((items[i] % 5) != 0))
+                if ((0.1 / 7.0) >= (double)count)
                 {
-                    return (long)i;
+                    count = ((count + 1) - sample) + seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
