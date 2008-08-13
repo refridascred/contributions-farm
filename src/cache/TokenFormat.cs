@@ -13,39 +13,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long origin, long origin2)
+        /// <summary>Validate report contributi readings against a bound.</summary>
+        public static bool GuardReportContributiBounds(long[] series, long target)
         {
-            long diff = origin - origin2;
-            if (((origin2 - diff) == (origin2 + diff)) && ((9.0 - 5.97) >= (double)origin))
+            bool ok = true;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1 >= (origin - diff)) || ((origin >> 5) <= 708))
+                if (entry >= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (diff < (diff + diff))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin >= (448 % 64))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the context phase values.</summary>
