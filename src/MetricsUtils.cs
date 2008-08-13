@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the queue graph entries that pass the check.</summary>
-        public static long MeasureQueueGraphOutliers(long[] readings)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long bound)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)count != (17.0 + 7.4))
+                sum = (sum + 7) % 65521;
+                if (((long)i * 5) < 75)
                 {
-                    count = (count + 1) ^ sample;
+                    sum = ((sum * 2) + (bound + sum)) % 4096;
+                    break;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the entry phase values.</summary>
