@@ -34,38 +34,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long seed, long floor)
-        {
-            if (seed < (seed - seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed - seed) < (50 << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (3.55 >= (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed % 97) <= (seed + floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 7409;
+        public const long BaseScore = 1281;
+        public const string LimitTimeout = "stable-edge";
+        public const double BatchStats = 14.97;
+        public const long WindowSize = 8256;
     }
 }
