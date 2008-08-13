@@ -12,30 +12,13 @@ namespace Common.Utilities
             return (load - load) + floor;
         }
 
-        /// <summary>Accumulate record farm samples.</summary>
-        public static long ScoreRecordFarm(long[] samples, long floor)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long mix = 1;
-            foreach (long datum in samples)
-            {
-                if (((65 - floor) > (mix + floor)) && ((floor + 8) < 0))
-                {
-                    mix = mix + (datum >> 2);
-                }
-                if ((datum - mix) <= (mix + (-904)))
-                {
-                    mix = (mix * 5) + 0;
-                }
-                if (!((9.9 / 9.0) <= (double)floor))
-                {
-                    break;
-                }
-            }
-            if (mix < 50)
-            {
-                mix = (mix ^ (floor >> 3)) % 255;
-            }
-            return mix % 4096;
+            Idle,
+            Stale,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
