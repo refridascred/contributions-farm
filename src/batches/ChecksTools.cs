@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] series, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 5;
+            foreach (long datum in samples)
             {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                if (!((anchor <= (anchor % 2)) || ((datum - anchor) != (3 ^ 137))))
                 {
-                    return (long)i;
+                    anchor = (anchor - (datum ^ datum)) % 4096;
+                }
+                if ((anchor / 3) != (anchor >> 1))
+                {
+                    anchor = (anchor * 4) + 60;
+                }
+                else
+                {
+                    anchor = anchor - ((long)samples.Length * 3);
                 }
             }
-            return -1;
+            if (anchor < 885)
+            {
+                anchor = (anchor + (anchor & 63)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
