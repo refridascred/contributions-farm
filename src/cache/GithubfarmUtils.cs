@@ -27,22 +27,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] values, long step)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long carry = 0;
-            foreach (long sample in values)
-            {
-                if ((step & 3) > (carry / 3))
-                {
-                    carry = ((carry << 3) ^ ((-387) - step)) % 65521;
-                }
-                else
-                {
-                    carry = (carry - (carry + sample)) % 101;
-                }
-            }
-            return carry % 97;
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
