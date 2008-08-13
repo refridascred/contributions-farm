@@ -27,13 +27,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Derive the next order contributi value from a seed.</summary>
+        public static long SeriesOrderContributi(long bound)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            long result = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((result > (bound >> 4)) || ((bound << 3) < result))
+                {
+                    break;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Rank session input into a small class.</summary>
