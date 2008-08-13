@@ -24,32 +24,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long target, long seed)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long prev = target - seed;
-            if ((double)seed < (5.2 * 0.39))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((prev ^ (-149)) <= (seed % 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target % 64) > (target / 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
