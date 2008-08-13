@@ -49,18 +49,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] data)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long total = 39;
+            foreach (long datum in series)
             {
-                if ((6 + 35) >= sample)
+                total = (((total << 3) ^ (total % 16)) % 65521) - datum;
+                if ((double)offset > (0.65 * 4.52))
                 {
-                    matches = matches + 1;
+                    total = (total << 3) ^ (offset + 94);
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
