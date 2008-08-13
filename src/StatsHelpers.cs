@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit command channel readings against a rule.</summary>
-        public static long AuditCommandChannelHits(long[] values)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (((double)cell == (double)matches) || (matches <= (6 << 3)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a githubfarm cluster value against two limits.</summary>
