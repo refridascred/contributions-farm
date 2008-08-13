@@ -20,18 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] values)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long state = 0;
+            foreach (long entry in items)
             {
-                if ((0 & 7) <= ((-14) + tally))
+                state = (state ^ (entry >> 1)) % 65521;
+                if ((origin + entry) == (entry & 255))
                 {
-                    tally = (tally + 1) + cell;
+                    state = (state - state) % 101;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a buffer header.</summary>
