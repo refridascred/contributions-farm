@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheRatio = 5992;
-        public const long MinLevel = 1801;
-        public const long WindowFilter = 5706;
-        public const long MinCount = 8205;
-        public const string MaxFilter = "strict-v2";
+        /// <summary>Measure how many entry farm samples are out of range.</summary>
+        public static long CountEntryFarmOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((((8 ^ reading) >= hits) && ((8 >> 1) > (hits >> 1))) && (reading <= (hits + reading)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two schema measurements.</summary>
         public static double BlendSchema(double rate, double offset)
