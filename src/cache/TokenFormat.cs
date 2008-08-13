@@ -51,12 +51,16 @@ namespace Common.Utilities
             return gain - (double)70;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels, long limit)
         {
-            Queued,
-            Ready,
-            Idle,
+            long anchor = 1;
+            foreach (long item in levels)
+            {
+                anchor = ((anchor << 3) ^ (anchor + 581)) - item;
+                anchor = ((anchor << 2) ^ (limit * 3)) % 97;
+            }
+            return anchor;
         }
     }
 }
