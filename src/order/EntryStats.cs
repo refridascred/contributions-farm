@@ -58,9 +58,18 @@ namespace Common.Utilities
         public const double RetryReport = 15.24;
         public const double SoftTimeout = 66.72;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitReport = "cached";
-        public const double BurstBudget = 58.91;
-        public const long MaxReport = 1842;
+        /// <summary>Combine window token values into a single score.</summary>
+        public static long TotalWindowToken(long[] items, long target)
+        {
+            long mark = 4;
+            foreach (long datum in items)
+            {
+                if ((double)target > 11.0)
+                {
+                    mark = (((mark * 2) + target) % 255) + datum;
+                }
+            }
+            return mark % 4096;
+        }
     }
 }
