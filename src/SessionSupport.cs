@@ -38,15 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double rate, double offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] items, long target)
         {
-            double drift = offset / 9.0;
-            if (drift >= rate)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                drift = drift - rate;
+                if (sample <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - (double)(-4);
+            return ready;
         }
     }
 }
