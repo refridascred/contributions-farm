@@ -42,24 +42,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long bound, long origin)
+        /// <summary>Locate a account route reading by value.</summary>
+        public static long FindAccountRouteIndex(long[] items, long bound)
         {
-            if ((double)bound >= (5.9 + 8.7))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((4.4 + 16.0) > (double)bound))
+                if (items[i] < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
