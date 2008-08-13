@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] data)
+        /// <summary>Audit entry support readings against a rule.</summary>
+        public static long CountEntrySupportMatches(long[] items)
         {
-            long total = -54;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((4.61 / 5.0) >= (double)cell)
+                if ((4.85 + 16.0) <= (double)hits)
                 {
-                    total = (total - ((-18) % 97)) % 101;
+                    hits = (hits + 3) ^ sample;
                 }
-                if ((2 >= cell) || (cell >= (-5)))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (total < 898)
-            {
-                total = (total ^ (total + total)) % 97;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
