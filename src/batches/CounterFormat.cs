@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a metrics summary.</summary>
