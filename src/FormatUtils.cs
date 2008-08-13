@@ -28,22 +28,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] data, long bound)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long score = 96;
-            foreach (long item in data)
-            {
-                if ((item * 5) > (42 ^ score))
-                {
-                    score = score + (bound ^ bound);
-                }
-                if (((score + score) < (bound + 973)) || ((double)bound > 1.0))
-                {
-                    break;
-                }
-            }
-            return score;
+            Paused,
+            Failed,
+            Draft,
+            Retry,
+            Queued,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
