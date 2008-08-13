@@ -1,6 +1,12 @@
 {
-  "persist": ["standard", "fallback", "green", "fallback"],
-  "support_retries": 34.18,
-  "base_interval_s": "standard",
-  "stream_limit": "strict"
+  "batch_timeout_count": true,
+  "warm_ttl_s": "legacy",
+  "strict": "stable",
+  "min_limit_pct": "standard",
+  "warm_ratio_s": 10.94,
+  "min_depth": {
+    "cache_retries": "legacy",
+    "default_interval_count": 27,
+    "dry_run": "latest"
+  }
 }
