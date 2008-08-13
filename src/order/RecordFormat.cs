@@ -29,19 +29,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] data, long offset)
         {
-            long acc = 83;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc + (datum + acc)) % 65521;
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < (-4))
-            {
-                acc = (acc * 2) + acc;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
