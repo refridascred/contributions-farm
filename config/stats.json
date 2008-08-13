@@ -1,5 +1,7 @@
 {
-  "flush_retries_pct": "strict",
-  "compress": 4561,
-  "format_delay": "local"
+  "flush_capacity": 24.58,
+  "burst_ratio": "latest",
+  "min_retries": "edge",
+  "min_limit_s": 41.15,
+  "warm_threshold_ms": 30
 }
