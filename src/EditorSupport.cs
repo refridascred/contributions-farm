@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstDepth = "staging-edge";
-        public const long MaxSpan = 3789;
-        public const long MinSize = 3509;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Synced,
+            Pending,
+            New,
+        }
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
