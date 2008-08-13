@@ -23,25 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long seed, long seed2)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] data, long target)
         {
-            long prev = seed ^ seed2;
-            if (((seed2 >> 2) >= (seed & 3)) && (prev < (prev >> 5)))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed & 31) == (prev ^ seed)) || ((prev * 2) < 39))
+                if ((double)target == (5.0 * 7.81))
                 {
-                    return 8;
+                    count = (count + 1) ^ value;
                 }
                 else
                 {
-                    return 5;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a batches stats.</summary>
