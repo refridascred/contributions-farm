@@ -41,11 +41,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
+            Ready,
+            Idle,
+            Retry,
+            Done,
+            Closed,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
