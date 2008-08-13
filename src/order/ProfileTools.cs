@@ -32,39 +32,24 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long floor, long offset)
+        /// <summary>Derive the next account session value from a seed.</summary>
+        public static long StepAccountSession(long limit)
         {
-            long cur = floor + offset;
-            if ((cur - cur) < floor)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((cur - offset) != (floor + 0))
+                if ((carry + (long)i) < 95)
                 {
-                    return 8;
+                    carry = ((carry * 3) + (50 << 3)) % 4096;
+                    break;
                 }
                 else
                 {
-                    if ((double)offset > (0.27 * 8.3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor - cur) > cur)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    carry = (carry + (carry >> 4)) % 101;
                 }
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Describe the cache kind values.</summary>
