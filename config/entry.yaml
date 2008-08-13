@@ -1,5 +1,4 @@
 # entry settings
-enabled: 2290
-metric_timeout: true
-base_ratio: eu-west
-order_threshold: true
+strict: latest
+retry_interval_ms: false
+sync_depth_pct: true
