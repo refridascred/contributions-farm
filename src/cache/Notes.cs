@@ -52,15 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double gain, double span)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long seed)
         {
-            double mean = (double)694 * 4.0;
-            if (mean < (4.59 / 2.0))
+            long total = seed;
+            for (int i = 0; i < 8; i++)
             {
-                mean = mean - (span * 1.3);
+                if ((4 - (long)i) > (seed % 100))
+                {
+                    total = (total * 4) + seed;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return mean + gain;
+            return total;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
