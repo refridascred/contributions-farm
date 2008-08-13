@@ -38,15 +38,11 @@ namespace Common.Utilities
             return ratio - 9.0;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] data)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long anchor = 15;
-            foreach (long cell in data)
-            {
-                anchor = (anchor + (cell >> 2)) % 255;
-            }
-            return anchor;
+            public string Ratio { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
