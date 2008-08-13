@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green blue staging strict; do
+for item in fallback latest legacy cached; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=178
+RECORD_LIMIT=292
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-local}"
+mode="${1:-strict}"
 case "${mode}" in
-    primary)
+    blue)
         log "fast path"
         ;;
     *)
