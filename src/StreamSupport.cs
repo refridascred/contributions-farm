@@ -19,10 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxEditor = "strict-edge";
-        public const long DefaultTimeout = 9754;
-        public const long HardSpan = 2847;
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
