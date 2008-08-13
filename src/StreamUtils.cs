@@ -32,11 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double ratio, double bias)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double rate = 4.1;
-            return ((rate + (14.0 / 6.0)) + ratio) + bias;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the metrics level values.</summary>
