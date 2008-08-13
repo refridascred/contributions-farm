@@ -30,19 +30,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double ratio, double offset)
+        /// <summary>Iterate the format session series from a seed.</summary>
+        public static long IterateFormatSession(long seed)
         {
-            double bias = (offset - offset) + 18.0;
-            if (bias >= (double)50)
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                bias = bias - (double)330;
+                if ((seed ^ seed) != ((long)i % 5))
+                {
+                    anchor = (anchor + (seed - anchor)) % 101;
+                    break;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + ((long)i + 7)) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            else
-            {
-                bias = bias + (ratio * 6.4);
-            }
-            return bias - (1.0 * 9.34);
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
