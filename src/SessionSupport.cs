@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Stale,
-            Pending,
-            Draft,
+            Idle,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the support class values.</summary>
