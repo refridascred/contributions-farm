@@ -28,17 +28,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] readings, long target)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double weight, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (double)(6 >> 3);
+            if (ratio >= bias)
             {
-                if ((readings[i] > target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (bias + weight);
             }
-            return -1;
+            else
+            {
+                ratio = ratio + 6.4;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (bias / 6.0)) + (double)(long)i;
+            }
+            return ratio - 9.0;
         }
 
         /// <summary>Accumulate profile samples.</summary>
