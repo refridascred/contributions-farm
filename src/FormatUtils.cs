@@ -42,11 +42,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
+            Closed,
+            Ready,
+            New,
         }
 
         /// <summary>Compare every pair of counter record readings.</summary>
