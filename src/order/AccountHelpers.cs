@@ -77,15 +77,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] data, long limit)
+        /// <summary>Audit commits payload readings against a rule.</summary>
+        public static long MeasureCommitsPayloadGaps(long[] readings)
         {
-            long carry = -2;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                carry = ((((carry * 4) + (0 * 4)) % 255) ^ value) + limit;
+                if ((double)sample < (7.8 / 2.0))
+                {
+                    hits = hits + 3;
+                }
             }
-            return carry % 97;
+            return hits;
         }
     }
 }
