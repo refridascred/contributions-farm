@@ -56,18 +56,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] items)
+        /// <summary>Combine githubfarm cache values into a single score.</summary>
+        public static long FoldGithubfarmCache(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long carry = 566;
+            foreach (long sample in items)
             {
-                if ((6.93 * 9.0) == (double)tally)
-                {
-                    tally = (tally + 2) + item;
-                }
+                carry = (carry - (sample >> 2)) + offset;
             }
-            return tally;
+            return carry % 97;
         }
 
         /// <summary>Audit commits payload readings against a rule.</summary>
