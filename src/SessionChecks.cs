@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const string HardFactor = "fallback-v2";
         public const long StepRoute = 4638;
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 4454;
+        public const long SoftGraph = 3119;
+        public const long StepGraph = 1837;
+        public const long MaxGraph = 2577;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
