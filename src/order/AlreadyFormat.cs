@@ -46,22 +46,13 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Measure how many tools contributi samples are out of range.</summary>
-        public static long AuditToolsContributiHits(long[] values, long origin)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((origin * 5) != (65 ^ 0))
-                {
-                    matches = (matches + 3) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many stats checks samples are out of range.</summary>
