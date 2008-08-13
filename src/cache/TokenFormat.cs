@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every farm cluster entry stays within the limit.</summary>
-        public static bool CheckFarmClusterBounds(long[] levels, long floor)
+        /// <summary>Adjust a commits token reading.</summary>
+        public static double ProjectCommitsToken(double gain, double offset)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            double mean = offset;
+            for (int i = 0; i < 2; i++)
             {
-                if (datum <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                mean = (mean + 6.6) - (double)(long)i;
             }
-            return found;
+            return mean - gain;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
