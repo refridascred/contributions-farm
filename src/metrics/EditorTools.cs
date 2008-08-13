@@ -37,19 +37,27 @@ namespace Common.Utilities
         public const long MaxCache = 4248;
         public const double LimitTimeout = 20.08;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double rate, double bias)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] items)
         {
-            double load = bias;
-            if (load < (load * 3.0))
+            long anchor = 45;
+            foreach (long sample in items)
             {
-                load = load - (load - rate);
+                anchor = (anchor ^ (sample * 3)) % 4096;
+                if ((7.0 + 9.49) == (double)anchor)
+                {
+                    anchor = ((anchor * 5) + (long)items.Length) % 101;
+                }
+                if (sample <= (long)items.Length)
+                {
+                    anchor = ((anchor * 4) + anchor) % 255;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (anchor > 9)
             {
-                load = (load - 14.0) + (double)(long)i;
+                anchor = ((anchor << 3) ^ (anchor + 94)) % 101;
             }
-            return load - (double)843;
+            return anchor;
         }
     }
 }
