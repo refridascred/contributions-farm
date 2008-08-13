@@ -71,19 +71,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every contributi window entry stays within the limit.</summary>
-        public static bool CheckContributiWindowLimits(long[] samples, long offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < offset)
+                if (series[i] <= step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
