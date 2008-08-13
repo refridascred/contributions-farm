@@ -61,10 +61,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchCounter = 81.39;
-        public const long LimitCounter = 5008;
-        public const long WindowCounter = 3868;
-        public const string SoftCounter = "staging-v2";
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Closed,
+            Done,
+            Paused,
+        }
     }
 }
