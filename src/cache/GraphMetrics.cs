@@ -44,18 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] levels, long target)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if ((target ^ 9) < (target + hits))
+                if (entry >= target)
                 {
-                    hits = (hits + 3) ^ datum;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
