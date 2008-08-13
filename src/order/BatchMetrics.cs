@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardSize = 2124;
-        public const long BaseSpan = 1369;
-        public const long IdleCommits = 4799;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksRange(long[] items, long seed)
