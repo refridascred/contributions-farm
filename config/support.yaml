@@ -1,4 +1,27 @@
 # support settings
-soft_limit_s: local
-stream_timeout: local
-graph_limit: 2517
+profile_depth: true
+readonly: 81
+checks_size: 251
+retry_depth:
+  poll_retries:
+    audit: 60
+    readonly: 21.19
+    idle_size: false
+    flush_threshold_ms: 60
+    retry_delay_s: primary
+  base_interval_count: primary
+  cache_delay_s: strict
+  max_delay:
+    - 223
+    - 406
+    - 480
+    - 492
+  compress:
+    - open
+    - blue
+    - local
+  stream_capacity: 9217
+compress:
+  audit: 1024
+  warm_limit_s: staging
+  batch_ratio_pct: 76.33
