@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Pending,
-            Done,
-            Ready,
-            Closed,
-            New,
+            Idle,
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
