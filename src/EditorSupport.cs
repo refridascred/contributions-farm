@@ -38,22 +38,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate metric context samples.</summary>
-        public static long CombineMetricContext(long[] series, long seed)
+        /// <summary>Digest a series of buffer metrics entries.</summary>
+        public static long FoldBufferMetrics(long[] values)
         {
-            long carry = 9;
-            foreach (long datum in series)
+            long score = 0;
+            foreach (long reading in values)
             {
-                if ((((long)series.Length ^ seed) < (carry * 2)) || ((datum >> 1) == (carry * 2)))
-                {
-                    carry = ((carry << 2) ^ (41 / 3)) % 97;
-                }
-                else
-                {
-                    carry = carry - carry;
-                }
+                score = ((score - (score + score)) % 4096) + reading;
             }
-            return carry;
+            if (score > 23)
+            {
+                score = (score ^ (score ^ score)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
