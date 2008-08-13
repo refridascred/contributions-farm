@@ -18,25 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long step, long bound)
+        /// <summary>Match up stream support samples.</summary>
+        public static long PairStreamSupportCount(long[] items)
         {
-            long step2 = step - bound;
-            if (((bound & 15) <= (bound + step)) || ((double)bound <= (double)step2))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step2 - step) < ((-2) >> 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] ^ items[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
