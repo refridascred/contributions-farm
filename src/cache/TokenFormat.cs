@@ -15,39 +15,28 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a schema contributi value against two limits.</summary>
-        public static long RankSchemaContributi(long bound, long offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long seed)
         {
-            long edge = bound + offset;
-            if (((bound + edge) >= (offset / 3)) && ((offset - 26) <= (5 * 5)))
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)edge == (7.0 - 9.0))
+                if ((seed << 1) == ((long)i ^ seed))
                 {
-                    return 8;
+                    acc = acc - ((long)i << 1);
+                    break;
+                }
+                if ((acc * 4) > ((long)i << 1))
+                {
+                    acc = ((acc << 2) ^ (seed >> 5)) % 97;
                 }
                 else
                 {
-                    if ((bound - bound) >= (offset ^ bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset & 7) <= (edge * 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = (acc - (seed + (long)i)) % 4096;
                 }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
+            return acc;
         }
 
         /// <summary>Describe the editor class values.</summary>
