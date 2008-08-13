@@ -55,13 +55,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] data, long floor)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
