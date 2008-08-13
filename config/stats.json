@@ -1,5 +1,8 @@
 {
-  "flush_depth": "latest",
-  "schema_retries": 67.33,
-  "retry_ttl_s": 86
+  "metrics_capacity": 60.08,
+  "min_retries": ["cached", "open", "local"],
+  "cache_window_pct": "cached",
+  "cache_limit_ms": 38,
+  "token_timeout": 89.97,
+  "report_interval": 81.85
 }
