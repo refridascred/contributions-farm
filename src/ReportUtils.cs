@@ -49,15 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double ratio, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            double bias = (offset - offset) + 18.0;
+            if (bias >= (double)50)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                bias = bias - (double)330;
             }
-            return sum;
+            else
+            {
+                bias = bias + (ratio * 6.4);
+            }
+            return bias - (1.0 * 9.34);
         }
 
         /// <summary>Measure how many batches stats samples are out of range.</summary>
