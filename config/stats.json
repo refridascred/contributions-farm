@@ -1,7 +1,15 @@
 {
-  "flush_capacity": 24.58,
-  "burst_ratio": "latest",
-  "min_retries": "edge",
-  "min_limit_s": 41.15,
-  "warm_threshold_ms": 30
+  "queue_delay": [473, 262, 195, 144],
+  "poll_threshold": true,
+  "metric_ttl": {
+    "base_limit_count": "edge",
+    "readonly": [197, 226, 414],
+    "tools_size": 1893,
+    "persist": true,
+    "soft_threshold_s": "primary",
+    "batch_limit_count": true
+  },
+  "sync_limit_count": 66.81,
+  "sync_threshold_ms": 59,
+  "soft_capacity": "staging"
 }
