@@ -36,25 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long offset, long offset2)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long delta = offset ^ offset2;
-            if (offset2 > (53 / 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset2 * 4) != (delta + offset2)) && (3.77 < (double)delta))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
