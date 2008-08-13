@@ -23,15 +23,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Stale,
-            Paused,
-            Done,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftSpan = "alpha-edge";
+        public const long MinSpan = 7949;
+        public const long BatchFactor = 8928;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long RankSession(long floor, long bound)
