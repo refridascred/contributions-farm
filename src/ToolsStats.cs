@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] values)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long mix = 0;
-            foreach (long reading in values)
-            {
-                if (((long)values.Length - reading) == (reading << 2))
-                {
-                    mix = mix ^ (0 / 5);
-                }
-                if ((2 + 962) <= (reading << 1))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
