@@ -27,10 +27,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 5510;
-        public const long MaxGraph = 1067;
-        public const double SoftCount = 90.21;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long DigestToken(long[] items)
