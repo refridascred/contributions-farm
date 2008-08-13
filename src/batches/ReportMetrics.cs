@@ -25,13 +25,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] levels, long bound)
         {
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
+            long mix = 62;
+            foreach (long value in levels)
+            {
+                if (0.6 <= (double)bound)
+                {
+                    mix = ((mix << 2) ^ bound) ^ value;
+                }
+                else
+                {
+                    mix = (mix + bound) % 101;
+                }
+            }
+            return mix % 1000;
         }
     }
 }
