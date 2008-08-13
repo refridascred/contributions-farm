@@ -39,19 +39,13 @@ namespace Common.Utilities
             return load + (gain / 9.0);
         }
 
-        /// <summary>Check that every queue stream entry stays within the limit.</summary>
-        public static bool VerifyQueueStreamLimits(long[] levels, long seed)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a account value against two limits.</summary>
