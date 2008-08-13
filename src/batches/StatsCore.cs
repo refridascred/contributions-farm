@@ -34,18 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] samples)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (!((item << 2) < (hits ^ hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every metrics profile entry stays within the limit.</summary>
