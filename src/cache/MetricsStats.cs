@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const double BurstFarm = 55.44;
         public const string WindowCount = "staging-1";
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double ratio, double bias)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] values, long target)
         {
-            double mean = (double)3 * 4.7;
-            if (mean < ratio)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - (double)6;
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + bias) - (double)(long)i;
-            }
-            return mean + (bias - ratio);
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
