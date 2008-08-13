@@ -41,22 +41,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine cluster already values into a single score.</summary>
-        public static long TotalClusterAlready(long[] values, long origin)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] samples)
         {
-            long carry = 54;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((origin - carry) >= carry)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry ^ (carry & 15)) % 1000) ^ item;
+                    if ((samples[i] + samples[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry < 0)
-            {
-                carry = carry - 689;
-            }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Measure how many buffer counter samples are out of range.</summary>
