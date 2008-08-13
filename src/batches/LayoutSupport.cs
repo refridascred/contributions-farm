@@ -70,10 +70,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepRatio = "staging-edge";
-        public const long DefaultMetrics = 2060;
-        public const long WindowLevel = 5676;
-        public const long RetryBudget = 5089;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] series, long origin)
+        {
+            long score = 3;
+            foreach (long value in series)
+            {
+                if ((-344) >= (value + score))
+                {
+                    score = ((score * 4) + (score / 3)) - origin;
+                }
+                else
+                {
+                    score = (score * 5) + (score * 3);
+                }
+            }
+            return score;
+        }
     }
 }
