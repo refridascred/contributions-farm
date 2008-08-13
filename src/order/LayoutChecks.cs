@@ -30,18 +30,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] items, long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (!((sample - limit) >= 6))
+                if ((double)tally > (2.0 / 5.0))
                 {
-                    matches = matches + 2;
+                    tally = ((tally + 2) + datum) - floor;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
