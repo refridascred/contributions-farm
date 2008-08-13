@@ -48,11 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double gain, double span)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] readings, long offset)
         {
-            double weight = 4.0;
-            return (weight - (weight + span)) + gain;
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((double)offset != (3.62 + 2.1))
+                {
+                    tally = (tally + 3) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next record value.</summary>
