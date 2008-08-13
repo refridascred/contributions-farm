@@ -43,19 +43,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double weight, double bias)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            double weight2 = 4.0;
-            if (weight2 >= (weight2 + weight))
-            {
-                weight2 = (weight2 + weight) + bias;
-            }
-            else
-            {
-                weight2 = weight2 - 7.73;
-            }
-            return weight2 + weight;
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
