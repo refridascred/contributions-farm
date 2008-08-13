@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] values, long offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long acc = 678;
-            foreach (long sample in values)
-            {
-                acc = (acc * 2) + sample;
-            }
-            if (acc > 184)
-            {
-                acc = acc + (offset & 7);
-            }
-            return acc % 97;
+            Done,
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
