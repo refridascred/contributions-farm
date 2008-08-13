@@ -32,19 +32,15 @@ namespace Common.Utilities
         public const long DefaultCount = 5143;
         public const double HardWidth = 23.0;
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double bias, double span)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] readings, long floor)
         {
-            double rate = (double)(89 >> 4);
-            if (rate > bias)
+            long sum = 5;
+            foreach (long sample in readings)
             {
-                rate = rate + (double)(-101);
+                sum = (((sum << 3) ^ sum) + sample) + floor;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (span - span)) + (double)(long)i;
-            }
-            return rate + (rate * 3.07);
+            return sum;
         }
     }
 }
