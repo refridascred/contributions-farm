@@ -13,12 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryFactor = 3249;
-        public const double MinInterval = 7.87;
-        public const long StepRatio = 2525;
-        public const string MaxSpan = "local-v2";
-        public const string CacheAccount = "fallback-edge";
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long HardAccount = 9360;
