@@ -61,18 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] samples)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] levels, long floor)
         {
-            long mix = 7;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((double)(long)samples.Length >= 8.73)
+                if (value != floor)
                 {
-                    mix = ((mix * 4) + (datum + mix)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return found;
         }
     }
 }
