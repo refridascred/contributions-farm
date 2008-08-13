@@ -1,12 +1,10 @@
 # support settings
-poll_size:
-  - 135
-  - 39
-stream_delay: blue
-warm_ttl_ms:
-  persist: 65
-  idle_limit_s: fallback
-  hard_ttl_s: 500
-retry_interval_ms: strict
-burst_threshold: 3.1
-audit: 2705
+soft_threshold_pct:
+  - local
+  - standard
+idle_ttl: eu-west
+stream_depth: 20.55
+route_size: cached
+poll_window_count:
+  - 225
+  - 362
