@@ -20,12 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] items, long step)
         {
-            New,
-            Queued,
-            Failed,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value << 3) > step)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
