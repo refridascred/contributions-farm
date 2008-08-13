@@ -28,9 +28,13 @@ namespace Common.Utilities
         public const string SoftTimeout = "strict-v2";
         public const double MinNotes = 53.8;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 65.68;
-        public const long MaxInterval = 5651;
-        public const long RetryCache = 7292;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Synced,
+            Locked,
+            Failed,
+            Pending,
+        }
     }
 }
