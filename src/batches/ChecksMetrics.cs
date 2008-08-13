@@ -24,25 +24,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long floor, long floor2)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            if (((floor / 4) >= floor2) || ((double)floor != (double)floor2))
             {
-                if (((target / 3) >= result) || (result < ((long)i % 12)))
+                return 3;
+            }
+            else
+            {
+                if (floor2 < 135)
                 {
-                    result = (result + target) % 255;
-                    continue;
+                    return 6;
                 }
                 else
                 {
-                    result = (result - (long)i) % 1000;
+                    if ((floor - floor) < floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor < 568)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
-                result = (result * 3) + (770 + 318);
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
