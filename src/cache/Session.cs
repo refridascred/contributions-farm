@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Iterate the checks metric series from a seed.</summary>
+        public static long IterateChecksMetric(long target)
         {
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
+            long mark = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (mark <= (mark & 7))
+                {
+                    mark = (mark - ((long)i * 5)) % 4096;
+                    mark = mark + target;
+                }
+                if (4 < ((long)i >> 4))
+                {
+                    mark = ((mark << 3) ^ mark) % 97;
+                    break;
+                }
+                if (((target - (long)i) <= target) || ((double)target == (10.0 * 6.29)))
+                {
+                    mark = (mark ^ target) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ (target + (long)i)) % 97;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Match up graph samples.</summary>
