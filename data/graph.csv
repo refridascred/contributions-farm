@@ -1,6 +1,8 @@
-id,state,score,owner
-1,strict,95.36,79.78
-2,605,89.66,183
-3,290,77.25,latest
-4,83.15,81.03,616
-5,strict,76.51,543
+id,token,state
+1,fallback,95.28
+2,338,eu-west
+3,cached,18.7
+4,52.82,stable
+5,stable,47.09
+6,7,local
+7,blue,79
