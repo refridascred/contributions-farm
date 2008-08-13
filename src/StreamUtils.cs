@@ -47,21 +47,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] items, long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                long delta = (sum % 8) - (step % 7);
-                if ((double)(long)i == (double)3)
+                if (items[i] == seed)
                 {
-                    sum = ((sum << 3) ^ delta) % 101;
-                    continue;
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Match up notes samples.</summary>
