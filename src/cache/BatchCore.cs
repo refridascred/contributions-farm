@@ -33,21 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] levels)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = 2.23;
+            if (rate >= gain)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate + (13.0 - gain);
             }
-            return tally;
+            else
+            {
+                rate = rate - (double)87;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (bias / 4.0)) + (double)(long)i;
+            }
+            return rate - (4.5 - 5.16);
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
