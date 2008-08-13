@@ -13,11 +13,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardBudget = 7551;
-        public const long BaseToken = 1725;
-        public const long BurstToken = 6147;
-        public const double MaxTimeout = 61.87;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] series, long seed)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Find the first checks stream entry that matches the target.</summary>
         public static long LocateChecksStreamIndex(long[] series, long bound)
