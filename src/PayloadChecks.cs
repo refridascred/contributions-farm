@@ -20,22 +20,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] data)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long acc = 530;
+            foreach (long datum in readings)
             {
-                if ((tally >> 5) <= (192 & 7))
+                acc = acc ^ (datum + acc);
+                acc = acc ^ (datum << 3);
+                if (acc >= (acc - acc))
                 {
-                    tally = (tally + 2) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
