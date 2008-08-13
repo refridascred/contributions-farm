@@ -15,18 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] readings, long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long mark = 1;
+            foreach (long datum in readings)
             {
-                if ((((2.4 - 5.74) >= (double)limit) || (count > (count % 2))) || ((double)count >= (9.3 + 7.52)))
+                if (((580 % 60) == (datum - datum)) && ((datum + mark) == (mark ^ datum)))
                 {
-                    count = (count + 1) - reading;
+                    mark = (mark - (datum >> 5)) % 65521;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
