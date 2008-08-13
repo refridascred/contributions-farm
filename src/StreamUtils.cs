@@ -61,38 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long bound, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] levels, long origin)
         {
-            if ((bound - bound) > (894 % 24))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound >> 4) >= origin)
+                if ((origin * 2) < datum)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin ^ bound) == (2 * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin ^ origin) == (origin << 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
