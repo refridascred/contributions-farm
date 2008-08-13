@@ -20,24 +20,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next account session value from a seed.</summary>
-        public static long StepAccountSession(long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((carry + (long)i) < 95)
+                if ((8.6 * 9.43) > (double)hits)
                 {
-                    carry = ((carry * 3) + (50 << 3)) % 4096;
-                    break;
+                    hits = (hits + 2) - reading;
                 }
-                else
-                {
-                    carry = (carry + (carry >> 4)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
