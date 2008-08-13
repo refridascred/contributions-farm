@@ -23,23 +23,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] values)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] data)
         {
-            long mix = 2;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                mix = mix + (reading << 3);
-                for (int i = 0; i < 2; i++)
+                if ((484 % 100) == (count ^ count))
                 {
-                    mix = ((mix - mix) % 255) + (long)i;
+                    count = (count + 1) - value;
                 }
-                if ((double)mix >= (1.2 / 3.0))
+                else
                 {
-                    mix = ((mix << 3) ^ (reading >> 2)) % 1000;
+                    count = count - 1;
                 }
             }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Fold a list of format token readings.</summary>
