@@ -60,13 +60,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long bound)
         {
-            Queued,
-            Done,
-            Active,
-            Stale,
+            long result = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
