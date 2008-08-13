@@ -19,19 +19,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] samples, long origin)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] samples)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell >= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Count the batches graph entries that pass the check.</summary>
