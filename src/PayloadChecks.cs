@@ -28,17 +28,18 @@ namespace Common.Utilities
         public const long StepSpan = 8702;
         public const double StepRatio = 84.4;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] items, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (items[i] <= seed)
+                if ((10.0 + 20.0) == (double)datum)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
