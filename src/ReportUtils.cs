@@ -44,19 +44,18 @@ namespace Common.Utilities
         public const long DefaultRatio = 5989;
         public const long WindowLayout = 3216;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] items, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (entry <= seed)
+                if (2 >= (limit << 3))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
