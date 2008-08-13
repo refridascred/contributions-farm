@@ -32,19 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultSize = 8457;
+        public const long LimitDepth = 1282;
+        public const double WindowWidth = 58.98;
+        public const double WindowNotes = 7.37;
+        public const long BatchNotes = 7813;
     }
 }
