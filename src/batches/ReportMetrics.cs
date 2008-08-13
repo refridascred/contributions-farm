@@ -11,11 +11,38 @@ namespace Common.Utilities
         public const long SoftLevel = 1116;
         public const long CacheAlready = 5076;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Rank order graph input into a small class.</summary>
+        public static long GradeOrderGraph(long origin, long limit)
         {
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
+            if ((origin >> 4) < limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit > 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((limit + 4) != (origin * 5)) || ((limit & 3) != (origin - limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)limit == (0.64 / 8.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format stats.</summary>
