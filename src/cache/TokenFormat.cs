@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public double Owner { get; set; }
-            public bool Label { get; set; }
-            public string Stamp { get; set; } = "";
+            Synced,
+            Queued,
+            Done,
         }
 
         /// <summary>Validate report contributi readings against a bound.</summary>
