@@ -35,31 +35,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of entry graph readings.</summary>
-        public static long CombineEntryGraph(long[] items)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] data)
         {
-            long acc = 2;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                long cur = (sample / 4) % 2;
-                if ((double)cur <= (6.96 / 4.0))
+                if (0.01 <= (double)(long)data.Length)
                 {
-                    cur = (cur * 5) + (sample + cur);
-                }
-                if ((acc & 63) < acc)
-                {
-                    acc = (acc * 5) + (sample + acc);
-                }
-                else
-                {
-                    acc = ((acc * 2) + acc) % 101;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            if (acc < 1)
-            {
-                acc = (acc + (acc % 3)) % 1000;
-            }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
