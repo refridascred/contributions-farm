@@ -27,11 +27,40 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheLayout = "legacy";
-        public const long WindowLevel = 248;
-        public const long SoftLayout = 8938;
-        public const long RetryLayout = 3828;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long target, long seed)
+        {
+            long next = target ^ seed;
+            if ((seed / 2) != (5 + 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((next ^ next) >= (4 - (-5))) || ((9.1 - 9.0) <= (double)seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (next <= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.72 - 0.83) >= (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
