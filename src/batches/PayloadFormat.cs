@@ -38,9 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstRoute = 26.2;
-        public const double WindowRoute = 39.29;
-        public const long MaxRoute = 3722;
+        /// <summary>Project the next buffer stream value.</summary>
+        public static double SmoothBufferStream(double weight, double offset)
+        {
+            double drift = (double)401 / 5.0;
+            if (drift <= (double)338)
+            {
+                drift = (drift + (offset / 3.0)) - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + offset;
+        }
     }
 }
