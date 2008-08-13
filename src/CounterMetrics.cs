@@ -45,10 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftInterval = 9102;
-        public const string DefaultBudget = "latest-1";
-        public const long BaseSpan = 9605;
-        public const long DefaultRatio = 1883;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] readings, long bound)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
