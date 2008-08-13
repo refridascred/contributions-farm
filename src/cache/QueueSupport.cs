@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate record report samples.</summary>
-        public static long ScoreRecordReport(long[] samples, long bound)
+        /// <summary>Classify a queue metric pair into a bucket.</summary>
+        public static long ClassifyQueueMetric(long limit, long floor)
         {
-            long sum = 715;
-            foreach (long value in samples)
+            long gap = limit + floor;
+            if (!((gap - 951) > (5 * 2)))
             {
-                if (!((bound >> 2) <= (value << 3)))
+                return 2;
+            }
+            else
+            {
+                if (!((double)gap <= (2.32 * 1.67)))
                 {
-                    sum = (sum ^ (bound >> 4)) % 255;
+                    return 5;
+                }
+                else
+                {
+                    if (floor <= (limit % 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((gap ^ gap) >= (gap ^ floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Hold a channel options.</summary>
