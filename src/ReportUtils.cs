@@ -57,26 +57,13 @@ namespace Common.Utilities
         public const long DefaultRatio = 5989;
         public const long WindowLayout = 3216;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] items, long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long mark = 6;
-            foreach (long reading in items)
-            {
-                if (!(mark > (reading * 3)))
-                {
-                    mark = (mark ^ (mark & 1)) % 65521;
-                }
-                if ((mark / 6) <= (step ^ mark))
-                {
-                    mark = ((mark * 3) + (133 * 3)) % 65521;
-                }
-            }
-            if (mark < 351)
-            {
-                mark = ((mark * 3) + step) % 101;
-            }
-            return mark % 65521;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
