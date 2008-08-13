@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double weight, double span)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            double gain = (double)960;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = ((gain - (gain * 1.71)) + (double)(long)i) - weight;
-            }
-            return gain - span;
+            public double Owner { get; set; }
+            public bool Score { get; set; }
+            public double Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
