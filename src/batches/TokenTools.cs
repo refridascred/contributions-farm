@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double ratio, double span)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            double rate = (ratio / 7.0) - span;
+            if (rate >= (span + ratio))
+            {
+                rate = rate + rate;
+            }
+            else
+            {
+                rate = rate - (double)0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (span / 9.0);
         }
 
         /// <summary>Hold a stats entry.</summary>
