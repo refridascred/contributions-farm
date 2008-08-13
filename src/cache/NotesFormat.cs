@@ -37,19 +37,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = (carry + (953 + carry)) ^ (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public bool Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
