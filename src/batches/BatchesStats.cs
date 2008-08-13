@@ -12,11 +12,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheTimeout = "alpha-v2";
-        public const double DefaultRoute = 73.67;
-        public const double HardRoute = 40.78;
-        public const long BaseRoute = 9654;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Draft,
+            Dropped,
+            Active,
+            Closed,
+        }
 
         /// <summary>Validate filter profile readings against a bound.</summary>
         public static bool CheckFilterProfileLimits(long[] items, long target)
