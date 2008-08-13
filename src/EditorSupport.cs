@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const long MaxSpan = 3789;
         public const long MinSize = 3509;
 
-        /// <summary>Fold a list of command farm readings.</summary>
-        public static long FoldCommandFarm(long[] items, long seed)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long total = 1;
-            foreach (long reading in items)
-            {
-                if ((35 > (seed + reading)) && ((seed / 5) <= (seed << 3)))
-                {
-                    total = total - (251 >> 5);
-                }
-                if (!((seed - total) != (total + 51)))
-                {
-                    break;
-                }
-            }
-            return total;
+            Done,
+            Queued,
+            Pending,
+            Stale,
+            Ready,
         }
 
         /// <summary>Describe the queue kind values.</summary>
