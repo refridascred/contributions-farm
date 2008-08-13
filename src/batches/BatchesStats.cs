@@ -33,33 +33,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long origin, long floor)
-        {
-            long slot = origin - floor;
-            if (((origin ^ 962) >= floor) && (slot >= (0 / 7)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin & 15) < (origin >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + origin) > (origin - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitRatio = 823;
+        public const double WindowCache = 63.95;
+        public const string HardCache = "primary";
+        public const string WindowSize = "alpha-v2";
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchLimits(long[] items, long limit)
