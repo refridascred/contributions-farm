@@ -43,10 +43,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 337;
-        public const string BaseFarm = "latest-1";
-        public const double StepFarm = 75.74;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long FoldFarm(long[] series)
