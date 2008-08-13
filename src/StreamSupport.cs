@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] values, long step)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] items)
         {
-            long mix = 20;
-            foreach (long item in values)
+            long score = 1;
+            foreach (long datum in items)
             {
-                mix = (mix * 5) + item;
-                if ((item > (step ^ step)) && ((mix >> 3) <= step))
-                {
-                    mix = (mix * 4) + (item & 3);
-                }
-                if (!(mix > (item - item)))
-                {
-                    break;
-                }
+                score = (score * 2) + (datum + datum);
             }
-            if (mix > (-701))
-            {
-                mix = (mix << 2) ^ (62 ^ mix);
-            }
-            return mix;
+            return score;
         }
 
         /// <summary>Validate report editor readings against a bound.</summary>
