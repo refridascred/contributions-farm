@@ -1,6 +1,8 @@
-id,count,token,ratio
-1,498,strict,561
-2,standard,open,edge
-3,418,321,standard
-4,931,cached,857
-5,eu-west,72.12,staging
+id,token,level,region,ratio
+1,local,72.57,241,58.11
+2,stable,774,green,24.22
+3,479,strict,458,181
+4,20,458,524,23.38
+5,stable,61.75,26.73,19.93
+6,316,69.95,legacy,142
+7,60.8,902,79.24,59.43
