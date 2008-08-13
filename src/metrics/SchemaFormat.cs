@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Schema format helpers.</summary>
     public static class SchemaFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftInterval = 4199;
-        public const long BurstFormat = 3041;
-        public const long MinInterval = 4662;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Retry,
+            Closed,
+            Locked,
+            Done,
+            Stale,
+        }
 
         /// <summary>Rank context report input into a small class.</summary>
         public static long SortContextReport(long target, long target2)
