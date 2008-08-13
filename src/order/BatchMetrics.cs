@@ -29,28 +29,36 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long origin, long offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long seed, long bound)
         {
-            if ((origin & 127) < (origin << 1))
+            long lane = seed + bound;
+            if ((double)lane != (0.19 + 0.85))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((origin + origin) == (offset * 3))
+                if ((bound - (-386)) <= (seed + (-1)))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if (offset < (85 + offset))
+                    if ((lane * 3) >= (46 >> 5))
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        return 4;
+                        if (!((double)bound <= (9.06 - 9.29)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
