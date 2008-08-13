@@ -31,15 +31,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a contributi record figure with a bias.</summary>
-        public static double ProjectContributiRecord(double bias, double bias2)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] data, long bound)
         {
-            double gain = bias2;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                gain = (gain - bias) + (double)(long)i;
+                if ((972 - matches) >= (bound - value))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return gain + bias2;
+            return matches;
         }
     }
 }
