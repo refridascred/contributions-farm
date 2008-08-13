@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a batch context counter forward.</summary>
-        public static long SeriesBatchContext(long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((floor < (floor * 2)) || (floor > (floor & 127))))
-                {
-                    carry = (carry + floor) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Closed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define account limits and defaults.</summary>
