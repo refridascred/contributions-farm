@@ -1,12 +1,18 @@
 # entry settings
-batch_size_s:
-  - 381
-  - 265
-filter_timeout: cached
-retry_ratio_count: 63
-warm_delay_ms: standard
-queue_window:
-  - standard
-  - eu-west
-  - edge
-route_depth: stable
+cluster_window: edge
+account_window: 367
+compress:
+  idle_threshold: fallback
+  stats_threshold:
+    entry_timeout: 88.55
+    min_depth_s: true
+    enabled: 73
+    verbose: 250
+  batch_limit:
+    - green
+    - primary
+  idle_ratio_s: 1024
+  compress:
+    - fallback
+    - cached
+  sync_depth_count: 48.9
