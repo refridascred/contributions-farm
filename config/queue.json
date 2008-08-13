@@ -1,19 +1,11 @@
 {
-  "poll_window": true,
-  "max_threshold": 1550,
-  "hard_capacity_pct": "cached",
-  "verbose": {
-    "stream_delay": "primary",
-    "session_capacity": 30,
-    "idle_interval": 30,
-    "record_capacity": {
-      "base_interval_ms": 88.29,
-      "verbose": 5,
-      "cache_ttl": 66,
-      "default_ratio": 20.83,
-      "dry_run": "latest"
-    },
-    "cache_timeout_count": [410, 349, 241],
-    "max_limit_s": 100
-  }
+  "min_threshold_ms": [116, 291, 162, 192],
+  "max_depth_s": {
+    "stream_limit": 8263,
+    "sync_ratio": 250,
+    "sync_ttl_s": 4439,
+    "base_depth_pct": "eu-west"
+  },
+  "flush_threshold_count": "cached",
+  "buffer_window": 2233
 }
