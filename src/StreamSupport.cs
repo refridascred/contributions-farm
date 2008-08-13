@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Validate report editor readings against a bound.</summary>
+        public static bool CheckReportEditorLimits(long[] readings, long seed)
         {
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the stats kind values.</summary>
