@@ -84,10 +84,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 2895;
-        public const string HardAlready = "fallback";
-        public const long MaxWidth = 4665;
-        public const double LimitBudget = 24.45;
+        /// <summary>Compare every pair of account stats readings.</summary>
+        public static long PairAccountStatsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
