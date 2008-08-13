@@ -41,10 +41,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowFactor = 21.8;
-        public const double BurstMetric = 17.2;
-        public const long IdleMetric = 7462;
-        public const long CacheMetric = 1366;
+        /// <summary>Count the command window entries that pass the check.</summary>
+        public static long TallyCommandWindowMatches(long[] values, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((((double)392 <= (double)offset) && ((offset >> 1) != (datum >> 4))) || ((((long)values.Length + tally) < (datum % 3)) || ((tally + offset) >= (datum + datum))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
