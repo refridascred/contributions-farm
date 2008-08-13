@@ -41,12 +41,18 @@ namespace Common.Utilities
         public const string RetryCounter = "cached-v2";
         public const long IdleCounter = 2011;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] items, long step)
         {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((((long)items.Length & 127) >= (long)items.Length) && ((step + seen) < step))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
         }
     }
 }
