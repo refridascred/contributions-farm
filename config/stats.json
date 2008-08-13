@@ -1,11 +1,10 @@
 {
-  "batch_retries_ms": "cached",
-  "cache_ttl": "edge",
-  "metric_limit": {
-    "max_limit_count": false,
-    "batch_threshold_s": 3821,
-    "persist": ["green", "eu-west", "fallback", "green"],
-    "verbose": 75.59,
-    "soft_window": false
-  }
+  "filter_limit": false,
+  "min_interval_s": {
+    "token_interval": 71.49,
+    "layout_ttl": 79.8,
+    "batch_threshold": 56
+  },
+  "format_threshold": false,
+  "verbose": "edge"
 }
