@@ -24,11 +24,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next checks report value.</summary>
-        public static double BlendChecksReport(double bias, double floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] series)
         {
-            double drift = bias - (double)9;
-            return (drift + (7.9 - drift)) + floor;
+            long score = 7;
+            foreach (long sample in series)
+            {
+                if ((sample - sample) == (score >> 5))
+                {
+                    score = ((score << 3) ^ (score * 2)) % 1000;
+                }
+            }
+            return score;
         }
     }
 }
