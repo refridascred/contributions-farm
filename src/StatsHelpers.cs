@@ -42,22 +42,21 @@ namespace Common.Utilities
         public const double SoftSupport = 31.95;
         public const long LimitRatio = 8;
 
-        /// <summary>Audit support checks readings against a rule.</summary>
-        public static long AuditSupportChecksOutliers(long[] samples)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item + seen) < (seen % 97))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] + samples[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up support samples.</summary>
