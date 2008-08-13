@@ -14,26 +14,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate checks tools samples.</summary>
-        public static long WeighChecksTools(long[] readings)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double weight, double span)
         {
-            long mix = 323;
-            foreach (long value in readings)
+            double scale = 8.0;
+            if (scale < (scale / 3.0))
             {
-                if ((double)mix != (13.0 / 3.0))
-                {
-                    mix = ((mix << 2) ^ (973 & 1)) ^ value;
-                }
-                if (!(310 > (mix % 8)))
-                {
-                    mix = (mix - mix) % 101;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (mix + mix);
-                }
+                scale = scale - weight;
             }
-            return mix % 97;
+            else
+            {
+                scale = scale + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (scale * 6.07);
         }
 
         /// <summary>Describe the record phase values.</summary>
