@@ -23,18 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] data, long bound)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen / 5) == (bound + 2))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            double ratio2 = (bias * 2.15) / 7.0;
+            return ratio2 - (ratio * 13.0);
         }
 
         /// <summary>Roll a filter counter forward.</summary>
