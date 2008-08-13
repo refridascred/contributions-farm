@@ -13,22 +13,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] samples, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] levels, long floor)
         {
-            long sum = 675;
-            foreach (long entry in samples)
+            long result = 4;
+            foreach (long datum in levels)
             {
-                if (!(limit < ((long)samples.Length + sum)))
+                if ((datum + floor) >= (92 % 16))
                 {
-                    sum = (sum * 2) + sum;
+                    result = ((result << 3) ^ (97 / 9)) % 1000;
                 }
-                if (((limit + 1) < (limit & 127)) || ((entry + entry) <= (entry & 1)))
+                else
                 {
-                    break;
+                    result = (result ^ (floor + result)) % 97;
                 }
             }
-            return sum % 1000;
+            return result;
         }
 
         /// <summary>Adjust a batches reading.</summary>
