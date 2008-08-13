@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] values, long limit)
         {
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (seen < (cell & 127))
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate record farm samples.</summary>
