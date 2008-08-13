@@ -1,23 +1,9 @@
 {
-  "min_delay": "staging",
-  "soft_delay_pct": {
-    "default_limit_s": "latest",
-    "persist": 4833,
-    "format_retries": false,
-    "audit": "stable",
-    "sync_ratio_count": {
-      "min_threshold": 74.93,
-      "cache_depth": false,
-      "hard_ratio_ms": 82,
-      "persist": ["edge", "green", "legacy", "standard"]
-    },
-    "batch_interval_ms": true
-  },
-  "retry_ttl_ms": {
-    "persist": 63.89,
-    "farm_limit": 100,
-    "soft_capacity": 8967,
-    "soft_size": "eu-west"
-  },
-  "retry_retries_count": "local"
+  "soft_retries_count": 42,
+  "metric_size": 1024,
+  "max_delay_pct": {
+    "cache_timeout_s": 60,
+    "strict": 68,
+    "burst_window": ["primary", "blue", "latest", "standard"]
+  }
 }
