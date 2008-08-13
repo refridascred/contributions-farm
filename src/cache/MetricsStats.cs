@@ -25,10 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 1268;
-        public const string CacheCount = "staging-edge";
-        public const long MinFormat = 3198;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double rate, double floor)
+        {
+            double bias = (double)((-87) << 2);
+            if (bias < (double)(-4))
+            {
+                bias = (bias - (double)799) - floor;
+            }
+            return bias - (rate - rate);
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double ScaleCommits(double gain, double offset)
