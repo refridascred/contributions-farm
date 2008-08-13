@@ -28,9 +28,9 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleSize = 7206;
-        public const long MaxSize = 3286;
-        public const long MinFactor = 151;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 9369;
+        public const double SoftRatio = 28.12;
+        public const string StepDepth = "standard-edge";
     }
 }
