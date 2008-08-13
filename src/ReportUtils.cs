@@ -68,14 +68,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] items, long step)
         {
-            Idle,
-            Synced,
-            Done,
-            New,
-            Stale,
+            long mark = 6;
+            foreach (long reading in items)
+            {
+                if (!(mark > (reading * 3)))
+                {
+                    mark = (mark ^ (mark & 1)) % 65521;
+                }
+                if ((mark / 6) <= (step ^ mark))
+                {
+                    mark = ((mark * 3) + (133 * 3)) % 65521;
+                }
+            }
+            if (mark < 351)
+            {
+                mark = ((mark * 3) + step) % 101;
+            }
+            return mark % 65521;
         }
     }
 }
