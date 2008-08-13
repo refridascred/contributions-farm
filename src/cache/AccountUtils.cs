@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const double IdleTimeout = 87.57;
         public const double LimitSize = 74.11;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] readings, long seed)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long sum = 358;
-            foreach (long item in readings)
-            {
-                if ((1 + seed) >= (sum << 1))
-                {
-                    sum = ((sum * 3) + (seed - 1)) - item;
-                }
-            }
-            return sum;
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
