@@ -29,17 +29,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 4.37;
+        public const long BaseTools = 6008;
+        public const long CacheTools = 5161;
     }
 }
