@@ -37,14 +37,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] data, long bound)
         {
-            Paused,
-            Failed,
-            Draft,
-            Retry,
-            Queued,
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
