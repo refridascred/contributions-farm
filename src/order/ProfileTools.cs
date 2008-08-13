@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] levels, long origin)
+        /// <summary>Roll a context already counter forward.</summary>
+        public static long StepContextAlready(long offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)count != (double)(-140))
-                {
-                    count = ((count + 2) - sample) - origin;
-                }
+                sum = sum - (offset - (long)i);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a account record.</summary>
