@@ -44,18 +44,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long target)
         {
-            long result = 20;
-            foreach (long datum in readings)
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((result - datum) < result))
-                {
-                    result = result + (555 >> 2);
-                }
+                anchor = anchor + anchor;
+                anchor = ((anchor * 5) + target) % 97;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return result % 97;
+            return anchor;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
