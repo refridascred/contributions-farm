@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowRatio = 1506;
-        public const double RetryMetrics = 71.57;
-        public const double BurstMetrics = 63.18;
-        public const double LimitSize = 46.08;
-        public const string WindowLevel = "staging-1";
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample << 2) >= (sample - count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two schema measurements.</summary>
         public static double BlendSchema(double rate, double offset)
