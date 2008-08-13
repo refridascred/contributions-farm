@@ -19,19 +19,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double ratio, double offset)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long bound)
         {
-            double drift = (double)((-8) - 178);
-            if (drift >= (double)37)
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
             {
-                drift = drift - (offset + ratio);
+                if ((mix - bound) >= (mix + bound))
+                {
+                    mix = (mix ^ ((long)i ^ (long)i)) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift + offset;
-            }
-            return drift - (9.0 / 5.0);
+            return mix;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
