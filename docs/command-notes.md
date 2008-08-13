@@ -1,11 +1,12 @@
 # Command notes
 
-The checks module keeps format values in sync with the report cache.
-The stats helpers are pure functions, so they are safe to call from any thread.
-Run the report check before changing any support limits.
+When a githubfarm fails, the stream handler retries a few times before giving up.
+When a support fails, the token handler retries a few times before giving up.
+Each tools is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Review checks limits each release
-- Document new payload fields
-- Log every record change
+- Document new profile fields
+- Prefer farm defaults
+- Validate entry input early
+- Log every graph change
