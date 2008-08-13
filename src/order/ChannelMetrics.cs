@@ -47,13 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] samples)
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (sample <= (seen + sample))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
