@@ -20,27 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long state = 2;
-            foreach (long entry in readings)
-            {
-                if ((entry + state) > state)
-                {
-                    state = state ^ (entry - state);
-                }
-                else
-                {
-                    state = (state ^ (state / 6)) % 101;
-                    state = (state ^ entry) % 65521;
-                }
-                if ((double)28 < (double)state)
-                {
-                    state = (state - (entry >> 4)) % 65521;
-                }
-            }
-            return state;
+            Pending,
+            Stale,
+            Retry,
         }
 
         /// <summary>Count stats already pairs that satisfy a relation.</summary>
