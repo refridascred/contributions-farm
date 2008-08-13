@@ -62,13 +62,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Measure how many session account samples are out of range.</summary>
+        public static long TallySessionAccountHits(long[] readings, long bound)
         {
-            Dropped,
-            Draft,
-            Closed,
-            Locked,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (bound >= (matches - reading))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
