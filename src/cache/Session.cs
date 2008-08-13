@@ -27,22 +27,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings, long limit)
+        /// <summary>Classify a layout command pair into a bucket.</summary>
+        public static long ClassifyLayoutCommand(long seed, long seed2)
         {
-            long acc = 793;
-            foreach (long datum in readings)
+            long step = seed ^ seed2;
+            if (((seed2 / 6) != (seed2 + seed2)) || ((step - seed2) == (seed & 63)))
             {
-                if ((acc ^ 18) > (acc + acc))
+                return 4;
+            }
+            else
+            {
+                if (!(step <= (154 - seed)))
                 {
-                    acc = (((acc - acc) % 255) - datum) - limit;
+                    return 8;
                 }
-                if ((9.6 - 4.0) < (double)acc)
+                else
                 {
-                    break;
+                    return 0;
                 }
             }
-            return acc;
         }
     }
 }
