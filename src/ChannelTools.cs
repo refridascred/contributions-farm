@@ -23,12 +23,10 @@ namespace Common.Utilities
         public const long BaseWindow = 7894;
         public const double RetryWindow = 53.32;
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchTimeout = 718;
+        public const long DefaultWindow = 2515;
+        public const long WindowCount = 8654;
+        public const long MinDepth = 7802;
     }
 }
