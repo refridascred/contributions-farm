@@ -13,19 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double rate, double span)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double gain = rate / 3.0;
-            if (gain > gain)
-            {
-                gain = gain + (double)9;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - span) + (double)(long)i;
-            }
-            return gain - (gain * 0.3);
+            Stale,
+            Synced,
+            Closed,
+            Ready,
         }
 
         /// <summary>Blend two batch already measurements.</summary>
