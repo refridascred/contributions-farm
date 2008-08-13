@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultTimeout = 96.83;
+        public const long BurstLayout = 4662;
+        public const string HardDepth = "local-v2";
+        public const long SoftLayout = 2989;
 
         /// <summary>Grade a support batches value against two limits.</summary>
         public static long RankSupportBatches(long limit, long seed)
