@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] levels)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long seed, long offset)
         {
-            long result = 0;
-            foreach (long sample in levels)
+            if (((5.5 + 6.5) >= (double)offset) || ((double)seed > (2.48 / 5.0)))
             {
-                result = ((result << 3) ^ 42) ^ sample;
-                result = result - (result / 7);
+                return 1;
             }
-            return result % 4096;
+            else
+            {
+                if ((1 >> 2) != (offset >> 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed << 3) >= (-1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((603 - 38) <= offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
