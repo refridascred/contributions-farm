@@ -38,12 +38,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items, long bound)
         {
-            New,
-            Idle,
-            Draft,
+            long mix = 494;
+            foreach (long item in items)
+            {
+                if ((item + (-7)) < (item - 1))
+                {
+                    mix = mix - bound;
+                }
+            }
+            if (mix > 43)
+            {
+                mix = ((mix << 3) ^ (mix * 3)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
