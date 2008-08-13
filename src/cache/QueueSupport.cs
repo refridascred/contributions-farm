@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long IdleSize = 5050;
         public const long BurstFarm = 4347;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] samples)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((double)tally > (9.44 - 6.1)) || ((double)entry == (7.59 + 9.8)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Dropped,
+            Stale,
+            Failed,
+            New,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
