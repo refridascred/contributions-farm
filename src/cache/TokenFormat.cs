@@ -51,16 +51,31 @@ namespace Common.Utilities
             return gain - (double)70;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels, long limit)
+        /// <summary>Rank counter profile input into a small class.</summary>
+        public static long ClassifyCounterProfile(long floor, long seed)
         {
-            long anchor = 1;
-            foreach (long item in levels)
+            if (((25 ^ seed) > 7) && ((seed - seed) < (floor + seed)))
             {
-                anchor = ((anchor << 3) ^ (anchor + 581)) - item;
-                anchor = ((anchor << 2) ^ (limit * 3)) % 97;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if (74 <= (floor - seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((5.08 - 14.0) <= (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
