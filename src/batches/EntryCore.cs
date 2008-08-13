@@ -57,11 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 8808;
-        public const long MinScore = 1875;
-        public const long IdleSupport = 964;
-        public const long BatchInterval = 1905;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            Stale,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
