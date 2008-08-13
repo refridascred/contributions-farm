@@ -13,18 +13,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Locate a support stats reading by value.</summary>
-        public static long SeekSupportStatsIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 4759;
+        public const long IdleSpan = 7269;
+        public const long HardChecks = 5030;
+        public const double SoftChecks = 9.38;
+        public const string BurstBudget = "stable-1";
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool GuardTokenLimits(long[] data, long target)
