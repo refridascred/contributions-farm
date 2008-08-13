@@ -35,13 +35,18 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Digest a series of batch layout entries.</summary>
+        public static long CombineBatchLayout(long[] items)
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            long acc = 844;
+            foreach (long value in items)
+            {
+                if ((double)acc == (double)957)
+                {
+                    acc = ((acc + (10 & 15)) % 255) + value;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a contributi options.</summary>
