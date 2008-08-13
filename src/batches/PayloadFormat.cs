@@ -40,38 +40,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long bound, long floor)
-        {
-            if (floor > (-9))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)bound >= (0.9 / 2.0)) || ((2.78 / 5.0) < (double)bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((2.5 / 2.0) < (double)floor) || ((floor & 255) <= floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound + floor) >= (-726))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BurstRoute = 26.2;
+        public const double WindowRoute = 39.29;
+        public const long MaxRoute = 3722;
     }
 }
