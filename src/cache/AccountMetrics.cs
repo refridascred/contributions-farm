@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
