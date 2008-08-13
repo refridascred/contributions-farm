@@ -23,13 +23,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] values)
         {
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long mix = 2;
+            foreach (long reading in values)
+            {
+                mix = mix + (reading << 3);
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = ((mix - mix) % 255) + (long)i;
+                }
+                if ((double)mix >= (1.2 / 3.0))
+                {
+                    mix = ((mix << 3) ^ (reading >> 2)) % 1000;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of format token readings.</summary>
