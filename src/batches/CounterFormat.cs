@@ -19,14 +19,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Queued,
-            Paused,
-            Dropped,
-            Pending,
-            Draft,
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
