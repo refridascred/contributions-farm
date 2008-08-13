@@ -12,10 +12,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstRatio = 72.41;
-        public const string RetryBudget = "cached";
-        public const long DefaultLevel = 8293;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (bound < (entry + bound))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long ClassifyFarm(long seed, long offset)
