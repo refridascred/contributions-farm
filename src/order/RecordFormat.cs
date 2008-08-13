@@ -29,17 +29,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] data, long offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Locked,
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
