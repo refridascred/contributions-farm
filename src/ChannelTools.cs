@@ -22,18 +22,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] values, long limit)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long mix = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((18.0 + 4.9) != (double)cell)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    tally = (tally + 2) - limit;
+                    mix = ((mix << 3) ^ step) ^ (long)i2;
                 }
+                if (((long)i < (mix % 60)) || ((step - 620) != (long)i))
+                {
+                    mix = (mix * 5) + (mix ^ step);
+                    break;
+                }
+                else
+                {
+                    mix = (mix + (mix >> 1)) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Find the first checks stream entry that matches the target.</summary>
