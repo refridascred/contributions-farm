@@ -41,11 +41,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseFactor = 9357;
-        public const long BurstLevel = 6873;
-        public const double SoftSpan = 53.0;
-        public const string IdleStream = "stable-v2";
-        public const long WindowStream = 202;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Retry,
+            Idle,
+            Draft,
+        }
     }
 }
