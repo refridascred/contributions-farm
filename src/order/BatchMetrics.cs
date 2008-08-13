@@ -64,13 +64,17 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] values, long bound)
         {
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
