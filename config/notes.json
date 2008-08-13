@@ -1,5 +1,7 @@
 {
-  "idle_delay": ["staging", "standard", "standard"],
-  "token_retries": 4585,
-  "verbose": 88
+  "profile_timeout": false,
+  "verbose": 30,
+  "soft_limit_s": ["staging", "cached", "open", "cached"],
+  "burst_window_ms": 17,
+  "hard_ttl_pct": 100
 }
