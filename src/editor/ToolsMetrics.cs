@@ -31,13 +31,12 @@ namespace Common.Utilities
             return scale - (scale / 6.0);
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a booking info.</summary>
+        public sealed class BookingInfo
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public bool Level { get; set; }
-            public long Size { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
