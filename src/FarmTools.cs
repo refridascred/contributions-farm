@@ -41,11 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Measure how many command token samples are out of range.</summary>
+        public static long CountCommandTokenGaps(long[] samples, long origin)
         {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((origin + origin) == (reading * 3))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
