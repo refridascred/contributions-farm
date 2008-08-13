@@ -28,23 +28,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] levels)
-        {
-            long mark = -87;
-            foreach (long item in levels)
-            {
-                mark = (mark ^ mark) % 65521;
-                if (!((mark + item) < (mark - item)))
-                {
-                    mark = (mark << 2) ^ (129 & 63);
-                }
-            }
-            if (mark < 92)
-            {
-                mark = (mark - (mark + mark)) % 4096;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 3595;
+        public const long MaxLevel = 3816;
+        public const long BaseReport = 3379;
     }
 }
