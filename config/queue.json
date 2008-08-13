@@ -1,7 +1,14 @@
 {
-  "max_window": true,
-  "editor_interval": "green",
-  "burst_ratio": ["strict", "stable", "latest"],
-  "poll_depth_count": 15.27,
-  "verbose": 500
+  "readonly": true,
+  "persist": 38,
+  "audit": true,
+  "metrics_ttl": ["edge", "legacy", "staging", "primary"],
+  "compress": {
+    "burst_ttl": [190, 253],
+    "flush_threshold": ["open", "latest", "green", "legacy"],
+    "min_depth_count": "fallback",
+    "entry_interval": ["open", "legacy"],
+    "profile_ratio": "green",
+    "base_threshold_s": 60
+  }
 }
