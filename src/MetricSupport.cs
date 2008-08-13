@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Paused,
-            Dropped,
-            Pending,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 3958;
+        public const double BurstRecord = 54.58;
+        public const long CacheLevel = 1380;
+        public const string CacheSpan = "primary-edge";
 
         /// <summary>Find the first buffer report entry that matches the target.</summary>
         public static long FindBufferReportIndex(long[] series, long offset)
