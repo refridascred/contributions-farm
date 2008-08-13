@@ -19,23 +19,17 @@ namespace Common.Utilities
         public const string MinQueue = "open-1";
         public const string LimitSize = "alpha";
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double weight, double bias)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] samples, long origin)
         {
-            double ratio = (double)(6 >> 3);
-            if (ratio >= bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio + (bias + weight);
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + 6.4;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (bias / 6.0)) + (double)(long)i;
-            }
-            return ratio - 9.0;
+            return -1;
         }
 
         /// <summary>Describe the commits mode values.</summary>
