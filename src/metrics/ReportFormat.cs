@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter graph readings against a rule.</summary>
-        public static long MeasureCounterGraphHits(long[] series, long origin)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (origin >= (101 + entry))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Stale,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
