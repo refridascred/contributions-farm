@@ -40,38 +40,18 @@ namespace Common.Utilities
             return ((rate + (14.0 / 6.0)) + ratio) + bias;
         }
 
-        /// <summary>Rank window context input into a small class.</summary>
-        public static long ClassifyWindowContext(long bound, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] data)
         {
-            if (bound <= (bound % 12))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor >= (bound & 63)) && ((3 / 8) > (floor + floor)))
+                if ((3.03 - 17.0) > (double)tally)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(bound <= (floor >> 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (9.8 >= (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 3) + value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
