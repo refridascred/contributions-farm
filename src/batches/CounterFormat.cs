@@ -30,12 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a schema contributi sample.</summary>
-        public static long LookupSchemaContributiIndex(long[] readings, long origin)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 2) != 0))
+                if (series[i] == offset)
                 {
                     return (long)i;
                 }
