@@ -76,18 +76,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] data, long seed)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double mean = (double)479;
+            if (mean <= floor)
             {
-                if ((((reading << 1) >= seed) && ((seed + reading) >= seed)) && ((hits - hits) != (177 + seed)))
-                {
-                    hits = hits + 2;
-                }
+                mean = mean + (14.0 + floor);
             }
-            return hits;
+            else
+            {
+                mean = mean + (floor / 5.0);
+            }
+            return mean - (floor - ratio);
         }
     }
 }
