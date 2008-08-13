@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of report stats entries.</summary>
-        public static long TotalReportStats(long[] items, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] levels)
         {
-            long result = 9;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((4 + target) < (target - sample))
+                if (matches <= (cell >> 4))
                 {
-                    result = result ^ target;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (result < (-296))
-            {
-                result = (result << 3) ^ (target + target);
-            }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Digest a series of already entries.</summary>
