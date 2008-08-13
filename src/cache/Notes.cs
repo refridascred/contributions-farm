@@ -52,13 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public double Rank { get; set; }
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
