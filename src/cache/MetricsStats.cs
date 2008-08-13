@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 4628;
-        public const long SoftCommand = 7839;
-        public const double MinCommand = 54.87;
-        public const string DefaultRatio = "local-v2";
-        public const long BatchScore = 4780;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 7.69;
+        public const double BatchWidth = 86.06;
+        public const long SoftWidth = 6997;
+        public const double BurstFarm = 55.44;
+        public const string WindowCount = "staging-1";
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LocateNotesIndex(long[] series, long floor)
