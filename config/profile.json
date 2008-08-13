@@ -1,5 +1,25 @@
 {
-  "graph_depth": "cached",
-  "metric_capacity": false,
-  "support_capacity": true
+  "burst_ttl_pct": 28,
+  "strict": {
+    "verbose": true,
+    "dry_run": "stable",
+    "batch_timeout": [419, 60],
+    "githubfarm_interval": false,
+    "max_depth_s": {
+      "batch_window_ms": 1885,
+      "base_threshold_ms": "edge",
+      "compress": 100,
+      "verbose": "staging"
+    },
+    "idle_interval": true
+  },
+  "enabled": {
+    "enabled": 94,
+    "flush_size": {
+      "dry_run": "staging",
+      "batch_delay": 2.58,
+      "window_ratio": 50
+    },
+    "default_retries_ms": "open"
+  }
 }
