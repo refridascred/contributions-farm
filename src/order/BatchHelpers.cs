@@ -34,12 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
     }
 }
