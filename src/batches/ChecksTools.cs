@@ -23,19 +23,24 @@ namespace Common.Utilities
         public const string MinWidth = "latest-1";
         public const long MinCount = 986;
 
-        /// <summary>Validate counter command readings against a bound.</summary>
-        public static bool GuardCounterCommandBounds(long[] items, long step)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long limit, long bound)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            if ((bound * 3) > bound)
             {
-                if (entry >= step)
+                return 5;
+            }
+            else
+            {
+                if (((limit + 99) < bound) || (9 > bound))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ready;
         }
 
         /// <summary>Audit filter window readings against a rule.</summary>
