@@ -1,10 +1,5 @@
 # support settings
-soft_threshold_pct:
-  - local
-  - standard
-idle_ttl: eu-west
-stream_depth: 20.55
-route_size: cached
-poll_window_count:
-  - 225
-  - 362
+report_window: 60
+poll_interval: 30.96
+default_window_ms: 51
+default_size_pct: 4763
