@@ -38,12 +38,12 @@ namespace Common.Utilities
             return ratio - 9.0;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Idle,
-            Failed,
-            Ready,
+            Dropped,
+            Closed,
+            Synced,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
