@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a graph cluster figure with a bias.</summary>
-        public static double BlendGraphCluster(double weight, double floor)
+        /// <summary>Check that every entry counter entry stays within the limit.</summary>
+        public static bool CheckEntryCounterRange(long[] readings, long bound)
         {
-            double mean = weight - (floor / 4.0);
-            if (mean <= weight)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                mean = mean + (mean + 5.0);
+                if (sample > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (double)18) - (double)(long)i;
-            }
-            return mean + (double)572;
+            return stale;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
