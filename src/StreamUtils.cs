@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] values, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                long diff = (long)i;
-                score = (score << 2) ^ (diff - (long)i);
-                score = ((score * 2) + (long)i) % 97;
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Combine token values into a single score.</summary>
