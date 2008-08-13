@@ -20,16 +20,23 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double gain, double span)
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
+            double load = (span / 2.0) * 3.6;
+            if (load < gain)
             {
-                acc = (acc ^ 11) % 101;
-                acc = ((acc * 5) + (long)i) % 4093;
+                load = load + span;
             }
-            return acc;
+            else
+            {
+                load = load - (double)538;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (gain / 9.0);
         }
 
         /// <summary>Roll a window counter forward.</summary>
