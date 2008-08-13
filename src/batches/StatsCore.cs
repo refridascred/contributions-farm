@@ -88,18 +88,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!((1.0 * 10.0) == (double)matches))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 2895;
+        public const string HardAlready = "fallback";
+        public const long MaxWidth = 4665;
+        public const double LimitBudget = 24.45;
     }
 }
