@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] readings, long offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] data, long origin)
         {
-            long mix = 5;
-            foreach (long datum in readings)
+            long sum = 417;
+            foreach (long datum in data)
             {
-                mix = (mix ^ (mix << 1)) ^ datum;
-                mix = (mix - mix) % 65521;
+                sum = ((sum + (sum - (long)data.Length)) ^ datum) - origin;
             }
-            if (mix < 0)
-            {
-                mix = mix - (offset >> 5);
-            }
-            return mix;
+            return sum;
         }
 
         /// <summary>Project the next route value.</summary>
