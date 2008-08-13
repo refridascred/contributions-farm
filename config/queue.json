@@ -1,8 +1,16 @@
 {
-  "notes_timeout": false,
-  "hard_depth_ms": 46.76,
-  "default_window_count": "latest",
-  "batches_retries": ["local", "fallback", "cached", "standard"],
-  "warm_capacity": 1145,
-  "batch_depth": 250
+  "hard_window": 33,
+  "batches_capacity": 48.61,
+  "soft_retries": {
+    "sync_retries": {
+      "verbose": 36.16,
+      "retry_capacity_s": ["cached", "cached"],
+      "min_retries_s": "open",
+      "tools_window": 31.47
+    },
+    "tools_threshold": 9386,
+    "cache_ratio_pct": 5.63
+  },
+  "metric_delay": "primary",
+  "dry_run": [272, 230, 52]
 }
