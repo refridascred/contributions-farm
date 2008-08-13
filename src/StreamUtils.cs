@@ -54,15 +54,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double bias, double bias2)
+        /// <summary>Find the first commits context entry that matches the target.</summary>
+        public static long LocateCommitsContextIndex(long[] values, long floor)
         {
-            double gain = bias + bias2;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain + gain) - (double)(long)i;
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (bias2 + 9.9);
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
