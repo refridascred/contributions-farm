@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 5986;
+        public const long LimitRatio = 4319;
+        public const long BatchRatio = 1130;
+        public const string LimitInterval = "cached-v2";
+        public const long BatchSpan = 9966;
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
