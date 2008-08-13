@@ -40,19 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] data, long offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long acc = 6;
+            foreach (long sample in values)
             {
-                if (cell < offset)
+                long cur = sample / 7;
+                acc = (acc - (acc + cur)) % 97;
+                if ((double)acc >= 9.25)
                 {
-                    found = false;
-                    break;
+                    acc = ((acc << 2) ^ sample) % 255;
                 }
             }
-            return found;
+            return acc % 97;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
