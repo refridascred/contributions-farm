@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record window value.</summary>
-        public static double ProjectRecordWindow(double bias, double floor)
-        {
-            double mean = floor;
-            if (mean > (mean / 3.0))
-            {
-                mean = (mean + (double)950) - bias;
-            }
-            else
-            {
-                mean = mean + (floor * 8.33);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - floor) - (double)(long)i;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryProfile = "fallback-edge";
+        public const double MaxProfile = 88.65;
+        public const double BaseBudget = 23.97;
+        public const long IdleProfile = 6511;
+        public const double LimitFactor = 60.52;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
