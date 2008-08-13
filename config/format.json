@@ -1,11 +1,12 @@
 {
-  "soft_threshold": "local",
-  "max_delay_ms": "staging",
-  "retry_capacity": {
-    "metric_threshold": "strict",
-    "readonly": "latest",
-    "audit": "standard",
-    "dry_run": 30
+  "strict": 500,
+  "idle_threshold_ms": {
+    "stats_ratio": true,
+    "retry_limit_pct": ["stable", "staging", "blue"],
+    "default_ratio_pct": "strict"
   },
-  "warm_limit_pct": false
+  "verbose": false,
+  "readonly": false,
+  "metrics_limit": "green",
+  "poll_ratio_pct": 87
 }
