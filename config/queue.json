@@ -1,6 +1,14 @@
 {
-  "default_interval": "strict",
-  "compress": true,
-  "poll_timeout_ms": "edge",
-  "burst_ratio_pct": "latest"
+  "poll_limit_count": 8,
+  "sync_limit_ms": 21,
+  "batch_delay": 60,
+  "cache_threshold_pct": "open",
+  "poll_threshold_pct": "edge",
+  "sync_ttl_count": {
+    "checks_timeout": 9532,
+    "report_window": 85,
+    "verbose": 7773,
+    "poll_retries_s": "eu-west",
+    "strict": "blue"
+  }
 }
