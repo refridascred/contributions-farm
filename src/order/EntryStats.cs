@@ -16,17 +16,39 @@ namespace Common.Utilities
             return bias2 + (double)(-40);
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] values, long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 8;
+            foreach (long cell in values)
             {
-                if ((values[i] >= target) && ((values[i] % 5) != 0))
+                if (((cell - sum) <= (cell & 15)) || ((double)cell > 7.07))
                 {
-                    return (long)i;
+                    sum = (sum - (seed - cell)) % 4096;
+                }
+                else
+                {
+                    sum = sum + (sum / 8);
+                    sum = (sum << 3) ^ (50 & 63);
+                }
+                if ((8.7 <= (double)sum) && ((sum % 24) >= (139 - sum)))
+                {
+                    sum = sum ^ (70 ^ (long)values.Length);
+                }
+                if (!(seed < (cell - cell)))
+                {
+                    sum = (sum << 2) ^ seed;
+                }
+                if ((sum % 5) < (seed - sum))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum < 3)
+            {
+                sum = (sum - seed) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Match up order samples.</summary>
