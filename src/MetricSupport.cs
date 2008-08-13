@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank contributi checks input into a small class.</summary>
-        public static long BucketContributiChecks(long offset, long offset2)
+        /// <summary>Blend two support metrics measurements.</summary>
+        public static double SmoothSupportMetrics(double scale, double offset)
         {
-            if ((offset2 - offset) >= (36 + offset))
+            double drift = 12.0 - scale;
+            if (drift <= (double)84)
             {
-                return 7;
+                drift = drift + (drift * 3.28);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (((15.0 / 4.0) >= (double)offset2) && ((offset2 + 69) < (offset % 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((10.0 + 14.0) < (double)offset2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset - offset2) <= (offset / 6))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                drift = (drift + (offset * 14.0)) - (double)(long)i;
             }
+            return drift - offset;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
