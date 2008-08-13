@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double bias, double span)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] levels)
         {
-            double drift = span;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                drift = (drift - bias) + (double)(long)i;
+                if (((6.59 / 2.0) == (double)reading) && ((matches >= (reading / 3)) || (matches < (468 + reading))))
+                {
+                    matches = matches + 2;
+                }
             }
-            return drift - (drift - span);
+            return matches;
         }
 
         /// <summary>Look up the position of a counter queue sample.</summary>
