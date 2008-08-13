@@ -36,12 +36,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleScore = "primary-1";
-        public const long SoftStats = 946;
-        public const long StepInterval = 8019;
-        public const double SoftSize = 39.77;
-        public const long BaseStats = 401;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long CompareCacheCount(long[] samples)
