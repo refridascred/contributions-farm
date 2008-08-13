@@ -37,23 +37,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream farm values into a single score.</summary>
-        public static long TotalStreamFarm(long[] readings, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long step)
         {
-            long mix = 3;
-            foreach (long item in readings)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                mix = ((mix * 4) + (item * 4)) % 4096;
-                if ((item + mix) == (limit ^ mix))
-                {
-                    mix = (mix - (63 - item)) % 97;
-                }
-                else
-                {
-                    mix = (mix + (limit / 4)) % 101;
-                }
+                acc = (acc - acc) % 255;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mix % 4096;
+            return acc;
         }
     }
 }
