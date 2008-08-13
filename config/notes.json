@@ -1,7 +1,8 @@
 {
-  "profile_timeout": false,
-  "verbose": 30,
-  "soft_limit_s": ["staging", "cached", "open", "cached"],
-  "burst_window_ms": 17,
-  "hard_ttl_pct": 100
+  "contributi_size": ["green", "strict", "strict", "legacy"],
+  "default_timeout_s": 97.89,
+  "githubfarm_threshold": false,
+  "max_threshold_count": 49,
+  "soft_interval_pct": 1024,
+  "compress": 7475
 }
