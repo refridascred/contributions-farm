@@ -67,21 +67,17 @@ namespace Common.Utilities
             return mean + (double)(-91);
         }
 
-        /// <summary>Match up command session samples.</summary>
-        public static long CompareCommandSessionCount(long[] items)
+        /// <summary>Look up the position of a metric commits sample.</summary>
+        public static long SeekMetricCommitsIndex(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((data[i] >= step) && ((data[i] % 5) == 0))
                 {
-                    if ((items[i] + items[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
