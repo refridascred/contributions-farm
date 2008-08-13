@@ -58,12 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Count the token route entries that pass the check.</summary>
+        public static long AuditTokenRouteMatches(long[] readings, long offset)
         {
-            Done,
-            Failed,
-            Retry,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (cell <= (cell & 7))
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the route mode values.</summary>
