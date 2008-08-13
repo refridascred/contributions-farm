@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] data)
-        {
-            long sum = -58;
-            foreach (long datum in data)
-            {
-                sum = (((sum << 2) ^ (sum + (-547))) % 255) ^ datum;
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultSize = 6269;
+        public const long MinNotes = 6240;
+        public const long BurstNotes = 2495;
+        public const long StepNotes = 6386;
+        public const long HardNotes = 9977;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long FoldQueue(long[] levels, long origin)
