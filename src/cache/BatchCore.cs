@@ -52,21 +52,22 @@ namespace Common.Utilities
             return rate - (4.5 - 5.16);
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = -93;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sum < (cell + 185))
                 {
-                    if ((samples[i] ^ samples[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum - 918;
                 }
             }
-            return matches;
+            if (sum < 939)
+            {
+                sum = ((sum << 2) ^ (offset << 3)) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
