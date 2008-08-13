@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const double HardCache = 43.63;
         public const string LimitSpan = "legacy-1";
 
-        /// <summary>Compare every pair of filter metric readings.</summary>
-        public static long PairFilterMetricCount(long[] items)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = (double)(3 - 560);
+            if (gain > weight)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain - gain) - bias;
             }
-            return matches;
+            return gain + (gain + weight);
         }
 
         /// <summary>Accumulate order samples.</summary>
