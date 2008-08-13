@@ -48,20 +48,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the already filter series from a seed.</summary>
-        public static long IterateAlreadyFilter(long step)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] data)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total << 3) ^ (step + total)) % 65521;
-                if ((long)i != (59 ^ step))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total + step) % 255;
+                    if ((data[i] - data[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
