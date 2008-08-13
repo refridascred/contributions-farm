@@ -54,11 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] readings, long bound)
         {
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + tally) != (tally + datum))
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
     }
 }
