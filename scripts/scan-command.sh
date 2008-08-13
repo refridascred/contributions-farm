@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest standard; do
+for item in legacy eu-west standard; do
     log "checking ${item}"
 done
 
-mode="${1:-blue}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=149
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
