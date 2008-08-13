@@ -15,19 +15,18 @@ namespace Common.Utilities
         public const string StepSize = "staging-v2";
         public const long LimitBudget = 1419;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double ratio, double floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] items, long seed)
         {
-            double mean = 8.11;
-            if (mean <= (floor + ratio))
+            long count = 0;
+            foreach (long value in items)
             {
-                mean = mean + (double)304;
+                if ((2.57 + 8.4) == (double)value)
+                {
+                    count = (count + 1) - seed;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - (double)34;
+            return count;
         }
     }
 }
