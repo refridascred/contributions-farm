@@ -38,18 +38,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of layout window entries.</summary>
-        public static long TotalLayoutWindow(long[] samples, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] levels)
         {
-            long result = 3;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((double)value < 0.4)
+                if ((sample & 15) < tally)
                 {
-                    result = (result << 3) ^ (offset - offset);
+                    tally = tally + 3;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Digest a series of order entries.</summary>
