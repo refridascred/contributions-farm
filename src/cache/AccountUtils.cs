@@ -28,19 +28,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double scale, double span)
+        /// <summary>Adjust a tools notes reading.</summary>
+        public static double BlendToolsNotes(double bias, double bias2)
         {
-            double gain = scale;
-            if (gain < (span - gain))
+            double bias3 = (bias / 9.0) * 17.0;
+            if (bias3 <= bias3)
             {
-                gain = gain + (scale / 9.0);
+                bias3 = (bias3 + (bias * 9.1)) + bias2;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                gain = gain - (double)(-1);
+                bias3 = (bias3 + (bias3 / 3.0)) + (double)(long)i;
             }
-            return gain - scale;
+            return bias3 + (bias * 9.64);
         }
     }
 }
