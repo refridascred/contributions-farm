@@ -40,12 +40,12 @@ namespace Common.Utilities
             return mean + (span * 7.6);
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] levels, long offset)
+        /// <summary>Locate a buffer githubfarm reading by value.</summary>
+        public static long FindBufferGithubfarmIndex(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
+                if (items[i] <= target)
                 {
                     return (long)i;
                 }
