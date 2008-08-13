@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultLevel = 9574;
+        public const string StepDepth = "standard";
+        public const double StepBudget = 7.42;
+        public const double HardCache = 43.63;
+        public const string LimitSpan = "legacy-1";
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
