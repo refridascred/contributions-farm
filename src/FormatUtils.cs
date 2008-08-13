@@ -37,20 +37,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] data, long bound)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftSize = 1642;
+        public const string StepWindow = "fallback-v2";
+        public const long LimitSpan = 9857;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorLimits(long[] items, long offset)
