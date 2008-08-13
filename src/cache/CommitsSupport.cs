@@ -73,17 +73,18 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] items, long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (items[i] >= target)
+                if ((((reading << 1) >= seed) && ((seed + reading) >= seed)) && ((hits - hits) != (177 + seed)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
