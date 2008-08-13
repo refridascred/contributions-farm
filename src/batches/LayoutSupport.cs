@@ -49,22 +49,15 @@ namespace Common.Utilities
         public const double StepFormat = 82.95;
         public const long StepDepth = 452;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] series, long origin)
+        /// <summary>Combine graph format values into a single score.</summary>
+        public static long FoldGraphFormat(long[] items, long offset)
         {
-            long score = 3;
-            foreach (long value in series)
+            long carry = 62;
+            foreach (long cell in items)
             {
-                if ((-344) >= (value + score))
-                {
-                    score = ((score * 4) + (score / 3)) - origin;
-                }
-                else
-                {
-                    score = (score * 5) + (score * 3);
-                }
+                carry = (((carry - carry) % 1000) + cell) - offset;
             }
-            return score;
+            return carry % 1000;
         }
     }
 }
