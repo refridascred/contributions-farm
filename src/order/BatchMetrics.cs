@@ -78,11 +78,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Look up the position of a farm batches sample.</summary>
+        public static long LookupFarmBatchesIndex(long[] levels, long seed)
         {
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
