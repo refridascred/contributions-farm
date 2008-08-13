@@ -29,17 +29,23 @@ namespace Common.Utilities
         public const double DefaultTimeout = 83.8;
         public const string IdleChannel = "open-v2";
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] values, long floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] < floor)
+                if ((double)state <= (13.0 * 2.0))
                 {
-                    return (long)i;
+                    state = state + (state + floor);
                 }
+                else
+                {
+                    state = state ^ (floor & 1);
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
     }
 }
