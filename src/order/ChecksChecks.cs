@@ -42,14 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Stale,
-            Dropped,
-            Ready,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitTimeout = 1453;
+        public const long DefaultDepth = 9925;
+        public const double BatchLevel = 90.86;
+        public const long WindowFactor = 5575;
+        public const long DefaultChannel = 7902;
     }
 }
