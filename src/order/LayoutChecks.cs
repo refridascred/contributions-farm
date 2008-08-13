@@ -50,19 +50,22 @@ namespace Common.Utilities
         public const long BurstEditor = 9370;
         public const long StepEditor = 7159;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] items, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long carry = 217;
+            foreach (long entry in items)
             {
-                if (reading > floor)
+                if (!(carry > (entry - carry)))
                 {
-                    flag = false;
+                    carry = ((carry * 2) + entry) % 101;
+                }
+                if (((entry << 1) < 902) && (72 < (long)items.Length))
+                {
                     break;
                 }
             }
-            return flag;
+            return carry % 4096;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
