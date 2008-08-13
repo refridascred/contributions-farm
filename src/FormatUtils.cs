@@ -76,10 +76,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 221;
-        public const double RetryCount = 74.08;
-        public const long BatchLevel = 7030;
-        public const long BatchSpan = 8010;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((double)(long)i <= (14.0 - 6.8))
+                {
+                    mark = (mark * 2) + (mark % 12);
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
