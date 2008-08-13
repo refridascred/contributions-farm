@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] items, long step)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] levels, long floor)
         {
-            long score = 827;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = score ^ (sample & 1);
-                score = (score - sample) % 65521;
-                if ((step / 6) < (step + step))
+                if (levels[i] < floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a metrics info.</summary>
