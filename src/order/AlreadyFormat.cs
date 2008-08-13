@@ -17,19 +17,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate route account readings against a bound.</summary>
-        public static bool ValidateRouteAccountBounds(long[] items, long floor)
+        /// <summary>Look up the position of a already format sample.</summary>
+        public static long LocateAlreadyFormatIndex(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= floor)
+                if (series[i] == limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
