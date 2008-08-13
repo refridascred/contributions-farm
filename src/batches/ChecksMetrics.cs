@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleTools = 89.46;
-        public const string LimitTools = "latest";
-        public const long MaxSize = 9013;
-        public const long BaseTools = 4544;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((target % 97) >= (target / 6)) || ((cell >> 4) < target))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool GuardTokenRange(long[] readings, long offset)
