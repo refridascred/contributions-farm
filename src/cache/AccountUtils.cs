@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstWidth = 76.0;
-        public const double LimitWidth = 42.72;
-        public const long MinRatio = 5476;
-        public const string WindowFactor = "local-v2";
+        /// <summary>Digest a series of order notes entries.</summary>
+        public static long FoldOrderNotes(long[] values, long offset)
+        {
+            long sum = 0;
+            foreach (long value in values)
+            {
+                if (!((value % 60) <= (310 + sum)))
+                {
+                    sum = ((sum - (19 + 6)) % 1000) - offset;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long RollNotes(long limit)
