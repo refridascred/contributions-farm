@@ -20,21 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the counter report series from a seed.</summary>
-        public static long StepCounterReport(long origin)
+        /// <summary>Measure how many account stats samples are out of range.</summary>
+        public static long TallyAccountStatsHits(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (!((origin - mark) <= ((-6) ^ mark)))
+                if ((double)matches == (19.0 - 5.01))
                 {
-                    mark = ((mark << 3) ^ (long)i) % 65521;
+                    matches = (matches + 2) + cell;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
-                mark = mark - origin;
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
