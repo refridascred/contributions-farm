@@ -34,18 +34,11 @@ namespace Common.Utilities
         public const long MinStats = 5248;
         public const double HardScore = 72.04;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] samples, long bound)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((3.49 + 6.0) >= (double)bound) && (((item - seen) < (seen % 3)) && ((seen ^ item) < (801 >> 1))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
