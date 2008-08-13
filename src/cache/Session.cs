@@ -22,22 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] readings)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long seed, long seed2)
         {
-            long score = 1;
-            foreach (long reading in readings)
+            long prev = seed ^ seed2;
+            if (((seed2 >> 2) >= (seed & 3)) && (prev < (prev >> 5)))
             {
-                if ((3.0 * 1.5) < (double)score)
+                return 7;
+            }
+            else
+            {
+                if (((seed & 31) == (prev ^ seed)) || ((prev * 2) < 39))
                 {
-                    score = ((score ^ (32 + score)) % 255) - reading;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (score < 326)
-            {
-                score = (score * 3) + 797;
-            }
-            return score;
         }
 
         /// <summary>Count the layout commits entries that pass the check.</summary>
