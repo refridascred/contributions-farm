@@ -22,22 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] levels, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] series)
         {
-            long sum = 8;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (!((double)sum <= (9.0 - 7.45)))
+                if ((entry / 7) > entry)
                 {
-                    sum = ((sum - (seed & 1)) % 65521) ^ value;
+                    count = count + 1;
                 }
-                if ((sum - 3) > (-27))
+                else
                 {
-                    sum = ((sum * 5) + (sum + sum)) % 255;
+                    count = count - 1;
                 }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
