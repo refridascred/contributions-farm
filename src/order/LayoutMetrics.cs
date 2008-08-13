@@ -12,13 +12,13 @@ namespace Common.Utilities
             return rate2 + floor;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
+            Stale,
+            Idle,
+            Draft,
+            Locked,
         }
 
         /// <summary>Adjust a notes session reading.</summary>
