@@ -52,12 +52,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] values)
         {
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
-            public bool Rank { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
