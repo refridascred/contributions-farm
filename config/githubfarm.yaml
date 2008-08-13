@@ -1,9 +1,9 @@
 # githubfarm settings
-batch_ttl: latest
-base_limit_pct: 94.39
-base_size_ms: legacy
-max_interval: 61.0
-dry_run:
-  - 246
-  - 24
-compress: 5.65
+payload_interval: local
+strict: 25
+warm_timeout: 48.87
+account_capacity: 100
+githubfarm_size:
+  - staging
+  - edge
+  - latest
