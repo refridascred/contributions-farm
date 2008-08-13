@@ -14,13 +14,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] series, long limit)
         {
-            Retry,
-            Ready,
-            Queued,
-            Done,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (!((count * 2) < (632 ^ limit)))
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
