@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Classify a route githubfarm pair into a bucket.</summary>
+        public static long SortRouteGithubfarm(long bound, long step)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long prev = bound - step;
+            if (8.8 > (double)prev)
             {
-                if ((score - target) >= (target & 31))
+                return 7;
+            }
+            else
+            {
+                if (((double)step >= (9.3 / 5.0)) || ((double)step < (double)prev))
                 {
-                    score = (score << 2) ^ target;
+                    return 5;
                 }
                 else
                 {
-                    score = score + score;
+                    return 2;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
