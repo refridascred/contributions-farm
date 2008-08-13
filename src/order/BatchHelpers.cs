@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Roll a command batch counter forward.</summary>
+        public static long SeriesCommandBatch(long offset)
         {
-            Pending,
-            Synced,
-            Failed,
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = ((mark - (offset - mark)) % 255) - (long)i2;
+                }
+                if ((mark >> 1) < (long)i)
+                {
+                    mark = ((mark << 3) ^ (offset + 156)) % 65521;
+                }
+                mark = ((mark << 3) ^ (offset + offset)) % 101;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Audit report profile readings against a rule.</summary>
