@@ -42,11 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 2152;
-        public const double StepProfile = 50.07;
-        public const double RetryTimeout = 80.95;
-        public const double LimitProfile = 67.27;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] values, long limit)
+        {
+            long anchor = 48;
+            foreach (long value in values)
+            {
+                if ((double)limit < (6.9 * 1.6))
+                {
+                    anchor = (anchor + value) % 97;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Fold a list of payload window readings.</summary>
         public static long TallyPayloadWindow(long[] values)
