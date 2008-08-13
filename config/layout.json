@@ -1,5 +1,19 @@
 {
-  "min_depth_ms": [477, 154],
-  "hard_capacity": false,
-  "max_timeout_pct": true
+  "min_size_ms": {
+    "route_capacity": 62.27,
+    "max_ttl_ms": true,
+    "persist": "strict",
+    "strict": {
+      "editor_ttl": true,
+      "max_threshold_pct": 2285,
+      "hard_timeout_ms": "local"
+    },
+    "default_retries_pct": false,
+    "route_retries": true
+  },
+  "soft_capacity": 9.61,
+  "filter_capacity": 59,
+  "cache_depth_count": 1226,
+  "format_capacity": 4.26,
+  "stream_timeout": "legacy"
 }
