@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count format route pairs that satisfy a relation.</summary>
-        public static long OverlapFormatRouteCount(long[] data)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long origin, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((seed - seed) != (seed >> 2)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((seed ^ origin) <= (944 * 5)) && ((seed + origin) >= origin))
                 {
-                    if ((data[i] - data[j]) > 1)
+                    return 5;
+                }
+                else
+                {
+                    if (((seed * 4) != (seed % 2)) || ((double)seed <= (19.0 - 4.0)))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
