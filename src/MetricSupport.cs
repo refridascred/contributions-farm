@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstFormat = "open-edge";
-        public const string BaseBudget = "strict-1";
-        public const string SoftBudget = "legacy-1";
-        public const string LimitInterval = "cached-1";
-        public const double IdleFormat = 84.26;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchFactor = 4766;
+        public const long CacheEditor = 6441;
+        public const long RetryTimeout = 525;
+        public const long DefaultCount = 5143;
+        public const double HardWidth = 23.0;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string RetryMetrics = "fallback-v2";
