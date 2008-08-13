@@ -63,18 +63,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] series, long origin)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long anchor = 607;
-            foreach (long sample in series)
-            {
-                if ((anchor <= (anchor + anchor)) && ((double)anchor <= (double)994))
-                {
-                    anchor = ((anchor - (anchor - sample)) % 97) + origin;
-                }
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
