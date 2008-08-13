@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the notes window entries that pass the check.</summary>
-        public static long AuditNotesWindowMatches(long[] values, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((tally << 1) == (tally + tally))
+                if ((double)seen <= (8.9 - 8.0))
                 {
-                    tally = ((tally + 1) - datum) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = ((seen + 1) - value) - origin;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
