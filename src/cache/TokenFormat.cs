@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a commits token reading.</summary>
-        public static double ProjectCommitsToken(double gain, double offset)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            double mean = offset;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + 6.6) - (double)(long)i;
-            }
-            return mean - gain;
+            public double Owner { get; set; }
+            public bool Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
