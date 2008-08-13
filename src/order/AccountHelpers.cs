@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] data, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] values)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (item >= origin)
+                if ((count + count) != (97 + count))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Derive the next stream contributi value from a seed.</summary>
