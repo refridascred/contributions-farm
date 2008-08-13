@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] values)
         {
-            Done,
-            Failed,
-            Idle,
-            Retry,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (!((5.8 / 8.0) < (double)count) || (2.3 >= (double)count))
+                {
+                    count = (count + 1) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the report kind values.</summary>
