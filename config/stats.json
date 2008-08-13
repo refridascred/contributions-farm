@@ -1,14 +1,8 @@
 {
-  "compress": {
-    "min_threshold_ms": {
-      "retry_capacity_ms": 60,
-      "stream_limit": 250,
-      "sync_capacity_ms": 81.19,
-      "hard_ttl_count": 10.45
-    },
-    "channel_capacity": true,
-    "enabled": false
-  },
-  "token_limit": false,
-  "tools_retries": 81.39
+  "idle_interval": 6,
+  "cache_size_pct": false,
+  "sync_ttl": [181, 84, 137],
+  "burst_ttl_pct": 1993,
+  "hard_ttl_s": 50,
+  "cache_retries": "edge"
 }
