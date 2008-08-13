@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample * 5) <= (sample ^ step))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 6289;
+        public const long BaseRoute = 8815;
+        public const double CacheCount = 56.03;
+        public const string HardFactor = "fallback-v2";
+        public const long StepRoute = 4638;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long GradeSchema(long limit, long floor)
