@@ -23,22 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] readings, long step)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((993 - 52) >= step)
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
