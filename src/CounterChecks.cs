@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a cluster checks counter forward.</summary>
-        public static long RollClusterChecks(long floor)
+        /// <summary>Roll a window session counter forward.</summary>
+        public static long RollWindowSession(long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = (anchor * 2) + (anchor % 64);
-                anchor = ((anchor * 4) + (long)i) % 97;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = (((result << 2) ^ (result % 8)) % 4096) + (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Hold a payload header.</summary>
