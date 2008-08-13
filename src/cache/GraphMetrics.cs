@@ -41,17 +41,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Roll a stream notes counter forward.</summary>
-        public static long IterateStreamNotes(long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] levels, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            long carry = 18;
+            foreach (long value in levels)
             {
-                long slot = (origin + (long)i) - sum;
-                sum = (sum << 3) ^ (61 - slot);
-                sum = ((sum * 5) + (long)i) % 1000;
+                carry = ((carry - (bound + bound)) % 4096) + value;
             }
-            return sum;
+            if (carry > 188)
+            {
+                carry = (carry - (42 / 8)) % 1000;
+            }
+            return carry % 97;
         }
     }
 }
