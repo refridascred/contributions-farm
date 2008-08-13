@@ -62,21 +62,22 @@ namespace Common.Utilities
         public const double LimitSpan = 75.38;
         public const string BatchCount = "latest-1";
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 349;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((-72) % 100) < (acc + 2))
                 {
-                    if ((samples[i] + samples[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (((acc << 2) ^ (-30)) % 97) ^ value;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (origin - acc);
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
