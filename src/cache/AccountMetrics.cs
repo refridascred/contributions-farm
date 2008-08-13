@@ -19,17 +19,16 @@ namespace Common.Utilities
         public const string MinQueue = "open-1";
         public const string LimitSize = "alpha";
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] samples, long origin)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
+                carry = (carry * 4) + (carry << 3);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the commits mode values.</summary>
