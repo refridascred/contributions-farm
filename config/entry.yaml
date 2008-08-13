@@ -1,8 +1,5 @@
 # entry settings
-sync_window_s: 8651
-retry_ratio_s: eu-west
-hard_size:
-  default_retries_pct: 91.25
-  sync_delay: true
-  flush_limit_pct: staging
-  hard_interval_ms: 43
+payload_ratio: 42.14
+batch_interval: 4737
+flush_size_pct: 81
+audit: standard
