@@ -32,12 +32,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Roll a context stats counter forward.</summary>
+        public static long StepContextStats(long target)
         {
-            Paused,
-            Locked,
-            Dropped,
+            long carry = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((carry - carry) < (carry / 6)) && ((carry & 255) <= (carry % 97)))
+                {
+                    carry = (carry - (84 * 4)) % 65521;
+                }
+                carry = (carry - ((long)i + target)) % 65521;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
