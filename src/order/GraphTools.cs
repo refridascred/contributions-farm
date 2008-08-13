@@ -37,15 +37,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long score = 35;
-            foreach (long cell in series)
-            {
-                score = ((score << 3) ^ score) ^ cell;
-            }
-            return score % 4096;
+            public double Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Match up checks samples.</summary>
