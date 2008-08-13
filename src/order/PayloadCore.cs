@@ -27,21 +27,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] items)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Rank command input into a small class.</summary>
