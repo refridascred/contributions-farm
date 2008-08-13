@@ -32,39 +32,10 @@ namespace Common.Utilities
         public const string LimitInterval = "cached-1";
         public const double IdleFormat = 84.26;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long limit, long offset)
-        {
-            long delta = limit ^ offset;
-            if ((limit & 255) >= (limit + limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset > (delta >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((delta + limit) != (offset >> 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)offset <= (6.65 * 8.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryMetrics = "fallback-v2";
+        public const double MinCount = 47.95;
+        public const long HardMetrics = 4012;
+        public const long CacheSpan = 8505;
     }
 }
