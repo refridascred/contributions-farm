@@ -13,18 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 562;
+        public const long BaseCount = 5993;
+        public const double HardAlready = 54.07;
+        public const double StepSize = 47.09;
+        public const long BurstAlready = 3597;
 
         /// <summary>Accumulate record entry samples.</summary>
         public static long DigestRecordEntry(long[] values)
