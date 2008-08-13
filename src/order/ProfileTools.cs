@@ -59,21 +59,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
