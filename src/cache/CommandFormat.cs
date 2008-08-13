@@ -23,12 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 968;
-        public const long CacheContributi = 1174;
-        public const long IdleLevel = 9825;
-        public const long BatchScore = 6225;
-        public const string CacheRatio = "stable-1";
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
