@@ -43,22 +43,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] readings)
+        /// <summary>Count stats already pairs that satisfy a relation.</summary>
+        public static long OverlapStatsAlreadyCount(long[] levels)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(count <= (value - value)) && ((double)value > 9.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] + levels[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Adjust a layout reading.</summary>
