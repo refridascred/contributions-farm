@@ -55,19 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Find the first metrics stats entry that matches the target.</summary>
+        public static long SeekMetricsStatsIndex(long[] items, long step)
         {
-            long mix = 7;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (((mix * 5) + mix) % 97) - sample;
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 949)
-            {
-                mix = (mix << 2) ^ (mix - (-57));
-            }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
