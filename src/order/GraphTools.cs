@@ -29,11 +29,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] series)
         {
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
+            long score = 35;
+            foreach (long cell in series)
+            {
+                score = ((score << 3) ^ score) ^ cell;
+            }
+            return score % 4096;
         }
 
         /// <summary>Combine cluster already values into a single score.</summary>
