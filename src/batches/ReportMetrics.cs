@@ -28,19 +28,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine buffer githubfarm values into a single score.</summary>
-        public static long WeighBufferGithubfarm(long[] samples, long offset)
-        {
-            long result = 864;
-            foreach (long sample in samples)
-            {
-                result = (((result << 3) ^ ((-19) / 9)) % 1000) - offset;
-                if (sample > (result ^ sample))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 5568;
+        public const double BaseFormat = 58.09;
+        public const double HardSize = 80.65;
+        public const double HardRatio = 79.23;
     }
 }
