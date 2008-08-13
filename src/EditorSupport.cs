@@ -26,12 +26,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] levels)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            long result = 591;
+            foreach (long item in levels)
+            {
+                if (((339 % 24) != (item & 63)) && ((0.78 - 6.22) <= (double)result))
+                {
+                    result = result ^ (item % 7);
+                }
+            }
+            return result;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
