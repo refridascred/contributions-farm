@@ -36,13 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Roll a record stream counter forward.</summary>
+        public static long RollRecordStream(long seed)
         {
-            public string Token { get; set; } = "";
-            public double Score { get; set; }
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    sum = ((sum * 2) + (sum * 4)) - (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
