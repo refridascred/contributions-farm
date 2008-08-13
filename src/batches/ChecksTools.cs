@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] items)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (832 < (58 + value))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Stale,
+            Active,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
