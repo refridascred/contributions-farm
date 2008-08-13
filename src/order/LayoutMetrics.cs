@@ -27,22 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stream commits entries that pass the check.</summary>
-        public static long TallyStreamCommitsMatches(long[] items)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long sum = -58;
+            foreach (long datum in data)
             {
-                if ((2.0 - 4.5) == (double)seen)
-                {
-                    seen = (seen + 3) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = (((sum << 2) ^ (sum + (-547))) % 255) ^ datum;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
