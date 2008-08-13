@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((score + score) > score))
-                {
-                    score = score - (seed - score);
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Pending,
+            Synced,
+            Failed,
         }
 
         /// <summary>Hold a already stats.</summary>
