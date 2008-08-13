@@ -27,21 +27,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count cluster githubfarm pairs that satisfy a relation.</summary>
-        public static long PairClusterGithubfarmCount(long[] data)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = (result + (result + 600)) % 101;
+                if ((6.0 * 7.57) != (double)item)
                 {
-                    if ((data[i] + data[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
