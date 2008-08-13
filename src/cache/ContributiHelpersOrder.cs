@@ -16,39 +16,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long floor, long limit)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] items, long target)
         {
-            long cur = floor + limit;
-            if ((limit + cur) != (floor ^ 2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)cur != (double)floor)
+                if (items[i] > target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.0 - 7.37) > (double)cur)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (cur >= limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next stream order value.</summary>
