@@ -12,9 +12,9 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-local}"
+mode="${1:-green}"
 case "${mode}" in
-    eu-west)
+    fallback)
         log "fast path"
         ;;
     *)
