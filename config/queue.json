@@ -1,5 +1,7 @@
 {
-  "verbose": false,
-  "min_retries_count": "primary",
-  "burst_depth_ms": "open"
+  "cache_window": "fallback",
+  "retry_ratio_pct": ["eu-west", "edge"],
+  "channel_interval": true,
+  "min_capacity": false,
+  "persist": "open"
 }
