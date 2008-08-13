@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const double IdleTimeout = 87.57;
         public const double LimitSize = 74.11;
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public long Score { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
