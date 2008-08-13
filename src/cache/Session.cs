@@ -57,14 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Ready,
-            Idle,
-            Retry,
-            Done,
+            Failed,
             Closed,
+            Stale,
+            Queued,
+            Active,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
