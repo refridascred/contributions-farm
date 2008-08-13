@@ -1,8 +1,5 @@
 {
-  "compress": false,
-  "flush_ratio_pct": [60, 208, 426, 446],
-  "poll_limit_ms": [203, 224, 373],
-  "max_retries_ms": "latest",
-  "cluster_delay": 500,
-  "enabled": 7
+  "tools_capacity": true,
+  "strict": "fallback",
+  "audit": 4528
 }
