@@ -33,9 +33,39 @@ namespace Common.Utilities
         public const string BaseMetrics = "latest";
         public const long StepMetrics = 9959;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchEntry = "strict-edge";
-        public const string HardBudget = "legacy-v2";
-        public const string BaseFactor = "open-1";
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long limit, long floor)
+        {
+            long cur = limit + floor;
+            if ((cur <= (floor + floor)) || ((double)floor <= (9.4 + 4.7)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((cur % 12) < (limit / 6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit % 12) < (limit + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (cur >= (1 + cur))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
