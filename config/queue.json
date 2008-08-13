@@ -1,12 +1,8 @@
 {
-  "persist": 250,
-  "retry_limit": {
-    "idle_interval_ms": "legacy",
-    "readonly": "stable",
-    "hard_delay_count": 30.25,
-    "token_limit": 73.17
-  },
-  "support_depth": "strict",
-  "readonly": true,
-  "checks_capacity": 1024
+  "poll_size_ms": 50,
+  "filter_threshold": [100, 96],
+  "default_interval_s": "standard",
+  "support_retries": 29.71,
+  "persist": 9232,
+  "profile_size": true
 }
