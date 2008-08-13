@@ -26,18 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] series)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] readings, long target)
         {
-            long score = 7;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((sample - sample) == (score >> 5))
+                if (cell < target)
                 {
-                    score = ((score << 3) ^ (score * 2)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
     }
 }
