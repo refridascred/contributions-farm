@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstRatio = 3367;
-        public const double CacheFactor = 24.91;
-        public const long SoftTimeout = 2316;
-        public const long MinTimeout = 1610;
-        public const long DefaultBudget = 6456;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate farm stream samples.</summary>
         public static long CombineFarmStream(long[] levels)
