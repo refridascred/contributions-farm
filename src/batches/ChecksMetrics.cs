@@ -13,19 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] readings, long offset)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a batches counter forward.</summary>
