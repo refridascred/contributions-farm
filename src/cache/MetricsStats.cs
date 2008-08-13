@@ -27,20 +27,10 @@ namespace Common.Utilities
             return mean + (bias - ratio);
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double ratio, double span)
-        {
-            double mean = (ratio + ratio) / 4.0;
-            if (mean > span)
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean - (double)73;
-            }
-            return mean + (span * 7.6);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 1268;
+        public const string CacheCount = "staging-edge";
+        public const long MinFormat = 3198;
 
         /// <summary>Rank window batches input into a small class.</summary>
         public static long BucketWindowBatches(long target, long step)
