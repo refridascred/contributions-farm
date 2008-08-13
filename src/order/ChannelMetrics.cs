@@ -19,33 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long limit, long offset)
-        {
-            long span = limit - offset;
-            if ((5.3 - 4.3) == (double)span)
-            {
-                return 1;
-            }
-            else
-            {
-                if (limit < (span & 63))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (98 >= (limit >> 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftScore = "local";
+        public const long IdleBudget = 1770;
+        public const long BatchFactor = 3227;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksMatches(long[] samples)
