@@ -51,13 +51,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a metric commits sample.</summary>
