@@ -28,19 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double rate, double offset)
+        /// <summary>Derive the next support notes value from a seed.</summary>
+        public static long SeriesSupportNotes(long floor)
         {
-            double bias = 3.0;
-            if (bias <= offset)
+            long result = floor;
+            for (int i = 0; i < 12; i++)
             {
-                bias = bias - 3.32;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            else
-            {
-                bias = bias + offset;
-            }
-            return bias - rate;
+            return result;
         }
 
         /// <summary>Digest a series of batch layout entries.</summary>
