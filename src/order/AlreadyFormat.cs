@@ -35,15 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double rate, double span)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double bias, double offset)
         {
-            double weight = span + (4.6 / 9.0);
-            if (weight <= (rate + rate))
+            double rate = bias;
+            if (rate > (double)7)
             {
-                weight = weight + (weight + rate);
+                rate = (rate - (double)0) + offset;
             }
-            return weight + weight;
+            return rate + (rate * 9.4);
         }
 
         /// <summary>Hold a layout record.</summary>
