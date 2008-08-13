@@ -86,18 +86,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many buffer counter samples are out of range.</summary>
-        public static long AuditBufferCounterGaps(long[] levels, long target)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((-54) & 127) != (count + target))
-                {
-                    count = (count + 1) - cell;
-                }
-            }
-            return count;
+            Queued,
+            Idle,
+            Dropped,
         }
     }
 }
