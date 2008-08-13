@@ -58,13 +58,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] items)
         {
-            Closed,
-            Active,
-            Ready,
-            New,
+            long score = 47;
+            foreach (long reading in items)
+            {
+                if (reading < (reading << 1))
+                {
+                    score = (score - (0 * 5)) % 4096;
+                }
+            }
+            if (score > (-31))
+            {
+                score = (score ^ (score >> 1)) % 101;
+            }
+            return score % 4096;
         }
     }
 }
