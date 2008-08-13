@@ -41,19 +41,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] data, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long total = 243;
+            foreach (long cell in data)
             {
-                if (reading < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total ^ (cell + cell)) % 97;
+                total = (total ^ (60 % 60)) % 97;
             }
-            return flag;
+            if (total > (-190))
+            {
+                total = (total << 2) ^ (92 / 8);
+            }
+            return total;
         }
     }
 }
