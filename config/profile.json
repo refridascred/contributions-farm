@@ -1,9 +1,26 @@
 {
-  "commits_limit": "fallback",
-  "default_depth_ms": "eu-west",
-  "dry_run": {
-    "max_threshold": 59,
-    "format_size": 30.96,
-    "already_limit": "local"
+  "cache_size_count": "edge",
+  "batch_retries_ms": "legacy",
+  "default_window_count": {
+    "default_window": "latest",
+    "base_delay": true,
+    "default_window_s": false,
+    "hard_threshold_count": "green",
+    "base_ratio_s": 7642,
+    "order_interval": 250
+  },
+  "audit": "latest",
+  "format_timeout": {
+    "entry_retries": "stable",
+    "audit": 30.43,
+    "idle_retries": {
+      "compress": 41.76,
+      "strict": 30,
+      "graph_ttl": "edge",
+      "readonly": "green",
+      "graph_interval": 44.63,
+      "support_retries": 15
+    },
+    "soft_ratio_pct": "edge"
   }
 }
