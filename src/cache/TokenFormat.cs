@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
+            Synced,
+            New,
+            Closed,
+            Draft,
+            Active,
         }
 
         /// <summary>Grade a schema contributi value against two limits.</summary>
