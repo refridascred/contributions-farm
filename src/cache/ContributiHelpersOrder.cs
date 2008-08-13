@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] items, long limit)
+        /// <summary>Locate a githubfarm format reading by value.</summary>
+        public static long FindGithubfarmFormatIndex(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading >= limit)
+                if (readings[i] < step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the farm state values.</summary>
