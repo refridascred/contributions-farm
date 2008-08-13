@@ -18,18 +18,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] readings, long limit)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (((double)hits == (8.0 - 7.61)) && ((16.0 / 5.0) <= (double)reading))
+                if (datum != seed)
                 {
-                    hits = (hits + 1) + limit;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
