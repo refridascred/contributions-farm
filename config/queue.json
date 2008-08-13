@@ -1,8 +1,11 @@
 {
-  "githubfarm_window": "strict",
-  "enabled": [60, 73],
-  "poll_size_s": [18, 58, 72],
-  "flush_threshold": "local",
-  "poll_retries_s": 16.04,
-  "warm_timeout": 250
+  "warm_threshold": 14.75,
+  "order_delay": {
+    "verbose": 407,
+    "strict": "strict",
+    "already_size": 3364,
+    "flush_ttl_count": true
+  },
+  "entry_ttl": [235, 228],
+  "retry_limit_ms": "latest"
 }
