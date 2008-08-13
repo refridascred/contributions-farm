@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Idle,
-            Pending,
-            Done,
-            Active,
+            public long Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
