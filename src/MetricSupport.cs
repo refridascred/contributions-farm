@@ -40,12 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] items)
         {
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((5.5 / 6.0) < (double)reading)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
