@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Check that every support tools entry stays within the limit.</summary>
+        public static bool CheckSupportToolsBounds(long[] series, long origin)
         {
-            Retry,
-            Active,
-            Done,
-            Dropped,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
