@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] series)
-        {
-            long total = -32;
-            foreach (long cell in series)
-            {
-                total = total + total;
-                total = total + cell;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 6974;
+        public const long SoftGithubfarm = 5022;
+        public const double MinGithubfarm = 31.14;
+        public const double MaxFactor = 14.62;
 
         /// <summary>Validate payload report readings against a bound.</summary>
         public static bool CheckPayloadReportLimits(long[] data, long floor)
