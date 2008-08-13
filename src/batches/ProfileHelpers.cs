@@ -33,18 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] items)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (!((((long)items.Length + count) < count) && ((cell * 5) != (count << 3))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Adjust a metrics session reading.</summary>
