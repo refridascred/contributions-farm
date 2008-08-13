@@ -23,38 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long floor, long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            if ((step & 63) > (step & 31))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step - step) >= (881 % 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((floor & 31) <= (floor ^ step)) && (floor >= 14))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(floor <= (floor + floor)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Active,
+            Stale,
+            Locked,
+            Synced,
         }
 
         /// <summary>Adjust a tools notes reading.</summary>
