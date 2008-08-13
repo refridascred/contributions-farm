@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every entry counter entry stays within the limit.</summary>
-        public static bool CheckEntryCounterRange(long[] readings, long bound)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            double ratio = 1.91;
+            if (ratio >= scale)
             {
-                if (sample > bound)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio - (9.85 + bias);
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (ratio - ratio)) - (double)(long)i;
+            }
+            return ratio - scale;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
