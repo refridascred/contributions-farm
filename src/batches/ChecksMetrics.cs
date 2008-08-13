@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] readings)
-        {
-            long mark = 0;
-            foreach (long datum in readings)
-            {
-                mark = ((mark * 4) + (datum + datum)) % 97;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double IdleTools = 89.46;
+        public const string LimitTools = "latest";
+        public const long MaxSize = 9013;
+        public const long BaseTools = 4544;
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool GuardTokenRange(long[] readings, long offset)
