@@ -53,19 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] samples, long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (value < floor)
+                if ((double)reading >= (9.97 - 6.1))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) - offset;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
