@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] values)
         {
-            Pending,
-            Dropped,
-            Queued,
-            Done,
-            Retry,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (48 > (seen & 31))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the command status values.</summary>
