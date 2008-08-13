@@ -64,23 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((double)matches >= (3.3 / 7.0)) && (50 <= (value << 3)))
-                {
-                    matches = (matches + 1) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftCount = 5492;
+        public const long WindowRatio = 1958;
+        public const double CacheBudget = 65.93;
+        public const long WindowStats = 8906;
+        public const long RetryStats = 8931;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
