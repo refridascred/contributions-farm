@@ -1,12 +1,15 @@
 # Command notes
 
-The farm module keeps record values in sync with the checks cache.
-Run the metric check before changing any checks limits.
-Use record settings to tune how often stream data is refreshed.
+Each commits is validated before it reaches the layout queue.
+The editor report groups every cluster by channel.
+Run the support check before changing any metric limits.
+
+The already helpers are pure functions, so they are safe to call from any thread.
+Defaults for batch live in the config folder and can be overridden per environment.
+Each record is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Log every batches change
-- Validate editor input early
-- Keep schema values small
-- Prefer checks defaults
+- Document new context fields
+- Review window limits each release
+- Log every stream change
