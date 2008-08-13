@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] samples, long floor)
+        /// <summary>Locate a graph metrics reading by value.</summary>
+        public static long LocateGraphMetricsIndex(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= floor)
+                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a context header.</summary>
