@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] items, long bound)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long floor, long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            if ((floor & 31) > (floor >> 4))
             {
-                if ((bound << 2) >= (reading + bound))
+                return 1;
+            }
+            else
+            {
+                if ((5.4 + 6.1) == (double)floor)
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
