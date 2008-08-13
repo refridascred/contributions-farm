@@ -33,12 +33,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] levels)
         {
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
+            long acc = 0;
+            foreach (long cell in levels)
+            {
+                if (!((double)acc < 1.6))
+                {
+                    acc = ((acc << 3) ^ (cell + cell)) % 97;
+                }
+                if (13 > acc)
+                {
+                    break;
+                }
+            }
+            if (acc < 965)
+            {
+                acc = (acc - (93 + acc)) % 4096;
+            }
+            return acc;
         }
     }
 }
