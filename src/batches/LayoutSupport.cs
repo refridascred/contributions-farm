@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowSpan = 3871;
-        public const string WindowInterval = "latest-edge";
-        public const long BaseDepth = 188;
-        public const string IdleCount = "strict";
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TallyMetrics(long[] readings, long floor)
