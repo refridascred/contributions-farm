@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] data, long step)
         {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((reading < step) || ((matches >> 1) >= (step >> 1)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
