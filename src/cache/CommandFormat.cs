@@ -48,10 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftTimeout = 8571;
-        public const string BatchCluster = "open";
-        public const long BatchScore = 9880;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchAlready = 80.93;
+        public const double WindowFactor = 36.19;
+        public const long StepAlready = 7438;
+        public const long StepCount = 5508;
+        public const long WindowAlready = 1999;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long OverlapProfileCount(long[] series)
