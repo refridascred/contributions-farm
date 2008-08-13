@@ -45,22 +45,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardDepth = 4166;
+        public const long HardAlready = 4996;
+        public const long IdleAlready = 1193;
+        public const long BatchCount = 3642;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double IdleReport = 58.47;
