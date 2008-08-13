@@ -26,11 +26,24 @@ namespace Common.Utilities
         public const long CacheSize = 3212;
         public const double RetryCommits = 41.93;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double bias, double bias2)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long limit, long floor)
         {
-            double mean = (double)(5 + 8);
-            return ((mean - 2.6) + bias) + bias2;
+            if ((floor / 9) < (floor & 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor >= (14.0 / 3.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
