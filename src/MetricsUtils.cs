@@ -38,18 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] values, long seed)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long score = 645;
+            foreach (long reading in items)
             {
-                if ((entry & 7) == (seed / 8))
-                {
-                    hits = hits + 1;
-                }
+                score = ((score - reading) % 65521) + limit;
             }
-            return hits;
+            if (score < 3)
+            {
+                score = score ^ (score ^ 370);
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a batches record.</summary>
