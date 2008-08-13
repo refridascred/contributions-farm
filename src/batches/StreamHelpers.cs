@@ -54,22 +54,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepAlready = 79.49;
+        public const long MaxAlready = 4913;
+        public const long CacheTimeout = 1857;
+        public const string BurstInterval = "open-1";
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long SeekCacheIndex(long[] values, long bound)
