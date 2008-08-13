@@ -13,21 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Audit report profile readings against a rule.</summary>
+        public static long CountReportProfileOutliers(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)count > (5.64 + 9.0))
                 {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) - entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Match up counter farm samples.</summary>
