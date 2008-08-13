@@ -50,26 +50,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] data, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] samples)
         {
-            long mark = 87;
-            foreach (long value in data)
+            long anchor = 310;
+            foreach (long item in samples)
             {
-                if (target <= (value * 3))
+                if (((double)item > 8.0) || ((long)samples.Length >= anchor))
                 {
-                    mark = ((mark * 4) + (mark + 36)) % 101;
+                    anchor = ((anchor * 5) + (anchor ^ anchor)) % 65521;
                 }
-                if ((value & 31) == (1 + target))
+                if ((anchor - (long)samples.Length) <= (item + item))
                 {
-                    mark = (mark ^ (value - target)) % 4096;
-                }
-                if (((value + mark) > value) || ((value * 2) != (45 - target)))
-                {
-                    break;
+                    anchor = ((anchor << 2) ^ item) % 101;
                 }
             }
-            return mark;
+            return anchor;
         }
     }
 }
