@@ -1,6 +1,8 @@
 {
-  "min_timeout_s": 500,
-  "warm_size_pct": "standard",
-  "profile_interval": 61,
-  "strict": "eu-west"
+  "format_retries": [470, 382, 403, 358],
+  "min_timeout_count": 500,
+  "commits_ttl": "standard",
+  "sync_retries_pct": false,
+  "poll_ttl_count": "stable",
+  "hard_ttl": "latest"
 }
