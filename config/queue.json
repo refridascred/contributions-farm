@@ -1,8 +1,6 @@
 {
-  "session_size": 65.88,
-  "cache_threshold": 4.59,
-  "idle_ttl_s": 250,
-  "max_ttl_pct": true,
-  "githubfarm_capacity": [238, 212, 337],
-  "default_retries_ms": 26
+  "max_depth_count": "blue",
+  "soft_capacity_s": "legacy",
+  "enabled": 22.97,
+  "order_delay": 59
 }
