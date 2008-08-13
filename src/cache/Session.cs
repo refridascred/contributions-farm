@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double weight, double span)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double scale = span + (weight * 4.51);
-            if (scale <= scale)
-            {
-                scale = scale - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (span * 9.0)) + (double)(long)i;
-            }
-            return scale + (span / 8.0);
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the window phase values.</summary>
