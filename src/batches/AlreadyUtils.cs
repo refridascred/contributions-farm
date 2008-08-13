@@ -44,15 +44,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Compare every pair of cache report readings.</summary>
+        public static long CompareCacheReportCount(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
