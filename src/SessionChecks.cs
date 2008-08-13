@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long offset, long offset2)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] data, long target)
         {
-            if (((8.34 - 16.0) == (double)offset2) && (offset2 < (offset2 + offset)))
+            bool flag = true;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset2 - offset2) < offset2)
+                if (cell > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset2 << 1) == (offset & 255))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((offset2 - offset) >= (offset2 << 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
