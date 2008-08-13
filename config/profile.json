@@ -1,5 +1,21 @@
 {
-  "min_ttl_s": 54.51,
-  "account_ratio": "primary",
-  "default_interval_ms": ["local", "green"]
+  "default_threshold_ms": {
+    "retry_delay": "latest",
+    "audit": 63,
+    "record_ratio": "standard"
+  },
+  "entry_window": "blue",
+  "retry_ttl_s": {
+    "profile_interval": 60,
+    "sync_delay_count": {
+      "verbose": "edge",
+      "format_threshold": 5684,
+      "retry_retries_ms": 3,
+      "buffer_depth": "strict",
+      "batches_delay": ["strict", "blue", "green"],
+      "warm_depth": false
+    },
+    "batch_depth": "stable"
+  },
+  "base_retries": "edge"
 }
