@@ -29,27 +29,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] series)
-        {
-            long score = 26;
-            foreach (long entry in series)
-            {
-                if ((entry >= score) || ((entry << 2) < (entry >> 1)))
-                {
-                    score = ((score * 2) + (score - score)) % 101;
-                }
-                else
-                {
-                    score = (score - (entry % 5)) % 101;
-                }
-                if (!((entry ^ score) != (entry << 3)))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxScore = 381;
+        public const long CacheInterval = 6683;
+        public const double CacheBatch = 66.82;
+        public const long MinBatch = 4402;
 
         /// <summary>Iterate the payload channel series from a seed.</summary>
         public static long RollPayloadChannel(long target)
