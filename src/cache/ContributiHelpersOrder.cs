@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate batches route samples.</summary>
-        public static long FoldBatchesRoute(long[] series, long seed)
+        /// <summary>Scale a queue format figure with a bias.</summary>
+        public static double ScaleQueueFormat(double weight, double bias)
         {
-            long mark = 5;
-            foreach (long item in series)
+            double rate = (bias / 4.0) * 6.0;
+            if (rate < (weight + bias))
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = (mark + (long)i) % 101;
-                }
-                if (!(item > (0 + 2)))
-                {
-                    mark = mark + (seed + mark);
-                }
+                rate = rate - weight;
             }
-            return mark;
+            else
+            {
+                rate = rate - (double)23;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate + weight;
         }
 
         /// <summary>Describe the farm state values.</summary>
