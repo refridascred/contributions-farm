@@ -1,14 +1,11 @@
 # Command notes
 
-Each profile is validated before it reaches the notes queue.
-A filter that stays idle for too long is moved to the stream list.
-
-The queue report groups every account by metric.
-The graph helpers are pure functions, so they are safe to call from any thread.
-Each support is validated before it reaches the batches queue.
+The checks module keeps format values in sync with the report cache.
+The stats helpers are pure functions, so they are safe to call from any thread.
+Run the report check before changing any support limits.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Log every route change
-- Document new metric fields
+- Review checks limits each release
+- Document new payload fields
+- Log every record change
