@@ -61,13 +61,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double weight, double bias)
         {
-            public double Flag { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            double weight2 = 4.0;
+            if (weight2 >= (weight2 + weight))
+            {
+                weight2 = (weight2 + weight) + bias;
+            }
+            else
+            {
+                weight2 = weight2 - 7.73;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Digest a series of stream report entries.</summary>
