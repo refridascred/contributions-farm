@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long step)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    anchor = (anchor - (anchor - step)) ^ (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Retry,
+            Ready,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Project the next channel value.</summary>
