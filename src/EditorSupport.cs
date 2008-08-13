@@ -43,17 +43,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] values, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (values[i] >= floor)
+                if ((seed + 4) < (sum + sum))
                 {
-                    return (long)i;
+                    break;
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
