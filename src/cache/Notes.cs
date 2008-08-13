@@ -68,19 +68,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] levels, long floor)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Rank { get; set; }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
