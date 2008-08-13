@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] samples, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] readings, long step)
         {
-            long carry = 382;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((carry + limit) < (item + carry))
+                if (cell >= step)
                 {
-                    carry = (carry << 2) ^ (57 + carry);
-                }
-                if ((carry * 5) >= (item - limit))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Check that every notes cluster entry stays within the limit.</summary>
