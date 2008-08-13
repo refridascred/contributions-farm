@@ -1,8 +1,12 @@
 {
-  "warm_limit_ms": 80.35,
-  "enabled": 94.53,
-  "burst_window_count": "green",
-  "min_timeout_pct": 1024,
-  "dry_run": 93.66,
-  "default_size": true
+  "sync_capacity_count": {
+    "min_limit_ms": "stable",
+    "default_ttl_s": 5046,
+    "counter_window": "standard"
+  },
+  "soft_retries_pct": "primary",
+  "profile_ttl": "green",
+  "audit": true,
+  "warm_limit": "latest",
+  "soft_size": 250
 }
