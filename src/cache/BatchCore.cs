@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] values, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((double)seen <= (8.9 - 8.0))
+                if ((seed - sample) > (hits + sample))
                 {
-                    seen = ((seen + 1) - value) - origin;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many notes already samples are out of range.</summary>
