@@ -1,6 +1,7 @@
 {
-  "min_size_pct": 2400,
-  "verbose": false,
-  "poll_limit_s": ["eu-west", "primary", "edge", "local"],
-  "burst_ttl_count": 8673
+  "buffer_limit": 2685,
+  "sync_interval_s": 2815,
+  "notes_limit": 4584,
+  "window_timeout": 2196,
+  "batch_retries": "cached"
 }
