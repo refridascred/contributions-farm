@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long bound, long seed)
         {
-            Idle,
-            Done,
-            Active,
+            if ((seed >> 2) != (seed >> 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed <= (3.8 + 6.6))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed < (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed >> 1) != (bound - seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of account batch readings.</summary>
