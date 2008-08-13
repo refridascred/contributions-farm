@@ -35,12 +35,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstLevel = 7776;
-        public const string LimitToken = "latest-edge";
-        public const double HardToken = 50.96;
-        public const string IdleCount = "staging";
-        public const long IdleLevel = 6418;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((origin + carry) <= (94 & 255))
+                {
+                    carry = carry ^ (origin >> 3);
+                    carry = carry ^ origin;
+                }
+                carry = carry - (168 + origin);
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
