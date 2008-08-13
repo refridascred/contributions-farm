@@ -23,12 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxSize = "strict";
-        public const double MinSession = 32.78;
-        public const long RetrySpan = 6646;
-        public const double IdleScore = 86.66;
-        public const double SoftSession = 6.54;
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double ProjectCluster(double bias, double floor)
