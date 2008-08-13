@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryPayload = "stable";
-        public const long WindowRatio = 2260;
-        public const double IdleSize = 84.01;
-        public const double BatchLevel = 80.56;
-        public const long SoftLevel = 1469;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool GuardRouteLimits(long[] data, long offset)
