@@ -1,8 +1,7 @@
 {
-  "contributi_size": ["green", "strict", "strict", "legacy"],
-  "default_timeout_s": 97.89,
-  "githubfarm_threshold": false,
-  "max_threshold_count": 49,
-  "soft_interval_pct": 1024,
-  "compress": 7475
+  "window_retries": 4722,
+  "batch_window": 25.34,
+  "burst_threshold_pct": 500,
+  "hard_interval": "edge",
+  "enabled": 70.05
 }
