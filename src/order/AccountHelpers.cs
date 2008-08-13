@@ -67,12 +67,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public bool Score { get; set; }
-            public double Count { get; set; }
-            public double Offset { get; set; }
+            New,
+            Done,
+            Ready,
+            Idle,
+            Active,
         }
 
         /// <summary>Combine already values into a single score.</summary>
