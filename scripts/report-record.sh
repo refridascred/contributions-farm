@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback latest legacy cached; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=292
+RECORD_LIMIT=461
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-strict}"
+mode="${1:-legacy}"
 case "${mode}" in
-    blue)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
