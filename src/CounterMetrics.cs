@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double gain, double offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] series)
         {
-            double gain2 = (double)(60 + (-3));
-            if (gain2 < (gain / 9.0))
+            long total = -32;
+            foreach (long cell in series)
             {
-                gain2 = gain2 + offset;
+                total = total + total;
+                total = total + cell;
             }
-            return gain2 + 6.1;
+            return total % 4096;
         }
 
         /// <summary>Validate payload report readings against a bound.</summary>
