@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheWidth = "strict-v2";
-        public const long MaxLevel = 9858;
-        public const long WindowToken = 2338;
-        public const long CacheToken = 1394;
-        public const long StepTimeout = 3894;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] samples)
+        {
+            long mark = 730;
+            foreach (long entry in samples)
+            {
+                mark = ((mark << 2) ^ (mark * 5)) + entry;
+                mark = ((mark * 3) + (mark >> 1)) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long WindowGraph = 8430;
