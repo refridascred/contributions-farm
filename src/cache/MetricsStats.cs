@@ -13,17 +13,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] values, long target)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Stale,
+            Idle,
+            Done,
+            Queued,
         }
 
         /// <summary>Validate tools account readings against a bound.</summary>
