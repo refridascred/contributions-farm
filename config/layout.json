@@ -1,13 +1,12 @@
 {
-  "soft_size": "cached",
-  "hard_delay": [56, 170, 320, 179],
-  "warm_limit_ms": "standard",
-  "min_timeout_pct": {
-    "soft_delay_pct": [9, 241],
-    "commits_ratio": 100,
-    "compress": 13,
-    "soft_retries": 5706
+  "hard_capacity_s": "fallback",
+  "strict": 250,
+  "warm_threshold_ms": {
+    "batches_threshold": "strict",
+    "flush_size_pct": [330, 309, 1, 395],
+    "hard_depth": 96.24,
+    "readonly": 37.02
   },
-  "poll_timeout_s": "staging",
-  "retry_ttl": "fallback"
+  "soft_timeout_s": ["latest", "local", "cached"],
+  "session_ttl": 5.81
 }
