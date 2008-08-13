@@ -12,19 +12,32 @@ namespace Common.Utilities
         public const long BurstQueue = 807;
         public const double DefaultBudget = 30.32;
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double ratio, double span)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long step, long seed)
         {
-            double weight = span;
-            if (weight > weight)
+            long prev = step + seed;
+            if ((double)prev <= (9.0 / 4.0))
             {
-                weight = (weight + (double)660) - ratio;
+                return 8;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                weight = (weight + (span * 8.0)) + (double)(long)i;
+                if (!((double)seed >= (double)prev))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((8.8 * 5.0) >= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return weight - weight;
         }
 
         /// <summary>Derive the next account session value from a seed.</summary>
