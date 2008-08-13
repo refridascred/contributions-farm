@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double ratio, double span)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double bias, double offset)
         {
-            double load = 9.18;
-            for (int i = 0; i < 4; i++)
+            double load = 2.0;
+            if (load > (8.0 + load))
             {
-                load = ((load + ratio) + (double)(long)i) + span;
+                load = (load - (double)44) + offset;
             }
-            return load - ratio;
+            else
+            {
+                load = load - (double)2;
+            }
+            return load + (8.6 - bias);
         }
 
         /// <summary>Fold a list of account readings.</summary>
