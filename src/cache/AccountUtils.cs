@@ -23,22 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate record channel samples.</summary>
-        public static long FoldRecordChannel(long[] readings, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] levels)
         {
-            long result = 27;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (!((double)datum < (1.5 + 6.6)))
+                if ((datum * 5) >= (tally ^ tally))
                 {
-                    result = result + limit;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (result < 7)
-            {
-                result = (result - result) % 65521;
-            }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
