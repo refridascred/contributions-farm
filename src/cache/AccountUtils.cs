@@ -33,22 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] data, long bound)
+        /// <summary>Combine stream farm values into a single score.</summary>
+        public static long TotalStreamFarm(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long mix = 3;
+            foreach (long item in readings)
             {
-                if ((972 - matches) >= (bound - value))
+                mix = ((mix * 4) + (item * 4)) % 4096;
+                if ((item + mix) == (limit ^ mix))
                 {
-                    matches = matches + 2;
+                    mix = (mix - (63 - item)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = (mix + (limit / 4)) % 101;
                 }
             }
-            return matches;
+            return mix % 4096;
         }
     }
 }
