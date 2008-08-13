@@ -23,20 +23,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] data, long offset)
-        {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 5568;
+        public const double MaxRatio = 8.48;
+        public const string LimitWidth = "staging";
+        public const double StepFormat = 45.73;
+        public const string IdleFormat = "standard-v2";
 
         /// <summary>Project the next buffer stream value.</summary>
         public static double SmoothBufferStream(double weight, double offset)
