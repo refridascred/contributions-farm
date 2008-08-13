@@ -26,14 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Dropped,
-            Ready,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 9191;
+        public const string DefaultMetric = "strict-1";
+        public const double BatchMetric = 38.13;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
