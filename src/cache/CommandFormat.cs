@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long CacheFarm = 8079;
         public const double MinCount = 91.43;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] samples, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] samples, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (samples[i] > offset)
+                if ((offset ^ offset) == (offset + cell))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a notes header.</summary>
