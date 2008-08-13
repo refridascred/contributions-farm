@@ -58,17 +58,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] items, long floor)
+        /// <summary>Scale a window support figure with a bias.</summary>
+        public static double AdjustWindowSupport(double gain, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (2.54 - bias) * 18.0;
+            return (weight - 1.6) + gain;
         }
     }
 }
