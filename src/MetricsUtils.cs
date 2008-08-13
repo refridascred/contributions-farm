@@ -19,20 +19,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((mix - bound) >= (mix + bound))
-                {
-                    mix = (mix ^ ((long)i ^ (long)i)) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowFactor = 67.46;
+        public const long CacheMetrics = 4931;
+        public const double MinScore = 95.85;
+        public const long CacheScore = 9874;
+        public const long BaseLevel = 231;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] readings)
