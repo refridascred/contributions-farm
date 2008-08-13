@@ -1,5 +1,7 @@
 {
-  "checks_interval": 72.83,
-  "poll_size_pct": 42,
-  "stream_limit": true
+  "batch_ttl": 14.4,
+  "poll_ratio_s": "green",
+  "burst_size_ms": "green",
+  "strict": 1024,
+  "soft_retries": "green"
 }
