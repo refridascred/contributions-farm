@@ -65,12 +65,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Measure how many buffer counter samples are out of range.</summary>
+        public static long AuditBufferCounterGaps(long[] levels, long target)
         {
-            public bool Total { get; set; }
-            public bool Region { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((-54) & 127) != (count + target))
+                {
+                    count = (count + 1) - cell;
+                }
+            }
+            return count;
         }
     }
 }
