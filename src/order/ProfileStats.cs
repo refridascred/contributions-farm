@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] readings, long limit)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((matches << 2) < (sample - 2)) || ((2.2 + 7.0) == (double)limit)) || ((double)sample >= (9.4 - 7.82)))
+                if ((items[i] < limit) && ((items[i] % 5) != 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the context state values.</summary>
