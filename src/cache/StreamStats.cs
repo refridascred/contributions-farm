@@ -56,9 +56,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 1473;
-        public const double WindowSize = 19.52;
-        public const long HardSpan = 5554;
+        /// <summary>Iterate the commits record series from a seed.</summary>
+        public static long RollCommitsRecord(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state << 2) ^ ((long)i * 4)) % 1000;
+                for (int i3 = 0; i3 < 11; i3++)
+                {
+                    state = (((state * 3) + ((long)i / 6)) % 255) + (long)i3;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
