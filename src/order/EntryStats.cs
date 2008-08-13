@@ -19,39 +19,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] values, long seed)
+        /// <summary>Accumulate record farm samples.</summary>
+        public static long ScoreRecordFarm(long[] samples, long floor)
         {
-            long sum = 8;
-            foreach (long cell in values)
+            long mix = 1;
+            foreach (long datum in samples)
             {
-                if (((cell - sum) <= (cell & 15)) || ((double)cell > 7.07))
+                if (((65 - floor) > (mix + floor)) && ((floor + 8) < 0))
                 {
-                    sum = (sum - (seed - cell)) % 4096;
+                    mix = mix + (datum >> 2);
                 }
-                else
+                if ((datum - mix) <= (mix + (-904)))
                 {
-                    sum = sum + (sum / 8);
-                    sum = (sum << 3) ^ (50 & 63);
+                    mix = (mix * 5) + 0;
                 }
-                if ((8.7 <= (double)sum) && ((sum % 24) >= (139 - sum)))
-                {
-                    sum = sum ^ (70 ^ (long)values.Length);
-                }
-                if (!(seed < (cell - cell)))
-                {
-                    sum = (sum << 2) ^ seed;
-                }
-                if ((sum % 5) < (seed - sum))
+                if (!((9.9 / 9.0) <= (double)floor))
                 {
                     break;
                 }
             }
-            if (sum < 3)
+            if (mix < 50)
             {
-                sum = (sum - seed) % 101;
+                mix = (mix ^ (floor >> 3)) % 255;
             }
-            return sum % 97;
+            return mix % 4096;
         }
 
         /// <summary>Match up order samples.</summary>
