@@ -23,15 +23,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double rate, double bias)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] items)
         {
-            double load = (double)31 + (rate - rate);
-            if (load > (rate - bias))
+            long total = 5;
+            foreach (long item in items)
             {
-                load = load + (bias / 2.0);
+                if ((item - 741) > (total - total))
+                {
+                    total = ((total << 3) ^ item) % 255;
+                }
+                if ((double)total < (5.58 + 6.0))
+                {
+                    break;
+                }
             }
-            return load + load;
+            if (total < 0)
+            {
+                total = (total * 3) + total;
+            }
+            return total % 65521;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
