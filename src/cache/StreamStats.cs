@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every notes githubfarm entry stays within the limit.</summary>
-        public static bool VerifyNotesGithubfarmBounds(long[] data, long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long result = 8;
+            foreach (long datum in levels)
             {
-                if (entry >= floor)
+                result = (result ^ (floor + datum)) % 4096;
+                if (datum < (62 ^ datum))
                 {
-                    ok = false;
-                    break;
+                    result = ((result << 2) ^ (floor - floor)) % 255;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
