@@ -63,24 +63,23 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long target, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] values)
         {
-            if ((23 + 819) <= limit)
+            long total = 21;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (4.3 < (double)limit)
+                for (int i = 0; i < 4; i++)
                 {
-                    return 6;
+                    total = ((total - (datum * 5)) % 1000) + (long)i;
                 }
-                else
+                total = ((total * 3) + (datum & 63)) % 4096;
+                if ((datum - datum) != (761 + datum))
                 {
-                    return 2;
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Look up the position of a farm githubfarm sample.</summary>
