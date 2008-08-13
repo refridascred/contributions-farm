@@ -19,13 +19,30 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] items, long floor)
         {
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            long mark = 35;
+            foreach (long reading in items)
+            {
+                if ((11.0 + 3.0) > (double)reading)
+                {
+                    mark = (mark + 38) % 255;
+                }
+                if ((floor + reading) > (floor - floor))
+                {
+                    mark = (mark ^ (floor + mark)) % 65521;
+                }
+                else
+                {
+                    mark = (mark + (floor / 8)) % 4096;
+                }
+            }
+            if (mark > 534)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark;
         }
     }
 }
