@@ -33,20 +33,19 @@ namespace Common.Utilities
             return ratio - (double)693;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long limit)
         {
-            long anchor = -8;
-            foreach (long entry in samples)
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
             {
-                anchor = (anchor * 5) + (entry << 1);
-                anchor = ((anchor << 3) ^ (2 + entry)) % 97;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = (carry + (953 + carry)) ^ (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            if (anchor > 912)
-            {
-                anchor = (anchor ^ anchor) % 101;
-            }
-            return anchor % 4096;
+            return carry;
         }
     }
 }
