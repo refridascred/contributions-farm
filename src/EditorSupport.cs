@@ -45,19 +45,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of buffer metrics entries.</summary>
-        public static long FoldBufferMetrics(long[] values)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long score = 0;
-            foreach (long reading in values)
-            {
-                score = ((score - (score + score)) % 4096) + reading;
-            }
-            if (score > 23)
-            {
-                score = (score ^ (score ^ score)) % 4096;
-            }
-            return score % 65521;
+            Pending,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define window limits and defaults.</summary>
