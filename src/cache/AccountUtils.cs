@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] data, long target)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((target + target) <= hits)
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the profile status values.</summary>
