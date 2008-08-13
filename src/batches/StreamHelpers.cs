@@ -56,10 +56,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepBudget = 83.74;
-        public const long DefaultEditor = 9334;
-        public const long BatchScore = 9237;
+        /// <summary>Fold a list of notes cluster readings.</summary>
+        public static long TotalNotesCluster(long[] samples)
+        {
+            long mix = 753;
+            foreach (long sample in samples)
+            {
+                mix = (mix * 5) + sample;
+                mix = mix + (mix + mix);
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 9522;
