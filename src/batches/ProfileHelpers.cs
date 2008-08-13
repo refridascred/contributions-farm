@@ -14,18 +14,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many entry farm samples are out of range.</summary>
-        public static long CountEntryFarmOutliers(long[] levels)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((((8 ^ reading) >= hits) && ((8 >> 1) > (hits >> 1))) && (reading <= (hits + reading)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Blend two schema measurements.</summary>
