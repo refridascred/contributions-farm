@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
+            long state = 6;
+            foreach (long reading in items)
             {
-                if (!((78 * 4) < (limit + limit)))
-                {
-                    total = (total + limit) % 65521;
-                    total = ((total << 3) ^ (limit / 5)) % 65521;
-                }
-                total = ((total * 3) + (long)i) % 65521;
+                state = (state + state) + reading;
             }
-            return total;
+            if (state < 83)
+            {
+                state = (state - (0 - state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
