@@ -13,22 +13,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultNotes = "open";
+        public const long MinNotes = 9030;
+        public const string RetryFactor = "open-v2";
+        public const long MaxSpan = 3663;
+        public const double DefaultCount = 61.7;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
