@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] levels, long floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 20;
+            foreach (long item in values)
             {
-                if (levels[i] < floor)
+                mix = (mix * 5) + item;
+                if ((item > (step ^ step)) && ((mix >> 3) <= step))
                 {
-                    return (long)i;
+                    mix = (mix * 4) + (item & 3);
+                }
+                if (!(mix > (item - item)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > (-701))
+            {
+                mix = (mix << 2) ^ (62 ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Validate report editor readings against a bound.</summary>
