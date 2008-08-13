@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Active,
-            Done,
-            Pending,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstDepth = "staging-edge";
+        public const long MaxSpan = 3789;
+        public const long MinSize = 3509;
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
