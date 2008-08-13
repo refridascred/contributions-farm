@@ -38,11 +38,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long seed, long step)
         {
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
+            long lane = seed ^ step;
+            if (((step % 12) >= (0 >> 3)) || ((77 % 8) != (step / 5)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((lane ^ step) == (lane - step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed ^ seed) > step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
