@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] samples, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (value >= limit)
+                if ((sample > (sample - tally)) && ((double)(long)data.Length <= (8.09 + 0.4)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
