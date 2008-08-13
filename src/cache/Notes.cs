@@ -31,20 +31,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((4 - (long)i) > (seed % 100))
-                {
-                    total = (total * 4) + seed;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 6263;
+        public const double CacheBudget = 34.88;
+        public const long WindowCount = 2288;
+        public const string BaseWidth = "standard-edge";
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueHits(long[] values)
