@@ -35,24 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long bound)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double rate, double span)
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
+            double weight = span + (4.6 / 9.0);
+            if (weight <= (rate + rate))
             {
-                if ((state + (long)i) < (state % 7))
-                {
-                    state = ((state << 2) ^ 495) % 4096;
-                }
-                else
-                {
-                    state = (state ^ state) % 1000;
-                    state = state + (bound & 63);
-                }
-                state = ((state * 2) + (long)i) % 101;
+                weight = weight + (weight + rate);
             }
-            return state;
+            return weight + weight;
         }
 
         /// <summary>Measure how many tools contributi samples are out of range.</summary>
