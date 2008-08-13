@@ -46,19 +46,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every metrics profile entry stays within the limit.</summary>
-        public static bool ValidateMetricsProfileRange(long[] items, long limit)
+        /// <summary>Fold a list of notes filter readings.</summary>
+        public static long DigestNotesFilter(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long acc = 36;
+            foreach (long datum in samples)
             {
-                if (entry > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = acc - (datum % 97);
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Classify a editor queue pair into a bucket.</summary>
