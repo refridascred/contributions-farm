@@ -49,13 +49,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Audit support checks readings against a rule.</summary>
+        public static long AuditSupportChecksOutliers(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((item + seen) < (seen % 97))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up support samples.</summary>
