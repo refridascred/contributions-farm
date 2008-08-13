@@ -16,25 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long seed, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] readings, long offset)
         {
-            long delta = seed + target;
-            if ((target + delta) == (seed >> 1))
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target & 1) != (target ^ seed))
+                if (cell >= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
