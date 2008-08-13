@@ -22,31 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long bound, long limit)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            if ((0.2 - 0.8) < (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit >> 1) == (bound - limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound <= ((-743) % 64))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a metrics reading.</summary>
