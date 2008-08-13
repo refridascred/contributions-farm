@@ -45,16 +45,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinSpan = "local-edge";
+        public const double DefaultRatio = 33.63;
+        public const long StepInterval = 8674;
+        public const long IdleBatch = 7577;
+        public const string RetryBudget = "stable-1";
 
         /// <summary>Roll a route counter forward.</summary>
         public static long SeriesRoute(long step)
