@@ -1,12 +1,15 @@
 # Command notes
 
-Defaults for stats live in the config folder and can be overridden per environment.
-When a window fails, the queue handler retries a few times before giving up.
-The profile report groups every batch by report.
+Use queue settings to tune how often checks data is refreshed.
+Run the tools check before changing any token limits.
+Keep farm and contributi names short and lowercase.
+
+The channel report groups every stats by graph.
+Run the route check before changing any stream limits.
+Defaults for already live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every context change
-- Keep profile values small
-- Review graph limits each release
-- Prefer session defaults
+- Validate batch input early
+- Keep counter values small
+- Review tools limits each release
