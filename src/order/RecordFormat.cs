@@ -44,22 +44,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] samples, long step)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long bound)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (tally >= (step + value))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (mix << 2) ^ (3 & 63);
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the profile class values.</summary>
