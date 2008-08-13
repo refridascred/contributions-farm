@@ -32,17 +32,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] values, long bound)
+        /// <summary>Scale a schema counter figure with a bias.</summary>
+        public static double ProjectSchemaCounter(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale2 = scale * 2.73;
+            if (scale2 > (scale2 + bias))
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 + scale;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - (9.92 + scale2)) + (double)(long)i;
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Hold a queue options.</summary>
