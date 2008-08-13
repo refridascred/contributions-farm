@@ -89,17 +89,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a session report reading by value.</summary>
-        public static long FindSessionReportIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 8803;
+        public const long DefaultScore = 2321;
+        public const long BatchCommand = 1219;
+        public const double WindowRatio = 56.1;
     }
 }
