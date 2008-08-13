@@ -24,15 +24,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double weight, double bias)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            double gain = (double)(3 - 560);
-            if (gain > weight)
-            {
-                gain = (gain - gain) - bias;
-            }
-            return gain + (gain + weight);
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
