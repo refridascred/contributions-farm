@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] readings, long floor)
         {
-            Done,
-            New,
-            Retry,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((floor / 2) <= (floor & 31))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batches record.</summary>
