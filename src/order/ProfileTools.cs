@@ -70,12 +70,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
+            Locked,
+            Stale,
+            Closed,
+            Done,
             Failed,
-            Active,
-            Draft,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
