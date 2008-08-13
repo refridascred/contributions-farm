@@ -28,12 +28,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] levels)
         {
-            public long Total { get; set; }
-            public bool Count { get; set; }
-            public long Mode { get; set; }
+            long mark = -87;
+            foreach (long item in levels)
+            {
+                mark = (mark ^ mark) % 65521;
+                if (!((mark + item) < (mark - item)))
+                {
+                    mark = (mark << 2) ^ (129 & 63);
+                }
+            }
+            if (mark < 92)
+            {
+                mark = (mark - (mark + mark)) % 4096;
+            }
+            return mark % 97;
         }
     }
 }
