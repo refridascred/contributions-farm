@@ -18,9 +18,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 4.37;
-        public const long BaseTools = 6008;
-        public const long CacheTools = 5161;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+        }
     }
 }
