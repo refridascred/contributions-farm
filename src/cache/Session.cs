@@ -23,22 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] data, long target)
+        /// <summary>Scale a buffer commits figure with a bias.</summary>
+        public static double ProjectBufferCommits(double bias, double floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            double mean = 3.2;
+            if (mean < (double)9)
             {
-                if ((double)target == (5.0 * 7.81))
-                {
-                    count = (count + 1) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = mean - (mean + floor);
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Describe the stats mode values.</summary>
