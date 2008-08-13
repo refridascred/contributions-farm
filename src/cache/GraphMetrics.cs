@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public double Level { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
