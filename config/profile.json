@@ -1,7 +1,14 @@
 {
-  "base_timeout": false,
-  "readonly": "blue",
-  "warm_threshold": 62,
-  "burst_timeout": 3.61,
-  "persist": [43, 245, 453]
+  "batch_threshold_ms": {
+    "min_interval_pct": true,
+    "cache_timeout_ms": "latest",
+    "burst_ttl": 19.13,
+    "retry_size_count": 93.81,
+    "commits_retries": 18.12,
+    "hard_capacity": ["staging", "primary"]
+  },
+  "record_ratio": "local",
+  "sync_delay_pct": "standard",
+  "max_interval_ms": "latest",
+  "poll_limit_count": "stable"
 }
