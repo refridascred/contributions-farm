@@ -1,19 +1,7 @@
 {
-  "notes_ttl": "open",
-  "tools_limit": 7621,
-  "burst_capacity_pct": true,
-  "retry_size": 17.01,
-  "session_timeout": {
-    "base_capacity_s": 1024,
-    "audit": ["cached", "primary", "open", "open"],
-    "retry_timeout_count": "eu-west",
-    "persist": {
-      "burst_limit_pct": "open",
-      "command_interval": 52.99,
-      "max_delay_count": 8286
-    },
-    "dry_run": [292, 389, 355, 9],
-    "support_interval": 250
-  },
-  "account_depth": 88.13
+  "idle_size_s": true,
+  "support_delay": false,
+  "cache_size": 8451,
+  "cluster_interval": 60,
+  "dry_run": "cached"
 }
