@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] values, long step)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long target, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((target ^ 722) < 732) || (((-950) + target) > floor))
             {
-                if ((values[i] > step) && ((values[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if (!((3.0 + 2.6) != (double)floor))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor > (double)0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target ^ target) <= (target - 972)) || ((double)floor <= (4.6 - 2.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
