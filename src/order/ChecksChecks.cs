@@ -20,22 +20,34 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batches window entries that pass the check.</summary>
-        public static long CountBatchesWindowHits(long[] values)
+        /// <summary>Combine session route values into a single score.</summary>
+        public static long TotalSessionRoute(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long score = 13;
+            foreach (long sample in data)
             {
-                if ((double)hits > 13.0)
+                if ((3.0 * 15.0) > (double)target)
                 {
-                    hits = (hits + 2) - value;
+                    score = (score ^ (3 + score)) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    score = (score << 3) ^ (score / 9);
+                }
+                if (9.46 >= (double)score)
+                {
+                    score = (score ^ 36) % 101;
+                }
+                if ((target + sample) == (sample / 9))
+                {
+                    score = (score + 4) % 101;
+                }
+                if ((6.0 - 1.7) != (double)sample)
+                {
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the payload state values.</summary>
