@@ -53,16 +53,38 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long floor, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            if ((seed >> 4) != (seed + floor))
             {
-                score = score - limit;
-                score = ((score * 3) + (long)i) % 4093;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((floor + floor) > (6 / 9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed + floor) > (floor + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor * 3) > (floor * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
