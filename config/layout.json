@@ -1,5 +1,6 @@
 {
-  "cache_ttl_pct": ["stable", "latest"],
-  "compress": "standard",
-  "burst_window_ms": "fallback"
+  "idle_capacity": false,
+  "dry_run": "strict",
+  "cluster_threshold": 88,
+  "max_size_s": 9919
 }
