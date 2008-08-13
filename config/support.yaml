@@ -1,11 +1,10 @@
 # support settings
-dry_run: 64
-base_ttl_pct: 55.03
-persist: false
-idle_retries_count:
-  - 133
-  - 151
-  - 154
-  - 464
-strict: green
-warm_threshold_count: strict
+verbose: 4883
+burst_ttl_pct: fallback
+burst_size_ms: latest
+commits_threshold: 8054
+notes_size:
+  - green
+  - eu-west
+  - edge
+format_interval: 100
