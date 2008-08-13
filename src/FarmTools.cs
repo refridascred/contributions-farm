@@ -27,21 +27,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 807;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor + anchor) % 255) + item;
             }
-            return count;
+            if (anchor < 6)
+            {
+                anchor = ((anchor << 3) ^ (seed - seed)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a cache stats.</summary>
