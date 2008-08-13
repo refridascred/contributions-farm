@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 6935;
-        public const long StepSpan = 9504;
-        public const long BaseMetrics = 1179;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 7; i++)
+            {
+                score = score ^ (31 + 3);
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long SeekCommitsIndex(long[] values, long offset)
