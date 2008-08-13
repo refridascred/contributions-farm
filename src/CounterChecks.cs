@@ -42,18 +42,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the stats cache entries that pass the check.</summary>
-        public static long TallyStatsCacheOutliers(long[] levels)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double ratio = (double)(823 ^ 95);
+            if (ratio < 4.83)
             {
-                if (matches <= (value % 5))
-                {
-                    matches = matches + 1;
-                }
+                ratio = (ratio - (ratio - offset)) - weight;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + 4.0;
         }
 
         /// <summary>Combine record values into a single score.</summary>
