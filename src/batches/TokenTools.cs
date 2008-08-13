@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] series)
+        /// <summary>Count batch stream pairs that satisfy a relation.</summary>
+        public static long PairBatchStreamCount(long[] series)
         {
-            long sum = -709;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= sum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum * 5) + (sum & 1);
+                    if ((series[i] ^ series[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
