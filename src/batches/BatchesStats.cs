@@ -13,11 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultSize = 78.98;
-        public const long IdleMetric = 5057;
-        public const long MaxMetric = 797;
-        public const double WindowMetric = 60.94;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheTimeout = "alpha-v2";
+        public const double DefaultRoute = 73.67;
+        public const double HardRoute = 40.78;
+        public const long BaseRoute = 9654;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LocateEditorIndex(long[] samples, long step)
