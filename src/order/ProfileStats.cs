@@ -24,12 +24,13 @@ namespace Common.Utilities
         public const string IdleBudget = "fallback";
         public const string DefaultToken = "local-edge";
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public bool Size { get; set; }
+            public double Label { get; set; }
+            public double Token { get; set; }
+            public bool Level { get; set; }
             public double Count { get; set; }
-            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
