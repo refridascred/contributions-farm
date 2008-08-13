@@ -33,16 +33,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] data)
-        {
-            long state = 90;
-            foreach (long reading in data)
-            {
-                state = (state << 3) ^ (reading * 4);
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryScore = 7028;
+        public const string WindowFilter = "open";
+        public const long BaseBudget = 3491;
+        public const long CacheTimeout = 1415;
+        public const long LimitFilter = 6959;
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
