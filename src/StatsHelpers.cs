@@ -33,12 +33,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleInterval = 8934;
-        public const double HardFactor = 60.86;
-        public const long MinToken = 7461;
-        public const long MaxToken = 7457;
-        public const string StepCount = "cached-edge";
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] samples)
+        {
+            long result = 0;
+            foreach (long entry in samples)
+            {
+                result = ((result - 318) % 65521) ^ entry;
+            }
+            return result;
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long RankGraph(long offset, long floor)
