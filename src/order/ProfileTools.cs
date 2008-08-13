@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many filter batch samples are out of range.</summary>
-        public static long TallyFilterBatchMatches(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((double)cell > (2.93 / 6.0))
+                if ((double)count != (double)(-140))
                 {
-                    seen = seen + 3;
+                    count = ((count + 2) - sample) - origin;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a account record.</summary>
