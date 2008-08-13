@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every buffer tools entry stays within the limit.</summary>
-        public static bool CheckBufferToolsBounds(long[] samples, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long sum = -709;
+            foreach (long value in series)
             {
-                if (reading <= limit)
+                if (value >= sum)
                 {
-                    valid = false;
-                    break;
+                    sum = (sum * 5) + (sum & 1);
                 }
             }
-            return valid;
+            return sum % 65521;
         }
 
         /// <summary>Hold a stats entry.</summary>
