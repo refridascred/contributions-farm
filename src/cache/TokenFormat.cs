@@ -34,9 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 3595;
-        public const long MaxLevel = 3816;
-        public const long BaseReport = 3379;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Closed,
+            Queued,
+            Paused,
+            Ready,
+            Draft,
+        }
     }
 }
