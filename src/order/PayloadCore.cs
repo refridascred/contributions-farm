@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long offset, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double weight, double span)
         {
-            long span = offset + target;
-            if (!((target / 2) <= ((-1) & 7)))
+            double gain = (double)960;
+            for (int i = 0; i < 2; i++)
             {
-                return 4;
+                gain = ((gain - (gain * 1.71)) + (double)(long)i) - weight;
             }
-            else
-            {
-                if (!((span + target) != (offset + span)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return gain - span;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
