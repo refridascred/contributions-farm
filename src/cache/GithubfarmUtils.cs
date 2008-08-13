@@ -42,16 +42,11 @@ namespace Common.Utilities
         public const string IdleCount = "staging";
         public const long IdleLevel = 6418;
 
-        /// <summary>Roll a metrics cluster counter forward.</summary>
-        public static long DeriveMetricsCluster(long bound)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = (carry + ((long)i & 1)) % 97;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Level { get; set; }
+            public double Region { get; set; }
         }
     }
 }
