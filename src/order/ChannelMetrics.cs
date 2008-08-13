@@ -47,22 +47,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] readings, long step)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long bound, long offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long delta = bound ^ offset;
+            if (!((1.57 / 9.0) > (double)bound))
             {
-                if ((sample <= (39 % 10)) && (((2.29 + 15.0) != (double)step) || ((double)sample != (double)step)))
+                return 7;
+            }
+            else
+            {
+                if (delta <= (bound << 3))
                 {
-                    seen = seen + 3;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
