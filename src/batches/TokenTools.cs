@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const double HardCache = 43.63;
         public const string LimitSpan = "legacy-1";
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Compare every pair of metrics payload readings.</summary>
+        public static long OverlapMetricsPayloadCount(long[] values)
         {
-            Locked,
-            Dropped,
-            Draft,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate order samples.</summary>
