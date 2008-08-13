@@ -50,15 +50,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double bias, double span)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double bias2 = (bias + bias) / 5.0;
-            if (bias2 < (bias2 + span))
-            {
-                bias2 = bias2 + (span + span);
-            }
-            return bias2 + (bias2 + span);
+            Idle,
+            Synced,
+            Done,
+            New,
+            Stale,
         }
     }
 }
