@@ -5,31 +5,28 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long step, long offset)
+        /// <summary>Fold a list of window cluster readings.</summary>
+        public static long TotalWindowCluster(long[] readings, long step)
         {
-            if (!((double)step < (2.5 + 1.7)))
+            long carry = 0;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + step) < offset)
+                carry = carry ^ step;
+                if ((cell % 3) <= ((-59) & 255))
                 {
-                    return 8;
+                    carry = ((carry << 2) ^ ((long)readings.Length % 8)) % 4096;
+                    carry = carry ^ cell;
                 }
-                else
+                if ((cell & 127) < step)
                 {
-                    if ((step ^ 200) > (165 >> 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    carry = ((carry * 4) + (carry - step)) % 97;
                 }
             }
+            if (carry < 335)
+            {
+                carry = (carry ^ step) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
