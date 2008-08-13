@@ -35,19 +35,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] samples)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (carry >= (long)i)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry << 3) ^ (187 << 2);
+                    if ((samples[i] + samples[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
     }
 }
