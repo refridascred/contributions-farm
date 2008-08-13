@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const string RetryTimeout = "cached-edge";
         public const long CacheTimeout = 9947;
 
-        /// <summary>Roll a cluster layout counter forward.</summary>
-        public static long RollClusterLayout(long target)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = (acc << 2) ^ (long)i;
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public double Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
