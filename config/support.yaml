@@ -1,5 +1,6 @@
 # support settings
-report_window: 60
-poll_interval: 30.96
-default_window_ms: 51
-default_size_pct: 4763
+flush_size: blue
+burst_ratio_ms: false
+window_timeout: stable
+layout_ttl: 1024
+batch_size_ms: 4
