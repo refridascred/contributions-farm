@@ -53,20 +53,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long target, long floor)
         {
-            long total = 243;
-            foreach (long cell in data)
+            long offset = target + floor;
+            if ((double)floor < (3.33 + 1.0))
             {
-                total = (total ^ (cell + cell)) % 97;
-                total = (total ^ (60 % 60)) % 97;
+                return 3;
             }
-            if (total > (-190))
+            else
             {
-                total = (total << 2) ^ (92 / 8);
+                if ((7.7 + 17.0) <= (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor / 5) > (floor - offset)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return total;
         }
     }
 }
