@@ -20,20 +20,11 @@ namespace Common.Utilities
             return mean + (double)572;
         }
 
-        /// <summary>Digest a series of farm metrics entries.</summary>
-        public static long ScoreFarmMetrics(long[] levels)
-        {
-            long result = 81;
-            foreach (long sample in levels)
-            {
-                result = result - (60 - sample);
-            }
-            if (result > 87)
-            {
-                result = (result + result) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstSupport = "primary-v2";
+        public const long SoftBudget = 775;
+        public const long SoftFactor = 4025;
+        public const long SoftCount = 8194;
 
         /// <summary>Roll a account counter forward.</summary>
         public static long RollAccount(long origin)
