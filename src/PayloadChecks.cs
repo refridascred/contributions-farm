@@ -56,17 +56,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] series, long seed)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long step, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long gap = step - target;
+            if ((9.04 / 5.0) > (double)gap)
             {
-                if (series[i] < seed)
+                return 7;
+            }
+            else
+            {
+                if ((2.0 + 7.6) >= (double)gap)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!(gap <= (gap ^ gap)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
