@@ -1,21 +1,8 @@
 {
-  "default_threshold_ms": {
-    "retry_delay": "latest",
-    "audit": 63,
-    "record_ratio": "standard"
-  },
-  "entry_window": "blue",
-  "retry_ttl_s": {
-    "profile_interval": 60,
-    "sync_delay_count": {
-      "verbose": "edge",
-      "format_threshold": 5684,
-      "retry_retries_ms": 3,
-      "buffer_depth": "strict",
-      "batches_delay": ["strict", "blue", "green"],
-      "warm_depth": false
-    },
-    "batch_depth": "stable"
-  },
-  "base_retries": "edge"
+  "warm_timeout_ms": 7980,
+  "base_timeout_pct": 60,
+  "burst_window": ["stable", "local", "fallback"],
+  "counter_ratio": [156, 280, 451, 292],
+  "batch_timeout_count": 2,
+  "order_threshold": true
 }
