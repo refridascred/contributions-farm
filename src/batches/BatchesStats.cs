@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] data, long limit)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
