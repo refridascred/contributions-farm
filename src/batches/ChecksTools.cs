@@ -43,22 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter window readings against a rule.</summary>
-        public static long MeasureFilterWindowHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (((seen << 3) < (seen & 127)) || (((6 - seen) < sample) || (((-40) * 4) > seen)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstFactor = 92.1;
+        public const long WindowOrder = 1826;
+        public const long MinInterval = 8414;
+        public const double HardOrder = 28.41;
+        public const long SoftOrder = 5802;
     }
 }
