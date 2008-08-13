@@ -56,18 +56,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (limit <= (seen / 2))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftScore = 60.11;
+        public const long HardEditor = 8373;
+        public const string LimitEditor = "primary-v2";
+        public const long IdleEditor = 3990;
+        public const long HardInterval = 2172;
     }
 }
