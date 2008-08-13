@@ -15,18 +15,11 @@ namespace Common.Utilities
         public const string StepSize = "staging-v2";
         public const long LimitBudget = 1419;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] items, long seed)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((2.57 + 8.4) == (double)value)
-                {
-                    count = (count + 1) - seed;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
