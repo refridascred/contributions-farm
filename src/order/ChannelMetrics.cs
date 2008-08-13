@@ -14,16 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long offset)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double bias, double span)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            double scale = (bias / 4.0) + (double)144;
+            if (scale < (scale * 5.0))
             {
-                state = state + offset;
-                state = ((state * 3) + (long)i) % 101;
+                scale = (scale + scale) - span;
             }
-            return state;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Describe the batches mode values.</summary>
