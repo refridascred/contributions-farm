@@ -16,18 +16,19 @@ namespace Common.Utilities
             return gain2 + 6.1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] series, long limit)
+        /// <summary>Validate payload report readings against a bound.</summary>
+        public static bool CheckPayloadReportLimits(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((reading << 3) != (reading & 1))
+                if (value > floor)
                 {
-                    seen = (seen + 1) - limit;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
