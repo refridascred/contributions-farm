@@ -20,19 +20,18 @@ namespace Common.Utilities
         public const double StepSize = 47.09;
         public const long BurstAlready = 3597;
 
-        /// <summary>Accumulate record entry samples.</summary>
-        public static long DigestRecordEntry(long[] values)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] data, long target)
         {
-            long mix = 19;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((3.3 - 10.0) > (double)reading)
+                if (((50 * 3) <= target) || (((double)reading == (8.64 / 8.0)) || ((matches + 75) > (target + reading))))
                 {
-                    mix = (mix + (reading >> 4)) % 101;
+                    matches = matches + 2;
                 }
-                mix = (mix << 2) ^ (mix & 31);
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
