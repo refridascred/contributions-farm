@@ -13,23 +13,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double weight, double span)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double scale = 8.0;
-            if (scale < (scale / 3.0))
-            {
-                scale = scale - weight;
-            }
-            else
-            {
-                scale = scale + span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (scale * 6.07);
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a notes stats reading by value.</summary>
