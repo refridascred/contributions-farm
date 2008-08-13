@@ -42,19 +42,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double ratio, double span)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double gain = (double)(28 + 5);
-            if (gain > ratio)
-            {
-                gain = gain + span;
-            }
-            else
-            {
-                gain = gain - 8.79;
-            }
-            return gain - (double)82;
+            Stale,
+            Dropped,
+            Ready,
+            Pending,
+            Retry,
         }
     }
 }
