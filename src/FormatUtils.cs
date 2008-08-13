@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = -1;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = (result - result) % 4096;
+                if ((entry + 30) >= entry)
                 {
-                    if ((values[i] + values[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result ^ entry) % 255;
                 }
             }
-            return hits;
+            return result % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
