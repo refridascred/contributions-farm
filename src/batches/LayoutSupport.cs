@@ -46,12 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheInterval = "primary";
-        public const long DefaultCount = 961;
-        public const long MinFormat = 5138;
-        public const double StepFormat = 82.95;
-        public const long StepDepth = 452;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (((datum ^ datum) < datum) && ((tally >> 2) != (5 ^ datum)))
+                {
+                    tally = (tally + 3) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine graph format values into a single score.</summary>
         public static long FoldGraphFormat(long[] items, long offset)
