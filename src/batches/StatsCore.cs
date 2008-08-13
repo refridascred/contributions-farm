@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinDepth = 538;
-        public const long SoftWidth = 771;
-        public const long WindowDepth = 2741;
-        public const string MinAccount = "staging-edge";
-        public const string LimitBudget = "primary-v2";
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double weight, double span)
+        {
+            double load = (double)((-7) * 5);
+            for (int i = 0; i < 2; i++)
+            {
+                load = ((load - load) + (double)(long)i) - span;
+            }
+            return load + (weight + weight);
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextGaps(long[] series)
