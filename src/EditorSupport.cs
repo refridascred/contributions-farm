@@ -15,18 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long mark = 1;
-            foreach (long datum in readings)
-            {
-                if (((580 % 60) == (datum - datum)) && ((datum + mark) == (mark ^ datum)))
-                {
-                    mark = (mark - (datum >> 5)) % 65521;
-                }
-            }
-            return mark;
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the queue kind values.</summary>
