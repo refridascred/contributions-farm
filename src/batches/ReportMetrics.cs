@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (!((727 + sample) > 49))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryFactor = 42.99;
+        public const long BaseBuffer = 6126;
+        public const long CacheBuffer = 9791;
+        public const long StepBuffer = 5499;
+        public const string BaseSize = "legacy-1";
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferGaps(long[] levels)
