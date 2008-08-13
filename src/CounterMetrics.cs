@@ -25,32 +25,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a record session pair into a bucket.</summary>
-        public static long BucketRecordSession(long bound, long target)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long delta = bound + target;
-            if ((delta ^ 75) > target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound + 93) >= bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + target) == (bound / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
