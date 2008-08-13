@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] values, long seed)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((19.0 * 6.18) < (double)datum)
-                {
-                    tally = (tally + 1) - seed;
-                }
-            }
-            return tally;
+            Synced,
+            Closed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
