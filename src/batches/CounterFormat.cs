@@ -40,30 +40,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] items, long floor)
+        /// <summary>Check that every checks schema entry stays within the limit.</summary>
+        public static bool GuardChecksSchemaRange(long[] values, long bound)
         {
-            long mark = 35;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((11.0 + 3.0) > (double)reading)
+                if (cell <= bound)
                 {
-                    mark = (mark + 38) % 255;
-                }
-                if ((floor + reading) > (floor - floor))
-                {
-                    mark = (mark ^ (floor + mark)) % 65521;
-                }
-                else
-                {
-                    mark = (mark + (floor / 8)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            if (mark > 534)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
+            return found;
         }
     }
 }
