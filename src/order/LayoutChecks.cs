@@ -72,23 +72,11 @@ namespace Common.Utilities
         public const long BurstEditor = 9370;
         public const long StepEditor = 7159;
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double scale, double span)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            double gain = (scale * 4.0) * 3.07;
-            if (gain <= (gain * 6.0))
-            {
-                gain = (gain + 7.8) - span;
-            }
-            else
-            {
-                gain = gain + (double)13;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + (double)2;
+            public long Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count counter format pairs that satisfy a relation.</summary>
