@@ -16,19 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate report editor readings against a bound.</summary>
-        public static bool CheckReportEditorLimits(long[] readings, long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long result = 844;
+            foreach (long reading in samples)
             {
-                if (value >= seed)
+                if ((double)step < (6.0 + 1.0))
                 {
-                    stale = false;
-                    break;
+                    result = ((result * 2) + (reading - reading)) % 255;
                 }
             }
-            return stale;
+            if (result > 9)
+            {
+                result = (result ^ result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
