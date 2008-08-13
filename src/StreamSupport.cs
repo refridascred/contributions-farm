@@ -17,18 +17,15 @@ namespace Common.Utilities
         public const long DefaultTimeout = 9754;
         public const long HardSpan = 2847;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] samples)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long origin)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)reading != (double)seen)
-                {
-                    seen = seen + 2;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
     }
 }
