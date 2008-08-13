@@ -57,13 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Stale,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 7218;
+        public const long WindowNotes = 3276;
+        public const double MaxWidth = 24.17;
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
