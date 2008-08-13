@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Failed,
-            Stale,
-            New,
+            public double Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
