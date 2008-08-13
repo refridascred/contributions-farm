@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double ratio, double span)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] levels)
         {
-            double scale = (double)630;
-            if (scale <= (9.8 * 5.51))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale - (scale - scale)) + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale + ratio;
+            return tally;
         }
 
         /// <summary>Describe the window phase values.</summary>
