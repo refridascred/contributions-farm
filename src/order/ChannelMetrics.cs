@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] series, long step)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (((tally << 3) == (tally / 3)) && (step > tally))
+                if (sample > floor)
                 {
-                    tally = (tally + 3) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Roll a metrics route counter forward.</summary>
