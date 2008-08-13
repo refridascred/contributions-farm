@@ -72,15 +72,19 @@ namespace Common.Utilities
         public const long BurstEditor = 9370;
         public const long StepEditor = 7159;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] levels, long limit)
+        /// <summary>Validate order stats readings against a bound.</summary>
+        public static bool VerifyOrderStatsBounds(long[] samples, long target)
         {
-            long mark = 33;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                mark = ((((mark * 2) + (mark - 0)) % 1000) ^ entry) - limit;
+                if (cell >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Count counter format pairs that satisfy a relation.</summary>
