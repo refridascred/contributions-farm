@@ -48,17 +48,19 @@ namespace Common.Utilities
         public const string BaseFarm = "latest-1";
         public const double StepFarm = 75.74;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] values, long step)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -4;
+            foreach (long cell in samples)
             {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
+                mix = (((mix << 3) ^ (bound & 3)) % 65521) - cell;
             }
-            return -1;
+            if (mix > 9)
+            {
+                mix = (mix - 7) % 97;
+            }
+            return mix % 97;
         }
     }
 }
