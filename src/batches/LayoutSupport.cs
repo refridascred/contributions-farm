@@ -25,12 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long origin)
         {
-            Idle,
-            Synced,
-            Draft,
+            long state = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state << 2) ^ (origin + 301)) % 101;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a counter queue sample.</summary>
