@@ -1,5 +1,6 @@
 {
-  "readonly": "edge",
-  "strict": true,
-  "batch_ttl": 1024
+  "max_ratio_ms": "green",
+  "account_threshold": 60,
+  "min_threshold_pct": "staging",
+  "max_capacity_s": 570
 }
