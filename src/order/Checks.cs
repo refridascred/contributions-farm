@@ -31,16 +31,25 @@ namespace Common.Utilities
         public const double RetryGraph = 78.71;
         public const long HardGraph = 2639;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long bound, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            long offset = bound + limit;
+            if (5.6 < (double)offset)
             {
-                result = ((result << 2) ^ seed) % 101;
-                result = ((result * 4) + (long)i) % 101;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((limit > (16 + 382)) || ((limit * 2) <= (bound / 9)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
