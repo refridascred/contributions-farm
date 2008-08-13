@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi layout readings against a bound.</summary>
-        public static bool CheckContributiLayoutBounds(long[] series, long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Stale,
+            New,
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
