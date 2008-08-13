@@ -14,19 +14,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] readings, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] levels, long step)
         {
-            long anchor = 1;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (!!((reading - floor) > (anchor ^ 44)))
+                if (item >= step)
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 101;
+                    valid = false;
+                    break;
                 }
-                anchor = anchor ^ (anchor - 16);
             }
-            return anchor % 97;
+            return valid;
         }
 
         /// <summary>Look up the position of a counter queue sample.</summary>
