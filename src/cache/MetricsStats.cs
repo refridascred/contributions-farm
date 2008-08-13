@@ -56,11 +56,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long limit)
         {
-            public double Stamp { get; set; }
-            public double Size { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((long)i - mix) != (6 % 16))
+                {
+                    mix = ((mix << 2) ^ (3 - limit)) % 1000;
+                    mix = mix + (mix << 1);
+                    continue;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = (mix - (limit - 57)) - (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
