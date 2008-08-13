@@ -34,17 +34,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] samples, long floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double scale, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = scale;
+            if (bias2 < (scale - bias))
             {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + (double)533;
             }
-            return -1;
+            return bias2 + bias;
         }
     }
 }
