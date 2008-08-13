@@ -44,17 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = anchor + anchor;
-                anchor = ((anchor * 5) + target) % 97;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
