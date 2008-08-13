@@ -25,39 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long bound, long limit)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long seed)
         {
-            long diff = bound + limit;
-            if ((bound + diff) <= (542 % 16))
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound < (bound * 4))
+                if ((48 ^ seed) > (long)i)
                 {
-                    return 6;
+                    mark = ((mark * 3) + ((long)i >> 1)) % 65521;
                 }
-                else
-                {
-                    if ((bound - bound) < (bound & 127))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((bound % 60) != ((-8) ^ limit)) || ((bound - 124) <= (diff + limit)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
+            return mark;
         }
     }
 }
