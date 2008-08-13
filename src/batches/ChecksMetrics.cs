@@ -75,19 +75,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] series, long bound)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double gain = offset;
+            return (gain + 4.4) + weight;
         }
     }
 }
