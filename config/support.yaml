@@ -1,6 +1,17 @@
 # support settings
-base_limit:
-  - 55
-  - 38
-account_limit: 7793
-layout_size: 78.48
+readonly: 250
+retry_window_count:
+  counter_ratio: stable
+  poll_retries_ms: true
+  soft_size:
+    base_depth_pct:
+      - 40
+      - 95
+      - 246
+      - 8
+    compress: primary
+    warm_window: blue
+  base_limit: 94.63
+  context_ttl: staging
+default_ratio: true
+soft_capacity_s: latest
