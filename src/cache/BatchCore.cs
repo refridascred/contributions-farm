@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] levels, long floor)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (matches <= (276 % 97))
-                {
-                    matches = ((matches + 2) ^ item) + floor;
-                }
-            }
-            return matches;
+            Queued,
+            New,
+            Active,
         }
 
         /// <summary>Project the next order value.</summary>
