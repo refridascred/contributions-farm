@@ -25,19 +25,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a schema counter figure with a bias.</summary>
-        public static double ProjectSchemaCounter(double scale, double bias)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] levels, long step)
         {
-            double scale2 = scale * 2.73;
-            if (scale2 > (scale2 + bias))
+            bool flag = true;
+            foreach (long value in levels)
             {
-                scale2 = scale2 + scale;
+                if (value >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - (9.92 + scale2)) + (double)(long)i;
-            }
-            return scale2 + scale;
+            return flag;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
