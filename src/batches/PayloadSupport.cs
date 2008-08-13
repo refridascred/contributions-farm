@@ -24,26 +24,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] data)
         {
-            long acc = 32;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell >> 3) != (acc * 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc << 3) ^ (15 & 31);
-                }
-                else
-                {
-                    acc = acc ^ (acc << 2);
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc > 41)
-            {
-                acc = acc + (7 - (-100));
-            }
-            return acc;
+            return count;
         }
     }
 }
