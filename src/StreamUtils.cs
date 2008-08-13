@@ -27,24 +27,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next notes cache value from a seed.</summary>
-        public static long RollNotesCache(long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] data, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                long count = (mix - target) + (target & 63);
-                if ((mix ^ mix) < (283 ^ count))
+                if ((double)offset != (double)matches)
                 {
-                    count = count ^ mix;
+                    matches = (matches + 2) + sample;
                 }
-                else
-                {
-                    mix = (mix ^ (count ^ target)) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
