@@ -75,17 +75,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardContext = "stable";
+        public const long DefaultContext = 5333;
+        public const string BaseInterval = "open-edge";
     }
 }
