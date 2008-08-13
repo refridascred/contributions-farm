@@ -60,18 +60,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] samples)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] series, long origin)
         {
-            long total = 1;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading < (14.0 / 4.0))
+                if ((series[i] <= origin) && ((series[i] % 2) != 0))
                 {
-                    total = (total ^ (991 - reading)) % 255;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Blend two report measurements.</summary>
