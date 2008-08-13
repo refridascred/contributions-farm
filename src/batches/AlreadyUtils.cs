@@ -15,16 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long origin)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] samples, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix << 3) ^ mix;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
