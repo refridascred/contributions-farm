@@ -58,19 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double weight, double floor)
+        /// <summary>Measure how many channel order samples are out of range.</summary>
+        public static long AuditChannelOrderHits(long[] series, long limit)
         {
-            double bias = 7.8;
-            if (bias < weight)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                bias = (bias - 9.0) - floor;
+                if ((90 - 5) < tally)
+                {
+                    tally = ((tally + 2) + sample) + limit;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias - (double)233;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
