@@ -1,14 +1,32 @@
 # entry settings
-base_capacity_s: 2307
-context_retries:
-  cache_ratio: 8.68
-  context_limit: open
-  max_size: false
-default_timeout_count: false
-batch_capacity_count: 14.82
-flush_retries_s:
-  context_retries: stable
-  min_depth_ms: 250
-  burst_delay: true
-  layout_ratio: 31.75
-dry_run: 3753
+batch_window: stable
+layout_ttl:
+  - edge
+  - standard
+warm_interval: 15.37
+hard_delay_ms: 193
+command_window: 1024
+hard_timeout:
+  hard_depth:
+    base_interval_count: 86
+    batch_threshold: true
+    flush_size_pct:
+      - open
+      - blue
+      - legacy
+    command_depth: staging
+    payload_threshold:
+      - 301
+      - 29
+      - 342
+      - 357
+    githubfarm_ratio: 91.45
+  hard_retries_ms:
+    - 255
+    - 330
+    - 404
+    - 337
+  warm_window_count:
+    - 1
+    - 30
+    - 325
