@@ -33,23 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two session queue measurements.</summary>
-        public static double SmoothSessionQueue(double gain, double span)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            double scale = gain - gain;
-            if (scale < 16.0)
-            {
-                scale = scale + scale;
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (span * 1.0)) - (double)(long)i;
-            }
-            return scale + (4.7 - 15.0);
+            Done,
+            Synced,
+            Failed,
+            Paused,
+            Closed,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
