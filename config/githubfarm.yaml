@@ -1,7 +1,19 @@
 # githubfarm settings
-already_size: cached
-enabled: 2885
-filter_threshold: 55.81
-batch_ttl_ms: 4827
-context_limit: eu-west
-burst_delay_pct: 15.52
+flush_depth_pct:
+  schema_limit: 1024
+  compress: 4023
+  session_threshold: false
+  max_limit: 89.56
+strict:
+  - 51
+  - 195
+  - 242
+retry_size_ms: 87.94
+cache_retries_ms:
+  - legacy
+  - blue
+dry_run: false
+support_window:
+  soft_depth_s: 1024
+  soft_threshold: staging
+  flush_timeout: open
