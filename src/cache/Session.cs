@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double scale, double floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] values, long step)
         {
-            double mean = scale;
-            if (mean <= floor)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                mean = mean + 7.1;
+                if (entry > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (scale + 1.23);
-            }
-            return mean + (double)2;
+            return ok;
         }
 
         /// <summary>Describe the graph kind values.</summary>
