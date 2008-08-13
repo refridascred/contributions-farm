@@ -38,18 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] items)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long total = 18;
-            foreach (long sample in items)
-            {
-                if (sample < total)
-                {
-                    total = (total << 2) ^ 893;
-                }
-            }
-            return total;
+            Queued,
+            Closed,
+            Pending,
+            Failed,
         }
     }
 }
