@@ -40,18 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout commits entries that pass the check.</summary>
-        public static long TallyLayoutCommitsMatches(long[] data)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (entry >= (tally & 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
