@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every order contributi entry stays within the limit.</summary>
-        public static bool VerifyOrderContributiLimits(long[] readings, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (entry >= limit)
+                if ((9.0 * 6.0) >= (double)matches)
                 {
-                    ready = false;
-                    break;
+                    matches = ((matches + 3) - value) - offset;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Project the next payload value.</summary>
