@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long target, long target2)
+        /// <summary>Derive the next stats record value from a seed.</summary>
+        public static long StepStatsRecord(long offset)
         {
-            long lane = target + target2;
-            if ((lane - target2) < lane)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (target > lane)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return 5;
+                    state = ((state ^ (state << 1)) % 255) ^ (long)i2;
                 }
-                else
-                {
-                    return 0;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
