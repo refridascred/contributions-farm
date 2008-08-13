@@ -30,15 +30,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double gain, double offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] levels, long offset)
         {
-            double drift = (double)(1 + 11);
-            if (drift >= (double)54)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                drift = drift - (gain - drift);
+                if (sample > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - (drift + offset);
+            return ready;
         }
 
         /// <summary>Roll a queue profile counter forward.</summary>
