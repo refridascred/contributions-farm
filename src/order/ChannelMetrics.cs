@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a metrics route counter forward.</summary>
-        public static long StepMetricsRoute(long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] levels, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((origin ^ total) > (origin >> 1))
+                if ((7.77 / 9.0) == (double)entry)
                 {
-                    break;
+                    tally = (tally + 2) + target;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Match up notes samples.</summary>
