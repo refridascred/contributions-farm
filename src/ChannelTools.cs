@@ -16,10 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultScore = 4726;
-        public const long BaseWindow = 7894;
-        public const double RetryWindow = 53.32;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((double)matches != (double)6)
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BatchTimeout = 718;
