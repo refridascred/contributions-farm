@@ -16,10 +16,18 @@ namespace Common.Utilities
             return bias2 + (double)(-40);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxBudget = 18.38;
-        public const long MinDepth = 2624;
-        public const string SoftSize = "cached-1";
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up order samples.</summary>
         public static long OverlapOrderCount(long[] values)
