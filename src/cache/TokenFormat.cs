@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const string RetryTimeout = "cached-edge";
         public const long CacheTimeout = 9947;
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public double Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
+            Draft,
+            New,
+            Stale,
+            Paused,
+            Locked,
         }
 
         /// <summary>Adjust a graph batch reading.</summary>
