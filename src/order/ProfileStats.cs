@@ -39,17 +39,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] values, long target)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (values[i] <= target)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    result = ((result + (result ^ seed)) % 255) ^ (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
