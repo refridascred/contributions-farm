@@ -29,22 +29,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] levels)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long score = 33;
+            foreach (long reading in levels)
             {
-                if ((value - 433) > (value - matches))
+                if (!(9 > (origin % 12)))
                 {
-                    matches = matches + 1;
+                    score = (score - reading) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = ((score * 4) + (8 << 2)) % 1000;
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
