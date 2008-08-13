@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] readings)
         {
-            long score = 58;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((9.1 * 8.31) > (double)value)
+                if (!((727 + sample) > 49))
                 {
-                    score = ((score << 3) ^ score) % 65521;
-                }
-                else
-                {
-                    score = (score + (score << 1)) % 101;
+                    matches = matches + 2;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
