@@ -20,21 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((0 & 7) <= ((-14) + tally))
                 {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) + cell;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a buffer header.</summary>
