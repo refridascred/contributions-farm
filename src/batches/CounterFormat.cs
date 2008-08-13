@@ -35,19 +35,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] samples, long target)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long bound)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor + ((long)i % 7)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return valid;
+            return anchor;
         }
     }
 }
