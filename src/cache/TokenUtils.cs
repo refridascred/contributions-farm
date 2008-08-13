@@ -37,12 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public double Level { get; set; }
-            public bool Stamp { get; set; }
-            public bool Mode { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
