@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] levels, long origin)
         {
-            Idle,
-            Locked,
-            Dropped,
-            Draft,
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
