@@ -55,9 +55,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 2528;
-        public const double BatchLevel = 77.03;
-        public const long RetryCache = 4137;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchSpan = 88.56;
+        public const long WindowTools = 7591;
+        public const double CacheTimeout = 34.24;
     }
 }
