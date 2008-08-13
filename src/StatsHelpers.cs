@@ -47,17 +47,32 @@ namespace Common.Utilities
         public const long MaxToken = 7457;
         public const string StepCount = "cached-edge";
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] readings, long offset)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long offset, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long diff = offset ^ floor;
+            if ((double)diff < (6.1 / 5.0))
             {
-                if (readings[i] <= offset)
+                return 1;
+            }
+            else
+            {
+                if ((diff + 32) >= (offset ^ diff))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((2.16 - 5.2) > (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
