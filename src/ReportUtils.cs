@@ -28,16 +28,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long seed)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                score = score + (score + score);
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Paused,
+            Failed,
+            Synced,
+            New,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
