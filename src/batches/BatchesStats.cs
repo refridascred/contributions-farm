@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a window batch figure with a bias.</summary>
-        public static double ScaleWindowBatch(double scale, double bias)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            double gain = scale;
-            return (gain - gain) + bias;
+            Ready,
+            Closed,
+            Retry,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
