@@ -70,18 +70,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] items)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((((count + entry) != (count - count)) && ((83 + 6) >= (count / 3))) && !((count - count) == (3 % 10)))
+                if (entry != limit)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
