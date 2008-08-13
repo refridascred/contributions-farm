@@ -48,13 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            public long Token { get; set; }
-            public bool Level { get; set; }
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
+            long anchor = 8;
+            foreach (long reading in values)
+            {
+                if ((double)anchor < 2.0)
+                {
+                    anchor = (anchor - (reading >> 3)) % 97;
+                }
+            }
+            return anchor;
         }
     }
 }
