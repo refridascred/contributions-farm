@@ -15,18 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the batch already entries that pass the check.</summary>
-        public static long TallyBatchAlreadyOutliers(long[] samples, long bound)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches << 1) >= matches)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = ((matches + 3) ^ reading) - bound;
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
