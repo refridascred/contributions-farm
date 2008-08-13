@@ -15,13 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] samples)
         {
-            public long Token { get; set; }
-            public double Weight { get; set; }
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading >= (1.9 + 7.8))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
