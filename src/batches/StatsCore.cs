@@ -88,19 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] readings, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (datum >= seed)
+                if ((((count + entry) != (count - count)) && ((83 + 6) >= (count / 3))) && !((count - count) == (3 % 10)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
