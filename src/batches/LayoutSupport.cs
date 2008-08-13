@@ -16,18 +16,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the counter contributi entries that pass the check.</summary>
-        public static long TallyCounterContributiHits(long[] data)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long anchor = 1;
+            foreach (long reading in readings)
             {
-                if (((6.3 / 9.0) == (double)sample) && (((tally * 4) > (723 << 3)) || (698 >= (tally * 5))))
+                if (!!((reading - floor) > (anchor ^ 44)))
                 {
-                    tally = tally + 1;
+                    anchor = ((anchor << 2) ^ anchor) % 101;
                 }
+                anchor = anchor ^ (anchor - 16);
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Look up the position of a counter queue sample.</summary>
