@@ -1,15 +1,14 @@
 {
-  "soft_timeout_count": ["blue", "fallback", "stable", "green"],
-  "min_depth_pct": {
-    "schema_capacity": true,
-    "poll_size_pct": [190, 322],
-    "soft_capacity_ms": 100
+  "tools_window": "primary",
+  "burst_retries_ms": "staging",
+  "poll_interval_ms": false,
+  "readonly": {
+    "enabled": true,
+    "commits_ratio": false,
+    "cache_retries": "green",
+    "retry_size_pct": false,
+    "readonly": 9.29
   },
-  "flush_ratio_count": {
-    "poll_ratio": 9422,
-    "burst_limit_count": [369, 68],
-    "hard_threshold_count": 6968,
-    "min_ratio": "eu-west"
-  },
-  "verbose": true
+  "batch_delay": 13,
+  "retry_retries": "eu-west"
 }
