@@ -16,18 +16,39 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] readings, long floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long cur = floor + limit;
+            if ((limit + cur) != (floor ^ 2))
             {
-                if ((floor ^ datum) == (tally << 3))
+                return 7;
+            }
+            else
+            {
+                if ((double)cur != (double)floor)
                 {
-                    tally = tally + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((5.0 - 7.37) > (double)cur)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (cur >= limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
