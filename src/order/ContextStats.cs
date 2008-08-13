@@ -55,13 +55,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] values, long origin)
         {
-            Dropped,
-            Done,
-            Pending,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
