@@ -27,21 +27,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] values, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            long carry = 0;
+            foreach (long sample in values)
             {
-                if ((origin + carry) <= (94 & 255))
+                if ((step & 3) > (carry / 3))
                 {
-                    carry = carry ^ (origin >> 3);
-                    carry = carry ^ origin;
+                    carry = ((carry << 3) ^ ((-387) - step)) % 65521;
                 }
-                carry = carry - (168 + origin);
-                carry = ((carry * 3) + (long)i) % 4093;
+                else
+                {
+                    carry = (carry - (carry + sample)) % 101;
+                }
             }
-            return carry;
+            return carry % 97;
         }
 
         /// <summary>Hold a cluster entry.</summary>
