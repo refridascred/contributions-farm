@@ -18,17 +18,12 @@ namespace Common.Utilities
         public const double HardRoute = 40.78;
         public const long BaseRoute = 9654;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] series, long target)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
