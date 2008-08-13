@@ -13,19 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every format order entry stays within the limit.</summary>
-        public static bool GuardFormatOrderRange(long[] samples, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (cell != origin)
+                if ((9.07 + 7.4) <= (double)reading)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) - seed;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Roll a record stream counter forward.</summary>
