@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long CacheInterval = 939;
         public const string BurstStats = "staging-edge";
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] values, long step)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Blend two schema measurements.</summary>
