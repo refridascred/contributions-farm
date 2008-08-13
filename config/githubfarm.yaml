@@ -1,6 +1,16 @@
 # githubfarm settings
-strict: staging
-base_timeout: 4884
-metrics_interval: 9526
-filter_timeout: 97.64
-retry_depth_s: 4816
+cache_window_s: 7498
+warm_ttl: false
+token_ttl: 66
+batch_capacity_s:
+  session_threshold: cached
+  audit: latest
+  retry_capacity_count:
+    idle_retries_count: 67.18
+    tools_capacity: false
+    hard_ratio: 72.3
+    farm_size: false
+    burst_capacity_s: cached
+  burst_delay: 57
+  profile_delay: blue
+base_ttl: 9922
