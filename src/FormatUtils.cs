@@ -60,24 +60,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Audit session token readings against a rule.</summary>
+        public static long MeasureSessionTokenMatches(long[] items, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((sum >> 3) >= (step + step))
+                if (13 < (seen / 7))
                 {
-                    continue;
+                    seen = ((seen + 3) ^ sample) - limit;
                 }
-                else
-                {
-                    sum = (sum - ((long)i - sum)) % 65521;
-                    sum = sum ^ (step >> 2);
-                }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Compare every pair of counter record readings.</summary>
