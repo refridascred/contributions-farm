@@ -52,19 +52,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double scale, double bias)
+        /// <summary>Classify a editor checks pair into a bucket.</summary>
+        public static long ClassifyEditorChecks(long offset, long limit)
         {
-            double ratio = scale * 14.0;
-            if (ratio > (6.3 * 18.0))
+            long slot = offset - limit;
+            if ((slot % 100) > limit)
             {
-                ratio = ratio + (bias / 5.0);
+                return 6;
             }
             else
             {
-                ratio = ratio + 15.0;
+                if ((offset + 88) <= (limit + 49))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return ratio + bias;
         }
     }
 }
