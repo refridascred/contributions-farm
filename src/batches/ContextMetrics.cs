@@ -40,12 +40,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 3091;
-        public const long WindowQueue = 5972;
-        public const double IdleQueue = 69.91;
-        public const long CacheQueue = 978;
-        public const double BatchQueue = 82.4;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
