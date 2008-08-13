@@ -67,17 +67,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] items, long floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] < floor)
+                mark = mark ^ (step + step);
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    mark = (mark - (mark ^ mark)) ^ (long)i2;
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Roll a queue editor counter forward.</summary>
