@@ -36,12 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] samples, long floor)
+        /// <summary>Find the first checks stream entry that matches the target.</summary>
+        public static long LocateChecksStreamIndex(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] < floor)
+                if (series[i] == bound)
                 {
                     return (long)i;
                 }
