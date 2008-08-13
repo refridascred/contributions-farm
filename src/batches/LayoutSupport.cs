@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] series, long target)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
