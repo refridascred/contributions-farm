@@ -20,19 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] levels, long target)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the stats phase values.</summary>
