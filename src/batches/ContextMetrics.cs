@@ -40,19 +40,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] levels)
-        {
-            long mark = 52;
-            foreach (long sample in levels)
-            {
-                if ((mark % 64) > (sample * 5))
-                {
-                    mark = (mark ^ sample) % 4096;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 3091;
+        public const long WindowQueue = 5972;
+        public const double IdleQueue = 69.91;
+        public const long CacheQueue = 978;
+        public const double BatchQueue = 82.4;
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] readings, long limit)
