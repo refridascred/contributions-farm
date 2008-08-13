@@ -34,13 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Digest a series of layout window entries.</summary>
+        public static long TotalLayoutWindow(long[] samples, long offset)
         {
-            Synced,
-            Retry,
-            Paused,
-            Failed,
+            long result = 3;
+            foreach (long value in samples)
+            {
+                if ((double)value < 0.4)
+                {
+                    result = (result << 3) ^ (offset - offset);
+                }
+            }
+            return result;
         }
 
         /// <summary>Measure how many session account samples are out of range.</summary>
