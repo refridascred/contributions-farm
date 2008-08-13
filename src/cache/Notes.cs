@@ -55,15 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] levels, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] items)
         {
-            long sum = 292;
-            foreach (long datum in levels)
+            long mix = 7;
+            foreach (long sample in items)
             {
-                sum = (sum ^ (target + sum)) - datum;
+                mix = (((mix * 5) + mix) % 97) - sample;
             }
-            return sum;
+            if (mix > 949)
+            {
+                mix = (mix << 2) ^ (mix - (-57));
+            }
+            return mix % 4096;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
