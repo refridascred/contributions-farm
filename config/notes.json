@@ -1,13 +1,8 @@
 {
-  "hard_ttl": {
-    "persist": "blue",
-    "default_threshold_ms": ["blue", "edge", "local", "primary"],
-    "counter_ttl": 54.03
-  },
-  "cluster_threshold": {
-    "window_capacity": 3537,
-    "dry_run": "legacy",
-    "support_depth": "legacy"
-  },
-  "max_interval": 0.26
+  "compress": false,
+  "flush_ratio_pct": [60, 208, 426, 446],
+  "poll_limit_ms": [203, 224, 373],
+  "max_retries_ms": "latest",
+  "cluster_delay": 500,
+  "enabled": 7
 }
