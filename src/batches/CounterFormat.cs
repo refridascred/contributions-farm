@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryDepth = "primary";
-        public const long StepInterval = 8817;
-        public const long BatchCommand = 231;
-        public const string RetryCommand = "local";
-        public const long HardCommand = 2911;
+        /// <summary>Measure how many cluster notes samples are out of range.</summary>
+        public static long AuditClusterNotesGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (((sample / 4) > (hits & 63)) && (((hits + hits) >= sample) && ((double)101 >= (double)(long)values.Length)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
