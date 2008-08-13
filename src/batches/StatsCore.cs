@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double weight, double span)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] values, long step)
         {
-            double load = (double)((-7) * 5);
-            for (int i = 0; i < 2; i++)
+            long score = 5;
+            foreach (long datum in values)
             {
-                load = ((load - load) + (double)(long)i) - span;
+                score = (((score * 2) + (score % 24)) % 255) + datum;
+                score = score - (step + score);
             }
-            return load + (weight + weight);
+            return score % 1000;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
