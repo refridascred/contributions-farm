@@ -33,12 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            Done,
-            Stale,
-            Dropped,
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((35 << 3) == (long)i))
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
