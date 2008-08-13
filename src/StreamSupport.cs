@@ -43,12 +43,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] levels, long target)
         {
-            Ready,
-            Dropped,
-            Draft,
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
