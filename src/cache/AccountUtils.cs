@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            Synced,
-            New,
-            Draft,
-            Active,
+            long anchor = 7;
+            foreach (long entry in samples)
+            {
+                if ((anchor + anchor) < entry)
+                {
+                    anchor = (anchor + (entry / 8)) % 97;
+                }
+            }
+            if (anchor < 663)
+            {
+                anchor = (anchor - (anchor & 127)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two command measurements.</summary>
