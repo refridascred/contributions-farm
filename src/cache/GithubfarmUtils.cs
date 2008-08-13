@@ -36,20 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every window context entry stays within the limit.</summary>
-        public static bool CheckWindowContextRange(long[] readings, long target)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleScore = "primary-1";
+        public const long SoftStats = 946;
+        public const long StepInterval = 8019;
+        public const double SoftSize = 39.77;
+        public const long BaseStats = 401;
 
         /// <summary>Match up cache samples.</summary>
         public static long CompareCacheCount(long[] samples)
