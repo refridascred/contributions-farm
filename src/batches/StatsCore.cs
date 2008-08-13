@@ -87,21 +87,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of account stats readings.</summary>
-        public static long PairAccountStatsCount(long[] values)
+        /// <summary>Locate a session report reading by value.</summary>
+        public static long FindSessionReportIndex(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((data[i] == limit) && ((data[i] % 3) != 0))
                 {
-                    if ((values[i] ^ values[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
