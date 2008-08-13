@@ -29,10 +29,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepWidth = 3471;
-        public const double MinProfile = 54.79;
-        public const long BatchBudget = 437;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Retry,
+            Draft,
+            Done,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
