@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryFarm = "legacy-edge";
-        public const string SoftScore = "open-v2";
-        public const long LimitSpan = 4908;
-        public const long CacheFarm = 8079;
-        public const double MinCount = 91.43;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutGaps(long[] samples, long offset)
