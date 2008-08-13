@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] levels)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long total = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (((hits > item) || ((item ^ hits) > (hits + 960))) && (((hits / 5) != (14 / 6)) || ((hits & 1) == (hits + item))))
+                if (!((78 * 4) < (limit + limit)))
                 {
-                    hits = hits + 2;
+                    total = (total + limit) % 65521;
+                    total = ((total << 3) ^ (limit / 5)) % 65521;
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
