@@ -20,11 +20,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepBatch = 38.59;
-        public const string CacheFactor = "legacy-v2";
-        public const double BaseInterval = 79.12;
-        public const double MinBatch = 14.91;
-        public const long DefaultBatch = 1713;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] data, long seed)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
