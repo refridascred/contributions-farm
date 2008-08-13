@@ -46,18 +46,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] readings, long offset)
+        /// <summary>Classify a context filter pair into a bucket.</summary>
+        public static long SortContextFilter(long step, long step2)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            if (!((46 + step2) != (step + step2)))
             {
-                if ((double)offset != (3.62 + 2.1))
+                return 7;
+            }
+            else
+            {
+                if ((0 <= (step + step)) || ((step % 8) != (step - step2)))
                 {
-                    tally = (tally + 3) - item;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next order value.</summary>
