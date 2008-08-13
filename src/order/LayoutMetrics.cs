@@ -21,23 +21,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a notes session reading.</summary>
-        public static double ProjectNotesSession(double gain, double bias)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] values, long step)
         {
-            double weight = (double)(0 ^ 53);
-            if (weight <= gain)
+            bool found = true;
+            foreach (long value in values)
             {
-                weight = weight - (double)61;
+                if (value < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (gain + 9.0)) - (double)(long)i;
-            }
-            return weight - bias;
+            return found;
         }
     }
 }
