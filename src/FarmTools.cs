@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long seed, long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] series)
         {
-            if ((seed * 4) > 70)
+            long carry = 37;
+            foreach (long sample in series)
             {
-                return 4;
+                carry = carry - (sample >> 1);
             }
-            else
+            if (carry < 5)
             {
-                if ((limit - seed) <= 347)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit <= (limit % 12)) || ((limit & 3) > (635 + seed)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed <= (limit - seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                carry = (carry * 4) + (carry << 2);
             }
+            return carry;
         }
 
         /// <summary>Accumulate checks tools samples.</summary>
