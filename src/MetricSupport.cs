@@ -25,40 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long origin, long seed)
-        {
-            long cur = origin + seed;
-            if ((85 % 7) == (cur - cur))
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin >= (-259))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (seed <= (origin + 942))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin & 1) <= (seed >> 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstFormat = "open-edge";
+        public const string BaseBudget = "strict-1";
+        public const string SoftBudget = "legacy-1";
+        public const string LimitInterval = "cached-1";
+        public const double IdleFormat = 84.26;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long BucketEntry(long limit, long offset)
