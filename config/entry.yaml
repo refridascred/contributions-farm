@@ -1,28 +1,14 @@
 # entry settings
-route_ratio:
-  hard_size_s: 100
-  default_size_ms:
-    compress:
-      - eu-west
-      - open
-      - edge
-      - staging
-    enabled: 1024
-    max_window_s: eu-west
-  record_threshold: 39.58
-  hard_size_ms:
-    - 57
-    - 301
-    - 187
-  max_retries_ms:
-    cache_window: 20
-    cache_retries: strict
-    cache_delay: local
-    min_limit_s: true
-  buffer_interval: primary
-commits_size:
-  support_threshold: 32
-  readonly: 54.46
-  flush_window: edge
-  flush_capacity_pct: 3784
-cache_retries_count: false
+sync_ttl_ms: 4616
+poll_size: 68.08
+strict:
+  - staging
+  - latest
+  - staging
+  - open
+sync_depth_pct: 250
+audit: 1024
+soft_window_s:
+  - 301
+  - 47
+  - 485
