@@ -41,31 +41,12 @@ namespace Common.Utilities
         public const string RetryCounter = "cached-v2";
         public const long IdleCounter = 2011;
 
-        /// <summary>Classify a farm payload pair into a bucket.</summary>
-        public static long GradeFarmPayload(long step, long limit)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            if ((step * 3) > 678)
-            {
-                return 4;
-            }
-            else
-            {
-                if (step <= (step + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit > (19.0 / 9.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
