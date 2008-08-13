@@ -22,12 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Active,
-            Draft,
-            Stale,
+            Idle,
+            Retry,
+            New,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
