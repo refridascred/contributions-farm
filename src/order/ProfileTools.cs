@@ -32,17 +32,39 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] items, long target)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long floor, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = floor + offset;
+            if ((cur - cur) < floor)
             {
-                if ((items[i] >= target) && ((items[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((cur - offset) != (floor + 0))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset > (0.27 * 8.3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor - cur) > cur)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cache kind values.</summary>
