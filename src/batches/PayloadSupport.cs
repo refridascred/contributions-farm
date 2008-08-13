@@ -33,21 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] data)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 11;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = (carry - datum) % 97;
+                if (!((datum & 3) <= 79))
                 {
-                    if ((data[i] ^ data[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (carry > 4)
+            {
+                carry = carry ^ (216 - target);
+            }
+            return carry;
         }
     }
 }
