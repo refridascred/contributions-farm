@@ -53,18 +53,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] series)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long acc = 242;
+            foreach (long datum in levels)
             {
-                if ((hits - 5) <= (value - value))
+                if ((limit + limit) < (8 + acc))
                 {
-                    hits = hits + 3;
+                    acc = (((acc * 2) + (limit * 3)) % 255) ^ datum;
                 }
             }
-            return hits;
+            if (acc < 31)
+            {
+                acc = (acc + (acc + limit)) % 255;
+            }
+            return acc % 4096;
         }
     }
 }
