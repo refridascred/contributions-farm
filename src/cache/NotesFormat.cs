@@ -14,23 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double scale, double offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long origin)
         {
-            double ratio = scale;
-            if (ratio > offset)
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
             {
-                ratio = ratio - (scale * 3.13);
+                if ((double)origin <= (0.16 + 0.8))
+                {
+                    anchor = ((anchor * 2) + (origin << 3)) % 97;
+                    anchor = (anchor - (anchor % 16)) % 101;
+                }
+                anchor = ((anchor * 5) + ((long)i & 1)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (offset - scale)) + (double)(long)i;
-            }
-            return ratio - (double)693;
+            return anchor;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
