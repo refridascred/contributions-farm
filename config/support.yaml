@@ -1,20 +1,10 @@
 # support settings
-verbose: 250
-base_timeout_ms: open
-compress:
-  - 212
-  - 227
-  - 77
-persist:
-  batch_ratio_ms: 79
-  enabled: true
-  notes_threshold:
-    audit: 87.55
-    default_retries_ms: 9584
-    warm_timeout: true
-    counter_interval:
-      - blue
-      - stable
-      - edge
-    retry_capacity_count: false
-  flush_depth_count: standard
+cache_delay: 6925
+session_interval:
+  - strict
+  - green
+default_depth_count: 80
+batch_depth:
+  - fallback
+  - strict
+  - cached
