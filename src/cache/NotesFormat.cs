@@ -39,12 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] series, long target)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] <= target) && ((series[i] % 5) == 0))
+                if ((items[i] < limit) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
