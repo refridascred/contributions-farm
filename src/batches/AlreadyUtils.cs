@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] series, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] series)
         {
-            long mix = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((entry - mix) != (entry + mix))
+                if (!((hits + item) <= item))
                 {
-                    mix = (mix ^ (bound >> 3)) % 255;
-                }
-                if ((3.8 / 4.0) != (double)entry)
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            if (mix > 387)
-            {
-                mix = (mix + (bound & 3)) % 97;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
