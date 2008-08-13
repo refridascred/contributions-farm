@@ -52,11 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 2727;
-        public const long IdleCounter = 6970;
-        public const long BaseCounter = 5506;
-        public const long LimitCount = 4989;
-        public const long BaseFactor = 9352;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
