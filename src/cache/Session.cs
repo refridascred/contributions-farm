@@ -27,17 +27,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] data, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 793;
+            foreach (long datum in readings)
             {
-                if ((data[i] == target) && ((data[i] % 3) == 0))
+                if ((acc ^ 18) > (acc + acc))
                 {
-                    return (long)i;
+                    acc = (((acc - acc) % 255) - datum) - limit;
+                }
+                if ((9.6 - 4.0) < (double)acc)
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
