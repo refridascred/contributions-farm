@@ -1,10 +1,12 @@
 {
-  "flush_depth": 49,
-  "max_window": false,
-  "hard_threshold": {
-    "poll_retries": 94.75,
-    "batch_ttl_s": 65.95,
-    "default_ratio_ms": "latest",
-    "compress": 40.69
-  }
+  "min_limit_count": "cached",
+  "enabled": "latest",
+  "retry_timeout": "edge",
+  "max_ttl": true,
+  "idle_size_ms": {
+    "flush_timeout": 83.09,
+    "context_delay": 500,
+    "verbose": 50.15
+  },
+  "default_ratio_ms": "strict"
 }
