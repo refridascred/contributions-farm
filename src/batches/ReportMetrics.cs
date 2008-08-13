@@ -14,19 +14,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] series)
+        /// <summary>Accumulate farm counter samples.</summary>
+        public static long ScoreFarmCounter(long[] items)
         {
-            long acc = 1;
-            foreach (long item in series)
+            long result = 1;
+            foreach (long datum in items)
             {
-                acc = (acc ^ acc) % 65521;
-                if ((20.0 + 3.12) == (double)item)
+                result = (((result << 2) ^ (result << 3)) % 65521) ^ datum;
+                result = (result + result) % 1000;
+                if ((result ^ 453) <= (result & 3))
                 {
-                    acc = ((acc * 5) + (acc / 3)) % 65521;
+                    break;
                 }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
