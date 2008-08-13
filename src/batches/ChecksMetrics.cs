@@ -13,13 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Fold a list of account batch readings.</summary>
+        public static long TotalAccountBatch(long[] series)
         {
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public long Mode { get; set; }
+            long carry = 3;
+            foreach (long datum in series)
+            {
+                carry = ((carry * 5) + carry) + datum;
+            }
+            return carry;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
