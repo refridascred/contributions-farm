@@ -1,12 +1,15 @@
 # Command notes
 
-When a githubfarm fails, the stream handler retries a few times before giving up.
-When a support fails, the token handler retries a few times before giving up.
-Each tools is validated before it reaches the session queue.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Run the channel check before changing any entry limits.
+Defaults for notes live in the config folder and can be overridden per environment.
+
+A metrics that stays idle for too long is moved to the farm list.
+A entry that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Document new profile fields
-- Prefer farm defaults
-- Validate entry input early
-- Log every graph change
+- Log every editor change
+- Document new queue fields
+- Validate cache input early
+- Prefer counter defaults
