@@ -48,18 +48,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many session account samples are out of range.</summary>
-        public static long TallySessionAccountHits(long[] readings, long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long acc = 81;
+            foreach (long value in values)
             {
-                if (bound >= (matches - reading))
+                if (acc <= (acc / 8))
                 {
-                    matches = matches + 3;
+                    acc = (((acc * 5) + (7 + acc)) % 101) ^ value;
                 }
             }
-            return matches;
+            if (acc < 2)
+            {
+                acc = ((acc * 5) + acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
