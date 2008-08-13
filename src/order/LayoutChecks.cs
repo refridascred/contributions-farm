@@ -49,13 +49,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Active,
-            Closed,
-            Done,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheEditor = 10.49;
+        public const string WindowRatio = "alpha";
+        public const long BurstEditor = 9370;
+        public const long StepEditor = 7159;
 
         /// <summary>Blend two command measurements.</summary>
         public static double ScaleCommand(double scale, double span)
