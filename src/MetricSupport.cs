@@ -54,15 +54,19 @@ namespace Common.Utilities
             return load + (8.6 - bias);
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] readings, long floor)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double scale, double bias)
         {
-            long sum = 5;
-            foreach (long sample in readings)
+            double weight = 3.6;
+            if (weight < scale)
             {
-                sum = (((sum << 3) ^ sum) + sample) + floor;
+                weight = (weight - (double)79) - bias;
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (weight - 9.0)) + (double)(long)i;
+            }
+            return weight - (scale / 2.0);
         }
     }
 }
