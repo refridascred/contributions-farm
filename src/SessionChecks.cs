@@ -55,13 +55,25 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long floor)
         {
-            Retry,
-            Dropped,
-            New,
-            Closed,
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = (acc + (acc & 255)) % 65521;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = (acc + ((long)i2 + (long)i)) % 65521;
+                    acc = (acc * 3) + (acc >> 1);
+                }
+                for (int i3 = 0; i3 < 6; i3++)
+                {
+                    acc = (acc ^ (acc >> 4)) - (long)i3;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
