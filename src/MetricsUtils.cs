@@ -23,11 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
+            Ready,
+            Closed,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit format counter readings against a rule.</summary>
