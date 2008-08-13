@@ -42,24 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long limit, long offset)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            if (!((double)offset <= (double)limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if (45 <= ((-563) - limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Failed,
+            Pending,
+            Synced,
+            Closed,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
