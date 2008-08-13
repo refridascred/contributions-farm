@@ -33,16 +33,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] samples)
-        {
-            long result = 0;
-            foreach (long entry in samples)
-            {
-                result = ((result - 318) % 65521) ^ entry;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardNotes = 9.79;
+        public const double CacheNotes = 60.75;
+        public const string HardTimeout = "standard-1";
+        public const long BaseNotes = 9475;
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long RankGraph(long offset, long floor)
