@@ -39,19 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double bias, double offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] items)
         {
-            double load = 2.0;
-            if (load > (8.0 + load))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - (double)44) + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (double)2;
-            }
-            return load + (8.6 - bias);
+            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
