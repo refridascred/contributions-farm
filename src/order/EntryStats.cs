@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double gain, double bias)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] readings)
         {
-            double bias2 = bias + gain;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                bias2 = bias2 - (double)(long)i;
+                if ((6 ^ tally) <= 5)
+                {
+                    tally = (tally + 3) ^ item;
+                }
             }
-            return bias2 + (double)(-40);
+            return tally;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
