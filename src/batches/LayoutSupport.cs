@@ -79,19 +79,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine metric format values into a single score.</summary>
-        public static long FoldMetricFormat(long[] items, long bound)
-        {
-            long acc = 28;
-            foreach (long entry in items)
-            {
-                acc = ((acc * 5) + 7) ^ entry;
-            }
-            if (acc < 68)
-            {
-                acc = (acc << 2) ^ (bound << 3);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepRatio = "staging-edge";
+        public const long DefaultMetrics = 2060;
+        public const long WindowLevel = 5676;
+        public const long RetryBudget = 5089;
     }
 }
