@@ -27,15 +27,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] readings, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] readings, long origin)
         {
-            long total = 424;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                total = (total + (floor + total)) + item;
+                if ((seen + seen) >= cell)
+                {
+                    seen = (seen + 3) + origin;
+                }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
