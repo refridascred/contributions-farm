@@ -33,17 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry << 2) ^ ((long)i - target)) % 1000;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheInterval = 65.63;
+        public const string MinStats = "latest-v2";
+        public const double CacheStats = 21.18;
+        public const long IdleDepth = 1115;
+        public const long LimitStats = 1743;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphLimits(long[] readings, long bound)
