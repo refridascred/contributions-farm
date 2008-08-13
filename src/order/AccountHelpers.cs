@@ -56,12 +56,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCounter = "latest-v2";
-        public const long LimitCounter = 9968;
-        public const string LimitSize = "strict-v2";
-        public const long RetryCounter = 627;
-        public const long MaxFactor = 9853;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public bool Score { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TallyAlready(long[] data, long limit)
