@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 3008;
-        public const long SoftScore = 2976;
-        public const long CacheSession = 3611;
-        public const double RetryLevel = 11.93;
-        public const long MaxSession = 350;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (((long)samples.Length - item) >= ((long)samples.Length % 97))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
