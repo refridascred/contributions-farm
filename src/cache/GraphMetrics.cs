@@ -59,20 +59,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long limit)
+        /// <summary>Roll a stream notes counter forward.</summary>
+        public static long IterateStreamNotes(long origin)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                state = ((state << 2) ^ limit) % 255;
-                if ((((long)i & 7) >= (state ^ state)) && ((4.2 * 4.53) < (double)limit))
-                {
-                    state = state + limit;
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                long slot = (origin + (long)i) - sum;
+                sum = (sum << 3) ^ (61 - slot);
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return state;
+            return sum;
         }
     }
 }
