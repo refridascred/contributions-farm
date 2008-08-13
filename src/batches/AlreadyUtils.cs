@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long floor, long limit)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long step)
         {
-            if (((floor / 4) < floor) && (floor < (limit + limit)))
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
+                score = score - (score + step);
+                score = ((score * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((floor / 5) > (floor % 24))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
