@@ -35,11 +35,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "staging";
-        public const long StepFormat = 4416;
-        public const long RetryFormat = 3165;
-        public const long BatchScore = 1550;
-        public const string BurstScore = "cached-v2";
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
