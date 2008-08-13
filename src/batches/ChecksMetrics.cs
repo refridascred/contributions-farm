@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] items, long target)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((target % 97) >= (target / 6)) || ((cell >> 4) < target))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Idle,
+            Done,
+            Active,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
