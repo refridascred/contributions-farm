@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a report batch counter forward.</summary>
-        public static long SeriesReportBatch(long step)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long step, long step2)
         {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
+            long slot = step + step2;
+            if ((376 << 2) >= step2)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (((double)step < (1.66 / 5.0)) || (23 <= (slot ^ slot)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((slot % 8) > step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two session queue measurements.</summary>
