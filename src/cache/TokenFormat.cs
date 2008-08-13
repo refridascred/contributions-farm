@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const string RetryTimeout = "cached-edge";
         public const long CacheTimeout = 9947;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
+            Retry,
+            Queued,
+            Closed,
         }
 
         /// <summary>Describe the format status values.</summary>
