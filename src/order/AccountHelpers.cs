@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstGraph = "local-edge";
-        public const long DefaultWidth = 7834;
-        public const double CacheGraph = 62.04;
-        public const long IdleGraph = 9812;
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a command filter sample.</summary>
         public static long SeekCommandFilterIndex(long[] values, long limit)
