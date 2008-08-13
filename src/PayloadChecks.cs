@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepScore = "primary-v2";
+        public const string LimitMetric = "legacy";
+        public const long DefaultMetric = 6731;
+        public const long BaseMetric = 6010;
 
         /// <summary>Roll a report counter forward.</summary>
         public static long DeriveReport(long seed)
