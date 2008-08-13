@@ -11,38 +11,18 @@ namespace Common.Utilities
         public const long SoftLevel = 1116;
         public const long CacheAlready = 5076;
 
-        /// <summary>Rank order graph input into a small class.</summary>
-        public static long GradeOrderGraph(long origin, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] levels)
         {
-            if ((origin >> 4) < limit)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit > 0)
+                if ((reading & 3) >= 0)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit + 4) != (origin * 5)) || ((limit & 3) != (origin - limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)limit == (0.64 / 8.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a format stats.</summary>
