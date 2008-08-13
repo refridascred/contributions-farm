@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] series, long target)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((entry % 3) != (target % 64))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryFarm = "legacy-edge";
+        public const string SoftScore = "open-v2";
+        public const long LimitSpan = 4908;
+        public const long CacheFarm = 8079;
+        public const double MinCount = 91.43;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LookupRecordIndex(long[] samples, long offset)
