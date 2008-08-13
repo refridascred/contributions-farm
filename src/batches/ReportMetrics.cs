@@ -25,21 +25,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long bound, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
+            long diff = bound + limit;
+            if ((bound + diff) <= (542 % 16))
             {
-                long gap = (long)i;
-                gap = (gap + step) % 255;
-                if (!((gap < sum) || ((sum / 3) != (0 ^ gap))))
-                {
-                    gap = (gap - (gap << 3)) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (bound < (bound * 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound - bound) < (bound & 127))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((bound % 60) != ((-8) ^ limit)) || ((bound - 124) <= (diff + limit)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
