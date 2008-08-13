@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-Use contributi settings to tune how often session data is refreshed.
+Keep route and support names short and lowercase.
+Each entry is validated before it reaches the graph queue.
+Each editor is validated before it reaches the stream queue.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Review order limits each release
-- Log every checks change
+- Log every session change
+- Prefer commits defaults
+- Validate farm input early
