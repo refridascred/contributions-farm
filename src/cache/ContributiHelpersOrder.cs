@@ -51,19 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Project the next stream order value.</summary>
+        public static double BlendStreamOrder(double weight, double offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            double rate = weight;
+            if (rate <= (weight * 9.22))
             {
-                if (!((35 << 3) == (long)i))
-                {
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                rate = (rate - weight) + offset;
             }
-            return mark;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (double)9) + (double)(long)i;
+            }
+            return rate + 7.94;
         }
     }
 }
