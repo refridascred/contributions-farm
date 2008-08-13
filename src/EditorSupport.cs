@@ -43,19 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((seed + 4) < (sum + sum))
-                {
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            Draft,
+            Closed,
+            Queued,
+            Active,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
