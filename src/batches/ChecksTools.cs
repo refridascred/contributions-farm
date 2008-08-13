@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Stale,
-            Active,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleFactor = 83.05;
+        public const string MinWidth = "latest-1";
+        public const long MinCount = 986;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxStats = 8118;
