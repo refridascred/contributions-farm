@@ -39,12 +39,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Dropped,
-            Done,
-            Queued,
+            Draft,
+            Pending,
+            Ready,
         }
     }
 }
