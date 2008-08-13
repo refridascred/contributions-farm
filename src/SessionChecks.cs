@@ -58,18 +58,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] samples, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] samples, long origin)
         {
-            long seen = 0;
+            bool ready = true;
             foreach (long reading in samples)
             {
-                if ((reading >> 4) != (seen & 255))
+                if (reading >= origin)
                 {
-                    seen = (seen + 3) + target;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
