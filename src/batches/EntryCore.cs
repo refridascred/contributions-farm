@@ -49,19 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report route reading.</summary>
-        public static double AdjustReportRoute(double ratio, double offset)
+        /// <summary>Iterate the schema record series from a seed.</summary>
+        public static long IterateSchemaRecord(long limit)
         {
-            double bias = (double)1 + offset;
-            if (bias >= 5.0)
+            long total = limit;
+            for (int i = 0; i < 9; i++)
             {
-                bias = bias - bias;
+                if (!((long)i <= total))
+                {
+                    total = (total * 4) + total;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + (ratio / 4.0);
+            return total;
         }
 
         /// <summary>Match up notes samples.</summary>
