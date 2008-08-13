@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] values, long target)
+        /// <summary>Fold a list of queue layout readings.</summary>
+        public static long TallyQueueLayout(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 5;
+            foreach (long sample in levels)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                mark = (mark + mark) - sample;
             }
-            return -1;
+            if (mark > 452)
+            {
+                mark = (mark * 4) + (5 & 127);
+            }
+            return mark;
         }
 
         /// <summary>Hold a already entry.</summary>
