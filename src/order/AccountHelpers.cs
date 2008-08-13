@@ -66,15 +66,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm cache values into a single score.</summary>
-        public static long FoldGithubfarmCache(long[] items, long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] series)
         {
-            long carry = 566;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                carry = (carry - (sample >> 2)) + offset;
+                if ((2 ^ hits) > hits)
+                {
+                    hits = (hits + 1) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
