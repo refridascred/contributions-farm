@@ -31,19 +31,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] levels, long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Label { get; set; }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
