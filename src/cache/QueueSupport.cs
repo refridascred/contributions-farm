@@ -12,15 +12,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double rate, double floor)
+        /// <summary>Locate a notes editor reading by value.</summary>
+        public static long LocateNotesEditorIndex(long[] series, long limit)
         {
-            double drift = (floor * 3.7) - (rate - floor);
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + floor) - (double)(long)i;
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return drift + (double)28;
+            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
