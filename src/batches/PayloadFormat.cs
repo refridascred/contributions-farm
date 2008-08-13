@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double RetryLevel = 11.93;
         public const long MaxSession = 350;
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Active,
             Failed,
-            Ready,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the farm kind values.</summary>
