@@ -1,8 +1,20 @@
 # support settings
-poll_ttl_s: 74.69
-batch_threshold_ms:
-  - 55
-  - 476
-  - 373
-min_timeout_ms: primary
-strict: 97.78
+verbose: 250
+base_timeout_ms: open
+compress:
+  - 212
+  - 227
+  - 77
+persist:
+  batch_ratio_ms: 79
+  enabled: true
+  notes_threshold:
+    audit: 87.55
+    default_retries_ms: 9584
+    warm_timeout: true
+    counter_interval:
+      - blue
+      - stable
+      - edge
+    retry_capacity_count: false
+  flush_depth_count: standard
