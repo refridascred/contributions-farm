@@ -53,19 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] levels, long bound)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long carry = 18;
-            foreach (long value in levels)
-            {
-                carry = ((carry - (bound + bound)) % 4096) + value;
-            }
-            if (carry > 188)
-            {
-                carry = (carry - (42 / 8)) % 1000;
-            }
-            return carry % 97;
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
