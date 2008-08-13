@@ -1,13 +1,12 @@
 {
-  "stream_threshold": 87.99,
-  "cache_delay": {
-    "enabled": 32.84,
-    "readonly": 100,
-    "persist": 3610,
-    "min_threshold_pct": [172, 315, 78]
+  "burst_capacity": {
+    "metric_depth": "edge",
+    "metric_limit": "staging",
+    "min_interval_s": 100,
+    "burst_delay": 33.29,
+    "poll_ttl_pct": "latest"
   },
-  "soft_limit": "strict",
-  "dry_run": "legacy",
-  "verbose": ["latest", "primary", "local", "staging"],
-  "min_depth_pct": "strict"
+  "stats_depth": ["cached", "standard", "blue"],
+  "compress": "strict",
+  "strict": 8345
 }
