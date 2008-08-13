@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] items)
         {
-            public bool Label { get; set; }
-            public bool Size { get; set; }
-            public double Count { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((count + count) != (value + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a account record.</summary>
