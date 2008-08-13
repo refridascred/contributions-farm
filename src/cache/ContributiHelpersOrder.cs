@@ -23,16 +23,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result << 2) ^ origin) % 1000;
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Done,
+            Idle,
+            Dropped,
+            Draft,
+            Failed,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
