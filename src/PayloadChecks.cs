@@ -40,18 +40,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] items, long seed)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((10.0 + 20.0) == (double)datum)
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
