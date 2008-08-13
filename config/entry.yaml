@@ -1,32 +1,14 @@
 # entry settings
-batch_window: stable
-layout_ttl:
-  - edge
-  - standard
-warm_interval: 15.37
-hard_delay_ms: 193
-command_window: 1024
-hard_timeout:
-  hard_depth:
-    base_interval_count: 86
-    batch_threshold: true
-    flush_size_pct:
-      - open
-      - blue
-      - legacy
-    command_depth: staging
-    payload_threshold:
-      - 301
-      - 29
-      - 342
-      - 357
-    githubfarm_ratio: 91.45
-  hard_retries_ms:
-    - 255
-    - 330
-    - 404
-    - 337
-  warm_window_count:
-    - 1
-    - 30
-    - 325
+sync_delay_ms: blue
+compress: latest
+persist:
+  metrics_capacity: latest
+  hard_window: false
+  soft_ttl:
+    - 85
+    - 440
+    - 218
+    - 188
+batch_ratio: latest
+token_threshold: blue
+record_size: 4.26
