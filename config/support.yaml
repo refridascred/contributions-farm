@@ -1,9 +1,9 @@
 # support settings
-profile_depth:
-  - standard
-  - staging
-order_interval: false
-batch_depth: 500
-compress: 6778
-flush_timeout: true
-burst_depth_pct: 88
+poll_depth: 7487
+sync_capacity_pct: 46
+sync_window_count: 64.0
+cache_threshold:
+  - 293
+  - 232
+cluster_interval: open
+poll_timeout_ms: eu-west
