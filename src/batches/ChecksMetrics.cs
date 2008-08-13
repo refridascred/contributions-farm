@@ -26,11 +26,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 98;
-        public const long BaseScore = 8355;
-        public const long IdleLevel = 2048;
-        public const double DefaultRoute = 10.59;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (3.0 <= (double)entry)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountLimits(long[] readings, long target)
