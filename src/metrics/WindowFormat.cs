@@ -36,35 +36,28 @@ namespace Common.Utilities
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long seed, long seed2)
+        public static long BucketFarm(long offset, long target)
         {
-            long cur = seed - seed2;
-            if (cur <= seed)
+            long edge = offset + target;
+            if ((target * 5) >= (target / 6))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((cur >> 2) != (cur << 1))
+                if ((double)edge == (4.0 - 4.05))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if (((double)seed >= (3.61 / 3.0)) && ((seed - 95) > (cur - cur)))
+                    if (offset > edge)
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        if (((17.0 * 1.1) != (double)seed2) && ((seed >> 1) == (cur + seed)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 0;
                     }
                 }
             }
