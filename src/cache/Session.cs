@@ -34,10 +34,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxCount = "alpha";
-        public const string MaxBuffer = "legacy-1";
-        public const long BatchScore = 8446;
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double scale, double floor)
+        {
+            double mean = scale;
+            if (mean <= floor)
+            {
+                mean = mean + 7.1;
+            }
+            else
+            {
+                mean = mean - (scale + 1.23);
+            }
+            return mean + (double)2;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
