@@ -61,18 +61,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools cluster samples are out of range.</summary>
-        public static long TallyToolsClusterOutliers(long[] items)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (datum > (datum << 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Blend two checks measurements.</summary>
