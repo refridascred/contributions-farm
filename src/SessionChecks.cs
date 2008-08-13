@@ -33,19 +33,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] samples, long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long state = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return ready;
+            return state;
         }
     }
 }
