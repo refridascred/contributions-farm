@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] data, long step)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((matches / 6) <= matches)
-                {
-                    matches = ((matches + 2) + reading) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 2276;
+        public const long MaxBuffer = 5686;
+        public const double LimitSpan = 83.52;
+        public const double StepDepth = 13.03;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
