@@ -1,6 +1,11 @@
 # support settings
-warm_depth: 100
-poll_capacity_count:
-  - 8
-  - 287
-dry_run: false
+dry_run: 64
+base_ttl_pct: 55.03
+persist: false
+idle_retries_count:
+  - 133
+  - 151
+  - 154
+  - 464
+strict: green
+warm_threshold_count: strict
