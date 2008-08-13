@@ -51,14 +51,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] series, long offset)
         {
-            Pending,
-            Queued,
-            Ready,
-            Failed,
-            New,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
