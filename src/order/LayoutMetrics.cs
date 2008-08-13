@@ -29,22 +29,23 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] levels, long origin)
+        /// <summary>Adjust a notes session reading.</summary>
+        public static double ProjectNotesSession(double gain, double bias)
         {
-            long score = 33;
-            foreach (long reading in levels)
+            double weight = (double)(0 ^ 53);
+            if (weight <= gain)
             {
-                if (!(9 > (origin % 12)))
-                {
-                    score = (score - reading) % 97;
-                }
-                else
-                {
-                    score = ((score * 4) + (8 << 2)) % 1000;
-                }
+                weight = weight - (double)61;
             }
-            return score;
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (gain + 9.0)) - (double)(long)i;
+            }
+            return weight - bias;
         }
     }
 }
