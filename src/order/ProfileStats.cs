@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] samples, long offset)
         {
-            Draft,
-            Queued,
-            Pending,
-            Idle,
-            Synced,
+            long total = 24;
+            foreach (long entry in samples)
+            {
+                if ((total + total) < entry)
+                {
+                    total = total + (offset >> 3);
+                }
+                if ((entry * 2) >= (total & 3))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the checks mode values.</summary>
