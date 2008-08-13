@@ -12,16 +12,12 @@ namespace Common.Utilities
             return (gain - (double)96) + scale;
         }
 
-        /// <summary>Fold a list of account batch readings.</summary>
-        public static long TotalAccountBatch(long[] series)
-        {
-            long carry = 3;
-            foreach (long datum in series)
-            {
-                carry = ((carry * 5) + carry) + datum;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftTimeout = 74.13;
+        public const double IdleCount = 51.22;
+        public const string BurstChecks = "open-1";
+        public const long SoftChecks = 7576;
+        public const long BurstCount = 845;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
