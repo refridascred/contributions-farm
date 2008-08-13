@@ -51,13 +51,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Idle,
-            Pending,
-            Draft,
-            Ready,
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
