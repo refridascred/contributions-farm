@@ -19,15 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a counter payload reading.</summary>
-        public static double SmoothCounterPayload(double weight, double offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            double mean = (double)((-2) >> 2);
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = ((mean + (double)54) - (double)(long)i) + weight;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + offset;
+            return tally;
         }
 
         /// <summary>Describe the order phase values.</summary>
