@@ -19,11 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 2276;
-        public const long MaxBuffer = 5686;
-        public const double LimitSpan = 83.52;
-        public const double StepDepth = 13.03;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long ClassifyBatch(long offset, long offset2)
