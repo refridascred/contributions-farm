@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of checks commits readings.</summary>
-        public static long PairChecksCommitsCount(long[] samples)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
