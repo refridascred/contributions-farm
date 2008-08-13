@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] values, long seed)
         {
-            Retry,
-            Active,
-            Closed,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((19.0 * 6.18) < (double)datum)
+                {
+                    tally = (tally + 1) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
