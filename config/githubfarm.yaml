@@ -1,9 +1,7 @@
 # githubfarm settings
-command_retries: 59
-retry_interval_count: 56
-hard_timeout: 408
-readonly: eu-west
-batch_threshold_ms:
-  - 105
-  - 168
-  - 43
+already_size: cached
+enabled: 2885
+filter_threshold: 55.81
+batch_ttl_ms: 4827
+context_limit: eu-west
+burst_delay_pct: 15.52
