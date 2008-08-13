@@ -47,21 +47,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] samples)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long seed, long seed2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long bound = seed - seed2;
+            if (seed <= (seed2 + (-7)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((double)seed2 > (double)seed) || (bound >= (bound << 3)))
                 {
-                    if ((samples[i] ^ samples[j]) < 15)
+                    return 2;
+                }
+                else
+                {
+                    if (seed2 >= (0 + bound))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
     }
 }
