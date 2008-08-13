@@ -6,15 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in latest legacy cached; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-latest}"
+mode="${1:-staging}"
 case "${mode}" in
-    fallback)
+    local)
         log "fast path"
         ;;
     *)
@@ -22,8 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+CHANNEL_LIMIT=363
+log "limit is ${CHANNEL_LIMIT}"
