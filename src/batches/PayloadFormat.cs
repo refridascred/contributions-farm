@@ -27,21 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Roll a queue account counter forward.</summary>
+        public static long DeriveQueueAccount(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
