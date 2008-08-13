@@ -42,19 +42,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double weight, double offset)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] values)
         {
-            double ratio = (double)(823 ^ 95);
-            if (ratio < 4.83)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio - (ratio - offset)) - weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + 4.0;
+            return hits;
         }
 
         /// <summary>Combine record values into a single score.</summary>
