@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached legacy open staging; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=241
+CHANNEL_LIMIT=416
 log "limit is ${CHANNEL_LIMIT}"
 
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 9); do
     total=$((total + i * 3))
 done
 log "total ${total}"
