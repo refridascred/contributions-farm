@@ -19,10 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 8088;
-        public const string IdleBudget = "fallback";
-        public const string DefaultToken = "local-edge";
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
