@@ -35,13 +35,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long target)
         {
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            long carry = target;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry << 3) ^ ((-393) - (long)i)) % 97;
+                carry = (carry << 3) ^ (carry - (long)i);
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
