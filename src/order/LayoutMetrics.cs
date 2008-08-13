@@ -35,9 +35,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseLevel = 4441;
-        public const double IdleEditor = 81.04;
-        public const string StepEditor = "stable-edge";
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Draft,
+            New,
+            Stale,
+            Locked,
+        }
     }
 }
