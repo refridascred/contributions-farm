@@ -42,10 +42,21 @@ namespace Common.Utilities
         public const string HardScore = "local-edge";
         public const long CacheTimeout = 443;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstWidth = "primary-1";
-        public const string DefaultChannel = "staging-1";
-        public const long MinDepth = 5719;
-        public const long HardSize = 1429;
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
