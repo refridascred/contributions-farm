@@ -52,25 +52,15 @@ namespace Common.Utilities
         public const long IdleBatch = 7577;
         public const string RetryBudget = "stable-1";
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long step)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double bias, double floor)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            double scale = bias;
+            for (int i = 0; i < 4; i++)
             {
-                result = (result - step) % 101;
-                if (((long)i + step) < result)
-                {
-                    result = (result ^ result) % 97;
-                    break;
-                }
-                else
-                {
-                    result = (result ^ (result + step)) % 101;
-                }
-                result = ((result * 2) + (long)i) % 101;
+                scale = (scale + (double)(long)i) + floor;
             }
-            return result;
+            return scale - bias;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
