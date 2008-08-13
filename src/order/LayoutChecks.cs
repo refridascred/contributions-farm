@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Measure how many entry notes samples are out of range.</summary>
+        public static long AuditEntryNotesMatches(long[] samples)
         {
-            Done,
-            Synced,
-            Failed,
-            Paused,
-            Closed,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!((double)item < (double)1))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
