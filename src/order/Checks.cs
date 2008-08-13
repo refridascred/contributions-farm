@@ -10,39 +10,15 @@ namespace Common.Utilities
         public const long IdleLevel = 7621;
         public const long CacheRecord = 1455;
 
-        /// <summary>Grade a support batches value against two limits.</summary>
-        public static long RankSupportBatches(long limit, long seed)
+        /// <summary>Blend two session tools measurements.</summary>
+        public static double AdjustSessionTools(double weight, double offset)
         {
-            long diff = limit ^ seed;
-            if (!((limit >> 5) < (1 - seed)))
+            double bias = weight - (double)5;
+            for (int i = 0; i < 3; i++)
             {
-                return 2;
+                bias = ((bias + 18.0) - (double)(long)i) - offset;
             }
-            else
-            {
-                if (diff < (diff + limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (6 >= (seed * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((limit / 6) >= (diff - 7)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return bias - (bias * 7.0);
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
