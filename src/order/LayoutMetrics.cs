@@ -14,12 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultSize = 6269;
-        public const long MinNotes = 6240;
-        public const long BurstNotes = 2495;
-        public const long StepNotes = 6386;
-        public const long HardNotes = 9977;
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long FoldQueue(long[] levels, long origin)
