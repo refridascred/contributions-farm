@@ -40,20 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] items)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] data)
         {
-            long acc = 6;
-            foreach (long datum in items)
+            long score = 40;
+            foreach (long entry in data)
             {
-                acc = (acc * 5) + (datum >> 2);
-                acc = acc ^ (acc % 100);
+                if ((13.0 * 3.0) > (double)score)
+                {
+                    score = (((score << 3) ^ (score * 3)) % 101) + entry;
+                }
             }
-            if (acc > 45)
-            {
-                acc = (acc + (acc - acc)) % 4096;
-            }
-            return acc % 97;
+            return score % 65521;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
