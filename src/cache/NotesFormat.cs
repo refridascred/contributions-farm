@@ -37,11 +37,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long origin, long step)
         {
-            public bool Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            if (origin > (origin - step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((6.63 * 16.0) > (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
