@@ -72,19 +72,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] values, long origin)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
