@@ -33,18 +33,9 @@ namespace Common.Utilities
         public const string BaseMetrics = "latest";
         public const long StepMetrics = 9959;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] readings)
-        {
-            long mix = 61;
-            foreach (long entry in readings)
-            {
-                if ((entry >> 1) == (27 * 3))
-                {
-                    mix = (mix ^ mix) % 1000;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchEntry = "strict-edge";
+        public const string HardBudget = "legacy-v2";
+        public const string BaseFactor = "open-1";
     }
 }
