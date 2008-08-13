@@ -40,22 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((5.5 / 6.0) < (double)reading)
+                if (datum > floor)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
