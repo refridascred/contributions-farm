@@ -28,15 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support notes value from a seed.</summary>
-        public static long SeriesSupportNotes(long floor)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double bias, double offset)
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
+            double drift = (double)(3 + (-387));
+            if (drift < 7.51)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                drift = ((drift - 2.0) - bias) - offset;
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (0.8 - drift);
         }
 
         /// <summary>Digest a series of batch layout entries.</summary>
