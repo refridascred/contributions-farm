@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long step, long step2)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] items, long origin)
         {
-            long slot = step + step2;
-            if ((376 << 2) >= step2)
+            bool ready = true;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)step < (1.66 / 5.0)) || (23 <= (slot ^ slot)))
+                if (item < origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((slot % 8) > step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the order status values.</summary>
