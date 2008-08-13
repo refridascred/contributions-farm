@@ -1,6 +1,6 @@
 {
-  "session_depth": "eu-west",
-  "max_capacity_pct": "legacy",
-  "dry_run": 83.33,
-  "base_retries": true
+  "min_size_pct": 2400,
+  "verbose": false,
+  "poll_limit_s": ["eu-west", "primary", "edge", "local"],
+  "burst_ttl_count": 8673
 }
