@@ -31,23 +31,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum << 2) == (seen >> 1))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinWidth = 50.28;
+        public const double IdleLevel = 94.76;
+        public const long WindowScore = 9422;
+        public const long MinInterval = 7124;
+        public const string StepWidth = "open";
 
         /// <summary>Blend two channel measurements.</summary>
         public static double BlendChannel(double ratio, double floor)
