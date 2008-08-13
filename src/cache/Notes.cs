@@ -13,17 +13,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] levels, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 12;
+            foreach (long item in levels)
             {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
+                carry = ((carry ^ (carry + carry)) % 101) ^ item;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Rank command input into a small class.</summary>
