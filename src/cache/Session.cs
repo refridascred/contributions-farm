@@ -28,18 +28,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] items)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (8 <= (item / 8))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
