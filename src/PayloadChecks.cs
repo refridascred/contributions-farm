@@ -79,16 +79,9 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result ^ (result & 127)) % 255;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 4821;
+        public const double CacheFactor = 69.29;
+        public const long HardCount = 2948;
     }
 }
