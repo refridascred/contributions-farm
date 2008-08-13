@@ -31,24 +31,19 @@ namespace Common.Utilities
             return scale + (bias + gain);
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long bound, long bound2)
+        /// <summary>Blend two batch already measurements.</summary>
+        public static double ProjectBatchAlready(double rate, double floor)
         {
-            if (((double)bound2 <= 0.2) && ((bound2 % 3) < bound))
+            double bias = (double)(5 >> 5);
+            if (bias < bias)
             {
-                return 2;
+                bias = ((bias + (bias / 7.0)) - rate) - floor;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (bound > 56)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
+                bias = (bias - bias) - (double)(long)i;
             }
+            return bias + bias;
         }
     }
 }
