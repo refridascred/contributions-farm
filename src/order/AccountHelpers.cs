@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] readings)
+        /// <summary>Accumulate order commits samples.</summary>
+        public static long CombineOrderCommits(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long total = 628;
+            foreach (long value in values)
             {
-                if (!((9.0 + 16.0) != (double)seen))
+                if ((double)34 > (double)value)
                 {
-                    seen = (seen + 2) ^ reading;
+                    total = total ^ value;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    total = (total - (0 % 2)) % 101;
                 }
             }
-            return seen;
+            if (total < 318)
+            {
+                total = (total + (limit % 7)) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
