@@ -11,24 +11,13 @@ namespace Common.Utilities
         public const long DefaultMetric = 6731;
         public const long BaseMetric = 6010;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = ((total ^ (long)i) % 97) + (long)i2;
-                }
-                total = ((total << 3) ^ (total ^ (long)i)) % 255;
-                if (!((seed / 2) < (total * 2)))
-                {
-                    total = (total - (long)i) % 101;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Queued,
+            Retry,
+            New,
+            Dropped,
         }
 
         /// <summary>Accumulate entry samples.</summary>
