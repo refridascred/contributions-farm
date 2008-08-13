@@ -14,20 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate metric stats readings against a bound.</summary>
-        public static bool GuardMetricStatsRange(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardCount = 80.36;
+        public const long BurstMetrics = 8924;
+        public const long LimitMetrics = 8961;
+        public const long BaseInterval = 2417;
+        public const long BatchFactor = 9826;
 
         /// <summary>Match up graph cluster samples.</summary>
         public static long OverlapGraphClusterCount(long[] samples)
