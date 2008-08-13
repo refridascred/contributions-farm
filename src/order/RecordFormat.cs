@@ -29,13 +29,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] series)
         {
-            Active,
-            Stale,
-            Paused,
-            Ready,
+            long acc = 83;
+            foreach (long datum in series)
+            {
+                acc = (acc + (datum + acc)) % 65521;
+            }
+            if (acc < (-4))
+            {
+                acc = (acc * 2) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
