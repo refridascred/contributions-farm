@@ -1,11 +1,12 @@
 # Command notes
 
-Run the tools check before changing any window limits.
-The checks report groups every token by counter.
+Run the layout check before changing any counter limits.
+Each window is validated before it reaches the record queue.
+Use format settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Document new schema fields
-- Log every graph change
-- Review account limits each release
-- Prefer channel defaults
+- Document new order fields
+- Review cache limits each release
+- Log every batch change
+- Validate counter input early
