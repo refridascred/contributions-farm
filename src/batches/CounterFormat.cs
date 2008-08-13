@@ -19,19 +19,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] readings, long floor)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Paused,
+            Dropped,
+            Pending,
+            Draft,
         }
     }
 }
