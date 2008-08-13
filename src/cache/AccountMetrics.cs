@@ -37,22 +37,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] levels, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long anchor = 15;
+            foreach (long cell in data)
             {
-                if ((double)bound > 8.0)
-                {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (anchor + (cell >> 2)) % 255;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the profile phase values.</summary>
