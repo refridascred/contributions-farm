@@ -53,18 +53,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] levels)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((2 - seen) >= (92 << 2))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            New,
+            Draft,
+            Locked,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a stream header.</summary>
