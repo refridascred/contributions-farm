@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a counter payload figure with a bias.</summary>
-        public static double AdjustCounterPayload(double rate, double floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long target, long target2)
         {
-            double rate2 = (rate - rate) * 7.2;
-            return rate2 + floor;
+            long lane = target + target2;
+            if ((lane - target2) < lane)
+            {
+                return 6;
+            }
+            else
+            {
+                if (target > lane)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the queue phase values.</summary>
