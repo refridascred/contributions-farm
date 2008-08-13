@@ -55,25 +55,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] samples, long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                acc = (acc + (acc & 255)) % 65521;
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((reading >> 4) != (seen & 255))
                 {
-                    acc = (acc + ((long)i2 + (long)i)) % 65521;
-                    acc = (acc * 3) + (acc >> 1);
+                    seen = (seen + 3) + target;
                 }
-                for (int i3 = 0; i3 < 6; i3++)
-                {
-                    acc = (acc ^ (acc >> 4)) - (long)i3;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return seen;
         }
     }
 }
