@@ -1,17 +1,8 @@
 {
-  "soft_threshold_ms": 94,
-  "warm_size": {
-    "metrics_limit": ["primary", "eu-west", "blue"],
-    "warm_ratio_pct": {
-      "audit": 65.72,
-      "cache_size": 2817,
-      "githubfarm_limit": 30,
-      "default_window": "latest",
-      "burst_capacity_count": 43.04
-    },
-    "audit": 9.36
-  },
-  "idle_interval_count": "open",
-  "channel_timeout": 15.25,
-  "readonly": "local"
+  "max_interval": "primary",
+  "min_window_pct": "legacy",
+  "default_limit": 36.04,
+  "persist": 9926,
+  "base_threshold_s": 30,
+  "readonly": 1136
 }
