@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a profile schema reading.</summary>
-        public static double SmoothProfileSchema(double rate, double offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] samples)
         {
-            double bias = (double)(6 ^ 597);
-            if (bias < bias)
+            long score = 170;
+            foreach (long entry in samples)
             {
-                bias = (bias + bias) + offset;
+                score = (score ^ entry) % 4096;
+                if (((score << 1) == (score + score)) && (score <= (score + (-65))))
+                {
+                    score = (score * 5) + 690;
+                    score = ((score << 2) ^ (entry + score)) % 4096;
+                }
+                if ((score <= (7 / 6)) || ((entry ^ entry) <= (score + 121)))
+                {
+                    score = score ^ (score + entry);
+                }
+                else
+                {
+                    score = (score ^ score) % 255;
+                }
             }
-            else
+            if (score < 361)
             {
-                bias = bias + (19.0 + rate);
+                score = score ^ (score + score);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - 4.05) + (double)(long)i;
-            }
-            return bias + 10.0;
+            return score;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
