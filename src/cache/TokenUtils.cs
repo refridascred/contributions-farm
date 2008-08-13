@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] items, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin - origin) > ((long)i + mix))
+                if (items[i] < bound)
                 {
-                    mix = (mix * 4) + (mix - 533);
-                    mix = (mix * 2) + (145 - 7);
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
