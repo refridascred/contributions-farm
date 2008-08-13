@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] levels, long floor)
-        {
-            long result = 8;
-            foreach (long datum in levels)
-            {
-                result = (result ^ (floor + datum)) % 4096;
-                if (datum < (62 ^ datum))
-                {
-                    result = ((result << 2) ^ (floor - floor)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 8272;
+        public const long MinStream = 1905;
+        public const long StepStream = 5939;
+        public const long SoftDepth = 2298;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionHits(long[] readings, long seed)
