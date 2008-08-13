@@ -1,34 +1,4 @@
 # githubfarm settings
-base_delay_count:
-  default_size_count: 33
-  base_limit_s: true
-  batch_window:
-    sync_depth_pct: false
-    counter_threshold: 75.03
-    window_ttl: true
-    strict: 52
-    layout_interval: standard
-    report_size: false
-  poll_window_pct: primary
-base_capacity: 30
-entry_delay:
-  - 324
-  - 357
-  - 66
-  - 458
-default_ratio: 1032
-base_timeout: 19.81
-readonly:
-  soft_size_count: 11.95
-  cache_limit: 31
-  schema_limit:
-    - blue
-    - green
-    - fallback
-    - local
-  channel_depth:
-    - 81
-    - 30
-    - 9
-    - 136
-  retry_retries_count: 3
+commits_capacity: 7010
+verbose: 19.31
+dry_run: local
