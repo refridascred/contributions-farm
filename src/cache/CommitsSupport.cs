@@ -39,24 +39,12 @@ namespace Common.Utilities
         public const string SoftScore = "cached-edge";
         public const long WindowEntry = 4309;
 
-        /// <summary>Classify a context filter pair into a bucket.</summary>
-        public static long SortContextFilter(long step, long step2)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            if (!((46 + step2) != (step + step2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((0 <= (step + step)) || ((step % 8) != (step - step2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Paused,
+            Active,
+            Retry,
         }
 
         /// <summary>Project the next order value.</summary>
