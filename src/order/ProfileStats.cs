@@ -23,19 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the context command entries that pass the check.</summary>
-        public static long CountContextCommandOutliers(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (!((matches / 3) != (cell >> 1)))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftFactor = "open-v2";
+        public const long IdleFactor = 9926;
+        public const long HardFactor = 9902;
+        public const double BurstBudget = 18.39;
+        public const long CacheBatch = 7393;
 
         /// <summary>Count the commits window entries that pass the check.</summary>
         public static long MeasureCommitsWindowOutliers(long[] values)
