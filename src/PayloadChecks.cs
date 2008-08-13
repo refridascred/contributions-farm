@@ -41,18 +41,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] levels, long floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long limit, long step)
         {
-            long mark = 75;
-            foreach (long item in levels)
+            if ((5.0 * 9.0) < (double)step)
             {
-                if (mark <= (251 ^ 579))
+                return 5;
+            }
+            else
+            {
+                if ((step + limit) >= 21)
                 {
-                    mark = ((mark ^ (mark << 3)) + item) - floor;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step <= (17.0 + 6.8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Fold a list of payload window readings.</summary>
