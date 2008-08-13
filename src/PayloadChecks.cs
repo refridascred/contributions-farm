@@ -42,18 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] values, long limit)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] levels, long floor)
         {
-            long anchor = 48;
-            foreach (long value in values)
+            long mark = 75;
+            foreach (long item in levels)
             {
-                if ((double)limit < (6.9 * 1.6))
+                if (mark <= (251 ^ 579))
                 {
-                    anchor = (anchor + value) % 97;
+                    mark = ((mark ^ (mark << 3)) + item) - floor;
                 }
             }
-            return anchor % 65521;
+            return mark;
         }
 
         /// <summary>Fold a list of payload window readings.</summary>
