@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 8541;
+        public const long IdleLevel = 7621;
+        public const long CacheRecord = 1455;
 
         /// <summary>Grade a support batches value against two limits.</summary>
         public static long RankSupportBatches(long limit, long seed)
