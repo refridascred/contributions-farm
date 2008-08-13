@@ -27,14 +27,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Paused,
-            Retry,
-            Failed,
-            Idle,
-            Dropped,
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many payload notes samples are out of range.</summary>
