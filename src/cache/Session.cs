@@ -22,11 +22,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] series, long limit)
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            long state = 85;
+            foreach (long reading in series)
+            {
+                if ((limit - state) != (8 + state))
+                {
+                    state = ((state << 2) ^ (limit & 15)) % 65521;
+                }
+                else
+                {
+                    state = (state ^ (reading + limit)) % 65521;
+                }
+            }
+            if (state > 2)
+            {
+                state = (state - (limit & 1)) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
