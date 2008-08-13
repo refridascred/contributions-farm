@@ -12,11 +12,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "fallback-edge";
-        public const string MaxWindow = "local-v2";
-        public const long LimitTimeout = 1700;
-        public const long BurstSpan = 3713;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 349;
+        public const long CacheReport = 1241;
+        public const long DefaultTimeout = 7392;
+        public const long StepReport = 6446;
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long ClassifyNotes(long bound, long bound2)
