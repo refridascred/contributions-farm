@@ -28,19 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] samples, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (sample > step)
+                if (item < target)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Adjust a layout reading.</summary>
