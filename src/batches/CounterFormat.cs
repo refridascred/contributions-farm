@@ -26,15 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] readings, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if (value < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
     }
 }
