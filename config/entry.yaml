@@ -1,4 +1,9 @@
 # entry settings
-schema_interval: 30.01
-sync_timeout: true
-idle_threshold: 69
+schema_threshold:
+  soft_depth_ms: latest
+  sync_delay: staging
+  persist: 1214
+  sync_window: 30
+stream_retries: strict
+idle_window_count: 2991
+default_interval: 90
