@@ -53,18 +53,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit session token readings against a rule.</summary>
-        public static long MeasureSessionTokenMatches(long[] items, long limit)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (13 < (seen / 7))
-                {
-                    seen = ((seen + 3) ^ sample) - limit;
-                }
-            }
-            return seen;
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Accumulate token samples.</summary>
