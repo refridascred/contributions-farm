@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryFactor = 42.99;
-        public const long BaseBuffer = 6126;
-        public const long CacheBuffer = 9791;
-        public const long StepBuffer = 5499;
-        public const string BaseSize = "legacy-1";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string DefaultInterval = "fallback";
+        public const long RetrySpan = 4535;
+        public const string BurstTimeout = "open";
+        public const long HardMetrics = 2308;
+        public const string MaxMetrics = "strict-v2";
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double BlendBatch(double rate, double offset)
