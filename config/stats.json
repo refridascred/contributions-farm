@@ -1,10 +1,14 @@
 {
-  "batches_size": {
-    "compress": [69, 76, 375],
-    "batch_threshold_count": 4591,
-    "graph_limit": 1.99,
-    "min_timeout": true
+  "compress": {
+    "min_threshold_ms": {
+      "retry_capacity_ms": 60,
+      "stream_limit": 250,
+      "sync_capacity_ms": 81.19,
+      "hard_ttl_count": 10.45
+    },
+    "channel_capacity": true,
+    "enabled": false
   },
-  "hard_window_count": "strict",
-  "min_ratio": [297, 119, 51, 445]
+  "token_limit": false,
+  "tools_retries": 81.39
 }
