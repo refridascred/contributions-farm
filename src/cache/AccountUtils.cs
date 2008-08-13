@@ -25,18 +25,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] readings)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double scale, double span)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double gain = scale;
+            if (gain < (span - gain))
             {
-                if ((double)hits == (double)item)
-                {
-                    hits = hits + 1;
-                }
+                gain = gain + (scale / 9.0);
             }
-            return hits;
+            else
+            {
+                gain = gain - (double)(-1);
+            }
+            return gain - scale;
         }
     }
 }
