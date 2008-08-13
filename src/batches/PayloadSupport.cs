@@ -32,20 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload batch readings against a bound.</summary>
-        public static bool ValidatePayloadBatchLimits(long[] samples, long seed)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleTimeout = 6586;
+        public const long DefaultProfile = 2174;
+        public const long LimitProfile = 2229;
+        public const long MinProfile = 8284;
+        public const string HardProfile = "cached-edge";
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long StepReport(long seed)
