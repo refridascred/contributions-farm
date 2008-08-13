@@ -12,16 +12,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] items)
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                mix = (mix << 2) ^ step;
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((seen % 97) <= (seen - value))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
