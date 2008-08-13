@@ -48,21 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count window format pairs that satisfy a relation.</summary>
-        public static long MatchWindowFormatCount(long[] levels)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Active,
+            Draft,
+            Synced,
         }
 
         /// <summary>Describe the record level values.</summary>
