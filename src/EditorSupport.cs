@@ -37,18 +37,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] levels)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double bias, double floor)
         {
-            long result = 591;
-            foreach (long item in levels)
+            double weight = (double)(4 ^ 714);
+            for (int i = 0; i < 9; i++)
             {
-                if (((339 % 24) != (item & 63)) && ((0.78 - 6.22) <= (double)result))
-                {
-                    result = result ^ (item % 7);
-                }
+                weight = ((weight + (bias - 5.6)) + (double)(long)i) - floor;
             }
-            return result;
+            return weight + weight;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
