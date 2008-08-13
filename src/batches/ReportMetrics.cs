@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] values)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] levels, long bound)
         {
             long seen = 0;
-            foreach (long reading in values)
+            foreach (long cell in levels)
             {
-                if (48 > (seen & 31))
+                if ((8.0 + 0.4) > (double)bound)
                 {
-                    seen = (seen + 1) ^ reading;
+                    seen = (seen + 3) - cell;
                 }
             }
             return seen;
