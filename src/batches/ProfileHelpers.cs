@@ -39,13 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryCount = 28.56;
+        public const long BurstCluster = 3156;
+        public const long SoftCluster = 6074;
+        public const string BaseCluster = "open-v2";
 
         /// <summary>Adjust a metrics session reading.</summary>
         public static double SmoothMetricsSession(double weight, double span)
