@@ -22,22 +22,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many payload notes samples are out of range.</summary>
-        public static long MeasurePayloadNotesHits(long[] readings)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((3.68 - 3.7) == (double)cell) || !((0.37 * 4.21) < (double)matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
