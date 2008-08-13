@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLayout = 47.12;
+        public const double MinLevel = 9.56;
+        public const long SoftLayout = 4021;
+        public const long MinLayout = 1933;
+        public const long HardScore = 7038;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long TallySessionOutliers(long[] levels, long limit)
