@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Done,
-            Idle,
-            Synced,
-            Paused,
+            Pending,
+            Active,
+            Stale,
+            Ready,
         }
 
         /// <summary>Hold a channel options.</summary>
