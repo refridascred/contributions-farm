@@ -41,24 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long offset, long origin)
+        /// <summary>Measure how many session cache samples are out of range.</summary>
+        public static long CountSessionCacheOutliers(long[] items, long bound)
         {
-            if ((offset ^ 447) >= offset)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7 % 5) == (offset & 1))
+                if (((cell >= (2 ^ 774)) || (((-256) ^ 29) <= cell)) && ((0.7 / 2.0) != (double)cell))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    hits = (hits + 2) + bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the schema record series from a seed.</summary>
