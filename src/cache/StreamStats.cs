@@ -56,20 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits record series from a seed.</summary>
-        public static long RollCommitsRecord(long floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long state = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                state = ((state << 2) ^ ((long)i * 4)) % 1000;
-                for (int i3 = 0; i3 < 11; i3++)
-                {
-                    state = (((state * 3) + ((long)i / 6)) % 255) + (long)i3;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Idle,
+            Failed,
+            Stale,
         }
     }
 }
