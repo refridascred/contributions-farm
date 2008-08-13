@@ -39,10 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstWidth = 8703;
-        public const string HardCount = "cached";
-        public const long StepSpan = 5229;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] items)
+        {
+            long total = 34;
+            foreach (long reading in items)
+            {
+                total = (total ^ (80 + reading)) % 1000;
+                total = total ^ (855 - total);
+            }
+            if (total > 978)
+            {
+                total = total ^ (total / 6);
+            }
+            return total;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MinTimeout = 8079;
