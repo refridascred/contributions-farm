@@ -1,18 +1,18 @@
 # entry settings
-cluster_window: edge
-account_window: 367
-compress:
-  idle_threshold: fallback
-  stats_threshold:
-    entry_timeout: 88.55
-    min_depth_s: true
-    enabled: 73
-    verbose: 250
-  batch_limit:
-    - green
-    - primary
-  idle_ratio_s: 1024
+already_window: 30
+cache_window_s:
+  filter_depth: true
   compress:
-    - fallback
-    - cached
-  sync_depth_count: 48.9
+    min_ttl: standard
+    default_ttl_pct: blue
+    editor_timeout: 25
+    hard_ratio_ms:
+      - 343
+      - 181
+      - 357
+    poll_threshold_s: strict
+    dry_run: 12.59
+  record_retries: 7990
+  burst_retries: false
+batch_window: 30
+hard_retries_pct: true
