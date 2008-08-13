@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] data, long origin)
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public double Region { get; set; }
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
