@@ -20,12 +20,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] == bound) && ((levels[i] % 5) == 0))
+                if (samples[i] > bound)
                 {
                     return (long)i;
                 }
