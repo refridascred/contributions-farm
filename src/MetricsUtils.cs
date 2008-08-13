@@ -48,21 +48,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] readings)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Failed,
+            Pending,
+            Retry,
+            Draft,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
