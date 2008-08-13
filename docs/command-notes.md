@@ -1,14 +1,14 @@
 # Command notes
 
-The command report groups every cluster by session.
-The route module keeps githubfarm values in sync with the report cache.
-Each editor is validated before it reaches the support queue.
+Each route is validated before it reaches the session queue.
+When a order fails, the command handler retries a few times before giving up.
 
-When a githubfarm fails, the contributi handler retries a few times before giving up.
-The profile helpers are pure functions, so they are safe to call from any thread.
+The entry module keeps command values in sync with the queue cache.
+A schema that stays idle for too long is moved to the filter list.
 
 ## Guidelines
 
-- Keep context values small
-- Log every payload change
-- Prefer entry defaults
+- Document new route fields
+- Prefer payload defaults
+- Log every channel change
+- Review token limits each release
