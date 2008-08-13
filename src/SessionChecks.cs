@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] data, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (cell > target)
+                if ((sample * 5) <= (sample ^ step))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
