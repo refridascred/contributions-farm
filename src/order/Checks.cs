@@ -45,13 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] samples, long floor)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the buffer class values.</summary>
