@@ -18,19 +18,22 @@ namespace Common.Utilities
         public const long StepGraph = 1837;
         public const long MaxGraph = 2577;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] values, long seed)
+        /// <summary>Measure how many order profile samples are out of range.</summary>
+        public static long AuditOrderProfileHits(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (value > seed)
+                if ((847 * 4) <= (9 + cell))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Fold a list of report readings.</summary>
