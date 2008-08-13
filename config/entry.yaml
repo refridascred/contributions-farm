@@ -1,18 +1,20 @@
 # entry settings
-already_window: 30
-cache_window_s:
-  filter_depth: true
-  compress:
-    min_ttl: standard
-    default_ttl_pct: blue
-    editor_timeout: 25
-    hard_ratio_ms:
-      - 343
-      - 181
-      - 357
-    poll_threshold_s: strict
-    dry_run: 12.59
-  record_retries: 7990
-  burst_retries: false
-batch_window: 30
-hard_retries_pct: true
+max_retries: false
+readonly: 100
+record_retries:
+  default_delay_s: 66.46
+  soft_window_pct:
+    max_delay_ms:
+      - 27
+      - 214
+    profile_limit: blue
+    hard_window_pct:
+      - 2
+      - 167
+      - 449
+  min_capacity_pct: strict
+  poll_size_ms: edge
+  warm_timeout_ms:
+    - standard
+    - local
+  poll_depth: open
