@@ -34,10 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 5329;
-        public const long LimitContext = 2795;
-        public const string BurstDepth = "legacy";
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!((item << 2) < (hits ^ hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every metrics profile entry stays within the limit.</summary>
         public static bool ValidateMetricsProfileRange(long[] items, long limit)
