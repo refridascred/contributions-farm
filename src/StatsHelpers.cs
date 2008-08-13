@@ -71,31 +71,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank account metrics input into a small class.</summary>
-        public static long RankAccountMetrics(long step, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] data, long seed)
         {
-            if ((9 - bound) < bound)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7.07 / 8.0) < (2.77 + 19.0))
+                if (!(((36 ^ seed) != (seen - 533)) || ((2.3 - 3.0) < (double)seed)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step != (20.0 + 7.49))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = (seen + 2) + entry;
                 }
             }
+            return seen;
         }
     }
 }
