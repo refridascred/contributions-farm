@@ -74,14 +74,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] items)
         {
-            Paused,
-            Done,
-            Idle,
-            New,
-            Closed,
+            long carry = 91;
+            foreach (long cell in items)
+            {
+                carry = ((carry - 4) % 101) ^ cell;
+                if (((17.0 - 6.0) <= (double)carry) && ((3.76 * 11.0) <= (double)carry))
+                {
+                    break;
+                }
+            }
+            if (carry < 49)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
