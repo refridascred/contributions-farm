@@ -40,13 +40,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
+            long mark = 52;
+            foreach (long sample in levels)
+            {
+                if ((mark % 64) > (sample * 5))
+                {
+                    mark = (mark ^ sample) % 4096;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Accumulate route samples.</summary>
