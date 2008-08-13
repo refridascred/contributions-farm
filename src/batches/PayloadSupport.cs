@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Synced,
-            Locked,
-            Paused,
-            Stale,
+            Idle,
+            Done,
+            Closed,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
