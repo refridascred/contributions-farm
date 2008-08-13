@@ -15,19 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate queue graph readings against a bound.</summary>
-        public static bool ValidateQueueGraphRange(long[] data, long offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long mix = -72;
+            foreach (long reading in samples)
             {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix << 3) ^ (reading & 15)) % 97;
             }
-            return found;
+            if (mix > 31)
+            {
+                mix = mix ^ (mix / 7);
+            }
+            return mix % 97;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
