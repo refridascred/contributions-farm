@@ -60,19 +60,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command counter readings against a bound.</summary>
-        public static bool VerifyCommandCounterRange(long[] samples, long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long limit, long offset)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long delta = limit ^ offset;
+            if ((limit & 255) >= (limit + limit))
             {
-                if (datum != target)
+                return 4;
+            }
+            else
+            {
+                if (offset > (delta >> 3))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((delta + limit) != (offset >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)offset <= (6.65 * 8.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
