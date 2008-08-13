@@ -38,24 +38,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] samples)
+        /// <summary>Count cache metrics pairs that satisfy a relation.</summary>
+        public static long PairCacheMetricsCount(long[] levels)
         {
-            long sum = 1;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0.1 - 6.0) != (double)sum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = sum - (item + item);
-                    sum = sum + (sum & 127);
-                    break;
-                }
-                if (!((item * 2) != (item - (long)samples.Length)))
-                {
-                    sum = ((sum * 2) + item) % 4096;
+                    if ((levels[i] + levels[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the buffer class values.</summary>
