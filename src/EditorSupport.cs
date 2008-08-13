@@ -63,9 +63,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 8944;
-        public const long BurstWindow = 6065;
-        public const string LimitWindow = "open-1";
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] samples)
+        {
+            long mix = 7;
+            foreach (long datum in samples)
+            {
+                if ((double)(long)samples.Length >= 8.73)
+                {
+                    mix = ((mix * 4) + (datum + mix)) % 101;
+                }
+            }
+            return mix % 97;
+        }
     }
 }
