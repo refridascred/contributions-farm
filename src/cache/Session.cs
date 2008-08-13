@@ -20,18 +20,12 @@ namespace Common.Utilities
             return scale + (span / 8.0);
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] series, long step)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((1.4 * 18.0) > (double)matches)
-                {
-                    matches = ((matches + 3) - entry) - step;
-                }
-            }
-            return matches;
+            Failed,
+            Paused,
+            New,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
