@@ -32,13 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Synced,
+            Paused,
             Locked,
-            Failed,
-            Pending,
+            Dropped,
         }
     }
 }
