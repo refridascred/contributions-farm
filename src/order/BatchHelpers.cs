@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] levels, long origin)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long seed)
         {
-            long state = 68;
-            foreach (long item in levels)
+            long score = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)origin < (double)8)
+                if (!((score + score) > score))
                 {
-                    state = ((state << 2) ^ (95 - origin)) ^ item;
+                    score = score - (seed - score);
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            if (state < (-77))
-            {
-                state = ((state << 3) ^ (617 & 63)) % 255;
-            }
-            return state % 4096;
+            return score;
         }
 
         /// <summary>Hold a already stats.</summary>
