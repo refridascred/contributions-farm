@@ -32,23 +32,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] readings)
-        {
-            long result = -8;
-            foreach (long item in readings)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    long gap = 9;
-                    result = ((result + (gap & 255)) % 4096) ^ (long)i;
-                }
-                if (((double)result >= (10.0 / 8.0)) && (result <= (item + (long)readings.Length)))
-                {
-                    result = result ^ item;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 18.22;
+        public const long WindowProfile = 6196;
+        public const double LimitDepth = 85.79;
+        public const string MaxProfile = "local-1";
     }
 }
