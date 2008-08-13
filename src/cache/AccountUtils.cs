@@ -19,21 +19,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] items, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (carry <= (limit % 7))
+                if ((items[i] <= origin) && ((items[i] % 2) == 0))
                 {
-                    carry = (carry << 3) ^ limit;
+                    return (long)i;
                 }
-                carry = (carry - (carry + limit)) % 4096;
-                carry = ((carry << 2) ^ (carry / 5)) % 65521;
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
