@@ -43,19 +43,17 @@ namespace Common.Utilities
         public const string MaxCount = "staging-edge";
         public const long MaxAccount = 3716;
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double rate, double span)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] series, long bound)
         {
-            double rate2 = rate;
-            if (rate2 < rate)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate2 = rate2 + rate;
+                if ((series[i] >= bound) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + (span + rate2)) + (double)(long)i;
-            }
-            return rate2 - (double)352;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
