@@ -1,12 +1,5 @@
 {
-  "min_limit_count": "cached",
-  "enabled": "latest",
-  "retry_timeout": "edge",
-  "max_ttl": true,
-  "idle_size_ms": {
-    "flush_timeout": 83.09,
-    "context_delay": 500,
-    "verbose": 50.15
-  },
-  "default_ratio_ms": "strict"
+  "flush_depth": "latest",
+  "schema_retries": 67.33,
+  "retry_ttl_s": 86
 }
