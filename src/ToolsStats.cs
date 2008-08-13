@@ -82,22 +82,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] samples, long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] data, long origin)
         {
-            long acc = 349;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((-72) % 100) < (acc + 2))
+                if (data[i] < origin)
                 {
-                    acc = (((acc << 2) ^ (-30)) % 97) ^ value;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (origin - acc);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
