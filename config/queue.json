@@ -1,8 +1,8 @@
 {
-  "poll_size_ms": 50,
-  "filter_threshold": [100, 96],
-  "default_interval_s": "standard",
-  "support_retries": 29.71,
-  "persist": 9232,
-  "profile_size": true
+  "retry_ttl_count": "stable",
+  "counter_delay": 93,
+  "channel_ratio": false,
+  "compress": 93.27,
+  "burst_ttl_count": [43, 444, 173],
+  "report_ratio": "edge"
 }
