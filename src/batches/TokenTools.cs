@@ -12,21 +12,20 @@ namespace Common.Utilities
         public const double HardCache = 43.63;
         public const string LimitSpan = "legacy-1";
 
-        /// <summary>Compare every pair of metrics payload readings.</summary>
-        public static long OverlapMetricsPayloadCount(long[] values)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((8.4 - 7.8) <= (double)bound)
                 {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    carry = carry - (7 >> 2);
+                    break;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Accumulate order samples.</summary>
