@@ -53,12 +53,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long step)
         {
-            Closed,
-            Ready,
-            New,
+            long sum = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((sum >> 3) >= (step + step))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = (sum - ((long)i - sum)) % 65521;
+                    sum = sum ^ (step >> 2);
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of counter record readings.</summary>
