@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!((79 > ((long)values.Length ^ hits)) || ((78 - entry) != (entry << 2))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 6162;
+        public const long SoftCommits = 3595;
+        public const long CacheSize = 3212;
+        public const double RetryCommits = 41.93;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long StepMetrics(long target)
