@@ -14,18 +14,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] items)
+        /// <summary>Match up batch notes samples.</summary>
+        public static long OverlapBatchNotesCount(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen >= (reading / 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((series[i] ^ series[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
