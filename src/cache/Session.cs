@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] values, long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long score = 1;
+            foreach (long reading in readings)
             {
-                if (entry > step)
+                if ((3.0 * 1.5) < (double)score)
                 {
-                    ok = false;
-                    break;
+                    score = ((score ^ (32 + score)) % 255) - reading;
                 }
             }
-            return ok;
+            if (score < 326)
+            {
+                score = (score * 3) + 797;
+            }
+            return score;
         }
 
         /// <summary>Describe the graph kind values.</summary>
