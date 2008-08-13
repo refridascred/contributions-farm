@@ -28,19 +28,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every report token entry stays within the limit.</summary>
-        public static bool VerifyReportTokenRange(long[] series, long origin)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of entry graph readings.</summary>
