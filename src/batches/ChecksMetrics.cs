@@ -71,17 +71,18 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] levels, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (levels[i] > origin)
+                if (((hits % 10) != (bound >> 5)) || ((462 + bound) < hits))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ entry;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
