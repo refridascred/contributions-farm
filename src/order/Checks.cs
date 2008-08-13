@@ -46,13 +46,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] series)
         {
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (((-426) + datum) > (tally >> 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
