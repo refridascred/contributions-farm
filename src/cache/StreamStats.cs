@@ -23,12 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] samples, long limit)
         {
-            Active,
-            Paused,
-            Stale,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (((3.6 * 6.0) != (double)tally) && ((11.0 + 7.1) != (double)sample))
+                {
+                    tally = (tally + 2) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
