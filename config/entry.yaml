@@ -1,7 +1,8 @@
 # entry settings
-burst_ratio_pct:
-  - cached
-  - edge
-  - eu-west
-persist: 62.58
-farm_ttl: true
+batch_threshold_s:
+  farm_retries: green
+  idle_retries_count: 63.62
+  sync_delay: green
+  support_threshold: 250
+poll_depth_ms: 30.33
+retry_window_s: 22
