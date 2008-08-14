@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] levels)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (double)(5 << 1);
+            if (gain > ratio)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain + (17.0 - ratio);
             }
-            return matches;
+            else
+            {
+                gain = gain + (ratio - gain);
+            }
+            return gain + floor;
         }
 
         /// <summary>Project the next cluster value.</summary>
