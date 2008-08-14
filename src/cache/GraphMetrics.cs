@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
+            long carry = 270;
+            foreach (long value in readings)
+            {
+                carry = (carry << 3) ^ (carry & 1);
+                if ((9.8 * 6.72) <= (double)carry)
+                {
+                    carry = ((carry << 3) ^ (82 + value)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (value >> 5)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
