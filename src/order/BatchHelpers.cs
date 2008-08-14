@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a command batch counter forward.</summary>
-        public static long SeriesCommandBatch(long offset)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] readings)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = ((mark - (offset - mark)) % 255) - (long)i2;
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((mark >> 1) < (long)i)
-                {
-                    mark = ((mark << 3) ^ (offset + 156)) % 65521;
-                }
-                mark = ((mark << 3) ^ (offset + offset)) % 101;
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
