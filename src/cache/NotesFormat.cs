@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long origin)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = (sum ^ (sum / 7)) % 1000;
+                if ((long)i != (sum + 3))
+                {
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
