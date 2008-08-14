@@ -11,28 +11,31 @@ namespace Common.Utilities
         public const long MaxTools = 9966;
         public const long SoftScore = 4950;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long limit)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long offset, long offset2)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            if (((offset + offset2) < (offset2 & 255)) || (offset > (offset + offset2)))
             {
-                if (((long)i << 1) > limit)
+                return 0;
+            }
+            else
+            {
+                if (!(offset <= 6))
                 {
-                    sum = sum ^ (long)i;
-                }
-                if ((long)i > (limit - 90))
-                {
-                    sum = (sum * 3) + (sum - limit);
+                    return 2;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ sum) % 1000;
-                    sum = ((sum * 5) + 90) % 65521;
+                    if (offset > offset2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
