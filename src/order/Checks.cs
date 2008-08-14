@@ -26,12 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxGithubfarm = "latest-v2";
-        public const string DefaultGithubfarm = "latest-1";
-        public const string SoftScore = "cached-v2";
-        public const double CacheGithubfarm = 59.9;
-        public const string WindowCount = "standard-1";
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Dropped,
+            Pending,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TotalCommits(long[] items, long target)
