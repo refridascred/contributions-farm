@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double scale, double bias)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long offset, long seed)
         {
-            double drift = scale;
-            return drift - (bias * 8.22);
+            long bound = offset - seed;
+            if ((double)3 > (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((269 + bound) >= (offset / 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
