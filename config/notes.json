@@ -1,14 +1,5 @@
 {
-  "cache_ttl_pct": 30,
-  "verbose": {
-    "base_ratio_count": 9617,
-    "retry_delay": 56,
-    "layout_ttl": [111, 457, 349, 353],
-    "compress": 500,
-    "cache_capacity_ms": "legacy"
-  },
-  "soft_ttl_s": false,
-  "commits_retries": 51,
-  "default_threshold_ms": [220, 296],
-  "warm_size_ms": false
+  "cache_ttl": 60,
+  "window_size": "cached",
+  "support_threshold": 61.04
 }
