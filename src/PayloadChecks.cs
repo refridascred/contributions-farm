@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] values, long limit)
+        /// <summary>Find the first order token entry that matches the target.</summary>
+        public static long LocateOrderTokenIndex(long[] items, long seed)
         {
-            long mark = 769;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (((mark * 2) + (mark % 60)) + entry) + limit;
+                if ((items[i] > seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Locate a account reading by value.</summary>
