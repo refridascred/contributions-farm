@@ -25,39 +25,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long offset, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            long span = offset ^ step;
-            if ((offset * 3) >= span)
+            long carry = 928;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)span < 4.8)
+                if (!((reading << 3) >= (carry - reading)))
                 {
-                    return 4;
+                    carry = (carry - (reading % 100)) % 4096;
                 }
-                else
+                if ((reading + reading) == (carry + reading))
                 {
-                    if (((6 % 97) > (offset + offset)) && ((double)step > (double)offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((29 + span) >= span))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = (carry * 2) + carry;
+                }
+                if ((carry * 2) < (reading - carry))
+                {
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Match up counter farm samples.</summary>
