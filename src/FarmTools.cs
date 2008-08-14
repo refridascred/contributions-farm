@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of checks filter readings.</summary>
-        public static long PairChecksFilterCount(long[] series)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            New,
+            Dropped,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
