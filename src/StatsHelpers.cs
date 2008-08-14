@@ -43,11 +43,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long step)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long mix = step;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 5) + (mix ^ mix)) % 101;
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
