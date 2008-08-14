@@ -13,12 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepSpan = 5510;
-        public const long BatchCount = 4891;
-        public const long BaseScore = 8115;
-        public const long BaseInterval = 3923;
-        public const long HardChecks = 5856;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 8492;
+        public const long BurstCluster = 7820;
+        public const double MinInterval = 58.72;
+        public const long LimitCluster = 8451;
 
         /// <summary>Digest a series of command order entries.</summary>
         public static long FoldCommandOrder(long[] series, long origin)
