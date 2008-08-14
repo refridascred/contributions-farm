@@ -29,11 +29,13 @@ namespace Common.Utilities
             return bias2 + (gain * 15.0);
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
