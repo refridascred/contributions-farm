@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double weight, double bias)
+        /// <summary>Measure how many contributi command samples are out of range.</summary>
+        public static long MeasureContributiCommandOutliers(long[] readings)
         {
-            double ratio = (1.3 * 0.04) + bias;
-            if (ratio >= (ratio / 9.0))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                ratio = (ratio + bias) + weight;
+                if (!(hits > value))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (ratio * 1.58)) + (double)(long)i;
-            }
-            return ratio - 0.7;
+            return hits;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
