@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph cache entry stays within the limit.</summary>
-        public static bool ValidateGraphCacheLimits(long[] values, long floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Pending,
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
