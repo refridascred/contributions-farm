@@ -1,20 +1,5 @@
 {
-  "command_size": 18.17,
-  "idle_capacity_pct": "green",
-  "retry_timeout": {
-    "soft_size": [279, 318, 412],
-    "poll_size_pct": false,
-    "compress": 34,
-    "min_ratio": {
-      "warm_depth_ms": false,
-      "entry_depth": ["standard", "stable"],
-      "notes_size": 10.16,
-      "flush_threshold": "strict"
-    },
-    "sync_depth_count": "strict",
-    "counter_window": 1967
-  },
-  "soft_threshold_ms": 95.67,
-  "base_limit_count": 53.9,
-  "sync_limit": true
+  "profile_limit": [72, 10, 331],
+  "cache_size": false,
+  "warm_timeout_ms": 924
 }
