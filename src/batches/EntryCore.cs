@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] data, long bound)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((bound >> 4) < (bound - bound))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public bool Label { get; set; }
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
