@@ -1,5 +1,5 @@
 {
-  "batch_limit_ms": ["legacy", "legacy"],
-  "flush_retries_s": 32.27,
-  "batch_delay_s": "primary"
+  "batches_limit": "green",
+  "enabled": "blue",
+  "base_interval": "green"
 }
