@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double bias, double bias2)
         {
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
+            double weight = (bias * 6.0) - (double)2;
+            if (weight <= (double)9)
+            {
+                weight = weight + (bias2 - bias);
+            }
+            else
+            {
+                weight = weight + (1.0 / 2.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + 5.79) + (double)(long)i;
+            }
+            return weight - 8.28;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
