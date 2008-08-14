@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] levels, long target)
+        /// <summary>Count token already pairs that satisfy a relation.</summary>
+        public static long OverlapTokenAlreadyCount(long[] values)
         {
-            long score = 967;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (score < entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score ^ score) % 1000) + target;
-                }
-                if (entry <= (score / 7))
-                {
-                    break;
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score < 292)
-            {
-                score = (score ^ (97 + 2)) % 65521;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
