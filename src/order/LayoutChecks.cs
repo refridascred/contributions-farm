@@ -35,12 +35,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardBudget = 97.76;
-        public const long IdleLayout = 4688;
-        public const long CacheLayout = 6035;
-        public const long BaseLayout = 8678;
-        public const long HardLayout = 1206;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Retry,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Grade a editor channel value against two limits.</summary>
         public static long GradeEditorChannel(long target, long target2)
