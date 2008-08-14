@@ -23,19 +23,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long origin, long offset)
         {
-            long mark = 59;
-            foreach (long reading in series)
+            if ((origin - origin) > (origin << 1))
             {
-                mark = (((mark << 3) ^ mark) % 65521) ^ reading;
+                return 0;
             }
-            if (mark < 1)
+            else
             {
-                mark = ((mark << 2) ^ (5 >> 5)) % 1000;
+                if ((double)origin >= (0.04 * 2.66))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return mark;
         }
 
         /// <summary>Describe the stats state values.</summary>
