@@ -28,22 +28,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] data, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((sample + sample) <= (bound + matches))
+                if (806 < (seen * 2))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = ((seen + 1) + entry) - limit;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
