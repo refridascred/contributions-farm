@@ -52,14 +52,18 @@ namespace Common.Utilities
             return bias3 + 2.1;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            Dropped,
-            Synced,
-            Retry,
-            Failed,
-            Idle,
+            long score = 51;
+            foreach (long value in samples)
+            {
+                if (((8.0 + 3.0) <= (double)score) && ((value << 3) < (value - 382)))
+                {
+                    score = (score << 3) ^ (score / 9);
+                }
+            }
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
