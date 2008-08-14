@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] series, long offset)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            double load = 4.7;
+            if (load < (double)46)
             {
-                if (datum >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load - floor) - rate;
             }
-            return ready;
+            return load - floor;
         }
 
         /// <summary>Measure how many entry command samples are out of range.</summary>
