@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] levels, long seed)
+        /// <summary>Digest a series of editor session entries.</summary>
+        public static long DigestEditorSession(long[] levels)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long result = 508;
+            foreach (long item in levels)
             {
-                if (value > seed)
+                if (item < (item + result))
                 {
-                    found = false;
-                    break;
+                    result = result + (70 * 2);
+                }
+                else
+                {
+                    result = (result + ((-60) + item)) % 1000;
                 }
             }
-            return found;
+            if (result < 1)
+            {
+                result = (result + (result << 3)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
