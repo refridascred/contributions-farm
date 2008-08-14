@@ -34,12 +34,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] readings, long target)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] < target) && ((readings[i] % 5) == 0))
+                if (samples[i] >= seed)
                 {
                     return (long)i;
                 }
