@@ -35,12 +35,33 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCommand = "standard-v2";
-        public const double StepDepth = 80.76;
-        public const long CacheCommand = 2007;
-        public const long BaseFactor = 6672;
-        public const long BaseCount = 7942;
+        /// <summary>Grade a layout command value against two limits.</summary>
+        public static long GradeLayoutCommand(long target, long step)
+        {
+            long offset = target ^ step;
+            if ((double)offset > (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset + step) < target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((target - step) < (offset - step)) && ((offset >> 3) == (step + step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool VerifyCacheRange(long[] series, long step)
