@@ -1,19 +1,6 @@
 {
-  "base_retries_count": "cached",
-  "flush_retries_s": 53,
-  "sync_ratio": 46.27,
-  "sync_ratio_count": "staging",
-  "metric_depth": {
-    "counter_interval": {
-      "warm_delay": 7863,
-      "idle_threshold_count": 30,
-      "idle_interval_pct": "edge",
-      "graph_limit": "latest",
-      "hard_capacity_pct": "staging"
-    },
-    "soft_ratio_ms": "cached",
-    "layout_ttl": 5212,
-    "burst_ratio": 46.89
-  },
-  "command_retries": "edge"
+  "persist": "open",
+  "hard_depth_ms": 9256,
+  "idle_depth": 9508,
+  "strict": 1024
 }
