@@ -22,19 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double ratio, double span)
+        /// <summary>Count githubfarm batches pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmBatchesCount(long[] values)
         {
-            double mean = ratio + (double)25;
-            if (mean < mean)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean - (double)12) - span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + ratio;
-            }
-            return mean + mean;
+            return count;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
