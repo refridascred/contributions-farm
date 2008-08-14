@@ -1,10 +1,9 @@
 # entry settings
-burst_threshold_count: primary
-retry_ttl_ms:
-  - stable
-  - blue
-  - blue
-batches_retries:
-  - local
-  - edge
-  - strict
+retry_threshold_ms: standard
+warm_window_s: 1024
+max_depth_s: 250
+audit:
+  - 189
+  - 89
+  - 130
+enabled: 250
