@@ -121,18 +121,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit record session readings against a rule.</summary>
-        public static long AuditRecordSessionHits(long[] samples)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((((datum >> 3) > tally) && ((datum + datum) != (tally ^ tally))) && (datum < (datum * 4)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public double Region { get; set; }
         }
     }
 }
