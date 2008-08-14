@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Validate stream support readings against a bound.</summary>
+        public static bool GuardStreamSupportLimits(long[] values, long limit)
         {
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public bool Offset { get; set; }
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a batches record pair into a bucket.</summary>
