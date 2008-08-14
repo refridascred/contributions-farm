@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] samples)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] samples, long offset)
         {
-            long mix = 8;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mix = ((mix << 2) ^ mix) % 1000;
-                if (((double)cell <= 6.0) && ((cell * 4) >= mix))
+                if ((matches * 5) > matches)
                 {
-                    mix = (mix * 5) + (mix >> 3);
+                    matches = ((matches + 2) + item) - offset;
                 }
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
