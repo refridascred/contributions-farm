@@ -1,7 +1,31 @@
 # githubfarm settings
-soft_timeout_pct: true
-persist: cached
-metric_interval: legacy
-batch_retries_s: 37.89
-queue_timeout: eu-west
-hard_limit: 91.5
+batch_timeout_s: 87
+default_ttl_count:
+  soft_limit_count: 77.47
+  farm_ttl:
+    - legacy
+    - eu-west
+    - standard
+  soft_interval_count: true
+  session_ratio: standard
+  buffer_ttl: 40
+  cache_window: 12.45
+context_delay:
+  strict: 250
+  batches_ttl: 8.32
+  min_depth_pct: staging
+  sync_delay_ms: strict
+  idle_delay_count:
+    - 162
+    - 165
+    - 329
+strict: 44.49
+retry_limit_ms:
+  - 157
+  - 244
+  - 94
+  - 230
+audit:
+  - edge
+  - strict
+  - standard
