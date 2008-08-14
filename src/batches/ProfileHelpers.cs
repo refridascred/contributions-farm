@@ -85,14 +85,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            New,
+            Idle,
             Draft,
-            Locked,
             Closed,
-            Paused,
         }
 
         /// <summary>Hold a batch summary.</summary>
