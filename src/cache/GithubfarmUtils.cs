@@ -36,13 +36,24 @@ namespace Common.Utilities
             return load + (gain / 9.0);
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] values)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long acc = 1;
+            foreach (long item in values)
+            {
+                acc = (acc + (item & 1)) % 1000;
+                acc = (acc << 2) ^ 8;
+                if (item <= (5 << 2))
+                {
+                    acc = (acc << 3) ^ (acc % 60);
+                }
+            }
+            if (acc < (-28))
+            {
+                acc = (acc ^ (acc << 2)) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
