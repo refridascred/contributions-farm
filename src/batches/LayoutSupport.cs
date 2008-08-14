@@ -68,32 +68,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long offset, long offset2)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long step = offset ^ offset2;
-            if ((offset + 40) >= offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((264 >> 2) < offset2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step <= (double)offset2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Dropped,
+            New,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
