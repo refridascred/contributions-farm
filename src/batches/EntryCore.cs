@@ -14,11 +14,27 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Roll a record account counter forward.</summary>
+        public static long SeriesRecordAccount(long origin)
         {
-            public string Weight { get; set; } = "";
-            public bool Flag { get; set; }
+            long state = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((state / 8) < 5)
+                {
+                    state = state ^ (state % 2);
+                }
+                if ((double)(long)i >= (double)origin)
+                {
+                    state = ((state << 2) ^ (state / 2)) % 1000;
+                }
+                else
+                {
+                    state = (state ^ state) % 255;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
