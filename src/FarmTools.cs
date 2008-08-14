@@ -12,24 +12,13 @@ namespace Common.Utilities
         public const double SoftLevel = 97.49;
         public const long LimitLevel = 8342;
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long target, long limit)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            if ((limit > (limit - limit)) && (target > (limit + 407)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit <= (target - 9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Project the next payload value.</summary>
