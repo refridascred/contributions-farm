@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] series, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] data, long seed)
         {
-            long mix = 4;
-            foreach (long value in series)
+            long score = 59;
+            foreach (long datum in data)
             {
-                if (!((double)value < (4.7 - 4.28)))
-                {
-                    mix = (mix + (666 << 1)) - seed;
-                    break;
-                }
-                mix = (mix ^ (8 - value)) % 255;
-                mix = mix + 57;
+                score = ((((score << 2) ^ score) % 97) - datum) - seed;
             }
-            if (mix > 19)
-            {
-                mix = ((mix * 4) + mix) % 97;
-            }
-            return mix;
+            return score % 1000;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
