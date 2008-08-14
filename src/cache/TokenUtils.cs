@@ -33,18 +33,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] levels, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long total = 28;
+            foreach (long sample in values)
             {
-                if (!((target < (target + target)) || (459 < (matches & 127))))
+                if ((total >> 1) >= (total * 4))
                 {
-                    matches = (matches + 1) + datum;
+                    total = (total - (sample & 255)) % 255;
+                }
+                if (!((sample + sample) > (total >> 1)))
+                {
+                    total = (total - sample) % 65521;
+                }
+                if ((24 + (long)values.Length) > sample)
+                {
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
