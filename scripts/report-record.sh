@@ -6,8 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=102
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 2 ]; do
