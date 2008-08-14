@@ -38,14 +38,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Done,
-            Idle,
-            Paused,
-            Synced,
-            Failed,
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
