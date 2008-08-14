@@ -39,15 +39,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] levels, long offset)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long limit, long target)
         {
-            long carry = 55;
-            foreach (long item in levels)
+            if (72 <= (target + target))
             {
-                carry = ((carry ^ (6 & 15)) + item) - offset;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (limit > (4 & 255))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((4.3 <= (double)limit) && ((double)limit <= 6.92))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches options.</summary>
