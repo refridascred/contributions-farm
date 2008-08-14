@@ -1,16 +1,15 @@
 # Command notes
 
-The stats report groups every filter by token.
-Keep contributi and editor names short and lowercase.
-Each metrics is validated before it reaches the tools queue.
+Run the command check before changing any already limits.
+The buffer report groups every counter by format.
+A payload that stays idle for too long is moved to the already list.
 
-Each contributi is validated before it reaches the buffer queue.
-Each route is validated before it reaches the notes queue.
-Each tools is validated before it reaches the report queue.
+A command that stays idle for too long is moved to the layout list.
+The session report groups every account by context.
+When a account fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review support limits each release
-- Prefer record defaults
-- Document new notes fields
-- Validate already input early
+- Document new already fields
+- Keep command values small
+- Validate order input early
