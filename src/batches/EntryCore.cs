@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 3211;
-        public const string WindowAlready = "staging-edge";
-        public const long CacheAlready = 6623;
-        public const string MinAlready = "open";
-        public const string IdleAlready = "alpha";
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long IterateSchema(long step)
