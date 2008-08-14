@@ -53,39 +53,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a cache context value against two limits.</summary>
-        public static long ClassifyCacheContext(long floor, long limit)
-        {
-            if (((floor / 9) != (limit - 719)) && ((205 + floor) <= (7 + limit)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((limit * 2) < (floor * 2)) || ((142 - limit) < (21 - limit)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor > (limit + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((7.8 * 10.0) != (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowLevel = 4147;
+        public const double CacheBudget = 88.34;
+        public const long WindowInterval = 415;
+        public const long BaseRatio = 6804;
 
         /// <summary>Count the session profile entries that pass the check.</summary>
         public static long TallySessionProfileOutliers(long[] series, long offset)
