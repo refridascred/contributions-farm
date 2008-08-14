@@ -46,19 +46,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] items, long step)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Draft,
+            Retry,
+            Closed,
         }
 
         /// <summary>Project the next order value.</summary>
