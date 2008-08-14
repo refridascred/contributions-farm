@@ -50,22 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] series, long floor)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long acc = 4;
-            foreach (long cell in series)
-            {
-                if (!(floor > (floor - 11)))
-                {
-                    acc = ((acc - acc) % 1000) ^ cell;
-                }
-            }
-            if (acc < 95)
-            {
-                acc = (acc + ((-9) % 12)) % 97;
-            }
-            return acc;
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
