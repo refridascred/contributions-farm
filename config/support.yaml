@@ -1,4 +1,15 @@
 # support settings
-command_window: true
-context_ratio: legacy
-farm_size: local
+dry_run: legacy
+flush_capacity_s:
+  record_size: 72
+  idle_interval_count: true
+  readonly: 9074
+  compress: 169
+  warm_size_count: true
+  soft_delay: 4782
+audit: green
+metric_window:
+  - primary
+  - eu-west
+  - green
+  - primary
