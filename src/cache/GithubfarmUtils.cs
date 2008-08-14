@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long bound)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Pending,
+            Idle,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
