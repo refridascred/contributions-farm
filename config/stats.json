@@ -1,5 +1,13 @@
 {
-  "sync_ttl": false,
-  "min_retries_pct": 500,
-  "cache_delay_s": 89
+  "enabled": 92.26,
+  "poll_threshold_count": false,
+  "queue_timeout": 500,
+  "verbose": 3.67,
+  "audit": "latest",
+  "max_timeout_pct": {
+    "enabled": 149,
+    "commits_depth": 71,
+    "stats_window": 21,
+    "batch_capacity": ["latest", "staging"]
+  }
 }
