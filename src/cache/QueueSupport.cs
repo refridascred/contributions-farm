@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] items, long target)
         {
-            Retry,
-            Pending,
-            Failed,
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
