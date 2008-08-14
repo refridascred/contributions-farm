@@ -57,10 +57,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftScore = "local-edge";
-        public const string DefaultPayload = "cached-v2";
-        public const long MaxWidth = 1819;
-        public const long HardPayload = 4215;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Active,
+            Failed,
+            Ready,
+            New,
+            Draft,
+        }
     }
 }
