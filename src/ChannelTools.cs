@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a cache buffer figure with a bias.</summary>
-        public static double BlendCacheBuffer(double bias, double offset)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            double ratio = offset;
-            if (ratio <= ratio)
-            {
-                ratio = ratio - (bias * 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - bias;
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a graph header.</summary>
