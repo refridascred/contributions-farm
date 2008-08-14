@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] values)
+        /// <summary>Validate record githubfarm readings against a bound.</summary>
+        public static bool VerifyRecordGithubfarmLimits(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (seen <= (seen << 3))
+                if (sample != target)
                 {
-                    seen = (seen + 2) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
