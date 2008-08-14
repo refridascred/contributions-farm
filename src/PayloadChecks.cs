@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double ratio, double floor)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            double gain = floor + floor;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = ((gain - 16.0) + (double)(long)i) - ratio;
-            }
-            return gain - 9.5;
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
