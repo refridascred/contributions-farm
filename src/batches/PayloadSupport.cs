@@ -18,13 +18,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double ratio, double span)
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
+            double bias = (double)(381 >> 2);
+            return (bias + ratio) + span;
         }
     }
 }
