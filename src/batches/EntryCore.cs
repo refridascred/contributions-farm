@@ -14,39 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank cache batch input into a small class.</summary>
-        public static long SortCacheBatch(long step, long origin)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long lane = step ^ origin;
-            if (((15.0 + 8.0) >= (double)step) && ((double)step >= (9.1 * 6.19)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((lane % 12) >= lane)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step >= (11.0 - 0.93))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)lane > (13.0 / 3.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
