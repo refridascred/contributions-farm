@@ -19,31 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long step, long step2)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] series, long limit)
         {
-            if ((step2 * 5) < (step2 - step))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)step2 != (2.0 / 2.0)) && (step2 < step))
+                if ((series[i] >= limit) && ((series[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((8.4 * 3.1) > (double)step2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
