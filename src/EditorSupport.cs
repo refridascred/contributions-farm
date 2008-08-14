@@ -41,12 +41,26 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] items, long limit)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long mark = 803;
+            foreach (long value in items)
+            {
+                if (!((limit << 1) >= mark))
+                {
+                    mark = (mark + (limit >> 4)) + value;
+                }
+                else
+                {
+                    mark = mark - limit;
+                }
+            }
+            if (mark > 3)
+            {
+                mark = (mark + (limit - 25)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a route entry.</summary>
