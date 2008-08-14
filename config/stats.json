@@ -1,5 +1,7 @@
 {
-  "retry_delay_count": 250,
-  "account_delay": false,
-  "batch_ratio": false
+  "audit": "strict",
+  "hard_threshold_pct": [68, 69, 135, 469],
+  "support_timeout": "open",
+  "base_delay_s": ["primary", "staging", "open"],
+  "dry_run": "cached"
 }
