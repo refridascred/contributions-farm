@@ -21,15 +21,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] items, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
+            long carry = 19;
+            foreach (long item in items)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                if ((double)item <= (11.0 * 2.26))
+                {
+                    carry = carry + (bound + (-1));
+                }
+                carry = (carry + (bound * 2)) % 65521;
+                if ((8.08 * 2.43) < (double)carry)
+                {
+                    break;
+                }
             }
-            return acc;
+            if (carry < 8)
+            {
+                carry = (carry + (bound ^ 7)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the commits kind values.</summary>
