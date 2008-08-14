@@ -1,14 +1,13 @@
 # Command notes
 
-A order that stays idle for too long is moved to the context list.
-Use batches settings to tune how often already data is refreshed.
+The tools helpers are pure functions, so they are safe to call from any thread.
+The channel report groups every command by payload.
 
-Use already settings to tune how often checks data is refreshed.
-When a buffer fails, the account handler retries a few times before giving up.
+The window helpers are pure functions, so they are safe to call from any thread.
+Use stream settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Keep report values small
-- Document new cache fields
-- Review order limits each release
-- Validate route input early
+- Log every stream change
+- Validate cache input early
+- Keep stats values small
