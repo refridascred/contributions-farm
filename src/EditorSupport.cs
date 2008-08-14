@@ -57,12 +57,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first editor token entry that matches the target.</summary>
-        public static long SeekEditorTokenIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a channel support sample.</summary>
+        public static long FindChannelSupportIndex(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] == bound) && ((samples[i] % 3) != 0))
+                if ((values[i] >= floor) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
