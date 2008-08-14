@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of cache report readings.</summary>
-        public static long WeighCacheReport(long[] items, long step)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] levels, long seed)
         {
-            long mark = 138;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark ^ (step + 9)) % 1000) - value;
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
