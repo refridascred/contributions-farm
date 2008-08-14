@@ -36,19 +36,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate queue session readings against a bound.</summary>
-        public static bool GuardQueueSessionRange(long[] items, long floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long target, long seed)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long slot = target + seed;
+            if (((double)target < (16.0 / 4.0)) && ((target & 127) == (target ^ slot)))
             {
-                if (sample < floor)
+                return 0;
+            }
+            else
+            {
+                if ((double)slot < (2.6 / 9.0))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the support class values.</summary>
