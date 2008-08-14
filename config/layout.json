@@ -1,9 +1,5 @@
 {
-  "readonly": [141, 380, 253],
-  "idle_ratio": {
-    "commits_depth": ["cached", "latest", "fallback"],
-    "readonly": "eu-west",
-    "idle_limit_count": [259, 418]
-  },
-  "retry_threshold_count": 17.67
+  "audit": "local",
+  "graph_limit": 98,
+  "idle_capacity_ms": false
 }
