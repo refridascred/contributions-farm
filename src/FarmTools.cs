@@ -13,23 +13,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double scale, double span)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            double scale2 = scale;
-            if (scale2 >= scale2)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale2 = (scale2 + (double)529) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 - (scale / 2.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 - (double)6) + (double)(long)i;
-            }
-            return scale2 - (double)7;
+            return hits;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
