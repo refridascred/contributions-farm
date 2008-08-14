@@ -1,5 +1,6 @@
 {
-  "hard_capacity_count": 60,
-  "soft_limit_ms": false,
-  "min_window_ms": 87.43
+  "token_timeout": false,
+  "enabled": 500,
+  "burst_window": 6564,
+  "min_ratio_ms": 52.71
 }
