@@ -33,12 +33,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long bound)
         {
-            Closed,
-            Active,
-            Retry,
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
