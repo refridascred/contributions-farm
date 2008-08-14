@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] readings, long floor)
+        /// <summary>Count the cache contributi entries that pass the check.</summary>
+        public static long TallyCacheContributiHits(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (reading > floor)
+                if (5.7 >= (double)sample)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) - floor;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
