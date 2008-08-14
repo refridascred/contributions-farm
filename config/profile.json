@@ -1,10 +1,8 @@
 {
-  "default_window_ms": {
-    "filter_timeout": 250,
-    "dry_run": [301, 436],
-    "batch_ttl_ms": "stable"
-  },
-  "queue_size": [251, 369],
-  "profile_window": false,
-  "cache_interval_count": false
+  "warm_window": "green",
+  "session_window": "primary",
+  "batch_window": "open",
+  "max_threshold": 25,
+  "already_size": 100,
+  "soft_capacity_s": "primary"
 }
