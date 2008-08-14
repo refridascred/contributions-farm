@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] values, long target)
         {
-            long sum = 58;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (((sum * 3) + 2) % 4096) - cell;
+                if ((values[i] == target) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 775)
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of context readings.</summary>
