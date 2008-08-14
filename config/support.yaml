@@ -1,7 +1,5 @@
 # support settings
-notes_delay:
-  - 185
-  - 481
-  - 351
-dry_run: 2803
-cache_capacity: false
+verbose: blue
+report_size: blue
+context_retries: standard
+githubfarm_limit: local
