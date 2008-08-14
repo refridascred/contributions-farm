@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] values, long bound)
+        /// <summary>Count the entry report entries that pass the check.</summary>
+        public static long AuditEntryReportHits(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((values[i] <= bound) && ((values[i] % 5) != 0))
+                if ((seed - hits) <= seed)
                 {
-                    return (long)i;
+                    hits = (hits + 2) - cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every entry buffer entry stays within the limit.</summary>
