@@ -1,10 +1,6 @@
 {
-  "min_limit_count": 100,
-  "base_ratio_count": {
-    "persist": 88.83,
-    "audit": "eu-west",
-    "burst_threshold_pct": ["edge", "primary"]
-  },
-  "max_ttl_count": false,
-  "notes_ratio": 60
+  "strict": 89,
+  "retry_ratio_s": "blue",
+  "compress": [472, 281, 44, 353],
+  "sync_threshold_s": false
 }
