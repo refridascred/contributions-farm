@@ -29,12 +29,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Rank support batch input into a small class.</summary>
+        public static long ClassifySupportBatch(long offset, long bound)
         {
-            Queued,
-            Locked,
-            Closed,
+            if ((double)offset == (9.82 + 6.9))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((1.8 * 3.31) <= (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
