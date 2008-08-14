@@ -53,22 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] data)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] data, long floor)
         {
-            long mix = 611;
+            bool found = true;
             foreach (long value in data)
             {
-                if (!((double)mix == (1.0 - 0.03)))
+                if (value <= floor)
                 {
-                    mix = (mix << 2) ^ value;
-                }
-                if ((value ^ mix) >= 3)
-                {
-                    mix = (mix - (mix + mix)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
     }
 }
