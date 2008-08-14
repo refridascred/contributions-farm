@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of editor payload entries.</summary>
-        public static long DigestEditorPayload(long[] samples)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] levels, long seed)
         {
-            long carry = 16;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry ^ (96 - item)) % 255;
-                if (!((carry - 0) < carry))
+                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
                 {
-                    carry = (carry - carry) % 255;
-                }
-                else
-                {
-                    carry = (carry ^ (117 / 7)) % 255;
-                }
-                if (carry <= (carry + carry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry < 75)
-            {
-                carry = ((carry * 4) + carry) % 101;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many cluster entry samples are out of range.</summary>
