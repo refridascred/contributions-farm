@@ -22,22 +22,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (sample <= (tally - 56))
+                if (reading < target)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
