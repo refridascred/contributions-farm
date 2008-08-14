@@ -12,19 +12,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (((long)series.Length + sample) > 5)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheMetrics = 54.08;
+        public const double WindowBudget = 68.19;
+        public const long WindowSize = 3288;
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ScaleTools(double gain, double offset)
