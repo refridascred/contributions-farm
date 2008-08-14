@@ -26,19 +26,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate githubfarm buffer readings against a bound.</summary>
-        public static bool ValidateGithubfarmBufferLimits(long[] series, long floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long acc = 3;
+            foreach (long entry in samples)
             {
-                if (reading >= floor)
+                if (((acc & 1) < acc) || ((5 * 5) > (entry ^ acc)))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc * 3) + 92;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ ((long)samples.Length - 23);
                 }
             }
-            return flag;
+            if (acc > 29)
+            {
+                acc = ((acc << 3) ^ (53 - offset)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
