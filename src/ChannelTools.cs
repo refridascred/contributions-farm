@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] items)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long score = 966;
-            foreach (long value in items)
-            {
-                if ((score + score) > (score - score))
-                {
-                    score = score + (value << 1);
-                }
-                if ((5.0 + 2.0) != (double)value)
-                {
-                    score = ((score << 3) ^ ((-16) << 1)) % 255;
-                }
-            }
-            return score % 4096;
+            New,
+            Draft,
+            Dropped,
+            Active,
+            Locked,
         }
 
         /// <summary>Measure how many stats layout samples are out of range.</summary>
