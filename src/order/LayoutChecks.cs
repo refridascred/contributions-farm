@@ -34,13 +34,31 @@ namespace Common.Utilities
         public const long BaseLayout = 8678;
         public const long HardLayout = 1206;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Grade a editor channel value against two limits.</summary>
+        public static long GradeEditorChannel(long target, long target2)
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public long Flag { get; set; }
+            if ((9.63 + 9.6) >= (double)target2)
+            {
+                return 6;
+            }
+            else
+            {
+                if (target >= (target2 % 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (target >= (target / 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate format samples.</summary>
