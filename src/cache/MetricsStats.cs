@@ -44,18 +44,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] readings, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (matches <= value)
                 {
-                    if ((values[i] + values[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) + bound;
                 }
             }
             return matches;
