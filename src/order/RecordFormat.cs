@@ -24,14 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Pending,
-            Failed,
-            Ready,
-            Draft,
-            Idle,
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
