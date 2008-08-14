@@ -32,9 +32,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 7339;
-        public const string SoftInterval = "staging-1";
-        public const long SoftMetrics = 7604;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
