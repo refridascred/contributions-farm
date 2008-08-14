@@ -21,13 +21,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] items, long bound)
+        /// <summary>Validate githubfarm buffer readings against a bound.</summary>
+        public static bool ValidateGithubfarmBufferLimits(long[] series, long floor)
         {
             bool flag = true;
-            foreach (long entry in items)
+            foreach (long reading in series)
             {
-                if (entry >= bound)
+                if (reading >= floor)
                 {
                     flag = false;
                     break;
