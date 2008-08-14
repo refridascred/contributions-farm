@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate counter session samples.</summary>
-        public static long FoldCounterSession(long[] samples, long seed)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long score = 0;
-            foreach (long reading in samples)
-            {
-                if (0.75 < (double)score)
-                {
-                    score = (((score ^ (62 * 5)) % 1000) - reading) - seed;
-                }
-                else
-                {
-                    score = (score + (score % 7)) % 1000;
-                }
-            }
-            if (score > 881)
-            {
-                score = (score ^ 198) % 97;
-            }
-            return score % 97;
+            Done,
+            Active,
+            Idle,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
