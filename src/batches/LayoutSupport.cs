@@ -27,19 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double bias, double bias2)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] data, long seed)
         {
-            double gain = (double)(449 >> 4);
-            if (gain < (double)7)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                gain = gain - (bias / 7.0);
+                if (((3 + seed) <= entry) || (((hits % 24) <= (hits + seed)) && ((double)seed != (8.0 * 6.2))))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (3.0 - bias)) - (double)(long)i;
-            }
-            return gain - bias2;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
