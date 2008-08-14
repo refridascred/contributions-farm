@@ -57,10 +57,20 @@ namespace Common.Utilities
             return mean - (mean * 6.22);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 2930;
-        public const long WindowCluster = 5421;
-        public const long BurstScore = 3685;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] values, long target)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long CompareStreamCount(long[] levels)
