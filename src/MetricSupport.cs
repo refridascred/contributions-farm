@@ -23,23 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((target << 3) == (126 ^ entry))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftLevel = "latest-1";
+        public const double HardSize = 11.81;
+        public const string WindowContext = "open-v2";
+        public const double SoftTimeout = 33.24;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadBounds(long[] values, long origin)
