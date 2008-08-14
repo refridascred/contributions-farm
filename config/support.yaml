@@ -1,7 +1,7 @@
 # support settings
-poll_threshold_count: true
-strict:
-  - legacy
-  - latest
-  - fallback
-max_retries: edge
+buffer_size:
+  - 154
+  - 40
+  - 476
+command_ttl: primary
+persist: 88.65
