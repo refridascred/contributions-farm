@@ -1,17 +1,8 @@
 {
-  "min_delay_count": "latest",
-  "soft_limit": "local",
-  "tools_ttl": 99,
-  "idle_threshold": {
-    "sync_size_s": 3089,
-    "record_size": "standard",
-    "cache_depth": {
-      "dry_run": 30,
-      "schema_limit": "staging",
-      "farm_delay": [423, 392, 200, 261],
-      "warm_delay_count": 62.08,
-      "compress": "blue",
-      "min_depth_pct": true
-    }
-  }
+  "notes_ratio": 5.18,
+  "min_ttl": 40.28,
+  "default_interval_s": "stable",
+  "persist": false,
+  "notes_window": 27.83,
+  "cache_ttl_count": false
 }
