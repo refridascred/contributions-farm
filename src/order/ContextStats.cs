@@ -35,19 +35,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] values, long step)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Synced,
+            Failed,
+            Draft,
+            Closed,
         }
     }
 }
