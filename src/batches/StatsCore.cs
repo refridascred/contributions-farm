@@ -27,13 +27,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Idle,
-            Pending,
-            Stale,
             Done,
+            Idle,
+            Paused,
+            Synced,
+            Failed,
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
