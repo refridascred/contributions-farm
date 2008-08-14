@@ -34,17 +34,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] samples, long seed)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] >= seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
