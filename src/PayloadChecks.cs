@@ -60,12 +60,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double gain, double offset)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
+            double rate = (offset * 14.0) * 2.9;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate + rate) - (double)(long)i) - gain;
+            }
+            return rate + (offset * 0.6);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
