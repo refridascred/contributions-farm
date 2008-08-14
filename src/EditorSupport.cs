@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of queue layout readings.</summary>
-        public static long TallyQueueLayout(long[] levels)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long seed, long seed2)
         {
-            long mark = 5;
-            foreach (long sample in levels)
+            long cur = seed ^ seed2;
+            if (((3.0 / 4.0) <= (double)cur) || ((seed >> 1) >= (seed << 2)))
             {
-                mark = (mark + mark) - sample;
+                return 1;
             }
-            if (mark > 452)
+            else
             {
-                mark = (mark * 4) + (5 & 127);
+                if (((742 * 3) > (seed2 << 1)) || ((double)cur == (3.36 - 3.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return mark;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
