@@ -31,19 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] series, long limit)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long bound)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (value > limit)
+                if (!((double)bound == (8.6 - 18.0)))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor * 3) + (bound + bound);
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return ready;
+            return anchor;
         }
     }
 }
