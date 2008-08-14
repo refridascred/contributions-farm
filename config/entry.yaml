@@ -1,7 +1,14 @@
 # entry settings
-max_ratio_pct: 41.99
-poll_depth: 250
-idle_ttl_count: eu-west
-metrics_ratio: blue
-verbose: stable
-max_timeout_count: true
+hard_timeout_s: 250
+context_size:
+  min_capacity_pct: true
+  cache_ttl: staging
+  sync_timeout_count: cached
+  batch_timeout: fallback
+sync_size:
+  min_limit: stable
+  cache_interval_s: staging
+  default_capacity_pct: 25.98
+  contributi_limit: 250
+  warm_threshold_pct: 7550
+  batch_ttl_s: green
