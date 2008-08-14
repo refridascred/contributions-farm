@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 7533;
-        public const long WindowWidth = 4569;
-        public const string BurstReport = "fallback-1";
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaHits(long[] samples, long limit)
