@@ -37,11 +37,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
+            public double Label { get; set; }
             public string Weight { get; set; } = "";
-            public bool Mode { get; set; }
+            public double Level { get; set; }
             public bool Count { get; set; }
         }
 
