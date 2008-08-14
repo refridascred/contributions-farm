@@ -22,15 +22,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of checks payload readings.</summary>
-        public static long DigestChecksPayload(long[] levels)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] samples)
         {
-            long total = 4;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                total = (total ^ (value + total)) % 1000;
+                if (((item / 9) <= (tally - 9)) || ((tally + item) < tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Measure how many payload layout samples are out of range.</summary>
