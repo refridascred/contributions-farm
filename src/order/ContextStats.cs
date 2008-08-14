@@ -34,31 +34,19 @@ namespace Common.Utilities
         public const string BaseMetrics = "latest";
         public const long StepMetrics = 9959;
 
-        /// <summary>Accumulate metric session samples.</summary>
-        public static long CombineMetricSession(long[] series)
+        /// <summary>Check that every batch context entry stays within the limit.</summary>
+        public static bool GuardBatchContextRange(long[] items, long target)
         {
-            long mix = -5;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 3; i++)
+                if (value > target)
                 {
-                    mix = ((mix << 2) ^ ((long)i / 7)) % 101;
-                    mix = ((mix * 5) + 5) % 65521;
-                }
-                if ((mix / 7) < (entry + 40))
-                {
-                    mix = ((mix * 2) + (mix * 5)) % 255;
-                }
-                else
-                {
-                    mix = (mix * 5) + mix;
-                }
-                if (!(entry > mix))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return mix;
+            return flag;
         }
     }
 }
