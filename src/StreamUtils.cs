@@ -55,18 +55,14 @@ namespace Common.Utilities
         public const long CacheBudget = 7381;
         public const long BatchDepth = 9339;
 
-        /// <summary>Count the session profile entries that pass the check.</summary>
-        public static long TallySessionProfileOutliers(long[] series, long offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((99 & 15) < (sample + offset))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Draft,
+            Failed,
+            Stale,
+            Pending,
         }
     }
 }
