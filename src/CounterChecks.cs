@@ -58,38 +58,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a already order value against two limits.</summary>
-        public static long GradeAlreadyOrder(long bound, long origin)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            if ((double)origin <= (3.4 * 15.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound > origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((1.96 * 4.1) != (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (origin > (origin << 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Failed,
+            Done,
+            Paused,
         }
 
         /// <summary>Grade a queue filter value against two limits.</summary>
