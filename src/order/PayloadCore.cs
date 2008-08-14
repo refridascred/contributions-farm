@@ -14,15 +14,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Queued,
+            Closed,
+            Draft,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
