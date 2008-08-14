@@ -61,19 +61,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] data, long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] data)
         {
-            bool found = true;
+            long score = -6;
             foreach (long item in data)
             {
-                if (item < bound)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score + (item ^ score)) % 101;
+                score = (score + score) % 255;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Describe the batches mode values.</summary>
