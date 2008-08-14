@@ -70,10 +70,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 3120;
-        public const string BaseSupport = "cached-v2";
-        public const string IdleScore = "standard-v2";
-        public const double DefaultSupport = 46.5;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultCount = 1413;
+        public const long WindowLevel = 8967;
+        public const long BatchGraph = 491;
+        public const string IdleGraph = "cached-edge";
     }
 }
