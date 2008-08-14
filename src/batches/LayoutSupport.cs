@@ -30,19 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (((3 + seed) <= entry) || (((hits % 24) <= (hits + seed)) && ((double)seed != (8.0 * 6.2))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchAccount = "stable-edge";
+        public const long RetryTimeout = 7477;
+        public const long LimitScore = 4127;
+        public const long BaseWidth = 5393;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long ClassifyEditor(long offset, long offset2)
