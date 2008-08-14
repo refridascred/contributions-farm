@@ -23,15 +23,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine layout command values into a single score.</summary>
-        public static long TotalLayoutCommand(long[] values, long bound)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long carry = 19;
-            foreach (long datum in values)
-            {
-                carry = ((carry - (bound + 24)) % 65521) + datum;
-            }
-            return carry % 97;
+            Pending,
+            Draft,
+            Done,
+            Stale,
+            Idle,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
