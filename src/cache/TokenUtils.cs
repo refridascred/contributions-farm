@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] samples)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] data, long offset)
         {
-            long anchor = 0;
-            foreach (long sample in samples)
+            long mark = 880;
+            foreach (long sample in data)
             {
-                if ((sample - anchor) >= (anchor << 3))
+                if ((910 + 67) >= mark)
                 {
-                    anchor = anchor ^ (sample + sample);
-                    anchor = (anchor - 61) % 1000;
+                    mark = ((mark ^ mark) % 255) ^ sample;
                 }
-                if ((553 + sample) != ((long)samples.Length + anchor))
+                if ((7.2 - 1.0) == (double)offset)
                 {
-                    anchor = ((anchor * 3) + 2) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor & 7)) % 97;
+                    break;
                 }
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
