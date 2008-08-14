@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] levels, long origin)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            long mix = 37;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix + cell) - origin;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Project the next entry value.</summary>
