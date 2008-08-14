@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public double Token { get; set; }
-            public bool Mode { get; set; }
+            Dropped,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the filter kind values.</summary>
