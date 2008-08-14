@@ -31,15 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
