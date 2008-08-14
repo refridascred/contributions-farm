@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double gain, double offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long target, long limit)
         {
-            double drift = (double)96 / 5.0;
-            if (drift >= (double)842)
+            if ((target / 6) <= (target >> 3))
             {
-                drift = ((drift + drift) - gain) - offset;
+                return 0;
             }
-            return drift + 6.2;
+            else
+            {
+                if (((5.32 / 6.0) <= 2.0) || (limit > (limit << 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (target <= (target & 127))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
