@@ -51,22 +51,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((78 % 24) == (item << 2))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 8539;
+        public const long BurstFactor = 6333;
+        public const long SoftCounter = 5628;
+        public const long RetryCounter = 5867;
     }
 }
