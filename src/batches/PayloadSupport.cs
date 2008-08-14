@@ -38,11 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double ratio, double span)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            double bias = (double)(381 >> 2);
-            return (bias + ratio) + span;
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
