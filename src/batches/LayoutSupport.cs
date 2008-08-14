@@ -44,12 +44,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinDepth = 2789;
-        public const long CacheEditor = 1484;
-        public const long CacheInterval = 1626;
-        public const long MinEditor = 891;
-        public const long HardSpan = 8743;
+        /// <summary>Check that every route record entry stays within the limit.</summary>
+        public static bool VerifyRouteRecordLimits(long[] readings, long limit)
+        {
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double SmoothAlready(double gain, double bias)
