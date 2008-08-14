@@ -31,12 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Count the notes context entries that pass the check.</summary>
+        public static long AuditNotesContextOutliers(long[] items)
         {
-            Active,
-            Failed,
-            Pending,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (matches >= (entry << 1))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
