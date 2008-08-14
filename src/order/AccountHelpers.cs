@@ -24,19 +24,15 @@ namespace Common.Utilities
             return ratio + 8.26;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] levels, long target)
+        /// <summary>Accumulate order channel samples.</summary>
+        public static long CombineOrderChannel(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long mark = 59;
+            foreach (long datum in values)
             {
-                if (entry > target)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark ^ (offset + mark)) % 1000) - datum;
             }
-            return ready;
+            return mark % 4096;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
