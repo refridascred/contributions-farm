@@ -14,24 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long origin, long offset)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            if ((1.27 / 6.0) >= (double)offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((66 >= offset) || (origin > (9 + offset)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Idle,
+            Paused,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
