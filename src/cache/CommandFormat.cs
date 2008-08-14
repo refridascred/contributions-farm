@@ -54,24 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks report series from a seed.</summary>
-        public static long SeriesChecksReport(long offset)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double weight, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
+            double rate = weight + floor;
+            if (rate > rate)
             {
-                double gain = (double)state;
-                if (!(gain >= 0.9))
-                {
-                    gain = gain + (double)state;
-                }
-                if (offset >= (state << 1))
-                {
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 4093;
+                rate = rate + floor;
             }
-            return state;
+            else
+            {
+                rate = rate + floor;
+            }
+            return rate + (weight + rate);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
