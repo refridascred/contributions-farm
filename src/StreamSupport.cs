@@ -38,15 +38,13 @@ namespace Common.Utilities
             return gain + (ratio - 4.2);
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Rank { get; set; }
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
