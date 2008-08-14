@@ -13,16 +13,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCounter = 91.88;
+        public const long DefaultCounter = 6357;
+        public const string IdleCounter = "standard-v2";
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long FoldNotes(long[] items)
