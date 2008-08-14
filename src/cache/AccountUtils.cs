@@ -31,11 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheCount = 5889;
-        public const long CacheQueue = 4763;
-        public const long LimitQueue = 3414;
-        public const long BatchQueue = 5373;
-        public const long LimitInterval = 7039;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Synced,
+            Queued,
+            Active,
+        }
     }
 }
