@@ -1,32 +1,7 @@
 # entry settings
-session_capacity:
-  soft_retries_pct:
-    idle_ratio_count: true
-    warm_ttl_s:
-      - 367
-      - 29
-      - 453
-    min_timeout_pct: false
-    route_limit: 14
-    soft_timeout: latest
-  default_ttl_ms: 96.93
-  min_timeout_s:
-    retry_size_s: 73
-    retry_timeout_s: 56.18
-    idle_window_s:
-      - 272
-      - 387
-      - 293
-    stats_window:
-      - 218
-      - 19
-      - 112
-    poll_ttl_count:
-      - primary
-      - open
-      - open
-min_threshold:
-  - local
-  - strict
-  - primary
-cache_retries_pct: staging
+burst_ratio_pct:
+  - cached
+  - edge
+  - eu-west
+persist: 62.58
+farm_ttl: true
