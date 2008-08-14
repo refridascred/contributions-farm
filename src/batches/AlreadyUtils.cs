@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
             Paused,
-            Locked,
-            Draft,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
