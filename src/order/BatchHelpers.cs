@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 2826;
-        public const long StepRatio = 3703;
-        public const string BurstGithubfarm = "legacy-v2";
-        public const string BaseGithubfarm = "strict-v2";
-        public const double StepLevel = 1.65;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Count the format cluster entries that pass the check.</summary>
         public static long TallyFormatClusterHits(long[] samples)
