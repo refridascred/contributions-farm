@@ -18,12 +18,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Accumulate cache metrics samples.</summary>
