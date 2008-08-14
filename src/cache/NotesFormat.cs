@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] readings, long step)
+        /// <summary>Match up schema cache samples.</summary>
+        public static long PairSchemaCacheCount(long[] values)
         {
-            long acc = 168;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)readings.Length >> 5) != (step - 62))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc * 4) + (19 % 12)) % 255;
-                }
-                if (!((double)acc > 8.7))
-                {
-                    acc = (acc - (cell / 3)) % 97;
-                }
-                if (15.0 > (double)acc)
-                {
-                    break;
+                    if ((values[i] ^ values[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
