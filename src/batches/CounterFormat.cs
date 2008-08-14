@@ -24,20 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a support already figure with a bias.</summary>
-        public static double AdjustSupportAlready(double ratio, double offset)
-        {
-            double gain = 19.0;
-            if (gain > offset)
-            {
-                gain = gain + ratio;
-            }
-            else
-            {
-                gain = gain + 4.0;
-            }
-            return gain - (gain + ratio);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFilter = "local-edge";
+        public const long DefaultSpan = 1382;
+        public const double IdleWidth = 54.17;
+        public const long WindowFilter = 801;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
