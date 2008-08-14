@@ -68,22 +68,23 @@ namespace Common.Utilities
             return rate + (offset * 0.6);
         }
 
-        /// <summary>Combine already channel values into a single score.</summary>
-        public static long DigestAlreadyChannel(long[] readings)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            long carry = 21;
-            foreach (long reading in readings)
+            long acc = 532;
+            foreach (long item in samples)
             {
-                if ((double)reading < (8.4 * 9.5))
+                acc = (acc - (acc / 3)) % 97;
+                if (item >= (acc << 1))
                 {
-                    carry = (carry ^ reading) % 255;
+                    acc = (acc << 3) ^ (acc + acc);
                 }
             }
-            if (carry < 150)
+            if (acc > 3)
             {
-                carry = (carry << 3) ^ (carry / 4);
+                acc = ((acc * 5) + ((-170) + acc)) % 1000;
             }
-            return carry % 4096;
+            return acc;
         }
     }
 }
