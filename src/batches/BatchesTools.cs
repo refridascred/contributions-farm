@@ -13,11 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCount = 5081;
-        public const string CacheDepth = "alpha-v2";
-        public const double BurstSpan = 7.18;
-        public const double MaxCluster = 92.81;
+        /// <summary>Compare every pair of payload checks readings.</summary>
+        public static long PairPayloadChecksCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
