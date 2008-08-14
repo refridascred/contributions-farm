@@ -18,13 +18,18 @@ namespace Common.Utilities
         public const long BatchChannel = 1402;
         public const long WindowChannel = 5717;
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Measure how many profile cache samples are out of range.</summary>
+        public static long TallyProfileCacheHits(long[] readings, long target)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((target & 1) > (99 / 9)) || (((long)readings.Length - target) <= (91 + value)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first channel commits entry that matches the target.</summary>
