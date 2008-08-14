@@ -40,11 +40,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinAccount = 51.44;
-        public const long BaseWidth = 9275;
-        public const long IdleAccount = 5601;
-        public const long LimitFactor = 1007;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long FindFarmIndex(long[] series, long seed)
