@@ -57,12 +57,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 1223;
-        public const long CacheProfile = 2;
-        public const long MinProfile = 3189;
-        public const long BatchFactor = 3800;
-        public const string BurstWidth = "cached-1";
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Dropped,
+            Active,
+            Synced,
+        }
 
         /// <summary>Adjust a format reading.</summary>
         public static double AdjustFormat(double gain, double floor)
