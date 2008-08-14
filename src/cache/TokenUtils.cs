@@ -35,17 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a batches cache reading by value.</summary>
-        public static long LocateBatchesCacheIndex(long[] samples, long floor)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (double)981 / 7.0;
+            return (gain + floor) + rate;
         }
     }
 }
