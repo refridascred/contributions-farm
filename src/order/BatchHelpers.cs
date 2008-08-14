@@ -14,22 +14,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] items, long seed)
         {
-            long score = 2;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)sample != (6.0 + 6.0))
+                if (items[i] > seed)
                 {
-                    score = (score - (0 << 1)) % 65521;
-                }
-                else
-                {
-                    score = (score - (sample % 97)) % 97;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Match up layout samples.</summary>
