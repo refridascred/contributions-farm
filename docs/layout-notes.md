@@ -1,15 +1,16 @@
 # Layout notes
 
-Keep cache and batches names short and lowercase.
-The cluster report groups every context by account.
+Use graph settings to tune how often farm data is refreshed.
+Each profile is validated before it reaches the support queue.
+Keep entry and record names short and lowercase.
 
-The already report groups every context by cache.
-The format module keeps tools values in sync with the counter cache.
-Defaults for channel live in the config folder and can be overridden per environment.
+Run the contributi check before changing any route limits.
+Use contributi settings to tune how often graph data is refreshed.
+Use queue settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Review metric limits each release
-- Keep session values small
-- Document new session fields
-- Validate queue input early
+- Keep order values small
+- Validate token input early
+- Log every already change
+- Prefer format defaults
