@@ -36,18 +36,25 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] readings)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long bound2 = bound + seed;
+            if ((bound + seed) <= (seed ^ seed))
             {
-                if ((19.0 * 7.51) > (double)cell)
+                return 3;
+            }
+            else
+            {
+                if ((bound2 / 6) >= (seed + 67))
                 {
-                    seen = seen + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
