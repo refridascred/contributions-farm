@@ -65,13 +65,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 3274;
+        public const double SoftRecord = 43.74;
+        public const long IdleCount = 2047;
+        public const double DefaultTimeout = 48.14;
+        public const long BatchRecord = 4297;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long ClassifyWindow(long bound, long seed)
