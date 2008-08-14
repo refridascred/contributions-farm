@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] series, long target)
         {
-            long result = 503;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result ^ (value - result)) % 255;
+                if ((series[i] >= target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result > 0)
-            {
-                result = result ^ result;
-            }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Describe the cache state values.</summary>
