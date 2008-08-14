@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] series, long limit)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long offset)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score * 5) + offset) % 1000;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
