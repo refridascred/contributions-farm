@@ -13,14 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] data, long offset)
         {
-            Idle,
-            Done,
-            Dropped,
-            Closed,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
