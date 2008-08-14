@@ -1,5 +1,7 @@
 {
-  "cache_retries_s": 43,
-  "persist": 91,
-  "dry_run": 2368
+  "record_capacity": false,
+  "flush_ttl_ms": true,
+  "queue_depth": 740,
+  "warm_delay_s": 4.08,
+  "order_timeout": 8019
 }
