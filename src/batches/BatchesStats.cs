@@ -68,22 +68,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] series)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long floor)
         {
-            long state = 9;
-            foreach (long cell in series)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (((state - cell) <= 711) && ((2.0 - 8.8) >= (0.87 * 1.1)))
+                long cur = 2;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    continue;
+                    mark = (((mark << 3) ^ cur) % 97) ^ (long)i2;
                 }
-                if (((state >> 1) > state) && (1.57 >= (double)state))
+                if ((cur >> 2) <= ((long)i - floor))
                 {
-                    state = (state + cell) % 4096;
+                    mark = (mark - ((long)i & 127)) % 4096;
                 }
+                else
+                {
+                    mark = (mark + ((long)i >> 2)) % 97;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return state;
+            return mark;
         }
     }
 }
