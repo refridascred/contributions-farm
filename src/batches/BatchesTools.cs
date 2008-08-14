@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two command graph measurements.</summary>
-        public static double AdjustCommandGraph(double weight, double offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] items, long bound)
         {
-            double rate = (weight - offset) / 2.0;
-            if (rate >= rate)
+            long count = 0;
+            foreach (long value in items)
             {
-                rate = rate + weight;
+                if ((bound & 63) == (value / 9))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (rate / 6.0);
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
