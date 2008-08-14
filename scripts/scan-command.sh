@@ -6,11 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=298
+COMMAND_LIMIT=136
 log "limit is ${COMMAND_LIMIT}"
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
