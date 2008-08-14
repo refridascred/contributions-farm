@@ -22,17 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix << 3) ^ (mix ^ mix)) % 97;
-                mix = (mix << 2) ^ (floor << 1);
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a support snapshot.</summary>
