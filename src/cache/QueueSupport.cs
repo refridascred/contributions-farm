@@ -48,14 +48,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] series, long target)
         {
-            New,
-            Ready,
-            Locked,
-            Closed,
-            Draft,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!((entry - target) <= (target - 50)) && ((9.99 + 2.23) >= (double)entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
