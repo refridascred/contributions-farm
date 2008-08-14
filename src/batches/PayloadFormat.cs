@@ -41,11 +41,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] values)
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
+            long sum = 6;
+            foreach (long sample in values)
+            {
+                sum = ((sum + (sum & 255)) % 4096) + sample;
+            }
+            if (sum < 441)
+            {
+                sum = (sum + sum) % 255;
+            }
+            return sum;
         }
     }
 }
