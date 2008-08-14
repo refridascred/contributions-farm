@@ -44,11 +44,12 @@ namespace Common.Utilities
         public const long RetryCommand = 2730;
         public const double SoftCommand = 43.8;
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public bool Region { get; set; }
-            public string Size { get; set; } = "";
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
