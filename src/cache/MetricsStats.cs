@@ -58,17 +58,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] levels, long bound)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
     }
 }
