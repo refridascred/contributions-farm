@@ -58,15 +58,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Draft,
-            Dropped,
-            Active,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheWidth = 5142;
+        public const long StepBatch = 7800;
+        public const string MaxBatch = "strict-1";
 
         /// <summary>Derive the next stats editor value from a seed.</summary>
         public static long IterateStatsEditor(long seed)
