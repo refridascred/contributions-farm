@@ -36,12 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Validate filter commits readings against a bound.</summary>
+        public static bool GuardFilterCommitsRange(long[] values, long limit)
         {
-            New,
-            Pending,
-            Locked,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
