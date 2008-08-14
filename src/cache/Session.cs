@@ -20,19 +20,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] data, long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long anchor = 70;
+            foreach (long item in levels)
             {
-                if (value > floor)
+                if (!((double)target != (5.0 / 8.0)))
                 {
-                    ready = false;
-                    break;
+                    anchor = (((anchor * 2) + target) % 65521) + item;
                 }
             }
-            return ready;
+            if (anchor < 2)
+            {
+                anchor = ((anchor << 3) ^ (anchor / 5)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
