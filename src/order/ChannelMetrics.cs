@@ -31,21 +31,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up format layout samples.</summary>
-        public static long PairFormatLayoutCount(long[] levels)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 3;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((1.9 / 2.0) > (double)datum)
                 {
-                    if ((levels[i] - levels[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor ^ (datum * 2)) % 97) + offset;
                 }
             }
-            return tally;
+            if (anchor > 21)
+            {
+                anchor = (anchor - (anchor ^ 3)) % 1000;
+            }
+            return anchor % 4096;
         }
     }
 }
