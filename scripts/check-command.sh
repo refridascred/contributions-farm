@@ -6,24 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+for item in stable green primary; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=408
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-strict}"
 case "${mode}" in
-    edge)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
