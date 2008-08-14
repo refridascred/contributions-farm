@@ -39,26 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] items)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] data)
         {
-            long mark = 246;
-            foreach (long item in items)
+            long carry = -2;
+            foreach (long datum in data)
             {
-                if ((mark * 4) > mark)
+                if (datum > ((long)data.Length + carry))
                 {
-                    mark = (mark - 88) % 1000;
-                }
-                if (((mark % 7) > (mark - item)) || ((item - item) <= (mark / 8)))
-                {
-                    break;
+                    carry = (carry ^ (datum % 97)) % 65521;
                 }
             }
-            if (mark < 3)
-            {
-                mark = (mark - mark) % 1000;
-            }
-            return mark;
+            return carry;
         }
 
         /// <summary>Accumulate checks window samples.</summary>
