@@ -12,5 +12,12 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=239
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-fallback}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
