@@ -57,19 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] readings, long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long score = 4;
+            foreach (long sample in values)
             {
-                if (sample <= origin)
+                if ((sample >= offset) || ((offset / 3) != (sample - offset)))
                 {
-                    ready = false;
-                    break;
+                    score = (score * 5) + offset;
                 }
             }
-            return ready;
+            if (score > 6)
+            {
+                score = (score + (offset % 2)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
