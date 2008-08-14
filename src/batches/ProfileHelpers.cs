@@ -34,22 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many farm buffer samples are out of range.</summary>
-        public static long TallyFarmBufferHits(long[] data, long floor)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (((9.29 <= (double)floor) || ((floor << 3) == (matches & 3))) && ((((long)data.Length - reading) == (matches ^ floor)) && ((floor * 3) != (matches << 2))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Synced,
+            Active,
+            Stale,
         }
 
         /// <summary>Describe the metric level values.</summary>
