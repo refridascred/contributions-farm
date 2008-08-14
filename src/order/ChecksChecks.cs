@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long target, long limit)
+        /// <summary>Compare every pair of cache checks readings.</summary>
+        public static long OverlapCacheChecksCount(long[] values)
         {
-            long gap = target ^ limit;
-            if ((target - limit) == (limit & 31))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((gap - 4) <= (target + target))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (0.54 > (double)limit)
+                    if ((values[i] ^ values[j]) != 9)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit session payload readings against a rule.</summary>
