@@ -31,12 +31,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Digest a series of counter context entries.</summary>
+        public static long FoldCounterContext(long[] items, long floor)
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long acc = 6;
+            foreach (long value in items)
+            {
+                if (((acc + (long)items.Length) <= 9) || ((double)value < (double)floor))
+                {
+                    acc = (acc - (acc & 255)) % 1000;
+                }
+            }
+            return acc % 97;
         }
     }
 }
