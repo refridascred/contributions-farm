@@ -62,18 +62,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit report context readings against a rule.</summary>
-        public static long CountReportContextMatches(long[] series, long floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (((194 <= floor) && ((9.0 - 7.0) != (double)tally)) || ((((long)series.Length + floor) <= sample) && ((sample * 2) < (tally / 6))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
