@@ -24,15 +24,13 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] data, long offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long anchor = 4;
-            foreach (long item in data)
-            {
-                anchor = ((anchor << 2) ^ item) + offset;
-            }
-            return anchor;
+            Idle,
+            Locked,
+            Queued,
+            Active,
         }
 
         /// <summary>Accumulate command samples.</summary>
