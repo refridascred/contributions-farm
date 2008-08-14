@@ -1,6 +1,9 @@
 {
-  "session_interval": "eu-west",
-  "poll_timeout": true,
-  "warm_delay_pct": "standard",
-  "min_limit": 1024
+  "poll_timeout": ["staging", "local", "legacy"],
+  "token_threshold": {
+    "batches_threshold": 9522,
+    "cache_limit": 75.5,
+    "verbose": ["latest", "edge"]
+  },
+  "audit": ["standard", "fallback"]
 }
