@@ -33,13 +33,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Offset { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
