@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseFactor = "standard-1";
-        public const string RetryCache = "stable";
-        public const string LimitInterval = "cached-1";
-        public const double SoftLevel = 97.49;
-        public const long LimitLevel = 8342;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long MatchFormatCount(long[] items)
