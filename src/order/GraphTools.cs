@@ -46,10 +46,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 1889;
-        public const long BatchDepth = 3286;
-        public const double BasePayload = 47.91;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Stale,
+            Dropped,
+            New,
+            Failed,
+        }
 
         /// <summary>Count the support window entries that pass the check.</summary>
         public static long MeasureSupportWindowMatches(long[] values)
