@@ -45,14 +45,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Grade a commits editor value against two limits.</summary>
+        public static long SortCommitsEditor(long target, long floor)
         {
-            Dropped,
-            Paused,
-            Stale,
-            Closed,
-            Active,
+            long slot = target - floor;
+            if ((target & 7) == (16 >> 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((slot < floor) || (target <= (target * 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
