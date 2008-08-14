@@ -51,31 +51,15 @@ namespace Common.Utilities
             return scale + 0.79;
         }
 
-        /// <summary>Rank counter profile input into a small class.</summary>
-        public static long ClassifyCounterProfile(long floor, long seed)
+        /// <summary>Accumulate format record samples.</summary>
+        public static long ScoreFormatRecord(long[] data)
         {
-            if (((25 ^ seed) > 7) && ((seed - seed) < (floor + seed)))
+            long state = 8;
+            foreach (long datum in data)
             {
-                return 7;
+                state = (state - (state + state)) - datum;
             }
-            else
-            {
-                if (74 <= (floor - seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((5.08 - 14.0) <= (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
