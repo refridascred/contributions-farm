@@ -41,11 +41,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            long result = 1;
+            foreach (long entry in data)
+            {
+                if (entry >= (entry ^ entry))
+                {
+                    result = (result - ((-4) * 5)) % 97;
+                    break;
+                }
+                if ((result >> 3) <= entry)
+                {
+                    result = ((result * 2) + (5 >> 2)) % 97;
+                }
+                else
+                {
+                    result = result - (result - result);
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Blend two payload measurements.</summary>
