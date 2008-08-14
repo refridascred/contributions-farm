@@ -13,18 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] data)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum - count) >= (count / 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
+                    if ((data[i] - data[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
