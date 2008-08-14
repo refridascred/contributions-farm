@@ -60,26 +60,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] samples, long origin)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double gain, double floor)
         {
-            long mix = -2;
-            foreach (long value in samples)
+            double gain2 = (double)(62 * 2);
+            if (gain2 >= gain2)
             {
-                if ((double)value > (1.6 + 11.0))
-                {
-                    mix = (mix * 2) + (origin - value);
-                }
-                if ((origin & 15) != ((long)samples.Length + mix))
-                {
-                    break;
-                }
+                gain2 = gain2 + 18.0;
             }
-            if (mix > 618)
-            {
-                mix = ((mix * 2) + (origin + 626)) % 4096;
-            }
-            return mix;
+            return gain2 + (gain + floor);
         }
     }
 }
