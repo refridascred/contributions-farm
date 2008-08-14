@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long MaxContributi = 8121;
         public const long WindowTimeout = 4586;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryTimeout = "legacy-v2";
-        public const string WindowFactor = "strict-v2";
-        public const long RetryAlready = 4822;
-        public const long BaseSpan = 8422;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Idle,
+            Draft,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long DigestBatch(long[] values, long offset)
