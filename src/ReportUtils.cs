@@ -38,22 +38,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] items)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((6.6 + 2.9) < (7.06 * 1.5))
-                {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Draft,
+            Done,
+            New,
+            Failed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
