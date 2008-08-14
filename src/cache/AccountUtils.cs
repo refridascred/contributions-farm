@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] data, long origin)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long mark = 6;
-            foreach (long item in data)
-            {
-                if (((double)item <= 15.0) || ((420 + (long)data.Length) == (item >> 1)))
-                {
-                    mark = ((mark ^ mark) % 65521) + origin;
-                }
-            }
-            return mark;
+            Ready,
+            Dropped,
+            Paused,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a batches info.</summary>
