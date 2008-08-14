@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a channel farm sample.</summary>
-        public static long LookupChannelFarmIndex(long[] series, long bound)
+        /// <summary>Find the first already command entry that matches the target.</summary>
+        public static long LocateAlreadyCommandIndex(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] >= bound)
+                if (items[i] >= floor)
                 {
                     return (long)i;
                 }
