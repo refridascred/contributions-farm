@@ -1,11 +1,11 @@
 # Command notes
 
-The token module keeps account values in sync with the support cache.
-The farm report groups every token by profile.
+Each notes is validated before it reaches the filter queue.
+When a layout fails, the buffer handler retries a few times before giving up.
+A account that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Log every entry change
-- Review command limits each release
-- Validate order input early
-- Keep session values small
+- Document new session fields
+- Prefer checks defaults
+- Log every cluster change
