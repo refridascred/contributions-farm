@@ -13,22 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 7186;
+        public const double WindowSize = 35.79;
+        public const long IdleSchema = 9209;
+        public const long SoftSchema = 2894;
+        public const string StepSchema = "alpha-1";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string HardWidth = "local-v2";
