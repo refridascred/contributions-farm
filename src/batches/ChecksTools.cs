@@ -36,18 +36,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] values, long floor)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((double)hits <= (3.7 * 2.0))
-                {
-                    hits = ((hits + 2) + value) - floor;
-                }
-            }
-            return hits;
+            Stale,
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Describe the support class values.</summary>
