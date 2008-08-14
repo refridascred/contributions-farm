@@ -32,31 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long bound, long bound2)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            if ((double)bound2 <= (9.54 / 2.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound2 + bound) <= bound2) && ((bound2 >> 3) > bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound2 >> 2) > bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
