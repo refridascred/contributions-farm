@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] data, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] samples)
         {
             long matches = 0;
-            foreach (long entry in data)
+            foreach (long item in samples)
             {
-                if (((limit * 4) == (limit << 1)) || ((limit > (matches % 2)) && (entry > (limit + matches))))
+                if ((matches << 3) <= (item + item))
                 {
-                    matches = matches + 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
