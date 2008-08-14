@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const double SoftLevel = 97.49;
         public const long LimitLevel = 8342;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next payload value.</summary>
