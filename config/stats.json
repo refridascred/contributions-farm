@@ -1,30 +1,8 @@
 {
-  "retry_depth": 25.23,
-  "audit": {
-    "contributi_retries": false,
-    "retry_interval": {
-      "compress": "cached",
-      "min_limit": true,
-      "burst_interval_count": "standard"
-    },
-    "sync_size_count": 8171,
-    "persist": "legacy",
-    "flush_size": 85,
-    "compress": "latest"
-  },
-  "payload_size": "local",
-  "sync_interval_count": "local",
-  "poll_limit_count": 60,
-  "buffer_threshold": {
-    "retry_limit_count": {
-      "cache_size_ms": [323, 244],
-      "flush_delay_s": "latest",
-      "graph_depth": "legacy"
-    },
-    "sync_limit_pct": "standard",
-    "format_timeout": 0.74,
-    "warm_timeout_ms": 63,
-    "route_delay": false,
-    "warm_limit_count": 32
-  }
+  "enabled": [173, 401, 11],
+  "retry_window_pct": "local",
+  "soft_retries_count": 20.16,
+  "filter_size": 4248,
+  "dry_run": "green",
+  "verbose": 30
 }
