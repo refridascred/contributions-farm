@@ -18,9 +18,17 @@ namespace Common.Utilities
         public const double HardCache = 15.93;
         public const long MinInterval = 8015;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 3304;
-        public const double BaseBudget = 62.42;
-        public const long BaseSupport = 8605;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
