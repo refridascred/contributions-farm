@@ -1,9 +1,18 @@
 # githubfarm settings
-default_window_ms: stable
-soft_window: 15
-warm_threshold:
-  - legacy
-  - eu-west
-  - blue
-graph_interval: 5718
-flush_ratio_count: 67.4
+min_ratio:
+  min_threshold: 100
+  verbose:
+    - cached
+    - legacy
+    - fallback
+    - latest
+  route_ttl: 39.97
+  counter_ratio: open
+  max_depth: 26.58
+  batch_capacity_count:
+    - eu-west
+    - staging
+    - legacy
+batch_ratio_count: open
+flush_size_ms: true
+cache_size_pct: stable
