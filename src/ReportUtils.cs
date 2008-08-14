@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheBudget = 6201;
-        public const long BurstEditor = 3686;
-        public const string CacheEditor = "alpha-v2";
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Retry,
+            Done,
+            New,
+            Draft,
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long IterateGraph(long floor)
