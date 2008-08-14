@@ -20,21 +20,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] readings)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
