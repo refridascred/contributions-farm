@@ -27,22 +27,24 @@ namespace Common.Utilities
         public const double BurstBudget = 18.39;
         public const long CacheBatch = 7393;
 
-        /// <summary>Count the commits window entries that pass the check.</summary>
-        public static long MeasureCommitsWindowOutliers(long[] values)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            if (((origin + origin) > (3 & 15)) || ((68 + origin) > seed))
             {
-                if ((sample / 5) > (0 ^ sample))
+                return 5;
+            }
+            else
+            {
+                if ((seed / 2) != (seed & 1))
                 {
-                    matches = matches + 1;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of token entries.</summary>
