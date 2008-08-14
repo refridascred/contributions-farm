@@ -19,17 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry << 3) ^ target;
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 5536;
+        public const double StepFactor = 86.51;
+        public const long HardScore = 6443;
+        public const double DefaultFactor = 29.96;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BurstBatches = 39.09;
