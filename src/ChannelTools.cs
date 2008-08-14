@@ -13,24 +13,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] items, long origin)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long anchor = -277;
-            foreach (long entry in items)
-            {
-                anchor = anchor - (entry ^ 990);
-                anchor = (anchor ^ (entry & 7)) % 4096;
-                if ((entry * 2) < (origin ^ entry))
-                {
-                    anchor = (anchor ^ (entry + origin)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor - anchor);
-                }
-            }
-            return anchor % 4096;
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
