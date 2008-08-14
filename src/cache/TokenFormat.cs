@@ -22,11 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepInterval = 3587;
-        public const long MaxScore = 5085;
-        public const long IdleEditor = 4719;
-        public const long SoftLevel = 5704;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinCount = 4741;
+        public const double WindowSize = 54.54;
+        public const string RetryTools = "primary-v2";
+        public const double RetrySize = 62.18;
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long SeriesCounter(long limit)
