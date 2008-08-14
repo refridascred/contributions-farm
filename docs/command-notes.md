@@ -1,14 +1,13 @@
 # Command notes
 
-Defaults for account live in the config folder and can be overridden per environment.
-The channel helpers are pure functions, so they are safe to call from any thread.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Use session settings to tune how often window data is refreshed.
 
-When a report fails, the token handler retries a few times before giving up.
-The session helpers are pure functions, so they are safe to call from any thread.
-When a notes fails, the context handler retries a few times before giving up.
+A entry that stays idle for too long is moved to the queue list.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate checks input early
-- Log every profile change
-- Document new window fields
+- Review record limits each release
+- Keep account values small
+- Validate payload input early
