@@ -56,17 +56,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseLevel = 9018;
+        public const long MaxWidth = 7146;
+        public const string BaseMetrics = "legacy";
+        public const long RetryBudget = 59;
     }
 }
