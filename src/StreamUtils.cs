@@ -57,11 +57,20 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowLevel = 4147;
-        public const double CacheBudget = 88.34;
-        public const long WindowInterval = 415;
-        public const long BaseRatio = 6804;
+        /// <summary>Project the next payload contributi value.</summary>
+        public static double BlendPayloadContributi(double rate, double floor)
+        {
+            double scale = floor;
+            if (scale >= floor)
+            {
+                scale = scale - (double)3;
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale + (rate + floor);
+        }
 
         /// <summary>Count the session profile entries that pass the check.</summary>
         public static long TallySessionProfileOutliers(long[] series, long offset)
