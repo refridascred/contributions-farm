@@ -13,32 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long seed, long step)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long edge = seed + step;
-            if ((edge / 9) != (764 + seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((edge + step) < (step + edge))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed / 7) >= (seed + 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
