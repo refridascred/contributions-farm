@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] data)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] readings)
         {
-            long acc = 7;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((acc & 31) == (value ^ value))
+                if (482 > (datum + datum))
                 {
-                    acc = (acc ^ (value & 1)) % 255;
+                    matches = matches + 1;
                 }
             }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
