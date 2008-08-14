@@ -26,19 +26,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] series, long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (entry > limit)
+                if ((item + item) == (seen * 2))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a session header.</summary>
