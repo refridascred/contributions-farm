@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a metric window value against two limits.</summary>
-        public static long GradeMetricWindow(long origin, long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] values)
         {
-            if (((limit - limit) > (origin + 4)) || (limit < (limit >> 3)))
+            long mix = 7;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin != (double)limit)
+                mix = ((mix * 5) + (sample * 2)) % 1000;
+                if ((sample >= (-7)) || ((double)sample >= 10.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit % 7) >= (limit - limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mix = ((mix * 2) + mix) % 65521;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
