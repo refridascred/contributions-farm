@@ -1,13 +1,15 @@
 # githubfarm settings
-enabled:
-  - 297
-  - 184
-  - 78
-  - 496
-default_timeout_pct: true
-base_threshold_ms: 100
-flush_ratio:
-  - eu-west
-  - staging
-report_ttl: open
-warm_ratio: true
+sync_delay:
+  burst_timeout_count:
+    - green
+    - eu-west
+    - strict
+  commits_size:
+    - fallback
+    - open
+  cache_threshold_count: 42
+  batches_ratio: green
+max_limit:
+  - green
+  - primary
+hard_delay_s: green
