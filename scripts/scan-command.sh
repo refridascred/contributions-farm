@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=418
+COMMAND_LIMIT=29
 log "limit is ${COMMAND_LIMIT}"
 
-for item in legacy open staging eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-green}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
