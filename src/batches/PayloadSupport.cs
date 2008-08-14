@@ -32,13 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Audit session graph readings against a rule.</summary>
+        public static long TallySessionGraphGaps(long[] series)
         {
-            Failed,
-            Idle,
-            Pending,
-            Active,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (reading > (602 + reading))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine record values into a single score.</summary>
