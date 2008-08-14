@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long seed, long origin)
         {
-            Idle,
-            New,
-            Stale,
-            Synced,
-            Dropped,
+            if ((seed % 97) >= 83)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7.25 - 3.7) < (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((seed - origin) >= (seed * 3)) && ((seed << 2) >= origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed >= (origin << 1)) && ((seed * 3) > (origin ^ origin)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format class values.</summary>
