@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] data, long bound)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Match up tools samples.</summary>
