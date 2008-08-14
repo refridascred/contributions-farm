@@ -33,13 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] data, long step)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate payload graph samples.</summary>
