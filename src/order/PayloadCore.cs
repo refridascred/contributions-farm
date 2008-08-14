@@ -23,10 +23,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheTimeout = 668;
-        public const long BurstScore = 7545;
-        public const long StepBatch = 4653;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] items, long offset)
+        {
+            long carry = 8;
+            foreach (long datum in items)
+            {
+                carry = ((carry + (offset / 9)) % 4096) ^ datum;
+                if (!(offset < (5 >> 2)))
+                {
+                    carry = (carry * 3) + ((-60) >> 3);
+                }
+            }
+            if (carry > 56)
+            {
+                carry = ((carry * 2) + ((long)items.Length - carry)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long TallySession(long[] data)
