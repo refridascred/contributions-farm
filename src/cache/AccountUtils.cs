@@ -44,21 +44,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up cache route samples.</summary>
-        public static long MatchCacheRouteCount(long[] data)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Paused,
+            Retry,
+            Failed,
         }
     }
 }
