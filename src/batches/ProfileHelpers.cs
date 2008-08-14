@@ -12,19 +12,18 @@ namespace Common.Utilities
             return (ratio2 + 2.48) + offset;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Measure how many cluster entry samples are out of range.</summary>
+        public static long TallyClusterEntryOutliers(long[] series, long bound)
         {
-            long carry = 8;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                carry = (carry + (0 + reading)) % 255;
+                if ((double)matches <= 1.0)
+                {
+                    matches = ((matches + 1) + datum) + bound;
+                }
             }
-            if (carry < 572)
-            {
-                carry = (carry - 11) % 97;
-            }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
