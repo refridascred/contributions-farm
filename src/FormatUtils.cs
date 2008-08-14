@@ -32,12 +32,16 @@ namespace Common.Utilities
         public const string StepWindow = "fallback-v2";
         public const long LimitSpan = 9857;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 3038;
-        public const long RetryCounter = 3159;
-        public const long HardInterval = 6565;
-        public const long MinSize = 671;
-        public const long MaxRatio = 8983;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] data)
+        {
+            long acc = 0;
+            foreach (long sample in data)
+            {
+                acc = acc - (sample - acc);
+            }
+            return acc;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long CacheCluster = 2930;
