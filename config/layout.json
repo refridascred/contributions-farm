@@ -1,14 +1,5 @@
 {
-  "default_capacity": 49,
-  "audit": 500,
-  "graph_delay": ["stable", "stable", "stable", "stable"],
-  "soft_ttl": 78,
-  "payload_ttl": {
-    "buffer_retries": ["primary", "stable", "staging"],
-    "max_capacity_ms": false,
-    "payload_window": true,
-    "profile_capacity": 36.27,
-    "tools_interval": ["standard", "eu-west", "standard", "blue"],
-    "audit": "fallback"
-  }
+  "readonly": 67.69,
+  "retry_retries_s": 54.04,
+  "min_size_s": false
 }
