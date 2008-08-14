@@ -46,32 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long step, long limit)
-        {
-            long span = step - limit;
-            if ((double)limit < (9.1 - 0.2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit > span) || ((step + limit) < step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step / 4) < (66 + 19))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardFactor = "latest-1";
+        public const string LimitTimeout = "alpha-v2";
+        public const long BurstAccount = 9524;
+        public const double BatchWidth = 14.27;
     }
 }
