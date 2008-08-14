@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] samples, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] readings)
         {
-            long mark = 4;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((step - cell) > (step << 3))
+                if (((count ^ count) >= (-9)) && (datum < (datum - datum)))
                 {
-                    mark = ((mark * 5) + (mark ^ cell)) % 4096;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mark > (-6))
-            {
-                mark = ((mark * 4) + (step / 3)) % 255;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the command mode values.</summary>
