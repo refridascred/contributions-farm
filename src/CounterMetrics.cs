@@ -32,22 +32,29 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long limit, long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long floor, long offset)
         {
-            if ((limit + limit) >= bound)
+            if (floor > offset)
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((limit - bound) < (8 / 4))
+                if ((5 + offset) >= offset)
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    return 0;
+                    if (359 > (offset - 942))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
