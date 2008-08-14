@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long origin, long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] items)
         {
-            long slot = origin ^ target;
-            if (origin > (slot / 6))
+            long mix = 680;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + target) >= ((-4) * 2))
+                if ((mix ^ 949) >= (reading - mix))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((17 >> 3) <= target) && ((target + (-928)) != (origin * 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mix = ((mix << 2) ^ (reading + reading)) % 101;
                 }
             }
+            return mix;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
