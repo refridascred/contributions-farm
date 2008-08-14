@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long MaxLayout = 8309;
         public const long BurstTimeout = 4882;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long offset)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Active,
+            Queued,
+            Paused,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
