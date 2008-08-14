@@ -23,18 +23,9 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((item - (-429)) != (hits << 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 3304;
+        public const double BaseBudget = 62.42;
+        public const long BaseSupport = 8605;
     }
 }
