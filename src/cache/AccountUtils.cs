@@ -24,10 +24,13 @@ namespace Common.Utilities
         public const long RetryCount = 2636;
         public const double WindowCache = 26.97;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 5347;
-        public const long IdleBatch = 2272;
-        public const double BaseFactor = 82.86;
-        public const long MaxBatch = 2261;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Locked,
+            Draft,
+            Failed,
+            Active,
+        }
     }
 }
