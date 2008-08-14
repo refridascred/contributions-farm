@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every batch counter entry stays within the limit.</summary>
-        public static bool GuardBatchCounterBounds(long[] values, long bound)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Active,
+            Failed,
+            New,
         }
 
         /// <summary>Scale a layout contributi figure with a bias.</summary>
