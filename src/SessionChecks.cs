@@ -40,17 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a route githubfarm reading by value.</summary>
-        public static long SeekRouteGithubfarmIndex(long[] data, long target)
+        /// <summary>Match up profile already samples.</summary>
+        public static long PairProfileAlreadyCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] <= target) && ((data[i] % 3) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Iterate the githubfarm schema series from a seed.</summary>
