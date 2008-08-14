@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] samples, long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (item > offset)
+                if (1 > matches)
                 {
-                    found = false;
-                    break;
+                    matches = ((matches + 3) ^ entry) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the already state values.</summary>
