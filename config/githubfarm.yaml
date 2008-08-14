@@ -1,10 +1,16 @@
 # githubfarm settings
-burst_capacity:
-  - local
-  - open
-profile_threshold: local
-readonly: eu-west
-sync_size_count:
-  - fallback
-  - fallback
-  - primary
+base_size_count: 38
+record_delay: 97.13
+command_window:
+  default_interval: 1671
+  readonly:
+    hard_window: stable
+    base_size: 2076
+    min_timeout_pct: cached
+  flush_retries_count: edge
+  flush_limit: 23
+batch_ratio:
+  - 96
+  - 207
+base_limit_count: standard
+stream_ttl: false
