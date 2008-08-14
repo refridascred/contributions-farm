@@ -28,16 +28,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a format channel counter forward.</summary>
-        public static long StepFormatChannel(long seed)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double gain, double span)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            double weight = span - 9.2;
+            if (weight >= (double)522)
             {
-                acc = (acc + (1 >> 3)) % 1000;
-                acc = ((acc * 5) + (long)i) % 97;
+                weight = (weight - (weight * 6.65)) - gain;
             }
-            return acc;
+            else
+            {
+                weight = weight - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - 0.4) + (double)(long)i;
+            }
+            return weight - (weight + 18.0);
         }
     }
 }
