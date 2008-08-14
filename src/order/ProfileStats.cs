@@ -22,19 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double ratio, double floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long floor)
         {
-            double scale = ratio;
-            if (scale > floor)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                scale = scale + (floor + 4.0);
+                mix = ((mix << 3) ^ (mix ^ mix)) % 97;
+                mix = (mix << 2) ^ (floor << 1);
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale - (double)9;
+            return mix;
         }
 
         /// <summary>Hold a support snapshot.</summary>
