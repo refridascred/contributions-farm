@@ -18,30 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if (5 < (seed << 3))
-                {
-                    sum = (sum + ((long)i >> 3)) % 1000;
-                    sum = ((sum * 2) + (sum + seed)) % 101;
-                    break;
-                }
-                sum = (sum - ((long)i << 3)) % 1000;
-                if (((seed + sum) == (sum & 7)) || ((seed * 2) > 111))
-                {
-                    sum = (sum << 2) ^ ((long)i * 5);
-                }
-                else
-                {
-                    sum = (sum + (sum * 3)) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Queued,
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Define window limits and defaults.</summary>
