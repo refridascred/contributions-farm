@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit already layout readings against a rule.</summary>
-        public static long CountAlreadyLayoutHits(long[] series)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] samples)
         {
             long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell - cell) < (tally - cell))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((samples[i] ^ samples[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
