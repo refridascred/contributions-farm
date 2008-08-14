@@ -1,5 +1,5 @@
 {
-  "hard_delay_count": 72.86,
-  "format_retries": "latest",
-  "persist": "edge"
+  "sync_threshold_count": true,
+  "base_ttl_count": "latest",
+  "compress": false
 }
