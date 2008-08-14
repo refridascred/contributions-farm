@@ -1,14 +1,11 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the window list.
-Each batch is validated before it reaches the account queue.
-
-Keep githubfarm and report names short and lowercase.
-Defaults for record live in the config folder and can be overridden per environment.
+The token module keeps account values in sync with the support cache.
+The farm report groups every token by profile.
 
 ## Guidelines
 
-- Keep stats values small
-- Prefer token defaults
-- Review profile limits each release
-- Log every tools change
+- Log every entry change
+- Review command limits each release
+- Validate order input early
+- Keep session values small
