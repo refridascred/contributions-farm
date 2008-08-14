@@ -1,17 +1,6 @@
 {
-  "min_size_count": 8,
-  "queue_window": 729,
-  "persist": 3092,
-  "retry_limit_pct": ["eu-west", "open"],
-  "max_size_ms": 92.97,
-  "compress": {
-    "dry_run": {
-      "batch_ratio": ["local", "latest", "strict"],
-      "enabled": ["staging", "legacy", "blue"],
-      "hard_timeout_pct": true,
-      "batch_limit": 1024
-    },
-    "cache_retries": "legacy",
-    "max_delay": 500
-  }
+  "base_timeout": 63,
+  "flush_depth_s": true,
+  "flush_limit_s": 8512,
+  "poll_window": 15
 }
