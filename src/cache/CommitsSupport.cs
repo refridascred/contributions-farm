@@ -37,16 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                result = ((result << 3) ^ origin) % 101;
-                result = ((result * 4) + (long)i) % 4093;
+                if ((762 - (-276)) >= (tally ^ reading))
+                {
+                    tally = tally + 3;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Adjust a counter reading.</summary>
