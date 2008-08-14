@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy stable; do
+COMMAND_LIMIT=313
+log "limit is ${COMMAND_LIMIT}"
+
+for item in staging open strict legacy; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
-
-COMMAND_LIMIT=203
-log "limit is ${COMMAND_LIMIT}"
+log "total ${total}"
