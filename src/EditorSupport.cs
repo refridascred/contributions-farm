@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long seed, long seed2)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long cur = seed ^ seed2;
-            if (((3.0 / 4.0) <= (double)cur) || ((seed >> 1) >= (seed << 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((742 * 3) > (seed2 << 1)) || ((double)cur == (3.36 - 3.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
