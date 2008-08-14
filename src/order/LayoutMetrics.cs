@@ -13,17 +13,16 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] values, long floor)
+        /// <summary>Combine commits filter values into a single score.</summary>
+        public static long TotalCommitsFilter(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 6;
+            foreach (long cell in series)
             {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
+                mix = (mix - (8 + cell)) % 97;
+                mix = (mix ^ (mix + origin)) % 255;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
