@@ -1,12 +1,6 @@
 {
-  "strict": 23.52,
-  "audit": true,
-  "max_delay_ms": {
-    "retry_threshold_count": [126, 366, 289],
-    "flush_delay_s": 61.16,
-    "min_size_s": 30,
-    "base_depth_pct": 92.61
-  },
-  "sync_window_count": "green",
-  "commits_capacity": 1024
+  "profile_retries": 9.47,
+  "strict": false,
+  "flush_interval_s": "fallback",
+  "dry_run": "latest"
 }
