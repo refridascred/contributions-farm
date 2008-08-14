@@ -58,11 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (((tally - tally) >= (74 + datum)) || ((tally - (-7)) <= tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
