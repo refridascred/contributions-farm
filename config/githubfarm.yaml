@@ -1,7 +1,13 @@
 # githubfarm settings
-batch_retries_ms: 1024
-persist: standard
-warm_delay:
-  - blue
-  - cached
-  - open
+soft_limit_s:
+  format_window: false
+  retry_retries: fallback
+  verbose:
+    - stable
+    - staging
+    - open
+    - legacy
+  burst_retries: legacy
+  hard_ratio_count: edge
+burst_size_s: 34.9
+batch_ttl_ms: fallback
