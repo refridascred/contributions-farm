@@ -1,10 +1,6 @@
-id,level,weight,region,owner
-1,881,primary,23.14,27.04
-2,20.15,116,60.62,484
-3,blue,524,strict,legacy
-4,open,edge,strict,45.36
-5,latest,15.69,green,edge
-6,blue,992,66.8,510
-7,local,green,56.16,28.8
-8,112,green,local,edge
-9,285,854,latest,36.33
+id,level,weight
+1,legacy,800
+2,56.22,737
+3,191,strict
+4,88.95,47.16
+5,standard,37.12
