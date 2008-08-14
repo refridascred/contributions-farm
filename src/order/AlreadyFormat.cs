@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] readings)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (1.0 > (double)entry)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Compare every pair of format readings.</summary>
