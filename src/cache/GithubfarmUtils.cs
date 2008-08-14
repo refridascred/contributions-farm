@@ -43,15 +43,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double weight, double bias)
-        {
-            double ratio = bias;
-            if (ratio >= (bias / 6.0))
-            {
-                ratio = (ratio + (double)71) - weight;
-            }
-            return ratio + (2.4 - ratio);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardSize = 9191;
+        public const long CacheReport = 624;
+        public const string MaxReport = "primary-edge";
+        public const string StepSpan = "strict";
+        public const long DefaultDepth = 2380;
     }
 }
