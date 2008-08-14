@@ -19,19 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] series, long bound)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
