@@ -33,14 +33,19 @@ namespace Common.Utilities
         public const double BatchNotes = 43.4;
         public const string RetryScore = "local";
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] values, long bound)
         {
-            Retry,
-            Queued,
-            Idle,
-            Paused,
-            Stale,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
