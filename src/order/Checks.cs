@@ -66,13 +66,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Fold a list of format context readings.</summary>
+        public static long DigestFormatContext(long[] items)
         {
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            long anchor = 6;
+            foreach (long value in items)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 1000;
+                if (!((double)value < 1.0))
+                {
+                    anchor = anchor ^ (long)items.Length;
+                }
+            }
+            if (anchor < 181)
+            {
+                anchor = (anchor + anchor) % 65521;
+            }
+            return anchor;
         }
     }
 }
