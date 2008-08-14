@@ -25,12 +25,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long offset, long step)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
+            long span = offset ^ step;
+            if ((offset * 3) >= span)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)span < 4.8)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((6 % 97) > (offset + offset)) && ((double)step > (double)offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((29 + span) >= span))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up counter farm samples.</summary>
