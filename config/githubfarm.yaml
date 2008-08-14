@@ -1,15 +1,12 @@
 # githubfarm settings
-max_capacity_pct: green
-contributi_capacity: 1482
-cache_retries_ms: stable
-base_capacity: 4076
-audit:
-  audit: local
-  batch_window: strict
+batch_threshold_pct:
+  - eu-west
+  - latest
+sync_delay: cached
+soft_depth_ms: green
+farm_limit:
+  default_depth_ms: strict
+  notes_ttl: 18.51
+  report_window: fallback
   enabled: strict
-  idle_limit_ms: 22.28
-  metric_timeout:
-    - local
-    - staging
-    - primary
-    - legacy
+retry_threshold_s: 500
