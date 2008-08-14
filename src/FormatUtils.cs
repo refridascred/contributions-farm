@@ -65,18 +65,17 @@ namespace Common.Utilities
             return mean - (mean * 6.22);
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] series, long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3 % 12) >= sample)
+                if ((values[i] > origin) && ((values[i] % 3) == 0))
                 {
-                    tally = (tally + 3) - origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up stream samples.</summary>
