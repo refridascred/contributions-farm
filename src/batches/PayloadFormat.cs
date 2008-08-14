@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] series, long seed)
+        /// <summary>Combine filter payload values into a single score.</summary>
+        public static long TallyFilterPayload(long[] data)
         {
-            long total = 697;
-            foreach (long value in series)
+            long mark = 8;
+            foreach (long datum in data)
             {
-                total = ((((total * 3) + 31) % 101) ^ value) + seed;
+                mark = ((mark << 3) ^ (datum ^ datum)) % 97;
             }
-            return total;
+            if (mark > 42)
+            {
+                mark = (mark * 4) + (mark ^ mark);
+            }
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
