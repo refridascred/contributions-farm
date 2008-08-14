@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Check that every entry buffer entry stays within the limit.</summary>
+        public static bool ValidateEntryBufferLimits(long[] levels, long bound)
         {
-            long carry = 55;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                carry = ((carry << 2) ^ (reading + carry)) % 97;
+                if (entry != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (carry < 4)
-            {
-                carry = (carry + (carry & 63)) % 65521;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Classify a batches record pair into a bucket.</summary>
