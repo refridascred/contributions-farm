@@ -13,13 +13,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] levels)
         {
-            Failed,
-            Active,
-            Paused,
-            Pending,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (!((count + count) >= (entry * 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
