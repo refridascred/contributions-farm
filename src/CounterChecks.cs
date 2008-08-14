@@ -85,25 +85,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a queue filter value against two limits.</summary>
-        public static long SortQueueFilter(long limit, long target)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long cur = limit - target;
-            if (cur < (target / 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((cur << 3) == (112 >> 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Failed,
+            Synced,
+            Closed,
         }
     }
 }
