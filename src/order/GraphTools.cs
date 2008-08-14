@@ -22,19 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long result = 0;
-            foreach (long item in levels)
-            {
-                result = (result + (result + 600)) % 101;
-                if ((6.0 * 7.57) != (double)item)
-                {
-                    break;
-                }
-            }
-            return result;
+            Paused,
+            Ready,
+            Dropped,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
