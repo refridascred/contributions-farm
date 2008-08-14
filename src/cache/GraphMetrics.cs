@@ -41,19 +41,20 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] samples, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long anchor = 7;
+            foreach (long value in values)
             {
-                if (value < limit)
+                anchor = ((anchor * 2) + (seed & 3)) % 65521;
+                anchor = anchor + (anchor << 3);
+                if ((double)seed != (double)anchor)
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (value >> 1)) % 65521;
                 }
             }
-            return valid;
+            return anchor % 4096;
         }
 
         /// <summary>Combine order values into a single score.</summary>
