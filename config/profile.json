@@ -1,13 +1,6 @@
 {
-  "batch_ttl": true,
-  "warm_size_s": 70.79,
-  "retry_capacity_count": {
-    "counter_threshold": ["blue", "strict", "primary", "cached"],
-    "payload_ttl": 6510,
-    "soft_retries_ms": true,
-    "retry_threshold": 15,
-    "contributi_retries": 12,
-    "soft_depth": ["strict", "eu-west", "fallback", "standard"]
-  },
-  "checks_timeout": "fallback"
+  "soft_threshold_s": 2395,
+  "soft_size": [150, 485],
+  "verbose": [53, 337],
+  "burst_interval_count": false
 }
