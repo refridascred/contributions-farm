@@ -1,6 +1,9 @@
-id,label,owner
-1,70.99,773
-2,cached,45.84
-3,stable,53.54
-4,903,321
-5,open,250
+id,level,ratio,state,token
+1,strict,blue,staging,522
+2,staging,77.61,36.46,staging
+3,green,334,511,3.14
+4,723,63.17,763,14
+5,stable,staging,670,240
+6,658,cached,25,855
+7,439,cached,465,61.24
+8,primary,cached,361,406
