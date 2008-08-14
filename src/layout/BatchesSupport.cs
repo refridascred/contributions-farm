@@ -35,12 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Synced,
-            Active,
-            Queued,
+            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Combine queue session values into a single score.</summary>
