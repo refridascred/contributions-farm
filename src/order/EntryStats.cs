@@ -46,32 +46,17 @@ namespace Common.Utilities
         public const long IdleAccount = 5601;
         public const long LimitFactor = 1007;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long step, long step2)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] series, long seed)
         {
-            long diff = step + step2;
-            if (!((double)diff != (double)step))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step << 3) != (diff + diff))
+                if ((series[i] < seed) && ((series[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step2 % 7) != (diff + 24))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
