@@ -13,23 +13,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((bound + (-35)) < bound) || ((9 * 3) < (long)i))
-                {
-                    mark = (mark << 3) ^ (mark % 16);
-                }
-                if ((798 * 4) == (583 - mark))
-                {
-                    mark = (mark - ((long)i & 31)) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Active,
+            Paused,
+            Queued,
         }
 
         /// <summary>Combine order values into a single score.</summary>
