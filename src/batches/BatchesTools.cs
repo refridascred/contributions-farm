@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((score <= (limit + limit)) && ((limit ^ 40) >= (limit % 16)))
-                {
-                    score = score - ((long)i * 2);
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Digest a series of stream checks entries.</summary>
