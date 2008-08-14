@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] levels, long target)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > target) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
