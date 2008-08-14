@@ -1,5 +1,6 @@
 {
-  "max_limit": 30,
-  "default_timeout": "edge",
-  "payload_size": ["fallback", "blue", "edge", "staging"]
+  "sync_retries_ms": "staging",
+  "sync_interval_count": "legacy",
+  "idle_timeout_ms": 1980,
+  "hard_window_ms": 47.49
 }
