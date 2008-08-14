@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] samples)
         {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample >= (sample / 7)) || (hits > (sample - 848)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
