@@ -1,7 +1,15 @@
 {
-  "default_depth_s": 30,
-  "layout_capacity": true,
-  "flush_ttl_pct": ["blue", "open", "stable"],
-  "persist": "strict",
-  "already_capacity": true
+  "flush_ratio_pct": "open",
+  "metrics_window": [222, 8, 62, 216],
+  "poll_depth_ms": 29.86,
+  "warm_limit": "open",
+  "default_size_s": {
+    "githubfarm_delay": 100,
+    "enabled": false,
+    "verbose": 250,
+    "max_ratio_s": "latest",
+    "idle_delay_ms": 82.92,
+    "burst_delay_s": true
+  },
+  "min_ratio_s": 4988
 }
