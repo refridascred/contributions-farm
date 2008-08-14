@@ -32,12 +32,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
-            public long Mode { get; set; }
+            Synced,
+            Queued,
+            Closed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
