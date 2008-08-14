@@ -64,18 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinAccount = 51.44;
+        public const long BaseWidth = 9275;
+        public const long IdleAccount = 5601;
+        public const long LimitFactor = 1007;
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long GradeToken(long step, long step2)
