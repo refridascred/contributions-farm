@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long floor, long floor2)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            if (((1.84 * 4.5) != (double)floor2) || ((1.0 / 5.0) < (double)floor2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor * 4) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((2 >= (floor2 + floor)) || ((double)floor2 >= (0.4 * 20.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Queued,
+            Retry,
+            New,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
