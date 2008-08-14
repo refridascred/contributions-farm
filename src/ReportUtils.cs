@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstFarm = 58.65;
+        public const long CacheScore = 9830;
+        public const double MaxScore = 62.42;
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long IterateGraph(long floor)
