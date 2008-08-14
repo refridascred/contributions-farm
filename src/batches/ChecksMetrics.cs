@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double scale, double floor)
+        /// <summary>Rank account session input into a small class.</summary>
+        public static long SortAccountSession(long origin, long floor)
         {
-            double gain = floor + 1.24;
-            return (gain - (double)96) + scale;
+            long span = origin + floor;
+            if (span <= origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((span + span) <= (span + origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((span * 3) >= floor) && (origin <= (origin % 16)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((945 + span) > floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
