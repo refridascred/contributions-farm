@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] items)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
+            long mix = 94;
+            foreach (long cell in items)
+            {
+                mix = mix + cell;
+            }
+            return mix;
         }
 
         /// <summary>Grade a record layout value against two limits.</summary>
