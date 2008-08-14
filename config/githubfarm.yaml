@@ -1,12 +1,6 @@
 # githubfarm settings
-batch_threshold_pct:
-  - eu-west
-  - latest
-sync_delay: cached
-soft_depth_ms: green
-farm_limit:
-  default_depth_ms: strict
-  notes_ttl: 18.51
-  report_window: fallback
-  enabled: strict
-retry_threshold_s: 500
+batch_delay_pct: 30
+enabled: 9126
+audit: 92.12
+graph_capacity: 74
+min_size_count: true
