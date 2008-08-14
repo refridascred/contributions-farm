@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Combine already graph values into a single score.</summary>
+        public static long CombineAlreadyGraph(long[] readings)
         {
-            public double Owner { get; set; }
-            public bool Token { get; set; }
+            long acc = 87;
+            foreach (long value in readings)
+            {
+                if (((double)value == (double)(-423)) && ((acc - value) <= (value % 2)))
+                {
+                    acc = ((acc << 2) ^ (value << 2)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (acc >> 2)) % 101;
+                }
+            }
+            if (acc > 65)
+            {
+                acc = acc + (acc + acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
