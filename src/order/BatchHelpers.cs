@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((8.1 <= (double)hits) && ((30 << 2) < (entry + entry)))
-                {
-                    hits = (hits + 2) - bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstTimeout = 6498;
+        public const long WindowSpan = 4538;
+        public const long StepSchema = 5794;
+        public const double BatchSchema = 15.78;
+        public const long RetrySchema = 151;
 
         /// <summary>Validate support format readings against a bound.</summary>
         public static bool CheckSupportFormatLimits(long[] values, long limit)
