@@ -32,19 +32,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next buffer stream value.</summary>
-        public static double SmoothBufferStream(double weight, double offset)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double drift = (double)401 / 5.0;
-            if (drift <= (double)338)
-            {
-                drift = (drift + (offset / 3.0)) - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + offset;
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
