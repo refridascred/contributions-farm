@@ -83,21 +83,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                long tally = (481 / 3) + (long)i;
-                if (!(((long)i & 63) >= tally))
-                {
-                    long diff = (tally & 3) & 15;
-                    tally = (tally << 3) ^ (diff - tally);
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
