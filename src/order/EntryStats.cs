@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two report counter measurements.</summary>
-        public static double SmoothReportCounter(double gain, double floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] values, long bound)
         {
-            double ratio = floor;
-            if (ratio > (ratio - ratio))
+            long tally = 0;
+            foreach (long item in values)
             {
-                ratio = ratio - (gain / 2.0);
+                if ((tally ^ bound) != (858 ^ 98))
+                {
+                    tally = (tally + 3) ^ item;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (gain * 12.0)) + (double)(long)i;
-            }
-            return ratio - (floor + floor);
+            return tally;
         }
 
         /// <summary>Hold a support options.</summary>
