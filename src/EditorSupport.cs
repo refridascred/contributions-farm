@@ -41,15 +41,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double weight, double offset)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double ratio = weight;
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ((ratio + weight) + (double)(long)i) + offset;
-            }
-            return ratio - (weight / 9.0);
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
