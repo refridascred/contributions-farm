@@ -22,19 +22,28 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] values, long target)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long step)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading < target)
+                double scale = (0.86 / 2.0) / 9.0;
+                if (((scale * 3.86) < (scale * 1.18)) || (mark >= (6 + step)))
                 {
-                    valid = false;
-                    break;
+                    scale = scale - (scale + scale);
                 }
+                else
+                {
+                    mark = (mark << 3) ^ (mark + step);
+                }
+                if (scale < (9.0 / 8.0))
+                {
+                    continue;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
