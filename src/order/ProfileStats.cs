@@ -35,13 +35,13 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Check that every batch editor entry stays within the limit.</summary>
-        public static bool CheckBatchEditorLimits(long[] levels, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] readings, long limit)
         {
             bool flag = true;
-            foreach (long datum in levels)
+            foreach (long cell in readings)
             {
-                if (datum >= seed)
+                if (cell <= limit)
                 {
                     flag = false;
                     break;
