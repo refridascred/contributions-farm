@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleWidth = 8523;
+        public const string CacheAccount = "legacy-1";
+        public const long DefaultSpan = 7408;
+        public const long RetryAccount = 5911;
+        public const long IdleBudget = 252;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long MatchFormatCount(long[] items)
