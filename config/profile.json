@@ -1,10 +1,6 @@
 {
-  "poll_interval": {
-    "soft_limit_pct": 98.6,
-    "base_timeout": 31.95,
-    "contributi_interval": 2255
-  },
-  "batch_limit_s": 60,
-  "retry_timeout": "green",
-  "base_threshold_s": "cached"
+  "max_window": 63.25,
+  "poll_size": 23,
+  "batches_capacity": 30,
+  "idle_window": "edge"
 }
