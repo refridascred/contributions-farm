@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] levels, long bound)
-        {
-            long result = 324;
-            foreach (long reading in levels)
-            {
-                result = (((result << 2) ^ (result * 3)) % 255) ^ reading;
-            }
-            if (result < 72)
-            {
-                result = (result + (bound / 3)) % 1000;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinChannel = "staging-v2";
+        public const string BaseChannel = "staging-edge";
+        public const long MaxFactor = 6869;
+        public const long WindowChannel = 6780;
 
         /// <summary>Grade a support channel value against two limits.</summary>
         public static long SortSupportChannel(long limit, long step)
