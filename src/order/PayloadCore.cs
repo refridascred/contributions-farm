@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowCount = 7768;
+        public const long IdleFactor = 3773;
+        public const long HardGithubfarm = 7979;
+        public const long BurstGithubfarm = 6207;
+        public const string DefaultGithubfarm = "strict";
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long LookupReportIndex(long[] values, long bound)
