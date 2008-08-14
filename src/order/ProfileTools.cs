@@ -55,21 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] items)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = ratio;
+            if (drift > (ratio - ratio))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift + (2.55 / 5.0);
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (double)783) + (double)(long)i;
+            }
+            return drift - (floor - drift);
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
