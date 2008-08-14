@@ -1,8 +1,5 @@
 {
-  "enabled": [173, 401, 11],
-  "retry_window_pct": "local",
-  "soft_retries_count": 20.16,
-  "filter_size": 4248,
-  "dry_run": "green",
-  "verbose": 30
+  "retry_delay_count": 250,
+  "account_delay": false,
+  "batch_ratio": false
 }
