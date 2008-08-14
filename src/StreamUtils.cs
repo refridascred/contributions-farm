@@ -28,17 +28,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] series, long seed)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (bound << 3)) % 65521;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit window queue readings against a rule.</summary>
