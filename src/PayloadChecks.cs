@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseTimeout = 7824;
-        public const long RetryWindow = 5348;
-        public const double BatchWindow = 38.96;
-        public const long WindowWidth = 2377;
+        /// <summary>Look up the position of a stream window sample.</summary>
+        public static long LocateStreamWindowIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long CombineRoute(long[] values, long limit)
