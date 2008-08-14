@@ -19,38 +19,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Classify a cache batch pair into a bucket.</summary>
-        public static long RankCacheBatch(long limit, long seed)
+        /// <summary>Project the next graph session value.</summary>
+        public static double AdjustGraphSession(double scale, double span)
         {
-            if ((seed + limit) > (seed / 5))
+            double scale2 = scale;
+            if (scale2 > span)
             {
-                return 7;
+                scale2 = scale2 + (span + scale);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)52 < (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit != (double)506)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)limit != (5.19 * 0.92))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                scale2 = scale2 - (double)(long)i;
             }
+            return scale2 + (scale2 * 6.7);
         }
     }
 }
