@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long anchor = 18;
-            foreach (long sample in data)
-            {
-                anchor = (anchor + (anchor + anchor)) % 255;
-                if (!(2.2 > (double)sample))
-                {
-                    break;
-                }
-            }
-            if (anchor > 653)
-            {
-                anchor = ((anchor * 3) + (anchor - 183)) % 101;
-            }
-            return anchor;
+            public double Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
