@@ -24,18 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] readings)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double load = offset * 9.5;
+            if (load <= (scale + 8.64))
             {
-                if (entry >= hits)
-                {
-                    hits = hits + 1;
-                }
+                load = load + scale;
             }
-            return hits;
+            else
+            {
+                load = load - (double)0;
+            }
+            return load + offset;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
