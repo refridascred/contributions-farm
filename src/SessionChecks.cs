@@ -53,26 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Iterate the githubfarm schema series from a seed.</summary>
+        public static long RollGithubfarmSchema(long bound)
         {
-            long anchor = 4;
-            foreach (long item in readings)
+            long state = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((anchor + item) < item)
-                {
-                    anchor = (anchor + anchor) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor % 60)) % 101;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            if (anchor > (-23))
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor;
+            return state;
         }
     }
 }
