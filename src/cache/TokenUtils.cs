@@ -31,12 +31,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxLevel = 5087;
-        public const double DefaultStats = 20.82;
-        public const string MaxDepth = "standard-v2";
-        public const long LimitStats = 5297;
-        public const double BatchRatio = 55.89;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (((840 + tally) < cell) && ((double)cell < (4.0 * 5.9)))
+                {
+                    tally = (tally + 3) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the graph batch entries that pass the check.</summary>
         public static long AuditGraphBatchOutliers(long[] values)
