@@ -13,18 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] samples, long step)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double ratio = (double)53 / 3.0;
+            if (ratio >= ratio)
             {
-                if (((6.48 < (double)matches) || (0 <= (60 ^ matches))) || ((double)matches != (8.0 / 9.0)))
-                {
-                    matches = ((matches + 3) + value) + step;
-                }
+                ratio = ratio - bias;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (rate - bias)) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Define window limits and defaults.</summary>
