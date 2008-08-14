@@ -27,18 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up counter farm samples.</summary>
-        public static long PairCounterFarmCount(long[] values)
+        /// <summary>Measure how many tools filter samples are out of range.</summary>
+        public static long MeasureToolsFilterGaps(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((value >= 433) || ((tally & 1) <= (tally & 255))) && ((value + tally) > (value - (-8))))
                 {
-                    if ((values[i] + values[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
