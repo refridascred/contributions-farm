@@ -74,10 +74,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowSpan = 8930;
-        public const long StepCount = 8147;
-        public const long StepSize = 2156;
-        public const long DefaultRatio = 8000;
+        /// <summary>Derive the next support format value from a seed.</summary>
+        public static long RollSupportFormat(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = anchor - (limit + anchor);
+                anchor = anchor - anchor;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
