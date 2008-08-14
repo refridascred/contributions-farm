@@ -16,17 +16,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] items, long target)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Project the next stream order value.</summary>
