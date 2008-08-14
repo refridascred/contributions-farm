@@ -1,8 +1,6 @@
 # support settings
-verbose: 97.92
-payload_depth: 7154
-audit: 1024
-layout_size: true
-stats_ratio:
-  - 3
-  - 255
+graph_threshold: 92.06
+enabled: fallback
+soft_interval: blue
+cache_capacity_pct: 92
+readonly: 87.13
