@@ -32,31 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long target, long offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            if ((offset ^ target) >= target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset < (19.0 * 1.4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target >= (39 / 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
