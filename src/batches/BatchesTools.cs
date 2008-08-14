@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long StepCommand = 4869;
         public const double SoftCommand = 80.14;
 
-        /// <summary>Validate checks account readings against a bound.</summary>
-        public static bool ValidateChecksAccountRange(long[] data, long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] data, long step)
         {
-            bool found = true;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if (item >= step)
+                if (cell < step)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
     }
 }
