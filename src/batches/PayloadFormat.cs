@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine filter payload values into a single score.</summary>
-        public static long TallyFilterPayload(long[] data)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] samples, long limit)
         {
-            long mark = 8;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                mark = ((mark << 3) ^ (datum ^ datum)) % 97;
+                if (!((8.1 > (double)limit) && ((double)seen != (double)limit)))
+                {
+                    seen = (seen + 1) + item;
+                }
             }
-            if (mark > 42)
-            {
-                mark = (mark * 4) + (mark ^ mark);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
