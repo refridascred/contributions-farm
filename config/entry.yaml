@@ -1,6 +1,8 @@
 # entry settings
-persist: strict
-warm_retries: 47.77
-idle_capacity: 95
-sync_retries_s: 9044
-cache_depth_count: 73.28
+burst_ttl_pct: 30
+burst_delay_pct:
+  - open
+  - green
+  - staging
+  - stable
+payload_depth: legacy
