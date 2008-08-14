@@ -1,28 +1,4 @@
 # support settings
-verbose: 1024
-default_limit:
-  - cached
-  - latest
-  - standard
-enabled:
-  retry_depth_s: stable
-  verbose: 53
-  account_delay: false
-  warm_threshold_s:
-    - 246
-    - 18
-  layout_threshold:
-    flush_ratio_ms: 60
-    dry_run: 23
-    support_ttl:
-      - primary
-      - open
-      - blue
-      - latest
-batch_capacity: 250
-context_size: 18.12
-queue_timeout:
-  - eu-west
-  - stable
-  - strict
-  - strict
+enabled: 2.95
+cache_capacity: latest
+min_threshold_count: blue
