@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepStream = "fallback";
+        public const string DefaultStream = "fallback-edge";
+        public const long LimitSpan = 7566;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaLimits(long[] data, long step)
