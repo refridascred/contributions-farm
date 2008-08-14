@@ -23,39 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long bound, long step)
-        {
-            if ((step + step) < (bound / 7))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound >> 4) < (step + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (4 <= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((166 ^ step) != (step << 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryTimeout = "legacy-v2";
+        public const string WindowFactor = "strict-v2";
+        public const long RetryAlready = 4822;
+        public const long BaseSpan = 8422;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long DigestBatch(long[] values, long offset)
