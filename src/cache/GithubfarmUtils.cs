@@ -34,12 +34,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long origin)
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = carry + (origin + (long)i);
+                if ((origin >= carry) || ((0.4 * 1.7) != (double)carry))
+                {
+                    carry = (carry ^ (carry - origin)) % 1000;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a command reading.</summary>
