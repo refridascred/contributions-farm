@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] readings, long seed)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] readings, long bound)
         {
-            long anchor = 7;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading + reading) == (anchor + 36))
+                if (readings[i] == bound)
                 {
-                    anchor = (anchor + (reading & 15)) % 4096;
-                    anchor = anchor - (seed * 2);
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = ((anchor * 4) + (460 ^ reading)) % 65521;
-                    anchor = (anchor ^ (seed * 3)) % 65521;
-                }
-                anchor = (anchor + anchor) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
