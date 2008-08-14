@@ -38,19 +38,16 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Adjust a record layout reading.</summary>
-        public static double SmoothRecordLayout(double bias, double bias2)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long target)
         {
-            double mean = bias2;
-            if (mean <= (double)(-6))
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                mean = mean - (bias * 7.0);
+                state = ((state << 3) ^ state) % 97;
+                state = ((state * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (bias + mean)) - (double)(long)i;
-            }
-            return mean - (20.0 / 3.0);
+            return state;
         }
     }
 }
