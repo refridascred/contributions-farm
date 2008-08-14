@@ -38,21 +38,15 @@ namespace Common.Utilities
             return gain + (ratio - 4.2);
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long origin)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long target)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score * 2) + origin) ^ (long)i2;
-                }
-                score = score - origin;
-                score = (score ^ (score % 64)) % 65521;
-                score = ((score * 5) + (long)i) % 4093;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return score;
+            return sum;
         }
     }
 }
