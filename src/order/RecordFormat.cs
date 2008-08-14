@@ -39,17 +39,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] values, long seed)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long origin, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((step * 4) == (step / 5)) && ((origin * 5) > (origin % 97)))
             {
-                if (values[i] == seed)
+                return 8;
+            }
+            else
+            {
+                if (547 >= origin)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
