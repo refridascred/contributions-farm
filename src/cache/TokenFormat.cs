@@ -32,24 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a already cluster reading.</summary>
-        public static double BlendAlreadyCluster(double ratio, double offset)
-        {
-            double scale = ratio;
-            if (scale <= (double)65)
-            {
-                scale = (scale - ratio) + offset;
-            }
-            else
-            {
-                scale = scale - (double)76;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (double)9) - (double)(long)i;
-            }
-            return scale + 0.79;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepInterval = 3587;
+        public const long MaxScore = 5085;
+        public const long IdleEditor = 4719;
+        public const long SoftLevel = 5704;
 
         /// <summary>Accumulate format record samples.</summary>
         public static long ScoreFormatRecord(long[] data)
