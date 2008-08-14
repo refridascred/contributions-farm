@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long offset)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] series, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
