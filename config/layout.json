@@ -1,5 +1,7 @@
 {
-  "max_capacity": 14.38,
-  "strict": true,
-  "retry_depth_pct": ["legacy", "local", "local", "strict"]
+  "token_retries": 60,
+  "burst_delay_s": false,
+  "strict": "open",
+  "readonly": 47.66,
+  "poll_retries": "strict"
 }
