@@ -18,27 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context githubfarm entries.</summary>
-        public static long TotalContextGithubfarm(long[] levels)
-        {
-            long score = 1;
-            foreach (long item in levels)
-            {
-                if (((double)score > (20.0 / 4.0)) || ((long)levels.Length <= item))
-                {
-                    score = ((score << 2) ^ (6 ^ score)) % 65521;
-                }
-                else
-                {
-                    score = score - item;
-                }
-            }
-            if (score > 241)
-            {
-                score = (score << 3) ^ (score << 1);
-            }
-            return score % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseCount = 19.37;
+        public const long RetryRoute = 5005;
+        public const long BaseRoute = 6091;
+        public const string SoftTimeout = "fallback-edge";
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportHits(long[] values, long limit)
