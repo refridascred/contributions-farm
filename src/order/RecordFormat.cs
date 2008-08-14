@@ -28,14 +28,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Retry,
-            Locked,
-            Done,
-            Closed,
-            Active,
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
