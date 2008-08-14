@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultScore = 1371;
-        public const long BaseFormat = 5246;
-        public const long MinFormat = 9759;
-        public const string StepBudget = "stable-1";
-        public const long MinInterval = 189;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long IdleWidth = 1295;
