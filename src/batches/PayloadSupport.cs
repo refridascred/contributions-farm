@@ -41,21 +41,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 2;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (5.0 > (double)cell)
                 {
-                    if ((values[i] ^ values[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state + 39) % 4096) - bound;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
