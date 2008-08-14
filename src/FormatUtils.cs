@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardGithubfarm = "open-1";
-        public const double IdleSpan = 55.71;
-        public const long BaseRatio = 6666;
-        public const string SoftDepth = "cached-1";
-        public const double IdleRatio = 58.29;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxCache = 2366;
