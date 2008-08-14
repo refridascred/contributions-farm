@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 2017;
+        public const long BatchDepth = 8087;
+        public const long MinNotes = 7650;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long IterateChecks(long target)
