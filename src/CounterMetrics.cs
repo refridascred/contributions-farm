@@ -36,22 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "legacy";
+        public const double SoftTools = 72.1;
+        public const long IdleRatio = 9350;
+        public const long LimitWidth = 6998;
+        public const long LimitTools = 2708;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool GuardAlreadyBounds(long[] data, long floor)
