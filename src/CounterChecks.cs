@@ -16,11 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultLevel = 6472;
-        public const double LimitScore = 58.77;
-        public const long DefaultWindow = 9890;
-        public const string CacheRatio = "strict-1";
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Stale,
+            Queued,
+            Ready,
+            Active,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BaseProfile = "standard-1";
