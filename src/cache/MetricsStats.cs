@@ -52,19 +52,19 @@ namespace Common.Utilities
             return bias + (double)(-641);
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] levels, long limit)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long mark = 0;
+            foreach (long entry in data)
             {
-                if (cell >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (mark * 5) + (entry ^ 5);
             }
-            return ready;
+            if (mark < 792)
+            {
+                mark = (mark * 5) + mark;
+            }
+            return mark;
         }
     }
 }
