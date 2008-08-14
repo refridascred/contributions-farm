@@ -1,10 +1,14 @@
 # Command notes
 
-The format report groups every order by contributi.
-When a channel fails, the already handler retries a few times before giving up.
+Each profile is validated before it reaches the cache queue.
+Keep format and entry names short and lowercase.
+
+Use window settings to tune how often editor data is refreshed.
+The notes module keeps account values in sync with the format cache.
 
 ## Guidelines
 
-- Review payload limits each release
-- Log every batches change
-- Prefer buffer defaults
+- Document new record fields
+- Review cache limits each release
+- Prefer payload defaults
+- Keep graph values small
