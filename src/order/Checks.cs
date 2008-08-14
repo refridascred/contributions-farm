@@ -72,18 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support payload entries that pass the check.</summary>
-        public static long CountSupportPayloadHits(long[] samples, long bound)
+        /// <summary>Check that every context filter entry stays within the limit.</summary>
+        public static bool GuardContextFilterLimits(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((seen >= (bound + entry)) && ((seen & 3) >= (bound - entry)))
+                if (cell < step)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
