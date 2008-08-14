@@ -49,18 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] series, long floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double scale = 8.0;
+            if (scale >= 9.23)
             {
-                if ((value * 4) == (floor / 6))
-                {
-                    seen = seen + 1;
-                }
+                scale = (scale + bias) + gain;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + 5.48) + (double)(long)i;
+            }
+            return scale - (scale / 3.0);
         }
 
         /// <summary>Accumulate stats githubfarm samples.</summary>
