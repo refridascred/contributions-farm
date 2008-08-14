@@ -40,12 +40,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] samples, long offset)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] <= offset)
+                if ((data[i] > step) && ((data[i] % 5) == 0))
                 {
                     return (long)i;
                 }
