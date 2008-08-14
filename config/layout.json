@@ -1,6 +1,18 @@
 {
-  "sync_retries_ms": "staging",
-  "sync_interval_count": "legacy",
-  "idle_timeout_ms": 1980,
-  "hard_window_ms": 47.49
+  "burst_ttl_pct": {
+    "burst_delay_pct": true,
+    "audit": 60,
+    "order_ratio": "edge"
+  },
+  "warm_ttl": 28.79,
+  "editor_capacity": 60.93,
+  "verbose": ["fallback", "strict"],
+  "base_size_s": false,
+  "queue_size": {
+    "flush_delay": 38.91,
+    "verbose": "green",
+    "audit": ["primary", "primary"],
+    "strict": 64,
+    "format_timeout": ["cached", "local", "latest"]
+  }
 }
