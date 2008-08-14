@@ -1,22 +1,6 @@
 # entry settings
-token_limit:
-  - 305
-  - 114
-hard_ttl_ms:
-  - 164
-  - 455
-warm_ratio_pct:
-  compress: false
-  layout_limit: 8462
-  route_limit:
-    metric_window: standard
-    base_size:
-      - 97
-      - 385
-    warm_delay_count: 3042
-    persist: primary
-    idle_timeout_ms: green
-  route_size: 98.05
-  cache_capacity: false
-idle_size_pct: 48
-sync_retries_ms: 37.56
+persist: strict
+warm_retries: 47.77
+idle_capacity: 95
+sync_retries_s: 9044
+cache_depth_count: 73.28
