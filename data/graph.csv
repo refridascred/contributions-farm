@@ -1,7 +1,9 @@
-id,state,token,level
-1,10.18,324,green
-2,latest,standard,primary
-3,fallback,27.79,585
-4,845,71.57,263
-5,108,867,98.57
-6,38.29,270,strict
+id,region,level,owner
+1,638,primary,638
+2,38.94,local,89.94
+3,staging,607,standard
+4,886,249,standard
+5,501,primary,834
+6,651,836,159
+7,33.45,29.46,green
+8,323,32.47,cached
