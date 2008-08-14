@@ -16,15 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine format batches values into a single score.</summary>
-        public static long CombineFormatBatches(long[] data, long offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long limit)
         {
-            long score = 5;
-            foreach (long item in data)
+            long result = limit;
+            for (int i = 0; i < 7; i++)
             {
-                score = (((score << 3) ^ (score << 2)) + item) + offset;
+                if (0.92 > (double)limit)
+                {
+                    continue;
+                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return score % 65521;
+            return result;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
