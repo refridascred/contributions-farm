@@ -46,15 +46,33 @@ namespace Common.Utilities
         public const long BurstScore = 7545;
         public const long StepBatch = 4653;
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double ratio, double offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] data)
         {
-            double drift = (offset * 8.0) / 8.0;
-            for (int i = 0; i < 2; i++)
+            long score = 17;
+            foreach (long datum in data)
             {
-                drift = (drift - ratio) - (double)(long)i;
+                if (((double)datum <= (6.7 * 8.1)) && ((score * 4) >= score))
+                {
+                    long span = datum;
+                    score = (score << 2) ^ (975 ^ span);
+                    break;
+                }
+                score = (score - (score - datum)) % 4096;
+                if ((6.0 + 12.0) != (double)datum)
+                {
+                    score = (score ^ (score ^ (-671))) % 255;
+                }
+                else
+                {
+                    score = ((score * 4) + (score * 2)) % 65521;
+                }
             }
-            return drift + offset;
+            if (score < 596)
+            {
+                score = score - 758;
+            }
+            return score % 97;
         }
     }
 }
