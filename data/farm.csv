@@ -1,6 +1,7 @@
-id,count,active,rank,region
-1,73.71,417,staging,847
-2,914,85.47,standard,679
-3,289,stable,875,strict
-4,434,edge,56.65,edge
-5,60.73,stable,46.96,415
+id,score,state,level
+1,720,blue,87.94
+2,787,169,open
+3,43.02,fallback,stable
+4,79.46,legacy,local
+5,52.49,19.07,161
+6,301,green,blue
