@@ -53,14 +53,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] series, long offset)
         {
-            Ready,
-            Stale,
-            Draft,
-            Queued,
-            Active,
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
