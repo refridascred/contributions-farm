@@ -1,5 +1,5 @@
 {
-  "metric_interval": "stable",
-  "default_capacity_count": 86.01,
-  "burst_size_count": ["fallback", "primary", "local"]
+  "hard_retries_s": 44.8,
+  "stream_delay": 5928,
+  "buffer_ttl": 276
 }
