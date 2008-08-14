@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((double)entry != (8.5 * 3.0))
+                if ((double)seed >= (2.19 - 8.2))
                 {
-                    matches = matches + 1;
+                    count = (count + 1) ^ reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
