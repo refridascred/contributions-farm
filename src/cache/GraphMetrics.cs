@@ -67,19 +67,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream batches readings against a bound.</summary>
-        public static bool CheckStreamBatchesBounds(long[] values, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (reading != offset)
+                if (seed < (seed % 12))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
