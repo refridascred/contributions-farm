@@ -61,22 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleWidth = 1828;
+        public const string HardReport = "local-v2";
+        public const string StepReport = "legacy-1";
+        public const string LimitReport = "strict";
+        public const long SoftRatio = 3152;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool ValidateBufferBounds(long[] series, long target)
