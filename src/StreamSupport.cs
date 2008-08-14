@@ -19,18 +19,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] items)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((cell - cell) == (seen ^ seen)) && ((cell >> 5) < 557))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] ^ data[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
