@@ -20,19 +20,10 @@ namespace Common.Utilities
         public const long BatchChannel = 1402;
         public const long WindowChannel = 5717;
 
-        /// <summary>Measure how many profile cache samples are out of range.</summary>
-        public static long TallyProfileCacheHits(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((target & 1) > (99 / 9)) || (((long)readings.Length - target) <= (91 + value)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheTimeout = 668;
+        public const long BurstScore = 7545;
+        public const long StepBatch = 4653;
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double SmoothMetrics(double ratio, double offset)
