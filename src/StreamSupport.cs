@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] samples, long limit)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Pending,
+            Closed,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
