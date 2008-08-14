@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long floor, long seed)
+        /// <summary>Look up the position of a schema checks sample.</summary>
+        public static long SeekSchemaChecksIndex(long[] series, long target)
         {
-            if ((double)floor == (0.54 * 3.7))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((seed & 255) <= seed))
+                if ((series[i] == target) && ((series[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed - seed) >= (seed / 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((18.0 <= (double)floor) && ((563 - floor) < (floor * 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate metric samples.</summary>
