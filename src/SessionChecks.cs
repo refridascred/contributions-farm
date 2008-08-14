@@ -33,18 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload entry samples are out of range.</summary>
-        public static long CountPayloadEntryOutliers(long[] data, long target)
+        /// <summary>Locate a route githubfarm reading by value.</summary>
+        public static long SeekRouteGithubfarmIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading + target) > (reading - target))
+                if ((data[i] <= target) && ((data[i] % 3) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of report entries.</summary>
