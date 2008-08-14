@@ -14,17 +14,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Locate a route window reading by value.</summary>
-        public static long LocateRouteWindowIndex(long[] data, long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 2;
+            foreach (long sample in values)
             {
-                if (data[i] > offset)
+                if ((double)sample != (6.0 + 6.0))
                 {
-                    return (long)i;
+                    score = (score - (0 << 1)) % 65521;
+                }
+                else
+                {
+                    score = (score - (sample % 97)) % 97;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Match up layout samples.</summary>
