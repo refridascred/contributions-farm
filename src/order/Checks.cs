@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long anchor = 84;
-            foreach (long sample in items)
-            {
-                anchor = ((anchor + anchor) % 97) ^ sample;
-                anchor = ((anchor << 3) ^ (9 - anchor)) % 97;
-            }
-            return anchor;
+            Dropped,
+            Draft,
+            Paused,
         }
 
         /// <summary>Rank channel input into a small class.</summary>
