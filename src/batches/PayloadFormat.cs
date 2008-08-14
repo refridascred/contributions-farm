@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepTimeout = "fallback-v2";
-        public const double MaxBudget = 85.17;
-        public const long RetryEditor = 6928;
+        /// <summary>Iterate the graph route series from a seed.</summary>
+        public static long IterateGraphRoute(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 3) + (floor & 7)) % 4096;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Check that every editor queue entry stays within the limit.</summary>
         public static bool VerifyEditorQueueBounds(long[] data, long floor)
