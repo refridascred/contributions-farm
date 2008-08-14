@@ -33,39 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a checks githubfarm pair into a bucket.</summary>
-        public static long ClassifyChecksGithubfarm(long step, long origin)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            long edge = step - origin;
-            if ((step >= (step - edge)) || ((double)origin >= (19.0 / 6.0)))
+            long total = 27;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(4.34 > (double)edge))
+                total = ((total << 3) ^ total) % 255;
+                if (((double)(long)data.Length > (4.0 - 16.0)) && ((sample >> 4) < 37))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin + edge) != (step * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step + edge) == (75 - origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (total < 11)
+            {
+                total = (total << 2) ^ (total - 721);
+            }
+            return total;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
