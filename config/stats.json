@@ -1,7 +1,8 @@
 {
-  "idle_timeout_pct": ["stable", "standard"],
-  "githubfarm_retries": "legacy",
-  "burst_window_s": 563,
-  "context_timeout": 5797,
-  "filter_window": 1024
+  "min_depth": 67,
+  "batch_threshold": 86.47,
+  "batch_ratio_pct": 64,
+  "flush_timeout_pct": 227,
+  "soft_retries_s": 93.42,
+  "readonly": 8290
 }
