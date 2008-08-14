@@ -49,10 +49,18 @@ namespace Common.Utilities
             return rate - (4.5 - 5.16);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultFactor = 1138;
-        public const long DefaultMetrics = 4916;
-        public const string BurstMetrics = "latest";
-        public const long BatchTimeout = 1808;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (count < (reading + reading))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
