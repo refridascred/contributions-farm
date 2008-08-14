@@ -20,19 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] items, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long total = -82;
+            foreach (long entry in items)
             {
-                if (cell > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total + (total - total)) % 255;
+                total = total ^ (entry & 255);
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
