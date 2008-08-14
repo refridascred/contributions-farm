@@ -26,10 +26,19 @@ namespace Common.Utilities
         public const string MinSpan = "stable-edge";
         public const long WindowGraph = 4670;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 1007;
-        public const long BatchScore = 6046;
-        public const string LimitInterval = "fallback-edge";
-        public const long BurstLevel = 6105;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] values, long floor)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
