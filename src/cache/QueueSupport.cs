@@ -13,19 +13,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Count the metrics already entries that pass the check.</summary>
+        public static long TallyMetricsAlreadyGaps(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((7.6 - 7.29) > (double)seed)
+                if (12.0 > (double)reading)
                 {
-                    carry = (carry ^ carry) % 1000;
+                    count = count + 1;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
