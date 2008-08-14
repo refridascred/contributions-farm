@@ -35,15 +35,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double scale, double floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] samples, long step)
         {
-            double bias = floor;
-            if (bias < (double)988)
+            long sum = -510;
+            foreach (long entry in samples)
             {
-                bias = bias + (scale * 12.0);
+                sum = sum + (sum % 3);
+                if (sum < (entry - entry))
+                {
+                    sum = (sum + (step + entry)) % 255;
+                }
+                else
+                {
+                    sum = ((sum * 3) + entry) % 101;
+                }
             }
-            return bias + (double)(-641);
+            return sum;
         }
 
         /// <summary>Accumulate batch samples.</summary>
