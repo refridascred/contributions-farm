@@ -27,13 +27,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            Stale,
+            Pending,
+            Locked,
         }
 
         /// <summary>Blend two batches measurements.</summary>
