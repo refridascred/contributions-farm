@@ -1,5 +1,24 @@
 {
-  "cache_ttl": "staging",
-  "compress": 5882,
-  "window_window": "legacy"
+  "channel_window": 17,
+  "warm_window_pct": {
+    "graph_interval": {
+      "burst_depth_ms": "primary",
+      "cache_retries_ms": "local",
+      "verbose": false,
+      "max_capacity_count": false,
+      "cache_ratio_count": ["stable", "stable", "blue", "fallback"],
+      "sync_delay_s": false
+    },
+    "persist": "standard",
+    "audit": "fallback",
+    "idle_capacity_ms": "local",
+    "idle_capacity": 1024,
+    "idle_ttl_ms": ["latest", "staging"]
+  },
+  "order_capacity": {
+    "token_retries": "latest",
+    "base_limit": [221, 69],
+    "enabled": false,
+    "verbose": true
+  }
 }
