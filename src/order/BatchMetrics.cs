@@ -101,18 +101,9 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((reading * 2) >= ((-16) + tally))
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 1610;
+        public const long BaseCommand = 8631;
+        public const double DefaultLevel = 83.37;
     }
 }
