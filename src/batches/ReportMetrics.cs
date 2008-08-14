@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double bias, double bias2)
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
+            double gain = bias + (double)44;
+            if (gain > (8.31 + 9.4))
             {
-                state = ((state * 2) + (long)i) % 4093;
+                gain = (gain + (double)48) - bias2;
             }
-            return state;
+            return gain + gain;
         }
 
         /// <summary>Describe the format class values.</summary>
