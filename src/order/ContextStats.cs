@@ -32,32 +32,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long seed, long bound)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long slot = seed + bound;
-            if (bound > (bound >> 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + seed) < (seed ^ slot))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((slot + bound) < (slot ^ bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Match up payload samples.</summary>
