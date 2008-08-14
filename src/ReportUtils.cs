@@ -52,12 +52,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinLayout = 38.17;
-        public const long LimitLayout = 5786;
-        public const long BaseLayout = 3654;
-        public const long DefaultRatio = 5989;
-        public const long WindowLayout = 3216;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Paused,
+            Done,
+            Idle,
+        }
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long CompareFarmCount(long[] data)
