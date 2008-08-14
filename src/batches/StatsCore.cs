@@ -48,23 +48,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] levels, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((95 >= (mix * 5)) || (((long)i / 6) != (offset % 64)))
+                if ((double)offset > (2.8 / 4.0))
                 {
-                    mix = (mix - offset) % 65521;
+                    matches = (matches + 2) + entry;
                 }
-                else
-                {
-                    mix = (mix ^ (offset & 31)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a account entry.</summary>
