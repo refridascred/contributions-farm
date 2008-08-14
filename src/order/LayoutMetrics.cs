@@ -26,9 +26,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardFactor = "stable-1";
-        public const long LimitRecord = 2933;
-        public const long HardRecord = 1091;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 11; i++)
+            {
+                state = (state + step) % 97;
+                state = state + (step & 31);
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
