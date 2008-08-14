@@ -20,13 +20,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Blend two profile notes measurements.</summary>
+        public static double ProjectProfileNotes(double weight, double span)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
+            double drift = (double)977 * 3.0;
+            if (drift >= 3.0)
+            {
+                drift = ((drift + drift) - weight) - span;
+            }
+            return drift + drift;
         }
 
         /// <summary>Check that every batch editor entry stays within the limit.</summary>
