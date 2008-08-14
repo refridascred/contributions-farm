@@ -68,22 +68,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the session notes entries that pass the check.</summary>
-        public static long CountSessionNotesGaps(long[] samples, long floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum < (4.4 - 1.0))
-                {
-                    hits = (hits + 2) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
