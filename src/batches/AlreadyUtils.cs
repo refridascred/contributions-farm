@@ -62,39 +62,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long bound, long floor)
-        {
-            long edge = bound - floor;
-            if ((double)bound > (3.7 + 1.68))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((floor * 3) <= floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor / 8) <= (edge + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound + floor) == (bound & 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleFactor = 7510;
+        public const long BurstTools = 4233;
+        public const long StepDepth = 5178;
+        public const long BatchTools = 9449;
+        public const long MaxTools = 5973;
     }
 }
