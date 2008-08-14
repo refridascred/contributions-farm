@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 9740;
-        public const long MaxLayout = 8309;
-        public const long BurstTimeout = 4882;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
