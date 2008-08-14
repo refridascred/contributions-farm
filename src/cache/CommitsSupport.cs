@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] items)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits / 9) <= (6 * 5))
                 {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate order samples.</summary>
