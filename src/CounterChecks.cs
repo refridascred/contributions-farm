@@ -85,12 +85,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Failed,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheTimeout = 8310;
+        public const long BatchStats = 2236;
+        public const long MaxDepth = 4193;
+        public const long SoftStats = 1278;
+        public const double BurstStats = 80.96;
     }
 }
