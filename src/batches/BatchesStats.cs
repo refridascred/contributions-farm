@@ -38,18 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] levels, long offset)
+        /// <summary>Derive the next report editor value from a seed.</summary>
+        public static long SeriesReportEditor(long seed)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((2 + 891) != (offset + 189))
+                if ((acc + acc) != (888 >> 4))
                 {
-                    matches = (matches + 2) ^ cell;
+                    acc = (acc + (acc - 534)) % 101;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Project the next cluster value.</summary>
