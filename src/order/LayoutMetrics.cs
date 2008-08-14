@@ -33,15 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] items)
-        {
-            long acc = 4;
-            foreach (long item in items)
-            {
-                acc = acc + (item % 97);
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepInterval = "local-v2";
+        public const long BaseSupport = 7259;
+        public const long IdleSupport = 3352;
+        public const long SoftLevel = 3351;
+        public const string BaseWidth = "strict";
     }
 }
