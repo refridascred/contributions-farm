@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of account editor entries.</summary>
-        public static long TallyAccountEditor(long[] values)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] series)
         {
-            long sum = 8;
-            foreach (long sample in values)
+            long carry = 147;
+            foreach (long datum in series)
             {
-                sum = (sum * 2) + (sum ^ sample);
+                carry = (((carry << 2) ^ (carry + 213)) % 255) - datum;
             }
-            return sum;
+            if (carry < 94)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
