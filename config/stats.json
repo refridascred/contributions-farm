@@ -1,13 +1,12 @@
 {
-  "enabled": 92.26,
-  "poll_threshold_count": false,
-  "queue_timeout": 500,
-  "verbose": 3.67,
-  "audit": "latest",
-  "max_timeout_pct": {
-    "enabled": 149,
-    "commits_depth": 71,
-    "stats_window": 21,
-    "batch_capacity": ["latest", "staging"]
-  }
+  "strict": 23.52,
+  "audit": true,
+  "max_delay_ms": {
+    "retry_threshold_count": [126, 366, 289],
+    "flush_delay_s": 61.16,
+    "min_size_s": 30,
+    "base_depth_pct": 92.61
+  },
+  "sync_window_count": "green",
+  "commits_capacity": 1024
 }
