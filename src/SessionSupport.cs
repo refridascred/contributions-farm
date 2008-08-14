@@ -39,12 +39,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftSpan = 4506;
+        public const long BaseStream = 508;
+        public const long BatchBudget = 8593;
     }
 }
