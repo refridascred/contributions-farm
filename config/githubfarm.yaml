@@ -1,5 +1,13 @@
 # githubfarm settings
-metrics_interval: 30
-cache_ttl: cached
-default_interval_ms: 6648
-schema_ratio: latest
+enabled:
+  - 297
+  - 184
+  - 78
+  - 496
+default_timeout_pct: true
+base_threshold_ms: 100
+flush_ratio:
+  - eu-west
+  - staging
+report_ttl: open
+warm_ratio: true
