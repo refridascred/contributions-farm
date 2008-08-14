@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 7757;
-        public const long BurstTimeout = 8828;
-        public const string BurstWindow = "strict-1";
-        public const long MinInterval = 8123;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Retry,
+            Synced,
+            Locked,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LookupToolsIndex(long[] levels, long target)
