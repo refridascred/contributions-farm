@@ -40,21 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] levels)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
