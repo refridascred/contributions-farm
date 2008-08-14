@@ -1,6 +1,5 @@
 {
-  "base_depth": true,
-  "warm_limit_pct": [94, 177],
-  "persist": "primary",
-  "warm_capacity": "stable"
+  "flush_ratio_count": "stable",
+  "batch_delay_ms": ["eu-west", "blue", "strict", "standard"],
+  "stats_retries": 67.86
 }
