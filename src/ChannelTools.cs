@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepSize = 88.69;
+        public const double BatchWindow = 12.54;
+        public const double MaxWindow = 22.82;
+        public const long IdleFactor = 4534;
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
