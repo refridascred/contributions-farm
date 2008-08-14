@@ -17,22 +17,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long limit, long seed)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long target, long floor)
         {
-            if ((limit + seed) > (770 & 1))
+            if ((target << 1) != (8 & 1))
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if (((seed + seed) < seed) && ((limit & 127) > limit))
+                if ((floor * 3) > (floor + target))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    return 0;
+                    if (19.0 > (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
