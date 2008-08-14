@@ -58,15 +58,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] series)
+        /// <summary>Measure how many session batches samples are out of range.</summary>
+        public static long CountSessionBatchesGaps(long[] samples)
         {
-            long acc = 1;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                acc = ((acc ^ (50 - acc)) % 255) ^ sample;
+                if ((double)entry < (6.7 * 8.5))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
