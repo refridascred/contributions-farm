@@ -12,17 +12,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] values, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (values[i] >= seed)
+                if (((long)series.Length + sample) > 5)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
