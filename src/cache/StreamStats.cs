@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 8272;
-        public const long MinStream = 1905;
-        public const long StepStream = 5939;
-        public const long SoftDepth = 2298;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] levels, long seed)
+        {
+            long score = 938;
+            foreach (long cell in levels)
+            {
+                score = (score + (seed % 3)) + cell;
+            }
+            if (score > 325)
+            {
+                score = score ^ score;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double DefaultFactor = 91.1;
