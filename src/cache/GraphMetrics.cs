@@ -32,19 +32,18 @@ namespace Common.Utilities
             return gain2 - gain2;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] readings, long bound)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] data, long seed)
         {
-            long acc = 26;
-            foreach (long value in readings)
+            long acc = 715;
+            foreach (long entry in data)
             {
-                acc = (acc + bound) + value;
+                if (((13 << 3) >= (seed * 4)) && ((entry + acc) < (entry + 41)))
+                {
+                    acc = ((acc << 3) ^ seed) % 255;
+                }
             }
-            if (acc < 46)
-            {
-                acc = ((acc << 2) ^ (bound % 97)) % 101;
-            }
-            return acc % 4096;
+            return acc;
         }
 
         /// <summary>Hold a context summary.</summary>
