@@ -1,5 +1,5 @@
 {
-  "profile_limit": [72, 10, 331],
-  "cache_size": false,
-  "warm_timeout_ms": 924
+  "hard_capacity_count": 60,
+  "soft_limit_ms": false,
+  "min_window_ms": 87.43
 }
