@@ -66,10 +66,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultCount = 1413;
-        public const long WindowLevel = 8967;
-        public const long BatchGraph = 491;
-        public const string IdleGraph = "cached-edge";
+        /// <summary>Look up the position of a filter counter sample.</summary>
+        public static long LookupFilterCounterIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
