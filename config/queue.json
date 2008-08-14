@@ -1,6 +1,8 @@
 {
-  "session_timeout": true,
-  "persist": 3907,
-  "batch_interval": 60,
-  "poll_size": ["edge", "open"]
+  "batch_delay": 23.43,
+  "retry_depth_ms": "open",
+  "readonly": 78,
+  "stats_size": "standard",
+  "schema_capacity": 2003,
+  "default_ratio_count": "blue"
 }
