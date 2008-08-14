@@ -1,10 +1,17 @@
 # support settings
-audit: stable
-sync_size_pct: green
-idle_timeout_s: local
-retry_delay:
-  - strict
-  - primary
-  - staging
-dry_run: 228
-filter_size: 1024
+verbose:
+  base_timeout: 30
+  retry_capacity_count: green
+  base_window: 44
+  base_window_ms: 92
+  soft_ttl: eu-west
+  verbose: true
+idle_delay_ms: local
+min_capacity_s:
+  - 496
+  - 207
+  - 84
+  - 277
+compress:
+  - edge
+  - eu-west
