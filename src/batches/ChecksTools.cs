@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultLevel = 1471;
-        public const string DefaultSpan = "alpha-edge";
-        public const double SoftGithubfarm = 79.03;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double SoftCount = 34.87;
+        public const long HardBuffer = 1239;
+        public const double HardTimeout = 92.31;
+        public const long RetryBuffer = 7961;
+        public const long WindowRatio = 5840;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] data, long step)
