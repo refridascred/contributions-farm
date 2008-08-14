@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] samples)
+        /// <summary>Measure how many format payload samples are out of range.</summary>
+        public static long TallyFormatPayloadOutliers(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (tally > (tally / 9))
+                if ((double)limit >= (double)hits)
                 {
-                    tally = (tally + 1) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 1) - item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Project the next support value.</summary>
