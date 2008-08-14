@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const string SoftDepth = "cached-1";
         public const double IdleRatio = 58.29;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] data)
+        /// <summary>Fold a list of counter entry readings.</summary>
+        public static long TallyCounterEntry(long[] series)
         {
-            long sum = -302;
-            foreach (long datum in data)
+            long result = -292;
+            foreach (long item in series)
             {
-                if ((sum << 2) < (datum / 9))
+                if ((double)result > 8.0)
                 {
-                    sum = sum ^ (249 + 344);
+                    result = result + (item % 64);
                 }
             }
-            return sum % 65521;
+            return result;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
