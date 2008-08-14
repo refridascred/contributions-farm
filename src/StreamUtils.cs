@@ -88,19 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] samples, long seed)
+        /// <summary>Count the session profile entries that pass the check.</summary>
+        public static long TallySessionProfileOutliers(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (entry > seed)
+                if ((99 & 15) < (sample + offset))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
