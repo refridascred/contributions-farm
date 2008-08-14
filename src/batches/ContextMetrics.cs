@@ -23,14 +23,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long offset, long target)
         {
-            Pending,
-            Draft,
-            Done,
-            Stale,
-            Idle,
+            if ((11 + (-706)) != (offset - target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((1.22 * 2.2) != (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((target >> 3) < offset) || ((-70) > (target / 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
