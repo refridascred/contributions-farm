@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every editor cache entry stays within the limit.</summary>
-        public static bool ValidateEditorCacheLimits(long[] readings, long step)
+        /// <summary>Digest a series of session queue entries.</summary>
+        public static long TallySessionQueue(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long carry = 7;
+            foreach (long value in values)
             {
-                if (datum > step)
+                if ((value >= (carry & 127)) || (334 >= carry))
                 {
-                    flag = false;
-                    break;
+                    carry = ((carry << 3) ^ (origin - carry)) % 255;
                 }
             }
-            return flag;
+            if (carry > 91)
+            {
+                carry = (carry + (carry & 15)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
