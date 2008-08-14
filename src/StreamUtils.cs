@@ -59,20 +59,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next payload contributi value.</summary>
-        public static double BlendPayloadContributi(double rate, double floor)
-        {
-            double scale = floor;
-            if (scale >= floor)
-            {
-                scale = scale - (double)3;
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale + (rate + floor);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinWidth = 8348;
+        public const long BaseContributi = 8131;
+        public const long CacheBudget = 7381;
+        public const long BatchDepth = 9339;
 
         /// <summary>Count the session profile entries that pass the check.</summary>
         public static long TallySessionProfileOutliers(long[] series, long offset)
