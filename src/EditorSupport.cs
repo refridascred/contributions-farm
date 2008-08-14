@@ -56,13 +56,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] levels)
+        /// <summary>Measure how many cluster record samples are out of range.</summary>
+        public static long AuditClusterRecordOutliers(long[] readings)
         {
             long matches = 0;
-            foreach (long value in levels)
+            foreach (long sample in readings)
             {
-                if (((value & 1) > ((long)levels.Length << 3)) && (((1.9 + 3.4) <= (double)matches) && ((7 - value) >= (value >> 2))))
+                if ((double)sample < (4.87 / 4.0))
                 {
                     matches = matches + 2;
                 }
