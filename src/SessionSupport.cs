@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double weight, double floor)
         {
-            New,
-            Idle,
-            Dropped,
-            Draft,
+            double bias = (19.0 / 6.0) * 2.0;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = ((bias + weight) + (double)(long)i) + floor;
+            }
+            return bias + weight;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
