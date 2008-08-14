@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long bound, long offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            if ((bound << 2) > (bound >> 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((offset << 2) >= (590 * 5)) || ((13.0 * 15.0) != (double)bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound > (double)13)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset + bound) == (offset >> 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the queue state values.</summary>
