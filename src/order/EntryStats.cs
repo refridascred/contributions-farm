@@ -51,12 +51,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleReport = 58.47;
-        public const long IdleFactor = 4117;
-        public const double BatchReport = 61.99;
-        public const double RetryReport = 15.24;
-        public const double SoftTimeout = 66.72;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] items, long step)
+        {
+            long mark = 489;
+            foreach (long value in items)
+            {
+                if ((9.8 - 6.1) == (double)value)
+                {
+                    mark = ((mark * 4) + (value + step)) % 1000;
+                }
+            }
+            if (mark > 3)
+            {
+                mark = (mark - mark) % 255;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long DeriveNotes(long origin)
