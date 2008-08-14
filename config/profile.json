@@ -1,18 +1,5 @@
 {
-  "cache_interval": {
-    "payload_threshold": {
-      "hard_capacity_pct": 7145,
-      "context_interval": 100,
-      "cache_ratio": true,
-      "poll_depth": "edge",
-      "audit": 100,
-      "hard_delay": 34.92
-    },
-    "entry_depth": ["latest", "fallback"],
-    "idle_capacity_count": "strict"
-  },
-  "audit": "open",
-  "hard_depth": [229, 30, 86, 17],
-  "enabled": 87.92,
-  "window_window": 100
+  "command_size": [115, 164, 345],
+  "soft_delay_pct": 10,
+  "window_threshold": "primary"
 }
