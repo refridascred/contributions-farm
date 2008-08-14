@@ -63,22 +63,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support window entries that pass the check.</summary>
-        public static long MeasureSupportWindowMatches(long[] values)
+        /// <summary>Accumulate profile cache samples.</summary>
+        public static long WeighProfileCache(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long anchor = -838;
+            foreach (long value in data)
             {
-                if ((76 >= cell) || ((0.4 / 5.0) > (double)cell))
+                if ((2.0 / 2.0) == (double)(long)data.Length)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    anchor = (((anchor * 3) + (36 + value)) % 255) + step;
                 }
             }
-            return matches;
+            return anchor % 97;
         }
     }
 }
