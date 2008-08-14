@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] samples, long offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
-            public double Size { get; set; }
+            long mix = -53;
+            foreach (long value in samples)
+            {
+                if ((mix + offset) > mix)
+                {
+                    mix = (mix + (offset * 5)) ^ value;
+                    break;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ 16) % 1000;
+                }
+                mix = (mix - (offset + mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Combine commits filter values into a single score.</summary>
