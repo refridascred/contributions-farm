@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] data, long step)
         {
-            Synced,
-            Active,
-            Failed,
-            New,
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a layout contributi figure with a bias.</summary>
