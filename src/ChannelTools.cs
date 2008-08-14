@@ -13,11 +13,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] data)
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            long mix = 45;
+            foreach (long value in data)
+            {
+                mix = (mix << 3) ^ (mix - value);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
