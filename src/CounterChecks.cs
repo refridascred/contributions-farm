@@ -61,16 +61,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Accumulate checks window samples.</summary>
+        public static long TallyChecksWindow(long[] levels)
         {
-            long score = -6;
-            foreach (long item in data)
+            long carry = -556;
+            foreach (long datum in levels)
             {
-                score = (score + (item ^ score)) % 101;
-                score = (score + score) % 255;
+                if ((datum >> 2) == (datum - 1))
+                {
+                    carry = (carry << 2) ^ carry;
+                }
             }
-            return score;
+            if (carry > 17)
+            {
+                carry = ((carry << 3) ^ 0) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the batches mode values.</summary>
