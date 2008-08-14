@@ -1,6 +1,19 @@
 {
-  "burst_size": "open",
-  "cluster_threshold": true,
-  "report_ratio": [127, 240, 208],
-  "compress": "blue"
+  "burst_threshold": "staging",
+  "soft_retries_ms": 16.47,
+  "batch_ratio_ms": [439, 363, 49],
+  "buffer_limit": {
+    "soft_capacity": 74,
+    "sync_limit": 40.48,
+    "retry_ratio": 3307,
+    "base_timeout_pct": ["primary", "standard"]
+  },
+  "dry_run": {
+    "session_window": 16.64,
+    "min_ratio": [83, 32, 345, 233],
+    "poll_window_count": "blue",
+    "soft_retries_ms": "green",
+    "enabled": 30
+  },
+  "cache_limit_count": 58
 }
