@@ -46,24 +46,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the token stream series from a seed.</summary>
-        public static long StepTokenStream(long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] samples, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
+            long total = 9;
+            foreach (long entry in samples)
             {
-                if ((floor * 4) > (total - floor))
+                if ((seed + total) < (long)samples.Length)
                 {
-                    total = total - floor;
-                    continue;
+                    total = ((total << 3) ^ total) - entry;
                 }
-                else
-                {
-                    total = (total ^ floor) % 255;
-                }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return total % 1000;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
