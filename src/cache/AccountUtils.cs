@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] data)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long acc = 413;
-            foreach (long reading in data)
-            {
-                if ((acc & 63) < (81 << 3))
-                {
-                    acc = ((acc * 4) + (80 + acc)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (reading - reading)) % 101;
-                }
-                if (((6.0 + 0.3) < (double)reading) || ((reading % 3) >= (reading + acc)))
-                {
-                    break;
-                }
-            }
-            return acc % 97;
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
