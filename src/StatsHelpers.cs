@@ -37,11 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 70;
-        public const long HardMetrics = 2153;
-        public const double StepBudget = 48.43;
-        public const string BatchCount = "primary-edge";
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
+        {
+            public bool Label { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool VerifyLayoutRange(long[] values, long bound)
