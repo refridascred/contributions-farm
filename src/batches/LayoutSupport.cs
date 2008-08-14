@@ -27,15 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] readings, long bound)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double bias, double bias2)
         {
-            long carry = 140;
-            foreach (long datum in readings)
+            double gain = (double)(449 >> 4);
+            if (gain < (double)7)
             {
-                carry = (((carry << 3) ^ (carry >> 5)) + datum) + bound;
+                gain = gain - (bias / 7.0);
             }
-            return carry % 97;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (3.0 - bias)) - (double)(long)i;
+            }
+            return gain - bias2;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
