@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxInterval = "local-1";
+        public const long MaxLevel = 5860;
+        public const string RetryGraph = "alpha-1";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowBatch = 2943;
