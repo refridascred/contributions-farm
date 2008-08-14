@@ -35,32 +35,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a layout command value against two limits.</summary>
-        public static long GradeLayoutCommand(long target, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] data)
         {
-            long offset = target ^ step;
-            if ((double)offset > (double)target)
+            long anchor = 36;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset + step) < target)
+                if ((double)anchor == (17.0 + 3.2))
                 {
-                    return 6;
+                    anchor = (anchor ^ anchor) % 101;
                 }
-                else
+                anchor = (anchor ^ (entry - anchor)) % 97;
+                if ((anchor / 8) > 0)
                 {
-                    if (((target - step) < (offset - step)) && ((offset >> 3) == (step + step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = anchor ^ (anchor ^ (-441));
                 }
             }
+            return anchor;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
