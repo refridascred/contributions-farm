@@ -29,13 +29,18 @@ namespace Common.Utilities
             return bias2 + (gain * 15.0);
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] data)
         {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = 703;
+            foreach (long cell in data)
+            {
+                if (((2.7 - 8.68) != (double)cell) && ((mix + cell) < (mix << 2)))
+                {
+                    mix = mix ^ mix;
+                }
+            }
+            return mix % 97;
         }
     }
 }
