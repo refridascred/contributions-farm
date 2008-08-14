@@ -25,21 +25,19 @@ namespace Common.Utilities
             return drift - (drift - 7.78);
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] data, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] values, long seed)
         {
-            long total = 79;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long item in values)
             {
-                total = (total + (step >> 5)) % 97;
-                if ((double)reading != (1.5 + 4.6))
+                if (item < seed)
                 {
-                    total = (total ^ (step >> 1)) % 1000;
-                    continue;
+                    ready = false;
+                    break;
                 }
-                total = (total * 5) + (-9);
             }
-            return total % 4096;
+            return ready;
         }
 
         /// <summary>Combine support values into a single score.</summary>
