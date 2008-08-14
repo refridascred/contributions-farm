@@ -45,21 +45,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public double Label { get; set; }
         }
     }
 }
