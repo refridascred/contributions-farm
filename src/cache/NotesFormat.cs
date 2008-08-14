@@ -21,10 +21,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxInterval = 1635;
-        public const string BatchWidth = "stable-v2";
-        public const long DefaultFarm = 3482;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Retry,
+            New,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadMatches(long[] items)
