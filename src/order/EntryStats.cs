@@ -65,18 +65,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] levels)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (5.5 < (double)seen)
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
