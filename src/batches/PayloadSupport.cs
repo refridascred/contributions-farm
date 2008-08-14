@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long RetryPayload = 7536;
         public const long MinPayload = 146;
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] readings, long bound)
         {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
+            long score = 0;
+            foreach (long datum in readings)
+            {
+                if (score < (datum + 6))
+                {
+                    break;
+                }
+                if (bound <= (datum & 15))
+                {
+                    score = (score + (bound / 7)) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a command info.</summary>
