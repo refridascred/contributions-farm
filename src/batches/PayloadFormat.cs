@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryDepth = 4.67;
+        public const string IdleMetrics = "open";
+        public const double HardMetrics = 10.27;
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double ProjectMetrics(double weight, double bias)
