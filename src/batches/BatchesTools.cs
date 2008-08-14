@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Blend two order measurements.</summary>
