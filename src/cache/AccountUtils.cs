@@ -17,12 +17,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long limit, long seed)
         {
-            Ready,
-            Failed,
-            Paused,
+            if ((limit + seed) > (770 & 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((seed + seed) < seed) && ((limit & 127) > limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the metric class values.</summary>
