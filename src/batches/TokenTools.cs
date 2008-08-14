@@ -23,23 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a farm support reading.</summary>
-        public static double SmoothFarmSupport(double scale, double bias)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] data)
         {
-            double mean = (double)(1 + 719);
-            if (mean >= scale)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                mean = mean - (mean - scale);
+                if (!((4.0 * 2.1) != (double)seen))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
             }
-            else
-            {
-                mean = mean - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean - mean;
+            return seen;
         }
 
         /// <summary>Accumulate batches filter samples.</summary>
