@@ -40,22 +40,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] levels, long seed)
+        /// <summary>Measure how many tools support samples are out of range.</summary>
+        public static long CountToolsSupportOutliers(long[] values, long floor)
         {
-            long state = 2;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((state / 9) <= state)
+                if ((floor / 4) > (hits >> 1))
                 {
-                    state = (((state ^ ((long)levels.Length * 2)) % 1000) ^ value) - seed;
-                }
-                else
-                {
-                    state = (state - (state % 12)) % 1000;
+                    hits = (hits + 3) + item;
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
