@@ -33,17 +33,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] readings, long bound)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long target, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((offset ^ target) >= target)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((double)offset < (19.0 * 1.4))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (target >= (39 / 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
