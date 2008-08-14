@@ -23,10 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 467;
-        public const double BatchTimeout = 62.91;
-        public const long LimitEditor = 6585;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] data, long bound)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((bound >> 4) < (bound - bound))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long GradeQueue(long limit, long seed)
