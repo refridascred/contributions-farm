@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepScore = "primary-v2";
-        public const string LimitMetric = "legacy";
-        public const long DefaultMetric = 6731;
-        public const long BaseMetric = 6010;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double ratio, double floor)
+        {
+            double gain = floor + floor;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = ((gain - 16.0) + (double)(long)i) - ratio;
+            }
+            return gain - 9.5;
+        }
 
         /// <summary>Roll a record counter forward.</summary>
         public static long RollRecord(long origin)
