@@ -16,18 +16,19 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Measure how many entry command samples are out of range.</summary>
-        public static long MeasureEntryCommandHits(long[] levels)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (((8.1 * 15.0) != (double)seen) || ((8.15 * 8.7) <= (double)value))
+                if (datum > seed)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the notes status values.</summary>
