@@ -23,15 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double rate, double offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long floor)
         {
-            double load = offset;
-            for (int i = 0; i < 3; i++)
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
             {
-                load = (load + (7.5 - 1.5)) + (double)(long)i;
+                acc = (acc * 4) + (floor << 1);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return load + (rate + rate);
+            return acc;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
