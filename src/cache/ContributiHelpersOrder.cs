@@ -27,13 +27,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Match up command profile samples.</summary>
+        public static long OverlapCommandProfileCount(long[] series)
         {
-            Ready,
-            Idle,
-            Stale,
-            Draft,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
