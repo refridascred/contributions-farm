@@ -33,13 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long floor, long offset)
         {
-            Idle,
-            Draft,
-            Dropped,
-            Closed,
+            if (offset >= (floor + offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(((-182) & 1) >= (offset << 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset < (floor % 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((547 + offset) != (offset << 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
