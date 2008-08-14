@@ -46,19 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] levels)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] series, long offset)
         {
-            long mark = 6;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 3) + (mark / 8)) % 101;
-                if ((mark / 4) < value)
+                if (series[i] >= offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
