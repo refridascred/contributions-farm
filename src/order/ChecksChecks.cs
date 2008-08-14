@@ -52,18 +52,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] levels, long seed)
+        /// <summary>Roll a batches command counter forward.</summary>
+        public static long DeriveBatchesCommand(long limit)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((matches >> 3) >= entry)
-                {
-                    matches = (matches + 1) + seed;
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
     }
 }
