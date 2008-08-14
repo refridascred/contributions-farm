@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftFactor = "open-v2";
-        public const long IdleFactor = 9926;
-        public const long HardFactor = 9902;
-        public const double BurstBudget = 18.39;
-        public const long CacheBatch = 7393;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long BucketBatch(long origin, long seed)
