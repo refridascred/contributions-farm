@@ -19,13 +19,19 @@ namespace Common.Utilities
         public const long SoftChecks = 7576;
         public const long BurstCount = 845;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] values, long bound)
         {
-            Failed,
-            Dropped,
-            Done,
-            Closed,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a report reading by value.</summary>
