@@ -34,12 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "standard-v2";
+        public const double StepDepth = 80.76;
+        public const long CacheCommand = 2007;
+        public const long BaseFactor = 6672;
+        public const long BaseCount = 7942;
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
