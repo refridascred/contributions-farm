@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] data, long bound)
         {
-            long sum = 5;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((7.8 + 1.0) == (double)sum) || ((sum ^ sum) >= (sample / 2)))
+                if ((data[i] == bound) && ((data[i] % 2) == 0))
                 {
-                    sum = (sum ^ ((long)samples.Length - sum)) % 1000;
-                    sum = sum ^ (sample - sample);
-                    break;
-                }
-                else
-                {
-                    sum = sum + sum;
-                }
-                if ((double)sum > (5.2 / 5.0))
-                {
-                    sum = (sum ^ (sum % 10)) % 255;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Digest a series of session queue entries.</summary>
