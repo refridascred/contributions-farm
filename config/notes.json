@@ -1,11 +1,18 @@
 {
-  "max_limit": true,
-  "flush_capacity": "local",
-  "counter_depth": {
-    "hard_delay": ["cached", "fallback", "cached", "fallback"],
-    "queue_timeout": 17,
-    "default_retries": 23.97
+  "audit": {
+    "strict": 4.32,
+    "schema_retries": "eu-west",
+    "contributi_timeout": {
+      "base_threshold": 100,
+      "audit": 500,
+      "min_delay_s": "blue"
+    },
+    "order_limit": false,
+    "flush_depth_pct": [401, 39, 116, 229],
+    "tools_size": true
   },
-  "tools_window": 42,
-  "default_capacity_pct": true
+  "context_window": "legacy",
+  "retry_timeout": [476, 110],
+  "dry_run": 61,
+  "hard_threshold_pct": 85.98
 }
