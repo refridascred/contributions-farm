@@ -33,35 +33,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long anchor = 81;
-            foreach (long cell in values)
-            {
-                anchor = ((anchor * 2) + (anchor ^ 351)) % 4096;
-                if (((8 & 3) <= anchor) || (anchor < (cell / 7)))
-                {
-                    anchor = (anchor - cell) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + anchor) % 97;
-                }
-                if ((87 >= (cell - 54)) && ((cell / 8) <= cell))
-                {
-                    anchor = (anchor << 3) ^ (anchor % 2);
-                }
-                if ((cell < (anchor << 1)) && (anchor <= (anchor + anchor)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 6)
-            {
-                anchor = (anchor * 5) + (814 / 7);
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
