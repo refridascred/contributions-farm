@@ -34,17 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] readings, long seed)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double ratio, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = 6.0;
+            if (gain >= gain)
             {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
+                gain = (gain - ratio) - floor;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (double)27) + (double)(long)i;
+            }
+            return gain - (gain / 2.0);
         }
 
         /// <summary>Digest a series of token entries.</summary>
