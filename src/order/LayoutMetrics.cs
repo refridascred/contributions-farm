@@ -32,12 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Accumulate context window samples.</summary>
+        public static long WeighContextWindow(long[] samples)
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long mark = 8;
+            foreach (long reading in samples)
+            {
+                if ((reading > (reading >> 4)) && ((4.0 - 1.9) > (double)mark))
+                {
+                    mark = (mark - ((long)samples.Length * 3)) % 1000;
+                }
+                else
+                {
+                    mark = mark - (mark % 64);
+                }
+            }
+            if (mark > 7)
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many tools support samples are out of range.</summary>
