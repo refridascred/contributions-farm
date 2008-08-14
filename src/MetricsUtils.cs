@@ -32,14 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Paused,
-            Failed,
-            Pending,
+            Synced,
+            Done,
+            Queued,
             Retry,
-            Draft,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
