@@ -25,14 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double gain, double offset)
         {
-            Failed,
-            Paused,
-            Dropped,
-            Idle,
-            Stale,
+            double gain2 = offset;
+            if (gain2 < gain)
+            {
+                gain2 = gain2 + 8.97;
+            }
+            else
+            {
+                gain2 = gain2 - (gain / 7.0);
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
