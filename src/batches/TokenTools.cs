@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of notes context entries.</summary>
-        public static long WeighNotesContext(long[] data, long offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long origin, long origin2)
         {
-            long mark = 16;
-            foreach (long datum in data)
+            if ((1.9 <= (double)origin) && (82 < (origin * 5)))
             {
-                if (((long)data.Length / 8) >= 12)
+                return 5;
+            }
+            else
+            {
+                if (6.2 > (double)origin2)
                 {
-                    mark = ((mark - mark) - datum) - offset;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin + origin2) >= origin2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mark < 5)
-            {
-                mark = mark ^ 363;
-            }
-            return mark;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
