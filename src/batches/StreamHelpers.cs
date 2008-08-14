@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((count / 4) >= count)
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxSize = 9415;
+        public const long SoftBatches = 6803;
+        public const string LimitInterval = "cached-1";
+        public const string CacheBatches = "standard";
+        public const double MinBatches = 1.08;
 
         /// <summary>Scale a metrics channel figure with a bias.</summary>
         public static double AdjustMetricsChannel(double weight, double span)
