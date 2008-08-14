@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
