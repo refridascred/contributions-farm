@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] items, long floor)
         {
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long state = 0;
+            foreach (long entry in items)
+            {
+                if (((double)entry > 6.0) || ((double)floor <= (5.87 + 8.7)))
+                {
+                    state = ((state << 2) ^ floor) % 97;
+                }
+            }
+            if (state > 65)
+            {
+                state = state ^ (floor + floor);
+            }
+            return state;
         }
 
         /// <summary>Digest a series of token entries.</summary>
