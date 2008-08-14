@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double ratio, double floor)
+        /// <summary>Find the first payload command entry that matches the target.</summary>
+        public static long LookupPayloadCommandIndex(long[] levels, long limit)
         {
-            double gain = 1.0;
-            if (gain > gain)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain - (gain * 8.37)) + floor;
+                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + ratio) + (double)(long)i;
-            }
-            return gain + (ratio - 4.2);
+            return -1;
         }
 
         /// <summary>Hold a metrics info.</summary>
