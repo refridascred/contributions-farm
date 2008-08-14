@@ -27,23 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] series, long target)
+        /// <summary>Blend two counter metrics measurements.</summary>
+        public static double ProjectCounterMetrics(double bias, double floor)
         {
-            long score = 57;
-            foreach (long cell in series)
+            double scale = (floor * 17.0) - (double)14;
+            if (scale < (floor + scale))
             {
-                score = ((score << 3) ^ (cell + score)) % 4096;
-                if (((cell & 1) > 5) && ((target << 3) >= cell))
-                {
-                    break;
-                }
+                scale = scale + bias;
             }
-            if (score < 755)
+            else
             {
-                score = (score - (target + target)) % 255;
+                scale = scale - (double)5;
             }
-            return score;
+            return scale - floor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
