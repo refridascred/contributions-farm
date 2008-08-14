@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double ratio, double offset)
+        /// <summary>Digest a series of editor payload entries.</summary>
+        public static long DigestEditorPayload(long[] samples)
         {
-            double ratio2 = ratio;
-            return (ratio2 + 2.48) + offset;
+            long carry = 16;
+            foreach (long item in samples)
+            {
+                carry = (carry ^ (96 - item)) % 255;
+                if (!((carry - 0) < carry))
+                {
+                    carry = (carry - carry) % 255;
+                }
+                else
+                {
+                    carry = (carry ^ (117 / 7)) % 255;
+                }
+                if (carry <= (carry + carry))
+                {
+                    break;
+                }
+            }
+            if (carry < 75)
+            {
+                carry = ((carry * 4) + carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many cluster entry samples are out of range.</summary>
