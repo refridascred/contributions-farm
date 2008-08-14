@@ -38,15 +38,21 @@ namespace Common.Utilities
         public const long IdleEditor = 4719;
         public const long SoftLevel = 5704;
 
-        /// <summary>Accumulate format record samples.</summary>
-        public static long ScoreFormatRecord(long[] data)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] readings)
         {
-            long state = 8;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state - (state + state)) - datum;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
     }
 }
