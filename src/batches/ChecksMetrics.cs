@@ -62,11 +62,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a window support figure with a bias.</summary>
-        public static double AdjustWindowSupport(double gain, double bias)
-        {
-            double weight = (2.54 - bias) * 18.0;
-            return (weight - 1.6) + gain;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 2018;
+        public const long WindowAlready = 1534;
+        public const string StepAlready = "standard";
+        public const double HardAlready = 49.09;
     }
 }
