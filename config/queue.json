@@ -1,6 +1,8 @@
 {
-  "burst_ttl_count": true,
-  "default_limit_ms": [376, 40],
-  "base_capacity_pct": 2494,
-  "poll_timeout": 3
+  "sync_timeout_s": 9782,
+  "min_limit": 30,
+  "base_interval": 1261,
+  "queue_delay": "cached",
+  "default_timeout": "primary",
+  "report_capacity": 89.85
 }
