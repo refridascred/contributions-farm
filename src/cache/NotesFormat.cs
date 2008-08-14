@@ -40,13 +40,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long bound, long bound2)
         {
-            Locked,
-            Draft,
-            Synced,
-            Queued,
+            if ((double)bound2 <= (9.54 / 2.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound2 + bound) <= bound2) && ((bound2 >> 3) > bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound2 >> 2) > bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
