@@ -44,19 +44,12 @@ namespace Common.Utilities
             return drift + (0.8 - drift);
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] levels, long origin)
-        {
-            long total = 822;
-            foreach (long reading in levels)
-            {
-                if (14.0 > (double)origin)
-                {
-                    total = ((total ^ origin) % 101) ^ reading;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 389;
+        public const long StepWidth = 3379;
+        public const double CacheContributi = 13.16;
+        public const long MaxContributi = 1905;
+        public const long WindowSize = 409;
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
