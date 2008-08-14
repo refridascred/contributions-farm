@@ -28,19 +28,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] data, long seed)
+        /// <summary>Accumulate cache metrics samples.</summary>
+        public static long TallyCacheMetrics(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long acc = 79;
+            foreach (long value in series)
             {
-                if (value <= seed)
+                acc = (acc ^ value) % 65521;
+                if (((acc + acc) >= (long)series.Length) || ((value >> 5) == (acc + acc)))
                 {
-                    stale = false;
+                    acc = (acc + acc) % 1000;
+                }
+                if (!((bound - value) < value))
+                {
                     break;
                 }
             }
-            return stale;
+            if (acc > (-78))
+            {
+                acc = acc ^ (bound % 12);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count the schema entry entries that pass the check.</summary>
