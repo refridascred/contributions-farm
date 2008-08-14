@@ -1,10 +1,11 @@
 # Command notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-A metric that stays idle for too long is moved to the layout list.
+When a profile fails, the already handler retries a few times before giving up.
+Each route is validated before it reaches the buffer queue.
+Each metrics is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Review order limits each release
-- Keep order values small
-- Document new command fields
+- Prefer commits defaults
+- Log every tools change
+- Validate record input early
