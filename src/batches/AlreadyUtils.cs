@@ -83,12 +83,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Paused,
-            Active,
-            Retry,
+            Closed,
+            Pending,
+            Synced,
+            Draft,
+            Locked,
         }
     }
 }
