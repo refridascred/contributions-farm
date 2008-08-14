@@ -65,19 +65,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] samples, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (entry <= offset)
+                if ((count - item) > (52 - count))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
