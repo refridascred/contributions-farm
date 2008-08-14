@@ -36,12 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] data)
         {
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count & 3) > item)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
