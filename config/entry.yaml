@@ -1,4 +1,23 @@
 # entry settings
-min_limit: edge
-retry_limit_ms: 5556
-already_ttl: 58.87
+persist:
+  filter_size:
+    - standard
+    - strict
+    - fallback
+    - green
+  readonly: 48.5
+  stream_ttl:
+    session_ttl: false
+    min_timeout_pct: 100
+    readonly: stable
+counter_interval:
+  dry_run: 83.39
+  contributi_delay: false
+  audit: blue
+  checks_interval:
+    - strict
+    - stable
+    - local
+    - cached
+soft_timeout: eu-west
+payload_limit: 60
