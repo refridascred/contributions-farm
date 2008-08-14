@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardSize = 8.51;
-        public const long StepRatio = 4765;
-        public const long IdleBudget = 9543;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = (result - (floor << 1)) - (long)i2;
+                    result = (result ^ (result / 7)) % 65521;
+                }
+                result = (result ^ 97) % 255;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many entry notes samples are out of range.</summary>
         public static long AuditEntryNotesMatches(long[] samples)
