@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] levels)
         {
-            long result = floor;
-            for (int i = 0; i < 6; i++)
+            long mix = 8;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = (result - (floor << 1)) - (long)i2;
-                    result = (result ^ (result / 7)) % 65521;
-                }
-                result = (result ^ 97) % 255;
-                result = ((result * 4) + (long)i) % 101;
+                mix = (mix << 3) ^ entry;
+                mix = (mix * 2) + mix;
             }
-            return result;
+            if (mix > 0)
+            {
+                mix = ((mix << 2) ^ (mix ^ mix)) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Measure how many entry notes samples are out of range.</summary>
