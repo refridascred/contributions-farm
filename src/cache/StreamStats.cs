@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long StepStream = 5939;
         public const long SoftDepth = 2298;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] values)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry >= floor)
                 {
-                    if ((values[i] + values[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
