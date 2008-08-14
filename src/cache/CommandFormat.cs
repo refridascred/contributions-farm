@@ -35,20 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double weight, double floor)
-        {
-            double rate = weight + floor;
-            if (rate > rate)
-            {
-                rate = rate + floor;
-            }
-            else
-            {
-                rate = rate + floor;
-            }
-            return rate + (weight + rate);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardWidth = "staging-edge";
+        public const string MaxPayload = "strict-v2";
+        public const long BatchPayload = 4062;
+        public const long BurstInterval = 5487;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BatchDepth = 95.42;
