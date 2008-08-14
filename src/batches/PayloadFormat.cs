@@ -16,18 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum << 3) ^ seed) % 101;
-                sum = sum + (sum * 5);
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitRecord = 93.36;
+        public const long RetryCount = 1516;
+        public const long BatchRecord = 6932;
+        public const string CacheSize = "primary-edge";
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
