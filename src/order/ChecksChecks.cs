@@ -52,13 +52,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a batches command counter forward.</summary>
-        public static long DeriveBatchesCommand(long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] data, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
+            long mark = 694;
+            foreach (long reading in data)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((double)reading == (8.8 * 3.18))
+                {
+                    mark = (mark ^ mark) - floor;
+                }
             }
             return mark;
         }
