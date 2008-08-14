@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] data, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((data[i] <= limit) && ((data[i] % 3) == 0))
+                if (datum <= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next counter value.</summary>
