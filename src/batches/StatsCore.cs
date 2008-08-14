@@ -32,11 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            Idle,
+            Pending,
+            Stale,
+            Done,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
