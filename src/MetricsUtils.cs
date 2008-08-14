@@ -42,20 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples, long offset)
-        {
-            long anchor = 63;
-            foreach (long item in samples)
-            {
-                anchor = ((anchor + (item << 3)) % 255) + offset;
-            }
-            if (anchor < (-8))
-            {
-                anchor = (anchor << 3) ^ (715 & 127);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 1944;
+        public const long DefaultLevel = 5297;
+        public const long BurstCommand = 2716;
+        public const long LimitInterval = 9949;
+        public const long SoftCommand = 8498;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaHits(long[] readings, long target)
