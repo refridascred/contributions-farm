@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheLevel = 185;
-        public const long IdleSize = 4495;
-        public const long LimitReport = 1885;
-        public const long HardFactor = 3080;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 7530;
+        public const string IdleMetric = "legacy-v2";
+        public const long BatchMetric = 4998;
+        public const long BurstMetric = 4465;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long RankMetric(long offset, long limit)
