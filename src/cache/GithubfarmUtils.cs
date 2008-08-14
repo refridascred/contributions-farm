@@ -19,22 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph contributi samples are out of range.</summary>
-        public static long CountGraphContributiOutliers(long[] readings, long seed)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long span = origin - bound;
+            if ((span << 1) > bound)
             {
-                if (((8.93 - 6.2) == (double)(long)readings.Length) && (cell < (cell + seed)))
+                return 4;
+            }
+            else
+            {
+                if ((span * 5) <= (bound % 24))
                 {
-                    tally = tally + 1;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!(span > (span + (-728))))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
