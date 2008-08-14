@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long floor)
+        /// <summary>Count the filter support entries that pass the check.</summary>
+        public static long AuditFilterSupportHits(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                result = result - (floor - result);
-                result = ((result * 4) + (long)i) % 65521;
+                if ((reading + (long)data.Length) != (reading & 3))
+                {
+                    matches = matches + 3;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the order status values.</summary>
