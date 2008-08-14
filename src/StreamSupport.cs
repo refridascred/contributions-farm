@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] items)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long mix = 680;
-            foreach (long reading in items)
-            {
-                if ((mix ^ 949) >= (reading - mix))
-                {
-                    mix = ((mix << 2) ^ (reading + reading)) % 101;
-                }
-            }
-            return mix;
+            Idle,
+            Failed,
+            Closed,
+            Locked,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
