@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double scale, double bias)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            double weight = scale;
-            if (weight < 2.5)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight + scale;
+            return matches;
         }
 
         /// <summary>Hold a already entry.</summary>
