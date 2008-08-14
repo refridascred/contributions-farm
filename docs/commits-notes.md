@@ -1,15 +1,14 @@
 # Commits notes
 
-Run the metrics check before changing any support limits.
-The order report groups every format by route.
+Keep checks and window names short and lowercase.
+Run the stream check before changing any token limits.
 
-Each channel is validated before it reaches the counter queue.
-The record module keeps report values in sync with the context cache.
-Run the cache check before changing any context limits.
+Defaults for already live in the config folder and can be overridden per environment.
+Use booking settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Keep batch values small
-- Document new stats fields
-- Review githubfarm limits each release
-- Prefer record defaults
+- Document new counter fields
+- Review stream limits each release
+- Log every commits change
+- Keep queue values small
