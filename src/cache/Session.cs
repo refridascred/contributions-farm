@@ -67,20 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] items, long floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long result = 5;
-            foreach (long datum in items)
-            {
-                result = (((result << 2) ^ (floor * 3)) % 65521) + datum;
-                result = ((result << 2) ^ (result + result)) % 97;
-            }
-            if (result > 9)
-            {
-                result = (result ^ (floor * 3)) % 255;
-            }
-            return result % 4096;
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
