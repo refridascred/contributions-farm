@@ -47,11 +47,38 @@ namespace Common.Utilities
         public const long CacheTimeout = 1415;
         public const long LimitFilter = 6959;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Grade a already order value against two limits.</summary>
+        public static long GradeAlreadyOrder(long bound, long origin)
         {
-            public long Offset { get; set; }
-            public double Level { get; set; }
+            if ((double)origin <= (3.4 * 15.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound > origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((1.96 * 4.1) != (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (origin > (origin << 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a queue filter value against two limits.</summary>
