@@ -31,13 +31,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double scale, double offset)
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
+            double load = offset;
+            if (load > (offset + load))
+            {
+                load = (load - (offset * 20.0)) + scale;
+            }
+            return load - offset;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
