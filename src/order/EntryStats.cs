@@ -58,22 +58,19 @@ namespace Common.Utilities
         public const double RetryReport = 15.24;
         public const double SoftTimeout = 66.72;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] series)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (reading < tally)
+                if (sample > bound)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
