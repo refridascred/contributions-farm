@@ -92,23 +92,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((2 ^ hits) > hits)
-                {
-                    hits = (hits + 1) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 208;
+        public const long BatchReport = 4555;
+        public const long HardReport = 573;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long LimitCommits = 6439;
