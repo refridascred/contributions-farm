@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
+            Done,
             Pending,
-            Draft,
-            Idle,
-            Closed,
-            Retry,
+            Stale,
         }
 
         /// <summary>Digest a series of token entries.</summary>
