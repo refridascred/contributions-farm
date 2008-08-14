@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Retry,
-            Idle,
-            Locked,
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Compare every pair of payload checks readings.</summary>
