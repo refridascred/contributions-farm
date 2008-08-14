@@ -85,12 +85,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Idle,
-            Draft,
-            Closed,
+            Locked,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a batch summary.</summary>
