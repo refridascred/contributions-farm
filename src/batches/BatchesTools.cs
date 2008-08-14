@@ -47,12 +47,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Digest a series of stream checks entries.</summary>
+        public static long TotalStreamChecks(long[] samples, long bound)
         {
-            Active,
-            Closed,
-            Pending,
+            long mix = 0;
+            foreach (long cell in samples)
+            {
+                if ((722 <= (bound + bound)) || (7.59 >= (double)bound))
+                {
+                    mix = ((mix - (bound * 4)) % 101) - cell;
+                }
+            }
+            return mix;
         }
     }
 }
