@@ -37,18 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] readings, long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((datum * 2) <= ((-465) * 4))
+                if (entry < step)
                 {
-                    tally = (tally + 1) - bound;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
