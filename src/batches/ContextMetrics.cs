@@ -40,15 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Scale a payload metrics figure with a bias.</summary>
+        public static double ProjectPayloadMetrics(double ratio, double bias)
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
+            double load = bias;
+            if (load > (double)2)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                load = load + (ratio / 4.0);
             }
-            return mix;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (ratio * 4.54)) - (double)(long)i;
+            }
+            return load - (double)99;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
