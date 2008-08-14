@@ -1,7 +1,15 @@
 {
-  "default_size_s": 5.84,
-  "idle_delay": 1699,
-  "verbose": "green",
-  "retry_limit_pct": false,
-  "burst_retries": 11
+  "dry_run": 250,
+  "default_limit": 48,
+  "min_delay": {
+    "max_timeout_pct": 75,
+    "batch_ratio": {
+      "sync_timeout": false,
+      "flush_interval": "local",
+      "warm_capacity_count": [210, 415, 42, 395],
+      "flush_limit": [236, 116]
+    },
+    "poll_retries_s": 36,
+    "order_ttl": "stable"
+  }
 }
