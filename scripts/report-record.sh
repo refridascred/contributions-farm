@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached local; do
+for item in latest primary cached; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=278
+RECORD_LIMIT=495
 log "limit is ${RECORD_LIMIT}"
