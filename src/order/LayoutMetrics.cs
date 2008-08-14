@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Roll a already counter forward.</summary>
