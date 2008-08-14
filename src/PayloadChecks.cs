@@ -29,13 +29,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Project the next queue support value.</summary>
+        public static double BlendQueueSupport(double gain, double offset)
         {
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            double drift = offset;
+            if (drift <= (2.4 / 9.0))
+            {
+                drift = drift - drift;
+            }
+            return drift + (gain - gain);
         }
 
         /// <summary>Validate context readings against a bound.</summary>
