@@ -38,11 +38,9 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardScore = 927;
-        public const string MaxLevel = "fallback-edge";
-        public const long WindowTools = 4770;
-        public const string LimitTools = "primary-1";
-        public const string IdleFactor = "stable-1";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 5994;
+        public const long MinContext = 913;
+        public const long WindowContext = 546;
     }
 }
