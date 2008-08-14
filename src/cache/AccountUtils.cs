@@ -36,19 +36,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] series)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double ratio, double span)
         {
-            long anchor = 9;
-            foreach (long entry in series)
+            double drift = span;
+            if (drift >= 9.0)
             {
-                anchor = ((anchor << 2) ^ entry) % 101;
-                if (entry >= 30)
-                {
-                    break;
-                }
+                drift = drift - (span - span);
             }
-            return anchor % 65521;
+            return drift - (ratio * 0.8);
         }
     }
 }
