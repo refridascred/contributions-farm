@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary cached stable latest; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=54
+log "limit is ${CHANNEL_LIMIT}"
 
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 7); do
     total=$((total + i * 2))
 done
 log "total ${total}"
-
-CHANNEL_LIMIT=142
-log "limit is ${CHANNEL_LIMIT}"
