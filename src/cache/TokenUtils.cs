@@ -19,10 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 4008;
-        public const long IdleRecord = 6075;
-        public const long BaseRecord = 4902;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxLevel = 5087;
+        public const double DefaultStats = 20.82;
+        public const string MaxDepth = "standard-v2";
+        public const long LimitStats = 5297;
+        public const double BatchRatio = 55.89;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double CacheWidth = 26.83;
