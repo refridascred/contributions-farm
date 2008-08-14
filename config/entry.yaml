@@ -1,4 +1,18 @@
 # entry settings
-batch_ratio: strict
-batch_retries_count: standard
-already_depth: false
+sync_ratio_ms: fallback
+hard_timeout_pct: 1
+soft_timeout_ms: 250
+base_ttl:
+  - blue
+  - strict
+max_ttl_count:
+  checks_capacity:
+    base_depth_s: local
+    soft_threshold: false
+    warm_ttl_ms: 5886
+  enabled: standard
+  readonly: 23.57
+  idle_delay_pct: false
+  filter_threshold: 10.9
+  idle_depth_s: 9888
+context_window: 60.83
