@@ -1,13 +1,6 @@
 {
-  "strict": "fallback",
-  "verbose": "green",
-  "flush_limit": ["local", "fallback"],
-  "audit": {
-    "max_window_count": true,
-    "readonly": "legacy",
-    "default_depth_ms": true,
-    "batch_capacity": true
-  },
-  "burst_timeout_count": "strict",
-  "batch_size_ms": ["staging", "latest", "local", "legacy"]
+  "max_size": 1024,
+  "warm_limit_pct": [223, 257, 219],
+  "default_ttl_ms": 100,
+  "warm_size_count": 25.67
 }
