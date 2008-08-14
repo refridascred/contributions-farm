@@ -27,16 +27,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                mark = (mark + ((long)i - mark)) % 97;
-                mark = ((mark * 2) + (long)i) % 97;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = (((total << 2) ^ (565 << 3)) % 101) - (long)i2;
+                }
+                total = (total ^ (total - (long)i)) % 97;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Locate a already window reading by value.</summary>
