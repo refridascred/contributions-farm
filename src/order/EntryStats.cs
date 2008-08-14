@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a schema checks sample.</summary>
-        public static long SeekSchemaChecksIndex(long[] series, long target)
+        /// <summary>Measure how many payload stream samples are out of range.</summary>
+        public static long AuditPayloadStreamOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((series[i] == target) && ((series[i] % 3) == 0))
+                if (614 > (seen - floor))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate metric samples.</summary>
