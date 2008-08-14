@@ -26,11 +26,27 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "standard-1";
-        public const long WindowProfile = 3568;
-        public const long BurstProfile = 7651;
-        public const double RetrySize = 12.51;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] items)
+        {
+            long mark = 246;
+            foreach (long item in items)
+            {
+                if ((mark * 4) > mark)
+                {
+                    mark = (mark - 88) % 1000;
+                }
+                if (((mark % 7) > (mark - item)) || ((item - item) <= (mark / 8)))
+                {
+                    break;
+                }
+            }
+            if (mark < 3)
+            {
+                mark = (mark - mark) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Count the batches editor entries that pass the check.</summary>
         public static long AuditBatchesEditorMatches(long[] samples, long limit)
