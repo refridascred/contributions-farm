@@ -64,32 +64,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a schema payload value against two limits.</summary>
-        public static long GradeSchemaPayload(long offset, long limit)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double bias, double offset)
         {
-            long lane = offset + limit;
-            if ((20.0 / 4.0) > (double)offset)
+            double bias2 = offset * 1.0;
+            if (bias2 <= (bias + bias))
             {
-                return 4;
+                bias2 = bias2 + bias2;
             }
-            else
-            {
-                if ((limit - limit) == ((-122) + lane))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset / 7) < (29 / 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return bias2 + (offset * 9.72);
         }
 
         /// <summary>Describe the format mode values.</summary>
