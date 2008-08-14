@@ -39,12 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] items, long seed)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (tally <= (tally & 127))
+                {
+                    tally = ((tally + 1) + item) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
