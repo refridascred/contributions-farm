@@ -32,20 +32,19 @@ namespace Common.Utilities
             return gain2 - gain2;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] values, long seed)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] readings, long bound)
         {
-            long anchor = 7;
-            foreach (long value in values)
+            long acc = 26;
+            foreach (long value in readings)
             {
-                anchor = ((anchor * 2) + (seed & 3)) % 65521;
-                anchor = anchor + (anchor << 3);
-                if ((double)seed != (double)anchor)
-                {
-                    anchor = ((anchor << 2) ^ (value >> 1)) % 65521;
-                }
+                acc = (acc + bound) + value;
             }
-            return anchor % 4096;
+            if (acc < 46)
+            {
+                acc = ((acc << 2) ^ (bound % 97)) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the cache state values.</summary>
