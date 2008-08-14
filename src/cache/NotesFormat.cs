@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] samples, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                sum = (sum ^ (sum / 7)) % 1000;
-                if ((long)i != (sum + 3))
+                if ((seen + origin) >= (origin >> 5))
                 {
-                    break;
+                    seen = (seen + 3) ^ reading;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Combine record values into a single score.</summary>
