@@ -1,10 +1,6 @@
 {
-  "soft_retries": ["primary", "standard"],
-  "burst_ratio_pct": "standard",
-  "poll_ttl_count": 146,
-  "cache_ratio_s": {
-    "batch_ratio_s": 19,
-    "poll_retries_s": 15,
-    "report_threshold": 2286
-  }
+  "retry_window_count": "local",
+  "payload_capacity": 30,
+  "sync_interval_ms": "primary",
+  "enabled": 53.31
 }
