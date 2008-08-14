@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] data)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 697;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((((total * 3) + 31) % 101) ^ value) + seed;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the metric state values.</summary>
