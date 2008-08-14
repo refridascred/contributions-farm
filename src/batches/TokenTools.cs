@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long origin, long origin2)
+        /// <summary>Compare every pair of stream schema readings.</summary>
+        public static long MatchStreamSchemaCount(long[] items)
         {
-            if ((1.9 <= (double)origin) && (82 < (origin * 5)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (6.2 > (double)origin2)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin + origin2) >= origin2)
+                    if ((items[i] + items[j]) < 15)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Match up filter samples.</summary>
