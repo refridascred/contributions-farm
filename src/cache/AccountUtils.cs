@@ -15,12 +15,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Stale,
-            Pending,
-            Locked,
+            Active,
+            Done,
+            New,
+            Idle,
+            Draft,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
