@@ -49,13 +49,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            Locked,
+            Active,
+            Idle,
         }
     }
 }
