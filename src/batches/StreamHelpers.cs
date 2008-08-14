@@ -28,13 +28,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Stale,
-            Active,
-            Draft,
-            Synced,
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
