@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] levels)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long floor, long floor2)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)floor != (9.02 + 4.2))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((19.0 / 4.0) == (double)floor) && ((floor2 + floor2) < 815))
                 {
-                    if ((levels[i] - levels[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up metric tools samples.</summary>
