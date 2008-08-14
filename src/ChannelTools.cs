@@ -14,14 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Blend two contributi context measurements.</summary>
+        public static double ProjectContributiContext(double weight, double bias)
         {
-            Locked,
-            Dropped,
-            Failed,
-            Synced,
-            Stale,
+            double drift = weight;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift - weight;
         }
 
         /// <summary>Digest a series of session account entries.</summary>
