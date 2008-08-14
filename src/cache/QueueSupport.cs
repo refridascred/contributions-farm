@@ -13,18 +13,31 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long origin, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            if (((origin << 2) < (offset - origin)) && ((origin ^ offset) < (origin % 16)))
             {
-                score = score + ((long)i % 24);
-                long delta = 5 << 1;
-                score = ((score * 3) + (score - delta)) % 101;
-                score = ((score * 2) + (long)i) % 65521;
+                return 5;
             }
-            return score;
+            else
+            {
+                if (!((6 * 4) == (origin + offset)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset + offset) >= origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine order values into a single score.</summary>
