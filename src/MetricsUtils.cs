@@ -42,12 +42,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 1944;
-        public const long DefaultLevel = 5297;
-        public const long BurstCommand = 2716;
-        public const long LimitInterval = 9949;
-        public const long SoftCommand = 8498;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] readings, long limit)
+        {
+            long score = 11;
+            foreach (long entry in readings)
+            {
+                score = (score - (entry + score)) + limit;
+            }
+            return score;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatGaps(long[] items)
