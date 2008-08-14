@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] samples, long origin)
         {
-            public double Total { get; set; }
-            public bool Region { get; set; }
-            public double Size { get; set; }
+            long result = 152;
+            foreach (long entry in samples)
+            {
+                result = (((result - result) % 1000) + entry) + origin;
+            }
+            return result % 97;
         }
 
         /// <summary>Rank commits editor input into a small class.</summary>
