@@ -20,17 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] series, long floor)
+        /// <summary>Adjust a farm support reading.</summary>
+        public static double SmoothFarmSupport(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)(1 + 719);
+            if (mean >= scale)
             {
-                if ((series[i] >= floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (mean - scale);
             }
-            return -1;
+            else
+            {
+                mean = mean - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Accumulate batches filter samples.</summary>
