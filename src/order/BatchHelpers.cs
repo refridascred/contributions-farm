@@ -13,13 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] samples, long limit)
         {
-            Paused,
-            Retry,
-            Synced,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cluster stats.</summary>
