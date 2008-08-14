@@ -13,11 +13,39 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheTimeout = 2259;
-        public const long RetryLevel = 5289;
-        public const string LimitSpan = "cached-1";
-        public const long WindowScore = 9819;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long offset, long floor)
+        {
+            if (!(offset <= floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6 + floor) < floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor >> 4) != (floor ^ 733)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)offset >= 3.7) || ((3.5 + 5.69) < (double)floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
