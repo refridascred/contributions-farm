@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 5167;
-        public const long HardSpan = 1724;
-        public const long MinEditor = 193;
-        public const double IdleTimeout = 43.02;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long limit, long limit2)
+        {
+            long diff = limit ^ limit2;
+            if ((limit >> 5) < (diff + 30))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit <= 6.5)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (diff >= (diff - limit2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
