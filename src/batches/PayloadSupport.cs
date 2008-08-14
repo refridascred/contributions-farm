@@ -32,12 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleTimeout = 6586;
-        public const long DefaultProfile = 2174;
-        public const long LimitProfile = 2229;
-        public const long MinProfile = 8284;
-        public const string HardProfile = "cached-edge";
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Stale,
+            Active,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long StepReport(long seed)
