@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitDepth = 1929;
-        public const long SoftScore = 7053;
-        public const double BaseLevel = 55.86;
-        public const double WindowScore = 53.97;
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Locked,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long SeekRecordIndex(long[] series, long target)
