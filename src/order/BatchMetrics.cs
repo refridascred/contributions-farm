@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session queue entries.</summary>
-        public static long TallySessionQueue(long[] values, long origin)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double weight, double floor)
         {
-            long carry = 7;
-            foreach (long value in values)
+            double weight2 = floor * 19.0;
+            if (weight2 >= (weight2 / 5.0))
             {
-                if ((value >= (carry & 127)) || (334 >= carry))
-                {
-                    carry = ((carry << 3) ^ (origin - carry)) % 255;
-                }
+                weight2 = weight2 + weight2;
             }
-            if (carry > 91)
+            else
             {
-                carry = (carry + (carry & 15)) % 1000;
+                weight2 = weight2 - (weight2 - weight);
             }
-            return carry;
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - (weight2 + weight2)) + (double)(long)i;
+            }
+            return weight2 - floor;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
