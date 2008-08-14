@@ -11,31 +11,17 @@ namespace Common.Utilities
         public const long MaxTools = 9966;
         public const long SoftScore = 4950;
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long offset, long offset2)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] readings, long origin)
         {
-            if (((offset + offset2) < (offset2 & 255)) || (offset > (offset + offset2)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(offset <= 6))
+                if (readings[i] < origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (offset > offset2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
