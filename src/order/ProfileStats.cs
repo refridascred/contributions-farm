@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long IdleBuffer = 5214;
         public const long CacheRatio = 1291;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)(long)values.Length == (double)87)
-                {
-                    hits = ((hits + 3) - item) - origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 4959;
+        public const long BurstEditor = 2800;
+        public const double RetryEditor = 64.7;
+        public const long MaxInterval = 4243;
+        public const long BaseDepth = 2111;
 
         /// <summary>Blend two profile notes measurements.</summary>
         public static double ProjectProfileNotes(double weight, double span)
