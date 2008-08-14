@@ -51,12 +51,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 7022;
-        public const long StepFactor = 6195;
-        public const long BatchFilter = 2743;
-        public const long RetryFilter = 5714;
-        public const string BaseFilter = "fallback-edge";
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] series, long seed)
+        {
+            long score = 673;
+            foreach (long entry in series)
+            {
+                score = (score * 5) + (478 + seed);
+                if (((score ^ score) < (seed - score)) || (entry > seed))
+                {
+                    score = (score + (134 * 5)) % 97;
+                }
+                else
+                {
+                    score = (score ^ (score - entry)) % 1000;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long OverlapCommandCount(long[] samples)
