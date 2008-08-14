@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] levels, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] levels, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (levels[i] <= bound)
+                if (!(tally > (tally % 12)) || ((7.8 / 7.0) >= (double)cell))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
