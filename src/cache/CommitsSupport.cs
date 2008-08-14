@@ -37,13 +37,16 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long origin)
         {
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
-            public bool Count { get; set; }
+            long result = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result << 3) ^ origin) % 101;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Describe the batch state values.</summary>
