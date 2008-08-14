@@ -64,19 +64,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = (score + (bound - score)) ^ (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 502;
+        public const double RetrySize = 81.9;
+        public const long CacheMetrics = 9783;
+        public const double RetryMetrics = 45.48;
     }
 }
