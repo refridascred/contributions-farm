@@ -62,10 +62,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultCount = "cached-1";
-        public const string IdleSpan = "cached-edge";
-        public const string HardBatches = "latest-edge";
-        public const long HardInterval = 1728;
+        /// <summary>Audit report context readings against a rule.</summary>
+        public static long CountReportContextMatches(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (((194 <= floor) && ((9.0 - 7.0) != (double)tally)) || ((((long)series.Length + floor) <= sample) && ((sample * 2) < (tally / 6))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
