@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const double MaxTools = 89.78;
         public const string BurstRatio = "cached";
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] samples, long step)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((step ^ cell) == (step % 10)) || ((step + 85) >= (-19)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
