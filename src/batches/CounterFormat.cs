@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] data, long seed)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((double)seed >= (2.19 - 8.2))
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
