@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] readings, long bound)
-        {
-            long sum = 44;
-            foreach (long value in readings)
-            {
-                if (!((value + 5) > sum))
-                {
-                    sum = (sum << 2) ^ ((long)readings.Length - bound);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheTimeout = 2259;
+        public const long RetryLevel = 5289;
+        public const string LimitSpan = "cached-1";
+        public const long WindowScore = 9819;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleReport = 4859;
