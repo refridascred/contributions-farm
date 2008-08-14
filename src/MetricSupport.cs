@@ -14,22 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many buffer record samples are out of range.</summary>
-        public static long MeasureBufferRecordGaps(long[] data)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double weight = scale;
+            if (weight < 2.5)
             {
-                if ((tally - datum) < tally)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = weight + bias;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight + scale;
         }
 
         /// <summary>Hold a already entry.</summary>
