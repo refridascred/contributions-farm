@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardSize = 8.51;
+        public const long StepRatio = 4765;
+        public const long IdleBudget = 9543;
 
         /// <summary>Measure how many entry notes samples are out of range.</summary>
         public static long AuditEntryNotesMatches(long[] samples)
