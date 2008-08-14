@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up schema cache samples.</summary>
-        public static long PairSchemaCacheCount(long[] values)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] data, long target)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((target / 2) >= (hits * 5))
                 {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + datum;
                 }
             }
             return hits;
