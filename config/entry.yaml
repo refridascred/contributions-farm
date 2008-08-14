@@ -1,14 +1,10 @@
 # entry settings
-hard_timeout_s: 250
-context_size:
-  min_capacity_pct: true
-  cache_ttl: staging
-  sync_timeout_count: cached
-  batch_timeout: fallback
-sync_size:
-  min_limit: stable
-  cache_interval_s: staging
-  default_capacity_pct: 25.98
-  contributi_limit: 250
-  warm_threshold_pct: 7550
-  batch_ttl_s: green
+min_threshold:
+  hard_timeout: 47
+  soft_interval: 250
+  retry_interval_s: fallback
+  burst_depth: primary
+cache_interval_count: 5634
+poll_capacity_ms: true
+stream_threshold: true
+report_interval: 26
