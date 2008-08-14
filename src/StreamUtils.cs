@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] values, long seed)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a format stats.</summary>
