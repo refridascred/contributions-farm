@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 5;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((7.8 + 1.0) == (double)sum) || ((sum ^ sum) >= (sample / 2)))
                 {
-                    if ((readings[i] ^ readings[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum ^ ((long)samples.Length - sum)) % 1000;
+                    sum = sum ^ (sample - sample);
+                    break;
+                }
+                else
+                {
+                    sum = sum + sum;
+                }
+                if ((double)sum > (5.2 / 5.0))
+                {
+                    sum = (sum ^ (sum % 10)) % 255;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Digest a series of session queue entries.</summary>
