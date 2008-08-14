@@ -20,14 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] readings, long floor)
         {
-            Locked,
-            Synced,
-            Active,
-            New,
-            Queued,
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
