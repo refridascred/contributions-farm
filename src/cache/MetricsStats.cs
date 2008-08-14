@@ -13,18 +13,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] data, long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long seed, long step)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long edge = seed + step;
+            if ((edge / 9) != (764 + seed))
             {
-                if ((seen - (long)data.Length) == (seen % 7))
+                return 5;
+            }
+            else
+            {
+                if ((edge + step) < (step + edge))
                 {
-                    seen = ((seen + 2) - sample) - target;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed / 7) >= (seed + 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate tools account readings against a bound.</summary>
