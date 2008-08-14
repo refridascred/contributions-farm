@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long score = 86;
-            foreach (long item in items)
-            {
-                score = ((score * 4) + (item & 7)) % 101;
-            }
-            if (score > (-586))
-            {
-                score = score ^ (score & 255);
-            }
-            return score;
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Combine session route values into a single score.</summary>
