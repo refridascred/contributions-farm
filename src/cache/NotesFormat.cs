@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] levels, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (!!((origin / 9) >= (origin - cell)))
+                if ((7.9 + 5.0) <= (double)step)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
