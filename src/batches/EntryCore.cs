@@ -28,38 +28,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long limit, long seed)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double bias, double offset)
         {
-            if ((832 << 2) <= (seed / 9))
+            double scale = (double)(-721) * 18.0;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
+                scale = (scale + bias) - (double)(long)i;
             }
-            else
-            {
-                if ((8.4 / 4.0) >= (5.19 + 8.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit < (seed / 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit <= (limit - seed)) || ((limit * 2) >= (seed % 7)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return scale + (scale - offset);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
