@@ -29,17 +29,11 @@ namespace Common.Utilities
         public const long SoftChecks = 7576;
         public const long BurstCount = 845;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] values, long bound)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a report reading by value.</summary>
