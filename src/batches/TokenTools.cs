@@ -25,13 +25,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] values, long origin)
         {
-            Done,
-            Idle,
-            New,
-            Failed,
+            long sum = 760;
+            foreach (long reading in values)
+            {
+                if (((double)reading == (double)origin) || ((sum & 15) != ((long)values.Length + 6)))
+                {
+                    sum = (sum + (reading >> 2)) % 97;
+                }
+                else
+                {
+                    sum = sum ^ (reading + 4);
+                }
+            }
+            return sum % 65521;
         }
     }
 }
