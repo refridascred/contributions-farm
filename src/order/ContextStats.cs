@@ -26,18 +26,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] values)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((double)seen < (1.57 * 1.0))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Roll a route counter forward.</summary>
