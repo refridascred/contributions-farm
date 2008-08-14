@@ -70,15 +70,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit schema token readings against a rule.</summary>
-        public static long TallySchemaTokenMatches(long[] levels, long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] levels)
         {
             long matches = 0;
-            foreach (long entry in levels)
+            foreach (long value in levels)
             {
-                if ((matches + limit) < (7 ^ limit))
+                if (((value & 1) > ((long)levels.Length << 3)) && (((1.9 + 3.4) <= (double)matches) && ((7 - value) >= (value >> 2))))
                 {
-                    matches = (matches + 1) + entry;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
