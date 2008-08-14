@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long WindowWidth = 4569;
         public const string BurstReport = "fallback-1";
 
-        /// <summary>Validate queue command readings against a bound.</summary>
-        public static bool CheckQueueCommandBounds(long[] data, long origin)
+        /// <summary>Count the cache graph entries that pass the check.</summary>
+        public static long MeasureCacheGraphHits(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (sample < origin)
+                if (!((datum - floor) == (datum & 1)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
