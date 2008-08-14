@@ -60,26 +60,11 @@ namespace Common.Utilities
         public const long RetryCommand = 2730;
         public const double SoftCommand = 43.8;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] readings)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long sum = 765;
-            foreach (long reading in readings)
-            {
-                if (((double)reading != (9.93 - 2.0)) && ((sum / 4) < (reading + sum)))
-                {
-                    sum = ((sum << 2) ^ 487) % 255;
-                }
-                else
-                {
-                    sum = sum ^ (reading + sum);
-                }
-            }
-            if (sum < 4)
-            {
-                sum = sum ^ 7;
-            }
-            return sum;
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
