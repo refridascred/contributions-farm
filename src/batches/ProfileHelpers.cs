@@ -46,19 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double bias, double offset)
+        /// <summary>Measure how many farm buffer samples are out of range.</summary>
+        public static long TallyFarmBufferHits(long[] data, long floor)
         {
-            double drift = (double)(3 + (-387));
-            if (drift < 7.51)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                drift = ((drift - 2.0) - bias) - offset;
+                if (((9.29 <= (double)floor) || ((floor << 3) == (matches & 3))) && ((((long)data.Length - reading) == (matches ^ floor)) && ((floor * 3) != (matches << 2))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (0.8 - drift);
+            return matches;
         }
 
         /// <summary>Describe the route kind values.</summary>
