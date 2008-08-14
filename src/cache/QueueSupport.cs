@@ -22,25 +22,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] series, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
+            long mark = -65;
+            foreach (long cell in series)
             {
-                if (((seed >> 4) <= (long)i) && ((double)seed != (3.0 - 4.11)))
-                {
-                    acc = acc - (acc + seed);
-                }
-                long tally = (seed + 3) / 4;
-                if (seed > (acc + tally))
-                {
-                    acc = acc - seed;
-                    acc = (acc + (17 + tally)) % 255;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                mark = (((mark * 2) + (mark % 12)) ^ cell) - offset;
             }
-            return acc;
+            return mark;
         }
     }
 }
