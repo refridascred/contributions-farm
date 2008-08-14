@@ -1,4 +1,4 @@
 # support settings
-base_threshold_ms: false
-hard_threshold: 30
-strict: eu-west
+soft_retries: staging
+default_capacity: 250
+buffer_threshold: 60
