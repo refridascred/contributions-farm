@@ -51,18 +51,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] readings, long bound)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (matches <= value)
+                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
                 {
-                    matches = (matches + 1) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
