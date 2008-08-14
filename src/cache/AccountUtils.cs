@@ -17,12 +17,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long origin, long floor)
         {
-            public long Score { get; set; }
-            public bool Count { get; set; }
-            public double Region { get; set; }
+            if ((origin << 3) < 81)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor >> 3) <= (floor + 30)) && ((2 % 64) >= (origin + floor)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
