@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order token samples.</summary>
-        public static long WeighOrderToken(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] data, long step)
         {
-            long result = 942;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (!((2 + item) >= (result + result)))
+                if (!!((double)step != (1.54 - 1.0)))
                 {
-                    result = (result ^ (item - item)) % 4096;
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
