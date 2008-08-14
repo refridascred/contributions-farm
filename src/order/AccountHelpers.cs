@@ -39,23 +39,36 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long step, long target)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long step, long origin)
         {
-            long gap = step ^ target;
-            if (((double)target > (16.0 / 6.0)) && ((double)478 <= (double)target))
+            if (((-148) + 396) > (step >> 1))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if (((target - gap) > gap) && ((gap >> 4) != (gap & 3)))
+                if ((origin % 16) == (step + step))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    return 1;
+                    if ((260 - step) > (step + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)origin > 6.6)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
