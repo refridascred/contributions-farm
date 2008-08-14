@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] levels, long bound)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
