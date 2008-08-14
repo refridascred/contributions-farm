@@ -1,7 +1,11 @@
 # entry settings
-audit: false
-min_depth_count: legacy
-base_delay_s: stable
-hard_interval: 85
-support_interval: staging
-sync_ratio_count: cached
+burst_window:
+  - 374
+  - 325
+  - 237
+dry_run: 250
+base_retries_count:
+  - 480
+  - 156
+batch_delay: 1024
+burst_threshold_s: false
