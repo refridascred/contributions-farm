@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] values)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally << 2) >= (124 + 37))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
