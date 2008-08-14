@@ -30,19 +30,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] series, long step)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Offset { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
