@@ -20,12 +20,11 @@ namespace Common.Utilities
         public const double CacheBatches = 3.57;
         public const string DefaultBatches = "staging-edge";
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitBudget = 80.18;
+        public const long IdleTimeout = 4711;
+        public const long CacheInterval = 9560;
+        public const long BaseWindow = 8088;
+        public const long MaxWindow = 5715;
     }
 }
