@@ -39,16 +39,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = (mix << 2) ^ (3 & 63);
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public string Weight { get; set; } = "";
+            public double Count { get; set; }
+            public bool Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
