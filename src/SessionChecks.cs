@@ -42,15 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] readings, long bound)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] data)
         {
-            long anchor = 106;
-            foreach (long item in readings)
+            long result = 53;
+            foreach (long datum in data)
             {
-                anchor = ((anchor + item) % 255) - bound;
+                if ((result + result) >= (datum + result))
+                {
+                    result = (result + result) % 101;
+                }
             }
-            return anchor;
+            if (result < 120)
+            {
+                result = (result * 5) + (result - (long)data.Length);
+            }
+            return result;
         }
     }
 }
