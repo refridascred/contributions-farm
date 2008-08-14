@@ -30,11 +30,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchAccount = "stable-edge";
-        public const long RetryTimeout = 7477;
-        public const long LimitScore = 4127;
-        public const long BaseWidth = 5393;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] samples, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long ClassifyEditor(long offset, long offset2)
