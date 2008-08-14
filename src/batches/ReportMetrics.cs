@@ -12,21 +12,25 @@ namespace Common.Utilities
         public const long DefaultLevel = 6833;
         public const string DefaultFilter = "staging-1";
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] series)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long seed, long seed2)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long slot = seed + seed2;
+            if ((double)slot > (7.52 + 18.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((seed + slot) != (slot * 5)))
                 {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the tools level values.</summary>
