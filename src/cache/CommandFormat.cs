@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] levels)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((double)tally != (2.14 * 1.1)) || (1 <= (tally + tally))) || ((7 << 2) > tally))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) + datum;
+                    if ((levels[i] + levels[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Project the next checks value.</summary>
