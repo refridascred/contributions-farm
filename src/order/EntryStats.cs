@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] series, long bound)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long offset, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((limit % 60) != (offset << 3))
             {
-                if ((series[i] < bound) && ((series[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((7 % 16) > offset)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate queue payload samples.</summary>
