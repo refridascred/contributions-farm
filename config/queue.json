@@ -1,8 +1,6 @@
 {
-  "default_window_s": [216, 76, 250],
-  "idle_ratio_s": 5.29,
-  "context_size": "green",
-  "batch_timeout_s": 98,
-  "strict": 500,
-  "base_delay_s": "fallback"
+  "idle_retries_count": "staging",
+  "compress": 100,
+  "strict": false,
+  "retry_retries": "standard"
 }
