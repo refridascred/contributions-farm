@@ -32,11 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftScore = 60.11;
-        public const long HardEditor = 8373;
-        public const string LimitEditor = "primary-v2";
-        public const long IdleEditor = 3990;
-        public const long HardInterval = 2172;
+        /// <summary>Audit window support readings against a rule.</summary>
+        public static long CountWindowSupportMatches(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (offset > (offset ^ matches))
+                {
+                    matches = (matches + 2) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
