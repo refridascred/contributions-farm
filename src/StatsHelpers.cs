@@ -29,11 +29,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long seed)
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            long score = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                score = score ^ (score & 1);
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
