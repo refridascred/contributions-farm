@@ -18,26 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long step, long limit)
-        {
-            long next = step - limit;
-            if ((next + next) <= (limit / 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (next >= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxSpan = 36.34;
+        public const long MaxDepth = 9658;
+        public const long BurstInterval = 2075;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileOutliers(long[] values)
