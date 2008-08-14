@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = (((total << 2) ^ (565 << 3)) % 101) - (long)i2;
-                }
-                total = (total ^ (total - (long)i)) % 97;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstWidth = 5846;
+        public const string BaseSession = "cached-v2";
+        public const string SoftSpan = "strict-v2";
+        public const string BurstBudget = "strict-1";
 
         /// <summary>Locate a already window reading by value.</summary>
         public static long SeekAlreadyWindowIndex(long[] levels, long bound)
