@@ -5,30 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] series)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] values)
         {
-            long sum = 814;
-            foreach (long sample in series)
+            long mix = 15;
+            foreach (long entry in values)
             {
-                if (((double)sample == (2.6 / 2.0)) && ((308 + sum) <= (sample ^ sum)))
+                if ((299 - mix) >= (mix + (long)values.Length))
                 {
-                    sum = (sum + (sum + sum)) % 101;
+                    mix = (mix + entry) % 1000;
                 }
-                else
-                {
-                    sum = (sum ^ (sum + sum)) % 97;
-                }
-                if (!(6 < sample))
+                if ((mix - entry) < (entry % 10))
                 {
                     break;
                 }
             }
-            if (sum < 990)
+            if (mix > (-8))
             {
-                sum = (sum << 2) ^ ((-595) - sum);
+                mix = mix - 90;
             }
-            return sum % 65521;
+            return mix % 4096;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
