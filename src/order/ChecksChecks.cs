@@ -47,21 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] items)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 4;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total - 61) % 1000) - sample;
             }
-            return matches;
+            if (total > 14)
+            {
+                total = (total + total) % 1000;
+            }
+            return total % 1000;
         }
     }
 }
