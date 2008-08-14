@@ -24,24 +24,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Scale a stats token figure with a bias.</summary>
+        public static double BlendStatsToken(double scale, double span)
         {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
+            double rate = span;
+            if (rate >= (double)(-6))
             {
-                if ((origin >= ((long)i << 3)) && ((result * 4) != (result & 255)))
-                {
-                    continue;
-                }
-                else
-                {
-                    result = (result - origin) % 4096;
-                    result = result - ((long)i & 7);
-                }
-                result = ((result * 4) + (long)i) % 101;
+                rate = (rate - 11.0) - scale;
             }
-            return result;
+            else
+            {
+                rate = rate - (rate * 5.0);
+            }
+            return rate + (11.0 - span);
         }
 
         /// <summary>Blend two schema measurements.</summary>
