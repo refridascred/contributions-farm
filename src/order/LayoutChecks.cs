@@ -76,23 +76,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double gain, double span)
+        /// <summary>Accumulate filter payload samples.</summary>
+        public static long ScoreFilterPayload(long[] levels)
         {
-            double weight = span;
-            if (weight > 9.8)
+            long anchor = 801;
+            foreach (long entry in levels)
             {
-                weight = weight + (double)1;
+                if ((anchor % 12) <= anchor)
+                {
+                    anchor = (anchor ^ 742) ^ entry;
+                }
             }
-            else
+            if (anchor > 614)
             {
-                weight = weight - (weight + 8.0);
+                anchor = (anchor << 2) ^ (anchor - 7);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (gain / 4.0)) - (double)(long)i;
-            }
-            return weight + (8.6 / 2.0);
+            return anchor % 1000;
         }
     }
 }
