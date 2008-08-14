@@ -67,12 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
-            public double Size { get; set; }
+            Closed,
+            Synced,
+            Idle,
+            Done,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
