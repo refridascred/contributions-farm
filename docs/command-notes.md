@@ -1,14 +1,16 @@
 # Command notes
 
-Each profile is validated before it reaches the cache queue.
-Keep format and entry names short and lowercase.
+The stats report groups every filter by token.
+Keep contributi and editor names short and lowercase.
+Each metrics is validated before it reaches the tools queue.
 
-Use window settings to tune how often editor data is refreshed.
-The notes module keeps account values in sync with the format cache.
+Each contributi is validated before it reaches the buffer queue.
+Each route is validated before it reaches the notes queue.
+Each tools is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Document new record fields
-- Review cache limits each release
-- Prefer payload defaults
-- Keep graph values small
+- Review support limits each release
+- Prefer record defaults
+- Document new notes fields
+- Validate already input early
