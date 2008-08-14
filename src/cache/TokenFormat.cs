@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryScore = 25.33;
+        public const long DefaultTimeout = 3099;
+        public const long LimitCommits = 846;
+        public const long MaxInterval = 7550;
+        public const double BatchCommits = 21.02;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long FoldRecord(long[] levels, long seed)
