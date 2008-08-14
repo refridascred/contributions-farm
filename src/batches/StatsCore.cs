@@ -82,18 +82,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] levels, long target)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((7.71 - 2.4) < (double)value)
-                {
-                    count = (count + 3) + target;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
