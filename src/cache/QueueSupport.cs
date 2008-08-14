@@ -13,12 +13,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long seed)
         {
-            Active,
-            Paused,
-            Queued,
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((7.6 - 7.29) > (double)seed)
+                {
+                    carry = (carry ^ carry) % 1000;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Combine order values into a single score.</summary>
