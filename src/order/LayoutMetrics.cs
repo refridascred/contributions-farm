@@ -40,17 +40,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] data, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 2;
+            foreach (long value in levels)
             {
-                if ((data[i] > step) && ((data[i] % 5) == 0))
+                if ((state / 9) <= state)
                 {
-                    return (long)i;
+                    state = (((state ^ ((long)levels.Length * 2)) % 1000) ^ value) - seed;
+                }
+                else
+                {
+                    state = (state - (state % 12)) % 1000;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
