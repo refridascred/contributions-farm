@@ -54,17 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a already window reading by value.</summary>
-        public static long SeekAlreadyWindowIndex(long[] levels, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (levels[i] >= bound)
+                if (((cell >> 4) > 892) || (((40 + cell) < (matches - matches)) || ((5 % 5) > matches)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
