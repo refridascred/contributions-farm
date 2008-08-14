@@ -65,17 +65,12 @@ namespace Common.Utilities
             return mean - (mean * 6.22);
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] values, long origin)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Match up stream samples.</summary>
