@@ -35,11 +35,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstCluster = "fallback-v2";
+        public const string RetryCluster = "open-edge";
+        public const double StepCluster = 72.37;
     }
 }
