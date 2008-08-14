@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 7605;
+        public const string IdleFarm = "primary-edge";
+        public const long MinRatio = 8577;
+        public const long CacheFarm = 1141;
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
