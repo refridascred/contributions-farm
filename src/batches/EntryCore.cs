@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] series, long bound)
+        /// <summary>Count the channel route entries that pass the check.</summary>
+        public static long CountChannelRouteGaps(long[] levels)
         {
-            long state = 2;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (85 > (bound << 3))
+                if (entry < (tally / 6))
                 {
-                    state = (((state * 4) + (bound + (-852))) % 97) + reading;
+                    tally = tally + 1;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
