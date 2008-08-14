@@ -32,11 +32,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long seed, long bound)
         {
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long slot = seed + bound;
+            if (bound > (bound >> 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound + seed) < (seed ^ slot))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((slot + bound) < (slot ^ bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count editor report pairs that satisfy a relation.</summary>
