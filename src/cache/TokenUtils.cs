@@ -26,9 +26,25 @@ namespace Common.Utilities
         public const long LimitStats = 5297;
         public const double BatchRatio = 55.89;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheWidth = 26.83;
-        public const long IdleSize = 9582;
-        public const long CacheFormat = 1030;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long floor, long origin)
+        {
+            long edge = floor ^ origin;
+            if (!((edge & 3) > (54 + origin)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin >> 1) != (floor + floor)) || ((floor + edge) < ((-229) >> 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
