@@ -31,19 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] series, long limit)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Active,
+            Synced,
+            Done,
         }
     }
 }
