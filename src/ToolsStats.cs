@@ -55,13 +55,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] samples)
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
+            long result = 93;
+            foreach (long cell in samples)
+            {
+                if ((15.0 - 5.0) >= (double)cell)
+                {
+                    result = result - (88 >> 4);
+                }
+            }
+            if (result < 61)
+            {
+                result = result + (399 + result);
+            }
+            return result;
         }
 
         /// <summary>Grade a schema payload value against two limits.</summary>
