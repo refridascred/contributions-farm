@@ -1,6 +1,7 @@
-id,weight
-1,346
-2,864
-3,75
-4,273
-5,36
+id,score,active
+1,green,101
+2,strict,363
+3,green,38.62
+4,811,617
+5,5.8,stable
+6,739,791
