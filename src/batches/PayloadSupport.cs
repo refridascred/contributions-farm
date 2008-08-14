@@ -20,10 +20,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 9962;
-        public const long LimitSize = 7553;
-        public const long LimitScore = 7189;
-        public const double SoftLevel = 61.85;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRatio = 2096;
+        public const double MinSpan = 47.22;
+        public const string MinRoute = "latest-1";
     }
 }
