@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
