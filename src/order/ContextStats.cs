@@ -40,18 +40,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit session already readings against a rule.</summary>
-        public static long MeasureSessionAlreadyGaps(long[] items, long bound)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long bound)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((((73 >> 1) >= seen) || ((seen + cell) <= cell)) && ((bound + cell) >= (bound + (-303))))
+                if (4 < (total * 3))
                 {
-                    seen = seen + 3;
+                    total = (total + bound) % 255;
+                    total = (total ^ bound) % 101;
                 }
+                else
+                {
+                    total = (total << 3) ^ (total + (long)i);
+                }
+                total = ((total << 3) ^ (bound & 255)) % 65521;
+                if ((double)bound == (8.5 + 7.68))
+                {
+                    total = ((total * 3) + (bound + bound)) % 255;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
     }
 }
