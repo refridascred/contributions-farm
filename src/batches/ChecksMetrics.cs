@@ -19,19 +19,15 @@ namespace Common.Utilities
         public const long SoftChecks = 7576;
         public const long BurstCount = 845;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] values, long bound)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long score = -740;
+            foreach (long item in values)
             {
-                if (datum >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score - (21 - step)) % 65521) + item;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Locate a report reading by value.</summary>
