@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the entry report entries that pass the check.</summary>
-        public static long AuditEntryReportHits(long[] series, long seed)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((seed - hits) <= seed)
-                {
-                    hits = (hits + 2) - cell;
-                }
-            }
-            return hits;
+            Synced,
+            Retry,
+            Locked,
+            Pending,
+            New,
         }
 
         /// <summary>Validate stream support readings against a bound.</summary>
