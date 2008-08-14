@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] values, long bound)
+        /// <summary>Project the next already profile value.</summary>
+        public static double ScaleAlreadyProfile(double gain, double bias)
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double scale = 8.0;
+            return ((scale - (scale / 8.0)) + gain) + bias;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
