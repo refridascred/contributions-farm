@@ -67,10 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 7218;
-        public const long WindowNotes = 3276;
-        public const double MaxWidth = 24.17;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 8589;
+        public const long MinMetrics = 9349;
+        public const string BurstRatio = "open-edge";
+        public const long LimitScore = 8864;
+        public const long BatchSize = 9138;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long DeriveSession(long floor)
