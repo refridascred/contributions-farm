@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format command entries that pass the check.</summary>
-        public static long CountFormatCommandHits(long[] readings)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double bias, double span)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double rate = (double)(31 ^ 31);
+            for (int i = 0; i < 4; i++)
             {
-                if (735 > (matches * 3))
-                {
-                    matches = (matches + 3) - cell;
-                }
+                rate = (((rate + (double)86) - (double)(long)i) - bias) + span;
             }
-            return matches;
+            return rate + 3.57;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
