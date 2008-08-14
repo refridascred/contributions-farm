@@ -28,26 +28,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)carry < (7.41 * 4.59))
-                {
-                    carry = (carry - (carry >> 4)) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 2) + ((long)i % 12)) % 97;
-                }
-                carry = (carry ^ (carry + carry)) % 101;
-                carry = (carry ^ limit) % 65521;
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseLevel = 57.03;
+        public const double RetrySize = 27.93;
+        public const double RetryChecks = 94.94;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphGaps(long[] series)
