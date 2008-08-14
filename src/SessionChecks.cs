@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] items)
-        {
-            long carry = 6;
-            foreach (long item in items)
-            {
-                if (item < (4 + carry))
-                {
-                    carry = ((carry * 4) + (item - 6)) % 65521;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardTimeout = 8547;
+        public const double BaseTimeout = 96.0;
+        public const long BurstScore = 8967;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long RankQueue(long limit, long limit2)
