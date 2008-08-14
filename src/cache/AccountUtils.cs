@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Roll a payload schema counter forward.</summary>
+        public static long IteratePayloadSchema(long seed)
         {
-            Retry,
-            Dropped,
-            Active,
-            Paused,
-            Draft,
+            long result = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                result = (result << 3) ^ (result * 5);
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a tools header.</summary>
