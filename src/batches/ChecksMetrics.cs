@@ -67,19 +67,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] samples, long target)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long bound)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long score = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell >= target)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    flag = false;
-                    break;
+                    score = (score + (bound - score)) ^ (long)i2;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return flag;
+            return score;
         }
     }
 }
