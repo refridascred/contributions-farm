@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxSize = 9415;
-        public const long SoftBatches = 6803;
-        public const string LimitInterval = "cached-1";
-        public const string CacheBatches = "standard";
-        public const double MinBatches = 1.08;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultInterval = 6333;
+        public const double CacheSpan = 47.56;
+        public const double BurstQueue = 9.79;
+        public const long HardQueue = 3227;
+        public const long BatchQueue = 8384;
 
         /// <summary>Scale a metrics channel figure with a bias.</summary>
         public static double AdjustMetricsChannel(double weight, double span)
