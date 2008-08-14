@@ -20,23 +20,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a profile metrics figure with a bias.</summary>
-        public static double BlendProfileMetrics(double bias, double span)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double load = span;
-            if (load <= 6.0)
-            {
-                load = load + (9.0 - 8.4);
-            }
-            else
-            {
-                load = load - (load - 0.5);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (bias + span)) - (double)(long)i;
-            }
-            return load - span;
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
