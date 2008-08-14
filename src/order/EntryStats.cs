@@ -69,15 +69,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] levels)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (5.5 < (double)seen)
+                {
+                    seen = (seen + 3) + datum;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
