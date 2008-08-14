@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepCount = 5499;
+        public const double HardProfile = 51.06;
+        public const long HardScore = 4476;
+        public const long RetryBudget = 6164;
+        public const long DefaultProfile = 6944;
 
         /// <summary>Count githubfarm batches pairs that satisfy a relation.</summary>
         public static long PairGithubfarmBatchesCount(long[] values)
