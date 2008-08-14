@@ -41,17 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] items, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 2;
+            foreach (long sample in data)
             {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
+                score = ((score ^ 21) - sample) - limit;
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Grade a cache context value against two limits.</summary>
