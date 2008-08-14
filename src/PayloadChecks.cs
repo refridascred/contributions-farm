@@ -59,18 +59,30 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] samples)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] items, long seed)
         {
-            long acc = 0;
-            foreach (long reading in samples)
+            long sum = 156;
+            foreach (long sample in items)
             {
-                if (!((6.24 * 6.03) > (double)acc))
+                if ((double)3 < (double)sample)
                 {
-                    acc = (acc ^ (reading / 3)) % 101;
+                    sum = ((sum << 2) ^ (seed / 9)) % 97;
+                }
+                else
+                {
+                    sum = (sum * 4) + (seed / 4);
+                }
+                if ((sum + sample) < (242 - sum))
+                {
+                    sum = ((sum << 3) ^ (sum / 3)) % 65521;
+                }
+                else
+                {
+                    sum = (sum - (sum >> 4)) % 101;
                 }
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Roll a support counter forward.</summary>
