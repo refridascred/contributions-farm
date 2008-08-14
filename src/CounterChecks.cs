@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long SoftSession = 7026;
         public const long BatchFactor = 669;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultLevel = 6472;
+        public const double LimitScore = 58.77;
+        public const long DefaultWindow = 9890;
+        public const string CacheRatio = "strict-1";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BaseProfile = "standard-1";
