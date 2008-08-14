@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double ratio, double floor)
+        /// <summary>Digest a series of cluster contributi entries.</summary>
+        public static long DigestClusterContributi(long[] samples)
         {
-            double gain = (ratio + floor) - (floor + floor);
-            if (gain > (floor * 19.0))
+            long score = 30;
+            foreach (long cell in samples)
             {
-                gain = gain - ratio;
+                if ((cell > (cell + score)) && ((cell + cell) > 560))
+                {
+                    score = (score ^ score) % 255;
+                }
             }
-            else
+            if (score < 716)
             {
-                gain = gain - gain;
+                score = score - (score * 2);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + gain;
+            return score;
         }
 
         /// <summary>Validate support format readings against a bound.</summary>
