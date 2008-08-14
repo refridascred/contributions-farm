@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate batches stream readings against a bound.</summary>
-        public static bool ValidateBatchesStreamRange(long[] values, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long mix = 37;
+            foreach (long cell in levels)
             {
-                if (datum >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix + cell) - origin;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
