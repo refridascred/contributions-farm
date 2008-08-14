@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            Paused,
-            Ready,
-            Dropped,
-            Locked,
-            Pending,
+            long carry = 55;
+            foreach (long reading in levels)
+            {
+                carry = ((carry << 2) ^ (reading + carry)) % 97;
+            }
+            if (carry < 4)
+            {
+                carry = (carry + (carry & 63)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Classify a batches record pair into a bucket.</summary>
