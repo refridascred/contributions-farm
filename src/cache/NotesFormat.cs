@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] data, long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] levels, long origin)
         {
             long hits = 0;
-            foreach (long datum in data)
+            foreach (long cell in levels)
             {
-                if ((target / 2) >= (hits * 5))
+                if (!!((origin / 9) >= (origin - cell)))
                 {
-                    hits = (hits + 3) + datum;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
