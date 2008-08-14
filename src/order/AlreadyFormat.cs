@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] readings)
         {
-            Done,
-            Draft,
-            Queued,
-            Stale,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (1.0 > (double)entry)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the order kind values.</summary>
