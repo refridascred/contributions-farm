@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double SoftCount = 34.87;
-        public const long HardBuffer = 1239;
-        public const double HardTimeout = 92.31;
-        public const long RetryBuffer = 7961;
-        public const long WindowRatio = 5840;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] data, long step)
