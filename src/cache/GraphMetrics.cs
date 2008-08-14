@@ -32,18 +32,22 @@ namespace Common.Utilities
             return gain2 - gain2;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] data, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] data, long offset)
         {
-            long acc = 715;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (((13 << 3) >= (seed * 4)) && ((entry + acc) < (entry + 41)))
+                if ((tally + 3) < (cell << 3))
                 {
-                    acc = ((acc << 3) ^ seed) % 255;
+                    tally = (tally + 3) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Validate stream batches readings against a bound.</summary>
