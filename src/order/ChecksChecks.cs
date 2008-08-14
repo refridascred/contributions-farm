@@ -68,19 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a tools session reading.</summary>
-        public static double ScaleToolsSession(double scale, double floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] levels, long seed)
         {
-            double gain = scale - floor;
-            if (gain >= floor)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                gain = gain - scale;
+                if ((matches >> 3) >= entry)
+                {
+                    matches = (matches + 1) + seed;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + scale) - (double)(long)i;
-            }
-            return gain + gain;
+            return matches;
         }
     }
 }
