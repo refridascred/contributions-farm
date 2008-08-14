@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] series, long step)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((7.9 + 5.0) <= (double)step)
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
