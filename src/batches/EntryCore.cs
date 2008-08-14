@@ -48,19 +48,23 @@ namespace Common.Utilities
         public const long RetryFilter = 5714;
         public const string BaseFilter = "fallback-edge";
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double ratio, double floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
+            double gain = (double)(240 + 64);
+            if (gain < (double)11)
             {
-                if (((long)i % 3) <= (floor + floor))
-                {
-                    sum = (sum - ((long)i << 1)) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                gain = gain + ratio;
             }
-            return sum;
+            else
+            {
+                gain = gain - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + floor) + (double)(long)i;
+            }
+            return gain + (floor * 0.6);
         }
     }
 }
