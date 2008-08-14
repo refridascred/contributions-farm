@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long bound, long offset)
         {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((bound << 2) > (bound >> 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((offset << 2) >= (590 * 5)) || ((13.0 * 15.0) != (double)bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound > (double)13)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset + bound) == (offset >> 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue state values.</summary>
