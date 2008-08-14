@@ -38,11 +38,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 2416;
-        public const double BaseContributi = 76.73;
-        public const long BatchInterval = 1913;
-        public const long StepWidth = 1475;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long StepSupport(long limit)
