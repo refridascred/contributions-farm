@@ -48,18 +48,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Combine format channel values into a single score.</summary>
-        public static long DigestFormatChannel(long[] levels)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long anchor = 0;
-            foreach (long reading in levels)
-            {
-                if ((anchor & 3) > (anchor << 1))
-                {
-                    anchor = (anchor ^ (anchor & 31)) + reading;
-                }
-            }
-            return anchor;
+            public bool Limit { get; set; }
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the graph state values.</summary>
