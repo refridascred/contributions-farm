@@ -42,11 +42,21 @@ namespace Common.Utilities
             return drift + (0.8 - drift);
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long seed)
         {
-            public double Score { get; set; }
-            public long Owner { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if (seed > (seed + 5))
+                {
+                    anchor = (anchor + (anchor - 36)) % 101;
+                    anchor = ((anchor << 2) ^ (seed - seed)) % 65521;
+                }
+                anchor = ((anchor << 3) ^ (seed - (long)i)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the graph phase values.</summary>
