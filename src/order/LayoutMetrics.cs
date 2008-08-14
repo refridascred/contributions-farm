@@ -13,24 +13,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long limit, long seed)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] values, long floor)
         {
-            if ((limit + seed) != (seed + seed))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)limit != (double)246) || ((limit + seed) == (seed / 7)))
+                if (values[i] >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
