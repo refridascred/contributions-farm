@@ -24,10 +24,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheMetrics = 54.08;
-        public const double WindowBudget = 68.19;
-        public const long WindowSize = 3288;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftSpan = 2158;
+        public const long WindowProfile = 4415;
+        public const long MaxProfile = 4207;
+        public const long SoftProfile = 9676;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long SortLayout(long limit, long limit2)
