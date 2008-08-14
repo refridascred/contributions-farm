@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] readings, long step)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long offset)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry >= step)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
