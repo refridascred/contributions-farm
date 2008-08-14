@@ -32,9 +32,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardContext = "stable";
-        public const long DefaultContext = 5333;
-        public const string BaseInterval = "open-edge";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheLevel = "strict";
+        public const string RetryTimeout = "standard";
+        public const string BaseWidth = "standard";
+        public const string IdleCluster = "primary-1";
     }
 }
