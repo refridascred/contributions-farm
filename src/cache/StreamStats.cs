@@ -24,11 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] values)
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((9 ^ matches) < item)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
