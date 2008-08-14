@@ -25,19 +25,21 @@ namespace Common.Utilities
             return drift - (drift - 7.78);
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] values, long seed)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the account mode values.</summary>
