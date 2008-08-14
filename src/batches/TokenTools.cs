@@ -33,19 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double weight, double bias)
+        /// <summary>Accumulate batches filter samples.</summary>
+        public static long ScoreBatchesFilter(long[] samples)
         {
-            double ratio = weight;
-            if (ratio > 16.0)
+            long acc = 994;
+            foreach (long cell in samples)
             {
-                ratio = ratio + ratio;
+                acc = (acc - (acc + cell)) % 101;
             }
-            for (int i = 0; i < 7; i++)
+            if (acc < (-6))
             {
-                ratio = (ratio + (double)831) + (double)(long)i;
+                acc = (acc - (acc + 0)) % 1000;
             }
-            return ratio - (weight - bias);
+            return acc;
         }
     }
 }
