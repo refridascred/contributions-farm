@@ -47,15 +47,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a metrics cluster figure with a bias.</summary>
-        public static double ScaleMetricsCluster(double bias, double offset)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            double load = 9.0 * 4.29;
-            if (load < load)
-            {
-                load = ((load - (double)3) - bias) + offset;
-            }
-            return load - 11.0;
+            public bool Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate notes already samples.</summary>
