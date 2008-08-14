@@ -23,11 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseCount = 19.37;
-        public const long RetryRoute = 5005;
-        public const long BaseRoute = 6091;
-        public const string SoftTimeout = "fallback-edge";
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double scale, double bias)
+        {
+            double load = (bias - scale) / 2.0;
+            if (load >= (double)6)
+            {
+                load = load + (scale / 2.0);
+            }
+            else
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - (1.72 / 8.0);
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportHits(long[] values, long limit)
