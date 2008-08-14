@@ -1,15 +1,7 @@
 {
-  "dry_run": 250,
-  "default_limit": 48,
-  "min_delay": {
-    "max_timeout_pct": 75,
-    "batch_ratio": {
-      "sync_timeout": false,
-      "flush_interval": "local",
-      "warm_capacity_count": [210, 415, 42, 395],
-      "flush_limit": [236, 116]
-    },
-    "poll_retries_s": 36,
-    "order_ttl": "stable"
-  }
+  "verbose": 63,
+  "dry_run": "green",
+  "min_ttl_pct": "local",
+  "record_ttl": "staging",
+  "flush_window": 60
 }
