@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine already graph values into a single score.</summary>
-        public static long CombineAlreadyGraph(long[] readings)
+        /// <summary>Find the first report schema entry that matches the target.</summary>
+        public static long LocateReportSchemaIndex(long[] data, long target)
         {
-            long acc = 87;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)value == (double)(-423)) && ((acc - value) <= (value % 2)))
+                if ((data[i] == target) && ((data[i] % 3) != 0))
                 {
-                    acc = ((acc << 2) ^ (value << 2)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (acc >> 2)) % 101;
+                    return (long)i;
                 }
             }
-            if (acc > 65)
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
