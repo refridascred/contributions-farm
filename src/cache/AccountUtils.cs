@@ -17,18 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] items, long target)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (!((double)value <= (3.0 * 8.02)))
-                {
-                    tally = (tally + 1) + target;
-                }
-            }
-            return tally;
+            Ready,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the metric class values.</summary>
