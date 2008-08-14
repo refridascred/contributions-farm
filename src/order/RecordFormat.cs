@@ -20,13 +20,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Audit token cluster readings against a rule.</summary>
+        public static long AuditTokenClusterGaps(long[] data, long limit)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((limit ^ 151) == (limit << 3))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the farm kind values.</summary>
