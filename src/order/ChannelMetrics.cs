@@ -34,15 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] data)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] + data[j]) < 4)
+                    if ((items[i] ^ items[j]) < 12)
                     {
                         hits = hits + 1;
                     }
