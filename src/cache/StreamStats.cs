@@ -11,12 +11,25 @@ namespace Common.Utilities
         public const string BurstWindow = "strict-1";
         public const long MinInterval = 8123;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultFactor = 91.1;
-        public const long BurstProfile = 6539;
-        public const string StepProfile = "open-edge";
-        public const long MaxProfile = 464;
-        public const long DefaultProfile = 7070;
+        /// <summary>Classify a stats graph pair into a bucket.</summary>
+        public static long GradeStatsGraph(long bound, long bound2)
+        {
+            if ((bound % 10) > (bound2 + bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((313 >> 3) == (bound2 << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
