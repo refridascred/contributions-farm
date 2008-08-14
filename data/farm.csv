@@ -1,7 +1,8 @@
-id,count,label
-1,912,95.37
-2,staging,93.72
-3,62,staging
-4,50.2,edge
-5,341,local
-6,cached,317
+id,label
+1,168
+2,208
+3,stable
+4,471
+5,98
+6,480
+7,staging
