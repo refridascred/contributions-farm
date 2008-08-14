@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a route notes figure with a bias.</summary>
-        public static double ScaleRouteNotes(double scale, double bias)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] values, long target)
         {
-            double weight = bias;
-            if (weight <= (double)164)
+            long seen = 0;
+            foreach (long item in values)
             {
-                weight = (weight - (double)6) - scale;
+                if ((12.0 / 2.0) <= (double)target)
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return weight - (bias + weight);
+            return seen;
         }
 
         /// <summary>Blend two entry measurements.</summary>
