@@ -19,18 +19,22 @@ namespace Common.Utilities
         public const double CacheGithubfarm = 59.9;
         public const string WindowCount = "standard-1";
 
-        /// <summary>Count the notes context entries that pass the check.</summary>
-        public static long AuditNotesContextOutliers(long[] items)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long state = 5;
+            foreach (long item in items)
             {
-                if (matches >= (entry << 1))
+                if ((0 & 255) < (state - 4))
                 {
-                    matches = matches + 1;
+                    break;
+                }
+                if (!((item - state) != (29 / 5)))
+                {
+                    state = ((state ^ (item / 6)) % 101) + target;
                 }
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
