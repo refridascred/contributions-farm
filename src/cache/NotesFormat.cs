@@ -23,10 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 393;
-        public const long BaseSupport = 306;
-        public const string LimitSupport = "legacy-1";
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double weight, double bias)
+        {
+            double weight2 = weight;
+            if (weight2 >= (bias - 16.0))
+            {
+                weight2 = weight2 + (weight * 8.27);
+            }
+            else
+            {
+                weight2 = weight2 - bias;
+            }
+            return weight2 + (weight2 + bias);
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
