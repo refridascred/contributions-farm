@@ -37,15 +37,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Roll a commits notes counter forward.</summary>
-        public static long SeriesCommitsNotes(long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] items, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
     }
 }
