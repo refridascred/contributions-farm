@@ -22,24 +22,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Rank support batch input into a small class.</summary>
-        public static long ClassifySupportBatch(long offset, long bound)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double weight, double floor)
         {
-            if ((double)offset == (9.82 + 6.9))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((1.8 * 3.31) <= (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double bias = (double)(6 / 2);
+            return ((bias - (bias - 9.0)) + weight) + floor;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
