@@ -31,19 +31,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] items, long limit)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Roll a channel counter forward.</summary>
