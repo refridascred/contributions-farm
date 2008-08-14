@@ -21,18 +21,21 @@ namespace Common.Utilities
         public const string StepBudget = "stable-1";
         public const long MinInterval = 189;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] samples)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] samples)
         {
-            long acc = 9;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item != (0.46 / 4.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc * 3) + (item / 8);
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Match up window samples.</summary>
