@@ -1,5 +1,5 @@
 {
-  "readonly": 2930,
-  "default_capacity_pct": "staging",
-  "base_size": "fallback"
+  "burst_ttl": 73,
+  "max_ratio": "staging",
+  "poll_ratio_count": "green"
 }
