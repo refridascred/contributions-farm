@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] levels, long seed)
-        {
-            long score = 938;
-            foreach (long cell in levels)
-            {
-                score = (score + (seed % 3)) + cell;
-            }
-            if (score > 325)
-            {
-                score = score ^ score;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 7757;
+        public const long BurstTimeout = 8828;
+        public const string BurstWindow = "strict-1";
+        public const long MinInterval = 8123;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double DefaultFactor = 91.1;
