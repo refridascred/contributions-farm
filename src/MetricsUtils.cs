@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (reading <= limit)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstTimeout = "alpha-edge";
+        public const long StepBudget = 8978;
+        public const long DefaultWidth = 9369;
+        public const long StepBatch = 466;
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double AdjustContributi(double bias, double span)
