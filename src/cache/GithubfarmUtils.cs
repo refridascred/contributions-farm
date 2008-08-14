@@ -32,19 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long seed)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = (((sum * 3) + (sum >> 4)) % 101) ^ (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
