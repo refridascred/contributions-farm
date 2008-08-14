@@ -2,10 +2,13 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
-    weight REAL,
-    active INTEGER NOT NULL DEFAULT 1
+    rank INTEGER,
+    level INTEGER,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_count ON stream_events (count);
+CREATE INDEX IF NOT EXISTS idx_stream_events_level ON stream_events (level);
 
-INSERT INTO stream_events (count, weight, active) VALUES (40, 0.69, 41);
+INSERT INTO stream_events (count, rank, level, state) VALUES (37, 75, 46, 'blue');
+INSERT INTO stream_events (count, rank, level, state) VALUES (52, 12, 27, 'open');
+INSERT INTO stream_events (count, rank, level, state) VALUES (95, 94, 24, 'strict');
