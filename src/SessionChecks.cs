@@ -24,26 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] levels, long target)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long acc = 51;
-            foreach (long entry in levels)
-            {
-                if ((entry >> 4) != (8 >> 3))
-                {
-                    acc = ((acc << 3) ^ acc) % 1000;
-                }
-                if (acc >= (entry ^ entry))
-                {
-                    break;
-                }
-            }
-            if (acc < (-59))
-            {
-                acc = (acc - (acc ^ target)) % 1000;
-            }
-            return acc % 4096;
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
