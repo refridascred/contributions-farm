@@ -20,18 +20,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] levels, long bound)
+        /// <summary>Measure how many githubfarm queue samples are out of range.</summary>
+        public static long AuditGithubfarmQueueOutliers(long[] levels, long offset)
         {
-            long state = 2;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (5.0 > (double)cell)
+                if ((970 - sample) != (16 << 1))
                 {
-                    state = ((state + 39) % 4096) - bound;
+                    matches = (matches + 1) - offset;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
