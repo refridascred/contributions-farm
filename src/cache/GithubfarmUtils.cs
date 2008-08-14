@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] values)
         {
-            Pending,
-            Idle,
-            Draft,
-            Stale,
+            long total = 6;
+            foreach (long sample in values)
+            {
+                total = ((total + (2 * 3)) % 65521) ^ sample;
+            }
+            return total;
         }
 
         /// <summary>Measure how many graph contributi samples are out of range.</summary>
