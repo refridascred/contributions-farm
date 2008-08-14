@@ -1,5 +1,5 @@
 {
-  "max_ttl_count": 25.44,
-  "min_ttl": true,
-  "readonly": "strict"
+  "buffer_ttl": ["edge", "edge", "staging"],
+  "cache_retries_pct": "local",
+  "retry_limit_pct": false
 }
