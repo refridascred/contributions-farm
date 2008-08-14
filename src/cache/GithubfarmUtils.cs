@@ -22,23 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double gain, double span)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long bound, long origin)
         {
-            double load = (span / 2.0) * 3.6;
-            if (load < gain)
+            if ((3 % 64) >= (origin ^ bound))
             {
-                load = load + span;
+                return 7;
             }
             else
             {
-                load = load - (double)538;
+                if ((origin - origin) >= origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((origin + origin) >= (bound ^ 500)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (gain / 9.0);
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
