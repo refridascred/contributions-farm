@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long BurstRatio = 8169;
         public const long MinBudget = 4816;
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Ready,
-            Closed,
-            Active,
-            Failed,
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a queue header.</summary>
