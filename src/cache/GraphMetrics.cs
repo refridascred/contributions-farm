@@ -67,18 +67,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (seed < (seed % 12))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitWidth = "stable-1";
+        public const string MaxNotes = "alpha-edge";
+        public const long MaxFactor = 8762;
     }
 }
