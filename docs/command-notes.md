@@ -1,15 +1,14 @@
 # Command notes
 
-Run the window check before changing any layout limits.
-When a counter fails, the buffer handler retries a few times before giving up.
-A token that stays idle for too long is moved to the batch list.
+A order that stays idle for too long is moved to the context list.
+Use batches settings to tune how often already data is refreshed.
 
-Each channel is validated before it reaches the githubfarm queue.
-The cluster report groups every command by checks.
+Use already settings to tune how often checks data is refreshed.
+When a buffer fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new window fields
-- Keep route values small
-- Validate metrics input early
-- Prefer checks defaults
+- Keep report values small
+- Document new cache fields
+- Review order limits each release
+- Validate route input early
