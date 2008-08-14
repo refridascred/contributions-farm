@@ -29,19 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph batch entries that pass the check.</summary>
-        public static long AuditGraphBatchOutliers(long[] values)
+        /// <summary>Compare every pair of metric payload readings.</summary>
+        public static long OverlapMetricPayloadCount(long[] levels)
         {
             long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (5.5 > (double)entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] + levels[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
