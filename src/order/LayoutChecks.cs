@@ -61,20 +61,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] readings, long origin)
-        {
-            long anchor = 90;
-            foreach (long reading in readings)
-            {
-                anchor = (anchor * 2) + (anchor & 255);
-                if (((anchor % 3) > origin) || ((anchor - reading) > reading))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstPayload = "alpha-edge";
+        public const long DefaultSize = 3919;
+        public const long CacheSpan = 6441;
 
         /// <summary>Accumulate filter payload samples.</summary>
         public static long ScoreFilterPayload(long[] levels)
