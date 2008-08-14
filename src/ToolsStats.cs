@@ -48,39 +48,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long origin, long origin2)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double rate, double bias)
         {
-            long delta = origin + origin2;
-            if (delta >= (6 >> 4))
+            double mean = rate / 3.0;
+            if (mean < rate)
             {
-                return 2;
+                mean = (mean - rate) - bias;
             }
-            else
-            {
-                if (((double)origin2 < (double)origin) || ((origin2 - origin2) <= (origin2 << 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((delta / 5) == (7 + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin2 / 7) > origin2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mean + 9.2;
         }
 
         /// <summary>Describe the command state values.</summary>
