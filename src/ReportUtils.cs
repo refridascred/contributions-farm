@@ -25,17 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] series, long target)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > target) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
