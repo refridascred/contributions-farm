@@ -1,15 +1,7 @@
 # githubfarm settings
-sync_delay:
-  burst_timeout_count:
-    - green
-    - eu-west
-    - strict
-  commits_size:
-    - fallback
-    - open
-  cache_threshold_count: 42
-  batches_ratio: green
-max_limit:
-  - green
-  - primary
-hard_delay_s: green
+batch_retries_ms: 1024
+persist: standard
+warm_delay:
+  - blue
+  - cached
+  - open
