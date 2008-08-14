@@ -68,11 +68,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public long Count { get; set; }
-            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
