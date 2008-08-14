@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] levels)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long total = 69;
-            foreach (long sample in levels)
-            {
-                total = total + (sample + (-87));
-                total = ((total << 2) ^ (sample - 982)) % 101;
-                if ((total >= (7 ^ sample)) && (3 > total))
-                {
-                    total = ((total << 3) ^ (sample % 3)) % 1000;
-                }
-            }
-            return total % 65521;
+            Synced,
+            Ready,
+            Paused,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a metrics stats.</summary>
