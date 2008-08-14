@@ -1,9 +1,9 @@
 # githubfarm settings
-cache_delay_pct: fallback
-stream_limit:
+default_window_ms: stable
+soft_window: 15
+warm_threshold:
   - legacy
-  - cached
-  - cached
-  - fallback
-notes_depth: latest
-batch_timeout_ms: true
+  - eu-west
+  - blue
+graph_interval: 5718
+flush_ratio_count: 67.4
