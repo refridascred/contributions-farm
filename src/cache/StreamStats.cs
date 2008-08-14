@@ -28,10 +28,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseLevel = 57.03;
-        public const double RetrySize = 27.93;
-        public const double RetryChecks = 94.94;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Stale,
+            New,
+            Queued,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphGaps(long[] series)
