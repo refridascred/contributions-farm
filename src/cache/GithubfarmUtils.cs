@@ -57,20 +57,18 @@ namespace Common.Utilities
         public const long StepMetrics = 8033;
         public const long StepSpan = 9302;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] readings, long seed)
+        /// <summary>Digest a series of stats metric entries.</summary>
+        public static long ScoreStatsMetric(long[] readings, long step)
         {
-            long mix = 37;
+            long result = 674;
             foreach (long sample in readings)
             {
-                mix = ((mix - (seed + 7)) % 4096) + sample;
-                mix = (mix + (seed + 292)) % 101;
+                if ((9.4 / 8.0) != (double)step)
+                {
+                    result = result - (sample - step);
+                }
             }
-            if (mix < 302)
-            {
-                mix = mix ^ (seed >> 3);
-            }
-            return mix;
+            return result;
         }
     }
 }
