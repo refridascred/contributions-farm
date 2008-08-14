@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] readings, long origin)
+        /// <summary>Rank buffer queue input into a small class.</summary>
+        public static long ClassifyBufferQueue(long step, long bound)
         {
-            long result = 74;
-            foreach (long datum in readings)
+            if ((bound > (bound / 8)) && ((double)step < (double)bound))
             {
-                if ((datum - result) <= (origin >> 2))
+                return 7;
+            }
+            else
+            {
+                if (bound < (step * 2))
                 {
-                    result = (result + 156) % 1000;
+                    return 6;
+                }
+                else
+                {
+                    if (((step % 8) >= (bound / 3)) || ((double)step != (0.6 - 8.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (result > 996)
-            {
-                result = (result - (5 % 8)) % 97;
-            }
-            return result;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
