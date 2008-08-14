@@ -46,12 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Validate stream batches readings against a bound.</summary>
+        public static bool CheckStreamBatchesBounds(long[] values, long offset)
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
