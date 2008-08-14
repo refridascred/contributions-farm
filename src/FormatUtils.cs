@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] samples)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample >= (sample / 7)) || (hits > (sample - 848)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Ready,
+            Locked,
+            New,
+            Paused,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
