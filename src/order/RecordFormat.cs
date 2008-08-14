@@ -45,22 +45,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] series)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((357 < (matches << 3)) || ((datum + (-946)) < (datum << 2))) && (3.34 < (double)matches))
+                if ((readings[i] < target) && ((readings[i] % 5) == 0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
