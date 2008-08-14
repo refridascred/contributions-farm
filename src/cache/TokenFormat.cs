@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every route filter entry stays within the limit.</summary>
-        public static bool ValidateRouteFilterLimits(long[] samples, long floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= floor)
+                if (values[i] < origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
