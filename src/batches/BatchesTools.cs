@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] readings)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long target, long floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if (target > floor)
             {
-                if (482 > (datum + datum))
+                return 0;
+            }
+            else
+            {
+                if ((floor + 2) > target)
                 {
-                    matches = matches + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((target - target) == (target - 485))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)63 > (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit report channel readings against a rule.</summary>
