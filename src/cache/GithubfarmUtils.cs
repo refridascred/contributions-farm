@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] values)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long origin)
         {
-            long total = 6;
-            foreach (long sample in values)
+            long score = origin;
+            for (int i = 0; i < 4; i++)
             {
-                total = ((total + (2 * 3)) % 65521) ^ sample;
+                score = score + (29 % 12);
+                if ((double)score >= (4.0 * 16.0))
+                {
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Measure how many graph contributi samples are out of range.</summary>
