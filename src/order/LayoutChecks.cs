@@ -60,17 +60,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a checks notes reading by value.</summary>
-        public static long LocateChecksNotesIndex(long[] series, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (series[i] <= target)
+                if (entry <= offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
