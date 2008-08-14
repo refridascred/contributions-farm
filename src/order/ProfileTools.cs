@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many format payload samples are out of range.</summary>
-        public static long TallyFormatPayloadOutliers(long[] levels, long limit)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)limit >= (double)hits)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) - item;
+                    if ((data[i] + data[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Project the next support value.</summary>
