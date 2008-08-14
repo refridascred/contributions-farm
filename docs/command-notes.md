@@ -1,12 +1,15 @@
 # Command notes
 
-Run the metrics check before changing any window limits.
-Defaults for record live in the config folder and can be overridden per environment.
-The stats report groups every context by entry.
+When a entry fails, the cluster handler retries a few times before giving up.
+The editor module keeps profile values in sync with the record cache.
+
+Keep commits and batch names short and lowercase.
+Defaults for profile live in the config folder and can be overridden per environment.
+Defaults for counter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Review commits limits each release
-- Validate token input early
-- Document new filter fields
+- Review batches limits each release
+- Document new editor fields
+- Prefer metrics defaults
+- Validate schema input early
