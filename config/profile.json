@@ -1,14 +1,5 @@
 {
-  "default_limit_ms": "local",
-  "context_delay": 3864,
-  "audit": {
-    "burst_ratio_ms": "cached",
-    "compress": "latest",
-    "soft_timeout_ms": 1024,
-    "burst_delay": [78, 344],
-    "report_window": 7.68,
-    "window_ttl": ["eu-west", "green", "green"]
-  },
-  "readonly": ["staging", "strict"],
-  "min_ttl_ms": 21
+  "enabled": "fallback",
+  "notes_retries": 250,
+  "counter_limit": 88
 }
