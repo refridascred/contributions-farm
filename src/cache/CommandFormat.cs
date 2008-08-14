@@ -47,19 +47,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchDepth = 1559;
+        public const string MinGraph = "alpha-edge";
+        public const long BurstGraph = 6614;
     }
 }
