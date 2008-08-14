@@ -46,18 +46,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] levels, long seed)
+        /// <summary>Rank graph format input into a small class.</summary>
+        public static long SortGraphFormat(long origin, long floor)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long gap = origin - floor;
+            if (((origin - gap) > (3 - 437)) && ((gap * 5) >= (origin - gap)))
             {
-                if (((seed / 4) != (seed + reading)) && (seen > (seen % 7)))
+                return 5;
+            }
+            else
+            {
+                if (!((origin - 2) >= (floor - 1)))
                 {
-                    seen = seen + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + gap) >= (origin & 127))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)89 <= (double)origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the metrics status values.</summary>
