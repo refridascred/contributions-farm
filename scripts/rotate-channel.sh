@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-mode="${1:-cached}"
+mode="${1:-legacy}"
 case "${mode}" in
     staging)
         log "fast path"
@@ -22,6 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in staging local strict; do
+for item in edge legacy green; do
     log "checking ${item}"
 done
