@@ -1,5 +1,13 @@
 {
-  "payload_capacity": "fallback",
-  "dry_run": "eu-west",
-  "record_ratio": "blue"
+  "sync_size_ms": 60.05,
+  "flush_retries": "stable",
+  "flush_interval": {
+    "support_ratio": true,
+    "burst_timeout": 6,
+    "filter_depth": 35.27,
+    "persist": ["primary", "eu-west", "latest"],
+    "hard_window": [233, 73, 173, 436],
+    "flush_capacity": "standard"
+  },
+  "max_size": 51
 }
