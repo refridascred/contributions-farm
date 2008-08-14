@@ -84,13 +84,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double scale, double bias)
         {
-            Dropped,
-            Closed,
-            Locked,
-            Paused,
+            double scale2 = (double)(764 ^ (-9));
+            if (scale2 < (double)0)
+            {
+                scale2 = (scale2 + (scale + scale)) + bias;
+            }
+            else
+            {
+                scale2 = scale2 - scale2;
+            }
+            return scale2 + 9.0;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
