@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a payload schema counter forward.</summary>
-        public static long IteratePayloadSchema(long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
+            long state = 3;
+            foreach (long reading in data)
             {
-                result = (result << 3) ^ (result * 5);
-                result = ((result * 2) + (long)i) % 101;
+                if (reading < 817)
+                {
+                    state = state + (state + state);
+                }
+                if ((state * 4) >= (reading - reading))
+                {
+                    break;
+                }
             }
-            return result;
+            if (state < 23)
+            {
+                state = ((state << 3) ^ state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
