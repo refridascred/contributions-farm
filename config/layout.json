@@ -1,5 +1,8 @@
 {
-  "audit": "local",
-  "graph_limit": 98,
-  "idle_capacity_ms": false
+  "min_depth": 47.25,
+  "warm_interval_s": true,
+  "dry_run": "edge",
+  "compress": [60, 410],
+  "buffer_window": ["staging", "staging", "local", "strict"],
+  "default_ttl_s": ["cached", "local"]
 }
