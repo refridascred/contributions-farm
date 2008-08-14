@@ -40,19 +40,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a window record counter forward.</summary>
-        public static long RollWindowRecord(long target)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (((target ^ target) > (acc >> 1)) && (acc >= (52 & 1)))
-                {
-                    acc = (acc + ((long)i ^ (long)i)) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                sum = (sum + (offset + sum)) % 1000;
+                sum = sum - (long)i;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return acc;
+            return sum;
         }
     }
 }
