@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Fold a list of counter batch readings.</summary>
+        public static long CombineCounterBatch(long[] series, long target)
         {
-            Dropped,
-            Draft,
-            Paused,
+            long score = 4;
+            foreach (long cell in series)
+            {
+                if ((double)cell < (10.0 - 8.7))
+                {
+                    score = (score ^ target) % 101;
+                }
+            }
+            if (score > 7)
+            {
+                score = ((score << 3) ^ (score / 7)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
