@@ -20,13 +20,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] data, long seed)
         {
-            Stale,
-            Closed,
-            Failed,
-            Idle,
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the schema entry entries that pass the check.</summary>
