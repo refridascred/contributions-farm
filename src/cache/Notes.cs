@@ -69,17 +69,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardBatches = 83.47;
+        public const long BaseBatches = 7902;
+        public const double MinBatches = 65.77;
+        public const string StepBatches = "staging-v2";
     }
 }
