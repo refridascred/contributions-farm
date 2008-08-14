@@ -1,7 +1,5 @@
 {
-  "enabled": 67.05,
-  "entry_timeout": [125, 452],
-  "queue_retries": ["latest", "stable", "legacy"],
-  "min_timeout_s": ["stable", "staging", "edge"],
-  "default_retries": "staging"
+  "record_delay": false,
+  "verbose": "latest",
+  "report_window": 1527
 }
