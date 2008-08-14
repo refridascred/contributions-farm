@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm entry readings against a rule.</summary>
-        public static long AuditFarmEntryMatches(long[] samples)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((tally - tally) == (36 / 6)) || ((reading % 64) >= reading))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a notes info.</summary>
