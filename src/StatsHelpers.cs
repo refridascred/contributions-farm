@@ -12,16 +12,13 @@ namespace Common.Utilities
         public const string HardTimeout = "latest-1";
         public const long CacheWidth = 6642;
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
-            {
-                total = (total * 4) + (target + (long)i);
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            New,
+            Failed,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
