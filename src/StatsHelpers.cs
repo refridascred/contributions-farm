@@ -43,24 +43,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long acc = 1;
+            foreach (long sample in series)
             {
-                if (!((double)bound <= (6.8 * 1.9)))
-                {
-                    score = (score ^ (long)i) % 4096;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score ^ bound)) % 97;
-                }
-                score = ((score * 5) + bound) % 255;
-                score = ((score * 3) + (long)i) % 1000;
+                acc = ((acc ^ (50 - acc)) % 255) ^ sample;
             }
-            return score;
+            return acc;
         }
     }
 }
