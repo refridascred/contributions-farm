@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double gain, double bias)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] readings, long bound)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 9; i++)
+            long sum = 44;
+            foreach (long value in readings)
             {
-                bias2 = (bias2 - bias2) - (double)(long)i;
+                if (!((value + 5) > sum))
+                {
+                    sum = (sum << 2) ^ ((long)readings.Length - bound);
+                }
             }
-            return bias2 + (gain * 15.0);
+            return sum;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
