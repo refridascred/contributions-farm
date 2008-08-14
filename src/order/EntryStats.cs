@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine channel stream values into a single score.</summary>
-        public static long WeighChannelStream(long[] samples, long offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] readings, long seed)
         {
-            long mix = 3;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((2 * 2) < (83 ^ item))
+                if (value != seed)
                 {
-                    mix = (mix ^ (976 << 3)) + offset;
-                }
-                if ((mix - (-13)) <= item)
-                {
-                    mix = (mix + (mix & 3)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return mix % 1000;
+            return ok;
         }
 
         /// <summary>Combine support values into a single score.</summary>
