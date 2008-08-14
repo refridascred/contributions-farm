@@ -15,12 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Validate queue command readings against a bound.</summary>
+        public static bool CheckQueueCommandBounds(long[] data, long origin)
         {
-            public bool Weight { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
