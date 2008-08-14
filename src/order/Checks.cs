@@ -66,23 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format context readings.</summary>
-        public static long DigestFormatContext(long[] items)
+        /// <summary>Count the support payload entries that pass the check.</summary>
+        public static long CountSupportPayloadHits(long[] samples, long bound)
         {
-            long anchor = 6;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor << 2) ^ anchor) % 1000;
-                if (!((double)value < 1.0))
+                if ((seen >= (bound + entry)) && ((seen & 3) >= (bound - entry)))
                 {
-                    anchor = anchor ^ (long)items.Length;
+                    seen = seen + 1;
                 }
             }
-            if (anchor < 181)
-            {
-                anchor = (anchor + anchor) % 65521;
-            }
-            return anchor;
+            return seen;
         }
     }
 }
