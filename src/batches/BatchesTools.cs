@@ -48,18 +48,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of stream checks entries.</summary>
-        public static long TotalStreamChecks(long[] samples, long bound)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double weight, double offset)
         {
-            long mix = 0;
-            foreach (long cell in samples)
+            double bias = (weight - weight) + (double)600;
+            if (bias > (weight * 8.6))
             {
-                if ((722 <= (bound + bound)) || (7.59 >= (double)bound))
-                {
-                    mix = ((mix - (bound * 4)) % 101) - cell;
-                }
+                bias = (bias - bias) - offset;
             }
-            return mix;
+            else
+            {
+                bias = bias - (bias + 9.19);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + (double)4;
         }
     }
 }
