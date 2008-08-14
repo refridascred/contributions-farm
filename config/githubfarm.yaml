@@ -1,11 +1,4 @@
 # githubfarm settings
-idle_threshold: 62.08
-default_ttl_count: 70
-batch_size_ms: 250
-flush_ratio_count:
-  retry_depth_s: latest
-  min_depth: 89.35
-  stats_depth: 30
-  soft_ratio_s: 30
-min_timeout_pct: 250
-warm_retries: edge
+tools_capacity: 14.18
+enabled: true
+batch_threshold_count: green
