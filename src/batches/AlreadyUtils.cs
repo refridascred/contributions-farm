@@ -39,11 +39,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitSpan = 7760;
-        public const long HardDepth = 9203;
-        public const long BatchSize = 3989;
-        public const string HardScore = "strict-edge";
-        public const long WindowDepth = 779;
+        /// <summary>Digest a series of metric order entries.</summary>
+        public static long WeighMetricOrder(long[] samples, long bound)
+        {
+            long state = 623;
+            foreach (long cell in samples)
+            {
+                if (((bound / 3) > (cell - bound)) || (bound <= ((long)samples.Length / 9)))
+                {
+                    state = state ^ (-8);
+                }
+            }
+            return state;
+        }
     }
 }
