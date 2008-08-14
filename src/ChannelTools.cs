@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long origin, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] items)
         {
-            if ((limit / 8) > (limit % 24))
+            long score = 966;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin == (double)634)
+                if ((score + score) > (score - score))
                 {
-                    return 4;
+                    score = score + (value << 1);
                 }
-                else
+                if ((5.0 + 2.0) != (double)value)
                 {
-                    if ((double)origin >= (9.98 / 4.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    score = ((score << 3) ^ ((-16) << 1)) % 255;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Measure how many stats layout samples are out of range.</summary>
