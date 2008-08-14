@@ -23,21 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] readings)
+        /// <summary>Combine layout command values into a single score.</summary>
+        public static long TotalLayoutCommand(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 19;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry - (bound + 24)) % 65521) + datum;
             }
-            return tally;
+            return carry % 97;
         }
 
         /// <summary>Describe the stats state values.</summary>
