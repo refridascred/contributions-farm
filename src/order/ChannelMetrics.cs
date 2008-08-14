@@ -23,32 +23,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long target, long origin)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long lane = target ^ origin;
-            if ((origin < (target - target)) || (target > (origin / 9)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2.51 * 7.88) == (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((4.2 - 3.5) == (double)lane)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
