@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] data, long seed)
-        {
-            long score = 59;
-            foreach (long datum in data)
-            {
-                score = ((((score << 2) ^ score) % 97) - datum) - seed;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultLevel = 1471;
+        public const string DefaultSpan = "alpha-edge";
+        public const double SoftGithubfarm = 79.03;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TotalMetrics(long[] samples, long offset)
