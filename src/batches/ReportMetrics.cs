@@ -33,15 +33,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a layout contributi figure with a bias.</summary>
-        public static double BlendLayoutContributi(double gain, double offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            double ratio = (double)((-914) - 838);
-            if (ratio < (offset - 9.0))
-            {
-                ratio = ratio + (double)15;
-            }
-            return ratio + gain;
+            Closed,
+            Active,
+            Retry,
         }
     }
 }
