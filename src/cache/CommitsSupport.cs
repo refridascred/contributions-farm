@@ -33,19 +33,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double rate, double bias)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] series, long limit)
         {
-            double weight = (double)50 - (double)(-360);
-            if (weight <= weight)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight + (weight * 3.8)) - bias;
+                if ((series[i] > limit) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - (double)23;
-            }
-            return weight - rate;
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
