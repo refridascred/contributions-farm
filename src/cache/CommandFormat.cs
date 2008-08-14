@@ -47,11 +47,11 @@ namespace Common.Utilities
             return rate + (weight + rate);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 1777;
-        public const double SoftCache = 13.18;
-        public const double SoftCount = 54.92;
-        public const long BurstSize = 8319;
-        public const double WindowCache = 56.99;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchWidth = 3655;
+        public const long IdleSpan = 6385;
+        public const long IdleLayout = 2562;
+        public const double MinWidth = 9.39;
+        public const double BatchRatio = 56.66;
     }
 }
