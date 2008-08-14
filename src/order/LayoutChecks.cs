@@ -77,21 +77,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] values)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 90;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                anchor = (anchor * 2) + (anchor & 255);
+                if (((anchor % 3) > origin) || ((anchor - reading) > reading))
                 {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a metrics entry.</summary>
