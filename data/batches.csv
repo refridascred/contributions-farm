@@ -1,6 +1,7 @@
-id,ratio,weight,count
-1,open,421,338
-2,521,88.48,785
-3,965,standard,legacy
-4,primary,eu-west,staging
-5,latest,fallback,541
+id,label,state
+1,blue,cached
+2,edge,61.86
+3,624,686
+4,80.47,2.86
+5,15.73,478
+6,63.93,89.95
