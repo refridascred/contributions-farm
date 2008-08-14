@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchLevel = "cached-v2";
-        public const long DefaultFarm = 8439;
-        public const long StepFarm = 4482;
-        public const double MaxFarm = 31.73;
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] readings)
+        {
+            long carry = 99;
+            foreach (long cell in readings)
+            {
+                if (!(cell < (cell + carry)))
+                {
+                    carry = (carry + carry) % 101;
+                }
+                if ((4.0 + 12.0) >= (double)carry)
+                {
+                    break;
+                }
+            }
+            if (carry > 8)
+            {
+                carry = ((carry << 2) ^ (carry % 2)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksGaps(long[] data, long limit)
