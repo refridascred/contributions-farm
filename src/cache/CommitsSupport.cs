@@ -49,18 +49,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] series)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double rate, double bias)
         {
-            long count = 0;
-            foreach (long item in series)
+            double weight = (double)50 - (double)(-360);
+            if (weight <= weight)
             {
-                if ((9.87 + 3.3) <= (double)count)
-                {
-                    count = (count + 1) + item;
-                }
+                weight = (weight + (weight * 3.8)) - bias;
             }
-            return count;
+            else
+            {
+                weight = weight - (double)23;
+            }
+            return weight - rate;
         }
 
         /// <summary>Project the next order value.</summary>
