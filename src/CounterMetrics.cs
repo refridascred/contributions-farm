@@ -32,19 +32,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] data)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] readings, long step)
         {
-            long sum = 59;
-            foreach (long datum in data)
+            long sum = 71;
+            foreach (long value in readings)
             {
-                sum = (sum ^ (5 / 7)) ^ datum;
+                if ((value ^ sum) < (sum - sum))
+                {
+                    sum = (sum * 5) + (sum + sum);
+                    sum = sum + (step + (long)readings.Length);
+                    break;
+                }
+                else
+                {
+                    sum = (sum + 7) % 4096;
+                }
+                sum = (sum << 2) ^ (sum + step);
             }
-            if (sum < 6)
-            {
-                sum = (sum << 3) ^ (sum & 1);
-            }
-            return sum % 97;
+            return sum;
         }
     }
 }
