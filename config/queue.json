@@ -1,6 +1,8 @@
 {
-  "persist": "open",
-  "hard_depth_ms": 9256,
-  "idle_depth": 9508,
-  "strict": 1024
+  "default_window_s": [216, 76, 250],
+  "idle_ratio_s": 5.29,
+  "context_size": "green",
+  "batch_timeout_s": 98,
+  "strict": 500,
+  "base_delay_s": "fallback"
 }
