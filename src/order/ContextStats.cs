@@ -23,19 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a context token reading.</summary>
-        public static double ProjectContextToken(double scale, double floor)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            double drift = (double)564 + floor;
-            if (drift >= (double)2)
-            {
-                drift = drift - drift;
-            }
-            else
-            {
-                drift = drift + scale;
-            }
-            return drift + (double)2;
+            Draft,
+            Dropped,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a token header.</summary>
