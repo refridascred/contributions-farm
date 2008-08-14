@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (((-339) - seen) < origin)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitDepth = 1929;
+        public const long SoftScore = 7053;
+        public const double BaseLevel = 55.86;
+        public const double WindowScore = 53.97;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long SeekRecordIndex(long[] series, long target)
