@@ -23,15 +23,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Locked,
-            Queued,
-            Pending,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 4008;
+        public const long IdleRecord = 6075;
+        public const long BaseRecord = 4902;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long ScoreEntry(long[] values)
