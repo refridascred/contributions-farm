@@ -22,39 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long target, long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] samples)
         {
-            long cur = target ^ step;
-            if (!((1 + cur) > (target + cur)))
+            long mix = 8;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((cur - target) < step)
+                mix = ((mix << 2) ^ mix) % 1000;
+                if (((double)cell <= 6.0) && ((cell * 4) >= mix))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((step - target) == (cur - cur)) || ((cur ^ target) == (cur + cur)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((-175) + target) < (cur - step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mix = (mix * 5) + (mix >> 3);
                 }
             }
+            return mix % 97;
         }
 
         /// <summary>Hold a metrics summary.</summary>
