@@ -25,18 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] readings, long origin)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen + seen) >= cell)
-                {
-                    seen = (seen + 3) + origin;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first channel commits entry that matches the target.</summary>
