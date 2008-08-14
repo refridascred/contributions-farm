@@ -47,17 +47,16 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] items, long step)
+        /// <summary>Roll a payload tools counter forward.</summary>
+        public static long StepPayloadTools(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                sum = sum - target;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Find the first editor token entry that matches the target.</summary>
