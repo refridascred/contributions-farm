@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Done,
-            Pending,
-            Stale,
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of token entries.</summary>
