@@ -19,11 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] items, long origin)
         {
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
+            long anchor = -277;
+            foreach (long entry in items)
+            {
+                anchor = anchor - (entry ^ 990);
+                anchor = (anchor ^ (entry & 7)) % 4096;
+                if ((entry * 2) < (origin ^ entry))
+                {
+                    anchor = (anchor ^ (entry + origin)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor - anchor);
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
