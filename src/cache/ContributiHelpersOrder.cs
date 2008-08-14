@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double rate, double bias)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            double ratio = (double)53 / 3.0;
-            if (ratio >= ratio)
-            {
-                ratio = ratio - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (rate - bias)) + (double)(long)i;
-            }
-            return ratio - bias;
+            public double Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
