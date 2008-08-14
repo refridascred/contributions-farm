@@ -22,19 +22,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Project the next profile already value.</summary>
-        public static double SmoothProfileAlready(double rate, double floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] items, long bound)
         {
-            double bias = 3.15;
-            if (bias <= (bias * 9.19))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + (bias + floor);
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (rate / 7.0)) - (double)(long)i;
-            }
-            return bias + (double)5;
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
