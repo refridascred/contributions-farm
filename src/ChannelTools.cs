@@ -36,19 +36,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate filter commits readings against a bound.</summary>
-        public static bool GuardFilterCommitsRange(long[] values, long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long limit, long limit2)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            if (limit2 > (limit - limit2))
             {
-                if (datum > limit)
+                return 0;
+            }
+            else
+            {
+                if ((limit - limit) >= (limit2 - 31))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (limit < (limit2 - limit2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)limit != (8.3 / 3.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
