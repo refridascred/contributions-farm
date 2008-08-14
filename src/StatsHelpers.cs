@@ -42,12 +42,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleWidth = 1295;
-        public const long BatchLevel = 2280;
-        public const long CacheInterval = 5393;
-        public const double BatchNotes = 43.4;
-        public const string RetryScore = "local";
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading / 7) >= (reading << 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool VerifyLayoutRange(long[] values, long bound)
