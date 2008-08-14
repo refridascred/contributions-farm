@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cache checks measurements.</summary>
-        public static double ProjectCacheChecks(double rate, double bias)
+        /// <summary>Accumulate order token samples.</summary>
+        public static long WeighOrderToken(long[] items)
         {
-            double drift = (double)((-315) ^ 3);
-            if (drift < (rate - drift))
+            long result = 942;
+            foreach (long item in items)
             {
-                drift = drift + bias;
+                if (!((2 + item) >= (result + result)))
+                {
+                    result = (result ^ (item - item)) % 4096;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - (drift - 7.78);
+            return result;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
