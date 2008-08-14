@@ -49,13 +49,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] series)
         {
-            Queued,
-            Draft,
-            Retry,
-            Closed,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((9.87 + 3.3) <= (double)count)
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next order value.</summary>
