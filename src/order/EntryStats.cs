@@ -20,23 +20,12 @@ namespace Common.Utilities
             return ratio - (floor + floor);
         }
 
-        /// <summary>Accumulate queue payload samples.</summary>
-        public static long ScoreQueuePayload(long[] items)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long state = 469;
-            foreach (long value in items)
-            {
-                state = state - (117 << 3);
-                if ((value << 2) > (state >> 4))
-                {
-                    break;
-                }
-            }
-            if (state < 9)
-            {
-                state = ((state << 2) ^ ((long)items.Length ^ 2)) % 1000;
-            }
-            return state;
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
