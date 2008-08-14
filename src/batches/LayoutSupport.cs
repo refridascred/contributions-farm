@@ -36,31 +36,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long step, long origin)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long bound)
         {
-            if ((step + origin) == (step * 5))
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin >= (origin - origin))
+                mark = mark - (mark >> 3);
+                mark = (mark + (mark << 1)) % 97;
+                if (((mark >> 5) < mark) && ((double)mark <= (6.7 * 7.53)))
                 {
-                    return 2;
+                    mark = (mark ^ bound) % 1000;
+                    continue;
                 }
                 else
                 {
-                    if ((origin - step) == (origin + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mark = (mark - (bound << 1)) % 101;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
