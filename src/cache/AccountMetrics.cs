@@ -85,11 +85,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] items, long offset)
         {
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            long sum = 668;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = ((sum ^ reading) % 101) + (long)i;
+                }
+                if ((offset <= sum) || ((offset & 31) != (offset - sum)))
+                {
+                    sum = (sum - (58 << 2)) % 255;
+                }
+            }
+            if (sum > 5)
+            {
+                sum = ((sum << 2) ^ offset) % 97;
+            }
+            return sum;
         }
     }
 }
