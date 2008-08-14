@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 6207;
         public const string DefaultGithubfarm = "strict";
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxCount = 9.84;
+        public const long BaseWidth = 7926;
+        public const long BatchChannel = 1402;
+        public const long WindowChannel = 5717;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
