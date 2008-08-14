@@ -21,13 +21,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Queued,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardCount = 48.68;
+        public const long CacheInterval = 2266;
+        public const double SoftInterval = 0.95;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long CacheTimeout = 668;
