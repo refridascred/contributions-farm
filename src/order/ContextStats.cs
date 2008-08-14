@@ -36,12 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] values)
         {
-            public double Weight { get; set; }
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((double)seen < (1.57 * 1.0))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up payload samples.</summary>
