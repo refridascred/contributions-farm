@@ -22,17 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] levels, long offset)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)(5 & 255);
+            if (ratio <= (double)90)
             {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (double)631;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + (offset / 9.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (scale * 10.0)) + (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
