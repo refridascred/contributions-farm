@@ -44,19 +44,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route record entry stays within the limit.</summary>
-        public static bool VerifyRouteRecordLimits(long[] readings, long limit)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long offset, long offset2)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long step = offset ^ offset2;
+            if ((offset + 40) >= offset)
             {
-                if (item <= limit)
+                return 8;
+            }
+            else
+            {
+                if ((264 >> 2) < offset2)
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step <= (double)offset2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Blend two already measurements.</summary>
