@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Queued,
-            Synced,
-            New,
+            Locked,
+            Retry,
+            Closed,
             Stale,
+            Dropped,
         }
 
         /// <summary>Define window limits and defaults.</summary>
