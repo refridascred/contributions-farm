@@ -43,17 +43,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] series, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (series[i] >= bound)
+                if ((seen * 2) >= 808)
                 {
-                    return (long)i;
+                    seen = ((seen + 2) ^ reading) + offset;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
