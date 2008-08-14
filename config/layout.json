@@ -1,15 +1,9 @@
 {
-  "strict": false,
-  "max_threshold_s": 30,
-  "idle_window_count": {
-    "max_window": "primary",
-    "strict": "fallback",
-    "schema_capacity": 42.26,
-    "hard_ttl_pct": 82,
-    "dry_run": 8.93,
-    "payload_interval": "standard"
+  "readonly": [141, 380, 253],
+  "idle_ratio": {
+    "commits_depth": ["cached", "latest", "fallback"],
+    "readonly": "eu-west",
+    "idle_limit_count": [259, 418]
   },
-  "compress": 14.57,
-  "burst_capacity": 82.67,
-  "schema_window": 7290
+  "retry_threshold_count": 17.67
 }
