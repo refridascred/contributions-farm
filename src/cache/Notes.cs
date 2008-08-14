@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] items, long bound)
-        {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 44.54;
+        public const string CacheFactor = "strict-v2";
+        public const long BatchWindow = 1601;
+        public const long LimitBudget = 9676;
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long SortFilter(long seed, long origin)
