@@ -20,10 +20,13 @@ namespace Common.Utilities
         public const long SoftSchema = 2894;
         public const string StepSchema = "alpha-1";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardWidth = "local-v2";
-        public const long MaxWidth = 9377;
-        public const string SoftLevel = "staging-edge";
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Pending,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
