@@ -39,22 +39,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] values, long bound)
+        /// <summary>Count editor report pairs that satisfy a relation.</summary>
+        public static long CompareEditorReportCount(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen >> 1) > (seen ^ bound))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] ^ items[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
