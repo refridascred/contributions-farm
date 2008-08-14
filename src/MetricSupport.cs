@@ -40,18 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] levels)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((value - value) > seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public double Token { get; set; }
         }
     }
 }
