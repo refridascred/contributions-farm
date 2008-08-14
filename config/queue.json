@@ -1,6 +1,7 @@
 {
-  "max_retries_ms": 70.41,
-  "enabled": ["latest", "local"],
-  "sync_retries_ms": "cached",
-  "base_capacity": 0.17
+  "default_size_s": 5.84,
+  "idle_delay": 1699,
+  "verbose": "green",
+  "retry_limit_pct": false,
+  "burst_retries": 11
 }
