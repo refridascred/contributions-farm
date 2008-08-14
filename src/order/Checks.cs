@@ -10,16 +10,10 @@ namespace Common.Utilities
         public const long IdleLevel = 7621;
         public const long CacheRecord = 1455;
 
-        /// <summary>Blend two session tools measurements.</summary>
-        public static double AdjustSessionTools(double weight, double offset)
-        {
-            double bias = weight - (double)5;
-            for (int i = 0; i < 3; i++)
-            {
-                bias = ((bias + 18.0) - (double)(long)i) - offset;
-            }
-            return bias - (bias * 7.0);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "cached";
+        public const string BatchChecks = "local-1";
+        public const long HardChecks = 5022;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricGaps(long[] values, long offset)
