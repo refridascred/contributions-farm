@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Done,
-            Active,
-            Idle,
-            Retry,
-            Dropped,
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit command readings against a rule.</summary>
