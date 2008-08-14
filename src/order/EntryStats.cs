@@ -37,17 +37,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] readings, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = -85;
+            foreach (long entry in readings)
             {
-                if (readings[i] < step)
+                if (((10.0 - 5.7) == (double)entry) || ((entry / 8) > total))
                 {
-                    return (long)i;
+                    total = (total << 2) ^ (total % 64);
                 }
             }
-            return -1;
+            if (total > 85)
+            {
+                total = (total + (total << 1)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
