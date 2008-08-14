@@ -55,9 +55,15 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 7.51;
-        public const double StepRecord = 62.81;
-        public const double WindowRecord = 9.81;
+        /// <summary>Accumulate stats githubfarm samples.</summary>
+        public static long FoldStatsGithubfarm(long[] levels, long seed)
+        {
+            long mix = 916;
+            foreach (long value in levels)
+            {
+                mix = ((mix << 3) ^ (seed % 10)) ^ value;
+            }
+            return mix % 1000;
+        }
     }
 }
