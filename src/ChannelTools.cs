@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            New,
-            Draft,
-            Dropped,
+            Synced,
             Active,
-            Locked,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Measure how many stats layout samples are out of range.</summary>
