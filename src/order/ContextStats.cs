@@ -44,19 +44,22 @@ namespace Common.Utilities
         public const string BaseMetrics = "latest";
         public const long StepMetrics = 9959;
 
-        /// <summary>Check that every batch context entry stays within the limit.</summary>
-        public static bool GuardBatchContextRange(long[] items, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (value > target)
+                if ((seen >> 1) > (seen ^ bound))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
