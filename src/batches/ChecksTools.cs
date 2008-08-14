@@ -51,15 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double gain, double bias)
-        {
-            double drift = 3.2;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = ((drift + (double)754) - (double)(long)i) - bias;
-            }
-            return drift + gain;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitBudget = 8020;
+        public const long SoftContext = 5752;
+        public const long LimitInterval = 3614;
+        public const string WindowContext = "local";
+        public const string DefaultInterval = "staging-1";
     }
 }
