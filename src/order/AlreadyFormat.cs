@@ -39,19 +39,11 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] data, long offset)
-        {
-            long mix = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading <= (double)2)
-                {
-                    mix = (mix - reading) - offset;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultRatio = 5156;
+        public const long SoftSession = 9358;
+        public const double IdleRatio = 68.23;
+        public const long IdleSession = 8682;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long RollBuffer(long offset)
