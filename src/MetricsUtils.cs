@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Count record githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapRecordGithubfarmCount(long[] values)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum + 7) % 65521;
-                if (((long)i * 5) < 75)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum * 2) + (bound + sum)) % 4096;
-                    break;
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the entry phase values.</summary>
