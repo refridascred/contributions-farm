@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Rank commits payload input into a small class.</summary>
+        public static long SortCommitsPayload(long target, long bound)
         {
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            long offset = target + bound;
+            if ((95 ^ offset) < (target >> 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((offset ^ bound) >= offset) || (bound <= (bound << 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + 30) <= (offset - 59))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token level values.</summary>
