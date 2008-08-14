@@ -50,18 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] data, long floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long mark = 694;
-            foreach (long reading in data)
-            {
-                if ((double)reading == (8.8 * 3.18))
-                {
-                    mark = (mark ^ mark) - floor;
-                }
-            }
-            return mark;
+            public bool Level { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
