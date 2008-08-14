@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long RetryPayload = 7536;
         public const long MinPayload = 146;
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Queued,
-            Failed,
+            New,
             Stale,
+            Retry,
+            Paused,
+            Queued,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
