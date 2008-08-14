@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank buffer queue input into a small class.</summary>
-        public static long ClassifyBufferQueue(long step, long bound)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long limit, long offset)
         {
-            if ((bound > (bound / 8)) && ((double)step < (double)bound))
+            if ((double)562 < (double)offset)
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if (bound < (step * 2))
+                if (!((limit * 4) > (limit - offset)))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if (((step % 8) >= (bound / 3)) || ((double)step != (0.6 - 8.0)))
+                    if ((offset - offset) >= (offset + offset))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        return 8;
+                        return 1;
                     }
                 }
             }
