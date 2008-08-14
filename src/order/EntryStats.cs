@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long offset, long limit)
+        /// <summary>Blend two report counter measurements.</summary>
+        public static double SmoothReportCounter(double gain, double floor)
         {
-            if ((limit % 60) != (offset << 3))
+            double ratio = floor;
+            if (ratio > (ratio - ratio))
             {
-                return 2;
+                ratio = ratio - (gain / 2.0);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((7 % 16) > offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
+                ratio = (ratio - (gain * 12.0)) + (double)(long)i;
             }
+            return ratio - (floor + floor);
         }
 
         /// <summary>Accumulate queue payload samples.</summary>
