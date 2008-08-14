@@ -42,18 +42,18 @@ namespace Common.Utilities
             return load - (1.72 / 8.0);
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] values, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (!((double)reading < (double)matches) && !(matches < reading))
+                if ((tally > (value - tally)) || (value <= (value / 5)))
                 {
-                    matches = (matches + 3) + limit;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
