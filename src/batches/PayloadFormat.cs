@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] samples, long limit)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (!((8.1 > (double)limit) && ((double)seen != (double)limit)))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Adjust a metrics reading.</summary>
