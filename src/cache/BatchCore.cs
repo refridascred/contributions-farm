@@ -49,18 +49,18 @@ namespace Common.Utilities
             return rate - (4.5 - 5.16);
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] data)
+        /// <summary>Measure how many payload layout samples are out of range.</summary>
+        public static long MeasurePayloadLayoutOutliers(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (count < (reading + reading))
+                if (!((20.0 + 5.7) == (double)offset))
                 {
-                    count = count + 3;
+                    seen = (seen + 2) - item;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
