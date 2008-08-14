@@ -1,7 +1,8 @@
 {
-  "audit": "strict",
-  "hard_threshold_pct": [68, 69, 135, 469],
-  "support_timeout": "open",
-  "base_delay_s": ["primary", "staging", "open"],
-  "dry_run": "cached"
+  "hard_threshold_count": "edge",
+  "min_delay_count": false,
+  "contributi_retries": [74, 210, 31],
+  "batch_delay_pct": "primary",
+  "persist": "stable",
+  "counter_timeout": false
 }
