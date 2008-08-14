@@ -1,7 +1,10 @@
 {
-  "token_retries": 60,
-  "burst_delay_s": false,
-  "strict": "open",
-  "readonly": 47.66,
-  "poll_retries": "strict"
+  "cache_size_count": 34.39,
+  "buffer_depth": {
+    "stats_window": "strict",
+    "max_limit": 2544,
+    "default_capacity_s": 100,
+    "cache_ratio_ms": 70.71
+  },
+  "sync_interval_s": false
 }
