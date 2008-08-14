@@ -14,22 +14,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of profile schema entries.</summary>
-        public static long ScoreProfileSchema(long[] readings, long seed)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long score = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum / 4) < datum)
-                {
-                    score = (score + seed) % 65521;
-                }
-                else
-                {
-                    score = (score - (seed << 2)) % 1000;
-                }
-            }
-            return score % 97;
+            Synced,
+            Ready,
+            Active,
+            Locked,
+            Paused,
         }
 
         /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
