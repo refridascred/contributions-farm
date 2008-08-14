@@ -53,18 +53,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] readings, long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long step, long target)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long gap = step ^ target;
+            if (((double)target > (16.0 / 6.0)) && ((double)478 <= (double)target))
             {
-                if ((offset >> 3) <= (offset + offset))
+                return 6;
+            }
+            else
+            {
+                if (((target - gap) > gap) && ((gap >> 4) != (gap & 3)))
                 {
-                    count = (count + 1) + entry;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
