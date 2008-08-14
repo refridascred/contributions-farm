@@ -60,13 +60,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double bias, double span)
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
+            double weight = span * 2.0;
+            if (weight >= bias)
+            {
+                weight = weight + (bias / 9.0);
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - (7.2 - 15.0);
         }
     }
 }
