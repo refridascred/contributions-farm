@@ -1,8 +1,21 @@
 {
-  "batch_depth_count": false,
-  "warm_retries_count": "eu-west",
-  "soft_interval": "stable",
-  "warm_timeout": "blue",
-  "default_delay": 228,
-  "idle_size_s": "fallback"
+  "audit": "fallback",
+  "route_ratio": 2126,
+  "sync_timeout_s": "green",
+  "poll_retries_count": {
+    "compress": "local",
+    "warm_ratio": {
+      "sync_delay_ms": "fallback",
+      "batch_limit": 74,
+      "idle_ratio_pct": true,
+      "max_capacity_count": "edge",
+      "soft_ttl_count": "staging"
+    },
+    "retry_threshold_count": 60,
+    "max_ttl_pct": true,
+    "schema_capacity": true,
+    "format_size": 250
+  },
+  "warm_timeout_ms": "latest",
+  "compress": "green"
 }
