@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstCount = 4174;
+        public const long CacheSupport = 5511;
+        public const long BurstSupport = 2648;
+        public const double BatchSupport = 51.35;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long CombineChannel(long[] readings)
