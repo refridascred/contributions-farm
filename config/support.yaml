@@ -1,4 +1,8 @@
 # support settings
-enabled: 2.95
-cache_capacity: latest
-min_threshold_count: blue
+verbose: 97.92
+payload_depth: 7154
+audit: 1024
+layout_size: true
+stats_ratio:
+  - 3
+  - 255
