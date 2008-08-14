@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of editor session entries.</summary>
-        public static long DigestEditorSession(long[] levels)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] levels, long offset)
         {
-            long result = 508;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < (item + result))
+                if (levels[i] >= offset)
                 {
-                    result = result + (70 * 2);
-                }
-                else
-                {
-                    result = (result + ((-60) + item)) % 1000;
+                    return (long)i;
                 }
             }
-            if (result < 1)
-            {
-                result = (result + (result << 3)) % 1000;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
