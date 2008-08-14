@@ -42,21 +42,13 @@ namespace Common.Utilities
             return drift + (0.8 - drift);
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long seed)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if (seed > (seed + 5))
-                {
-                    anchor = (anchor + (anchor - 36)) % 101;
-                    anchor = ((anchor << 2) ^ (seed - seed)) % 65521;
-                }
-                anchor = ((anchor << 3) ^ (seed - (long)i)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Queued,
+            Stale,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the graph phase values.</summary>
