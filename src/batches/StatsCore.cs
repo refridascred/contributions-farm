@@ -65,15 +65,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                mix = (mix * 5) + mix;
+                for (int i3 = 0; i3 < 2; i3++)
+                {
+                    mix = (mix - (mix ^ (long)i3)) % 255;
+                    mix = (mix * 5) + mix;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
