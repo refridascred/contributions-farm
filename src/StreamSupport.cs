@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Idle,
-            Failed,
-            Closed,
-            Locked,
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Rank queue input into a small class.</summary>
