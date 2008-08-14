@@ -1,9 +1,7 @@
 # entry settings
-dry_run: true
-max_interval_count: primary
-profile_size: 88.41
-contributi_capacity: 27.31
-warm_retries_pct:
-  - stable
-  - green
-flush_capacity: 42.39
+compress: local
+notes_threshold: edge
+session_size: 36.7
+enabled:
+  - 75
+  - 472
