@@ -10,25 +10,19 @@ namespace Common.Utilities
         public const string MinWidth = "local-1";
         public const string HardMetrics = "staging-edge";
 
-        /// <summary>Grade a editor counter value against two limits.</summary>
-        public static long RankEditorCounter(long seed, long step)
+        /// <summary>Blend two cache checks measurements.</summary>
+        public static double ProjectCacheChecks(double rate, double bias)
         {
-            long diff = seed ^ step;
-            if (diff <= (diff * 4))
+            double drift = (double)((-315) ^ 3);
+            if (drift < (rate - drift))
             {
-                return 8;
+                drift = drift + bias;
             }
             else
             {
-                if (((5.0 * 4.19) == (double)diff) || ((step & 63) != (step * 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
+                drift = drift - drift;
             }
+            return drift - (drift - 7.78);
         }
 
         /// <summary>Hold a route snapshot.</summary>
