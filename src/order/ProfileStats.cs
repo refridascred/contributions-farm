@@ -34,22 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] data, long offset)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (91 <= datum)
-                {
-                    seen = (seen + 3) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Idle,
+            Retry,
+            Closed,
         }
 
         /// <summary>Digest a series of token entries.</summary>
