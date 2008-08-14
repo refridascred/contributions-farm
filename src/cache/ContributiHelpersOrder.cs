@@ -27,21 +27,9 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Match up command profile samples.</summary>
-        public static long OverlapCommandProfileCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitRatio = "latest-1";
+        public const long LimitCommits = 4458;
+        public const long SoftTimeout = 2134;
     }
 }
