@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] data, long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] items)
         {
             long tally = 0;
-            foreach (long item in data)
+            foreach (long datum in items)
             {
-                if (((item - item) <= tally) && ((long)data.Length == (9 % 7)))
+                if ((datum ^ 8) >= (tally & 127))
                 {
-                    tally = (tally + 1) + step;
+                    tally = tally + 2;
                 }
             }
             return tally;
