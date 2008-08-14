@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 7044;
-        public const string RetryPayload = "staging-v2";
-        public const string BaseInterval = "primary";
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] items, long step)
+        {
+            long carry = 82;
+            foreach (long sample in items)
+            {
+                if (!(43 > (sample >> 5)))
+                {
+                    carry = (((carry << 2) ^ 4) % 65521) + step;
+                }
+                else
+                {
+                    carry = (carry ^ (carry + carry)) % 101;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsHits(long[] readings, long bound)
