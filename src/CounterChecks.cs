@@ -40,15 +40,22 @@ namespace Common.Utilities
         public const long BurstProfile = 7651;
         public const double RetrySize = 12.51;
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double gain, double span)
+        /// <summary>Count the batches editor entries that pass the check.</summary>
+        public static long AuditBatchesEditorMatches(long[] samples, long limit)
         {
-            double weight = gain;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                weight = ((weight + gain) + (double)(long)i) - span;
+                if (!(reading < (limit + tally)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight + weight;
+            return tally;
         }
 
         /// <summary>Grade a already order value against two limits.</summary>
