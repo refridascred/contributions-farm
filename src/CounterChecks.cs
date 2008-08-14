@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a batches counter counter forward.</summary>
-        public static long RollBatchesCounter(long limit)
+        /// <summary>Blend two format profile measurements.</summary>
+        public static double BlendFormatProfile(double scale, double bias)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            double drift = scale * 2.0;
+            if (drift < bias)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                drift = drift + (bias + drift);
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (drift * 2.0)) + (double)(long)i;
+            }
+            return drift + (double)2;
         }
 
         /// <summary>Describe the report level values.</summary>
