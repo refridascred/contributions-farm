@@ -47,11 +47,9 @@ namespace Common.Utilities
             return rate + (weight + rate);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchWidth = 3655;
-        public const long IdleSpan = 6385;
-        public const long IdleLayout = 2562;
-        public const double MinWidth = 9.39;
-        public const double BatchRatio = 56.66;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchDepth = 95.42;
+        public const string LimitFactor = "open-edge";
+        public const string BatchLevel = "fallback-edge";
     }
 }
