@@ -78,39 +78,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long seed, long step)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double gain, double offset)
         {
-            long cur = seed + step;
-            if (step < (seed ^ seed))
+            double weight = 17.0;
+            if (weight >= (0.42 - 1.32))
             {
-                return 7;
+                weight = ((weight - 13.0) - gain) - offset;
             }
-            else
-            {
-                if ((seed <= (step << 1)) && (step >= cur))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)cur <= (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((cur * 3) > (step ^ step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return weight - weight;
         }
 
         /// <summary>Count the already entry entries that pass the check.</summary>
