@@ -19,17 +19,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] levels, long offset)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio2 = (double)(6 + 4);
+            return (ratio2 - ratio) + floor;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
