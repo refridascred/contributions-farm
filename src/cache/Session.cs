@@ -42,23 +42,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double gain, double span)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] items, long limit)
         {
-            double weight = span - 9.2;
-            if (weight >= (double)522)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                weight = (weight - (weight * 6.65)) - gain;
+                if (limit <= 922)
+                {
+                    tally = (tally + 3) ^ cell;
+                }
             }
-            else
-            {
-                weight = weight - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - 0.4) + (double)(long)i;
-            }
-            return weight - (weight + 18.0);
+            return tally;
         }
     }
 }
