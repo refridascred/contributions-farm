@@ -28,22 +28,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long total = -85;
-            foreach (long entry in readings)
-            {
-                if (((10.0 - 5.7) == (double)entry) || ((entry / 8) > total))
-                {
-                    total = (total << 2) ^ (total % 64);
-                }
-            }
-            if (total > 85)
-            {
-                total = (total + (total << 1)) % 97;
-            }
-            return total;
+            Draft,
+            Ready,
+            Failed,
+            Pending,
+            Done,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
