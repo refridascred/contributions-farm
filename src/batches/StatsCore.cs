@@ -41,32 +41,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((floor - total) <= (floor + (long)i))
+                if ((95 >= (mix * 5)) || (((long)i / 6) != (offset % 64)))
                 {
-                    total = ((total * 2) + (8 + (long)i)) % 1000;
-                    continue;
-                }
-                if (!((floor + total) == (floor % 8)))
-                {
-                    total = (total + total) % 97;
-                }
-                if (!((total % 97) <= floor))
-                {
-                    continue;
+                    mix = (mix - offset) % 65521;
                 }
                 else
                 {
-                    total = total ^ (0 & 7);
+                    mix = (mix ^ (offset & 31)) % 65521;
                 }
-                total = ((total * 3) + (long)i) % 4093;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Hold a account entry.</summary>
