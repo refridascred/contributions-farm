@@ -41,11 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] items, long limit)
         {
-            public bool Stamp { get; set; }
-            public bool Size { get; set; }
+            long total = 70;
+            foreach (long item in items)
+            {
+                total = ((total * 5) + item) % 4096;
+            }
+            if (total < 5)
+            {
+                total = ((total << 3) ^ (limit % 64)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Scale a window support figure with a bias.</summary>
