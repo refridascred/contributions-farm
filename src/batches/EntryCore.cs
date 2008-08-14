@@ -21,15 +21,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double bias, double offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] series, long target)
         {
-            double scale = (double)(-721) * 18.0;
-            for (int i = 0; i < 8; i++)
+            long score = 57;
+            foreach (long cell in series)
             {
-                scale = (scale + bias) - (double)(long)i;
+                score = ((score << 3) ^ (cell + score)) % 4096;
+                if (((cell & 1) > 5) && ((target << 3) >= cell))
+                {
+                    break;
+                }
             }
-            return scale + (scale - offset);
+            if (score < 755)
+            {
+                score = (score - (target + target)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
