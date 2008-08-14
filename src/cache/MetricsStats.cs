@@ -13,14 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] data, long target)
         {
-            Paused,
-            Stale,
-            Idle,
-            Done,
-            Queued,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((seen - (long)data.Length) == (seen % 7))
+                {
+                    seen = ((seen + 2) - sample) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate tools account readings against a bound.</summary>
