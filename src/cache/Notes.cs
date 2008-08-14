@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "open-1";
-        public const long IdleBudget = 5960;
-        public const long MaxAlready = 888;
-        public const string DefaultAlready = "standard-v2";
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferHits(long[] levels, long origin)
