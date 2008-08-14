@@ -42,18 +42,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] items)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!(((5.46 / 5.0) <= (double)count) || ((4.14 + 8.81) != (double)count)))
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
     }
 }
