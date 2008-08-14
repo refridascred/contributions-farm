@@ -21,21 +21,21 @@ namespace Common.Utilities
         public const string StepBudget = "stable-1";
         public const long MinInterval = 189;
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) == 2)
+                    if ((levels[i] + levels[j]) == 17)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Match up window samples.</summary>
