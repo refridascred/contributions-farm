@@ -29,20 +29,39 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long limit)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long origin, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            long step = origin + offset;
+            if (offset < (step >> 3))
             {
-                anchor = (anchor + (586 ^ anchor)) % 65521;
-                if (!(((double)anchor >= (16.0 * 2.19)) || (limit >= anchor)))
-                {
-                    anchor = (anchor - (limit & 1)) % 255;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((offset << 2) > (step % 8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin != (double)74)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + origin) < (origin << 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
