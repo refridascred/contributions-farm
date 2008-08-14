@@ -68,19 +68,19 @@ namespace Common.Utilities
         public const string LimitReport = "strict";
         public const long SoftRatio = 3152;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] series, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (cell < target)
+                if (value != target)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
