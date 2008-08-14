@@ -32,22 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] values, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] levels)
         {
-            long state = 23;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (offset <= (63 % 100))
+                if ((((double)tally != (2.14 * 1.1)) || (1 <= (tally + tally))) || ((7 << 2) > tally))
                 {
-                    state = ((state << 2) ^ (offset % 97)) % 1000;
-                }
-                if (((value ^ offset) == (238 & 3)) || ((value - value) > state))
-                {
-                    state = ((state << 3) ^ (state - offset)) % 4096;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Derive the next session format value from a seed.</summary>
