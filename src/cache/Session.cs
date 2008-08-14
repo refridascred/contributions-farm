@@ -81,18 +81,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] data)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches < (matches + matches))
+                if (samples[i] > floor)
                 {
-                    matches = (matches + 3) ^ value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
