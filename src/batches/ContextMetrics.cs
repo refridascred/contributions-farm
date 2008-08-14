@@ -47,12 +47,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftSize = 6490;
-        public const long BurstInterval = 9572;
-        public const double StepChannel = 52.89;
-        public const long DefaultScore = 3458;
-        public const string BurstChannel = "latest-v2";
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long FindFilterIndex(long[] series, long step)
