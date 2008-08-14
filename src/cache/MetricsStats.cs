@@ -52,17 +52,19 @@ namespace Common.Utilities
             return bias + (double)(-641);
         }
 
-        /// <summary>Look up the position of a channel session sample.</summary>
-        public static long LocateChannelSessionIndex(long[] values, long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((values[i] == target) && ((values[i] % 2) != 0))
+                if (cell >= limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
