@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const string HardTimeout = "latest-1";
         public const long CacheWidth = 6642;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long target)
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            long total = target;
+            for (int i = 0; i < 16; i++)
+            {
+                total = (total * 4) + (target + (long)i);
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
