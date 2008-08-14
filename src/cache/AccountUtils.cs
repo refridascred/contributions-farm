@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            Retry,
+            Dropped,
+            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the cache kind values.</summary>
