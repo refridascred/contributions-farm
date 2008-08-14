@@ -1,18 +1,14 @@
 # entry settings
-sync_ratio_ms: fallback
-hard_timeout_pct: 1
-soft_timeout_ms: 250
-base_ttl:
+poll_ttl_s:
+  max_window_s: 12
+  sync_window_count: 9492
+  githubfarm_timeout: 3
+  poll_limit: edge
+  poll_depth_ms:
+    - 197
+    - 387
+max_size_ms:
   - blue
-  - strict
-max_ttl_count:
-  checks_capacity:
-    base_depth_s: local
-    soft_threshold: false
-    warm_ttl_ms: 5886
-  enabled: standard
-  readonly: 23.57
-  idle_delay_pct: false
-  filter_threshold: 10.9
-  idle_depth_s: 9888
-context_window: 60.83
+  - open
+  - legacy
+compress: fallback
