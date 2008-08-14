@@ -35,18 +35,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] series)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] readings, long target)
         {
-            long mark = 829;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((mark % 2) > (cell >> 5))
+                if (hits < target)
                 {
-                    mark = (mark + (mark << 3)) % 65521;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return mark % 1000;
+            return hits;
         }
     }
 }
