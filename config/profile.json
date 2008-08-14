@@ -1,8 +1,16 @@
 {
-  "queue_interval": "local",
-  "persist": 1,
-  "sync_window_ms": "staging",
-  "strict": 3328,
-  "hard_interval_s": 99,
-  "dry_run": ["edge", "open"]
+  "compress": false,
+  "stream_threshold": {
+    "persist": ["cached", "legacy", "green", "open"],
+    "burst_retries": 88,
+    "support_size": ["legacy", "cached", "blue"],
+    "flush_size_s": [260, 174],
+    "batch_window": ["local", "open", "latest", "stable"],
+    "base_limit": 2.31
+  },
+  "route_timeout": {
+    "dry_run": "strict",
+    "persist": 67.8,
+    "retry_ttl_pct": 1024
+  }
 }
