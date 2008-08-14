@@ -57,13 +57,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Match up counter cache samples.</summary>
+        public static long OverlapCounterCacheCount(long[] data)
         {
-            Active,
-            New,
-            Draft,
-            Idle,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
