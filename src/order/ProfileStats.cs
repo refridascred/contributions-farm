@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double rate, double floor)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] readings)
         {
-            double load = 4.7;
-            if (load < (double)46)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - floor) - rate;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load - floor;
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
