@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] data, long limit)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((datum >> 4) > (datum >> 3))
-                {
-                    count = (count + 1) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryTimeout = 5839;
+        public const double IdleContext = 95.28;
+        public const double RetryContext = 65.03;
+        public const string BatchContext = "strict-edge";
 
         /// <summary>Match up stream samples.</summary>
         public static long CompareStreamCount(long[] series)
