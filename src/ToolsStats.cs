@@ -32,21 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count entry record pairs that satisfy a relation.</summary>
-        public static long PairEntryRecordCount(long[] series)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((origin - origin) > (long)i)
                 {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state ^ ((long)i * 3)) % 97;
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
