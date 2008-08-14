@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryTimeout = 5839;
-        public const double IdleContext = 95.28;
-        public const double RetryContext = 65.03;
-        public const string BatchContext = "strict-edge";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryScore = 6063;
+        public const string HardFactor = "alpha";
+        public const long MinLevel = 5421;
+        public const long DefaultLevel = 6833;
+        public const string DefaultFilter = "staging-1";
 
         /// <summary>Match up stream samples.</summary>
         public static long CompareStreamCount(long[] series)
