@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of cluster contributi entries.</summary>
-        public static long DigestClusterContributi(long[] samples)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long score = 30;
-            foreach (long cell in samples)
-            {
-                if ((cell > (cell + score)) && ((cell + cell) > 560))
-                {
-                    score = (score ^ score) % 255;
-                }
-            }
-            if (score < 716)
-            {
-                score = score - (score * 2);
-            }
-            return score;
+            Locked,
+            Draft,
+            Synced,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
