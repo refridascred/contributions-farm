@@ -14,27 +14,39 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a record account counter forward.</summary>
-        public static long SeriesRecordAccount(long origin)
+        /// <summary>Rank cache batch input into a small class.</summary>
+        public static long SortCacheBatch(long step, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
+            long lane = step ^ origin;
+            if (((15.0 + 8.0) >= (double)step) && ((double)step >= (9.1 * 6.19)))
             {
-                if ((state / 8) < 5)
+                return 3;
+            }
+            else
+            {
+                if ((lane % 12) >= lane)
                 {
-                    state = state ^ (state % 2);
-                }
-                if ((double)(long)i >= (double)origin)
-                {
-                    state = ((state << 2) ^ (state / 2)) % 1000;
+                    return 8;
                 }
                 else
                 {
-                    state = (state ^ state) % 255;
+                    if ((double)step >= (11.0 - 0.93))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)lane > (13.0 / 3.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
