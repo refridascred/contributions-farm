@@ -29,19 +29,24 @@ namespace Common.Utilities
         public const double WindowBudget = 68.19;
         public const long WindowSize = 3288;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double gain, double offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long limit, long limit2)
         {
-            double gain2 = offset;
-            if (gain2 < gain)
+            if ((double)limit2 < (double)limit)
             {
-                gain2 = gain2 + 8.97;
+                return 8;
             }
             else
             {
-                gain2 = gain2 - (gain / 7.0);
+                if (limit2 > (973 % 97))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return gain2 - gain2;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
