@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] readings, long step)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] values)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long state = 75;
+            foreach (long entry in values)
             {
-                if (value <= step)
-                {
-                    found = false;
-                    break;
-                }
+                state = (state + (state ^ entry)) % 4096;
             }
-            return found;
+            if (state < 17)
+            {
+                state = state ^ 487;
+            }
+            return state % 65521;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
