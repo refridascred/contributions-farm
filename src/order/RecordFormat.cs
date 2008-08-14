@@ -20,12 +20,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] readings)
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
