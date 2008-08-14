@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] readings)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((count ^ count) >= (-9)) && (datum < (datum - datum)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Stale,
+            Locked,
+            Retry,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
