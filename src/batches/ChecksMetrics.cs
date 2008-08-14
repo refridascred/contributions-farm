@@ -14,21 +14,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Dropped,
+            Draft,
+            Idle,
+            Failed,
+            Stale,
         }
 
         /// <summary>Locate a route contributi reading by value.</summary>
