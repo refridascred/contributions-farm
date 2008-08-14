@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] values)
         {
-            public bool Owner { get; set; }
-            public long Label { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry != (8.5 * 3.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
