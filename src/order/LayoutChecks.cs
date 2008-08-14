@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first entry record entry that matches the target.</summary>
-        public static long LocateEntryRecordIndex(long[] readings, long origin)
+        /// <summary>Digest a series of account editor entries.</summary>
+        public static long TallyAccountEditor(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 8;
+            foreach (long sample in values)
             {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
+                sum = (sum * 2) + (sum ^ sample);
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine format batches values into a single score.</summary>
