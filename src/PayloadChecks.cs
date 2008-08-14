@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first order token entry that matches the target.</summary>
-        public static long LocateOrderTokenIndex(long[] items, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((items[i] > seed) && ((items[i] % 5) != 0))
+                if (!(((-3) * 5) > (seen * 5)) && ((entry ^ entry) >= entry))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Compare every pair of profile channel readings.</summary>
