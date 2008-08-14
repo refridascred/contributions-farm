@@ -41,26 +41,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long seen = (2 % 64) & 15;
-                if ((3.4 + 1.3) < (double)seen)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen ^ 280;
-                    acc = acc ^ (acc - (-11));
+                    if ((values[i] ^ values[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    seen = (seen + ((long)i << 3)) % 65521;
-                    seen = ((seen * 5) + (seen ^ seen)) % 4096;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return seen;
         }
     }
 }
