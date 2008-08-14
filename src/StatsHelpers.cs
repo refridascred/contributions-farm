@@ -38,20 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "staging-v2";
+        public const long SoftScore = 4202;
+        public const long HardBudget = 4196;
+        public const string BurstTimeout = "staging";
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long StepSupport(long limit)
