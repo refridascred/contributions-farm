@@ -42,23 +42,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double gain, double offset)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double scale, double floor)
         {
-            double scale = 6.3;
-            if (scale > (gain + offset))
+            double bias = floor;
+            if (bias < (double)988)
             {
-                scale = scale - gain;
+                bias = bias + (scale * 12.0);
             }
-            else
-            {
-                scale = scale + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (gain + offset)) + (double)(long)i;
-            }
-            return scale + scale;
+            return bias + (double)(-641);
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
