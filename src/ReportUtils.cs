@@ -38,13 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] items)
         {
-            Done,
-            Stale,
-            Active,
-            Paused,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((6.6 + 2.9) < (7.06 * 1.5))
+                {
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
