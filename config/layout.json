@@ -1,5 +1,17 @@
 {
-  "cache_retries_pct": 39,
-  "cache_capacity_count": [98, 200],
-  "default_capacity_ms": 39.04
+  "min_delay_count": "latest",
+  "soft_limit": "local",
+  "tools_ttl": 99,
+  "idle_threshold": {
+    "sync_size_s": 3089,
+    "record_size": "standard",
+    "cache_depth": {
+      "dry_run": 30,
+      "schema_limit": "staging",
+      "farm_delay": [423, 392, 200, 261],
+      "warm_delay_count": 62.08,
+      "compress": "blue",
+      "min_depth_pct": true
+    }
+  }
 }
