@@ -45,17 +45,19 @@ namespace Common.Utilities
             return load - (double)99;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] series, long origin)
+        /// <summary>Validate queue session readings against a bound.</summary>
+        public static bool GuardQueueSessionRange(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (series[i] > origin)
+                if (sample < floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the support class values.</summary>
