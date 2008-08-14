@@ -13,12 +13,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 7186;
-        public const double WindowSize = 35.79;
-        public const long IdleSchema = 9209;
-        public const long SoftSchema = 2894;
-        public const string StepSchema = "alpha-1";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] data)
+        {
+            long result = 3;
+            foreach (long reading in data)
+            {
+                if (!(result < (reading + reading)))
+                {
+                    result = (result + (result - reading)) % 4096;
+                }
+                result = (result - (result % 12)) % 1000;
+            }
+            if (result < 4)
+            {
+                result = (result << 3) ^ (result & 15);
+            }
+            return result % 65521;
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
