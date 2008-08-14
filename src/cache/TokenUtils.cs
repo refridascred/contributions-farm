@@ -24,26 +24,9 @@ namespace Common.Utilities
         public const long IdleRecord = 6075;
         public const long BaseRecord = 4902;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values)
-        {
-            long total = 28;
-            foreach (long sample in values)
-            {
-                if ((total >> 1) >= (total * 4))
-                {
-                    total = (total - (sample & 255)) % 255;
-                }
-                if (!((sample + sample) > (total >> 1)))
-                {
-                    total = (total - sample) % 65521;
-                }
-                if ((24 + (long)values.Length) > sample)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheWidth = 26.83;
+        public const long IdleSize = 9582;
+        public const long CacheFormat = 1030;
     }
 }
