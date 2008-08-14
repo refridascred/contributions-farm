@@ -29,19 +29,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long limit, long limit2)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            if (limit2 < (limit >> 3))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = (anchor ^ (limit % 8)) - (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((limit2 - limit) <= 254)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit2 - (-224)) <= limit2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
