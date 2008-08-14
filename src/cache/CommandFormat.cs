@@ -12,21 +12,16 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] samples)
+        /// <summary>Combine queue graph values into a single score.</summary>
+        public static long CombineQueueGraph(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 849;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result << 2) ^ floor) ^ value;
+                result = (result << 2) ^ 659;
             }
-            return matches;
+            return result % 1000;
         }
 
         /// <summary>Validate context githubfarm readings against a bound.</summary>
