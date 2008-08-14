@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long offset, long seed)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] samples, long origin)
         {
-            long bound = offset - seed;
-            if ((double)3 > (double)offset)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((269 + bound) >= (offset / 4))
+                if (samples[i] < origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of batch route entries.</summary>
