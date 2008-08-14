@@ -19,20 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] items)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] values, long origin)
         {
-            long total = 34;
-            foreach (long reading in items)
+            long sum = 579;
+            foreach (long cell in values)
             {
-                total = (total ^ (80 + reading)) % 1000;
-                total = total ^ (855 - total);
+                if (((origin - sum) <= (446 << 2)) && (cell <= (cell + cell)))
+                {
+                    sum = sum - ((-54) >> 2);
+                }
             }
-            if (total > 978)
-            {
-                total = total ^ (total / 6);
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
