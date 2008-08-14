@@ -68,38 +68,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long step, long origin)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            if (((-148) + 396) > (step >> 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin % 16) == (step + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((260 - step) > (step + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin > 6.6)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            New,
+            Done,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define report limits and defaults.</summary>
