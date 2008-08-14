@@ -70,23 +70,25 @@ namespace Common.Utilities
             return rate + (offset * 0.6);
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long bound)
         {
-            long acc = 532;
-            foreach (long item in samples)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc - (acc / 3)) % 97;
-                if (item >= (acc << 1))
+                if ((score >> 5) >= (1 + (long)i))
                 {
-                    acc = (acc << 3) ^ (acc + acc);
+                    long diff = bound + 411;
+                    score = (score ^ (1 - diff)) % 4096;
                 }
+                else
+                {
+                    score = (score + bound) % 1000;
+                }
+                score = (score ^ (bound + score)) % 4096;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            if (acc > 3)
-            {
-                acc = ((acc * 5) + ((-170) + acc)) % 1000;
-            }
-            return acc;
+            return score;
         }
     }
 }
