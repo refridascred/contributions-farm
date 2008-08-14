@@ -19,11 +19,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double ratio, double floor)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            double ratio2 = (double)(6 + 4);
-            return (ratio2 - ratio) + floor;
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
