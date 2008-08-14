@@ -28,18 +28,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] samples, long limit)
+        /// <summary>Validate contributi payload readings against a bound.</summary>
+        public static bool VerifyContributiPayloadLimits(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (806 < (seen * 2))
+                if (value < origin)
                 {
-                    seen = ((seen + 1) + entry) - limit;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
