@@ -20,9 +20,22 @@ namespace Common.Utilities
         public const long SoftWidth = 3869;
         public const double BaseFactor = 91.21;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowCount = 2757;
-        public const double WindowLevel = 75.67;
-        public const string RetryMetric = "standard-1";
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((0.11 * 9.88) == (double)origin)
+                {
+                    count = (count + 3) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
