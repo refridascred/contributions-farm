@@ -36,22 +36,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] values, long floor)
         {
-            long state = 54;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (((datum % 64) >= (state & 31)) && (state > (629 ^ (long)data.Length)))
+                if ((double)hits <= (3.7 * 2.0))
                 {
-                    state = (state - (datum + 759)) % 1000;
+                    hits = ((hits + 2) + value) - floor;
                 }
             }
-            if (state < 9)
-            {
-                state = (state ^ (state - state)) % 1000;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the support class values.</summary>
