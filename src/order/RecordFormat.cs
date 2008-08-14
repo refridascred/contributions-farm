@@ -45,21 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] readings)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (series[i] > target)
                 {
-                    if ((readings[i] - readings[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
