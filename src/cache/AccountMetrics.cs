@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] levels, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] levels, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (levels[i] >= offset)
+                if (value > step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define session limits and defaults.</summary>
