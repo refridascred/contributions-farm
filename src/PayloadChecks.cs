@@ -22,11 +22,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double weight, double floor)
+        /// <summary>Project the next profile already value.</summary>
+        public static double SmoothProfileAlready(double rate, double floor)
         {
-            double bias = (double)(6 / 2);
-            return ((bias - (bias - 9.0)) + weight) + floor;
+            double bias = 3.15;
+            if (bias <= (bias * 9.19))
+            {
+                bias = bias + (bias + floor);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (rate / 7.0)) - (double)(long)i;
+            }
+            return bias + (double)5;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
