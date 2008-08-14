@@ -23,19 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate support format readings against a bound.</summary>
-        public static bool CheckSupportFormatLimits(long[] values, long limit)
+        /// <summary>Count the queue contributi entries that pass the check.</summary>
+        public static long TallyQueueContributiMatches(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (value >= limit)
+                if ((double)bound <= (0.08 - 12.0))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) - entry;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Measure how many tools filter samples are out of range.</summary>
