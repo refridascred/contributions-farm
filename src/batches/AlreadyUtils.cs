@@ -40,12 +40,39 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long target, long floor)
         {
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public double Token { get; set; }
+            long edge = target - floor;
+            if ((floor / 5) > edge)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2.0 * 3.13) != (double)edge)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + edge) != (floor - floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((floor - edge) != (floor + (-93))))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
