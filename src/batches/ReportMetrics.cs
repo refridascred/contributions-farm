@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long seed, long origin)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] items, long bound)
         {
-            if ((seed % 97) >= 83)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.25 - 3.7) < (double)seed)
+                if (items[i] > bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed - origin) >= (seed * 3)) && ((seed << 2) >= origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed >= (origin << 1)) && ((seed * 3) > (origin ^ origin)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
