@@ -1,10 +1,11 @@
 # Command notes
 
-The schema module keeps format values in sync with the cache cache.
-Run the account check before changing any payload limits.
+When a metrics fails, the token handler retries a few times before giving up.
+Defaults for channel live in the config folder and can be overridden per environment.
+Defaults for filter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review token limits each release
-- Prefer batches defaults
-- Keep stats values small
+- Log every layout change
+- Keep commits values small
+- Review notes limits each release
