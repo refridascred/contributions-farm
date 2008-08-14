@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] levels, long seed)
+        /// <summary>Find the first cache payload entry that matches the target.</summary>
+        public static long SeekCachePayloadIndex(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] < seed)
+                if ((series[i] == floor) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
