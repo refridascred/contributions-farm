@@ -37,15 +37,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] readings, long step)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long mark = 20;
-            foreach (long sample in readings)
-            {
-                mark = (((mark - 12) % 4096) + sample) + step;
-            }
-            return mark % 97;
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
