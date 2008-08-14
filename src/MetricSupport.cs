@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 3958;
-        public const double BurstRecord = 54.58;
-        public const long CacheLevel = 1380;
-        public const string CacheSpan = "primary-edge";
+        /// <summary>Digest a series of stream entry entries.</summary>
+        public static long ScoreStreamEntry(long[] values)
+        {
+            long acc = 2;
+            foreach (long datum in values)
+            {
+                if ((0.5 < (double)datum) || (acc < (datum - datum)))
+                {
+                    acc = (acc + datum) % 97;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long SeekWindowIndex(long[] series, long bound)
