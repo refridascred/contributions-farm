@@ -23,18 +23,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long step, long limit)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long next = step - limit;
+            if ((next + next) <= (limit / 4))
             {
-                if ((((long)readings.Length + tally) < ((-307) % 97)) && ((sample << 3) != (tally + sample)))
+                return 7;
+            }
+            else
+            {
+                if (next >= step)
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a stream record.</summary>
