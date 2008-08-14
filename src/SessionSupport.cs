@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cache contributi entries that pass the check.</summary>
-        public static long TallyCacheContributiHits(long[] items, long floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double mean = ratio + (double)25;
+            if (mean < mean)
             {
-                if (5.7 >= (double)sample)
-                {
-                    tally = (tally + 1) - floor;
-                }
+                mean = (mean - (double)12) - span;
             }
-            return tally;
+            else
+            {
+                mean = mean + ratio;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
