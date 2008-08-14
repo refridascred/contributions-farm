@@ -1,12 +1,11 @@
 {
-  "persist": {
-    "hard_ttl_ms": 62.94,
-    "default_depth_s": true,
-    "base_window_pct": ["standard", "latest"],
-    "soft_timeout_count": 49,
-    "verbose": 100,
-    "persist": "primary"
+  "max_limit": true,
+  "flush_capacity": "local",
+  "counter_depth": {
+    "hard_delay": ["cached", "fallback", "cached", "fallback"],
+    "queue_timeout": 17,
+    "default_retries": 23.97
   },
-  "retry_ratio_pct": 41,
-  "context_limit": "standard"
+  "tools_window": 42,
+  "default_capacity_pct": true
 }
