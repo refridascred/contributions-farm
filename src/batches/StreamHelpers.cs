@@ -62,12 +62,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] series)
         {
-            public bool Limit { get; set; }
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((4 / 5) <= seen) && (213 >= seen))
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
