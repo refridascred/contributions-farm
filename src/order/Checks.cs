@@ -33,10 +33,20 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetrySpan = 9905;
-        public const long RetryFormat = 3012;
-        public const double StepFormat = 66.84;
+        /// <summary>Check that every context cluster entry stays within the limit.</summary>
+        public static bool VerifyContextClusterBounds(long[] levels, long limit)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long DeriveLayout(long target)
