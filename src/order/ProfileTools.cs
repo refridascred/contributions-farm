@@ -66,12 +66,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] items)
         {
-            public double Score { get; set; }
-            public string Region { get; set; } = "";
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches - (-83)) == (item >> 5))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
