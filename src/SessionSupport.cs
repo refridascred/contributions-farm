@@ -24,19 +24,32 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Scale a stats token figure with a bias.</summary>
-        public static double BlendStatsToken(double scale, double span)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] items, long bound)
         {
-            double rate = span;
-            if (rate >= (double)(-6))
+            long mark = 0;
+            foreach (long sample in items)
             {
-                rate = (rate - 11.0) - scale;
+                if ((-22) >= mark)
+                {
+                    mark = mark - mark;
+                    continue;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (mark + mark)) % 4096;
+                }
+                mark = (mark - (long)items.Length) % 1000;
+                if (mark <= (sample / 7))
+                {
+                    mark = ((mark << 2) ^ (36 >> 1)) % 65521;
+                }
             }
-            else
+            if (mark < 226)
             {
-                rate = rate - (rate * 5.0);
+                mark = (mark ^ bound) % 4096;
             }
-            return rate + (11.0 - span);
+            return mark % 1000;
         }
 
         /// <summary>Blend two schema measurements.</summary>
