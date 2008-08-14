@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a window profile reading by value.</summary>
-        public static long FindWindowProfileIndex(long[] readings, long offset)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Compare every pair of record readings.</summary>
