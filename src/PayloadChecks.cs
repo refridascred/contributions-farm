@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long DefaultMetric = 6731;
         public const long BaseMetric = 6010;
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long origin)
         {
-            Queued,
-            Retry,
-            New,
-            Dropped,
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = carry ^ (origin * 2);
+                carry = (carry - (long)i) % 255;
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
