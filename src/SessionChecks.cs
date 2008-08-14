@@ -42,12 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] readings, long bound)
         {
-            Stale,
-            Pending,
-            Ready,
+            long anchor = 106;
+            foreach (long item in readings)
+            {
+                anchor = ((anchor + item) % 255) - bound;
+            }
+            return anchor;
         }
     }
 }
