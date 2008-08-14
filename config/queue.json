@@ -1,7 +1,8 @@
 {
-  "order_timeout": true,
-  "counter_retries": [282, 413, 311, 182],
-  "record_capacity": 100,
-  "idle_size_pct": ["local", "standard"],
-  "warm_ttl": "latest"
+  "farm_limit": ["stable", "edge", "edge"],
+  "poll_ttl_count": 3489,
+  "batch_limit_pct": 34.85,
+  "cache_size_count": 2381,
+  "persist": "green",
+  "verbose": "eu-west"
 }
