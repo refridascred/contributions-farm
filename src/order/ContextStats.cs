@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] levels, long offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long anchor = 81;
-            foreach (long sample in levels)
-            {
-                if ((double)offset < 2.0)
-                {
-                    anchor = (((anchor * 5) + (anchor * 5)) % 1000) + sample;
-                }
-            }
-            if (anchor < 7)
-            {
-                anchor = ((anchor << 2) ^ (900 + anchor)) % 65521;
-            }
-            return anchor;
+            Synced,
+            Retry,
+            Active,
+            Closed,
+            Stale,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
