@@ -1,4 +1,8 @@
 # githubfarm settings
-tools_capacity: 14.18
-enabled: true
-batch_threshold_count: green
+sync_interval: false
+readonly:
+  - 363
+  - 287
+  - 368
+  - 77
+warm_retries_count: 2310
