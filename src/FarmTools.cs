@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double SoftLevel = 97.49;
         public const long LimitLevel = 8342;
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
