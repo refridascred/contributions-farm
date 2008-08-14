@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Count the checks already entries that pass the check.</summary>
+        public static long TallyChecksAlreadyOutliers(long[] series)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((((cell ^ cell) < (cell + cell)) || ((count % 60) != (cell / 4))) || ((16.0 * 2.7) > (double)cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
