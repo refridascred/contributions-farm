@@ -1,11 +1,18 @@
 # entry settings
-burst_window:
-  - 374
-  - 325
-  - 237
-dry_run: 250
-base_retries_count:
-  - 480
-  - 156
-batch_delay: 1024
-burst_threshold_s: false
+enabled:
+  filter_threshold: 7366
+  layout_size: 70
+  buffer_retries: blue
+  burst_interval_ms:
+    farm_ratio: eu-west
+    batches_capacity: 48.96
+    batch_threshold: blue
+    warm_interval_s: false
+  batch_threshold:
+    - 257
+    - 373
+sync_window_pct: 30
+cache_limit_ms:
+  - 385
+  - 268
+  - 284
