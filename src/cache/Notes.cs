@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleAlready = "open-1";
+        public const long IdleBudget = 5960;
+        public const long MaxAlready = 888;
+        public const string DefaultAlready = "standard-v2";
 
         /// <summary>Digest a series of commits channel entries.</summary>
         public static long DigestCommitsChannel(long[] data)
