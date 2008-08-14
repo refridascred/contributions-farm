@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a stream window sample.</summary>
-        public static long LocateStreamWindowIndex(long[] items, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (items[i] >= limit)
+                if (((double)value > (0.6 / 7.0)) || ((value - value) > (156 % 3)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
