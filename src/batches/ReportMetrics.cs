@@ -35,9 +35,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstCluster = "fallback-v2";
-        public const string RetryCluster = "open-edge";
-        public const double StepCluster = 72.37;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long target, long target2)
+        {
+            long edge = target + target2;
+            if ((target & 7) == (target << 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target2 < (target2 & 1)) && ((double)edge >= (double)target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((target % 7) <= target2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
