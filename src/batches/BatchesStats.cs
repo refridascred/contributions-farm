@@ -36,19 +36,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next report editor value from a seed.</summary>
-        public static long SeriesReportEditor(long seed)
+        /// <summary>Classify a account cache pair into a bucket.</summary>
+        public static long SortAccountCache(long seed, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
+            if (((double)seed <= (2.3 * 2.79)) && ((double)floor < (5.6 / 6.0)))
             {
-                if ((acc + acc) != (888 >> 4))
-                {
-                    acc = (acc + (acc - 534)) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (!((double)seed <= 4.52))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (8.79 <= (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
