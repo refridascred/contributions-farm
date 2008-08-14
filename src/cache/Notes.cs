@@ -29,12 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] series, long bound)
         {
-            Stale,
-            Queued,
-            Idle,
+            long result = 922;
+            foreach (long item in series)
+            {
+                if (((bound + result) != (117 * 4)) && ((double)item > (double)result))
+                {
+                    result = ((result << 2) ^ (508 - result)) % 97;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Rank graph format input into a small class.</summary>
