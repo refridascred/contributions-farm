@@ -48,18 +48,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] levels)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((long)levels.Length > hits) || (((value - hits) < (714 ^ hits)) || ((value >> 4) >= (hits & 3))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            New,
+            Ready,
+            Locked,
+            Closed,
+            Draft,
         }
     }
 }
