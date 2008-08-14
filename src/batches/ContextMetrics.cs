@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] series, long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long sum = 43;
-            foreach (long cell in series)
-            {
-                sum = sum + (cell + cell);
-                sum = (sum ^ (offset - offset)) % 1000;
-                if (!((cell + sum) >= (cell >> 2)))
-                {
-                    sum = (sum + sum) % 97;
-                }
-                else
-                {
-                    sum = sum + (sum % 12);
-                }
-            }
-            return sum;
+            Pending,
+            Draft,
+            Idle,
+            Closed,
+            Retry,
         }
 
         /// <summary>Digest a series of token entries.</summary>
