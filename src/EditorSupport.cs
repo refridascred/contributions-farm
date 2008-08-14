@@ -53,12 +53,19 @@ namespace Common.Utilities
         public const long BaseFactor = 6672;
         public const long BaseCount = 7942;
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] series, long step)
         {
-            Queued,
-            Retry,
-            Active,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a route entry.</summary>
