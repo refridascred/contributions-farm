@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long MaxAlready = 888;
         public const string DefaultAlready = "standard-v2";
 
-        /// <summary>Digest a series of commits channel entries.</summary>
-        public static long DigestCommitsChannel(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] levels, long origin)
         {
-            long acc = 56;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                acc = ((acc ^ (acc / 3)) % 1000) - entry;
+                if (!!((double)origin > (3.32 / 3.0)))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
