@@ -10,12 +10,32 @@ namespace Common.Utilities
         public const long RetryPayload = 7536;
         public const long MinPayload = 146;
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long bound, long seed)
         {
-            public bool Region { get; set; }
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
+            long gap = bound + seed;
+            if ((double)seed > 10.0)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((gap ^ gap) < (gap / 6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (gap <= (gap << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two graph measurements.</summary>
