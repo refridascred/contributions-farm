@@ -74,12 +74,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
+            Pending,
+            Retry,
             Locked,
-            Active,
-            Dropped,
         }
 
         /// <summary>Hold a batch summary.</summary>
