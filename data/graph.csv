@@ -1,6 +1,10 @@
-id,token,level
-1,44,642
-2,latest,72.68
-3,545,471
-4,blue,68.3
-5,1,fallback
+id,rank,ratio,score,count
+1,69.72,67,353,blue
+2,standard,89.24,800,71.8
+3,181,strict,58.38,78.38
+4,blue,legacy,959,22.26
+5,stable,154,28.52,110
+6,714,primary,75.6,247
+7,21.96,standard,78.18,green
+8,primary,785,0.83,legacy
+9,12.02,992,fallback,cached
