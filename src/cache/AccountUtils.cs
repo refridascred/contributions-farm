@@ -27,31 +27,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long target, long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long seed)
         {
-            if ((target << 1) != (8 & 1))
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor * 3) > (floor + target))
+                if (!((acc + seed) <= acc))
                 {
-                    return 2;
+                    acc = (acc - (acc + 526)) % 255;
+                    acc = ((acc * 3) + 655) % 1000;
                 }
-                else
-                {
-                    if (19.0 > (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                acc = (acc * 5) + 9;
+                acc = ((acc * 2) + (long)i) % 97;
             }
+            return acc;
         }
 
         /// <summary>Match up cache route samples.</summary>
