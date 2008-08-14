@@ -48,11 +48,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardSize = 9191;
-        public const long CacheReport = 624;
-        public const string MaxReport = "primary-edge";
-        public const string StepSpan = "strict";
-        public const long DefaultDepth = 2380;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((sample ^ sample) > (floor << 1))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
