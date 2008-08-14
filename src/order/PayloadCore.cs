@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowCount = 7768;
-        public const long IdleFactor = 3773;
-        public const long HardGithubfarm = 7979;
-        public const long BurstGithubfarm = 6207;
-        public const string DefaultGithubfarm = "strict";
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double MaxCount = 9.84;
