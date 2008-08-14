@@ -66,11 +66,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleFactor = 7510;
-        public const long BurstTools = 4233;
-        public const long StepDepth = 5178;
-        public const long BatchTools = 9449;
-        public const long MaxTools = 5973;
+        /// <summary>Accumulate record channel samples.</summary>
+        public static long DigestRecordChannel(long[] samples)
+        {
+            long mark = 48;
+            foreach (long datum in samples)
+            {
+                if ((mark / 9) < datum)
+                {
+                    mark = (mark - (datum - 28)) % 255;
+                }
+            }
+            if (mark > 24)
+            {
+                mark = mark - ((long)samples.Length / 9);
+            }
+            return mark;
+        }
     }
 }
