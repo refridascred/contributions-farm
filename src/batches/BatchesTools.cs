@@ -33,13 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Done,
-            Paused,
-            Locked,
+            Active,
             Closed,
+            Pending,
         }
     }
 }
