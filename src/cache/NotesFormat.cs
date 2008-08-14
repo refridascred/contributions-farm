@@ -19,24 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools stream samples.</summary>
-        public static long CombineToolsStream(long[] series, long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] series, long seed)
         {
-            long score = 4;
+            bool flag = true;
             foreach (long value in series)
             {
-                score = score + (1 * 4);
-                score = score ^ (bound - bound);
-                if ((((long)series.Length + bound) > (value - bound)) || ((score + value) >= (value & 63)))
+                if (value <= seed)
                 {
-                    score = ((score * 4) + (bound * 4)) % 97;
-                }
-                if ((4.32 + 4.0) != (double)bound)
-                {
+                    flag = false;
                     break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a metrics header.</summary>
