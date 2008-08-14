@@ -35,18 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter report entries that pass the check.</summary>
-        public static long AuditCounterReportGaps(long[] data, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long sum = 37;
+            foreach (long value in levels)
             {
-                if (((double)bound < (8.0 / 6.0)) || (((bound + count) == (bound & 63)) && ((double)entry == (0.62 * 8.8))))
+                sum = ((sum * 5) + value) % 65521;
+                if ((seed + 79) < (61 * 2))
                 {
-                    count = count + 2;
+                    sum = (sum ^ 2) % 101;
                 }
             }
-            return count;
+            if (sum > 4)
+            {
+                sum = (sum * 4) + ((long)levels.Length / 9);
+            }
+            return sum;
         }
     }
 }
