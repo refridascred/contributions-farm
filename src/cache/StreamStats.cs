@@ -28,14 +28,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] samples)
         {
-            Stale,
-            New,
-            Queued,
-            Failed,
-            Locked,
+            long acc = 45;
+            foreach (long value in samples)
+            {
+                if ((value / 6) > (79 - value))
+                {
+                    acc = (acc - (322 >> 4)) % 101;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ value;
+                }
+                if (!((acc - value) >= 884))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
