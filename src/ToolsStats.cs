@@ -37,24 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double weight, double bias)
-        {
-            double bias2 = weight;
-            if (bias2 >= (weight + bias2))
-            {
-                bias2 = bias2 + (bias + bias2);
-            }
-            else
-            {
-                bias2 = bias2 - 4.4;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 + (bias + 9.48);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 7805;
+        public const long BurstToken = 7440;
+        public const long HardTimeout = 5636;
+        public const long CacheFactor = 971;
+        public const long IdleCount = 6634;
 
         /// <summary>Accumulate session samples.</summary>
         public static long DigestSession(long[] samples, long seed)
