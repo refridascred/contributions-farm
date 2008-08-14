@@ -69,9 +69,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 563;
-        public const long MinLevel = 8418;
-        public const double CacheMetric = 71.66;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((reading * 2) >= ((-16) + tally))
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
+        }
     }
 }
