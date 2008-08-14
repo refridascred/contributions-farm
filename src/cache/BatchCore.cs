@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] samples, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (entry <= offset)
+                if ((double)cell < (0.86 * 17.0))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Project the next order value.</summary>
