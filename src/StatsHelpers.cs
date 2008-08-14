@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the farm editor entries that pass the check.</summary>
-        public static long AuditFarmEditorGaps(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((7 + target) <= (target + 706))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 5647;
+        public const double IdleSchema = 6.98;
+        public const string BatchFactor = "fallback-edge";
+        public const string HardTimeout = "latest-1";
+        public const long CacheWidth = 6642;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
