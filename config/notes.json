@@ -1,5 +1,13 @@
 {
-  "buffer_ttl": ["edge", "edge", "staging"],
-  "cache_retries_pct": "local",
-  "retry_limit_pct": false
+  "hard_depth_ms": "local",
+  "soft_ratio": "latest",
+  "strict": {
+    "idle_threshold_count": ["staging", "fallback", "blue"],
+    "warm_capacity_pct": "legacy",
+    "soft_window_s": 1903,
+    "burst_ttl_pct": "eu-west",
+    "verbose": false,
+    "default_ratio_s": 500
+  },
+  "default_size_count": 16.44
 }
