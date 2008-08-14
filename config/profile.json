@@ -1,6 +1,10 @@
 {
-  "strict": 89,
-  "retry_ratio_s": "blue",
-  "compress": [472, 281, 44, 353],
-  "sync_threshold_s": false
+  "poll_interval": {
+    "soft_limit_pct": 98.6,
+    "base_timeout": 31.95,
+    "contributi_interval": 2255
+  },
+  "batch_limit_s": 60,
+  "retry_timeout": "green",
+  "base_threshold_s": "cached"
 }
