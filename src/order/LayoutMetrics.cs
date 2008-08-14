@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next stats record value from a seed.</summary>
-        public static long StepStatsRecord(long offset)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long seed, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            if ((double)seed == (7.2 + 2.84))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = ((state ^ (state << 1)) % 255) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                return 1;
             }
-            return state;
+            else
+            {
+                if ((19.0 * 9.0) != (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound > (bound - 25)) && (bound > (seed - seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of batch stream entries.</summary>
