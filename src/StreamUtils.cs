@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 3396;
+        public const double BaseRatio = 46.26;
+        public const long LimitFactor = 3996;
+        public const long RetryScore = 3161;
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
