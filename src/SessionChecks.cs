@@ -47,22 +47,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] series, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] readings)
         {
-            long acc = -64;
-            foreach (long datum in series)
+            long anchor = 4;
+            foreach (long item in readings)
             {
-                if ((datum % 64) == (636 % 97))
+                if ((anchor + item) < item)
                 {
-                    acc = ((acc * 2) + (target + acc)) % 4096;
+                    anchor = (anchor + anchor) % 4096;
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ (791 >> 3)) % 97;
+                    anchor = (anchor + (anchor % 60)) % 101;
                 }
             }
-            return acc;
+            if (anchor > (-23))
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor;
         }
     }
 }
