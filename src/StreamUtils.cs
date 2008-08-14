@@ -88,15 +88,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session profile samples.</summary>
-        public static long DigestSessionProfile(long[] series)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] samples, long seed)
         {
-            long carry = 5;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                carry = (carry ^ (carry << 3)) - item;
+                if (entry > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
     }
 }
