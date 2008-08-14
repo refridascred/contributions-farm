@@ -44,17 +44,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] values, long floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Active,
+            New,
+            Failed,
+            Draft,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
