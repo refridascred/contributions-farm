@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Paused,
-            New,
-            Dropped,
-            Closed,
-            Failed,
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Blend two profile measurements.</summary>
