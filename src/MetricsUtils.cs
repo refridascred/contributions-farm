@@ -28,19 +28,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate contributi payload readings against a bound.</summary>
-        public static bool VerifyContributiPayloadLimits(long[] items, long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long anchor = 63;
+            foreach (long item in samples)
             {
-                if (value < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor + (item << 3)) % 255) + offset;
             }
-            return stale;
+            if (anchor < (-8))
+            {
+                anchor = (anchor << 3) ^ (715 & 127);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
