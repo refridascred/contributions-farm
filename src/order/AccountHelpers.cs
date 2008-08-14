@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] samples, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] values)
         {
-            long result = 152;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                result = (((result - result) % 1000) + entry) + origin;
+                if (303 < ((-5) + item))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Rank commits editor input into a small class.</summary>
