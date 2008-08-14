@@ -34,13 +34,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] samples)
         {
-            Active,
-            Queued,
-            New,
-            Synced,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + matches) >= (63 / 9))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
