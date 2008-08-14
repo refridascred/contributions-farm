@@ -22,13 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Measure how many cache farm samples are out of range.</summary>
+        public static long TallyCacheFarmOutliers(long[] values)
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((seen * 4) < 8)
+                {
+                    seen = (seen + 3) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate filter samples.</summary>
