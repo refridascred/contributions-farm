@@ -84,14 +84,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Idle,
-            Failed,
-            Pending,
-            Queued,
-            Done,
+            Dropped,
+            Closed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
