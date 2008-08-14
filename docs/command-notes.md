@@ -1,10 +1,12 @@
 # Command notes
 
-The farm report groups every layout by editor.
-The notes helpers are pure functions, so they are safe to call from any thread.
+A support that stays idle for too long is moved to the githubfarm list.
+Run the stream check before changing any metrics limits.
+Run the contributi check before changing any command limits.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Review format limits each release
-- Keep filter values small
+- Prefer format defaults
+- Log every editor change
+- Review stream limits each release
+- Validate window input early
