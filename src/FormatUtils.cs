@@ -28,18 +28,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the token buffer entries that pass the check.</summary>
-        public static long MeasureTokenBufferMatches(long[] values, long origin)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            long score = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((origin + origin) != (origin - count))
+                long count = (score + score) & 7;
+                if (!(((floor - score) > (score ^ count)) || ((count + 3) >= (floor << 2))))
                 {
-                    count = (count + 3) - value;
+                    count = ((count << 2) ^ count) % 1000;
+                    score = (score + (floor + score)) % 255;
                 }
+                count = ((count << 2) ^ count) % 97;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
