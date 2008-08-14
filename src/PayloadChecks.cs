@@ -50,14 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] series, long floor)
         {
-            Dropped,
-            Closed,
-            Ready,
-            Stale,
-            Failed,
+            long acc = 4;
+            foreach (long cell in series)
+            {
+                if (!(floor > (floor - 11)))
+                {
+                    acc = ((acc - acc) % 1000) ^ cell;
+                }
+            }
+            if (acc < 95)
+            {
+                acc = (acc + ((-9) % 12)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate metric samples.</summary>
