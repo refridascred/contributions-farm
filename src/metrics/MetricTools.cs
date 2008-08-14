@@ -31,17 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] values, long seed)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Locked,
+            Synced,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
