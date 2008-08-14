@@ -67,19 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] samples, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (value != target)
+                if (!((seed - seed) == (seed - matches)) || !(0.44 < (double)matches))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
