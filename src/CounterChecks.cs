@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two format profile measurements.</summary>
-        public static double BlendFormatProfile(double scale, double bias)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] data, long limit)
         {
-            double drift = scale * 2.0;
-            if (drift < bias)
+            long state = 3;
+            foreach (long sample in data)
             {
-                drift = drift + (bias + drift);
+                if ((sample + state) <= sample)
+                {
+                    state = state - limit;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (drift * 2.0)) + (double)(long)i;
-            }
-            return drift + (double)2;
+            return state;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
