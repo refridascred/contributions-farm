@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const string BatchTimeout = "stable-v2";
         public const long DefaultMetric = 96;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] readings, long origin)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)tally > (double)7)
+                if (!(step <= (step >> 2)))
                 {
-                    tally = ((tally + 3) + cell) + origin;
+                    score = (score - 45) % 1000;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
