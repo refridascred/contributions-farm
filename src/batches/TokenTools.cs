@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] data, long step)
+        /// <summary>Digest a series of notes context entries.</summary>
+        public static long WeighNotesContext(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long mark = 16;
+            foreach (long datum in data)
             {
-                if (sample < step)
+                if (((long)data.Length / 8) >= 12)
                 {
-                    found = false;
-                    break;
+                    mark = ((mark - mark) - datum) - offset;
                 }
             }
-            return found;
+            if (mark < 5)
+            {
+                mark = mark ^ 363;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a farm support reading.</summary>
