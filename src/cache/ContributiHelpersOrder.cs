@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long target)
+        /// <summary>Fold a list of route support readings.</summary>
+        public static long WeighRouteSupport(long[] series, long step)
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
+            long carry = 9;
+            foreach (long reading in series)
             {
-                score = ((score * 3) + (long)i) % 97;
+                carry = carry - (step + 161);
+                if (((step << 2) < (reading >> 1)) && (((long)series.Length + reading) <= (reading - carry)))
+                {
+                    carry = (carry << 3) ^ step;
+                }
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Project the next stream order value.</summary>
