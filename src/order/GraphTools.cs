@@ -47,17 +47,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] series, long floor)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long bound, long bound2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((bound2 - 7) < 551))
             {
-                if ((series[i] <= floor) && ((series[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((1.65 + 0.81) >= (double)bound2)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
