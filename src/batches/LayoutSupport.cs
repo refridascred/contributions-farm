@@ -13,19 +13,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (((6.59 / 2.0) == (double)reading) && ((matches >= (reading / 3)) || (matches < (468 + reading))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 4543;
+        public const long IdleSize = 8252;
+        public const double WindowContributi = 13.46;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelMatches(long[] data, long seed)
