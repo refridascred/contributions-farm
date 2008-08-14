@@ -70,10 +70,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardBatches = 83.47;
-        public const long BaseBatches = 7902;
-        public const double MinBatches = 65.77;
-        public const string StepBatches = "staging-v2";
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
