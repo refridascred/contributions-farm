@@ -22,18 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] levels)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell < (0.86 * 17.0))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Closed,
+            Done,
+            Ready,
+            Pending,
         }
 
         /// <summary>Project the next order value.</summary>
