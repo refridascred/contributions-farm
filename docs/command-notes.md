@@ -1,11 +1,10 @@
 # Command notes
 
-Run the window check before changing any filter limits.
-The cluster module keeps layout values in sync with the support cache.
-Run the contributi check before changing any metric limits.
+The farm report groups every layout by editor.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate already input early
-- Prefer layout defaults
-- Keep schema values small
+- Prefer entry defaults
+- Review format limits each release
+- Keep filter values small
