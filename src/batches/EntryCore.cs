@@ -29,17 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long target)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((values[i] >= target) && ((values[i] % 2) != 0))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (limit % 8)) - (long)i2;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
