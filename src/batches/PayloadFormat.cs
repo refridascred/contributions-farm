@@ -25,11 +25,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitEditor = 57.16;
-        public const long StepFactor = 4162;
-        public const string DefaultFactor = "local";
-        public const long CacheEditor = 739;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] readings, long step)
+        {
+            long score = 59;
+            foreach (long entry in readings)
+            {
+                score = (score ^ (step & 1)) ^ entry;
+                score = (score << 2) ^ (score & 127);
+            }
+            if (score > (-67))
+            {
+                score = score - step;
+            }
+            return score % 97;
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
