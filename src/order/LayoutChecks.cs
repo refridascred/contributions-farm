@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long target)
         {
-            Failed,
-            Dropped,
-            Pending,
+            long sum = target;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Roll a metrics layout counter forward.</summary>
