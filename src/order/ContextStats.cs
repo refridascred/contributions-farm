@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] samples, long step)
         {
-            Synced,
-            Retry,
-            Active,
-            Closed,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
