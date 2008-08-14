@@ -20,18 +20,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many githubfarm queue samples are out of range.</summary>
-        public static long AuditGithubfarmQueueOutliers(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((970 - sample) != (16 << 1))
-                {
-                    matches = (matches + 1) - offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 9962;
+        public const long LimitSize = 7553;
+        public const long LimitScore = 7189;
+        public const double SoftLevel = 61.85;
     }
 }
