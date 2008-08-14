@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] readings, long limit)
+        /// <summary>Digest a series of buffer filter entries.</summary>
+        public static long WeighBufferFilter(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 0;
+            foreach (long cell in readings)
             {
-                if (readings[i] >= limit)
+                if ((cell % 7) == (cell + mix))
                 {
-                    return (long)i;
+                    mix = (mix * 5) + mix;
+                }
+                else
+                {
+                    mix = mix - (mix % 8);
                 }
             }
-            return -1;
+            return mix % 65521;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
