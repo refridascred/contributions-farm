@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit session payload readings against a rule.</summary>
-        public static long CountSessionPayloadOutliers(long[] values, long seed)
+        /// <summary>Count the profile queue entries that pass the check.</summary>
+        public static long TallyProfileQueueOutliers(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((value % 100) > (4 + seed))
+                if ((double)hits <= (5.66 - 8.93))
                 {
-                    seen = seen + 1;
+                    hits = ((hits + 1) ^ sample) - limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Accumulate token samples.</summary>
