@@ -53,19 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] items)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] items)
         {
             long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)tally >= (2.53 * 6.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] - items[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
