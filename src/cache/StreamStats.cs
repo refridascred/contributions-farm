@@ -42,10 +42,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchCount = 55.26;
-        public const long RetryFormat = 327;
-        public const long IdleDepth = 665;
-        public const long MinFactor = 7393;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
