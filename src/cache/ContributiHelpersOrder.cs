@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route support readings.</summary>
-        public static long WeighRouteSupport(long[] series, long step)
+        /// <summary>Find the first route cache entry that matches the target.</summary>
+        public static long LocateRouteCacheIndex(long[] data, long origin)
         {
-            long carry = 9;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = carry - (step + 161);
-                if (((step << 2) < (reading >> 1)) && (((long)series.Length + reading) <= (reading - carry)))
+                if ((data[i] < origin) && ((data[i] % 2) == 0))
                 {
-                    carry = (carry << 3) ^ step;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Project the next stream order value.</summary>
