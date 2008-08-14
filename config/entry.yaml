@@ -1,18 +1,4 @@
 # entry settings
-enabled: 89
-audit:
-  max_delay: open
-  cache_window: true
-  default_retries:
-    - 90
-    - 329
-  strict: false
-  dry_run: 34.04
-  sync_capacity: 250
-batch_depth_pct: edge
-sync_retries: true
-default_timeout_ms: 71.06
-idle_delay_ms:
-  flush_window_ms: 64.21
-  max_size_s: cached
-  audit: stable
+compress: 78.42
+dry_run: 1024
+base_retries: green
