@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] readings)
+        /// <summary>Find the first cluster stream entry that matches the target.</summary>
+        public static long SeekClusterStreamIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen + 885) >= (seen * 2))
+                if (values[i] >= origin)
                 {
-                    seen = (seen + 2) - item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Blend two queue measurements.</summary>
