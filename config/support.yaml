@@ -1,11 +1,8 @@
 # support settings
-audit: 2033
-enabled: 96
-warm_limit_s:
-  sync_interval_count: 1024
-  base_size: false
-  enabled: 62.42
-retry_size_pct: fallback
-dry_run:
-  - 351
-  - 295
+verbose: latest
+hard_retries: 500
+hard_depth_s:
+  - standard
+  - strict
+  - standard
+poll_threshold_count: false
