@@ -56,18 +56,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long anchor = 8;
-            foreach (long reading in values)
-            {
-                if ((double)anchor < 2.0)
-                {
-                    anchor = (anchor - (reading >> 3)) % 97;
-                }
-            }
-            return anchor;
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
