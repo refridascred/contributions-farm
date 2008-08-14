@@ -1,13 +1,6 @@
 {
-  "route_capacity": "stable",
-  "channel_ratio": {
-    "idle_timeout_s": 11.86,
-    "hard_window_ms": "eu-west",
-    "poll_size": "staging",
-    "hard_delay_count": true,
-    "retry_ttl": true
-  },
-  "strict": "edge",
-  "sync_depth_count": 250,
-  "cache_threshold": 13
+  "burst_size": "open",
+  "cluster_threshold": true,
+  "report_ratio": [127, 240, 208],
+  "compress": "blue"
 }
