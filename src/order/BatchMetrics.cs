@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Closed,
-            Stale,
-            Idle,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 2025;
+        public const long WindowAccount = 3969;
+        public const long StepAccount = 5232;
+        public const long HardAccount = 8200;
+        public const long BaseRatio = 2834;
 
         /// <summary>Roll a report counter forward.</summary>
         public static long IterateReport(long step)
