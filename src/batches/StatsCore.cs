@@ -65,12 +65,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public double Token { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
