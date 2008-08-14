@@ -57,18 +57,12 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Audit layout record readings against a rule.</summary>
-        public static long CountLayoutRecordOutliers(long[] items, long origin)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (!((count >> 1) < entry))
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
