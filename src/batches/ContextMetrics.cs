@@ -41,14 +41,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Project the next route editor value.</summary>
+        public static double ScaleRouteEditor(double rate, double floor)
         {
-            Synced,
-            Idle,
-            Retry,
-            Ready,
-            Queued,
+            double bias = floor;
+            if (bias > bias)
+            {
+                bias = (bias - (double)136) + rate;
+            }
+            else
+            {
+                bias = bias + (double)21;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - floor) + (double)(long)i;
+            }
+            return bias + 4.0;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
