@@ -38,16 +38,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double scale, double offset)
-        {
-            double load = offset;
-            if (load > (offset + load))
-            {
-                load = (load - (offset * 20.0)) + scale;
-            }
-            return load - offset;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 2416;
+        public const long MaxSchema = 9608;
+        public const double SoftDepth = 8.22;
+        public const long WindowWidth = 9731;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
