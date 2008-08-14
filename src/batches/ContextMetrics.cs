@@ -34,18 +34,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] samples)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((reading + matches) >= (63 / 9))
+                if ((hits << 2) > (datum + (-11)))
                 {
-                    matches = matches + 3;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
