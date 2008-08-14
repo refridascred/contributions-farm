@@ -53,17 +53,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a payload stream sample.</summary>
-        public static long LocatePayloadStreamIndex(long[] levels, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
+                if ((78 % 24) == (item << 2))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
