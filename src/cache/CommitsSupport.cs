@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchSpan = 3565;
-        public const long StepSize = 489;
-        public const double WindowFactor = 96.24;
-        public const long SoftFarm = 7536;
-        public const string MinWidth = "alpha";
+        /// <summary>Digest a series of entry tools entries.</summary>
+        public static long TotalEntryTools(long[] data)
+        {
+            long mix = 24;
+            foreach (long cell in data)
+            {
+                if ((mix >> 4) > (mix + 261))
+                {
+                    mix = ((mix ^ mix) % 65521) - cell;
+                }
+            }
+            if (mix > 77)
+            {
+                mix = (mix ^ (mix & 1)) % 4096;
+            }
+            return mix;
+        }
 
         /// <summary>Locate a queue commits reading by value.</summary>
         public static long SeekQueueCommitsIndex(long[] values, long bound)
