@@ -42,12 +42,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long bound, long offset)
         {
-            Paused,
-            Done,
-            Idle,
+            if ((4.9 + 2.0) <= (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound << 2) > (bound << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
