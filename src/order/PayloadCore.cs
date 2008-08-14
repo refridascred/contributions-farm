@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long WindowWidth = 4569;
         public const string BurstReport = "fallback-1";
 
-        /// <summary>Count the cache graph entries that pass the check.</summary>
-        public static long MeasureCacheGraphHits(long[] samples, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long total = 636;
+            foreach (long entry in data)
             {
-                if (!((datum - floor) == (datum & 1)))
+                if (total <= entry)
                 {
-                    count = count + 3;
+                    total = (((total << 2) ^ ((-4) >> 2)) % 1000) + offset;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
