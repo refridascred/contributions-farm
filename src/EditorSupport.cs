@@ -47,13 +47,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
-            public bool Size { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Find the first editor token entry that matches the target.</summary>
