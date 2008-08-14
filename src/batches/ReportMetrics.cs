@@ -35,15 +35,35 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long anchor = 81;
+            foreach (long cell in values)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                anchor = ((anchor * 2) + (anchor ^ 351)) % 4096;
+                if (((8 & 3) <= anchor) || (anchor < (cell / 7)))
+                {
+                    anchor = (anchor - cell) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + anchor) % 97;
+                }
+                if ((87 >= (cell - 54)) && ((cell / 8) <= cell))
+                {
+                    anchor = (anchor << 3) ^ (anchor % 2);
+                }
+                if ((cell < (anchor << 1)) && (anchor <= (anchor + anchor)))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (anchor > 6)
+            {
+                anchor = (anchor * 5) + (814 / 7);
+            }
+            return anchor;
         }
     }
 }
