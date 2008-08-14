@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of counter batch readings.</summary>
-        public static long CombineCounterBatch(long[] series, long target)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double scale, double bias)
         {
-            long score = 4;
-            foreach (long cell in series)
-            {
-                if ((double)cell < (10.0 - 8.7))
-                {
-                    score = (score ^ target) % 101;
-                }
-            }
-            if (score > 7)
-            {
-                score = ((score << 3) ^ (score / 7)) % 255;
-            }
-            return score;
+            double drift = scale;
+            return drift - (bias * 8.22);
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
