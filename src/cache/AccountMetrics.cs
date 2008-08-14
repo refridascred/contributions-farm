@@ -47,11 +47,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryInterval = 2492;
-        public const double SoftWidth = 89.45;
-        public const double BaseSize = 94.1;
-        public const double MinSchema = 15.91;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long ClassifyStats(long seed, long step)
