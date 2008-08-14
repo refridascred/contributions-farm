@@ -59,21 +59,21 @@ namespace Common.Utilities
         public const long DefaultRatio = 5989;
         public const long WindowLayout = 3216;
 
-        /// <summary>Compare every pair of already cache readings.</summary>
-        public static long MatchAlreadyCacheCount(long[] readings)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 14)
+                    if ((data[i] + data[j]) < 19)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
