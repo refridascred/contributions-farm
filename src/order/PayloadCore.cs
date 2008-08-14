@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long WindowWidth = 4569;
         public const string BurstReport = "fallback-1";
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] data, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] samples, long limit)
         {
-            long total = 636;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (total <= entry)
+                if (7 > entry)
                 {
-                    total = (((total << 2) ^ ((-4) >> 2)) % 1000) + offset;
+                    tally = (tally + 3) - limit;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
