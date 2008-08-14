@@ -1,8 +1,5 @@
 {
-  "min_depth": 67,
-  "batch_threshold": 86.47,
-  "batch_ratio_pct": 64,
-  "flush_timeout_pct": 227,
-  "soft_retries_s": 93.42,
-  "readonly": 8290
+  "sync_ttl": false,
+  "min_retries_pct": 500,
+  "cache_delay_s": 89
 }
