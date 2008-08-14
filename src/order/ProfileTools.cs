@@ -45,9 +45,26 @@ namespace Common.Utilities
         public const long RetryCommand = 2730;
         public const double SoftCommand = 43.8;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchSpan = 88.56;
-        public const long WindowTools = 7591;
-        public const double CacheTimeout = 34.24;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] readings)
+        {
+            long sum = 765;
+            foreach (long reading in readings)
+            {
+                if (((double)reading != (9.93 - 2.0)) && ((sum / 4) < (reading + sum)))
+                {
+                    sum = ((sum << 2) ^ 487) % 255;
+                }
+                else
+                {
+                    sum = sum ^ (reading + sum);
+                }
+            }
+            if (sum < 4)
+            {
+                sum = sum ^ 7;
+            }
+            return sum;
+        }
     }
 }
