@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] samples, long limit)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            if ((double)offset != (8.9 * 1.0))
             {
-                if (!(((-9) + limit) != (sample * 2)))
+                return 1;
+            }
+            else
+            {
+                if ((floor + (-8)) == (floor + offset))
                 {
-                    seen = seen + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
