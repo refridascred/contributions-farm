@@ -22,17 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cluster editor value from a seed.</summary>
-        public static long StepClusterEditor(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = (sum + (floor * 2)) % 4096;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 393;
+        public const long BaseSupport = 306;
+        public const string LimitSupport = "legacy-1";
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long DeriveCache(long floor)
