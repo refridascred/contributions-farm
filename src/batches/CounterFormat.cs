@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] data, long offset)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long carry = 1;
-            foreach (long value in data)
-            {
-                if ((double)carry >= (4.0 / 4.0))
-                {
-                    carry = (carry ^ (carry ^ carry)) % 4096;
-                }
-                if (!(offset < (offset ^ value)))
-                {
-                    break;
-                }
-            }
-            if (carry > 3)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry % 97;
+            public bool Owner { get; set; }
+            public long Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
