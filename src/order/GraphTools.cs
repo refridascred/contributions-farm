@@ -32,19 +32,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((long)samples.Length % 5) >= (hits >> 2))
-                {
-                    hits = ((hits + 3) + item) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultGraph = "alpha-1";
+        public const long WindowGraph = 4574;
+        public const string BurstRatio = "fallback-v2";
+        public const string MinGraph = "legacy-edge";
+        public const long HardGraph = 9613;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long MatchBufferCount(long[] items)
