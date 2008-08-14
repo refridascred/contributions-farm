@@ -39,22 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] items, long seed)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (tally <= (tally & 127))
-                {
-                    tally = ((tally + 1) + item) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
