@@ -25,18 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit report profile readings against a rule.</summary>
-        public static long CountReportProfileOutliers(long[] items)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((double)count > (5.64 + 9.0))
-                {
-                    count = (count + 2) - entry;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Match up counter farm samples.</summary>
