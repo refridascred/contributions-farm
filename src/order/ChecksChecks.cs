@@ -36,14 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Count the schema batches entries that pass the check.</summary>
+        public static long AuditSchemaBatchesMatches(long[] levels, long limit)
         {
-            Draft,
-            Pending,
-            Failed,
-            Ready,
-            Dropped,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((double)seen <= (8.34 + 1.53))
+                {
+                    seen = ((seen + 1) - item) + limit;
+                }
+            }
+            return seen;
         }
     }
 }
