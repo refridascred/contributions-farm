@@ -27,26 +27,13 @@ namespace Common.Utilities
         public const long MaxProfile = 464;
         public const long DefaultProfile = 7070;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] items, long limit)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long mix = 768;
-            foreach (long datum in items)
-            {
-                if (limit >= (limit % 8))
-                {
-                    mix = mix ^ mix;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (datum * 3)) % 1000;
-                }
-            }
-            if (mix < 8)
-            {
-                mix = (mix - 0) % 255;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
