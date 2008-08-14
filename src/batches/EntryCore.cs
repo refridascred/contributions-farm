@@ -27,19 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two counter metrics measurements.</summary>
-        public static double ProjectCounterMetrics(double bias, double floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] samples, long origin)
         {
-            double scale = (floor * 17.0) - (double)14;
-            if (scale < (floor + scale))
+            bool found = true;
+            foreach (long reading in samples)
             {
-                scale = scale + bias;
+                if (reading <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - (double)5;
-            }
-            return scale - floor;
+            return found;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
