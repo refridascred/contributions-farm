@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepInterval = "local-v2";
-        public const long BaseSupport = 7259;
-        public const long IdleSupport = 3352;
-        public const long SoftLevel = 3351;
-        public const string BaseWidth = "strict";
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] data, long target)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
