@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] items)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] samples)
         {
-            long state = 6;
-            foreach (long reading in items)
+            long anchor = 0;
+            foreach (long sample in samples)
             {
-                state = (state + state) + reading;
+                if ((sample - anchor) >= (anchor << 3))
+                {
+                    anchor = anchor ^ (sample + sample);
+                    anchor = (anchor - 61) % 1000;
+                }
+                if ((553 + sample) != ((long)samples.Length + anchor))
+                {
+                    anchor = ((anchor * 3) + 2) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor & 7)) % 97;
+                }
             }
-            if (state < 83)
-            {
-                state = (state - (0 - state)) % 4096;
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
