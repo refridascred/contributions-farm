@@ -12,17 +12,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Find the first payload command entry that matches the target.</summary>
-        public static long LookupPayloadCommandIndex(long[] levels, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
+                if (!!((matches % 64) != ((long)levels.Length + cell)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
