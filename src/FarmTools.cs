@@ -13,21 +13,28 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)i << 1) > limit)
                 {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = sum ^ (long)i;
                 }
+                if ((long)i > (limit - 90))
+                {
+                    sum = (sum * 3) + (sum - limit);
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ sum) % 1000;
+                    sum = ((sum * 5) + 90) % 65521;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a support options.</summary>
