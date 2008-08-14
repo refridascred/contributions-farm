@@ -1,9 +1,6 @@
-id,weight,ratio,count,level
-1,stable,fallback,7.14,60.67
-2,996,332,fallback,fallback
-3,350,893,807,229
-4,21.24,616,883,63
-5,edge,77.91,local,eu-west
-6,cached,380,106,962
-7,eu-west,907,37.6,414
-8,green,273,blue,815
+id,ratio,weight,count
+1,open,421,338
+2,521,88.48,785
+3,965,standard,legacy
+4,primary,eu-west,staging
+5,latest,fallback,541
