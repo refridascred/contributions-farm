@@ -1,9 +1,6 @@
-id,weight,label
-1,671,local
-2,open,blue
-3,50.88,fallback
-4,724,staging
-5,blue,434
-6,549,853
-7,44.61,598
-8,blue,511
+id,count,active,rank,region
+1,73.71,417,staging,847
+2,914,85.47,standard,679
+3,289,stable,875,strict
+4,434,edge,56.65,edge
+5,60.73,stable,46.96,415
