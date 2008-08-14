@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long BurstRatio = 8169;
         public const long MinBudget = 4816;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] values, long origin)
+        /// <summary>Count the format command entries that pass the check.</summary>
+        public static long CountFormatCommandHits(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((values[i] < origin) && ((values[i] % 2) == 0))
+                if (735 > (matches * 3))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
