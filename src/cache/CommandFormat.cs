@@ -47,18 +47,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] series)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (matches > 641)
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
