@@ -37,10 +37,15 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowBudget = 96.83;
-        public const string MinSchema = "stable";
-        public const long BatchSchema = 6731;
-        public const long MaxScore = 1444;
+        /// <summary>Roll a commits notes counter forward.</summary>
+        public static long SeriesCommitsNotes(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
