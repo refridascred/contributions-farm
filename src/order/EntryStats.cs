@@ -35,21 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((limit & 1) < hits) && (2.82 < (double)limit))
                 {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
