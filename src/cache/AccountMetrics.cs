@@ -22,17 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] data, long limit)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((data[i] == limit) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark + ((long)i - mark)) % 97;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
