@@ -20,14 +20,31 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Grade a support channel value against two limits.</summary>
+        public static long SortSupportChannel(long limit, long step)
         {
-            Retry,
-            Pending,
-            Ready,
-            New,
-            Dropped,
+            if ((limit >> 1) >= (71 & 127))
+            {
+                return 0;
+            }
+            else
+            {
+                if (limit >= (limit >> 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit >> 4) != (limit * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batch record.</summary>
