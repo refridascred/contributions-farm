@@ -14,10 +14,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseQueue = 75.31;
-        public const string MinQueue = "open-1";
-        public const string LimitSize = "alpha";
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long StepTools(long floor)
