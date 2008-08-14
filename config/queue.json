@@ -1,5 +1,5 @@
 {
-  "batches_limit": "green",
-  "enabled": "blue",
-  "base_interval": "green"
+  "readonly": "legacy",
+  "compress": true,
+  "queue_ttl": 16.3
 }
