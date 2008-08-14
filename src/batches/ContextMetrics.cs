@@ -28,14 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Idle,
-            Ready,
-            Failed,
-            Done,
-            Active,
+            Stale,
+            Retry,
+            Paused,
         }
 
         /// <summary>Validate queue session readings against a bound.</summary>
