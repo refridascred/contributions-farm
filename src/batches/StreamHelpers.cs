@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] levels, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (item <= origin)
+                if ((count / 4) >= count)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) + datum;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a cluster stats.</summary>
