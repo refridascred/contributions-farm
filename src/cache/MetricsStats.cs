@@ -41,19 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools account readings against a bound.</summary>
-        public static bool ValidateToolsAccountLimits(long[] samples, long origin)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double gain, double offset)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            double scale = (double)8 + (offset * 3.36);
+            if (scale > (offset / 7.0))
             {
-                if (datum <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale - gain;
             }
-            return found;
+            return scale + 1.8;
         }
 
         /// <summary>Adjust a payload reading.</summary>
