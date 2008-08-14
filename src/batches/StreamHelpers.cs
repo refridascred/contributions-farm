@@ -37,22 +37,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up counter cache samples.</summary>
-        public static long OverlapCounterCacheCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "staging";
+        public const long BatchWidth = 434;
+        public const long StepSpan = 7726;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long DeriveBuffer(long offset)
