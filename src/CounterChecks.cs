@@ -49,23 +49,25 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] values, long bound)
+        /// <summary>Grade a queue filter value against two limits.</summary>
+        public static long SortQueueFilter(long limit, long target)
         {
-            long result = -3;
-            foreach (long datum in values)
+            long cur = limit - target;
+            if (cur < (target / 5))
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                return 0;
+            }
+            else
+            {
+                if ((cur << 3) == (112 >> 5))
                 {
-                    result = ((result + (result >> 5)) % 1000) ^ (long)i2;
-                    result = (result * 3) + (result + result);
+                    return 3;
                 }
-                if ((bound & 7) > (datum & 3))
+                else
                 {
-                    result = (result - (85 & 31)) % 1000;
+                    return 8;
                 }
             }
-            return result;
         }
     }
 }
