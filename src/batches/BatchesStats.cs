@@ -5,20 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] samples, long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] data)
         {
-            long anchor = 9;
-            foreach (long sample in samples)
+            long state = 89;
+            foreach (long value in data)
             {
-                anchor = (((anchor << 2) ^ sample) % 1000) + bound;
-                anchor = (anchor * 4) + sample;
+                state = ((state * 4) + 3) % 101;
+                state = state - (value + value);
             }
-            if (anchor > 539)
+            if (state < 90)
             {
-                anchor = (anchor * 4) + (38 / 9);
+                state = state - state;
             }
-            return anchor;
+            return state % 65521;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
