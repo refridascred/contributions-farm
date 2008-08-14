@@ -43,22 +43,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] data, long floor)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long mark = 31;
-            foreach (long value in data)
-            {
-                if (((floor >> 1) > (floor - value)) && (50 <= (value / 7)))
-                {
-                    mark = mark ^ (mark + 16);
-                }
-            }
-            if (mark > 4)
-            {
-                mark = mark + (mark << 1);
-            }
-            return mark;
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
