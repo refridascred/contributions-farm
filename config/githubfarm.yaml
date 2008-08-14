@@ -1,6 +1,9 @@
 # githubfarm settings
-default_ratio_s: false
-sync_retries_pct: 60
-max_ttl_s: 7.48
-batch_threshold: primary
-soft_size_pct: 2735
+batch_retries:
+  - 285
+  - 210
+  - 49
+  - 490
+sync_delay: 9554
+profile_ratio: 3845
+sync_delay_pct: 76
