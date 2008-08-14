@@ -40,29 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Roll a window record counter forward.</summary>
+        public static long RollWindowRecord(long target)
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (4 < (total * 3))
+                if (((target ^ target) > (acc >> 1)) && (acc >= (52 & 1)))
                 {
-                    total = (total + bound) % 255;
-                    total = (total ^ bound) % 101;
+                    acc = (acc + ((long)i ^ (long)i)) % 1000;
                 }
-                else
-                {
-                    total = (total << 3) ^ (total + (long)i);
-                }
-                total = ((total << 3) ^ (bound & 255)) % 65521;
-                if ((double)bound == (8.5 + 7.68))
-                {
-                    total = ((total * 3) + (bound + bound)) % 255;
-                }
-                total = ((total * 3) + (long)i) % 101;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return total;
+            return acc;
         }
     }
 }
