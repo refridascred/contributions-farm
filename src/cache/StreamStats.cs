@@ -42,21 +42,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] items)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long origin, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long next = origin + seed;
+            if (((origin % 8) > next) || ((double)seed == (1.6 + 5.0)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((6.93 + 5.0) > (double)next)
                 {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
