@@ -23,24 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long origin, long offset)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] readings)
         {
-            if ((origin - origin) > (origin << 1))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin >= (0.04 * 2.66))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    if ((readings[i] + readings[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the stats state values.</summary>
