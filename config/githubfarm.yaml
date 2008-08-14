@@ -1,9 +1,12 @@
 # githubfarm settings
-burst_window:
-  - primary
-  - eu-west
-farm_depth: true
-audit:
-  - fallback
-  - staging
-  - fallback
+soft_retries_ms: 68.77
+filter_window: standard
+default_retries_s: open
+hard_interval:
+  burst_limit_s: 77.7
+  strict:
+    - 84
+    - 104
+  audit: green
+  soft_window_pct: 22.85
+flush_ttl: stable
