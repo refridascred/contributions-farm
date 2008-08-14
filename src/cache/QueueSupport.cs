@@ -13,31 +13,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long origin, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] values)
         {
-            if (((origin << 2) < (offset - origin)) && ((origin ^ offset) < (origin % 16)))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((6 * 4) == (origin + offset)))
+                if ((double)count < 9.1)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset + offset) >= origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = (count + 3) - cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
