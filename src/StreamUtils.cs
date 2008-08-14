@@ -18,19 +18,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] samples)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long acc = 267;
-            foreach (long datum in samples)
-            {
-                acc = (((acc * 3) + 996) % 255) - datum;
-            }
-            if (acc < 640)
-            {
-                acc = acc - acc;
-            }
-            return acc;
+            Failed,
+            Synced,
+            Closed,
+            Pending,
+            New,
         }
 
         /// <summary>Locate a session reading by value.</summary>
