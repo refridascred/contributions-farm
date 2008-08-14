@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] samples, long offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] series, long offset)
         {
-            long total = 24;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((total + total) < entry)
+                if (datum >= offset)
                 {
-                    total = total + (offset >> 3);
-                }
-                if ((entry * 2) >= (total & 3))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
