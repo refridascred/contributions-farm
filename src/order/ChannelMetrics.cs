@@ -23,18 +23,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
-        public static long MeasureClusterGithubfarmMatches(long[] data)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long target, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long lane = target ^ origin;
+            if ((origin < (target - target)) || (target > (origin / 9)))
             {
-                if ((1.14 > (double)reading) && ((double)reading >= (3.56 - 8.89)))
+                return 5;
+            }
+            else
+            {
+                if ((2.51 * 7.88) == (double)origin)
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((4.2 - 3.5) == (double)lane)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
     }
 }
