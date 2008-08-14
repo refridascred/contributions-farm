@@ -51,39 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long origin, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] readings)
         {
-            long slot = origin ^ floor;
-            if (!((slot - floor) >= slot))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin < (floor / 9)) && (origin <= (floor << 1)))
+                if ((5.0 - 4.9) < (double)reading)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor % 12) > (origin + slot)) && ((floor ^ 826) > 157))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor + floor) >= 772)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the schema mode values.</summary>
