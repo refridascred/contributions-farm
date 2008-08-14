@@ -23,14 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Paused,
-            Pending,
-            Ready,
-            Active,
-            Stale,
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
