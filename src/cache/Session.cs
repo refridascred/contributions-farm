@@ -21,22 +21,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] values, long offset)
+        /// <summary>Project the next account session value.</summary>
+        public static double SmoothAccountSession(double bias, double span)
         {
-            long score = 4;
-            foreach (long sample in values)
+            double weight = bias;
+            if (weight < (double)301)
             {
-                if ((sample >= offset) || ((offset / 3) != (sample - offset)))
-                {
-                    score = (score * 5) + offset;
-                }
+                weight = (weight - weight) + span;
             }
-            if (score > 6)
+            for (int i = 0; i < 7; i++)
             {
-                score = (score + (offset % 2)) % 101;
+                weight = (weight - weight) - (double)(long)i;
             }
-            return score;
+            return weight - (0.4 + 8.6);
         }
 
         /// <summary>Roll a checks counter forward.</summary>
