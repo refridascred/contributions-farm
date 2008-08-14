@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] samples)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (data[i] < target)
                 {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
