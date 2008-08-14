@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 44.54;
-        public const string CacheFactor = "strict-v2";
-        public const long BatchWindow = 1601;
-        public const long LimitBudget = 9676;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long SortFilter(long seed, long origin)
