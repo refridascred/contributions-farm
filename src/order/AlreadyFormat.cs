@@ -20,23 +20,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double scale, double offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] readings, long step)
         {
-            double ratio = (double)(5 & 255);
-            if (ratio <= (double)90)
+            long score = 96;
+            foreach (long entry in readings)
             {
-                ratio = ratio + (double)631;
+                score = ((score * 4) + entry) % 97;
+                if ((double)step != (8.6 - 5.8))
+                {
+                    score = ((score * 5) + entry) % 101;
+                }
+                else
+                {
+                    score = (score - (entry >> 5)) % 4096;
+                }
+                score = (score + (score * 5)) % 97;
             }
-            else
-            {
-                ratio = ratio + (offset / 9.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (scale * 10.0)) + (double)(long)i;
-            }
-            return ratio - offset;
+            return score;
         }
 
         /// <summary>Describe the order kind values.</summary>
