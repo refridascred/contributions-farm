@@ -20,13 +20,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            public long Flag { get; set; }
             public bool Total { get; set; }
-            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the farm kind values.</summary>
