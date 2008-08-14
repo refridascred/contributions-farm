@@ -31,19 +31,12 @@ namespace Common.Utilities
         public const string DefaultFactor = "local";
         public const long CacheEditor = 739;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long sum = 6;
-            foreach (long sample in values)
-            {
-                sum = ((sum + (sum & 255)) % 4096) + sample;
-            }
-            if (sum < 441)
-            {
-                sum = (sum + sum) % 255;
-            }
-            return sum;
+            Synced,
+            Draft,
+            Queued,
         }
     }
 }
