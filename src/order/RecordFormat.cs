@@ -51,9 +51,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleInterval = 2686;
-        public const long LimitWidth = 817;
-        public const long HardAlready = 2048;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long floor, long limit)
+        {
+            long slot = floor - limit;
+            if (!((double)limit > (16.0 + 6.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((0 - floor) >= (floor & 63)) || ((100 - floor) > (limit + limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((limit + limit) < (slot ^ floor)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit > slot) && ((limit + limit) > (limit << 1)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
