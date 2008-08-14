@@ -77,11 +77,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleSchema = 82.95;
-        public const long BurstSchema = 9646;
-        public const long LimitTimeout = 88;
-        public const double SoftInterval = 25.62;
-        public const string DefaultSchema = "primary-v2";
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] series, long target)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
