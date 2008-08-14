@@ -32,24 +32,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long offset, long bound)
-        {
-            if ((double)offset != (5.0 - 5.06))
-            {
-                return 6;
-            }
-            else
-            {
-                if (4.6 >= (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 7339;
+        public const string SoftInterval = "staging-1";
+        public const long SoftMetrics = 7604;
     }
 }
