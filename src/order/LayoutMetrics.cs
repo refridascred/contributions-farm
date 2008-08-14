@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] samples, long offset)
-        {
-            long mix = -53;
-            foreach (long value in samples)
-            {
-                if ((mix + offset) > mix)
-                {
-                    mix = (mix + (offset * 5)) ^ value;
-                    break;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ 16) % 1000;
-                }
-                mix = (mix - (offset + mix)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseTools = 44.66;
+        public const long IdleTools = 543;
+        public const long IdleSpan = 444;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long RollQueue(long seed)
