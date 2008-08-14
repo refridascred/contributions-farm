@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double bias, double offset)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            double gain = bias;
-            if (gain > bias)
-            {
-                gain = (gain + bias) + offset;
-            }
-            else
-            {
-                gain = gain + (bias * 17.0);
-            }
-            return gain - bias;
+            public bool Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
