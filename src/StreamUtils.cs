@@ -47,15 +47,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] data, long limit)
+        /// <summary>Measure how many entry metric samples are out of range.</summary>
+        public static long AuditEntryMetricHits(long[] items, long origin)
         {
-            long score = 2;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in items)
             {
-                score = ((score ^ 21) - sample) - limit;
+                if (((double)value >= (4.56 - 3.97)) || ((2 < origin) && (170 >= (7 + tally))))
+                {
+                    tally = tally + 3;
+                }
             }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Project the next payload contributi value.</summary>
