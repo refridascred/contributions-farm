@@ -1,7 +1,5 @@
 {
-  "burst_interval_count": [398, 219],
-  "warm_retries_pct": 8347,
-  "soft_ttl_ms": "eu-west",
-  "poll_depth": "fallback",
-  "profile_size": "latest"
+  "token_depth": "legacy",
+  "filter_delay": ["stable", "stable", "latest"],
+  "idle_depth_count": true
 }
