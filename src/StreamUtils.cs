@@ -47,18 +47,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many entry metric samples are out of range.</summary>
-        public static long AuditEntryMetricHits(long[] items, long origin)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (((double)value >= (4.56 - 3.97)) || ((2 < origin) && (170 >= (7 + tally))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Project the next payload contributi value.</summary>
