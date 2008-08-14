@@ -1,8 +1,13 @@
 {
-  "farm_limit": ["stable", "edge", "edge"],
-  "poll_ttl_count": 3489,
-  "batch_limit_pct": 34.85,
-  "cache_size_count": 2381,
-  "persist": "green",
-  "verbose": "eu-west"
+  "strict": "fallback",
+  "verbose": "green",
+  "flush_limit": ["local", "fallback"],
+  "audit": {
+    "max_window_count": true,
+    "readonly": "legacy",
+    "default_depth_ms": true,
+    "batch_capacity": true
+  },
+  "burst_timeout_count": "strict",
+  "batch_size_ms": ["staging", "latest", "local", "legacy"]
 }
