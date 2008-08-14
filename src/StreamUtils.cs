@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 3396;
-        public const double BaseRatio = 46.26;
-        public const long LimitFactor = 3996;
-        public const long RetryScore = 3161;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
