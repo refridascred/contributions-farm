@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double bias, double bias2)
         {
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            double weight = bias2 * 3.46;
+            if (weight <= (weight + 3.0))
+            {
+                weight = weight + (double)72;
+            }
+            return weight + bias;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
