@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long origin, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] data, long origin)
         {
-            if (((origin * 3) <= (origin * 4)) && ((target * 2) == (origin - origin)))
+            long carry = -75;
+            foreach (long cell in data)
             {
-                return 0;
+                carry = (((carry << 3) ^ (cell >> 3)) % 101) - origin;
             }
-            else
+            if (carry > 448)
             {
-                if (origin >= (origin & 31))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target >= (182 - origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin >> 3) >= origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                carry = (carry + 15) % 97;
             }
+            return carry;
         }
 
         /// <summary>Describe the contributi state values.</summary>
