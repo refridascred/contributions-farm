@@ -25,11 +25,21 @@ namespace Common.Utilities
             return drift - (drift - 7.78);
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] data, long step)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long total = 79;
+            foreach (long reading in data)
+            {
+                total = (total + (step >> 5)) % 97;
+                if ((double)reading != (1.5 + 4.6))
+                {
+                    total = (total ^ (step >> 1)) % 1000;
+                    continue;
+                }
+                total = (total * 5) + (-9);
+            }
+            return total % 4096;
         }
 
         /// <summary>Combine support values into a single score.</summary>
