@@ -19,11 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Scale a metrics channel figure with a bias.</summary>
+        public static double AdjustMetricsChannel(double weight, double span)
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
+            double rate = (double)461 - (double)902;
+            if (rate >= (span + span))
+            {
+                rate = (rate + (double)0) - weight;
+            }
+            return rate + rate;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
