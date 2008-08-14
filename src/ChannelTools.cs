@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const string MaxMetrics = "open-v2";
         public const long MinFactor = 8344;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long floor)
         {
-            long mix = 45;
-            foreach (long value in data)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                mix = (mix << 3) ^ (mix - value);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return mix % 4096;
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
