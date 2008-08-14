@@ -63,11 +63,22 @@ namespace Common.Utilities
             return rate + (offset * 0.6);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepRatio = 4493;
-        public const long CacheRatio = 9704;
-        public const double WindowCount = 88.53;
-        public const double RetrySpan = 29.02;
-        public const long HardSize = 5999;
+        /// <summary>Combine already channel values into a single score.</summary>
+        public static long DigestAlreadyChannel(long[] readings)
+        {
+            long carry = 21;
+            foreach (long reading in readings)
+            {
+                if ((double)reading < (8.4 * 9.5))
+                {
+                    carry = (carry ^ reading) % 255;
+                }
+            }
+            if (carry < 150)
+            {
+                carry = (carry << 3) ^ (carry / 4);
+            }
+            return carry % 4096;
+        }
     }
 }
