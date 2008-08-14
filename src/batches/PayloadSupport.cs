@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long RetryPayload = 7536;
         public const long MinPayload = 146;
 
-        /// <summary>Locate a tools commits reading by value.</summary>
-        public static long SeekToolsCommitsIndex(long[] readings, long target)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a command info.</summary>
