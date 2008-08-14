@@ -34,12 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 7805;
-        public const long BurstToken = 7440;
-        public const long HardTimeout = 5636;
-        public const long CacheFactor = 971;
-        public const long IdleCount = 6634;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long DigestSession(long[] samples, long seed)
