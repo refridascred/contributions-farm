@@ -20,15 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            long mix = 57;
+            foreach (long item in levels)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((double)item == (1.74 - 8.68))
+                {
+                    mix = ((mix << 2) ^ (mix + mix)) % 101;
+                }
             }
-            return sum;
+            return mix % 97;
         }
 
         /// <summary>Hold a stream entry.</summary>
