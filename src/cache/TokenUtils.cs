@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] data, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] data, long step)
         {
-            long mark = 880;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((910 + 67) >= mark)
+                if (((item - item) <= tally) && ((long)data.Length == (9 % 7)))
                 {
-                    mark = ((mark ^ mark) % 255) ^ sample;
-                }
-                if ((7.2 - 1.0) == (double)offset)
-                {
-                    break;
+                    tally = (tally + 1) + step;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
