@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] samples)
-        {
-            long score = 170;
-            foreach (long entry in samples)
-            {
-                score = (score ^ entry) % 4096;
-                if (((score << 1) == (score + score)) && (score <= (score + (-65))))
-                {
-                    score = (score * 5) + 690;
-                    score = ((score << 2) ^ (entry + score)) % 4096;
-                }
-                if ((score <= (7 / 6)) || ((entry ^ entry) <= (score + 121)))
-                {
-                    score = score ^ (score + entry);
-                }
-                else
-                {
-                    score = (score ^ score) % 255;
-                }
-            }
-            if (score < 361)
-            {
-                score = score ^ (score + score);
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheLevel = 185;
+        public const long IdleSize = 4495;
+        public const long LimitReport = 1885;
+        public const long HardFactor = 3080;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long RankMetric(long offset, long limit)
