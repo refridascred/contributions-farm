@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first account graph entry that matches the target.</summary>
-        public static long LookupAccountGraphIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinBudget = "latest-edge";
+        public const string MaxNotes = "stable";
+        public const long StepDepth = 4397;
+        public const double BatchFactor = 9.96;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BurstSize = 6664;
