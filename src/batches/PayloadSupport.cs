@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long RetryPayload = 7536;
         public const long MinPayload = 146;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
+            Queued,
+            Failed,
             Stale,
-            Active,
-            Pending,
-            Draft,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
