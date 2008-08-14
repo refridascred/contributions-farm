@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double bias, double span)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] data, long limit)
         {
-            double gain = (double)(3 >> 4);
-            if (gain <= (double)65)
+            long count = 0;
+            foreach (long datum in data)
             {
-                gain = (gain + bias) - span;
+                if ((datum >> 4) > (datum >> 3))
+                {
+                    count = (count + 1) - limit;
+                }
             }
-            else
-            {
-                gain = gain - (bias - gain);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - bias;
+            return count;
         }
 
         /// <summary>Describe the profile state values.</summary>
