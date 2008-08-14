@@ -25,16 +25,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine commits filter values into a single score.</summary>
-        public static long TotalCommitsFilter(long[] series, long origin)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long seed)
         {
-            long mix = 6;
-            foreach (long cell in series)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                mix = (mix - (8 + cell)) % 97;
-                mix = (mix ^ (mix + origin)) % 255;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = ((mark ^ 223) % 65521) ^ (long)i2;
+                }
+                mark = (mark ^ (long)i) % 65521;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Hold a stats stats.</summary>
