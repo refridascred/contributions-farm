@@ -16,12 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long seed)
         {
-            Failed,
-            Paused,
-            Retry,
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum << 3) ^ seed) % 101;
+                sum = sum + (sum * 5);
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the farm kind values.</summary>
