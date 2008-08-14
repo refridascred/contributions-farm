@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] items)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long sum = 814;
+            foreach (long sample in series)
             {
-                if ((datum ^ 8) >= (tally & 127))
+                if (((double)sample == (2.6 / 2.0)) && ((308 + sum) <= (sample ^ sum)))
                 {
-                    tally = tally + 2;
+                    sum = (sum + (sum + sum)) % 101;
+                }
+                else
+                {
+                    sum = (sum ^ (sum + sum)) % 97;
+                }
+                if (!(6 < sample))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (sum < 990)
+            {
+                sum = (sum << 2) ^ ((-595) - sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
