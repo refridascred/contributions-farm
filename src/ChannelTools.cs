@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] data)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (!((double)count < (6.26 - 7.0)))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            Failed,
+            Queued,
+            Pending,
+            Idle,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
