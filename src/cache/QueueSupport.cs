@@ -23,18 +23,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] series, long target)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((entry - target) <= (target - 50)) && ((9.99 + 2.23) >= (double)entry))
+                if (((seed >> 4) <= (long)i) && ((double)seed != (3.0 - 4.11)))
                 {
-                    count = count + 1;
+                    acc = acc - (acc + seed);
                 }
+                long tally = (seed + 3) / 4;
+                if (seed > (acc + tally))
+                {
+                    acc = acc - seed;
+                    acc = (acc + (17 + tally)) % 255;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
     }
 }
