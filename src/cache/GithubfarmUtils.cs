@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Measure how many account channel samples are out of range.</summary>
+        public static long CountAccountChannelMatches(long[] readings, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                score = score + (29 % 12);
-                if ((double)score >= (4.0 * 16.0))
+                if (!((sample % 16) != (218 + 57)))
                 {
-                    continue;
+                    matches = (matches + 1) + step;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Measure how many graph contributi samples are out of range.</summary>
