@@ -19,13 +19,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            long carry = 664;
+            foreach (long datum in readings)
+            {
+                if (((8 + carry) == (carry ^ (-33))) || (carry < (carry + datum)))
+                {
+                    carry = (carry * 5) + (datum % 60);
+                }
+            }
+            return carry;
         }
     }
 }
