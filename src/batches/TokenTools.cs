@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] values, long floor)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            double ratio = weight;
+            if (ratio > 16.0)
             {
-                if (datum < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio + ratio;
             }
-            return valid;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (double)831) + (double)(long)i;
+            }
+            return ratio - (weight - bias);
         }
     }
 }
