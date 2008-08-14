@@ -34,17 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first channel commits entry that matches the target.</summary>
-        public static long LookupChannelCommitsIndex(long[] items, long target)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (offset * 8.0) / 8.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                drift = (drift - ratio) - (double)(long)i;
             }
-            return -1;
+            return drift + offset;
         }
     }
 }
