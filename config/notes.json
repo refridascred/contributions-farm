@@ -1,13 +1,11 @@
 {
-  "record_size": "legacy",
-  "session_limit": true,
-  "cache_ttl": {
-    "notes_ttl": true,
-    "max_window_pct": 84.2,
-    "min_threshold": "latest",
-    "sync_window_pct": 91.68
-  },
-  "sync_size_count": 2585,
-  "default_interval": ["strict", "legacy", "green"],
-  "account_window": [106, 462, 302]
+  "editor_size": "primary",
+  "strict": "strict",
+  "audit": {
+    "retry_ttl_pct": "latest",
+    "retry_depth_ms": "strict",
+    "warm_size": "blue",
+    "hard_window_s": 60,
+    "idle_window_pct": false
+  }
 }
