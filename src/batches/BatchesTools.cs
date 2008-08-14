@@ -30,13 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Count the notes record entries that pass the check.</summary>
+        public static long TallyNotesRecordMatches(long[] items)
         {
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((double)matches != (4.87 / 4.0))
+                {
+                    matches = (matches + 2) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
