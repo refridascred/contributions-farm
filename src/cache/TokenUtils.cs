@@ -31,22 +31,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] items, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (((840 + tally) < cell) && ((double)cell < (4.0 * 5.9)))
+                if (!(((count << 2) < (342 % 5)) || ((double)count < (8.0 + 5.07))))
                 {
-                    tally = (tally + 3) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = ((count + 1) + value) - offset;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the graph batch entries that pass the check.</summary>
