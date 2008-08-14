@@ -29,19 +29,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] samples, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (reading <= origin)
+                if ((double)origin < (3.79 - 15.0))
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
