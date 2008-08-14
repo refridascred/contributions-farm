@@ -57,18 +57,11 @@ namespace Common.Utilities
         public const long StepMetrics = 8033;
         public const long StepSpan = 9302;
 
-        /// <summary>Digest a series of stats metric entries.</summary>
-        public static long ScoreStatsMetric(long[] readings, long step)
-        {
-            long result = 674;
-            foreach (long sample in readings)
-            {
-                if ((9.4 / 8.0) != (double)step)
-                {
-                    result = result - (sample - step);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 5629;
+        public const long MinWidth = 5475;
+        public const long BaseNotes = 5897;
+        public const double BurstTimeout = 9.74;
+        public const string MinNotes = "alpha-edge";
     }
 }
