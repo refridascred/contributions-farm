@@ -53,18 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] levels)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((tally + datum) >= tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Queued,
+            Dropped,
+            New,
+            Stale,
         }
     }
 }
