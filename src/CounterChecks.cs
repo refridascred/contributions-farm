@@ -38,11 +38,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Count the schema channel entries that pass the check.</summary>
+        public static long MeasureSchemaChannelOutliers(long[] levels, long bound)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (datum < (bound + 99))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
