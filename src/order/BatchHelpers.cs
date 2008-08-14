@@ -25,15 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue buffer values into a single score.</summary>
-        public static long FoldQueueBuffer(long[] readings)
+        /// <summary>Locate a route window reading by value.</summary>
+        public static long LocateRouteWindowIndex(long[] data, long offset)
         {
-            long anchor = 39;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (((anchor << 3) ^ (98 << 2)) % 101) + sample;
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Adjust a queue reading.</summary>
