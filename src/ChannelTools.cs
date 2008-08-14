@@ -46,19 +46,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of session account entries.</summary>
-        public static long ScoreSessionAccount(long[] samples)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] items)
         {
-            long state = 9;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(value < (69 % 60)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state + (462 + state)) % 65521;
+                    if ((items[i] + items[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = (state - (value + state)) % 1000;
             }
-            return state;
+            return tally;
         }
     }
 }
