@@ -22,18 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Match up metric tools samples.</summary>
+        public static long CompareMetricToolsCount(long[] readings)
         {
-            long result = 587;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)entry != (double)(long)samples.Length)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = result - (entry ^ 398);
+                    if ((readings[i] + readings[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Accumulate filter samples.</summary>
