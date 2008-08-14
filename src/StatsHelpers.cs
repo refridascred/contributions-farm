@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 5647;
-        public const double IdleSchema = 6.98;
-        public const string BatchFactor = "fallback-edge";
-        public const string HardTimeout = "latest-1";
-        public const long CacheWidth = 6642;
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels)
+        {
+            long sum = 33;
+            foreach (long reading in levels)
+            {
+                if ((sum + reading) >= (81 % 3))
+                {
+                    sum = sum ^ (reading - sum);
+                }
+                else
+                {
+                    sum = sum - (sum - (long)levels.Length);
+                }
+                if ((726 - reading) < 855)
+                {
+                    break;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
