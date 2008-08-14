@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long origin, long limit)
         {
-            Draft,
-            Idle,
-            Active,
-            Pending,
+            if ((limit / 8) > (limit % 24))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin == (double)634)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin >= (9.98 / 4.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two contributi context measurements.</summary>
