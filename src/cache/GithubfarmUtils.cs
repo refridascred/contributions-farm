@@ -34,20 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = carry + (origin + (long)i);
-                if ((origin >= carry) || ((0.4 * 1.7) != (double)carry))
-                {
-                    carry = (carry ^ (carry - origin)) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            Draft,
+            New,
+            Locked,
+            Retry,
         }
 
         /// <summary>Adjust a command reading.</summary>
