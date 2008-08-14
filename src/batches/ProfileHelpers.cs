@@ -44,12 +44,18 @@ namespace Common.Utilities
             return drift + (0.8 - drift);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 389;
-        public const long StepWidth = 3379;
-        public const double CacheContributi = 13.16;
-        public const long MaxContributi = 1905;
-        public const long WindowSize = 409;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
