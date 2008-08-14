@@ -36,18 +36,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of metric order entries.</summary>
-        public static long WeighMetricOrder(long[] samples, long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long floor)
         {
-            long state = 623;
-            foreach (long cell in samples)
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (((bound / 3) > (cell - bound)) || (bound <= ((long)samples.Length / 9)))
-                {
-                    state = state ^ (-8);
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return state;
+            return sum;
         }
     }
 }
