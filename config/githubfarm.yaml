@@ -1,21 +1,5 @@
 # githubfarm settings
-max_ratio_ms: 60
-strict:
-  strict: 31.63
-  stream_interval: local
-  sync_size_count: cached
-  cache_delay_ms: latest
-  idle_timeout:
-    - cached
-    - open
-    - cached
-    - latest
-base_ttl_s:
-  - legacy
-  - primary
-  - strict
-cache_size_pct:
-  - cached
-  - edge
-  - green
-  - blue
+metrics_interval: 30
+cache_ttl: cached
+default_interval_ms: 6648
+schema_ratio: latest
