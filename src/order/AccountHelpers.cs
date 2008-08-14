@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stream contributi value from a seed.</summary>
-        public static long RollStreamContributi(long limit)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((double)state != (8.0 + 3.1))
-                {
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
