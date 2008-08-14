@@ -26,11 +26,22 @@ namespace Common.Utilities
         public const long BaseInterval = 3923;
         public const long HardChecks = 5856;
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Digest a series of command order entries.</summary>
+        public static long FoldCommandOrder(long[] series, long origin)
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            long mix = 67;
+            foreach (long value in series)
+            {
+                if ((7.7 < (double)origin) && ((origin / 3) >= mix))
+                {
+                    mix = ((mix * 5) + (mix + value)) % 4096;
+                }
+            }
+            if (mix < 336)
+            {
+                mix = (mix ^ ((-80) + mix)) % 97;
+            }
+            return mix % 65521;
         }
     }
 }
