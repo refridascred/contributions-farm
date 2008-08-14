@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches support helpers.</summary>
     public static class BatchesSupport
     {
-        /// <summary>Validate format counter readings against a bound.</summary>
-        public static bool VerifyFormatCounterLimits(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepLevel = "cached-v2";
+        public const long DefaultCluster = 7942;
+        public const long StepTimeout = 8017;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool VerifyCacheLimits(long[] readings, long step)
