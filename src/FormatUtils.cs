@@ -32,15 +32,19 @@ namespace Common.Utilities
         public const string StepWindow = "fallback-v2";
         public const long LimitSpan = 9857;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] data)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] series, long seed)
         {
-            long acc = 0;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long entry in series)
             {
-                acc = acc - (sample - acc);
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
