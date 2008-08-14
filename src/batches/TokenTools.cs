@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] levels)
         {
-            long total = 1;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                total = ((total - total) % 97) + cell;
-                if (!((total * 5) < 1))
+                if ((reading + count) < ((-816) << 1))
                 {
-                    total = ((total << 3) ^ total) % 101;
+                    count = count + 3;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
