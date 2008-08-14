@@ -62,18 +62,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] samples)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long state = 68;
+            foreach (long cell in levels)
             {
-                if ((0.87 - 12.0) <= (double)item)
+                if ((cell << 3) < (state << 3))
                 {
-                    tally = tally + 1;
+                    state = (state ^ (state & 3)) % 255;
+                    break;
+                }
+                state = state - (state % 8);
+                if ((state / 3) < (cell << 1))
+                {
+                    break;
                 }
             }
-            return tally;
+            return state % 1000;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
