@@ -42,23 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] series, long seed)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double scale, double floor)
         {
-            long score = 673;
-            foreach (long entry in series)
+            double load = floor;
+            if (load >= (double)23)
             {
-                score = (score * 5) + (478 + seed);
-                if (((score ^ score) < (seed - score)) || (entry > seed))
-                {
-                    score = (score + (134 * 5)) % 97;
-                }
-                else
-                {
-                    score = (score ^ (score - entry)) % 1000;
-                }
+                load = (load + (double)(-551)) - scale;
             }
-            return score % 97;
+            return load + 18.0;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
