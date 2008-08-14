@@ -23,19 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double weight, double bias)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            double weight2 = weight;
-            if (weight2 >= (bias - 16.0))
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
             {
-                weight2 = weight2 + (weight * 8.27);
+                if (!((long)i >= (offset >> 4)))
+                {
+                    anchor = anchor ^ anchor;
+                    anchor = ((anchor * 4) + (anchor % 8)) % 255;
+                }
+                anchor = (anchor + (22 % 16)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            else
-            {
-                weight2 = weight2 - bias;
-            }
-            return weight2 + (weight2 + bias);
+            return anchor;
         }
 
         /// <summary>Describe the route kind values.</summary>
