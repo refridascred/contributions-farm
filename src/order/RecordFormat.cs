@@ -11,31 +11,17 @@ namespace Common.Utilities
         public const long MaxFactor = 6869;
         public const long WindowChannel = 6780;
 
-        /// <summary>Grade a support channel value against two limits.</summary>
-        public static long SortSupportChannel(long limit, long step)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] series, long floor)
         {
-            if ((limit >> 1) >= (71 & 127))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit >= (limit >> 1))
+                if (series[i] <= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit >> 4) != (limit * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batch record.</summary>
