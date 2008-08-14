@@ -60,13 +60,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long step, long step2)
         {
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            long diff = step + step2;
+            if (!((double)diff != (double)step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step << 3) != (diff + diff))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step2 % 7) != (diff + 24))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
