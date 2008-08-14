@@ -19,21 +19,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] data)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Retry,
+            Done,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
