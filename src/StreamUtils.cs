@@ -46,11 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinWidth = 8348;
-        public const long BaseContributi = 8131;
-        public const long CacheBudget = 7381;
-        public const long BatchDepth = 9339;
+        /// <summary>Audit window queue readings against a rule.</summary>
+        public static long TallyWindowQueueMatches(long[] samples, long bound)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((bound ^ sample) > (bound + sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
