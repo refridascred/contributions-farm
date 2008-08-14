@@ -20,12 +20,12 @@ namespace Common.Utilities
         public const long SoftSchema = 2894;
         public const string StepSchema = "alpha-1";
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Pending,
-            Failed,
-            Draft,
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a channel snapshot.</summary>
