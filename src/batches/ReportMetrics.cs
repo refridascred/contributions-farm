@@ -35,17 +35,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftCount = 8580;
+        public const string SoftSchema = "primary";
+        public const double BaseInterval = 16.79;
+        public const long BatchSchema = 2528;
     }
 }
