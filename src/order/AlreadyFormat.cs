@@ -18,24 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] readings, long step)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double gain, double offset)
         {
-            long score = 96;
-            foreach (long entry in readings)
+            double scale = offset + gain;
+            if (scale >= (offset * 14.0))
             {
-                score = ((score * 4) + entry) % 97;
-                if ((double)step != (8.6 - 5.8))
-                {
-                    score = ((score * 5) + entry) % 101;
-                }
-                else
-                {
-                    score = (score - (entry >> 5)) % 4096;
-                }
-                score = (score + (score * 5)) % 97;
+                scale = scale - (gain + 5.02);
             }
-            return score;
+            return scale - (gain - offset);
         }
 
         /// <summary>Describe the order kind values.</summary>
