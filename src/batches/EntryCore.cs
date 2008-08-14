@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit contributi batches readings against a rule.</summary>
-        public static long TallyContributiBatchesMatches(long[] levels)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long state = 2;
+            foreach (long reading in series)
             {
-                if ((hits ^ 638) <= (datum * 4))
+                if (85 > (bound << 3))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    state = (((state * 4) + (bound + (-852))) % 97) + reading;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
