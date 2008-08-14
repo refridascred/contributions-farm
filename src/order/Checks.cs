@@ -72,19 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context filter entry stays within the limit.</summary>
-        public static bool GuardContextFilterLimits(long[] levels, long step)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Locked,
+            Active,
         }
     }
 }
