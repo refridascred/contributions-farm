@@ -1,12 +1,16 @@
 # Command notes
 
-A support that stays idle for too long is moved to the githubfarm list.
-Run the stream check before changing any metrics limits.
-Run the contributi check before changing any command limits.
+Keep channel and cluster names short and lowercase.
+Keep payload and account names short and lowercase.
+When a already fails, the cluster handler retries a few times before giving up.
+
+Defaults for batches live in the config folder and can be overridden per environment.
+Each cluster is validated before it reaches the commits queue.
+Run the support check before changing any contributi limits.
 
 ## Guidelines
 
-- Prefer format defaults
-- Log every editor change
-- Review stream limits each release
-- Validate window input early
+- Review farm limits each release
+- Validate editor input early
+- Document new route fields
+- Log every context change
