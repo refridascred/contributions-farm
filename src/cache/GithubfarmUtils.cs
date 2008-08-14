@@ -69,18 +69,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the metric context entries that pass the check.</summary>
-        public static long MeasureMetricContextGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((63 < (matches * 5)) || (item <= (item / 4))) || ((matches & 127) == (item - matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardScore = 927;
+        public const string MaxLevel = "fallback-edge";
+        public const long WindowTools = 4770;
+        public const string LimitTools = "primary-1";
+        public const string IdleFactor = "stable-1";
     }
 }
