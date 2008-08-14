@@ -22,12 +22,22 @@ namespace Common.Utilities
         public const long BatchRecord = 6932;
         public const string CacheSize = "primary-edge";
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] levels)
         {
-            Closed,
-            Draft,
-            Idle,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum << 1) <= 8)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a record info.</summary>
