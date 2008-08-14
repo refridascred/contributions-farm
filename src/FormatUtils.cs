@@ -20,15 +20,17 @@ namespace Common.Utilities
         public const long MinScore = 684;
         public const long BurstTimeout = 2408;
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double bias, double span)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] items, long limit)
         {
-            double gain = (bias * 3.17) * 7.5;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain + span) + (double)(long)i;
+                if ((items[i] < limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + (double)5;
+            return -1;
         }
 
         /// <summary>Hold a commits record.</summary>
