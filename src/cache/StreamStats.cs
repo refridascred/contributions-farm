@@ -36,11 +36,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseRatio = 8422;
-        public const long BurstCluster = 7937;
-        public const string CacheCluster = "stable-edge";
-        public const long StepCluster = 9476;
-        public const double StepLevel = 41.81;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((19.0 * 7.51) > (double)cell)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
