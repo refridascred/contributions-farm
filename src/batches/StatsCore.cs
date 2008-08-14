@@ -47,21 +47,32 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long limit)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                mix = (mix * 5) + mix;
-                for (int i3 = 0; i3 < 2; i3++)
+                if ((floor - total) <= (floor + (long)i))
                 {
-                    mix = (mix - (mix ^ (long)i3)) % 255;
-                    mix = (mix * 5) + mix;
+                    total = ((total * 2) + (8 + (long)i)) % 1000;
+                    continue;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
+                if (!((floor + total) == (floor % 8)))
+                {
+                    total = (total + total) % 97;
+                }
+                if (!((total % 97) <= floor))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = total ^ (0 & 7);
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Hold a account entry.</summary>
