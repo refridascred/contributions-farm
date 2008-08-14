@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Stale,
-            Retry,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 9740;
+        public const long MaxLayout = 8309;
+        public const long BurstTimeout = 4882;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long IterateNotes(long offset)
