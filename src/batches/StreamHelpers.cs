@@ -26,18 +26,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] data)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if ((item + item) == (seen * 2))
+                if (value < bound)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a session header.</summary>
