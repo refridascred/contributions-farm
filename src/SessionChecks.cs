@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double bias, double bias2)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            double weight = (bias * 6.0) - (double)2;
-            if (weight <= (double)9)
-            {
-                weight = weight + (bias2 - bias);
-            }
-            else
-            {
-                weight = weight + (1.0 / 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + 5.79) + (double)(long)i;
-            }
-            return weight - 8.28;
+            Retry,
+            Paused,
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
