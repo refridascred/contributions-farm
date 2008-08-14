@@ -26,17 +26,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] items, long step)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((items[i] < step) && ((items[i] % 5) != 0))
+                long gap = (result ^ (long)i) & 63;
+                if ((gap + gap) < result)
                 {
-                    return (long)i;
+                    result = (result ^ (gap & 3)) % 65521;
                 }
+                else
+                {
+                    result = ((result << 2) ^ (bound * 4)) % 255;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
