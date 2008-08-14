@@ -12,21 +12,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of payload checks readings.</summary>
-        public static long PairPayloadChecksCount(long[] readings)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = ratio - floor;
+            if (load <= (4.0 / 7.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load + (double)17;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (8.7 * 3.91)) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Count the notes record entries that pass the check.</summary>
