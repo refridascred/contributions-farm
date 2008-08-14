@@ -65,18 +65,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] readings)
+        /// <summary>Derive the next already cache value from a seed.</summary>
+        public static long DeriveAlreadyCache(long step)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((36 % 10) < (matches % 16))
+                if ((sum - (long)i) >= (sum - sum))
                 {
-                    matches = (matches + 3) - value;
+                    sum = (sum - (sum + step)) % 255;
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
