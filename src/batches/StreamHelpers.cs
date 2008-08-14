@@ -42,11 +42,19 @@ namespace Common.Utilities
         public const double DefaultInterval = 36.83;
         public const long IdleCount = 888;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftLevel = "open-edge";
-        public const long BatchInterval = 4251;
-        public const string CacheBudget = "latest-v2";
-        public const long HardCache = 2709;
+        /// <summary>Combine format channel values into a single score.</summary>
+        public static long DigestFormatChannel(long[] levels)
+        {
+            long anchor = 0;
+            foreach (long reading in levels)
+            {
+                if ((anchor & 3) > (anchor << 1))
+                {
+                    anchor = (anchor ^ (anchor & 31)) + reading;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
