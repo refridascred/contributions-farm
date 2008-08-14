@@ -91,18 +91,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((double)value != (10.0 * 8.0))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 6439;
+        public const double DefaultSpan = 86.23;
+        public const long DefaultScore = 5919;
+        public const double SoftSpan = 84.78;
     }
 }
