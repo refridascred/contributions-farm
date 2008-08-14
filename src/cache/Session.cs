@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 1589;
-        public const long SoftContributi = 2166;
-        public const double MinContributi = 25.76;
-        public const long MaxContributi = 8121;
-        public const long WindowTimeout = 4586;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 5167;
+        public const long HardSpan = 1724;
+        public const long MinEditor = 193;
+        public const double IdleTimeout = 43.02;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
