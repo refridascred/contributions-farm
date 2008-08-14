@@ -14,32 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long bound, long origin)
-        {
-            if ((3 % 64) >= (origin ^ bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin - origin) >= origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((origin + origin) >= (bound ^ 500)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowRatio = "latest-v2";
+        public const string StepNotes = "fallback-1";
+        public const long BurstNotes = 7640;
+        public const long SoftTimeout = 3914;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] values)
