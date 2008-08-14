@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleTools = "standard-edge";
-        public const double MaxTools = 89.78;
-        public const string BurstRatio = "cached";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheBudget = 6201;
+        public const long BurstEditor = 3686;
+        public const string CacheEditor = "alpha-v2";
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long OverlapReportCount(long[] items)
