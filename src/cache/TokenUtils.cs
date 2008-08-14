@@ -23,19 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] items, long origin)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long state = 0;
-            foreach (long entry in items)
-            {
-                state = (state ^ (entry >> 1)) % 65521;
-                if ((origin + entry) == (entry & 255))
-                {
-                    state = (state - state) % 101;
-                }
-            }
-            return state;
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
