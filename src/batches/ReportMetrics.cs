@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double bias, double bias2)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double gain = bias + (double)44;
-            if (gain > (8.31 + 9.4))
-            {
-                gain = (gain + (double)48) - bias2;
-            }
-            return gain + gain;
+            Idle,
+            New,
+            Stale,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the format class values.</summary>
