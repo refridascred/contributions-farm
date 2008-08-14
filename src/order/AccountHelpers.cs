@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] values)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count + count) != (97 + count))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] + levels[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Derive the next stream contributi value from a seed.</summary>
