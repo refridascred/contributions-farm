@@ -19,17 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] series, long limit)
+        /// <summary>Accumulate tools stream samples.</summary>
+        public static long CombineToolsStream(long[] series, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 4;
+            foreach (long value in series)
             {
-                if ((series[i] >= limit) && ((series[i] % 2) != 0))
+                score = score + (1 * 4);
+                score = score ^ (bound - bound);
+                if ((((long)series.Length + bound) > (value - bound)) || ((score + value) >= (value & 63)))
                 {
-                    return (long)i;
+                    score = ((score * 4) + (bound * 4)) % 97;
+                }
+                if ((4.32 + 4.0) != (double)bound)
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a metrics header.</summary>
