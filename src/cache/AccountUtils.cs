@@ -23,15 +23,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] readings, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
