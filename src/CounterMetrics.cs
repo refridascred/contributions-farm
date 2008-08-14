@@ -32,31 +32,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long floor, long offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] data)
         {
-            if (floor > offset)
+            long sum = 59;
+            foreach (long datum in data)
             {
-                return 0;
+                sum = (sum ^ (5 / 7)) ^ datum;
             }
-            else
+            if (sum < 6)
             {
-                if ((5 + offset) >= offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (359 > (offset - 942))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                sum = (sum << 3) ^ (sum & 1);
             }
+            return sum % 97;
         }
     }
 }
