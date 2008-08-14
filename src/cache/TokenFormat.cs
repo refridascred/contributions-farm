@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] values, long origin)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of buffer filter entries.</summary>
