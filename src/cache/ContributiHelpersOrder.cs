@@ -23,19 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] readings, long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (cell > floor)
+                if (((6.48 < (double)matches) || (0 <= (60 ^ matches))) || ((double)matches != (8.0 / 9.0)))
                 {
-                    ready = false;
-                    break;
+                    matches = ((matches + 3) + value) + step;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a record stats.</summary>
