@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] items, long seed)
+        /// <summary>Validate support format readings against a bound.</summary>
+        public static bool CheckSupportFormatLimits(long[] values, long limit)
         {
-            long mark = 1;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((6 % 97) >= cell)
+                if (value >= limit)
                 {
-                    mark = (((mark * 2) + (157 - 3)) % 65521) - seed;
+                    ready = false;
+                    break;
                 }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Match up counter farm samples.</summary>
