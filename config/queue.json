@@ -1,6 +1,18 @@
 {
-  "soft_ratio": 6242,
-  "schema_size": "blue",
-  "idle_size": 5836,
-  "retry_timeout": "local"
+  "burst_ttl_count": 4425,
+  "default_ttl_pct": "standard",
+  "window_interval": {
+    "strict": 4118,
+    "dry_run": 33,
+    "persist": "blue",
+    "warm_delay_s": {
+      "audit": "fallback",
+      "idle_interval_pct": 59.18,
+      "max_capacity": true,
+      "poll_retries": false,
+      "min_threshold": 100
+    }
+  },
+  "min_timeout_ms": true,
+  "queue_timeout": 60
 }
