@@ -1,10 +1,9 @@
 # entry settings
-persist: 3677
-stream_retries:
-  route_interval: 2604
-  readonly: 500
-  min_timeout_count: 500
-max_ttl:
-  - latest
-  - fallback
-  - staging
+dry_run: true
+max_interval_count: primary
+profile_size: 88.41
+contributi_capacity: 27.31
+warm_retries_pct:
+  - stable
+  - green
+flush_capacity: 42.39
