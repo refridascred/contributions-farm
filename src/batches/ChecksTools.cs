@@ -41,14 +41,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Stale,
-            Failed,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxFactor = 23.77;
+        public const long MaxStats = 5076;
+        public const long BurstScore = 313;
+        public const string BaseStats = "open-edge";
+        public const long MaxCount = 4921;
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ScaleGithubfarm(double gain, double bias)
