@@ -1,7 +1,4 @@
 # support settings
-sync_delay: staging
-default_threshold_count: false
-persist:
-  - 277
-  - 341
-  - 417
+command_window: true
+context_ratio: legacy
+farm_size: local
