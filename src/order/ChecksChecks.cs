@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long target, long origin)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long target, long limit)
         {
-            if (origin <= (target ^ origin))
+            long gap = target ^ limit;
+            if ((target - limit) == (limit & 31))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if (((double)origin != (2.3 / 2.0)) || ((double)origin < 16.0))
+                if ((gap - 4) <= (target + target))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if ((origin << 2) <= origin)
+                    if (0.54 > (double)limit)
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        if (target <= (origin / 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 0;
                     }
                 }
             }
