@@ -1,7 +1,8 @@
 {
-  "enabled": "staging",
-  "flush_size_count": false,
-  "default_interval_pct": 57.11,
-  "warm_ratio_ms": false,
-  "audit": 9.82
+  "metrics_ratio": true,
+  "default_retries_pct": 51.86,
+  "support_interval": "stable",
+  "persist": 868,
+  "context_retries": 26.14,
+  "layout_ttl": ["primary", "cached", "standard"]
 }
