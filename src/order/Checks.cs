@@ -89,12 +89,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Closed,
-            Locked,
             Active,
+            Done,
+            New,
         }
     }
 }
