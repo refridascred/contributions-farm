@@ -49,12 +49,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Active,
-            Done,
-            New,
+            public bool Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
