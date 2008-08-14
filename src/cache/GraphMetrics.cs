@@ -47,21 +47,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Compare every pair of format command readings.</summary>
-        public static long OverlapFormatCommandCount(long[] samples)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
