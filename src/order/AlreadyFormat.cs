@@ -60,24 +60,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] values, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                carry = (carry ^ (65 / 8)) % 1000;
-                for (int i2 = 0; i2 < 3; i2++)
+                if (!(17.0 >= (double)seen))
                 {
-                    carry = (carry ^ 10) - (long)i2;
+                    seen = ((seen + 1) + reading) + bound;
                 }
-                if (!((double)(long)i != (double)carry))
-                {
-                    carry = ((carry * 4) + ((long)i * 4)) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return seen;
         }
     }
 }
