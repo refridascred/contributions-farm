@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] samples)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Retry,
+            Ready,
+            Idle,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
