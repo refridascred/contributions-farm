@@ -44,21 +44,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = 3.2;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = ((drift + (double)754) - (double)(long)i) - bias;
             }
-            return tally;
+            return drift + gain;
         }
     }
 }
