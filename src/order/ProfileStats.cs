@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long MinRatio = 8577;
         public const long CacheFarm = 1141;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] values, long origin)
         {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((double)(long)values.Length == (double)87)
+                {
+                    hits = ((hits + 3) - item) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two profile notes measurements.</summary>
