@@ -1,6 +1,16 @@
 # support settings
-payload_timeout: true
-poll_threshold_ms: strict
-format_ttl: cached
-readonly: 30
-flush_size: 2841
+cache_depth_s:
+  - 128
+  - 78
+  - 9
+stats_size:
+  readonly: 6
+  window_ratio:
+    - 55
+    - 438
+    - 424
+    - 244
+  hard_delay_s: latest
+burst_size_ms: false
+sync_timeout: blue
+metrics_limit: legacy
