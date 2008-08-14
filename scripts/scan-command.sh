@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict fallback; do
+for item in eu-west primary open; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
+mode="${1:-green}"
 case "${mode}" in
-    open)
+    latest)
         log "fast path"
         ;;
     *)
