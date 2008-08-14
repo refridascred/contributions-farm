@@ -22,12 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Measure how many buffer record samples are out of range.</summary>
+        public static long MeasureBufferRecordGaps(long[] data)
         {
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally - datum) < tally)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
