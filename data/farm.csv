@@ -1,7 +1,7 @@
-id,score,state,level
-1,720,blue,87.94
-2,787,169,open
-3,43.02,fallback,stable
-4,79.46,legacy,local
-5,52.49,19.07,161
-6,301,green,blue
+id,count,label
+1,912,95.37
+2,staging,93.72
+3,62,staging
+4,50.2,edge
+5,341,local
+6,cached,317
