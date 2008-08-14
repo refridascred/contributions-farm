@@ -30,15 +30,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double scale, double bias)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] series, long target)
         {
-            double bias2 = scale;
-            if (bias2 < (scale - bias))
+            bool ok = true;
+            foreach (long value in series)
             {
-                bias2 = bias2 + (double)533;
+                if (value <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias2 + bias;
+            return ok;
         }
     }
 }
