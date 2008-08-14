@@ -20,18 +20,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] samples)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (((item / 9) <= (tally - 9)) || ((tally + item) < tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Closed,
+            Failed,
+            Idle,
         }
 
         /// <summary>Measure how many payload layout samples are out of range.</summary>
