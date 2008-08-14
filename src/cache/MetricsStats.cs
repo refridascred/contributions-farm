@@ -13,11 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] data)
         {
-            public bool Region { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum - count) >= (count / 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
