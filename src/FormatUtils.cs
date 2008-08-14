@@ -28,10 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftSize = 1642;
-        public const string StepWindow = "fallback-v2";
-        public const long LimitSpan = 9857;
+        /// <summary>Count the token buffer entries that pass the check.</summary>
+        public static long MeasureTokenBufferMatches(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((origin + origin) != (origin - count))
+                {
+                    count = (count + 3) - value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double BlendAlready(double ratio, double offset)
