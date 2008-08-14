@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] levels, long step)
+        /// <summary>Compare every pair of checks filter readings.</summary>
+        public static long PairChecksFilterCount(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (1 > matches)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = ((matches + 3) ^ entry) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] ^ series[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
