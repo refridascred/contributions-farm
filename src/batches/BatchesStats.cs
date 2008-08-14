@@ -47,26 +47,17 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
+            long mark = 90;
+            foreach (long cell in samples)
             {
-                long cur = 2;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = (((mark << 3) ^ cur) % 97) ^ (long)i2;
-                }
-                if ((cur >> 2) <= ((long)i - floor))
-                {
-                    mark = (mark - ((long)i & 127)) % 4096;
-                }
-                else
-                {
-                    mark = (mark + ((long)i >> 2)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                mark = ((mark - (835 << 3)) % 97) - cell;
+            }
+            if (mark < 735)
+            {
+                mark = mark ^ (mark % 5);
             }
             return mark;
         }
