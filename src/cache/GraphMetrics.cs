@@ -47,14 +47,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Compare every pair of format command readings.</summary>
+        public static long OverlapFormatCommandCount(long[] samples)
         {
-            Active,
-            Failed,
-            Ready,
-            New,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
