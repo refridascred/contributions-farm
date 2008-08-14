@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] values, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 1;
+            foreach (long cell in items)
             {
-                if (values[i] <= target)
+                if ((6 % 97) >= cell)
                 {
-                    return (long)i;
+                    mark = (((mark * 2) + (157 - 3)) % 65521) - seed;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Match up counter farm samples.</summary>
