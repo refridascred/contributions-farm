@@ -55,12 +55,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinTimeout = 8079;
-        public const long BurstSchema = 1545;
-        public const long IdleDepth = 6986;
-        public const long IdleScore = 2969;
-        public const string MinCount = "local-edge";
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double IdleReport = 58.47;
