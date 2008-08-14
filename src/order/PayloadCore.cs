@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank commits payload input into a small class.</summary>
-        public static long SortCommitsPayload(long target, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] levels)
         {
-            long offset = target + bound;
-            if ((95 ^ offset) < (target >> 2))
+            long total = 69;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset ^ bound) >= offset) || (bound <= (bound << 3)))
+                total = total + (sample + (-87));
+                total = ((total << 2) ^ (sample - 982)) % 101;
+                if ((total >= (7 ^ sample)) && (3 > total))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + 30) <= (offset - 59))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    total = ((total << 3) ^ (sample % 3)) % 1000;
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Describe the token level values.</summary>
