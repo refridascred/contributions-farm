@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the filter support entries that pass the check.</summary>
-        public static long AuditFilterSupportHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading + (long)data.Length) != (reading & 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinInterval = 2236;
+        public const long RetryPayload = 7536;
+        public const long MinPayload = 146;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
