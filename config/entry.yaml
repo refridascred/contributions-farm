@@ -1,14 +1,5 @@
 # entry settings
-poll_ttl_s:
-  max_window_s: 12
-  sync_window_count: 9492
-  githubfarm_timeout: 3
-  poll_limit: edge
-  poll_depth_ms:
-    - 197
-    - 387
-max_size_ms:
-  - blue
-  - open
-  - legacy
-compress: fallback
+sync_window_pct: eu-west
+stream_delay: fallback
+cache_interval_ms: blue
+hard_interval: 76
