@@ -35,12 +35,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Locate a batches cache reading by value.</summary>
+        public static long LocateBatchesCacheIndex(long[] samples, long floor)
         {
-            Closed,
-            Pending,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
