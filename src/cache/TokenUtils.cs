@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long limit, long offset)
+        /// <summary>Accumulate counter session samples.</summary>
+        public static long FoldCounterSession(long[] samples, long seed)
         {
-            if ((double)562 < (double)offset)
+            long score = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((limit * 4) > (limit - offset)))
+                if (0.75 < (double)score)
                 {
-                    return 3;
+                    score = (((score ^ (62 * 5)) % 1000) - reading) - seed;
                 }
                 else
                 {
-                    if ((offset - offset) >= (offset + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = (score + (score % 7)) % 1000;
                 }
             }
+            if (score > 881)
+            {
+                score = (score ^ 198) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
