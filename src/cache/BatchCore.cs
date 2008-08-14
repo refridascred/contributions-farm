@@ -49,22 +49,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the schema entry entries that pass the check.</summary>
-        public static long AuditSchemaEntryOutliers(long[] levels, long floor)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > (floor * 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] ^ series[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
