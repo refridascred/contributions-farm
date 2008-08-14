@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const string MaxMetrics = "open-v2";
         public const long MinFactor = 8344;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultBudget = 1490;
-        public const double MaxFactor = 91.23;
-        public const double HardCache = 15.93;
-        public const long MinInterval = 8015;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LookupBatchIndex(long[] samples, long step)
