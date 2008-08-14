@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] data, long bound)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = 5.1 - 2.51;
+            if (drift < 8.78)
             {
-                if ((data[i] == bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + drift) - floor;
             }
-            return -1;
+            else
+            {
+                drift = drift - (double)16;
+            }
+            return drift + (bias + drift);
         }
 
         /// <summary>Blend two window measurements.</summary>
