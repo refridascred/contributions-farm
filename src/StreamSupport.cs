@@ -27,24 +27,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                long gap = (result ^ (long)i) & 63;
-                if ((gap + gap) < result)
-                {
-                    result = (result ^ (gap & 3)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (bound * 4)) % 255;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Locked,
+            Closed,
+            New,
         }
     }
 }
