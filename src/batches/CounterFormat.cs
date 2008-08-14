@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const double MinInterval = 58.72;
         public const long LimitCluster = 8451;
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double scale, double span)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] items, long bound)
         {
-            double drift = (double)(9 & 15);
-            if (drift > (double)7)
+            bool ready = true;
+            foreach (long item in items)
             {
-                drift = drift + (span * 5.0);
+                if (item != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + scale) + (double)(long)i;
-            }
-            return drift - (double)8;
+            return ready;
         }
     }
 }
