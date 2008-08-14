@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long target, long origin)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
+            if (origin <= (target ^ origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)origin != (2.3 / 2.0)) || ((double)origin < 16.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin << 2) <= origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (target <= (origin / 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine session route values into a single score.</summary>
