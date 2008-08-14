@@ -44,27 +44,18 @@ namespace Common.Utilities
         public const long WindowCluster = 5421;
         public const long BurstScore = 3685;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] data, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] data)
         {
-            long acc = 5;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in data)
             {
-                acc = acc - (55 % 2);
-                if ((value << 2) == (value + (-112)))
+                if (438 <= (count - count))
                 {
-                    acc = (acc ^ bound) % 101;
-                }
-                else
-                {
-                    acc = (acc - (value >> 3)) % 101;
-                }
-                if ((929 - bound) < (bound % 64))
-                {
-                    break;
+                    count = (count + 2) ^ datum;
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
