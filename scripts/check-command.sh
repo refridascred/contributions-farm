@@ -6,16 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+mode="${1:-open}"
 case "${mode}" in
-    strict)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in open legacy staging; do
-    log "checking ${item}"
-done
