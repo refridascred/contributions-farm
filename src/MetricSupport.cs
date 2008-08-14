@@ -19,17 +19,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] series, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 6;
+            foreach (long reading in items)
             {
-                if ((series[i] == bound) && ((series[i] % 5) == 0))
+                carry = (carry << 2) ^ (43 * 3);
+                if (!((offset + reading) >= (carry - carry)))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ reading) % 101;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit window support readings against a rule.</summary>
