@@ -33,18 +33,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] items, long limit)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((limit & 1) < hits) && (2.82 < (double)limit))
+                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
                 {
-                    hits = (hits + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
