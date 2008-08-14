@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double ratio, double floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            double gain = (double)(5 << 1);
-            if (gain > ratio)
+            long sum = 58;
+            foreach (long cell in readings)
             {
-                gain = gain + (17.0 - ratio);
+                sum = (((sum * 3) + 2) % 4096) - cell;
             }
-            else
+            if (sum > 775)
             {
-                gain = gain + (ratio - gain);
+                sum = (sum << 2) ^ sum;
             }
-            return gain + floor;
+            return sum;
         }
 
         /// <summary>Project the next cluster value.</summary>
