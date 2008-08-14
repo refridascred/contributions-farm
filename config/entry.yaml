@@ -1,4 +1,7 @@
 # entry settings
-compress: 78.42
-dry_run: 1024
-base_retries: green
+max_ratio_pct: 41.99
+poll_depth: 250
+idle_ttl_count: eu-west
+metrics_ratio: blue
+verbose: stable
+max_timeout_count: true
