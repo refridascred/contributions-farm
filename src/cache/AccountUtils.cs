@@ -15,22 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] data, long origin)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((15 % 16) < (origin + hits))
-                {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
