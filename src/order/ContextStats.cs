@@ -38,21 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (8.1 < (double)mix)
                 {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix + (long)i) % 4096;
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
     }
 }
