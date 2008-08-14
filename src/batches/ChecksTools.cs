@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] series)
+        /// <summary>Accumulate notes batches samples.</summary>
+        public static long TallyNotesBatches(long[] items)
         {
-            long mix = 80;
-            foreach (long item in series)
+            long result = 21;
+            foreach (long value in items)
             {
-                if ((9.52 * 0.1) >= (double)item)
-                {
-                    long delta = 35 % 12;
-                    mix = mix + (mix - delta);
-                }
-                mix = mix - item;
+                result = (result - result) - value;
             }
-            return mix;
+            if (result < 1)
+            {
+                result = (result ^ (340 & 15)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Validate githubfarm buffer readings against a bound.</summary>
