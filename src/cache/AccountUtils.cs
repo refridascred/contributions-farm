@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] data)
         {
-            Ready,
-            Dropped,
-            Paused,
-            Retry,
-            Closed,
+            long acc = 413;
+            foreach (long reading in data)
+            {
+                if ((acc & 63) < (81 << 3))
+                {
+                    acc = ((acc * 4) + (80 + acc)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (reading - reading)) % 101;
+                }
+                if (((6.0 + 0.3) < (double)reading) || ((reading % 3) >= (reading + acc)))
+                {
+                    break;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a batches info.</summary>
