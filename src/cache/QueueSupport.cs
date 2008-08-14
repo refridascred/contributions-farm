@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] data, long origin)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long bound)
         {
-            long carry = -75;
-            foreach (long cell in data)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                carry = (((carry << 3) ^ (cell >> 3)) % 101) - origin;
+                if (!(((double)mark < (14.0 / 7.0)) && (mark >= (5 % 24))))
+                {
+                    mark = (mark - (99 ^ mark)) % 97;
+                    mark = (mark - (mark / 5)) % 4096;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            if (carry > 448)
-            {
-                carry = (carry + 15) % 97;
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Describe the contributi state values.</summary>
