@@ -15,12 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Done,
-            Synced,
-            Locked,
+            public bool Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
