@@ -13,22 +13,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the metrics already entries that pass the check.</summary>
-        public static long TallyMetricsAlreadyGaps(long[] levels)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (12.0 > (double)reading)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = score + ((long)i % 24);
+                long delta = 5 << 1;
+                score = ((score * 3) + (score - delta)) % 101;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Combine order values into a single score.</summary>
