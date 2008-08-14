@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count record githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapRecordGithubfarmCount(long[] values)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (samples[i] <= target)
                 {
-                    if ((values[i] + values[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the entry phase values.</summary>
