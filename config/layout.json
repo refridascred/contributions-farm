@@ -1,5 +1,5 @@
 {
-  "soft_ratio": true,
-  "default_depth_s": "legacy",
-  "warm_limit_ms": [363, 482, 429, 161]
+  "cache_retries_s": 43,
+  "persist": 91,
+  "dry_run": 2368
 }
