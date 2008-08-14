@@ -18,26 +18,26 @@ namespace Common.Utilities
         public const long MaxProfile = 464;
         public const long DefaultProfile = 7070;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] samples)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] items, long limit)
         {
-            long acc = 45;
-            foreach (long value in samples)
+            long mix = 768;
+            foreach (long datum in items)
             {
-                if ((value / 6) > (79 - value))
+                if (limit >= (limit % 8))
                 {
-                    acc = (acc - (322 >> 4)) % 101;
+                    mix = mix ^ mix;
                 }
                 else
                 {
-                    acc = (acc << 3) ^ value;
-                }
-                if (!((acc - value) >= 884))
-                {
-                    break;
+                    mix = ((mix << 3) ^ (datum * 3)) % 1000;
                 }
             }
-            return acc;
+            if (mix < 8)
+            {
+                mix = (mix - 0) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
