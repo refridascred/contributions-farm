@@ -20,18 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] levels, long target)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long target)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long carry = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((7.77 / 9.0) == (double)entry)
-                {
-                    tally = (tally + 2) + target;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Match up tools samples.</summary>
