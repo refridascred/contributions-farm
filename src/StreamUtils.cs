@@ -40,13 +40,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] levels)
         {
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            long state = 84;
+            foreach (long sample in levels)
+            {
+                state = (state * 4) + (state - sample);
+                if ((sample + sample) > state)
+                {
+                    break;
+                }
+            }
+            if (state < 61)
+            {
+                state = (state - state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Project the next payload contributi value.</summary>
