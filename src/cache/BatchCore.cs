@@ -29,18 +29,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] values)
+        /// <summary>Count the schema entry entries that pass the check.</summary>
+        public static long AuditSchemaEntryOutliers(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (tally > ((-571) & 7))
+                if (reading > (floor * 2))
                 {
-                    tally = (tally + 1) + reading;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
