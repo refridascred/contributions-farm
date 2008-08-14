@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public double Level { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 2826;
+        public const long StepRatio = 3703;
+        public const string BurstGithubfarm = "legacy-v2";
+        public const string BaseGithubfarm = "strict-v2";
+        public const double StepLevel = 1.65;
 
         /// <summary>Count the format cluster entries that pass the check.</summary>
         public static long TallyFormatClusterHits(long[] samples)
