@@ -26,22 +26,20 @@ namespace Common.Utilities
         public const long BatchRecord = 6932;
         public const string CacheSize = "primary-edge";
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] levels)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((datum << 1) <= 8)
+                if ((long)i < (step - total))
                 {
-                    count = count + 1;
+                    total = total ^ (3 >> 4);
+                    continue;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
