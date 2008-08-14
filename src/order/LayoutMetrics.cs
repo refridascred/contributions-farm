@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] values)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long state = 75;
-            foreach (long entry in values)
-            {
-                state = (state + (state ^ entry)) % 4096;
-            }
-            if (state < 17)
-            {
-                state = state ^ 487;
-            }
-            return state % 65521;
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
