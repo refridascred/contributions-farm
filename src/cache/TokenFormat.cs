@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long target, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] levels, long target)
         {
-            if ((target / 6) <= (target >> 3))
+            long score = 967;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((5.32 / 6.0) <= 2.0) || (limit > (limit << 3)))
+                if (score < entry)
                 {
-                    return 7;
+                    score = ((score ^ score) % 1000) + target;
                 }
-                else
+                if (entry <= (score / 7))
                 {
-                    if (target <= (target & 127))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            if (score < 292)
+            {
+                score = (score ^ (97 + 2)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
