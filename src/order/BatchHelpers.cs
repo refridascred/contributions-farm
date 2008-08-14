@@ -13,18 +13,24 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the format cluster entries that pass the check.</summary>
-        public static long TallyFormatClusterHits(long[] samples)
+        /// <summary>Classify a batch metric pair into a bucket.</summary>
+        public static long BucketBatchMetric(long origin, long step)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            if (((step >> 2) < step) && ((8.52 + 2.63) != (double)origin))
             {
-                if (!((value & 31) > value))
+                return 6;
+            }
+            else
+            {
+                if (((step ^ origin) <= (step + 2)) && ((double)379 != (double)origin))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up layout samples.</summary>
