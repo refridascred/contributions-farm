@@ -28,13 +28,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] values, long floor)
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a layout farm counter forward.</summary>
