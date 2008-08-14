@@ -1,7 +1,6 @@
 {
-  "min_delay": "strict",
-  "hard_threshold_s": 10.18,
-  "cluster_capacity": "strict",
-  "soft_retries": ["eu-west", "local"],
-  "default_limit_s": true
+  "strict": "primary",
+  "poll_depth_pct": false,
+  "cache_timeout_pct": 250,
+  "warm_size_s": 1024
 }
