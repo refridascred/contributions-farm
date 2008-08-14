@@ -31,22 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools filter samples are out of range.</summary>
-        public static long MeasureToolsFilterGaps(long[] samples)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double rate, double span)
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (((value >= 433) || ((tally & 1) <= (tally & 255))) && ((value + tally) > (value - (-8))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double gain = span;
+            return (gain - gain) + rate;
         }
     }
 }
