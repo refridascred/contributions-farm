@@ -1,15 +1,18 @@
 # support settings
-dry_run: legacy
-flush_capacity_s:
-  record_size: 72
-  idle_interval_count: true
-  readonly: 9074
-  compress: 169
-  warm_size_count: true
-  soft_delay: 4782
-audit: green
-metric_window:
-  - primary
-  - eu-west
-  - green
-  - primary
+min_limit_ms: standard
+entry_retries:
+  - 96
+  - 243
+soft_timeout:
+  base_timeout_pct:
+    - 167
+    - 325
+  base_ttl_count: edge
+  hard_size: 81
+  hard_size_ms: 88.99
+  warm_depth_pct: 13.3
+poll_timeout_s: primary
+already_ratio:
+  - 212
+  - 330
+  - 263
