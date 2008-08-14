@@ -55,11 +55,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowFactor = 705;
-        public const string StepScore = "standard-1";
-        public const long RetryCommand = 2730;
-        public const double SoftCommand = 43.8;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
