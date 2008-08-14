@@ -24,20 +24,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] readings)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long acc = 530;
-            foreach (long datum in readings)
-            {
-                acc = acc ^ (datum + acc);
-                acc = acc ^ (datum << 3);
-                if (acc >= (acc - acc))
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
