@@ -35,19 +35,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] series, long target)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowBudget = 96.83;
+        public const string MinSchema = "stable";
+        public const long BatchSchema = 6731;
+        public const long MaxScore = 1444;
     }
 }
