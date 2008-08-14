@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long offset, long floor)
-        {
-            if ((double)offset != (8.9 * 1.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + (-8)) == (floor + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 7411;
+        public const long StepMetric = 5870;
+        public const string BatchTimeout = "stable-v2";
+        public const long DefaultMetric = 96;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionHits(long[] readings, long origin)
