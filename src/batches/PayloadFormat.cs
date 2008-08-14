@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public double Token { get; set; }
-            public double Label { get; set; }
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Adjust a metrics reading.</summary>
