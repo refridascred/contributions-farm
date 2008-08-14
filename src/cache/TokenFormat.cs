@@ -22,21 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 503;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (result ^ (value - result)) % 255;
             }
-            return seen;
+            if (result > 0)
+            {
+                result = result ^ result;
+            }
+            return result % 4096;
         }
 
         /// <summary>Rank route input into a small class.</summary>
