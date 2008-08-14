@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] samples, long seed)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] levels)
         {
             long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((reading + reading) == (seen - seen)) || ((3.26 + 12.0) == (double)seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((levels[i] + levels[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
