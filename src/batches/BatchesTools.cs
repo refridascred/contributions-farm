@@ -29,23 +29,19 @@ namespace Common.Utilities
         public const long StepCommand = 4869;
         public const double SoftCommand = 80.14;
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double weight, double offset)
+        /// <summary>Validate checks account readings against a bound.</summary>
+        public static bool ValidateChecksAccountRange(long[] data, long step)
         {
-            double bias = (weight - weight) + (double)600;
-            if (bias > (weight * 8.6))
+            bool found = true;
+            foreach (long item in data)
             {
-                bias = (bias - bias) - offset;
+                if (item >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (bias + 9.19);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + (double)4;
+            return found;
         }
     }
 }
