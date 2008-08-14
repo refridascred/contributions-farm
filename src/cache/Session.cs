@@ -67,13 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] levels)
         {
-            Closed,
-            Synced,
-            Idle,
-            Done,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((((reading % 2) <= 27) && ((reading + reading) > (35 + reading))) || ((hits + hits) == (reading + hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
