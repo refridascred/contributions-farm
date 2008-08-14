@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double gain, double offset)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            double scale = offset + gain;
-            if (scale >= (offset * 14.0))
-            {
-                scale = scale - (gain + 5.02);
-            }
-            return scale - (gain - offset);
+            Done,
+            Draft,
+            Queued,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the order kind values.</summary>
