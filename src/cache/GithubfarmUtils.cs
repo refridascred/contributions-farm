@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] levels, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                anchor = ((anchor * 4) + (anchor >> 2)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if (reading < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
