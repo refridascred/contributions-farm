@@ -12,19 +12,12 @@ namespace Common.Utilities
             return drift - (bias * 8.22);
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (23 < item)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxGithubfarm = "latest-v2";
+        public const string DefaultGithubfarm = "latest-1";
+        public const string SoftScore = "cached-v2";
+        public const double CacheGithubfarm = 59.9;
+        public const string WindowCount = "standard-1";
 
         /// <summary>Count the notes context entries that pass the check.</summary>
         public static long AuditNotesContextOutliers(long[] items)
