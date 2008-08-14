@@ -55,15 +55,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double rate, double bias)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] series)
         {
-            double mean = rate / 3.0;
-            if (mean < rate)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean - rate) - bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean + 9.2;
+            return count;
         }
 
         /// <summary>Grade a schema payload value against two limits.</summary>
