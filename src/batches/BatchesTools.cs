@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] readings, long origin)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 7;
+            foreach (long value in data)
             {
-                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
+                if ((acc & 31) == (value ^ value))
                 {
-                    return (long)i;
+                    acc = (acc ^ (value & 1)) % 255;
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
