@@ -1,26 +1,8 @@
 {
-  "default_delay_count": false,
-  "retry_size": 44,
-  "min_window_s": {
-    "soft_delay_count": {
-      "session_delay": "fallback",
-      "soft_interval_ms": "open",
-      "readonly": 40.49,
-      "hard_delay_s": "strict",
-      "strict": 1024
-    },
-    "strict": 100,
-    "flush_size_s": 4648,
-    "soft_depth_count": {
-      "batch_delay_s": false,
-      "farm_interval": 15.43,
-      "soft_ratio_count": 81.56,
-      "cache_depth": 74.73,
-      "readonly": 30
-    },
-    "stream_retries": "eu-west",
-    "compress": false
-  },
-  "flush_ratio_count": true,
-  "max_depth_s": "strict"
+  "cluster_threshold": 46,
+  "stats_retries": false,
+  "persist": true,
+  "stream_ttl": "fallback",
+  "min_size_s": false,
+  "dry_run": 25.89
 }
