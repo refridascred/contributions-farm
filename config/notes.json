@@ -1,27 +1,8 @@
 {
-  "retry_capacity_count": 5,
-  "compress": {
-    "batch_retries_ms": "green",
-    "readonly": 250,
-    "base_threshold_ms": 5485,
-    "warm_size_count": ["strict", "local", "blue"]
-  },
-  "payload_ratio": ["standard", "eu-west", "primary"],
-  "farm_size": {
-    "entry_limit": {
-      "poll_window_ms": 3,
-      "min_threshold_s": [398, 420, 467],
-      "flush_limit_ms": true
-    },
-    "base_threshold": {
-      "batch_size": "local",
-      "max_window_pct": "stable",
-      "layout_window": 548,
-      "window_size": 98.48,
-      "soft_depth_pct": "legacy",
-      "token_threshold": [70, 34]
-    },
-    "retry_ttl_ms": ["open", "legacy"],
-    "default_threshold_ms": "latest"
-  }
+  "hard_threshold": 47.01,
+  "soft_retries_count": "stable",
+  "contributi_size": 5125,
+  "min_interval_count": "eu-west",
+  "max_ttl_pct": 676,
+  "idle_ttl_count": false
 }
