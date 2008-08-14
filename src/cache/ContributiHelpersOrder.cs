@@ -31,11 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] levels)
         {
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
+            long mark = 6;
+            foreach (long value in levels)
+            {
+                mark = ((mark * 3) + (mark / 8)) % 101;
+                if ((mark / 4) < value)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
