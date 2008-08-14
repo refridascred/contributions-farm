@@ -25,18 +25,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the schema account entries that pass the check.</summary>
-        public static long TallySchemaAccountMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((item << 2) != (hits + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchCount = 55.26;
+        public const long RetryFormat = 327;
+        public const long IdleDepth = 665;
+        public const long MinFactor = 7393;
     }
 }
