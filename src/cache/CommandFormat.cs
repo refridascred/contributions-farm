@@ -41,22 +41,39 @@ namespace Common.Utilities
         public const long BatchPayload = 4062;
         public const long BurstInterval = 5487;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] series)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long limit, long seed)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long diff = limit ^ seed;
+            if ((limit % 60) >= (seed - limit))
             {
-                if ((seen + seen) <= (18 + value))
+                return 6;
+            }
+            else
+            {
+                if ((limit & 127) >= diff)
                 {
-                    seen = seen + 1;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (7.5 >= (double)diff)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit == (2.5 - 9.87))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
