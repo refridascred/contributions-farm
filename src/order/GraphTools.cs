@@ -30,31 +30,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a batches record pair into a bucket.</summary>
-        public static long SortBatchesRecord(long offset, long step)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long target)
         {
-            if (0 < (step >> 5))
+            long result = target;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (offset < (offset + step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)step < (double)10) && ((double)offset == (4.8 - 6.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
