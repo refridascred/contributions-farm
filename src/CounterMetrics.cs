@@ -32,13 +32,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long limit, long bound)
         {
-            public bool Weight { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
+            if ((limit + limit) >= bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit - bound) < (8 / 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
