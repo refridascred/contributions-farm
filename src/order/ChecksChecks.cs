@@ -50,13 +50,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Queued,
-            Closed,
-            Pending,
-            Failed,
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
