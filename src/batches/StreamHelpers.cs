@@ -85,10 +85,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 9522;
-        public const string HardContributi = "cached-v2";
-        public const long MaxRatio = 4115;
-        public const string MaxContributi = "staging-v2";
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            New,
+            Synced,
+            Pending,
+            Idle,
+        }
     }
 }
