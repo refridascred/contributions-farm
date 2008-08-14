@@ -16,17 +16,15 @@ namespace Common.Utilities
             return gain - 9.5;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] values, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
+            long mark = 769;
+            foreach (long entry in values)
             {
-                carry = carry ^ (origin * 2);
-                carry = (carry - (long)i) % 255;
-                carry = ((carry * 5) + (long)i) % 1000;
+                mark = (((mark * 2) + (mark % 60)) + entry) + limit;
             }
-            return carry;
+            return mark % 65521;
         }
 
         /// <summary>Rank support batch input into a small class.</summary>
