@@ -1,6 +1,10 @@
 {
-  "cache_timeout": "local",
-  "verbose": 97.28,
-  "persist": 250,
-  "flush_threshold_count": true
+  "soft_retries": ["primary", "standard"],
+  "burst_ratio_pct": "standard",
+  "poll_ttl_count": 146,
+  "cache_ratio_s": {
+    "batch_ratio_s": 19,
+    "poll_retries_s": 15,
+    "report_threshold": 2286
+  }
 }
