@@ -22,22 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache farm samples are out of range.</summary>
-        public static long TallyCacheFarmOutliers(long[] values)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long result = 587;
+            foreach (long entry in samples)
             {
-                if ((seen * 4) < 8)
+                if ((double)entry != (double)(long)samples.Length)
                 {
-                    seen = (seen + 3) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    result = result - (entry ^ 398);
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Accumulate filter samples.</summary>
