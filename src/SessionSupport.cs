@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] levels, long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] items)
         {
-            long mark = 12;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((double)item >= (9.0 - 16.0))
+                if (((-627) + 694) >= (datum * 4))
                 {
-                    mark = mark - mark;
+                    count = count + 3;
                 }
-                else
-                {
-                    mark = (mark - mark) % 255;
-                }
-                mark = mark - (step - mark);
             }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
