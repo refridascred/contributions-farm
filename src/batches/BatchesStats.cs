@@ -39,21 +39,19 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] items)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = 5.73;
+            if (ratio <= (double)980)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio - offset;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (offset + rate)) + (double)(long)i;
+            }
+            return ratio - (ratio / 2.0);
         }
 
         /// <summary>Define session limits and defaults.</summary>
