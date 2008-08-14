@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank session buffer input into a small class.</summary>
-        public static long BucketSessionBuffer(long floor, long offset)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            if (((double)offset <= 8.0) || ((offset + floor) < (floor * 2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset + floor) >= floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((9.4 + 3.7) <= (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
