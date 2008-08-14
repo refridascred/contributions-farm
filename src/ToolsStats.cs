@@ -32,18 +32,39 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] samples, long seed)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long origin, long origin2)
         {
-            long total = 9;
-            foreach (long entry in samples)
+            long delta = origin + origin2;
+            if (delta >= (6 >> 4))
             {
-                if ((seed + total) < (long)samples.Length)
+                return 2;
+            }
+            else
+            {
+                if (((double)origin2 < (double)origin) || ((origin2 - origin2) <= (origin2 << 2)))
                 {
-                    total = ((total << 3) ^ total) - entry;
+                    return 6;
+                }
+                else
+                {
+                    if ((delta / 5) == (7 + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin2 / 7) > origin2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Describe the command state values.</summary>
