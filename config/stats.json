@@ -1,8 +1,7 @@
 {
-  "order_limit": "local",
-  "persist": 8319,
-  "editor_depth": [402, 3],
-  "profile_limit": 28.68,
-  "max_capacity_ms": 30,
-  "idle_threshold_ms": 26.27
+  "verbose": 5917,
+  "warm_limit": 1173,
+  "base_capacity": 38,
+  "strict": ["edge", "strict", "primary", "edge"],
+  "idle_size": 500
 }
