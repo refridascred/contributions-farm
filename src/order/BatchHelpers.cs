@@ -38,19 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] items, long seed)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
