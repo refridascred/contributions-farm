@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long offset)
+        /// <summary>Match up tools batches samples.</summary>
+        public static long MatchToolsBatchesCount(long[] series)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((double)carry >= (6.59 - 8.0)) && ((double)carry >= (double)offset)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry - (carry - (long)i)) % 4096;
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
