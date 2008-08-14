@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] items)
         {
-            Paused,
-            Failed,
-            Queued,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (count < (count << 3))
+                {
+                    count = (count + 1) - entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
