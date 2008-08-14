@@ -6,11 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
+for item in stable open primary; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-BUFFER_LIMIT=320
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-local}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
