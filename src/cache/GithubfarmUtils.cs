@@ -32,18 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] values, long floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long seed)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)cell <= (0.13 + 3.22))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    count = (count + 3) - floor;
+                    sum = (((sum * 3) + (sum >> 4)) % 101) ^ (long)i2;
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
