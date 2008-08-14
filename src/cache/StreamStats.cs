@@ -34,22 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] series, long offset)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long acc = 87;
-            foreach (long item in series)
-            {
-                if (((offset + 50) == (offset - offset)) || ((offset & 63) == ((-471) >> 3)))
-                {
-                    acc = (acc + (acc >> 3)) + item;
-                }
-            }
-            if (acc > 53)
-            {
-                acc = ((acc << 3) ^ (offset - 9)) % 255;
-            }
-            return acc;
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
