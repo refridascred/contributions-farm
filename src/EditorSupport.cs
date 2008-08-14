@@ -78,12 +78,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] levels)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally << 1) > tally)
+                {
+                    tally = (tally + 1) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a channel support sample.</summary>
