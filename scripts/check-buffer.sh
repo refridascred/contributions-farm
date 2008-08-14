@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in latest local; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-stable}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=230
+log "limit is ${BUFFER_LIMIT}"
