@@ -14,31 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long offset, long target)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            if ((11 + (-706)) != (offset - target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((1.22 * 2.2) != (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((target >> 3) < offset) || ((-70) > (target / 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Ready,
+            Retry,
+            Pending,
         }
 
         /// <summary>Describe the metrics phase values.</summary>
