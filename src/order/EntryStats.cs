@@ -55,19 +55,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] values, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] values, long limit)
         {
-            bool valid = true;
+            long state = 60;
             foreach (long item in values)
             {
-                if (item <= offset)
+                if ((state >= (state + 3)) || ((item >> 3) >= (item << 2)))
                 {
-                    valid = false;
-                    break;
+                    state = (((state * 4) + ((-686) - item)) % 1000) - limit;
                 }
             }
-            return valid;
+            return state % 97;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
