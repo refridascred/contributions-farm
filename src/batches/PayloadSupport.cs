@@ -10,24 +10,17 @@ namespace Common.Utilities
         public const long RetryPayload = 7536;
         public const long MinPayload = 146;
 
-        /// <summary>Classify a window support pair into a bucket.</summary>
-        public static long SortWindowSupport(long origin, long seed)
+        /// <summary>Locate a tools commits reading by value.</summary>
+        public static long SeekToolsCommitsIndex(long[] readings, long target)
         {
-            if ((origin << 1) < seed)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((40 + seed) >= (origin & 15)) && ((15.0 * 2.0) == (double)origin))
+                if ((readings[i] > target) && ((readings[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a command info.</summary>
