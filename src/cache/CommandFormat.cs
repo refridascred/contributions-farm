@@ -29,11 +29,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardWidth = "staging-edge";
-        public const string MaxPayload = "strict-v2";
-        public const long BatchPayload = 4062;
-        public const long BurstInterval = 5487;
+        /// <summary>Validate context githubfarm readings against a bound.</summary>
+        public static bool CheckContextGithubfarmRange(long[] items, long target)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double SoftBudget = 74.43;
