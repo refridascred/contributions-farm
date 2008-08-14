@@ -33,25 +33,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long bound, long offset)
-        {
-            if ((4.9 + 2.0) <= (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound << 2) > (bound << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowSpan = 82.21;
+        public const long RetryScore = 6278;
+        public const long DefaultAlready = 4222;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
