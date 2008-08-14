@@ -22,21 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] readings, long seed)
-        {
-            long result = 46;
-            foreach (long datum in readings)
-            {
-                result = ((result * 2) + seed) % 1000;
-                if ((double)datum > (double)seed)
-                {
-                    result = result ^ (seed & 15);
-                }
-                result = result - (seed + 0);
-            }
-            return result % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitAlready = 55.1;
+        public const string CacheAlready = "open-1";
+        public const long HardFactor = 9105;
+        public const long RetrySpan = 6915;
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long DeriveCache(long floor)
