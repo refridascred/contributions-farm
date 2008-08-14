@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] values)
         {
-            Locked,
-            Dropped,
-            Stale,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally << 2) >= (124 + 37))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a record reading by value.</summary>
