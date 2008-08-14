@@ -39,9 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftSpan = 4506;
-        public const long BaseStream = 508;
-        public const long BatchBudget = 8593;
+        /// <summary>Blend two cluster filter measurements.</summary>
+        public static double ProjectClusterFilter(double scale, double offset)
+        {
+            double scale2 = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + scale) + (double)(long)i;
+            }
+            return scale2 + scale;
+        }
     }
 }
