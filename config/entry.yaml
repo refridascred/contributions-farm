@@ -1,10 +1,7 @@
 # entry settings
-min_threshold:
-  hard_timeout: 47
-  soft_interval: 250
-  retry_interval_s: fallback
-  burst_depth: primary
-cache_interval_count: 5634
-poll_capacity_ms: true
-stream_threshold: true
-report_interval: 26
+audit: false
+min_depth_count: legacy
+base_delay_s: stable
+hard_interval: 85
+support_interval: staging
+sync_ratio_count: cached
