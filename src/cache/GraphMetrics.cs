@@ -57,13 +57,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Done,
-            Queued,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftScore = "local-edge";
+        public const string DefaultPayload = "cached-v2";
+        public const long MaxWidth = 1819;
+        public const long HardPayload = 4215;
     }
 }
