@@ -1,5 +1,6 @@
 {
-  "hard_retries_s": 44.8,
-  "stream_delay": 5928,
-  "buffer_ttl": 276
+  "session_timeout": true,
+  "persist": 3907,
+  "batch_interval": 60,
+  "poll_size": ["edge", "open"]
 }
