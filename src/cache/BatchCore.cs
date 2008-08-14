@@ -48,19 +48,10 @@ namespace Common.Utilities
             return rate - (4.5 - 5.16);
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] levels, long origin)
-        {
-            long sum = 6;
-            foreach (long reading in levels)
-            {
-                sum = (sum + (reading ^ reading)) - origin;
-            }
-            if (sum > 347)
-            {
-                sum = (sum ^ (sum - 5)) % 65521;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultFactor = 1138;
+        public const long DefaultMetrics = 4916;
+        public const string BurstMetrics = "latest";
+        public const long BatchTimeout = 1808;
     }
 }
