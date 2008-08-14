@@ -19,21 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long step, long step2)
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
+            if ((step2 * 5) < (step2 - step))
             {
-                if (!((long)i >= (offset >> 4)))
-                {
-                    anchor = anchor ^ anchor;
-                    anchor = ((anchor * 4) + (anchor % 8)) % 255;
-                }
-                anchor = (anchor + (22 % 16)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if (((double)step2 != (2.0 / 2.0)) && (step2 < step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((8.4 * 3.1) > (double)step2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
