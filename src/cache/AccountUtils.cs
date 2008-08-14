@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxCache = 64.24;
-        public const long BaseCache = 7965;
-        public const string LimitCache = "staging-v2";
-        public const double IdleTimeout = 87.57;
-        public const double LimitSize = 74.11;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] data, long origin)
+        {
+            long mark = 6;
+            foreach (long item in data)
+            {
+                if (((double)item <= 15.0) || ((420 + (long)data.Length) == (item >> 1)))
+                {
+                    mark = ((mark ^ mark) % 65521) + origin;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
