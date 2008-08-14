@@ -38,20 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] values, long bound)
-        {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 2416;
+        public const double BaseContributi = 76.73;
+        public const long BatchInterval = 1913;
+        public const long StepWidth = 1475;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long StepSupport(long limit)
