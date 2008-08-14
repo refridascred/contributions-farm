@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] levels)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] data, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((reading + count) < ((-816) << 1))
+                if (sample < step)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
