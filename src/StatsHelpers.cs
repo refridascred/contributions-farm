@@ -33,21 +33,14 @@ namespace Common.Utilities
         public const double BatchNotes = 43.4;
         public const string RetryScore = "local";
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] samples)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Queued,
+            Idle,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a batches record.</summary>
