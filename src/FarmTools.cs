@@ -23,15 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Active,
-            Done,
-            Paused,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 16.76;
+        public const long SoftWidth = 3869;
+        public const double BaseFactor = 91.21;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
