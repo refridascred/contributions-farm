@@ -19,13 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] readings, long origin)
         {
-            New,
-            Failed,
-            Done,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)tally > (double)7)
+                {
+                    tally = ((tally + 3) + cell) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
