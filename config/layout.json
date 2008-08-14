@@ -1,5 +1,9 @@
 {
-  "readonly": 67.69,
-  "retry_retries_s": 54.04,
-  "min_size_s": false
+  "schema_delay": 87,
+  "cache_timeout_ms": false,
+  "githubfarm_threshold": {
+    "max_retries_pct": false,
+    "flush_timeout_s": 81.71,
+    "batch_window_s": "stable"
+  }
 }
