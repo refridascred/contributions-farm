@@ -33,34 +33,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long offset, long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            if (!((offset - offset) != (offset & 15)))
             {
-                if ((bound - 91) != ((long)i - bound))
-                {
-                    carry = carry ^ (11 % 8);
-                    continue;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ 910;
-                    carry = (carry - ((long)i ^ carry)) % 255;
-                }
-                if (bound <= carry)
-                {
-                    carry = ((carry << 2) ^ carry) % 255;
-                    carry = ((carry * 2) + (261 ^ (long)i)) % 101;
-                }
-                else
-                {
-                    carry = (carry * 2) + (carry - bound);
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((limit / 7) < (limit * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
