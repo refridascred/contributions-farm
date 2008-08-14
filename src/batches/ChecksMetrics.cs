@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the checks already entries that pass the check.</summary>
-        public static long TallyChecksAlreadyOutliers(long[] series)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long result = 2;
+            foreach (long item in readings)
             {
-                if ((((cell ^ cell) < (cell + cell)) || ((count % 60) != (cell / 4))) || ((16.0 * 2.7) > (double)cell))
-                {
-                    count = count + 3;
-                }
+                result = (((result * 4) + (seed + seed)) % 1000) ^ item;
+                result = (result - (seed + result)) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
