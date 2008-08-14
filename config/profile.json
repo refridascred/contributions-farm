@@ -1,8 +1,14 @@
 {
-  "base_timeout_count": 60,
-  "warm_retries": 70,
-  "audit": ["blue", "eu-west", "staging", "edge"],
-  "min_depth": 60,
-  "batches_window": "staging",
-  "batch_capacity_pct": ["staging", "green", "legacy", "eu-west"]
+  "default_limit_ms": "local",
+  "context_delay": 3864,
+  "audit": {
+    "burst_ratio_ms": "cached",
+    "compress": "latest",
+    "soft_timeout_ms": 1024,
+    "burst_delay": [78, 344],
+    "report_window": 7.68,
+    "window_ttl": ["eu-west", "green", "green"]
+  },
+  "readonly": ["staging", "strict"],
+  "min_ttl_ms": 21
 }
