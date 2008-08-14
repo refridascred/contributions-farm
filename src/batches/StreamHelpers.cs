@@ -35,12 +35,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 9985;
-        public const long LimitBudget = 8367;
-        public const long MinQueue = 6934;
-        public const double DefaultInterval = 36.83;
-        public const long IdleCount = 888;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public double Offset { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Combine format channel values into a single score.</summary>
         public static long DigestFormatChannel(long[] levels)
