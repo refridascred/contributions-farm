@@ -38,10 +38,25 @@ namespace Common.Utilities
             return weight - (double)6;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepSpan = 7476;
-        public const string IdleCache = "legacy-edge";
-        public const long HardTimeout = 9398;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long bound, long step)
+        {
+            if ((step << 2) >= (step + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)bound > 6.6) || ((step + 1) != (step + step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
