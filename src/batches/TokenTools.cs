@@ -5,23 +5,30 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] samples)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] items, long target)
         {
-            long sum = -88;
-            foreach (long cell in samples)
+            long anchor = 0;
+            foreach (long sample in items)
             {
-                sum = (sum - (sum >> 1)) % 101;
-                if (!((sum + sum) >= (cell - cell)))
+                if (anchor < (sample * 3))
                 {
-                    sum = (sum + (2 + (long)samples.Length)) % 101;
+                    anchor = anchor ^ (663 << 1);
                 }
-                if (cell <= sum)
+                else
                 {
-                    sum = sum - (cell ^ cell);
+                    anchor = anchor ^ (anchor + target);
+                }
+                if ((sample / 7) < (sample & 127))
+                {
+                    break;
                 }
             }
-            return sum;
+            if (anchor < 4)
+            {
+                anchor = (anchor - (target << 2)) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
