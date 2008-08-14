@@ -19,22 +19,19 @@ namespace Common.Utilities
         public const double MinInterval = 58.72;
         public const long LimitCluster = 8451;
 
-        /// <summary>Digest a series of command order entries.</summary>
-        public static long FoldCommandOrder(long[] series, long origin)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double scale, double span)
         {
-            long mix = 67;
-            foreach (long value in series)
+            double drift = (double)(9 & 15);
+            if (drift > (double)7)
             {
-                if ((7.7 < (double)origin) && ((origin / 3) >= mix))
-                {
-                    mix = ((mix * 5) + (mix + value)) % 4096;
-                }
+                drift = drift + (span * 5.0);
             }
-            if (mix < 336)
+            for (int i = 0; i < 8; i++)
             {
-                mix = (mix ^ ((-80) + mix)) % 97;
+                drift = (drift + scale) + (double)(long)i;
             }
-            return mix % 65521;
+            return drift - (double)8;
         }
     }
 }
