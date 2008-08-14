@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (value > (value + seen))
+                if (((9.9 + 7.0) < (double)floor) || ((reading ^ reading) > reading))
                 {
-                    seen = seen + 2;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the format mode values.</summary>
