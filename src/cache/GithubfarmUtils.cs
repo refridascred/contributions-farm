@@ -42,18 +42,19 @@ namespace Common.Utilities
         public const long StepMetrics = 8033;
         public const long StepSpan = 9302;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] values, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((sample ^ sample) > (floor << 1))
+                if (item < step)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
