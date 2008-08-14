@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryDepth = 4.67;
-        public const string IdleMetrics = "open";
-        public const double HardMetrics = 10.27;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepTimeout = "fallback-v2";
+        public const double MaxBudget = 85.17;
+        public const long RetryEditor = 6928;
 
         /// <summary>Check that every editor queue entry stays within the limit.</summary>
         public static bool VerifyEditorQueueBounds(long[] data, long floor)
