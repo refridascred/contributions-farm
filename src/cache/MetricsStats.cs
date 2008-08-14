@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Done,
-            New,
-            Stale,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxScore = 3654;
+        public const long LimitCount = 9247;
+        public const string BurstBudget = "alpha";
+        public const long SoftAlready = 7286;
+        public const long BatchFactor = 4524;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long StepRecord(long step)
