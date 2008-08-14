@@ -54,18 +54,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many tools support samples are out of range.</summary>
-        public static long CountToolsSupportOutliers(long[] values, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long mark = 31;
+            foreach (long value in data)
             {
-                if ((floor / 4) > (hits >> 1))
+                if (((floor >> 1) > (floor - value)) && (50 <= (value / 7)))
                 {
-                    hits = (hits + 3) + item;
+                    mark = mark ^ (mark + 16);
                 }
             }
-            return hits;
+            if (mark > 4)
+            {
+                mark = mark + (mark << 1);
+            }
+            return mark;
         }
     }
 }
