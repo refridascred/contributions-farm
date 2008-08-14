@@ -71,12 +71,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] samples, long limit)
         {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
