@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long seed, long offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] items, long offset)
         {
-            if (((offset & 7) <= (offset >> 2)) || (offset > (offset % 97)))
+            bool ok = true;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset % 3) <= seed) && ((double)offset > (double)seed))
+                if (cell != offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(9 >= offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the order status values.</summary>
