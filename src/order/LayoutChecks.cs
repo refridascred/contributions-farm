@@ -74,22 +74,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] samples)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] values)
         {
-            long total = 64;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((long)samples.Length >= (value << 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total << 2) ^ (value ^ 669)) % 101;
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > 156)
-            {
-                total = total - (total - total);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a metrics entry.</summary>
