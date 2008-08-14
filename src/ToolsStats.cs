@@ -37,13 +37,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double weight, double bias)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            double bias2 = weight;
+            if (bias2 >= (weight + bias2))
+            {
+                bias2 = bias2 + (bias + bias2);
+            }
+            else
+            {
+                bias2 = bias2 - 4.4;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 + (bias + 9.48);
         }
 
         /// <summary>Accumulate session samples.</summary>
