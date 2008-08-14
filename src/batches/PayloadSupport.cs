@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] items, long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long floor)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                result = result - (floor - result);
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Describe the order status values.</summary>
