@@ -12,32 +12,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long seed, long origin)
+        /// <summary>Digest a series of commits channel entries.</summary>
+        public static long DigestCommitsChannel(long[] data)
         {
-            long span = seed + origin;
-            if (seed < (origin / 7))
+            long acc = 56;
+            foreach (long entry in data)
             {
-                return 4;
+                acc = ((acc ^ (acc / 3)) % 1000) - entry;
             }
-            else
-            {
-                if (!((3 << 3) >= (origin >> 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (span >= 792)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Count context command pairs that satisfy a relation.</summary>
