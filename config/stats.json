@@ -1,7 +1,6 @@
 {
-  "verbose": 5917,
-  "warm_limit": 1173,
-  "base_capacity": 38,
-  "strict": ["edge", "strict", "primary", "edge"],
-  "idle_size": 500
+  "cache_timeout": "local",
+  "verbose": 97.28,
+  "persist": 250,
+  "flush_threshold_count": true
 }
