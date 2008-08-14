@@ -1,6 +1,10 @@
-id,score,state,weight
-1,901,38.21,75.97
-2,strict,200,fallback
-3,staging,176,primary
-4,40.44,54,988
-5,latest,656,30.11
+id,count,active,level,score
+1,530,769,105,102
+2,52.77,0.76,789,local
+3,2.55,58.13,125,53.57
+4,62,81.0,171,edge
+5,374,4.75,strict,fallback
+6,blue,cached,eu-west,42.16
+7,open,724,828,575
+8,staging,green,91.96,20.37
+9,44.08,local,98.88,primary
