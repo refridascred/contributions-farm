@@ -11,24 +11,17 @@ namespace Common.Utilities
         public const string BurstWindow = "strict-1";
         public const long MinInterval = 8123;
 
-        /// <summary>Classify a stats graph pair into a bucket.</summary>
-        public static long GradeStatsGraph(long bound, long bound2)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] levels, long target)
         {
-            if ((bound % 10) > (bound2 + bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((313 >> 3) == (bound2 << 3))
+                if ((levels[i] < target) && ((levels[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a window options.</summary>
