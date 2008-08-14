@@ -65,12 +65,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 3274;
-        public const double SoftRecord = 43.74;
-        public const long IdleCount = 2047;
-        public const double DefaultTimeout = 48.14;
-        public const long BatchRecord = 4297;
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long ClassifyWindow(long bound, long seed)
