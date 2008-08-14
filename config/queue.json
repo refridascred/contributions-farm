@@ -1,6 +1,7 @@
 {
-  "idle_retries_count": "staging",
-  "compress": 100,
-  "strict": false,
-  "retry_retries": "standard"
+  "enabled": "staging",
+  "flush_size_count": false,
+  "default_interval_pct": 57.11,
+  "warm_ratio_ms": false,
+  "audit": 9.82
 }
