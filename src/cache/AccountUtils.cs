@@ -27,22 +27,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((acc + seed) <= acc))
-                {
-                    acc = (acc - (acc + 526)) % 255;
-                    acc = ((acc * 3) + 655) % 1000;
-                }
-                acc = (acc * 5) + 9;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitCount = 86.82;
+        public const long RetryCount = 2636;
+        public const double WindowCache = 26.97;
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
