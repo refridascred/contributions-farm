@@ -22,10 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultWidth = 3998;
-        public const string SoftScore = "latest-v2";
-        public const long BatchChannel = 5913;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftWidth = 202;
+        public const long MinStream = 5732;
+        public const string IdleCount = "standard-v2";
+        public const long BurstStream = 1004;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
