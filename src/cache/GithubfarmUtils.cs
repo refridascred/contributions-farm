@@ -18,24 +18,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] values)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] values, long offset)
         {
-            long acc = 1;
+            long seen = 0;
             foreach (long item in values)
             {
-                acc = (acc + (item & 1)) % 1000;
-                acc = (acc << 2) ^ 8;
-                if (item <= (5 << 2))
+                if ((offset << 3) <= item)
                 {
-                    acc = (acc << 3) ^ (acc % 60);
+                    seen = seen + 2;
                 }
             }
-            if (acc < (-28))
-            {
-                acc = (acc ^ (acc << 2)) % 101;
-            }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
