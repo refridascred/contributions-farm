@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxScore = 3654;
-        public const long LimitCount = 9247;
-        public const string BurstBudget = "alpha";
-        public const long SoftAlready = 7286;
-        public const long BatchFactor = 4524;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] samples, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)floor < (double)736)
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long StepRecord(long step)
