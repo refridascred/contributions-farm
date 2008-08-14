@@ -33,18 +33,34 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] levels, long target)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long bound)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally / 9) < (target >> 4))
+                if ((bound - 91) != ((long)i - bound))
                 {
-                    tally = (tally + 3) ^ entry;
+                    carry = carry ^ (11 % 8);
+                    continue;
                 }
+                else
+                {
+                    carry = (carry << 2) ^ 910;
+                    carry = (carry - ((long)i ^ carry)) % 255;
+                }
+                if (bound <= carry)
+                {
+                    carry = ((carry << 2) ^ carry) % 255;
+                    carry = ((carry * 2) + (261 ^ (long)i)) % 101;
+                }
+                else
+                {
+                    carry = (carry * 2) + (carry - bound);
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
