@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxFactor = 43.15;
-        public const string MinWidth = "local-1";
-        public const string HardMetrics = "staging-edge";
+        /// <summary>Find the first account graph entry that matches the target.</summary>
+        public static long LookupAccountGraphIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two cache checks measurements.</summary>
         public static double ProjectCacheChecks(double rate, double bias)
