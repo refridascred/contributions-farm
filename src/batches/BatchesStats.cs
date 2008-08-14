@@ -16,24 +16,15 @@ namespace Common.Utilities
             return weight - (bias + weight);
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long offset, long limit)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double rate, double offset)
         {
-            if (!((offset - offset) != (offset & 15)))
+            double load = offset;
+            for (int i = 0; i < 3; i++)
             {
-                return 2;
+                load = (load + (7.5 - 1.5)) + (double)(long)i;
             }
-            else
-            {
-                if ((limit / 7) < (limit * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return load + (rate + rate);
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
