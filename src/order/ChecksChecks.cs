@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile queue entries that pass the check.</summary>
-        public static long TallyProfileQueueOutliers(long[] samples, long limit)
+        /// <summary>Check that every record already entry stays within the limit.</summary>
+        public static bool ValidateRecordAlreadyBounds(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if ((double)hits <= (5.66 - 8.93))
+                if (reading < limit)
                 {
-                    hits = ((hits + 1) ^ sample) - limit;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
