@@ -45,13 +45,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public bool Label { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
