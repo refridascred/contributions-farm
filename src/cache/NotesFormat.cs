@@ -28,16 +28,13 @@ namespace Common.Utilities
         public const long BaseSupport = 306;
         public const string LimitSupport = "legacy-1";
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long floor)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = (anchor + (587 + (-61))) % 101;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Locked,
+            Draft,
+            Synced,
+            Queued,
         }
     }
 }
