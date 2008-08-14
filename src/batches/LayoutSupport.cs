@@ -30,19 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] samples, long floor)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample < floor)
+                if (data[i] <= step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
