@@ -15,32 +15,12 @@ namespace Common.Utilities
         public const string BatchChecks = "local-1";
         public const long HardChecks = 5022;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long step, long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long lane = step ^ seed;
-            if ((step - 988) > (lane >> 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((step + lane) >= (lane ^ lane)) && (62 >= step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((83 / 9) >= lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Pending,
         }
 
         /// <summary>Digest a series of record entries.</summary>
