@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] items, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] samples, long step)
         {
-            long state = 0;
-            foreach (long entry in items)
+            long mark = 4;
+            foreach (long cell in samples)
             {
-                if (((double)entry > 6.0) || ((double)floor <= (5.87 + 8.7)))
+                if ((step - cell) > (step << 3))
                 {
-                    state = ((state << 2) ^ floor) % 97;
+                    mark = ((mark * 5) + (mark ^ cell)) % 4096;
                 }
             }
-            if (state > 65)
+            if (mark > (-6))
             {
-                state = state ^ (floor + floor);
+                mark = ((mark * 4) + (step / 3)) % 255;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Combine layout command values into a single score.</summary>
