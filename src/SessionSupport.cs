@@ -20,12 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public double Region { get; set; }
+            Locked,
+            Synced,
+            Active,
+            New,
+            Queued,
         }
 
         /// <summary>Blend two schema measurements.</summary>
