@@ -1,10 +1,10 @@
 # Command notes
 
-The batches module keeps record values in sync with the record cache.
-Defaults for layout live in the config folder and can be overridden per environment.
+The schema module keeps format values in sync with the cache cache.
+Run the account check before changing any payload limits.
 
 ## Guidelines
 
-- Review channel limits each release
-- Document new context fields
-- Keep context values small
+- Review token limits each release
+- Prefer batches defaults
+- Keep stats values small
