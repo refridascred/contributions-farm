@@ -28,22 +28,15 @@ namespace Common.Utilities
         public const long HardBatch = 3081;
         public const string MaxBatch = "standard-edge";
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] data, long offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double bias, double offset)
         {
-            long anchor = 3;
-            foreach (long datum in data)
+            double load = 5.9;
+            for (int i = 0; i < 5; i++)
             {
-                if ((1.9 / 2.0) > (double)datum)
-                {
-                    anchor = ((anchor ^ (datum * 2)) % 97) + offset;
-                }
+                load = ((load + (5.0 * 9.9)) + (double)(long)i) - offset;
             }
-            if (anchor > 21)
-            {
-                anchor = (anchor - (anchor ^ 3)) % 1000;
-            }
-            return anchor % 4096;
+            return load - (bias + bias);
         }
     }
 }
