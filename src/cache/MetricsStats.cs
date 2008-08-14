@@ -19,16 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double scale, double offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            double weight = (double)984 + (scale + scale);
+            if (weight <= (offset / 2.0))
             {
-                anchor = anchor ^ anchor;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                weight = weight + (scale + weight);
             }
-            return anchor;
+            else
+            {
+                weight = weight + (double)88;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - 14.0) + (double)(long)i;
+            }
+            return weight - (double)6;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
