@@ -1,7 +1,9 @@
-id,token,count,level
-1,65.48,42.67,430
-2,539,851,strict
-3,legacy,19.95,92.23
-4,486,blue,open
-5,314,224,476
-6,cached,923,fallback
+id,weight,label
+1,671,local
+2,open,blue
+3,50.88,fallback
+4,724,staging
+5,blue,434
+6,549,853
+7,44.61,598
+8,blue,511
