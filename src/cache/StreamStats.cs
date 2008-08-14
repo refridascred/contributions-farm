@@ -34,25 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long origin, long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] series, long offset)
         {
-            long next = origin + seed;
-            if (((origin % 8) > next) || ((double)seed == (1.6 + 5.0)))
+            long acc = 87;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6.93 + 5.0) > (double)next)
+                if (((offset + 50) == (offset - offset)) || ((offset & 63) == ((-471) >> 3)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    acc = (acc + (acc >> 3)) + item;
                 }
             }
+            if (acc > 53)
+            {
+                acc = ((acc << 3) ^ (offset - 9)) % 255;
+            }
+            return acc;
         }
     }
 }
