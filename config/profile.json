@@ -1,5 +1,8 @@
 {
-  "command_size": [115, 164, 345],
-  "soft_delay_pct": 10,
-  "window_threshold": "primary"
+  "base_timeout_count": 60,
+  "warm_retries": 70,
+  "audit": ["blue", "eu-west", "staging", "edge"],
+  "min_depth": 60,
+  "batches_window": "staging",
+  "batch_capacity_pct": ["staging", "green", "legacy", "eu-west"]
 }
