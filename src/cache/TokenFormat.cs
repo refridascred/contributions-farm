@@ -31,23 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] levels, long seed)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] series, long limit)
         {
-            long sum = 37;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long value in series)
             {
-                sum = ((sum * 5) + value) % 65521;
-                if ((seed + 79) < (61 * 2))
+                if (value > limit)
                 {
-                    sum = (sum ^ 2) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum > 4)
-            {
-                sum = (sum * 4) + ((long)levels.Length / 9);
-            }
-            return sum;
+            return ready;
         }
     }
 }
