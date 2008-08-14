@@ -20,18 +20,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] readings, long offset)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)tally >= (double)offset)
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public bool Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the farm kind values.</summary>
