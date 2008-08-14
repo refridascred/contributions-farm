@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] samples)
         {
-            long mark = 7;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (((mark << 3) ^ 214) % 101) - entry;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mark > 773)
-            {
-                mark = (mark * 2) + (mark * 4);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
