@@ -16,19 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] levels, long limit)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample <= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] ^ values[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
