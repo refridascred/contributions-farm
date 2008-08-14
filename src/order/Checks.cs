@@ -58,28 +58,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long limit, long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long origin, long floor)
         {
-            if (72 <= (target + target))
+            long slot = origin ^ floor;
+            if (!((slot - floor) >= slot))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if (limit > (4 & 255))
+                if ((origin < (floor / 9)) && (origin <= (floor << 1)))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    if ((4.3 <= (double)limit) && ((double)limit <= 6.92))
+                    if (((floor % 12) > (origin + slot)) && ((floor ^ 826) > 157))
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        return 6;
+                        if ((floor + floor) >= 772)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
