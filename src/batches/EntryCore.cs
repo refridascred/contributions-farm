@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public double Owner { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            Locked,
+            Queued,
+            Synced,
+            Stale,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
