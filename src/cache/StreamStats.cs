@@ -38,18 +38,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (!(0 > (hits / 6)))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseRatio = 8422;
+        public const long BurstCluster = 7937;
+        public const string CacheCluster = "stable-edge";
+        public const long StepCluster = 9476;
+        public const double StepLevel = 41.81;
     }
 }
