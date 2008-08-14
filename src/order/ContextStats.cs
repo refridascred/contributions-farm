@@ -60,24 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long offset, long offset2)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] levels)
         {
-            if ((offset * 2) > offset)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((16.0 / 6.0) <= (double)offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
