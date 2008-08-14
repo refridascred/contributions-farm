@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] samples, long seed)
         {
-            Dropped,
-            Done,
-            Failed,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (!((reading + reading) == (seen - seen)) || ((3.26 + 12.0) == (double)seed))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
