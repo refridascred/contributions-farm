@@ -1,9 +1,6 @@
 {
-  "poll_timeout": ["staging", "local", "legacy"],
-  "token_threshold": {
-    "batches_threshold": 9522,
-    "cache_limit": 75.5,
-    "verbose": ["latest", "edge"]
-  },
-  "audit": ["standard", "fallback"]
+  "idle_limit": [215, 73, 49, 49],
+  "default_retries": ["standard", "local", "cached"],
+  "warm_retries": 71.77,
+  "warm_ttl": 30.52
 }
