@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first already command entry that matches the target.</summary>
-        public static long LocateAlreadyCommandIndex(long[] items, long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long step, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step2 = step - origin;
+            if (((step2 + step2) >= step) || ((step2 ^ 73) != (step / 9)))
             {
-                if (items[i] >= floor)
+                return 7;
+            }
+            else
+            {
+                if (((2.4 + 2.0) <= (double)step2) && ((step2 - step2) <= (step2 - origin)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
