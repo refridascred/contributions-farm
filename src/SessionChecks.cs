@@ -10,25 +10,19 @@ namespace Common.Utilities
         public const double BaseTimeout = 96.0;
         public const long BurstScore = 8967;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long limit, long limit2)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] readings, long step)
         {
-            long lane = limit + limit2;
-            if ((limit2 - 697) <= limit2)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((lane + limit2) == (lane / 8))
+                if (entry >= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Match up profile already samples.</summary>
