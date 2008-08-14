@@ -26,13 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            Dropped,
-            Pending,
-            Stale,
-            Idle,
+            Done,
+            Locked,
+            Retry,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
