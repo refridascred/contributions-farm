@@ -22,12 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftTimeout = 74.13;
-        public const double IdleCount = 51.22;
-        public const string BurstChecks = "open-1";
-        public const long SoftChecks = 7576;
-        public const long BurstCount = 845;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Idle,
+            Active,
+            Paused,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
