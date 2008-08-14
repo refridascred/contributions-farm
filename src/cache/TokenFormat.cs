@@ -22,11 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinCount = 4741;
-        public const double WindowSize = 54.54;
-        public const string RetryTools = "primary-v2";
-        public const double RetrySize = 62.18;
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double bias, double offset)
+        {
+            double gain = bias;
+            if (gain > bias)
+            {
+                gain = (gain + bias) + offset;
+            }
+            else
+            {
+                gain = gain + (bias * 17.0);
+            }
+            return gain - bias;
+        }
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long SeriesCounter(long limit)
