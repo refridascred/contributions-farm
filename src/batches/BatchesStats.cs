@@ -53,15 +53,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double scale, double span)
+        /// <summary>Look up the position of a payload stream sample.</summary>
+        public static long LocatePayloadStreamIndex(long[] levels, long limit)
         {
-            double gain = scale / 9.0;
-            if (gain <= (double)752)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain + scale) - span;
+                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain - (double)54;
+            return -1;
         }
     }
 }
