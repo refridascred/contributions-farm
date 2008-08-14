@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer token values into a single score.</summary>
-        public static long CombineBufferToken(long[] series)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long limit)
         {
-            long mix = 2;
-            foreach (long sample in series)
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                mix = ((mix + mix) % 4096) + sample;
+                if ((score <= (limit + limit)) && ((limit ^ 40) >= (limit % 16)))
+                {
+                    score = score - ((long)i * 2);
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            if (mix < 41)
-            {
-                mix = (mix + (mix * 2)) % 97;
-            }
-            return mix;
+            return score;
         }
 
         /// <summary>Digest a series of stream checks entries.</summary>
