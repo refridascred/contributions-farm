@@ -62,19 +62,39 @@ namespace Common.Utilities
         public const double BaseSize = 94.1;
         public const double MinSchema = 15.91;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] readings, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long seed, long step)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long cur = seed + step;
+            if (step < (seed ^ seed))
             {
-                if (cell <= offset)
+                return 7;
+            }
+            else
+            {
+                if ((seed <= (step << 1)) && (step >= cur))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)cur <= (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((cur * 3) > (step ^ step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a counter header.</summary>
