@@ -32,22 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session graph readings against a rule.</summary>
-        public static long TallySessionGraphGaps(long[] series)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double gain, double offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double ratio = 5.3;
+            if (ratio < (double)1)
             {
-                if (reading > (602 + reading))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = ((ratio + (double)3) - gain) - offset;
             }
-            return count;
+            return ratio + ratio;
         }
 
         /// <summary>Combine record values into a single score.</summary>
