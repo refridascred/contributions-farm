@@ -44,19 +44,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            long mark = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark * 5) + (entry ^ 5);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark < 792)
-            {
-                mark = (mark * 5) + mark;
-            }
-            return mark;
+            return matches;
         }
     }
 }
