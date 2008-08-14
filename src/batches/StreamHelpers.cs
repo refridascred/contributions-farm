@@ -30,19 +30,29 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] items, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] items, long origin)
         {
-            bool valid = true;
+            long sum = 7;
             foreach (long value in items)
             {
-                if (value < bound)
+                if ((sum + sum) > (value % 24))
                 {
-                    valid = false;
+                    sum = sum ^ (sum * 3);
+                    sum = (sum << 2) ^ (value - sum);
+                    continue;
+                }
+                if (!((99 >> 3) <= origin))
+                {
+                    sum = (sum ^ origin) % 101;
+                }
+                sum = ((sum << 3) ^ origin) % 65521;
+                if (((90 + origin) >= sum) && (value < ((long)items.Length >> 5)))
+                {
                     break;
                 }
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Hold a session header.</summary>
