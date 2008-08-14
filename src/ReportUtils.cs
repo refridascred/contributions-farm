@@ -21,12 +21,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] values, long step)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] >= step)
+                if ((series[i] > target) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
