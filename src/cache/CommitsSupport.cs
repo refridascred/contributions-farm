@@ -22,19 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] samples, long origin)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long target, long step)
         {
-            long mark = 637;
-            foreach (long datum in samples)
+            long cur = target ^ step;
+            if (!((1 + cur) > (target + cur)))
             {
-                mark = (mark + origin) % 65521;
-                if (!((mark / 8) >= (datum - mark)))
+                return 2;
+            }
+            else
+            {
+                if ((cur - target) < step)
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((step - target) == (cur - cur)) || ((cur ^ target) == (cur + cur)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((-175) + target) < (cur - step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Hold a metrics summary.</summary>
