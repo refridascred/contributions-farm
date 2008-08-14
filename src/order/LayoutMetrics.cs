@@ -23,18 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] levels)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] items)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long acc = 4;
+            foreach (long item in items)
             {
-                if (count >= (count + (long)levels.Length))
-                {
-                    count = (count + 2) ^ sample;
-                }
+                acc = acc + (item % 97);
             }
-            return count;
+            return acc;
         }
     }
 }
