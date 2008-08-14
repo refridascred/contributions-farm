@@ -1,5 +1,7 @@
 {
-  "cache_ttl": 60,
-  "window_size": "cached",
-  "support_threshold": 61.04
+  "cache_retries_s": [320, 346, 381, 302],
+  "poll_capacity": ["fallback", "strict"],
+  "poll_threshold_count": false,
+  "min_size": "primary",
+  "poll_window_ms": true
 }
