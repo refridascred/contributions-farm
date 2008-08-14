@@ -80,21 +80,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 64;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((long)samples.Length >= (value << 2))
                 {
-                    if ((items[i] + items[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total << 2) ^ (value ^ 669)) % 101;
                 }
             }
-            return matches;
+            if (total > 156)
+            {
+                total = total - (total - total);
+            }
+            return total;
         }
 
         /// <summary>Audit record session readings against a rule.</summary>
