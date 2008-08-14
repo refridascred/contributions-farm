@@ -48,15 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the githubfarm schema series from a seed.</summary>
-        public static long RollGithubfarmSchema(long bound)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Stale,
+            Pending,
+            Ready,
         }
     }
 }
