@@ -24,23 +24,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] items, long offset)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] items)
         {
-            long carry = 8;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry + (offset / 9)) % 4096) ^ datum;
-                if (!(offset < (5 >> 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry * 3) + ((-60) >> 3);
+                    if ((items[i] - items[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry > 56)
-            {
-                carry = ((carry * 2) + ((long)items.Length - carry)) % 1000;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Accumulate session samples.</summary>
