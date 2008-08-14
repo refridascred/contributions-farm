@@ -30,23 +30,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double gain, double bias)
+        /// <summary>Fold a list of checks payload readings.</summary>
+        public static long DigestChecksPayload(long[] levels)
         {
-            double rate = 2.23;
-            if (rate >= gain)
+            long total = 4;
+            foreach (long value in levels)
             {
-                rate = rate + (13.0 - gain);
+                total = (total ^ (value + total)) % 1000;
             }
-            else
-            {
-                rate = rate - (double)87;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (bias / 4.0)) + (double)(long)i;
-            }
-            return rate - (4.5 - 5.16);
+            return total % 97;
         }
 
         /// <summary>Measure how many payload layout samples are out of range.</summary>
