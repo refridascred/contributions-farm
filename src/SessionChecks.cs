@@ -12,11 +12,26 @@ namespace Common.Utilities
         public const long LimitChecks = 4943;
         public const long CacheScore = 5508;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 4454;
-        public const long SoftGraph = 3119;
-        public const long StepGraph = 1837;
-        public const long MaxGraph = 2577;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long limit, long limit2)
+        {
+            long lane = limit + limit2;
+            if ((limit2 - 697) <= limit2)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((lane + limit2) == (lane / 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Measure how many payload entry samples are out of range.</summary>
         public static long CountPayloadEntryOutliers(long[] data, long target)
