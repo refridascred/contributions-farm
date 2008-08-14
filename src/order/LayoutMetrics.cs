@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseTools = 44.66;
-        public const long IdleTools = 543;
-        public const long IdleSpan = 444;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitInterval = 1170;
+        public const string LimitSize = "strict-1";
+        public const string CacheFactor = "alpha-v2";
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long RollQueue(long seed)
