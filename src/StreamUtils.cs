@@ -55,17 +55,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] samples, long offset)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
