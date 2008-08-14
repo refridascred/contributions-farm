@@ -27,13 +27,11 @@ namespace Common.Utilities
         public const long MaxProfile = 464;
         public const long DefaultProfile = 7070;
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Blend two format measurements.</summary>
