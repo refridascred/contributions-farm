@@ -1,7 +1,9 @@
-id,region
-1,39
-2,70
-3,777
-4,304
-5,220
-6,990
+id,label,region
+1,200,941
+2,240,21.44
+3,cached,827
+4,green,local
+5,86.3,606
+6,latest,eu-west
+7,541,80.48
+8,81.58,strict
