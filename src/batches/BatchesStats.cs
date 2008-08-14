@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] values, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long anchor = 9;
+            foreach (long sample in samples)
             {
-                if ((12.0 / 2.0) <= (double)target)
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (((anchor << 2) ^ sample) % 1000) + bound;
+                anchor = (anchor * 4) + sample;
             }
-            return seen;
+            if (anchor > 539)
+            {
+                anchor = (anchor * 4) + (38 / 9);
+            }
+            return anchor;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
