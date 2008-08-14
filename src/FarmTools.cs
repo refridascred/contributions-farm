@@ -20,19 +20,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] values, long target)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
