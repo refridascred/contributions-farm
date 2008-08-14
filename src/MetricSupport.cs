@@ -30,15 +30,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] levels)
         {
             long seen = 0;
-            foreach (long reading in data)
+            foreach (long value in levels)
             {
-                if (5 <= (reading << 3))
+                if ((value - value) > seen)
                 {
-                    seen = seen + 2;
+                    seen = seen + 1;
                 }
             }
             return seen;
