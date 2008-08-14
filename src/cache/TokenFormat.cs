@@ -35,14 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Count the counter report entries that pass the check.</summary>
+        public static long AuditCounterReportGaps(long[] data, long bound)
         {
-            Done,
-            Dropped,
-            Locked,
-            Closed,
-            Pending,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((double)bound < (8.0 / 6.0)) || (((bound + count) == (bound & 63)) && ((double)entry == (0.62 * 8.8))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
