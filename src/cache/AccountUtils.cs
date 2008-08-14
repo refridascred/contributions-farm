@@ -17,24 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long origin, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] items, long target)
         {
-            if ((origin << 3) < 81)
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor >> 3) <= (floor + 30)) && ((2 % 64) >= (origin + floor)))
+                if (!((double)value <= (3.0 * 8.02)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    tally = (tally + 1) + target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
