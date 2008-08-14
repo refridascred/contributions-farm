@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] levels, long bound)
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public double Total { get; set; }
+            long sum = -119;
+            foreach (long sample in levels)
+            {
+                sum = (((sum * 3) + (1 ^ 7)) ^ sample) - bound;
+            }
+            return sum;
         }
 
         /// <summary>Classify a batch metric pair into a bucket.</summary>
