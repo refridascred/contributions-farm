@@ -49,19 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((((long)i / 8) < (long)i) || ((double)491 <= (double)limit))
-                {
-                    acc = (acc ^ (limit - limit)) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
