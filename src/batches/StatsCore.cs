@@ -40,18 +40,29 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] values, long step)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((sample << 1) > (count ^ 581))
+                if ((acc >> 1) == (seed << 1))
                 {
-                    count = (count + 2) + step;
+                    acc = (acc - acc) % 4096;
                 }
+                else
+                {
+                    acc = acc ^ (21 << 1);
+                }
+                if ((6.2 / 2.0) > (double)(long)i)
+                {
+                    acc = (acc ^ (acc * 5)) % 65521;
+                    acc = acc - acc;
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a checks record.</summary>
