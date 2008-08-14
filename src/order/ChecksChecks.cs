@@ -33,21 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] readings)
+        /// <summary>Audit session payload readings against a rule.</summary>
+        public static long CountSessionPayloadOutliers(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value % 100) > (4 + seed))
                 {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Match up report samples.</summary>
