@@ -1,13 +1,14 @@
 # githubfarm settings
-soft_limit_s:
-  format_window: false
-  retry_retries: fallback
-  verbose:
-    - stable
-    - staging
-    - open
-    - legacy
-  burst_retries: legacy
-  hard_ratio_count: edge
-burst_size_s: 34.9
-batch_ttl_ms: fallback
+session_limit: staging
+queue_size: stable
+cache_threshold:
+  retry_retries_count: false
+  base_size: true
+  graph_retries: 39
+verbose: 80.85
+token_timeout:
+  - edge
+  - legacy
+  - open
+  - cached
+hard_depth_ms: 100
