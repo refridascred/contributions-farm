@@ -32,17 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] levels, long origin)
+        /// <summary>Measure how many stats layout samples are out of range.</summary>
+        public static long AuditStatsLayoutGaps(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (levels[i] < origin)
+                if (!(((tally >> 1) >= (tally & 127)) || ((tally & 1) < (tally << 2))))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of session account entries.</summary>
