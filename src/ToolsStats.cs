@@ -60,27 +60,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] items, long origin)
-        {
-            long carry = 24;
-            foreach (long entry in items)
-            {
-                if (!((0.31 * 8.8) >= (double)origin))
-                {
-                    carry = (((carry * 4) + (carry + (-99))) % 65521) ^ entry;
-                }
-                if ((15.0 - 17.0) >= (double)carry)
-                {
-                    break;
-                }
-            }
-            if (carry < 5)
-            {
-                carry = (carry + (origin + origin)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 781;
+        public const long IdleWidth = 2112;
+        public const long IdleMetric = 6808;
+        public const double RetryWidth = 29.94;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long PairQueueCount(long[] readings)
