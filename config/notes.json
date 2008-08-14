@@ -1,5 +1,7 @@
 {
-  "burst_ttl": 73,
-  "max_ratio": "staging",
-  "poll_ratio_count": "green"
+  "stats_ratio": 25,
+  "buffer_window": "legacy",
+  "batch_timeout_pct": "standard",
+  "cache_timeout_pct": 1,
+  "max_timeout_pct": 75
 }
