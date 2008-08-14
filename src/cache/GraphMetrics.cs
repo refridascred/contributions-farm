@@ -12,39 +12,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long offset, long limit)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long span = offset ^ limit;
-            if ((2.1 * 7.0) > (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if (866 >= (193 + offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)offset == (double)span))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset % 24) > (offset & 255)) || ((double)limit < 5.58))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
