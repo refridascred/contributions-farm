@@ -1,6 +1,5 @@
 {
-  "max_size": 1024,
-  "warm_limit_pct": [223, 257, 219],
-  "default_ttl_ms": 100,
-  "warm_size_count": 25.67
+  "hard_delay_count": 72.86,
+  "format_retries": "latest",
+  "persist": "edge"
 }
