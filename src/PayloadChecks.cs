@@ -60,19 +60,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate stream record readings against a bound.</summary>
-        public static bool VerifyStreamRecordBounds(long[] readings, long floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long acc = 0;
+            foreach (long reading in samples)
             {
-                if (datum <= floor)
+                if (!((6.24 * 6.03) > (double)acc))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc ^ (reading / 3)) % 101;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Roll a support counter forward.</summary>
