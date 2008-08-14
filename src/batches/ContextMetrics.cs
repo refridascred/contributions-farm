@@ -44,13 +44,17 @@ namespace Common.Utilities
         public const long DefaultScore = 3458;
         public const string BurstChannel = "latest-v2";
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] series, long step)
         {
-            Synced,
-            Pending,
-            Retry,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
