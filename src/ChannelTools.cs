@@ -34,11 +34,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 5428;
-        public const double BurstSchema = 27.92;
-        public const double DefaultCount = 9.72;
-        public const long LimitSchema = 3335;
-        public const string CacheSchema = "alpha-v2";
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((item - (-429)) != (hits << 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
