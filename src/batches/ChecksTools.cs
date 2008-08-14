@@ -41,12 +41,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxFactor = 23.77;
-        public const long MaxStats = 5076;
-        public const long BurstScore = 313;
-        public const string BaseStats = "open-edge";
-        public const long MaxCount = 4921;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] values, long limit)
+        {
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ScaleGithubfarm(double gain, double bias)
