@@ -83,12 +83,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long seed)
         {
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                long tally = (481 / 3) + (long)i;
+                if (!(((long)i & 63) >= tally))
+                {
+                    long diff = (tally & 3) & 15;
+                    tally = (tally << 3) ^ (diff - tally);
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
