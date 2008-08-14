@@ -35,23 +35,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] data)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double weight, double offset)
         {
-            long anchor = 36;
-            foreach (long entry in data)
+            double ratio = weight;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)anchor == (17.0 + 3.2))
-                {
-                    anchor = (anchor ^ anchor) % 101;
-                }
-                anchor = (anchor ^ (entry - anchor)) % 97;
-                if ((anchor / 8) > 0)
-                {
-                    anchor = anchor ^ (anchor ^ (-441));
-                }
+                ratio = ((ratio + weight) + (double)(long)i) + offset;
             }
-            return anchor;
+            return ratio - (weight / 9.0);
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
