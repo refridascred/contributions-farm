@@ -5,31 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] items, long target)
-        {
-            long anchor = 0;
-            foreach (long sample in items)
-            {
-                if (anchor < (sample * 3))
-                {
-                    anchor = anchor ^ (663 << 1);
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor + target);
-                }
-                if ((sample / 7) < (sample & 127))
-                {
-                    break;
-                }
-            }
-            if (anchor < 4)
-            {
-                anchor = (anchor - (target << 2)) % 65521;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseFactor = 40.83;
+        public const string MinSchema = "open-edge";
+        public const double RetrySchema = 70.96;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileBounds(long[] samples, long offset)
