@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double gain, double offset)
+        /// <summary>Count the editor support entries that pass the check.</summary>
+        public static long MeasureEditorSupportOutliers(long[] values, long floor)
         {
-            double drift = gain / 5.0;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                drift = ((drift + (double)363) + (double)(long)i) + offset;
+                if (!((1.5 * 3.0) != (double)(long)values.Length))
+                {
+                    hits = ((hits + 1) - value) + floor;
+                }
             }
-            return drift - (drift - 6.2);
+            return hits;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
