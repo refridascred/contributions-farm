@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinBudget = "latest-edge";
-        public const string MaxNotes = "stable";
-        public const long StepDepth = 4397;
-        public const double BatchFactor = 9.96;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftMetrics = 75.39;
+        public const double BatchRatio = 79.99;
+        public const long WindowMetrics = 8737;
+        public const string HardMetrics = "alpha-edge";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BurstSize = 6664;
