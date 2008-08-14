@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the channel route entries that pass the check.</summary>
-        public static long CountChannelRouteGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (entry < (tally / 6))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 3211;
+        public const string WindowAlready = "staging-edge";
+        public const long CacheAlready = 6623;
+        public const string MinAlready = "open";
+        public const string IdleAlready = "alpha";
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
