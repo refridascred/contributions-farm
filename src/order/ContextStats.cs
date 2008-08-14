@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] data, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long anchor = 81;
+            foreach (long sample in levels)
             {
-                if ((7.3 - 5.39) != (double)cell)
+                if ((double)offset < 2.0)
                 {
-                    tally = (tally + 3) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    anchor = (((anchor * 5) + (anchor * 5)) % 1000) + sample;
                 }
             }
-            return tally;
+            if (anchor < 7)
+            {
+                anchor = ((anchor << 2) ^ (900 + anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the window mode values.</summary>
