@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long StepStream = 5939;
         public const long SoftDepth = 2298;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] values, long floor)
-        {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultFactor = 91.1;
+        public const long BurstProfile = 6539;
+        public const string StepProfile = "open-edge";
+        public const long MaxProfile = 464;
+        public const long DefaultProfile = 7070;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] samples)
