@@ -60,21 +60,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count editor report pairs that satisfy a relation.</summary>
-        public static long CompareEditorReportCount(long[] items)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long offset, long offset2)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((offset * 2) > offset)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((16.0 / 6.0) <= (double)offset)
                 {
-                    if ((items[i] ^ items[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
