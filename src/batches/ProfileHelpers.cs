@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate githubfarm payload readings against a bound.</summary>
-        public static bool ValidateGithubfarmPayloadBounds(long[] data, long floor)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Size { get; set; }
+            public double Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
