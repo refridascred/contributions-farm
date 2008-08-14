@@ -1,10 +1,7 @@
 {
-  "cache_size_count": 34.39,
-  "buffer_depth": {
-    "stats_window": "strict",
-    "max_limit": 2544,
-    "default_capacity_s": 100,
-    "cache_ratio_ms": 70.71
-  },
-  "sync_interval_s": false
+  "min_delay": "strict",
+  "hard_threshold_s": 10.18,
+  "cluster_capacity": "strict",
+  "soft_retries": ["eu-west", "local"],
+  "default_limit_s": true
 }
