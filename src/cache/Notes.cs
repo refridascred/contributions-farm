@@ -54,18 +54,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] samples, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((8.9 + 9.0) < (double)step)
+                if (hits <= (hits ^ hits))
                 {
-                    matches = (matches + 3) ^ reading;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
