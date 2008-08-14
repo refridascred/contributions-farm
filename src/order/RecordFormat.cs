@@ -20,18 +20,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit token cluster readings against a rule.</summary>
-        public static long AuditTokenClusterGaps(long[] data, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((limit ^ 151) == (limit << 3))
+                if ((double)tally >= (double)offset)
                 {
-                    matches = (matches + 1) ^ reading;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the farm kind values.</summary>
