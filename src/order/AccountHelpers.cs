@@ -100,10 +100,39 @@ namespace Common.Utilities
         public const long BatchReport = 4555;
         public const long HardReport = 573;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 6439;
-        public const double DefaultSpan = 86.23;
-        public const long DefaultScore = 5919;
-        public const double SoftSpan = 84.78;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long target, long target2)
+        {
+            long step = target - target2;
+            if ((double)step < (double)1)
+            {
+                return 2;
+            }
+            else
+            {
+                if (step > target2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((70 >> 4) > (step & 31)) && ((target2 + 33) < target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step - target2) > target2) && ((double)target < (3.32 - 8.1)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
