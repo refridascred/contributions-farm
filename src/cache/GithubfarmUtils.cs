@@ -52,19 +52,20 @@ namespace Common.Utilities
         public const long StepMetrics = 8033;
         public const long StepSpan = 9302;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] values, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long mix = 37;
+            foreach (long sample in readings)
             {
-                if (item < step)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix - (seed + 7)) % 4096) + sample;
+                mix = (mix + (seed + 292)) % 101;
             }
-            return flag;
+            if (mix < 302)
+            {
+                mix = mix ^ (seed >> 3);
+            }
+            return mix;
         }
     }
 }
