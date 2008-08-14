@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a cluster editor pair into a bucket.</summary>
-        public static long GradeClusterEditor(long target, long floor)
+        /// <summary>Locate a window profile reading by value.</summary>
+        public static long FindWindowProfileIndex(long[] readings, long offset)
         {
-            long step = target + floor;
-            if ((double)floor > (double)step)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8 - step) > (0 + 0))
+                if (readings[i] < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target < (0.07 + 17.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step & 3) <= (floor + floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
