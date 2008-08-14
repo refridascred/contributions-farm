@@ -38,19 +38,31 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate metric farm readings against a bound.</summary>
-        public static bool GuardMetricFarmBounds(long[] levels, long target)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long bound, long limit)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            if (((bound & 1) != (limit - bound)) || ((14.0 / 4.0) < (double)bound))
             {
-                if (datum > target)
+                return 1;
+            }
+            else
+            {
+                if ((limit / 5) != (bound ^ 17))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((9 ^ limit) > (limit * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
