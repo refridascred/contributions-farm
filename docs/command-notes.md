@@ -1,13 +1,13 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-The channel report groups every command by payload.
+Keep route and filter names short and lowercase.
+The session module keeps context values in sync with the route cache.
 
-The window helpers are pure functions, so they are safe to call from any thread.
-Use stream settings to tune how often filter data is refreshed.
+The commits report groups every account by metrics.
+Keep report and session names short and lowercase.
 
 ## Guidelines
 
-- Log every stream change
-- Validate cache input early
-- Keep stats values small
+- Log every checks change
+- Document new queue fields
+- Keep batches values small
