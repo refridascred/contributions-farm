@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] values, long floor)
         {
-            long carry = 99;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(cell < (cell + carry)))
+                if ((values[i] >= floor) && ((values[i] % 5) == 0))
                 {
-                    carry = (carry + carry) % 101;
-                }
-                if ((4.0 + 12.0) >= (double)carry)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 8)
-            {
-                carry = ((carry << 2) ^ (carry % 2)) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
