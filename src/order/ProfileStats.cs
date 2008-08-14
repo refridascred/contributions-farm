@@ -37,13 +37,13 @@ namespace Common.Utilities
             return scale - (double)9;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Locked,
-            Idle,
-            Retry,
-            Closed,
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
