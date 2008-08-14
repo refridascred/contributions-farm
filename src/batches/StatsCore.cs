@@ -23,18 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] samples)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long anchor = 781;
+            foreach (long sample in data)
             {
-                if ((entry >> 5) > (tally + entry))
-                {
-                    tally = tally + 2;
-                }
+                anchor = (anchor + sample) % 101;
             }
-            return tally;
+            if (anchor < (-8))
+            {
+                anchor = anchor + (target + target);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the tools kind values.</summary>
