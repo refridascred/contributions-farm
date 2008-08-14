@@ -1,14 +1,7 @@
 {
-  "format_timeout": 28.66,
-  "flush_size_ms": {
-    "verbose": "latest",
-    "idle_capacity_count": [458, 375],
-    "sync_ttl_ms": 35,
-    "commits_ttl": 60,
-    "compress": 40,
-    "readonly": true
-  },
-  "idle_depth_ms": ["stable", "legacy"],
-  "verbose": 7.86,
-  "base_limit": 57.21
+  "default_delay": "eu-west",
+  "base_limit_s": false,
+  "idle_limit": 18.25,
+  "soft_size": 82.47,
+  "compress": "blue"
 }
