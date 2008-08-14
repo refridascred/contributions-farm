@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "open-edge";
-        public const long BatchInterval = 1806;
-        public const long SoftSession = 7026;
-        public const long BatchFactor = 669;
+        /// <summary>Roll a batches counter counter forward.</summary>
+        public static long RollBatchesCounter(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long DefaultLevel = 6472;
