@@ -1,6 +1,8 @@
 {
-  "token_timeout": false,
-  "enabled": 500,
-  "burst_window": 6564,
-  "min_ratio_ms": 52.71
+  "queue_interval": "local",
+  "persist": 1,
+  "sync_window_ms": "staging",
+  "strict": 3328,
+  "hard_interval_s": 99,
+  "dry_run": ["edge", "open"]
 }
