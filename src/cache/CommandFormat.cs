@@ -41,39 +41,9 @@ namespace Common.Utilities
         public const long BatchPayload = 4062;
         public const long BurstInterval = 5487;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long limit, long seed)
-        {
-            long diff = limit ^ seed;
-            if ((limit % 60) >= (seed - limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit & 127) >= diff)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (7.5 >= (double)diff)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit == (2.5 - 9.87))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftBudget = 74.43;
+        public const long CacheEntry = 9094;
+        public const double MaxEntry = 50.06;
     }
 }
