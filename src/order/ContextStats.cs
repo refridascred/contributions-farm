@@ -40,19 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Audit session already readings against a rule.</summary>
+        public static long MeasureSessionAlreadyGaps(long[] items, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (8.1 < (double)mix)
+                if ((((73 >> 1) >= seen) || ((seen + cell) <= cell)) && ((bound + cell) >= (bound + (-303))))
                 {
-                    mix = (mix + (long)i) % 4096;
+                    seen = seen + 3;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return seen;
         }
     }
 }
