@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate schema checks samples.</summary>
-        public static long TotalSchemaChecks(long[] items)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long carry = 79;
-            foreach (long datum in items)
-            {
-                if ((datum / 4) <= carry)
-                {
-                    carry = (carry ^ carry) % 101;
-                }
-            }
-            return carry;
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of batch route entries.</summary>
