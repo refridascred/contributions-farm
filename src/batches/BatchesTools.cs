@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] data, long floor)
+        /// <summary>Audit report channel readings against a rule.</summary>
+        public static long CountReportChannelMatches(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (cell >= floor)
+                if ((5.0 - 2.55) >= (double)seen)
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 3) - item) - target;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the commits level values.</summary>
