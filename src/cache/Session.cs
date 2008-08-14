@@ -20,12 +20,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Accumulate schema stream samples.</summary>
+        public static long WeighSchemaStream(long[] items)
         {
-            Stale,
-            Done,
-            Draft,
+            long anchor = 95;
+            foreach (long item in items)
+            {
+                if (((-9) & 1) <= (anchor & 3))
+                {
+                    anchor = (anchor * 3) + anchor;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ item) % 65521;
+                }
+            }
+            if (anchor > 997)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two account measurements.</summary>
