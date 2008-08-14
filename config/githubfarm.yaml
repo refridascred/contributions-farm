@@ -1,5 +1,9 @@
 # githubfarm settings
-idle_threshold_count: cached
-buffer_delay: 3090
-contributi_depth: 30
-max_window: stable
+batch_capacity: 500
+metrics_ratio: blue
+max_ratio_s:
+  - 294
+  - 407
+  - 395
+readonly: false
+audit: false
