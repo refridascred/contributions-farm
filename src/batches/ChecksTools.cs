@@ -21,21 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] items, long bound)
         {
-            long carry = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                carry = carry - (carry ^ carry);
-                carry = (carry ^ (item + 1)) % 97;
-                carry = carry - (carry + item);
+                if (entry >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (carry > 4)
-            {
-                carry = ((carry * 2) + (carry & 127)) % 255;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Accumulate batches samples.</summary>
