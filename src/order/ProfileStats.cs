@@ -35,24 +35,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long origin, long seed)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] readings, long seed)
         {
-            if (((origin + origin) > (3 & 15)) || ((68 + origin) > seed))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed / 2) != (seed & 1))
+                if (readings[i] <= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
