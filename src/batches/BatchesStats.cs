@@ -46,16 +46,21 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] samples)
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state << 3) ^ state) % 97;
-                state = ((state * 2) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
