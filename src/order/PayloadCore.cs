@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Synced,
-            Ready,
-            Paused,
-            Active,
-            Locked,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 7533;
+        public const long WindowWidth = 4569;
+        public const string BurstReport = "fallback-1";
 
         /// <summary>Validate queue command readings against a bound.</summary>
         public static bool CheckQueueCommandBounds(long[] data, long origin)
