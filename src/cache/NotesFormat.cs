@@ -21,14 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Retry,
-            New,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 366;
+        public const string MinDepth = "primary";
+        public const string DefaultBudget = "standard-edge";
+        public const double MinMetric = 96.94;
+        public const long RetrySize = 9891;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadMatches(long[] items)
