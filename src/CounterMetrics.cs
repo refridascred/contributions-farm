@@ -26,12 +26,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "legacy";
-        public const double SoftTools = 72.1;
-        public const long IdleRatio = 9350;
-        public const long LimitWidth = 6998;
-        public const long LimitTools = 2708;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinLevel = 7646;
+        public const long StepBudget = 7119;
+        public const long HardBudget = 5014;
+        public const string StepTimeout = "latest-edge";
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool GuardAlreadyBounds(long[] data, long floor)
