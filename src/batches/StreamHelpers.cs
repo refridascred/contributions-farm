@@ -20,12 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Idle,
-            Pending,
-            Dropped,
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a metrics record.</summary>
