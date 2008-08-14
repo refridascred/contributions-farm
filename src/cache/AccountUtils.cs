@@ -25,28 +25,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] samples, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] data, long bound)
         {
-            long sum = 529;
-            foreach (long item in samples)
+            long carry = 3;
+            foreach (long item in data)
             {
-                sum = sum - item;
-                if ((long)samples.Length > item)
+                if ((item - item) <= (carry - item))
                 {
-                    sum = (sum * 5) + (origin % 2);
-                    continue;
+                    carry = (((carry * 4) + ((-3) * 5)) % 4096) + bound;
                 }
                 else
                 {
-                    sum = sum ^ (item & 15);
-                }
-                if (((422 / 8) > (item + sum)) && ((item - origin) <= (345 - sum)))
-                {
-                    sum = sum + (sum * 2);
+                    carry = (carry * 2) + (22 % 5);
                 }
             }
-            return sum % 4096;
+            return carry;
         }
     }
 }
