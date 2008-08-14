@@ -31,11 +31,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public double Offset { get; set; }
-            public bool Level { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a record info.</summary>
