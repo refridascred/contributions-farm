@@ -33,12 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] data, long bound)
         {
-            Locked,
-            Closed,
-            New,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!((matches << 1) < ((-487) & 255)))
+                {
+                    matches = ((matches + 3) + datum) + bound;
+                }
+            }
+            return matches;
         }
     }
 }
