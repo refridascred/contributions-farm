@@ -28,18 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] series)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (43 > (matches << 2))
+                if (values[i] >= step)
                 {
-                    matches = (matches + 3) - datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
