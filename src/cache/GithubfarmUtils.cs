@@ -18,18 +18,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] values, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((offset << 3) <= item)
+                if ((double)cell <= (0.13 + 3.22))
                 {
-                    seen = seen + 2;
+                    count = (count + 3) - floor;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
