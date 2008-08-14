@@ -23,13 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] readings)
         {
-            Draft,
-            Dropped,
-            Ready,
-            Closed,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((((long)readings.Length + tally) < ((-307) % 97)) && ((sample << 3) != (tally + sample)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stream record.</summary>
