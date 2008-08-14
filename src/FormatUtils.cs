@@ -73,21 +73,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Ready,
+            Stale,
+            Draft,
+            Queued,
+            Active,
         }
     }
 }
