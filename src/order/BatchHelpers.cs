@@ -12,22 +12,15 @@ namespace Common.Utilities
             return (load + (span / 2.0)) + weight;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] readings, long step)
+        /// <summary>Combine queue buffer values into a single score.</summary>
+        public static long FoldQueueBuffer(long[] readings)
         {
-            long hits = 0;
+            long anchor = 39;
             foreach (long sample in readings)
             {
-                if (!(step < ((long)readings.Length + sample)) || ((sample + step) != (hits - step)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (((anchor << 3) ^ (98 << 2)) % 101) + sample;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Adjust a queue reading.</summary>
