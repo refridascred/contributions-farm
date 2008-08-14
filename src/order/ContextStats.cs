@@ -34,12 +34,31 @@ namespace Common.Utilities
         public const string BaseMetrics = "latest";
         public const long StepMetrics = 9959;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Accumulate metric session samples.</summary>
+        public static long CombineMetricSession(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            long mix = -5;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    mix = ((mix << 2) ^ ((long)i / 7)) % 101;
+                    mix = ((mix * 5) + 5) % 65521;
+                }
+                if ((mix / 7) < (entry + 40))
+                {
+                    mix = ((mix * 2) + (mix * 5)) % 255;
+                }
+                else
+                {
+                    mix = (mix * 5) + mix;
+                }
+                if (!(entry > mix))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
