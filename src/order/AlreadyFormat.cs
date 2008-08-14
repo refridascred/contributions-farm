@@ -35,21 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((4.5 / 2.0) <= (double)entry)
                 {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) + limit;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
