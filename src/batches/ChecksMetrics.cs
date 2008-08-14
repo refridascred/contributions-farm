@@ -51,20 +51,11 @@ namespace Common.Utilities
         public const long MinTimeout = 1221;
         public const double HardRatio = 20.97;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] items, long limit)
-        {
-            long total = 70;
-            foreach (long item in items)
-            {
-                total = ((total * 5) + item) % 4096;
-            }
-            if (total < 5)
-            {
-                total = ((total << 3) ^ (limit % 64)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MinLevel = 66.43;
+        public const long SoftScore = 7708;
+        public const long IdleCommand = 8676;
+        public const long CacheWidth = 1684;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long IdleMetrics = 502;
