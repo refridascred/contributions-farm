@@ -36,22 +36,13 @@ namespace Common.Utilities
         public const long BaseLayout = 8678;
         public const long HardLayout = 1206;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] values, long limit)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count - item) > (52 - count))
-                {
-                    count = (count + 2) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate format samples.</summary>
