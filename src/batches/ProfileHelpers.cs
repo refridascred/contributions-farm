@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cluster entry samples are out of range.</summary>
-        public static long TallyClusterEntryOutliers(long[] series, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long carry = 4;
+            foreach (long reading in series)
             {
-                if ((double)matches <= 1.0)
+                carry = ((carry - (carry + carry)) % 101) - origin;
+                if ((reading - carry) >= (reading + reading))
                 {
-                    matches = ((matches + 1) + datum) + bound;
+                    carry = (carry - carry) % 97;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
