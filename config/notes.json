@@ -1,6 +1,5 @@
 {
-  "idle_limit": [215, 73, 49, 49],
-  "default_retries": ["standard", "local", "cached"],
-  "warm_retries": 71.77,
-  "warm_ttl": 30.52
+  "max_ttl_count": 25.44,
+  "min_ttl": true,
+  "readonly": "strict"
 }
