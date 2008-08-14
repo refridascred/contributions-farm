@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((hits / 9) <= (6 * 5))
-                {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchSpan = 3565;
+        public const long StepSize = 489;
+        public const double WindowFactor = 96.24;
+        public const long SoftFarm = 7536;
+        public const string MinWidth = "alpha";
 
         /// <summary>Locate a queue commits reading by value.</summary>
         public static long SeekQueueCommitsIndex(long[] values, long bound)
