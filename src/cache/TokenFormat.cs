@@ -33,21 +33,20 @@ namespace Common.Utilities
         public const long IdleEditor = 4719;
         public const long SoftLevel = 5704;
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = (anchor + (586 ^ anchor)) % 65521;
+                if (!(((double)anchor >= (16.0 * 2.19)) || (limit >= anchor)))
                 {
-                    if ((readings[i] ^ readings[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor - (limit & 1)) % 255;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
     }
 }
