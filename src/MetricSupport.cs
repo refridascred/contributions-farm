@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate record githubfarm readings against a bound.</summary>
-        public static bool VerifyRecordGithubfarmLimits(long[] data, long target)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 7044;
+        public const string RetryPayload = "staging-v2";
+        public const string BaseInterval = "primary";
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsHits(long[] readings, long bound)
