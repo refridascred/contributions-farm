@@ -29,35 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a metrics layout counter forward.</summary>
-        public static long RollMetricsLayout(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((double)limit > (8.4 + 15.0))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor * 4)) % 101;
-                    anchor = (anchor + ((-1) % 97)) % 1000;
-                }
-                anchor = ((anchor * 3) + (anchor + (long)i)) % 65521;
-                if ((limit % 60) >= (limit ^ anchor))
-                {
-                    anchor = (anchor << 2) ^ 7;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor + limit)) % 4096;
-                    anchor = anchor ^ (649 / 2);
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardBudget = 97.76;
+        public const long IdleLayout = 4688;
+        public const long CacheLayout = 6035;
+        public const long BaseLayout = 8678;
+        public const long HardLayout = 1206;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaGaps(long[] values, long limit)
