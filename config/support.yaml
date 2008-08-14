@@ -1,4 +1,7 @@
 # support settings
-soft_retries: staging
-default_capacity: 250
-buffer_threshold: 60
+notes_delay:
+  - 185
+  - 481
+  - 351
+dry_run: 2803
+cache_capacity: false
