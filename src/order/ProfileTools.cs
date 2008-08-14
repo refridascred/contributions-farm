@@ -40,17 +40,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] levels, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (levels[i] == bound)
+                if (!((double)reading < (double)matches) && !(matches < reading))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + limit;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
