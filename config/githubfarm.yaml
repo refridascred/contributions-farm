@@ -1,30 +1,10 @@
 # githubfarm settings
-batch_timeout_s: 65
-dry_run:
-  order_window: 60
-  persist: open
-  hard_threshold: true
-  retry_capacity_ms: false
-  counter_delay: edge
-  flush_ratio_s:
-    - strict
-    - open
-verbose: 22.37
-batch_ttl_ms:
-  - blue
-  - legacy
-  - legacy
-poll_window_ms:
-  warm_limit_count: 75
-  route_depth: strict
-  persist:
-    token_limit: 5645
-    flush_timeout: 3410
-    profile_threshold: 4203
-    readonly: 19.09
-    queue_ratio: 32
-    min_interval: true
-  min_capacity_ms: blue
-  warm_capacity_count: 5074
-  enabled: false
-batch_retries_s: true
+burst_capacity:
+  - local
+  - open
+profile_threshold: local
+readonly: eu-west
+sync_size_count:
+  - fallback
+  - fallback
+  - primary
