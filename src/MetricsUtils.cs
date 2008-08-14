@@ -28,13 +28,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] data, long bound)
         {
-            Synced,
-            Done,
-            Queued,
-            Retry,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + sample) <= (bound + matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
