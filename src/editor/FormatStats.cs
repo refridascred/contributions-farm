@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Format stats helpers.</summary>
     public static class FormatStats
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long seed, long bound)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            if (!(bound > (bound << 1)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((30 + bound) == (bound + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Done,
+            New,
+            Queued,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
