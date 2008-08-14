@@ -30,11 +30,14 @@ namespace Common.Utilities
             return gain + (double)5;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstLevel = "staging-edge";
-        public const long MaxScore = 3392;
-        public const string RetryFactor = "strict-edge";
-        public const double DefaultRatio = 85.2;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long RankCommits(long bound, long limit)
