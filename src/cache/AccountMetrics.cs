@@ -26,16 +26,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Locate a already window reading by value.</summary>
+        public static long SeekAlreadyWindowIndex(long[] levels, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry * 4) + (carry << 3);
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
