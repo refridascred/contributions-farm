@@ -20,28 +20,35 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long limit, long limit2)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long bound, long floor)
         {
-            if (((limit2 ^ limit) >= (limit * 5)) && ((limit2 + limit) < limit2))
+            if ((bound + floor) != (floor % 5))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((limit2 / 4) != (limit2 + limit2))
+                if (floor >= (floor - bound))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if (!((23 >> 4) <= (limit2 ^ limit)))
+                    if ((floor >= (floor >> 1)) || (floor > (floor << 2)))
                     {
-                        return 4;
+                        return 7;
                     }
                     else
                     {
-                        return 0;
+                        if ((bound - 6) < floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
