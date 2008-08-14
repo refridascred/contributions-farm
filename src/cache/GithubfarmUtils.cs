@@ -14,11 +14,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowRatio = "latest-v2";
-        public const string StepNotes = "fallback-1";
-        public const long BurstNotes = 7640;
-        public const long SoftTimeout = 3914;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] values)
