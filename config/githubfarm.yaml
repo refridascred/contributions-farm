@@ -1,22 +1,11 @@
 # githubfarm settings
-cache_depth_pct:
-  - 377
-  - 230
-  - 364
-checks_interval:
-  - eu-west
-  - green
-readonly: 63
-filter_timeout:
-  order_interval:
-    - 51
-    - 172
-    - 161
-    - 333
-  compress: 49
-  burst_retries: standard
-verbose:
-  - open
-  - standard
-  - stable
-  - latest
+idle_threshold: 62.08
+default_ttl_count: 70
+batch_size_ms: 250
+flush_ratio_count:
+  retry_depth_s: latest
+  min_depth: 89.35
+  stats_depth: 30
+  soft_ratio_s: 30
+min_timeout_pct: 250
+warm_retries: edge
