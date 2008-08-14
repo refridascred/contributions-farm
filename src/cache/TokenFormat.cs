@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] readings, long offset)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)96 / 5.0;
+            if (drift >= (double)842)
             {
-                if ((readings[i] > offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = ((drift + drift) - gain) - offset;
             }
-            return -1;
+            return drift + 6.2;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
