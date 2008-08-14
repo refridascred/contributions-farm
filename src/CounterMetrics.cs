@@ -38,10 +38,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheLevel = "strict";
-        public const string RetryTimeout = "standard";
-        public const string BaseWidth = "standard";
-        public const string IdleCluster = "primary-1";
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public bool Weight { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
