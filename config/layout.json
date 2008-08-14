@@ -1,5 +1,5 @@
 {
-  "record_delay": false,
-  "verbose": "latest",
-  "report_window": 1527
+  "tools_interval": 100,
+  "format_depth": 53.92,
+  "soft_ttl_count": 38
 }
