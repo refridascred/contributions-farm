@@ -1,18 +1,22 @@
 # entry settings
-enabled:
-  filter_threshold: 7366
-  layout_size: 70
-  buffer_retries: blue
-  burst_interval_ms:
-    farm_ratio: eu-west
-    batches_capacity: 48.96
-    batch_threshold: blue
-    warm_interval_s: false
-  batch_threshold:
-    - 257
-    - 373
-sync_window_pct: 30
-cache_limit_ms:
-  - 385
-  - 268
-  - 284
+token_limit:
+  - 305
+  - 114
+hard_ttl_ms:
+  - 164
+  - 455
+warm_ratio_pct:
+  compress: false
+  layout_limit: 8462
+  route_limit:
+    metric_window: standard
+    base_size:
+      - 97
+      - 385
+    warm_delay_count: 3042
+    persist: primary
+    idle_timeout_ms: green
+  route_size: 98.05
+  cache_capacity: false
+idle_size_pct: 48
+sync_retries_ms: 37.56
