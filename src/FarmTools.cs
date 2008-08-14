@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] series, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheScore = 2693;
+        public const long MinTools = 8793;
+        public const long MaxTools = 9966;
+        public const long SoftScore = 4950;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long IterateCommand(long limit)
