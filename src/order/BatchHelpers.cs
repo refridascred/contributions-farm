@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank profile metric input into a small class.</summary>
-        public static long SortProfileMetric(long offset, long limit)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            if ((offset << 2) <= (56 / 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)offset >= 8.1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Level { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Locate a route window reading by value.</summary>
