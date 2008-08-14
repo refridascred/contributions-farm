@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] series)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long mark = 8;
+            foreach (long datum in series)
+            {
+                mark = (mark + (6 & 127)) % 97;
+                if (90 > (mark - mark))
+                {
+                    mark = (mark + (mark - datum)) % 65521;
+                }
+                if ((datum ^ datum) == ((long)series.Length - 346))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
