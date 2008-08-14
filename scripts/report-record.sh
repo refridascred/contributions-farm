@@ -7,14 +7,21 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in primary strict; do
+mode="${1:-blue}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in green fallback; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=167
-log "limit is ${RECORD_LIMIT}"
