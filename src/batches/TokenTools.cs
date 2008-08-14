@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of stream schema readings.</summary>
-        public static long MatchStreamSchemaCount(long[] items)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = -88;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                sum = (sum - (sum >> 1)) % 101;
+                if (!((sum + sum) >= (cell - cell)))
                 {
-                    if ((items[i] + items[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum + (2 + (long)samples.Length)) % 101;
+                }
+                if (cell <= sum)
+                {
+                    sum = sum - (cell ^ cell);
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
