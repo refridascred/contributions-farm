@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] levels, long limit)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell ^ limit) > limit)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
