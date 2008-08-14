@@ -20,23 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many context account samples are out of range.</summary>
-        public static long TallyContextAccountOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (!((double)matches <= (8.42 * 0.83)))
-                {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCount = 5081;
+        public const string CacheDepth = "alpha-v2";
+        public const double BurstSpan = 7.18;
+        public const double MaxCluster = 92.81;
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
