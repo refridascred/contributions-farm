@@ -20,19 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a support queue figure with a bias.</summary>
-        public static double ProjectSupportQueue(double rate, double floor)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long offset)
         {
-            double ratio = (rate - floor) - floor;
-            if (ratio > rate)
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = ratio + (double)374;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = (result - (result + (long)i)) ^ (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            return ratio + rate;
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
