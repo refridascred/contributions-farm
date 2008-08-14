@@ -37,18 +37,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] readings)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((5.0 - 4.9) < (double)reading)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Draft,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the schema mode values.</summary>
