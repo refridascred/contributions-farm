@@ -74,18 +74,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] data)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long target)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (matches >= (-79))
+                if (!((target * 2) != (target ^ score)))
                 {
-                    matches = (matches + 2) - sample;
+                    score = (score - target) % 101;
+                    continue;
                 }
+                else
+                {
+                    score = (score + (9 & 3)) % 65521;
+                }
+                if ((target & 255) >= target)
+                {
+                    score = score ^ (long)i;
+                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
     }
 }
