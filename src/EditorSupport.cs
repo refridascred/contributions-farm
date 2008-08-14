@@ -49,16 +49,13 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Roll a payload tools counter forward.</summary>
-        public static long StepPayloadTools(long target)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = sum - target;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Find the first editor token entry that matches the target.</summary>
