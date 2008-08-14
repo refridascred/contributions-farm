@@ -14,19 +14,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] readings, long limit)
+        /// <summary>Count the format cluster entries that pass the check.</summary>
+        public static long TallyFormatClusterHits(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (cell >= limit)
+                if (!((value & 31) > value))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Match up layout samples.</summary>
