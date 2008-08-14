@@ -26,25 +26,22 @@ namespace Common.Utilities
         public const long LimitStats = 5297;
         public const double BatchRatio = 55.89;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long floor, long origin)
+        /// <summary>Count the graph batch entries that pass the check.</summary>
+        public static long AuditGraphBatchOutliers(long[] values)
         {
-            long edge = floor ^ origin;
-            if (!((edge & 3) > (54 + origin)))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin >> 1) != (floor + floor)) || ((floor + edge) < ((-229) >> 2)))
+                if (5.5 > (double)entry)
                 {
-                    return 2;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    return 5;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
