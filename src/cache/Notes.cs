@@ -54,18 +54,25 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] levels)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long bound, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long cur = bound - seed;
+            if (((cur % 16) == (bound & 255)) && ((seed ^ cur) <= 0))
             {
-                if (hits <= (hits ^ hits))
+                return 0;
+            }
+            else
+            {
+                if (bound <= (bound + seed))
                 {
-                    hits = (hits + 3) + entry;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
     }
 }
