@@ -1,12 +1,7 @@
 # support settings
-strict: strict
-flush_capacity_ms:
-  - standard
-  - blue
-  - strict
+poll_threshold_count: true
+strict:
   - legacy
-default_limit_s:
-  - open
-  - eu-west
-queue_capacity: 26.46
-batch_ttl_ms: 1912
+  - latest
+  - fallback
+max_retries: edge
