@@ -62,19 +62,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next window cache value from a seed.</summary>
-        public static long DeriveWindowCache(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!((limit >= (93 - limit)) || ((limit + (long)i) <= total)))
-                {
-                    total = ((total * 2) + ((long)i + total)) % 97;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 563;
+        public const long MinLevel = 8418;
+        public const double CacheMetric = 71.66;
     }
 }
