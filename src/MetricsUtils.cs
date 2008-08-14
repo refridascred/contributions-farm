@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstCount = 549;
-        public const long BurstRatio = 8169;
-        public const long MinBudget = 4816;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (reading <= limit)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the format command entries that pass the check.</summary>
         public static long CountFormatCommandHits(long[] readings)
