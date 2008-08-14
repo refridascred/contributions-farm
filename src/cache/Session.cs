@@ -21,19 +21,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next account session value.</summary>
-        public static double SmoothAccountSession(double bias, double span)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double weight = bias;
-            if (weight < (double)301)
-            {
-                weight = (weight - weight) + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight - (0.4 + 8.6);
+            Stale,
+            Done,
+            Draft,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
