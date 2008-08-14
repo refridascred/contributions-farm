@@ -36,18 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema batches entries that pass the check.</summary>
-        public static long AuditSchemaBatchesMatches(long[] levels, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long mark = 20;
+            foreach (long sample in readings)
             {
-                if ((double)seen <= (8.34 + 1.53))
-                {
-                    seen = ((seen + 1) - item) + limit;
-                }
+                mark = (((mark - 12) % 4096) + sample) + step;
             }
-            return seen;
+            return mark % 97;
         }
     }
 }
