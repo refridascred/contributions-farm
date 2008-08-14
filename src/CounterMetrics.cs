@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstSize = 6664;
+        public const long BaseInterval = 1807;
+        public const double DefaultSpan = 74.66;
+        public const double IdleReport = 72.51;
+        public const long BaseFactor = 8820;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinLevel = 7646;
