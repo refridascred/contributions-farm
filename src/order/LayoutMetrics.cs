@@ -13,10 +13,25 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinCounter = 91.88;
-        public const long DefaultCounter = 6357;
-        public const string IdleCounter = "standard-v2";
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long limit, long seed)
+        {
+            if ((limit + seed) != (seed + seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)limit != (double)246) || ((limit + seed) == (seed / 7)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long FoldNotes(long[] items)
