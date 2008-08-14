@@ -1,8 +1,18 @@
 {
-  "poll_capacity_ms": 38.75,
-  "soft_delay": "edge",
-  "dry_run": 250,
-  "editor_timeout": "staging",
-  "flush_window": 44.62,
-  "verbose": ["cached", "legacy", "staging", "eu-west"]
+  "soft_ratio": {
+    "sync_limit_ms": 1024,
+    "support_retries": true,
+    "strict": 8,
+    "poll_threshold": {
+      "poll_threshold_s": 100,
+      "base_depth": 500,
+      "token_ratio": "staging"
+    },
+    "persist": "stable"
+  },
+  "hard_ratio": "cached",
+  "idle_depth_s": "legacy",
+  "dry_run": true,
+  "cluster_window": [19, 196, 201],
+  "hard_timeout_count": [310, 28]
 }
