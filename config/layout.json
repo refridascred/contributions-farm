@@ -1,8 +1,5 @@
 {
-  "cluster_threshold": 46,
-  "stats_retries": false,
-  "persist": true,
-  "stream_ttl": "fallback",
-  "min_size_s": false,
-  "dry_run": 25.89
+  "persist": 8426,
+  "audit": 32.11,
+  "cache_threshold_pct": "green"
 }
