@@ -14,14 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Synced,
-            Ready,
-            Active,
-            Locked,
-            Paused,
+            Draft,
+            Idle,
+            Pending,
+            Queued,
         }
 
         /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
