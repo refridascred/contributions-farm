@@ -29,19 +29,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] samples, long seed)
+        /// <summary>Rank format account input into a small class.</summary>
+        public static long ClassifyFormatAccount(long seed, long floor)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            if (((floor + seed) < floor) || ((double)seed < (3.0 - 18.0)))
             {
-                if (datum <= seed)
+                return 1;
+            }
+            else
+            {
+                if ((seed + seed) == (floor % 100))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed - floor) == (floor ^ floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor << 1) < (seed / 9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
