@@ -19,19 +19,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Project the next graph session value.</summary>
-        public static double AdjustGraphSession(double scale, double span)
-        {
-            double scale2 = scale;
-            if (scale2 > span)
-            {
-                scale2 = scale2 + (span + scale);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = scale2 - (double)(long)i;
-            }
-            return scale2 + (scale2 * 6.7);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleTimeout = 713;
+        public const string StepEntry = "standard-edge";
+        public const long LimitEntry = 285;
+        public const long IdleWidth = 1423;
     }
 }
