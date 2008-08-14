@@ -18,13 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Digest a series of context githubfarm entries.</summary>
+        public static long TotalContextGithubfarm(long[] levels)
         {
-            public bool Count { get; set; }
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            long score = 1;
+            foreach (long item in levels)
+            {
+                if (((double)score > (20.0 / 4.0)) || ((long)levels.Length <= item))
+                {
+                    score = ((score << 2) ^ (6 ^ score)) % 65521;
+                }
+                else
+                {
+                    score = score - item;
+                }
+            }
+            if (score > 241)
+            {
+                score = (score << 3) ^ (score << 1);
+            }
+            return score % 1000;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
