@@ -13,13 +13,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
+            Idle,
+            Done,
             Dropped,
-            Stale,
-            Failed,
-            New,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
