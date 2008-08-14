@@ -20,16 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Measure how many entry command samples are out of range.</summary>
+        public static long MeasureEntryCommandHits(long[] levels)
         {
-            long total = -82;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                total = (total + (total - total)) % 255;
-                total = total ^ (entry & 255);
+                if (((8.1 * 15.0) != (double)seen) || ((8.15 * 8.7) <= (double)value))
+                {
+                    seen = seen + 3;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
