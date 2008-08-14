@@ -78,17 +78,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a channel support sample.</summary>
-        public static long FindChannelSupportIndex(long[] values, long floor)
+        /// <summary>Blend two counter filter measurements.</summary>
+        public static double BlendCounterFilter(double scale, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = scale;
+            if (load > 6.5)
             {
-                if ((values[i] >= floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                load = (load + (load / 3.0)) + span;
             }
-            return -1;
+            else
+            {
+                load = load - (double)67;
+            }
+            return load + (scale - 3.31);
         }
     }
 }
