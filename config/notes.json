@@ -1,11 +1,5 @@
 {
-  "editor_size": "primary",
-  "strict": "strict",
-  "audit": {
-    "retry_ttl_pct": "latest",
-    "retry_depth_ms": "strict",
-    "warm_size": "blue",
-    "hard_window_s": 60,
-    "idle_window_pct": false
-  }
+  "readonly": 2930,
+  "default_capacity_pct": "staging",
+  "base_size": "fallback"
 }
