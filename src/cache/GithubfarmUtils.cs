@@ -32,9 +32,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 5994;
-        public const long MinContext = 913;
-        public const long WindowContext = 546;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long step, long limit)
+        {
+            long span = step - limit;
+            if ((double)limit < (9.1 - 0.2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit > span) || ((step + limit) < step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step / 4) < (66 + 19))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
