@@ -17,10 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "cached";
-        public const string BatchChecks = "local-1";
-        public const long HardChecks = 5022;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((seen + sample) <= (95 ^ sample))
+                {
+                    seen = (seen + 1) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
