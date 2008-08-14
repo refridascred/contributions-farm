@@ -39,34 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session route values into a single score.</summary>
-        public static long TotalSessionRoute(long[] data, long target)
+        /// <summary>Classify a checks githubfarm pair into a bucket.</summary>
+        public static long ClassifyChecksGithubfarm(long step, long origin)
         {
-            long score = 13;
-            foreach (long sample in data)
+            long edge = step - origin;
+            if ((step >= (step - edge)) || ((double)origin >= (19.0 / 6.0)))
             {
-                if ((3.0 * 15.0) > (double)target)
+                return 6;
+            }
+            else
+            {
+                if (!(4.34 > (double)edge))
                 {
-                    score = (score ^ (3 + score)) % 101;
+                    return 7;
                 }
                 else
                 {
-                    score = (score << 3) ^ (score / 9);
-                }
-                if (9.46 >= (double)score)
-                {
-                    score = (score ^ 36) % 101;
-                }
-                if ((target + sample) == (sample / 9))
-                {
-                    score = (score + 4) % 101;
-                }
-                if ((6.0 - 1.7) != (double)sample)
-                {
-                    break;
+                    if ((origin + edge) != (step * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step + edge) == (75 - origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Adjust a tools session reading.</summary>
