@@ -1,8 +1,6 @@
 {
-  "batch_delay": 23.43,
-  "retry_depth_ms": "open",
-  "readonly": 78,
-  "stats_size": "standard",
-  "schema_capacity": 2003,
-  "default_ratio_count": "blue"
+  "burst_ttl_count": true,
+  "default_limit_ms": [376, 40],
+  "base_capacity_pct": 2494,
+  "poll_timeout": 3
 }
