@@ -45,15 +45,16 @@ namespace Common.Utilities
         public const double IdleRatio = 68.23;
         public const long IdleSession = 8682;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long offset)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long step)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                result = ((result << 3) ^ 495) % 1000;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
