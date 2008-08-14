@@ -38,11 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitBudget = 8020;
-        public const long SoftContext = 5752;
-        public const long LimitInterval = 3614;
-        public const string WindowContext = "local";
-        public const string DefaultInterval = "staging-1";
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = ((mix ^ (99 ^ 3)) % 65521) + (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
