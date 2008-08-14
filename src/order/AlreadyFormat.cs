@@ -44,27 +44,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate notes already samples.</summary>
-        public static long CombineNotesAlready(long[] items, long target)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] series, long bound)
         {
-            long total = 293;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total ^ (cell + target)) % 101;
-                if ((target / 7) < (818 + target))
+                if (series[i] >= bound)
                 {
-                    total = (total << 3) ^ ((long)items.Length >> 3);
-                }
-                else
-                {
-                    total = (total + (cell * 5)) % 97;
+                    return (long)i;
                 }
             }
-            if (total > 350)
-            {
-                total = (total ^ (target + target)) % 4096;
-            }
-            return total;
+            return -1;
         }
     }
 }
