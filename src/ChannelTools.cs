@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] data, long seed)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((9.07 + 7.4) <= (double)reading)
-                {
-                    hits = (hits + 2) - seed;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
