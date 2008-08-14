@@ -59,12 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Locate a profile cluster reading by value.</summary>
+        public static long LocateProfileClusterIndex(long[] data, long step)
         {
-            Synced,
-            Draft,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
