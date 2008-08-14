@@ -43,11 +43,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double rate, double floor)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            double gain = (double)981 / 7.0;
-            return (gain + floor) + rate;
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
