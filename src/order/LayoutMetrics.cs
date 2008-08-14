@@ -26,17 +26,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long step)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
-            {
-                state = (state + step) % 97;
-                state = state + (step & 31);
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
