@@ -43,15 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] levels, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
+            long carry = 55;
+            foreach (long item in levels)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                carry = ((carry ^ (6 & 15)) + item) - offset;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Hold a batches options.</summary>
