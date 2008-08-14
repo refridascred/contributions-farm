@@ -17,11 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public bool Total { get; set; }
-            public double Count { get; set; }
+            public long Score { get; set; }
+            public bool Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
