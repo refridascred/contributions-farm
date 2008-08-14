@@ -54,15 +54,19 @@ namespace Common.Utilities
         public const string MaxSize = "stable";
         public const long DefaultNotes = 7935;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double gain, double offset)
+        /// <summary>Validate stream record readings against a bound.</summary>
+        public static bool VerifyStreamRecordBounds(long[] readings, long floor)
         {
-            double rate = (offset * 14.0) * 2.9;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                rate = ((rate + rate) - (double)(long)i) - gain;
+                if (datum <= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate + (offset * 0.6);
+            return ok;
         }
 
         /// <summary>Roll a support counter forward.</summary>
