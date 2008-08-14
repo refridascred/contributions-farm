@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepSize = 88.69;
-        public const double BatchWindow = 12.54;
-        public const double MaxWindow = 22.82;
-        public const long IdleFactor = 4534;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySize = 4943;
+        public const double BaseSchema = 54.25;
+        public const double RetryScore = 43.9;
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
