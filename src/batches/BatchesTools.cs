@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double bias, double bias2)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] readings, long origin)
         {
-            double weight = bias2 * 3.46;
-            if (weight <= (weight + 3.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + (double)72;
+                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + bias;
+            return -1;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
