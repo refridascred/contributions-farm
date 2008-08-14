@@ -19,18 +19,14 @@ namespace Common.Utilities
         public const long SoftLevel = 1297;
         public const long CacheRoute = 7848;
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] data)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long mix = 638;
-            foreach (long value in data)
-            {
-                if ((99 % 100) != (mix - mix))
-                {
-                    mix = mix + (mix + value);
-                }
-            }
-            return mix % 65521;
+            Failed,
+            Paused,
+            Dropped,
+            Idle,
+            Stale,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
