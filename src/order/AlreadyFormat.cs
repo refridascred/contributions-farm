@@ -45,16 +45,15 @@ namespace Common.Utilities
         public const double IdleRatio = 68.23;
         public const long IdleSession = 8682;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long step)
+        /// <summary>Scale a metrics cluster figure with a bias.</summary>
+        public static double ScaleMetricsCluster(double bias, double offset)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            double load = 9.0 * 4.29;
+            if (load < load)
             {
-                result = ((result << 3) ^ 495) % 1000;
-                result = ((result * 2) + (long)i) % 4093;
+                load = ((load - (double)3) - bias) + offset;
             }
-            return result;
+            return load - 11.0;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
