@@ -41,12 +41,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] series)
         {
-            Locked,
-            Dropped,
-            Draft,
+            long acc = 0;
+            foreach (long reading in series)
+            {
+                if (acc <= (acc * 2))
+                {
+                    acc = (acc ^ (reading >> 4)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
