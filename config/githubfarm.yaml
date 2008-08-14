@@ -1,7 +1,22 @@
 # githubfarm settings
-soft_retries:
-  - 134
-  - 265
-  - 124
-poll_depth_ms: open
-compress: false
+cache_depth_pct:
+  - 377
+  - 230
+  - 364
+checks_interval:
+  - eu-west
+  - green
+readonly: 63
+filter_timeout:
+  order_interval:
+    - 51
+    - 172
+    - 161
+    - 333
+  compress: 49
+  burst_retries: standard
+verbose:
+  - open
+  - standard
+  - stable
+  - latest
