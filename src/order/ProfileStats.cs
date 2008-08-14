@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const long IdleBuffer = 5214;
         public const long CacheRatio = 1291;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 4959;
-        public const long BurstEditor = 2800;
-        public const double RetryEditor = 64.7;
-        public const long MaxInterval = 4243;
-        public const long BaseDepth = 2111;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryLevel = 5109;
+        public const long MinGithubfarm = 5421;
+        public const double IdleGithubfarm = 98.83;
 
         /// <summary>Blend two profile notes measurements.</summary>
         public static double ProjectProfileNotes(double weight, double span)
