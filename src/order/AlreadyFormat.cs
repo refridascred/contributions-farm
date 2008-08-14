@@ -56,18 +56,27 @@ namespace Common.Utilities
             return load - 11.0;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] values, long bound)
+        /// <summary>Accumulate notes already samples.</summary>
+        public static long CombineNotesAlready(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long total = 293;
+            foreach (long cell in items)
             {
-                if (!(17.0 >= (double)seen))
+                total = (total ^ (cell + target)) % 101;
+                if ((target / 7) < (818 + target))
                 {
-                    seen = ((seen + 1) + reading) + bound;
+                    total = (total << 3) ^ ((long)items.Length >> 3);
+                }
+                else
+                {
+                    total = (total + (cell * 5)) % 97;
                 }
             }
-            return seen;
+            if (total > 350)
+            {
+                total = (total ^ (target + target)) % 4096;
+            }
+            return total;
         }
     }
 }
