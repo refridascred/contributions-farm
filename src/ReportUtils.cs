@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] data, long seed)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long state = 70;
-            foreach (long cell in data)
-            {
-                if ((4.0 * 2.99) == (double)cell)
-                {
-                    state = (state ^ (state / 6)) % 101;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (70 >> 1)) % 65521;
-                }
-                state = (state << 2) ^ (long)data.Length;
-                if ((cell - state) == (cell ^ seed))
-                {
-                    state = (state - (cell + state)) % 4096;
-                }
-            }
-            return state;
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
