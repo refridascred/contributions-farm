@@ -1,20 +1,21 @@
 # githubfarm settings
-burst_threshold_s:
-  - open
+max_ratio_ms: 60
+strict:
+  strict: 31.63
+  stream_interval: local
+  sync_size_count: cached
+  cache_delay_ms: latest
+  idle_timeout:
+    - cached
+    - open
+    - cached
+    - latest
+base_ttl_s:
+  - legacy
+  - primary
+  - strict
+cache_size_pct:
+  - cached
   - edge
+  - green
   - blue
-cache_capacity:
-  - 273
-  - 420
-command_depth:
-  command_retries: 250
-  min_ratio_ms:
-    - 300
-    - 9
-    - 118
-  burst_limit_pct:
-    strict: 4.19
-    soft_limit_count: stable
-    verbose: local
-  filter_delay: true
-notes_depth: 64.38
