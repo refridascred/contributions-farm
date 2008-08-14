@@ -85,20 +85,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] data)
         {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                long step = (origin & 7) + (19 * 4);
-                if ((double)step >= (double)result)
+                if (matches >= (-79))
                 {
-                    result = (result - 1) % 101;
+                    matches = (matches + 2) - sample;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return matches;
         }
     }
 }
