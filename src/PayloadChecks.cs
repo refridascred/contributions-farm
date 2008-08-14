@@ -49,10 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchInterval = "local-v2";
-        public const string MaxSize = "stable";
-        public const long DefaultNotes = 7935;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Dropped,
+            Closed,
+            Ready,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Validate stream record readings against a bound.</summary>
         public static bool VerifyStreamRecordBounds(long[] readings, long floor)
