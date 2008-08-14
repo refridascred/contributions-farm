@@ -25,21 +25,11 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((long)i < (step - total))
-                {
-                    total = total ^ (3 >> 4);
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitEditor = 57.16;
+        public const long StepFactor = 4162;
+        public const string DefaultFactor = "local";
+        public const long CacheEditor = 739;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long DigestCluster(long[] values)
