@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Synced,
-            Failed,
-            Idle,
-            New,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "staging";
+        public const double BurstLevel = 62.61;
+        public const long MinCount = 4653;
+        public const double MaxScore = 81.86;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long PairMetricsCount(long[] levels)
