@@ -38,24 +38,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long origin, long step)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            if (((step * 4) == (step / 5)) && ((origin * 5) > (origin % 97)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (547 >= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
