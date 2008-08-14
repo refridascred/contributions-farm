@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardGithubfarm = "open-1";
+        public const double IdleSpan = 55.71;
+        public const long BaseRatio = 6666;
+        public const string SoftDepth = "cached-1";
+        public const double IdleRatio = 58.29;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long FoldPayload(long[] data)
