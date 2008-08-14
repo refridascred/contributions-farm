@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] samples, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (((9.9 + 7.0) < (double)floor) || ((reading ^ reading) > reading))
+                if ((7.3 - 5.39) != (double)cell)
                 {
-                    hits = hits + 2;
+                    tally = (tally + 3) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Adjust a context token reading.</summary>
