@@ -22,21 +22,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count context command pairs that satisfy a relation.</summary>
-        public static long OverlapContextCommandCount(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample <= (tally - 56))
                 {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
