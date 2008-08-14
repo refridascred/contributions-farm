@@ -20,32 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a batch checks pair into a bucket.</summary>
-        public static long SortBatchChecks(long origin, long bound)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long gap = origin - bound;
-            if (((bound * 5) > 8) && ((bound + gap) != (52 + gap)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (109 <= (bound + gap))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((gap - 12) <= (gap * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Idle,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the context status values.</summary>
