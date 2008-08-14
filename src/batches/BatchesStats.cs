@@ -21,19 +21,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] values)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            long mix = 32;
+            foreach (long cell in values)
             {
-                if ((floor + total) <= (floor - (long)i))
+                mix = mix + cell;
+                if (((double)cell < (9.58 - 2.99)) && ((928 + 68) != (mix + 53)))
                 {
-                    total = total ^ (long)i;
+                    mix = (mix * 4) + cell;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Derive the next report editor value from a seed.</summary>
