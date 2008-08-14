@@ -20,18 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] levels)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] items)
         {
-            long mix = 57;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((double)item == (1.74 - 8.68))
+                if ((tally % 2) >= 77)
                 {
-                    mix = ((mix << 2) ^ (mix + mix)) % 101;
+                    tally = (tally + 1) ^ cell;
                 }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Hold a stream entry.</summary>
