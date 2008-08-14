@@ -27,18 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] samples, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long carry = 140;
+            foreach (long datum in readings)
             {
-                if ((reading << 2) <= (hits + hits))
-                {
-                    hits = (hits + 1) - step;
-                }
+                carry = (((carry << 3) ^ (carry >> 5)) + datum) + bound;
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
