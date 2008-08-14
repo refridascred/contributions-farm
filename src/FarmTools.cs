@@ -30,22 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] values, long origin)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((0.11 * 9.88) == (double)origin)
-                {
-                    count = (count + 3) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
