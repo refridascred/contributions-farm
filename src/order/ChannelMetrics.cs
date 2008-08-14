@@ -31,21 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Validate queue stream readings against a bound.</summary>
+        public static bool GuardQueueStreamBounds(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item <= step)
                 {
-                    if ((items[i] ^ items[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
