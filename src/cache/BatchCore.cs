@@ -29,18 +29,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many payload layout samples are out of range.</summary>
-        public static long MeasurePayloadLayoutOutliers(long[] data, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (!((20.0 + 5.7) == (double)offset))
+                if (tally > ((-571) & 7))
                 {
-                    seen = (seen + 2) - item;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
