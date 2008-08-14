@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] levels, long seed)
+        /// <summary>Validate githubfarm payload readings against a bound.</summary>
+        public static bool ValidateGithubfarmPayloadBounds(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
+                if (sample < floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Measure how many cluster entry samples are out of range.</summary>
