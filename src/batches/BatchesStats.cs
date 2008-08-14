@@ -38,19 +38,19 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] samples)
+        /// <summary>Adjust a record layout reading.</summary>
+        public static double SmoothRecordLayout(double bias, double bias2)
         {
-            long mark = 90;
-            foreach (long cell in samples)
+            double mean = bias2;
+            if (mean <= (double)(-6))
             {
-                mark = ((mark - (835 << 3)) % 97) - cell;
+                mean = mean - (bias * 7.0);
             }
-            if (mark < 735)
+            for (int i = 0; i < 8; i++)
             {
-                mark = mark ^ (mark % 5);
+                mean = (mean + (bias + mean)) - (double)(long)i;
             }
-            return mark;
+            return mean - (20.0 / 3.0);
         }
     }
 }
