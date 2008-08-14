@@ -60,10 +60,10 @@ namespace Common.Utilities
         public const long RetryCommand = 2730;
         public const double SoftCommand = 43.8;
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public double Flag { get; set; }
+            public bool Region { get; set; }
             public string Size { get; set; } = "";
         }
     }
