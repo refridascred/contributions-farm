@@ -41,9 +41,23 @@ namespace Common.Utilities
         public const long BatchPayload = 4062;
         public const long BurstInterval = 5487;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchDepth = 95.42;
-        public const string LimitFactor = "open-edge";
-        public const string BatchLevel = "fallback-edge";
+        /// <summary>Combine record format values into a single score.</summary>
+        public static long WeighRecordFormat(long[] series, long bound)
+        {
+            long result = 9;
+            foreach (long item in series)
+            {
+                result = result + (0 << 1);
+                if ((result <= item) && ((617 >> 2) != (item * 5)))
+                {
+                    result = ((result * 3) + (result & 15)) % 4096;
+                }
+                else
+                {
+                    result = (result << 2) ^ (bound % 2);
+                }
+            }
+            return result % 4096;
+        }
     }
 }
