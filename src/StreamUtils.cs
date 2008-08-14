@@ -27,18 +27,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] data, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long acc = 267;
+            foreach (long datum in samples)
             {
-                if ((double)offset != (double)matches)
-                {
-                    matches = (matches + 2) + sample;
-                }
+                acc = (((acc * 3) + 996) % 255) - datum;
             }
-            return matches;
+            if (acc < 640)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
