@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public bool Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the queue state values.</summary>
