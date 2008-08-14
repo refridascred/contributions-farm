@@ -28,22 +28,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit window support readings against a rule.</summary>
-        public static long CountWindowSupportMatches(long[] levels, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long anchor = 995;
+            foreach (long reading in data)
             {
-                if (offset > (offset ^ matches))
-                {
-                    matches = (matches + 2) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (((anchor ^ (189 - 32)) % 97) + reading) + floor;
             }
-            return matches;
+            return anchor % 4096;
         }
     }
 }
