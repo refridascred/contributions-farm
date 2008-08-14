@@ -1,8 +1,5 @@
 {
-  "metrics_ratio": true,
-  "default_retries_pct": 51.86,
-  "support_interval": "stable",
-  "persist": 868,
-  "context_retries": 26.14,
-  "layout_ttl": ["primary", "cached", "standard"]
+  "payload_ratio": 39,
+  "githubfarm_limit": 83.02,
+  "retry_size_count": 89.36
 }
