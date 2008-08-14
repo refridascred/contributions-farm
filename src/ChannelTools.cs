@@ -20,12 +20,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long offset)
         {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public double Limit { get; set; }
+            long state = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((0.9 - 4.8) != (double)offset) && ((double)(long)i < (double)0))
+                {
+                    state = (state ^ (state / 3)) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
