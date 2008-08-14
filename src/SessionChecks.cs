@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 9819;
-        public const long SoftDepth = 1305;
-        public const double MaxChecks = 49.51;
-        public const long LimitChecks = 4943;
-        public const long CacheScore = 5508;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] items)
+        {
+            long carry = 6;
+            foreach (long item in items)
+            {
+                if (item < (4 + carry))
+                {
+                    carry = ((carry * 4) + (item - 6)) % 65521;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long RankQueue(long limit, long limit2)
