@@ -33,22 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] data, long bound)
-        {
-            long carry = 3;
-            foreach (long item in data)
-            {
-                if ((item - item) <= (carry - item))
-                {
-                    carry = (((carry * 4) + ((-3) * 5)) % 4096) + bound;
-                }
-                else
-                {
-                    carry = (carry * 2) + (22 % 5);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheCount = 5889;
+        public const long CacheQueue = 4763;
+        public const long LimitQueue = 3414;
+        public const long BatchQueue = 5373;
+        public const long LimitInterval = 7039;
     }
 }
