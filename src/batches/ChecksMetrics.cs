@@ -31,16 +31,12 @@ namespace Common.Utilities
         public const long SoftChecks = 7576;
         public const long BurstCount = 845;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] values, long step)
-        {
-            long score = -740;
-            foreach (long item in values)
-            {
-                score = ((score - (21 - step)) % 65521) + item;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepBudget = 4985;
+        public const long BurstSpan = 2078;
+        public const long IdleMetrics = 3485;
+        public const double HardCount = 1.23;
+        public const double WindowMetrics = 97.29;
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LookupReportIndex(long[] levels, long seed)
