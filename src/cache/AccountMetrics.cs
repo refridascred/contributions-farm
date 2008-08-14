@@ -54,22 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] data)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((cell >> 4) > 892) || (((40 + cell) < (matches - matches)) || ((5 % 5) > matches)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Closed,
+            Pending,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
