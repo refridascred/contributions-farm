@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 7605;
-        public const string IdleFarm = "primary-edge";
-        public const long MinRatio = 8577;
-        public const long CacheFarm = 1141;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxTimeout = 70.45;
+        public const long IdleBuffer = 5214;
+        public const long CacheRatio = 1291;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long CountContributiMatches(long[] values, long origin)
