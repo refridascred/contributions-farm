@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Classify a session metrics pair into a bucket.</summary>
+        public static long BucketSessionMetrics(long floor, long limit)
         {
-            long sum = 33;
-            foreach (long reading in levels)
+            long diff = floor ^ limit;
+            if ((33 - floor) > (floor >> 2))
             {
-                if ((sum + reading) >= (81 % 3))
+                return 7;
+            }
+            else
+            {
+                if (limit < floor)
                 {
-                    sum = sum ^ (reading - sum);
+                    return 4;
                 }
                 else
                 {
-                    sum = sum - (sum - (long)levels.Length);
-                }
-                if ((726 - reading) < 855)
-                {
-                    break;
+                    if (((double)floor <= (double)limit) && ((diff + diff) == (diff >> 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Describe the graph level values.</summary>
