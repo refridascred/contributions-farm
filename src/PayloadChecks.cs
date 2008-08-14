@@ -34,21 +34,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of profile channel readings.</summary>
-        public static long OverlapProfileChannelCount(long[] levels)
+        /// <summary>Derive the next stats account value from a seed.</summary>
+        public static long IterateStatsAccount(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = (state - 186) % 255;
+                long next = (floor + 183) & 127;
+                if ((next + next) == (next ^ (long)i))
                 {
-                    if ((levels[i] + levels[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state * 2) + next;
                 }
+                else
+                {
+                    state = state + floor;
+                    next = ((next * 5) + (state + floor)) % 97;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a order header.</summary>
