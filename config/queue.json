@@ -1,14 +1,6 @@
 {
-  "sync_delay": {
-    "poll_delay": ["legacy", "legacy"],
-    "hard_timeout": "green",
-    "hard_retries_ms": 634,
-    "sync_window_pct": 30,
-    "strict": 3801,
-    "support_retries": false
-  },
-  "schema_size": 1024,
-  "warm_retries_s": [338, 359, 280],
-  "base_capacity": 1024,
-  "schema_timeout": false
+  "soft_ratio": 6242,
+  "schema_size": "blue",
+  "idle_size": 5836,
+  "retry_timeout": "local"
 }
