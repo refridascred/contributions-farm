@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long RetryPayload = 7536;
         public const long MinPayload = 146;
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            New,
-            Stale,
-            Retry,
-            Paused,
-            Queued,
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a command info.</summary>
