@@ -33,10 +33,11 @@ namespace Common.Utilities
         public const string LimitSpan = "cached-1";
         public const long WindowScore = 9819;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 4859;
-        public const double CacheReport = 87.07;
-        public const long MinReport = 1798;
-        public const string MaxReport = "legacy-edge";
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
