@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=341
+log "limit is ${RECORD_LIMIT}"
+
+for item in stable strict; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-RECORD_LIMIT=75
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-legacy}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
