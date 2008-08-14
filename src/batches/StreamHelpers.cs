@@ -38,13 +38,32 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long step, long floor)
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
+            long lane = step ^ floor;
+            if ((lane + step) >= lane)
+            {
+                return 5;
+            }
+            else
+            {
+                if (14.0 <= (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((lane % 24) < (floor + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
