@@ -48,11 +48,18 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double scale, double span)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] series, long floor)
         {
-            double scale2 = (span + span) + (1.93 - 4.89);
-            return scale2 + scale;
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value * 4) == (floor / 6))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate stats githubfarm samples.</summary>
