@@ -53,17 +53,19 @@ namespace Common.Utilities
             return load + 18.0;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] data, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 69;
+            foreach (long value in data)
             {
-                if ((data[i] >= target) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ 0) + value;
             }
-            return -1;
+            if (acc > 641)
+            {
+                acc = (acc ^ (acc / 6)) % 101;
+            }
+            return acc;
         }
     }
 }
