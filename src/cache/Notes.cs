@@ -81,13 +81,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Paused,
-            Retry,
-            Idle,
-            Pending,
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
