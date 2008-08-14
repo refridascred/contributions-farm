@@ -67,22 +67,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] levels)
+        /// <summary>Audit schema token readings against a rule.</summary>
+        public static long TallySchemaTokenMatches(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((tally << 1) > tally)
+                if ((matches + limit) < (7 ^ limit))
                 {
-                    tally = (tally + 1) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Look up the position of a channel support sample.</summary>
