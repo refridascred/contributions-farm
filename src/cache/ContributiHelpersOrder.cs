@@ -29,11 +29,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowDepth = 7350;
-        public const long SoftWindow = 7381;
-        public const double IdleWindow = 17.76;
-        public const string MinScore = "stable-v2";
-        public const long RetryWindow = 8988;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Ready,
+            Idle,
+            Stale,
+            Draft,
+        }
     }
 }
