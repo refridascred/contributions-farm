@@ -40,25 +40,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] readings, long step)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long sum = 71;
-            foreach (long value in readings)
-            {
-                if ((value ^ sum) < (sum - sum))
-                {
-                    sum = (sum * 5) + (sum + sum);
-                    sum = sum + (step + (long)readings.Length);
-                    break;
-                }
-                else
-                {
-                    sum = (sum + 7) % 4096;
-                }
-                sum = (sum << 2) ^ (sum + step);
-            }
-            return sum;
+            Dropped,
+            Pending,
+            Active,
+            Failed,
         }
     }
 }
