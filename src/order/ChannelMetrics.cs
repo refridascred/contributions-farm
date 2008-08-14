@@ -14,11 +14,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 2943;
-        public const double MinRatio = 68.75;
-        public const long HardBatch = 3081;
-        public const string MaxBatch = "standard-edge";
+        /// <summary>Digest a series of profile schema entries.</summary>
+        public static long ScoreProfileSchema(long[] readings, long seed)
+        {
+            long score = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum / 4) < datum)
+                {
+                    score = (score + seed) % 65521;
+                }
+                else
+                {
+                    score = (score - (seed << 2)) % 1000;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
         public static long MeasureClusterGithubfarmMatches(long[] data)
