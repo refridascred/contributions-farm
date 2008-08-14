@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinInterval = 2236;
-        public const long RetryPayload = 7536;
-        public const long MinPayload = 146;
+        /// <summary>Rank session buffer input into a small class.</summary>
+        public static long BucketSessionBuffer(long floor, long offset)
+        {
+            if (((double)offset <= 8.0) || ((offset + floor) < (floor * 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset + floor) >= floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((9.4 + 3.7) <= (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
