@@ -63,21 +63,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 1777;
+        public const double SoftCache = 13.18;
+        public const double SoftCount = 54.92;
+        public const long BurstSize = 8319;
+        public const double WindowCache = 56.99;
     }
 }
