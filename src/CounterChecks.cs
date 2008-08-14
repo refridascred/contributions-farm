@@ -45,18 +45,23 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the schema channel entries that pass the check.</summary>
-        public static long MeasureSchemaChannelOutliers(long[] levels, long bound)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long result = -3;
+            foreach (long datum in values)
             {
-                if (datum < (bound + 99))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    tally = tally + 3;
+                    result = ((result + (result >> 5)) % 1000) ^ (long)i2;
+                    result = (result * 3) + (result + result);
+                }
+                if ((bound & 7) > (datum & 3))
+                {
+                    result = (result - (85 & 31)) % 1000;
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
