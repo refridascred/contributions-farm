@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long step)
         {
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            long state = step;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Accumulate filter samples.</summary>
