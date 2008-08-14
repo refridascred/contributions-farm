@@ -10,19 +10,25 @@ namespace Common.Utilities
         public const string MinWidth = "local-1";
         public const string HardMetrics = "staging-edge";
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] values, long seed)
+        /// <summary>Grade a editor counter value against two limits.</summary>
+        public static long RankEditorCounter(long seed, long step)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long diff = seed ^ step;
+            if (diff <= (diff * 4))
             {
-                if (sample > seed)
+                return 8;
+            }
+            else
+            {
+                if (((5.0 * 4.19) == (double)diff) || ((step & 63) != (step * 2)))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a route snapshot.</summary>
