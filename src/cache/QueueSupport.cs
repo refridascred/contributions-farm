@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] items, long target)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the queue state values.</summary>
