@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] data, long target)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (cell >= target)
+                if (cell > origin)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
