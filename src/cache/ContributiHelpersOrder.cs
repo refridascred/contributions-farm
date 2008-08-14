@@ -18,14 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long seed, long floor)
         {
-            Draft,
-            Pending,
-            Ready,
-            Active,
-            Failed,
+            long edge = seed + floor;
+            if (5 > seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)edge > (5.3 / 3.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - floor) >= edge)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
