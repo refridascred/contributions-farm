@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
             Retry,
             Synced,
-            Locked,
-            Idle,
-            Failed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
