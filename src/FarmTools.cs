@@ -30,19 +30,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] series, long step)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry < step)
+                if (series[i] < seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
