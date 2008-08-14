@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] readings, long seed)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] items)
         {
-            long result = 2;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (((result * 4) + (seed + seed)) % 1000) ^ item;
-                result = (result - (seed + result)) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
