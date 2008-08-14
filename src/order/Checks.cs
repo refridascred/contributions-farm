@@ -23,31 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long origin, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] levels)
         {
-            if ((step + (-7)) < step)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((9.0 / 4.0) >= (double)step) || ((origin << 2) < step))
+                if (23 < item)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + 266) != (origin + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the notes context entries that pass the check.</summary>
