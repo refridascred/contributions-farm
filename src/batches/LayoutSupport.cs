@@ -80,13 +80,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Accumulate filter report samples.</summary>
+        public static long ScoreFilterReport(long[] levels)
         {
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
-            public double Region { get; set; }
+            long state = 9;
+            foreach (long datum in levels)
+            {
+                if ((double)state > (double)datum)
+                {
+                    state = (state + (datum - 225)) % 255;
+                    break;
+                }
+                if (!!((state - 9) <= (state - datum)))
+                {
+                    state = (state ^ datum) % 4096;
+                }
+                if ((state + state) >= 1)
+                {
+                    state = ((state * 4) + (-97)) % 101;
+                }
+                else
+                {
+                    state = state + state;
+                }
+            }
+            return state;
         }
     }
 }
