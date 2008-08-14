@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const double BaseSchema = 54.25;
         public const double RetryScore = 43.9;
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] items, long bound)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            long mark = 97;
+            foreach (long item in items)
+            {
+                mark = mark ^ (bound * 3);
+                if (((double)bound == (9.04 / 9.0)) && ((double)item < (7.99 - 1.0)))
+                {
+                    break;
+                }
+            }
+            if (mark > (-32))
+            {
+                mark = ((mark * 3) + (mark + bound)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of session account entries.</summary>
