@@ -23,17 +23,28 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] readings, long limit)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 529;
+            foreach (long item in samples)
             {
-                if (readings[i] <= limit)
+                sum = sum - item;
+                if ((long)samples.Length > item)
                 {
-                    return (long)i;
+                    sum = (sum * 5) + (origin % 2);
+                    continue;
+                }
+                else
+                {
+                    sum = sum ^ (item & 15);
+                }
+                if (((422 / 8) > (item + sum)) && ((item - origin) <= (345 - sum)))
+                {
+                    sum = sum + (sum * 2);
                 }
             }
-            return -1;
+            return sum % 4096;
         }
     }
 }
