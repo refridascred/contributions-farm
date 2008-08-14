@@ -41,26 +41,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] items, long limit)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long mark = 803;
-            foreach (long value in items)
-            {
-                if (!((limit << 1) >= mark))
-                {
-                    mark = (mark + (limit >> 4)) + value;
-                }
-                else
-                {
-                    mark = mark - limit;
-                }
-            }
-            if (mark > 3)
-            {
-                mark = (mark + (limit - 25)) % 1000;
-            }
-            return mark;
+            Done,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a route entry.</summary>
