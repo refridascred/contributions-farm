@@ -39,15 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cluster filter measurements.</summary>
-        public static double ProjectClusterFilter(double scale, double offset)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double scale2 = offset;
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 + scale;
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public double Label { get; set; }
         }
     }
 }
