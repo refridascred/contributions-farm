@@ -30,19 +30,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] data, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] series, long step)
         {
-            bool found = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (value <= floor)
+                if (((long)series.Length + reading) > tally)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
