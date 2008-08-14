@@ -1,7 +1,21 @@
 {
-  "default_delay": "eu-west",
-  "base_limit_s": false,
-  "idle_limit": 18.25,
-  "soft_size": 82.47,
-  "compress": "blue"
+  "verbose": {
+    "flush_size_ms": "blue",
+    "default_delay_ms": {
+      "persist": 94.57,
+      "min_capacity": 9.7,
+      "githubfarm_limit": ["fallback", "green", "local", "staging"],
+      "base_retries_count": "blue"
+    },
+    "order_limit": ["legacy", "stable", "cached"]
+  },
+  "window_threshold": "strict",
+  "poll_capacity": {
+    "cluster_interval": true,
+    "editor_ttl": 88.94,
+    "already_interval": "legacy",
+    "flush_depth_s": "fallback",
+    "dry_run": "legacy",
+    "verbose": ["blue", "blue"]
+  }
 }
