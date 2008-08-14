@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] readings, long seed)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            double scale = ratio;
+            if (scale > floor)
             {
-                if (datum > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale + (floor + 4.0);
             }
-            return stale;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale - (double)9;
         }
 
         /// <summary>Describe the notes status values.</summary>
