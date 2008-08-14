@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the token phase values.</summary>
