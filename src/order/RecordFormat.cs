@@ -24,11 +24,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            Pending,
+            Failed,
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Look up the position of a account sample.</summary>
