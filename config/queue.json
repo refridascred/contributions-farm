@@ -1,6 +1,7 @@
 {
-  "payload_delay": ["blue", "fallback"],
-  "default_ratio_ms": 250,
-  "verbose": false,
-  "max_ttl": "local"
+  "order_timeout": true,
+  "counter_retries": [282, 413, 311, 182],
+  "record_capacity": 100,
+  "idle_size_pct": ["local", "standard"],
+  "warm_ttl": "latest"
 }
