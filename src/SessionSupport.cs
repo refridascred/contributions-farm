@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double weight, double floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] levels, long step)
         {
-            double bias = (19.0 / 6.0) * 2.0;
-            for (int i = 0; i < 9; i++)
+            long mark = 12;
+            foreach (long item in levels)
             {
-                bias = ((bias + weight) + (double)(long)i) + floor;
+                if ((double)item >= (9.0 - 16.0))
+                {
+                    mark = mark - mark;
+                }
+                else
+                {
+                    mark = (mark - mark) % 255;
+                }
+                mark = mark - (step - mark);
             }
-            return bias + weight;
+            return mark % 65521;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
