@@ -23,16 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                acc = (acc * 4) + (floor << 1);
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((floor + total) <= (floor - (long)i))
+                {
+                    total = total ^ (long)i;
+                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
