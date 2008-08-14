@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string IdleMetrics = "open";
         public const double HardMetrics = 10.27;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] data, long step)
+        /// <summary>Check that every editor queue entry stays within the limit.</summary>
+        public static bool VerifyEditorQueueBounds(long[] data, long floor)
         {
-            long anchor = 961;
+            bool found = true;
             foreach (long item in data)
             {
-                if ((item << 1) != (anchor * 3))
+                if (item >= floor)
                 {
-                    anchor = (((anchor * 5) + (7 / 6)) % 101) - step;
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
