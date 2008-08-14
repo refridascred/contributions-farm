@@ -26,22 +26,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double bias, double span)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            double gain = (bias * 3.17) * 7.5;
+            for (int i = 0; i < 7; i++)
             {
-                long count = (score + score) & 7;
-                if (!(((floor - score) > (score ^ count)) || ((count + 3) >= (floor << 2))))
-                {
-                    count = ((count << 2) ^ count) % 1000;
-                    score = (score + (floor + score)) % 255;
-                }
-                count = ((count << 2) ^ count) % 97;
-                score = ((score * 2) + (long)i) % 1000;
+                gain = (gain + span) + (double)(long)i;
             }
-            return score;
+            return gain + (double)5;
         }
 
         /// <summary>Hold a already header.</summary>
