@@ -34,19 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double ratio, double floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] data, long offset)
         {
-            double gain = 6.0;
-            if (gain >= gain)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                gain = (gain - ratio) - floor;
+                if (91 <= datum)
+                {
+                    seen = (seen + 3) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (double)27) + (double)(long)i;
-            }
-            return gain - (gain / 2.0);
+            return seen;
         }
 
         /// <summary>Digest a series of token entries.</summary>
