@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Closed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
