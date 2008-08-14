@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long step)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((step - result) == (6 << 3))
-                {
-                    result = result - (result + step);
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
