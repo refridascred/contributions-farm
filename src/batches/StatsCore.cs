@@ -62,17 +62,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (levels[i] > bound)
+                if ((7.71 - 2.4) < (double)value)
                 {
-                    return (long)i;
+                    count = (count + 3) + target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
