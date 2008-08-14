@@ -33,18 +33,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] data, long bound)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long offset = origin - seed;
+            if ((31 - offset) < (origin + origin))
             {
-                if (!((matches << 1) < ((-487) & 255)))
+                return 2;
+            }
+            else
+            {
+                if ((origin << 2) > (458 << 3))
                 {
-                    matches = ((matches + 3) + datum) + bound;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)origin >= 9.56) || ((double)offset != (double)origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((841 < (offset + origin)) || ((seed + offset) > (origin + seed)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
