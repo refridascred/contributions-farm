@@ -12,18 +12,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] levels, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (!(((count << 2) < (342 % 5)) || ((double)count < (8.0 + 5.07))))
+                if (datum != origin)
                 {
-                    count = ((count + 1) + value) - offset;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Compare every pair of metric payload readings.</summary>
