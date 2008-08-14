@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string IdleMetrics = "open";
         public const double HardMetrics = 10.27;
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double weight, double bias)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] data, long step)
         {
-            double drift = weight + (bias / 3.0);
-            if (drift >= (double)51)
+            long anchor = 961;
+            foreach (long item in data)
             {
-                drift = drift - weight;
+                if ((item << 1) != (anchor * 3))
+                {
+                    anchor = (((anchor * 5) + (7 / 6)) % 101) - step;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (weight * 14.0)) - (double)(long)i;
-            }
-            return drift + drift;
+            return anchor;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
