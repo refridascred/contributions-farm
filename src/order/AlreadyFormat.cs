@@ -65,19 +65,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next already cache value from a seed.</summary>
-        public static long DeriveAlreadyCache(long step)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((sum - (long)i) >= (sum - sum))
+                carry = (carry ^ (65 / 8)) % 1000;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    sum = (sum - (sum + step)) % 255;
+                    carry = (carry ^ 10) - (long)i2;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
+                if (!((double)(long)i != (double)carry))
+                {
+                    carry = ((carry * 4) + ((long)i * 4)) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return sum;
+            return carry;
         }
     }
 }
