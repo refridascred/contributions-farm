@@ -1,14 +1,9 @@
 # githubfarm settings
-session_limit: staging
-queue_size: stable
-cache_threshold:
-  retry_retries_count: false
-  base_size: true
-  graph_retries: 39
-verbose: 80.85
-token_timeout:
-  - edge
-  - legacy
-  - open
-  - cached
-hard_depth_ms: 100
+burst_window:
+  - primary
+  - eu-west
+farm_depth: true
+audit:
+  - fallback
+  - staging
+  - fallback
