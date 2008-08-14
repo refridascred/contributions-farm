@@ -10,22 +10,24 @@ namespace Common.Utilities
         public const long RetryPayload = 7536;
         public const long MinPayload = 146;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] readings, long bound)
+        /// <summary>Classify a window support pair into a bucket.</summary>
+        public static long SortWindowSupport(long origin, long seed)
         {
-            long score = 0;
-            foreach (long datum in readings)
+            if ((origin << 1) < seed)
             {
-                if (score < (datum + 6))
+                return 2;
+            }
+            else
+            {
+                if (((40 + seed) >= (origin & 15)) && ((15.0 * 2.0) == (double)origin))
                 {
-                    break;
+                    return 7;
                 }
-                if (bound <= (datum & 15))
+                else
                 {
-                    score = (score + (bound / 7)) % 255;
+                    return 4;
                 }
             }
-            return score;
         }
 
         /// <summary>Hold a command info.</summary>
