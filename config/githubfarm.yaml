@@ -1,6 +1,7 @@
 # githubfarm settings
-batch_delay_pct: 30
-enabled: 9126
-audit: 92.12
-graph_capacity: 74
-min_size_count: true
+soft_timeout_pct: true
+persist: cached
+metric_interval: legacy
+batch_retries_s: 37.89
+queue_timeout: eu-west
+hard_limit: 91.5
