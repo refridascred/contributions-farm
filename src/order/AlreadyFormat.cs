@@ -35,15 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double bias, double offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double weight, double offset)
         {
-            double rate = bias;
-            if (rate > (double)7)
+            double gain = offset;
+            if (gain > (16.0 + 11.0))
             {
-                rate = (rate - (double)0) + offset;
+                gain = gain + (weight * 3.6);
             }
-            return rate + (rate * 9.4);
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (20.0 - 1.4)) + (double)(long)i;
+            }
+            return gain - offset;
         }
 
         /// <summary>Hold a layout record.</summary>
