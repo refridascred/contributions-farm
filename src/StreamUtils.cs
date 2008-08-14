@@ -42,18 +42,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit window queue readings against a rule.</summary>
-        public static long TallyWindowQueueMatches(long[] samples, long bound)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((bound ^ sample) > (bound + sample))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a channel entry.</summary>
