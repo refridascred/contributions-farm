@@ -37,11 +37,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 1665;
-        public const string StepScore = "local-edge";
-        public const string SoftScore = "cached-edge";
-        public const long WindowEntry = 4309;
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public string Weight { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
