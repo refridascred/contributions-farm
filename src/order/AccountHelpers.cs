@@ -13,15 +13,38 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double rate, double floor)
+        /// <summary>Rank commits editor input into a small class.</summary>
+        public static long BucketCommitsEditor(long floor, long bound)
         {
-            double ratio = 14.0;
-            for (int i = 0; i < 3; i++)
+            if ((bound & 15) < (bound + 49))
             {
-                ratio = ((ratio - (rate + 2.2)) - (double)(long)i) - floor;
+                return 7;
             }
-            return ratio + 8.26;
+            else
+            {
+                if ((floor + bound) <= 9)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound < (bound + 0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((bound ^ bound) != (bound + 70)) || (413 < (floor ^ 0)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate order channel samples.</summary>
