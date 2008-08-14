@@ -93,19 +93,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] data, long offset)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Idle,
+            Dropped,
+            Done,
         }
     }
 }
