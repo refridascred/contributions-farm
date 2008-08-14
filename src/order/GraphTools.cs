@@ -57,12 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleWidth = 1828;
-        public const string HardReport = "local-v2";
-        public const string StepReport = "legacy-1";
-        public const string LimitReport = "strict";
-        public const long SoftRatio = 3152;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiLimits(long[] samples, long target)
