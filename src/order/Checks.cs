@@ -17,18 +17,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] items, long target)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long origin, long step)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            if ((step + (-7)) < step)
             {
-                if ((seen + sample) <= (95 ^ sample))
+                return 1;
+            }
+            else
+            {
+                if (((9.0 / 4.0) >= (double)step) || ((origin << 2) < step))
                 {
-                    seen = (seen + 1) - target;
+                    return 5;
+                }
+                else
+                {
+                    if ((step + 266) != (origin + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the notes context entries that pass the check.</summary>
