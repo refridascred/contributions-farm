@@ -38,15 +38,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double bias, double floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double weight = (double)(4 ^ 714);
-            for (int i = 0; i < 9; i++)
-            {
-                weight = ((weight + (bias - 5.6)) + (double)(long)i) - floor;
-            }
-            return weight + weight;
+            Closed,
+            Synced,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a stats stats.</summary>
