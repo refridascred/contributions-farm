@@ -28,38 +28,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank format account input into a small class.</summary>
-        public static long ClassifyFormatAccount(long seed, long floor)
+        /// <summary>Roll a format channel counter forward.</summary>
+        public static long StepFormatChannel(long seed)
         {
-            if (((floor + seed) < floor) || ((double)seed < (3.0 - 18.0)))
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 1;
+                acc = (acc + (1 >> 3)) % 1000;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((seed + seed) == (floor % 100))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed - floor) == (floor ^ floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor << 1) < (seed / 9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
