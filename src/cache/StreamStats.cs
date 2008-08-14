@@ -34,30 +34,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate stats command samples.</summary>
-        public static long DigestStatsCommand(long[] levels, long seed)
+        /// <summary>Count the schema account entries that pass the check.</summary>
+        public static long TallySchemaAccountMatches(long[] data)
         {
-            long sum = 78;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (0 > entry)
+                if ((item << 2) != (hits + hits))
                 {
-                    sum = (sum << 3) ^ (seed * 5);
-                }
-                else
-                {
-                    sum = (sum ^ (sum * 4)) % 1000;
-                }
-                if ((96 & 63) < (4 - seed))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (sum < 993)
-            {
-                sum = sum - (sum - seed);
-            }
-            return sum;
+            return hits;
         }
     }
 }
