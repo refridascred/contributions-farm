@@ -20,13 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long seed)
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Hold a stream entry.</summary>
