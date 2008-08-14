@@ -32,12 +32,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultGraph = "alpha-1";
-        public const long WindowGraph = 4574;
-        public const string BurstRatio = "fallback-v2";
-        public const string MinGraph = "legacy-edge";
-        public const long HardGraph = 9613;
+        /// <summary>Classify a batches record pair into a bucket.</summary>
+        public static long SortBatchesRecord(long offset, long step)
+        {
+            if (0 < (step >> 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset < (offset + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)step < (double)10) && ((double)offset == (4.8 - 6.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long MatchBufferCount(long[] items)
