@@ -84,10 +84,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 208;
-        public const long BatchReport = 4555;
-        public const long HardReport = 573;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Idle,
+            Failed,
+            Pending,
+            Queued,
+            Done,
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long ClassifyTools(long target, long target2)
