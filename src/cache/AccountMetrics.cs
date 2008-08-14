@@ -47,21 +47,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double gain = ratio + (ratio * 17.0);
+            return (gain - (double)5) + bias;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
