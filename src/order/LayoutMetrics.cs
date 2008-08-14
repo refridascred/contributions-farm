@@ -32,26 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context window samples.</summary>
-        public static long WeighContextWindow(long[] samples)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long step)
         {
-            long mark = 8;
-            foreach (long reading in samples)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((reading > (reading >> 4)) && ((4.0 - 1.9) > (double)mark))
-                {
-                    mark = (mark - ((long)samples.Length * 3)) % 1000;
-                }
-                else
-                {
-                    mark = mark - (mark % 64);
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            if (mark > 7)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            return acc;
         }
 
         /// <summary>Fold a list of support readings.</summary>
