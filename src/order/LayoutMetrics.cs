@@ -41,13 +41,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardFactor = "stable-1";
+        public const long LimitRecord = 2933;
+        public const long HardRecord = 1091;
     }
 }
