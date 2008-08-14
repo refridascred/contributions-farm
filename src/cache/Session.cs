@@ -20,26 +20,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate schema stream samples.</summary>
-        public static long WeighSchemaStream(long[] items)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] data, long floor)
         {
-            long anchor = 95;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (((-9) & 1) <= (anchor & 3))
+                if (value > floor)
                 {
-                    anchor = (anchor * 3) + anchor;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ item) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor > 997)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
