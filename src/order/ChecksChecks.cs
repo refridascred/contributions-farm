@@ -33,23 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] readings)
         {
-            long total = 27;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total << 3) ^ total) % 255;
-                if (((double)(long)data.Length > (4.0 - 16.0)) && ((sample >> 4) < 37))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total < 11)
-            {
-                total = (total << 2) ^ (total - 721);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Fold a list of record readings.</summary>
