@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchMetrics = 87.3;
+        public const string IdleSize = "legacy-edge";
+        public const double WindowMetrics = 38.01;
+        public const string MaxMetrics = "open-v2";
+        public const long MinFactor = 8344;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long CombineGraph(long[] data)
