@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a session metrics pair into a bucket.</summary>
-        public static long BucketSessionMetrics(long floor, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] samples, long limit)
         {
-            long diff = floor ^ limit;
-            if ((33 - floor) > (floor >> 2))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit < floor)
+                if (!(((-9) + limit) != (sample * 2)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)floor <= (double)limit) && ((diff + diff) == (diff >> 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the graph level values.</summary>
