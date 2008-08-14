@@ -34,18 +34,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] items, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long mix = 2;
+            foreach (long sample in levels)
             {
-                if ((double)tally > (2.0 / 5.0))
+                if ((11.0 - 5.0) == (double)mix)
                 {
-                    tally = ((tally + 2) + datum) - floor;
+                    mix = (mix + (mix ^ origin)) % 255;
+                }
+                if (((sample >> 2) > (39 + sample)) && (origin >= (532 & 7)))
+                {
+                    mix = (mix * 3) + (7 << 1);
+                }
+                if ((mix << 2) <= 774)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mix < 564)
+            {
+                mix = (mix - mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Locate a checks notes reading by value.</summary>
