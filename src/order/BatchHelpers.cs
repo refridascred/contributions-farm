@@ -14,17 +14,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] items, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (items[i] > seed)
+                if (cell >= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Match up layout samples.</summary>
