@@ -57,14 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long origin)
         {
-            Failed,
-            Closed,
-            Stale,
-            Queued,
-            Active,
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
