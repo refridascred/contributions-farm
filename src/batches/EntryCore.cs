@@ -55,12 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 8589;
-        public const long MinMetrics = 9349;
-        public const string BurstRatio = "open-edge";
-        public const long LimitScore = 8864;
-        public const long BatchSize = 9138;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 7022;
+        public const long StepFactor = 6195;
+        public const long BatchFilter = 2743;
+        public const long RetryFilter = 5714;
+        public const string BaseFilter = "fallback-edge";
 
         /// <summary>Roll a session counter forward.</summary>
         public static long DeriveSession(long floor)
