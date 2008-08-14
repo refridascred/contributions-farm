@@ -49,16 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a layout farm counter forward.</summary>
-        public static long IterateLayoutFarm(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 1223;
+        public const long CacheProfile = 2;
+        public const long MinProfile = 3189;
+        public const long BatchFactor = 3800;
+        public const string BurstWidth = "cached-1";
 
         /// <summary>Adjust a format reading.</summary>
         public static double AdjustFormat(double gain, double floor)
