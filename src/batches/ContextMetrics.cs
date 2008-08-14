@@ -28,12 +28,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Stale,
-            Retry,
-            Paused,
+            Active,
+            Queued,
+            New,
+            Synced,
         }
 
         /// <summary>Rank notes input into a small class.</summary>
