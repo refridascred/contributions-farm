@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] levels)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (!!((matches % 64) != ((long)levels.Length + cell)))
+                if (datum <= limit)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
