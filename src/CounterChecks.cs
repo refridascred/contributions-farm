@@ -18,20 +18,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "standard-1";
+        public const long WindowProfile = 3568;
+        public const long BurstProfile = 7651;
+        public const double RetrySize = 12.51;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryScore = 7028;
