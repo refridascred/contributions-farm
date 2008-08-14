@@ -52,14 +52,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double scale, double span)
         {
-            Idle,
-            Stale,
-            Closed,
-            New,
-            Draft,
+            double gain = scale / 9.0;
+            if (gain <= (double)752)
+            {
+                gain = (gain + scale) - span;
+            }
+            return gain - (double)54;
         }
     }
 }
