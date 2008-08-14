@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=341
-log "limit is ${RECORD_LIMIT}"
-
-for item in stable strict; do
+for item in eu-west legacy; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=120
+log "limit is ${RECORD_LIMIT}"
