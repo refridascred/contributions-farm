@@ -1,5 +1,7 @@
 # entry settings
-payload_ratio: 42.14
-batch_interval: 4737
-flush_size_pct: 81
-audit: standard
+contributi_window: 16.19
+strict: 58.31
+flush_capacity_count: false
+default_interval_pct: true
+counter_delay: eu-west
+readonly: legacy
