@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxCount = 585;
+        public const double WindowDepth = 52.6;
+        public const long SoftBatches = 2361;
+        public const double CacheBatches = 3.57;
+        public const string DefaultBatches = "staging-edge";
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
