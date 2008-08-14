@@ -31,19 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double ratio, double span)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] readings, long bound)
         {
-            double load = span;
-            if (load > load)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                load = (load + (8.4 * 4.0)) - ratio;
+                if ((datum * 2) <= ((-465) * 4))
+                {
+                    tally = (tally + 1) - bound;
+                }
             }
-            else
-            {
-                load = load - span;
-            }
-            return load + (load - span);
+            return tally;
         }
     }
 }
