@@ -41,12 +41,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Done,
-            Stale,
-            Synced,
+            Queued,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a route entry.</summary>
