@@ -18,26 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] items)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] samples)
         {
-            long total = 5;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((item - 741) > (total - total))
+                if ((entry >> 5) > (tally + entry))
                 {
-                    total = ((total << 3) ^ item) % 255;
-                }
-                if ((double)total < (5.58 + 6.0))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (total < 0)
-            {
-                total = (total * 3) + total;
-            }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Hold a batches record.</summary>
