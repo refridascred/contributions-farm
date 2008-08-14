@@ -50,13 +50,19 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long limit)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((((long)i / 8) < (long)i) || ((double)491 <= (double)limit))
+                {
+                    acc = (acc ^ (limit - limit)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many stats checks samples are out of range.</summary>
