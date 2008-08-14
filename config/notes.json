@@ -1,7 +1,7 @@
 {
-  "cache_retries_s": [320, 346, 381, 302],
-  "poll_capacity": ["fallback", "strict"],
-  "poll_threshold_count": false,
-  "min_size": "primary",
-  "poll_window_ms": true
+  "soft_threshold": 40,
+  "readonly": 88.29,
+  "soft_capacity_ms": "stable",
+  "batch_timeout_count": "blue",
+  "retry_window": false
 }
