@@ -15,18 +15,32 @@ namespace Common.Utilities
         public const string BatchChecks = "local-1";
         public const long HardChecks = 5022;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] values, long offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long step, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long lane = step ^ seed;
+            if ((step - 988) > (lane >> 3))
             {
-                if ((double)reading >= (9.97 - 6.1))
+                return 0;
+            }
+            else
+            {
+                if (((step + lane) >= (lane ^ lane)) && (62 >= step))
                 {
-                    tally = (tally + 2) - offset;
+                    return 7;
+                }
+                else
+                {
+                    if ((83 / 9) >= lane)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
