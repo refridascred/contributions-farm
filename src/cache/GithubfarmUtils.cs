@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many account channel samples are out of range.</summary>
-        public static long CountAccountChannelMatches(long[] readings, long step)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            double ratio2 = 17.0;
+            if (ratio2 >= 2.66)
             {
-                if (!((sample % 16) != (218 + 57)))
-                {
-                    matches = (matches + 1) + step;
-                }
+                ratio2 = ((ratio2 - (12.0 * 8.8)) + ratio) - floor;
             }
-            return matches;
+            else
+            {
+                ratio2 = ratio2 + (double)3;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = ratio2 - (double)(long)i;
+            }
+            return ratio2 + 7.0;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
