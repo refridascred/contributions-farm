@@ -30,13 +30,11 @@ namespace Common.Utilities
             return gain + (double)5;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstLevel = "staging-edge";
+        public const long MaxScore = 3392;
+        public const string RetryFactor = "strict-edge";
+        public const double DefaultRatio = 85.2;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long RankCommits(long bound, long limit)
