@@ -41,13 +41,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Closed,
-            Synced,
-            New,
-            Paused,
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a route entry.</summary>
