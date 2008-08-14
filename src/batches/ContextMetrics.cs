@@ -33,18 +33,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] readings)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits << 2) > (datum + (-11)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the contributi class values.</summary>
