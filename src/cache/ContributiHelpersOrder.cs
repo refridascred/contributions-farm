@@ -23,32 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long seed, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] readings, long floor)
         {
-            long edge = seed + floor;
-            if (5 > seed)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)edge > (5.3 / 3.0))
+                if (cell > floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - floor) >= edge)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the report mode values.</summary>
