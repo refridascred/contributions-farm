@@ -50,15 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order channel samples.</summary>
-        public static long CombineOrderChannel(long[] values, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] items)
         {
-            long mark = 59;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                mark = ((mark ^ (offset + mark)) % 1000) - datum;
+                if ((double)tally >= (2.53 * 6.0))
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
