@@ -37,19 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches filter samples.</summary>
-        public static long ScoreBatchesFilter(long[] samples)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long acc = 994;
-            foreach (long cell in samples)
-            {
-                acc = (acc - (acc + cell)) % 101;
-            }
-            if (acc < (-6))
-            {
-                acc = (acc - (acc + 0)) % 1000;
-            }
-            return acc;
+            Done,
+            Idle,
+            New,
+            Failed,
         }
     }
 }
