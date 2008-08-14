@@ -64,12 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
