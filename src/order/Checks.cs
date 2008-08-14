@@ -29,15 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long bound)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a batches options.</summary>
