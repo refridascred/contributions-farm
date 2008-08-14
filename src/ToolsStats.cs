@@ -32,27 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Count entry record pairs that satisfy a relation.</summary>
+        public static long PairEntryRecordCount(long[] series)
         {
-            long result = 1;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= (entry ^ entry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result - ((-4) * 5)) % 97;
-                    break;
-                }
-                if ((result >> 3) <= entry)
-                {
-                    result = ((result * 2) + (5 >> 2)) % 97;
-                }
-                else
-                {
-                    result = result - (result - result);
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
