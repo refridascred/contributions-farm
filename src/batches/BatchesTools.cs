@@ -33,22 +33,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the notes record entries that pass the check.</summary>
-        public static long TallyNotesRecordMatches(long[] items)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((double)matches != (4.87 / 4.0))
-                {
-                    matches = (matches + 2) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Paused,
+            Locked,
+            Closed,
         }
     }
 }
