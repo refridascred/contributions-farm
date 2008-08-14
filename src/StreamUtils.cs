@@ -36,23 +36,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] levels)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] series, long seed)
         {
-            long state = 84;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state * 4) + (state - sample);
-                if ((sample + sample) > state)
+                if (series[i] <= seed)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state < 61)
-            {
-                state = (state - state) % 101;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
