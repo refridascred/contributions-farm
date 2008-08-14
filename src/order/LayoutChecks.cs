@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Combine format batches values into a single score.</summary>
+        public static long CombineFormatBatches(long[] data, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
+            long score = 5;
+            foreach (long item in data)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                score = (((score << 3) ^ (score << 2)) + item) + offset;
             }
-            return sum;
+            return score % 65521;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
