@@ -55,11 +55,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 781;
-        public const long IdleWidth = 2112;
-        public const long IdleMetric = 6808;
-        public const double RetryWidth = 29.94;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Pending,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long PairQueueCount(long[] readings)
