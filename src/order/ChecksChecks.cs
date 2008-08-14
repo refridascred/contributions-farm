@@ -50,13 +50,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] levels, long bound)
         {
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((79 * 3) == (tally ^ sample))
+                {
+                    tally = (tally + 2) - bound;
+                }
+            }
+            return tally;
         }
     }
 }
