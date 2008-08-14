@@ -15,14 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] data, long origin)
         {
-            Active,
-            Done,
-            New,
-            Idle,
-            Draft,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((15 % 16) < (origin + hits))
+                {
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
