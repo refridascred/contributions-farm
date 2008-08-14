@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] samples, long origin)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (origin > (entry & 31))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
