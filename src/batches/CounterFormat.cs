@@ -24,17 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] series, long target)
+        /// <summary>Scale a support already figure with a bias.</summary>
+        public static double AdjustSupportAlready(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = 19.0;
+            if (gain > offset)
             {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
+                gain = gain + ratio;
             }
-            return -1;
+            else
+            {
+                gain = gain + 4.0;
+            }
+            return gain - (gain + ratio);
         }
 
         /// <summary>Hold a metrics summary.</summary>
