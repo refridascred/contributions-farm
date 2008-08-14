@@ -1,5 +1,5 @@
 {
-  "flush_threshold": 9923,
-  "sync_window_pct": 13,
-  "command_window": 7526
+  "cache_retries_pct": 39,
+  "cache_capacity_count": [98, 200],
+  "default_capacity_ms": 39.04
 }
