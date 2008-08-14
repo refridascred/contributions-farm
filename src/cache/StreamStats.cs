@@ -34,15 +34,30 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double rate, double floor)
+        /// <summary>Accumulate stats command samples.</summary>
+        public static long DigestStatsCommand(long[] levels, long seed)
         {
-            double load = floor - (double)150;
-            if (load >= rate)
+            long sum = 78;
+            foreach (long entry in levels)
             {
-                load = load + (floor * 8.9);
+                if (0 > entry)
+                {
+                    sum = (sum << 3) ^ (seed * 5);
+                }
+                else
+                {
+                    sum = (sum ^ (sum * 4)) % 1000;
+                }
+                if ((96 & 63) < (4 - seed))
+                {
+                    break;
+                }
             }
-            return load - 2.0;
+            if (sum < 993)
+            {
+                sum = sum - (sum - seed);
+            }
+            return sum;
         }
     }
 }
