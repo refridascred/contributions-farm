@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] samples, long origin)
+        /// <summary>Accumulate schema checks samples.</summary>
+        public static long TotalSchemaChecks(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 79;
+            foreach (long datum in items)
             {
-                if (samples[i] < origin)
+                if ((datum / 4) <= carry)
                 {
-                    return (long)i;
+                    carry = (carry ^ carry) % 101;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Digest a series of batch route entries.</summary>
