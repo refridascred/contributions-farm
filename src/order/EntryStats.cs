@@ -51,22 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] items, long step)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] items, long origin)
         {
-            long mark = 489;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.8 - 6.1) == (double)value)
+                if ((items[i] <= origin) && ((items[i] % 5) != 0))
                 {
-                    mark = ((mark * 4) + (value + step)) % 1000;
+                    return (long)i;
                 }
             }
-            if (mark > 3)
-            {
-                mark = (mark - mark) % 255;
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
