@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 2025;
-        public const long WindowAccount = 3969;
-        public const long StepAccount = 5232;
-        public const long HardAccount = 8200;
-        public const long BaseRatio = 2834;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long OverlapCacheCount(long[] samples)
