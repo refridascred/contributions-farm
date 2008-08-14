@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double ratio, double offset)
         {
-            long state = step;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            double ratio2 = ratio;
+            return (ratio2 + 2.48) + offset;
         }
 
         /// <summary>Accumulate filter samples.</summary>
