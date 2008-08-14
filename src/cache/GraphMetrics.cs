@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public long Limit { get; set; }
-            public double Score { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
