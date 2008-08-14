@@ -39,19 +39,11 @@ namespace Common.Utilities
         public const long MinEditor = 891;
         public const long HardSpan = 8743;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] samples, long origin)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double gain, double bias)
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double ratio = gain;
+            return (ratio + (double)0) + bias;
         }
     }
 }
