@@ -26,18 +26,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] series)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.6 * 9.43) > (double)hits)
+                if (levels[i] == bound)
                 {
-                    hits = (hits + 2) - reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
