@@ -1,12 +1,14 @@
 # Command notes
 
-The payload module keeps buffer values in sync with the metric cache.
-The filter report groups every metrics by profile.
-Run the metric check before changing any editor limits.
+The metrics module keeps editor values in sync with the stream cache.
+A context that stays idle for too long is moved to the filter list.
+
+When a profile fails, the schema handler retries a few times before giving up.
+Each session is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Validate schema input early
-- Keep counter values small
-- Log every report change
-- Document new filter fields
+- Review filter limits each release
+- Keep graph values small
+- Log every metric change
+- Prefer counter defaults
