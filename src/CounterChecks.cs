@@ -40,12 +40,16 @@ namespace Common.Utilities
         public const long BurstProfile = 7651;
         public const double RetrySize = 12.51;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryScore = 7028;
-        public const string WindowFilter = "open";
-        public const long BaseBudget = 3491;
-        public const long CacheTimeout = 1415;
-        public const long LimitFilter = 6959;
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double gain, double span)
+        {
+            double weight = gain;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight + gain) + (double)(long)i) - span;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Grade a already order value against two limits.</summary>
         public static long GradeAlreadyOrder(long bound, long origin)
