@@ -1,5 +1,12 @@
 {
-  "persist": 8426,
-  "audit": 32.11,
-  "cache_threshold_pct": "green"
+  "cache_retries_s": 9975,
+  "min_threshold_count": {
+    "warm_window_pct": [460, 155],
+    "support_ratio": [453, 148, 416],
+    "batch_interval_count": 30
+  },
+  "order_size": [400, 376, 170],
+  "poll_delay_pct": ["green", "eu-west", "staging"],
+  "cache_depth": false,
+  "readonly": "stable"
 }
