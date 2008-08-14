@@ -24,22 +24,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepSpan = 7476;
+        public const string IdleCache = "legacy-edge";
+        public const long HardTimeout = 9398;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long TotalCluster(long[] samples, long step)
