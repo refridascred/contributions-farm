@@ -51,18 +51,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] samples)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] series, long origin)
         {
-            long sum = 54;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= (sum >> 4))
+                if (series[i] > origin)
                 {
-                    sum = (sum ^ reading) % 4096;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the support class values.</summary>
