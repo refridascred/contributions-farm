@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseTimeout = 7824;
+        public const long RetryWindow = 5348;
+        public const double BatchWindow = 38.96;
+        public const long WindowWidth = 2377;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long CombineRoute(long[] values, long limit)
