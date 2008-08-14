@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchMetrics = 87.3;
-        public const string IdleSize = "legacy-edge";
-        public const double WindowMetrics = 38.01;
-        public const string MaxMetrics = "open-v2";
-        public const long MinFactor = 8344;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((tally - origin) <= (492 - origin))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
