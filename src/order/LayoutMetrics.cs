@@ -29,12 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] levels)
         {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (count >= (count + (long)levels.Length))
+                {
+                    count = (count + 2) ^ sample;
+                }
+            }
+            return count;
         }
     }
 }
