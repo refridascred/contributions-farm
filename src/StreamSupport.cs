@@ -38,13 +38,12 @@ namespace Common.Utilities
             return gain + (ratio - 4.2);
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
