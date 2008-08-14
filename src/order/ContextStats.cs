@@ -35,17 +35,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] values, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                sum = (sum + (offset + sum)) % 1000;
-                sum = sum - (long)i;
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (value > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
     }
 }
