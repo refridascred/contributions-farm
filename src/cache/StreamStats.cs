@@ -36,25 +36,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long bound, long seed)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double rate, double floor)
         {
-            long bound2 = bound + seed;
-            if ((bound + seed) <= (seed ^ seed))
+            double load = floor - (double)150;
+            if (load >= rate)
             {
-                return 3;
+                load = load + (floor * 8.9);
             }
-            else
-            {
-                if ((bound2 / 6) >= (seed + 67))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return load - 2.0;
         }
     }
 }
