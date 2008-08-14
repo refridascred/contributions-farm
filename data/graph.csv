@@ -1,11 +1,6 @@
-id,weight,owner
-1,blue,531
-2,224,303
-3,59.41,581
-4,strict,336
-5,16.04,984
-6,663,710
-7,0,358
-8,771,3.72
-9,20.37,6.47
-10,staging,854
+id,owner,label
+1,472,21.24
+2,open,green
+3,strict,53.75
+4,0.1,strict
+5,434,primary
