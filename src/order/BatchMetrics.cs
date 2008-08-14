@@ -68,15 +68,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double gain, double floor)
+        /// <summary>Derive the next window cache value from a seed.</summary>
+        public static long DeriveWindowCache(long limit)
         {
-            double gain2 = (double)(62 * 2);
-            if (gain2 >= gain2)
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                gain2 = gain2 + 18.0;
+                if (!((limit >= (93 - limit)) || ((limit + (long)i) <= total)))
+                {
+                    total = ((total * 2) + ((long)i + total)) % 97;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return gain2 + (gain + floor);
+            return total;
         }
     }
 }
