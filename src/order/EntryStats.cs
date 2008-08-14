@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] values, long origin)
+        /// <summary>Accumulate queue payload samples.</summary>
+        public static long ScoreQueuePayload(long[] items)
         {
-            long sum = 579;
-            foreach (long cell in values)
+            long state = 469;
+            foreach (long value in items)
             {
-                if (((origin - sum) <= (446 << 2)) && (cell <= (cell + cell)))
+                state = state - (117 << 3);
+                if ((value << 2) > (state >> 4))
                 {
-                    sum = sum - ((-54) >> 2);
+                    break;
                 }
             }
-            return sum;
+            if (state < 9)
+            {
+                state = ((state << 2) ^ ((long)items.Length ^ 2)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Scale a token queue figure with a bias.</summary>
