@@ -1,8 +1,7 @@
 # githubfarm settings
-sync_interval: false
-readonly:
-  - 363
-  - 287
-  - 368
-  - 77
-warm_retries_count: 2310
+route_retries:
+  max_threshold_count: edge
+  flush_capacity: 1024
+  layout_window: latest
+warm_ratio_ms: 64
+hard_ttl: 7358
