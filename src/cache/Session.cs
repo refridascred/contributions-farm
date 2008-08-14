@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((((value - value) > seen) || ((6.0 * 4.87) == (double)value)) && !((7.91 - 19.0) <= (double)value))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 1589;
+        public const long SoftContributi = 2166;
+        public const double MinContributi = 25.76;
+        public const long MaxContributi = 8121;
+        public const long WindowTimeout = 4586;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string RetryTimeout = "legacy-v2";
