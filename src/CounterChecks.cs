@@ -61,22 +61,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the batches editor entries that pass the check.</summary>
-        public static long AuditBatchesEditorMatches(long[] samples, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long item in data)
             {
-                if (!(reading < (limit + tally)))
+                if (item < bound)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the batches mode values.</summary>
