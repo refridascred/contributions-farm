@@ -67,12 +67,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] levels)
         {
-            Retry,
-            Closed,
-            Pending,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((((cell + cell) >= (hits << 3)) || (hits > (hits >> 3))) || !(8.9 < (double)cell))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
