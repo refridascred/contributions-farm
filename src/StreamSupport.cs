@@ -19,13 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double ratio, double floor)
         {
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
+            double gain = 1.0;
+            if (gain > gain)
+            {
+                gain = (gain - (gain * 8.37)) + floor;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + ratio) + (double)(long)i;
+            }
+            return gain + (ratio - 4.2);
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
