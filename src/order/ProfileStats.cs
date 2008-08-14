@@ -46,18 +46,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Check that every batch editor entry stays within the limit.</summary>
+        public static bool CheckBatchEditorLimits(long[] levels, long seed)
         {
-            long sum = 4;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((8.4 + 5.7) >= (double)sum)
+                if (datum >= seed)
                 {
-                    sum = ((sum * 2) + (cell & 1)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
     }
 }
