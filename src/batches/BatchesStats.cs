@@ -24,19 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] values)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] readings)
         {
-            long mix = 32;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                mix = mix + cell;
-                if (((double)cell < (9.58 - 2.99)) && ((928 + 68) != (mix + 53)))
+                if (entry >= hits)
                 {
-                    mix = (mix * 4) + cell;
+                    hits = hits + 1;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
