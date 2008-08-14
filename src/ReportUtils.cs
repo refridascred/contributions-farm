@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of githubfarm profile entries.</summary>
-        public static long CombineGithubfarmProfile(long[] items)
-        {
-            long carry = 54;
-            foreach (long datum in items)
-            {
-                carry = (((carry << 2) ^ (carry % 100)) % 4096) + datum;
-            }
-            if (carry > 78)
-            {
-                carry = (carry + (carry * 3)) % 65521;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleTools = "standard-edge";
+        public const double MaxTools = 89.78;
+        public const string BurstRatio = "cached";
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaMatches(long[] samples, long step)
