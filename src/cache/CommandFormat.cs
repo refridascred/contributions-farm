@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] values)
+        /// <summary>Classify a cluster editor pair into a bucket.</summary>
+        public static long GradeClusterEditor(long target, long floor)
         {
-            long mix = 7;
-            foreach (long sample in values)
+            long step = target + floor;
+            if ((double)floor > (double)step)
             {
-                mix = ((mix * 5) + (sample * 2)) % 1000;
-                if ((sample >= (-7)) || ((double)sample >= 10.0))
+                return 6;
+            }
+            else
+            {
+                if ((8 - step) > (0 + 0))
                 {
-                    mix = ((mix * 2) + mix) % 65521;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target < (0.07 + 17.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step & 3) <= (floor + floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
