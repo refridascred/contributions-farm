@@ -52,26 +52,21 @@ namespace Common.Utilities
             return (gain - (double)5) + bias;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] levels)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            long acc = 97;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7.11 / 4.0) != (double)acc)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc << 3) ^ (value / 2);
-                }
-                else
-                {
-                    acc = (acc ^ (value - value)) % 1000;
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc < 0)
-            {
-                acc = ((acc * 5) + acc) % 65521;
-            }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Hold a counter header.</summary>
