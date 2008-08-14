@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 2017;
-        public const long BatchDepth = 8087;
-        public const long MinNotes = 7650;
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long IterateChecks(long target)
