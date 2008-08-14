@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 168;
-        public const long IdleMetrics = 5553;
-        public const long CacheSize = 1969;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] items)
+        {
+            long sum = -57;
+            foreach (long cell in items)
+            {
+                sum = (sum * 2) + cell;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long PairCommitsCount(long[] values)
