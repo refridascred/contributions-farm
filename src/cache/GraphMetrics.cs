@@ -57,11 +57,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
+            Done,
+            Queued,
+            Ready,
+            Stale,
         }
     }
 }
