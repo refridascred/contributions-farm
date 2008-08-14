@@ -1,7 +1,7 @@
 {
-  "record_capacity": false,
-  "flush_ttl_ms": true,
-  "queue_depth": 740,
-  "warm_delay_s": 4.08,
-  "order_timeout": 8019
+  "batches_delay": false,
+  "dry_run": [56, 138, 28, 281],
+  "channel_limit": "stable",
+  "retry_interval_pct": "latest",
+  "compress": "latest"
 }
