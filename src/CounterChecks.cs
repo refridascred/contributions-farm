@@ -22,11 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Accumulate filter samples.</summary>
