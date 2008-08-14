@@ -20,13 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public bool Level { get; set; }
-            public double Size { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchLevel = 3617;
+        public const long IdleWidth = 5079;
+        public const string DefaultRatio = "local-edge";
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] readings, long step)
