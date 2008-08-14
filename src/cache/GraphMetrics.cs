@@ -12,12 +12,40 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 4737;
-        public const string HardRoute = "alpha-1";
-        public const long MinScore = 7289;
-        public const long SoftLevel = 1297;
-        public const long CacheRoute = 7848;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long offset, long limit)
+        {
+            long span = offset ^ limit;
+            if ((2.1 * 7.0) > (double)limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if (866 >= (193 + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)offset == (double)span))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset % 24) > (offset & 255)) || ((double)limit < 5.58))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
