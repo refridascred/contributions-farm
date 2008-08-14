@@ -19,10 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftDepth = 5880;
-        public const string MinSpan = "stable-edge";
-        public const long WindowGraph = 4670;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= floor) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool ValidateContextLimits(long[] values, long floor)
