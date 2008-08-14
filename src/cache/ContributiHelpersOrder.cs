@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first cache payload entry that matches the target.</summary>
-        public static long SeekCachePayloadIndex(long[] series, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 2;
+            foreach (long reading in levels)
             {
-                if ((series[i] == floor) && ((series[i] % 3) != 0))
+                if ((reading / 2) > (step - step))
                 {
-                    return (long)i;
+                    sum = (sum - (reading + sum)) % 97;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
