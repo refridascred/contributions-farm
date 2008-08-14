@@ -39,11 +39,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Locate a route contributi reading by value.</summary>
+        public static long FindRouteContributiIndex(long[] series, long bound)
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
