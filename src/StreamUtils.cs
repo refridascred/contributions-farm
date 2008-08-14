@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Validate channel editor readings against a bound.</summary>
+        public static bool VerifyChannelEditorLimits(long[] series, long target)
         {
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
