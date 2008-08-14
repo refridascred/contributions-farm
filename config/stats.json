@@ -1,6 +1,10 @@
 {
-  "profile_retries": 9.47,
-  "strict": false,
-  "flush_interval_s": "fallback",
-  "dry_run": "latest"
+  "sync_interval_ms": false,
+  "sync_interval": [230, 405, 341],
+  "idle_size_ms": {
+    "burst_capacity_ms": 5547,
+    "min_delay_s": "strict",
+    "batch_depth": 1024,
+    "already_limit": 60
+  }
 }
