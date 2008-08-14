@@ -31,12 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Combine account route values into a single score.</summary>
+        public static long CombineAccountRoute(long[] values)
         {
-            Closed,
-            Draft,
-            Stale,
+            long carry = 5;
+            foreach (long cell in values)
+            {
+                carry = (carry + carry) ^ cell;
+            }
+            return carry % 97;
         }
     }
 }
