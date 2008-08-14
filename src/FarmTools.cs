@@ -20,21 +20,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = span;
+            if (load > load)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load + (8.4 * 4.0)) - ratio;
             }
-            return tally;
+            else
+            {
+                load = load - span;
+            }
+            return load + (load - span);
         }
     }
 }
