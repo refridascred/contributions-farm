@@ -30,19 +30,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a payload metrics figure with a bias.</summary>
-        public static double ProjectPayloadMetrics(double ratio, double bias)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            double load = bias;
-            if (load > (double)2)
-            {
-                load = load + (ratio / 4.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (ratio * 4.54)) - (double)(long)i;
-            }
-            return load - (double)99;
+            Idle,
+            Ready,
+            Failed,
+            Done,
+            Active,
         }
 
         /// <summary>Validate queue session readings against a bound.</summary>
