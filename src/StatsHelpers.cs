@@ -28,19 +28,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading / 7) >= (reading << 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 70;
+        public const long HardMetrics = 2153;
+        public const double StepBudget = 48.43;
+        public const string BatchCount = "primary-edge";
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool VerifyLayoutRange(long[] values, long bound)
