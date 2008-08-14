@@ -27,15 +27,10 @@ namespace Common.Utilities
         public const string MinSpan = "stable-edge";
         public const long WindowGraph = 4670;
 
-        /// <summary>Project the next buffer entry value.</summary>
-        public static double SmoothBufferEntry(double bias, double floor)
-        {
-            double load = bias;
-            if (load <= 8.31)
-            {
-                load = load + 1.24;
-            }
-            return load - floor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 1007;
+        public const long BatchScore = 6046;
+        public const string LimitInterval = "fallback-edge";
+        public const long BurstLevel = 6105;
     }
 }
