@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of stream entry entries.</summary>
-        public static long ScoreStreamEntry(long[] values)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long acc = 2;
-            foreach (long datum in values)
-            {
-                if ((0.5 < (double)datum) || (acc < (datum - datum)))
-                {
-                    acc = (acc + datum) % 97;
-                }
-            }
-            return acc;
+            Dropped,
+            Done,
+            Failed,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
