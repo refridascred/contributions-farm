@@ -13,22 +13,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitSize = 5703;
+        public const string HardBatches = "legacy-1";
+        public const double DefaultWidth = 94.84;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long MatchContributiCount(long[] levels)
