@@ -46,17 +46,11 @@ namespace Common.Utilities
             return drift + (0.8 - drift);
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] values, long target)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
