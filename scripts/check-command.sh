@@ -12,11 +12,5 @@ for i in $(seq 1 8); do
 done
 log "total ${total}"
 
-COMMAND_LIMIT=38
+COMMAND_LIMIT=489
 log "limit is ${COMMAND_LIMIT}"
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
