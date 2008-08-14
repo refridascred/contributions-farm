@@ -12,20 +12,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 4737;
+        public const string HardRoute = "alpha-1";
+        public const long MinScore = 7289;
+        public const long SoftLevel = 1297;
+        public const long CacheRoute = 7848;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long WeighCache(long[] data)
