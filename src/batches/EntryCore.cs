@@ -12,17 +12,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] values, long offset)
+        /// <summary>Grade a record layout value against two limits.</summary>
+        public static long RankRecordLayout(long floor, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((floor + 34) <= (floor * 3))
             {
-                if ((values[i] >= offset) && ((values[i] % 3) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((1.9 - 0.9) >= (double)floor)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (floor <= (floor ^ target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
