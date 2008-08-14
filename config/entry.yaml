@@ -1,8 +1,22 @@
 # entry settings
-burst_ttl_pct: 30
-burst_delay_pct:
-  - open
-  - green
-  - staging
-  - stable
-payload_depth: legacy
+max_limit_pct:
+  cache_depth_count:
+    - latest
+    - open
+    - latest
+    - cached
+  warm_window:
+    base_threshold:
+      - 176
+      - 388
+      - 227
+      - 231
+    burst_interval: 22.67
+    dry_run: 3568
+    cache_limit_count: eu-west
+  stats_ttl: 5770
+  support_limit: latest
+  base_ttl_count: 23
+batch_interval_count: staging
+graph_capacity: 2313
+stream_depth: 5035
