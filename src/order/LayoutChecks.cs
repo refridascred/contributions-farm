@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] levels)
+        /// <summary>Find the first entry record entry that matches the target.</summary>
+        public static long LocateEntryRecordIndex(long[] readings, long origin)
         {
-            long mix = 8;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix << 3) ^ entry;
-                mix = (mix * 2) + mix;
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 0)
-            {
-                mix = ((mix << 2) ^ (mix ^ mix)) % 1000;
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Describe the order phase values.</summary>
