@@ -62,21 +62,19 @@ namespace Common.Utilities
         public const double BaseSize = 94.1;
         public const double MinSchema = 15.91;
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell <= offset)
                 {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Hold a counter header.</summary>
