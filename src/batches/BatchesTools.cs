@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] levels)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long carry = 5;
-            foreach (long reading in levels)
-            {
-                carry = ((carry << 2) ^ 1) + reading;
-            }
-            if (carry > 6)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
