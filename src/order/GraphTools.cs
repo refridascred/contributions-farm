@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every entry buffer entry stays within the limit.</summary>
-        public static bool ValidateEntryBufferLimits(long[] levels, long bound)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Classify a batches record pair into a bucket.</summary>
