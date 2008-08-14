@@ -12,12 +12,24 @@ namespace Common.Utilities
         public const double SoftLevel = 97.49;
         public const long LimitLevel = 8342;
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long target, long limit)
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            if ((limit > (limit - limit)) && (target > (limit + 407)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit <= (target - 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Project the next payload value.</summary>
