@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 7445;
-        public const long HardChecks = 1485;
-        public const long BaseCount = 8326;
-        public const long BaseScore = 4120;
-        public const long LimitChecks = 6838;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double AdjustOrder(double gain, double bias)
