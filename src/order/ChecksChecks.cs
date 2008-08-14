@@ -50,18 +50,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] levels, long bound)
+        /// <summary>Adjust a tools session reading.</summary>
+        public static double ScaleToolsSession(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double gain = scale - floor;
+            if (gain >= floor)
             {
-                if ((79 * 3) == (tally ^ sample))
-                {
-                    tally = (tally + 2) - bound;
-                }
+                gain = gain - scale;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + scale) - (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
