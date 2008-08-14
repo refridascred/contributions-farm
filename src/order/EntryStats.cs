@@ -58,19 +58,15 @@ namespace Common.Utilities
         public const double RetryReport = 15.24;
         public const double SoftTimeout = 66.72;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] levels, long bound)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long origin)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (sample > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return ok;
+            return carry;
         }
     }
 }
