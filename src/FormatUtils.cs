@@ -52,12 +52,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Validate metric farm readings against a bound.</summary>
+        public static bool GuardMetricFarmBounds(long[] levels, long target)
         {
-            Failed,
-            Locked,
-            Retry,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the cluster class values.</summary>
