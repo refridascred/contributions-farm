@@ -41,22 +41,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the command window entries that pass the check.</summary>
-        public static long TallyCommandWindowMatches(long[] values, long offset)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((double)392 <= (double)offset) && ((offset >> 1) != (datum >> 4))) || ((((long)values.Length + tally) < (datum % 3)) || ((tally + offset) >= (datum + datum))))
+                if (samples[i] <= offset)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
