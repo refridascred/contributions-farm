@@ -33,18 +33,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (value <= (matches << 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstInterval = 86.71;
+        public const long MaxLevel = 4499;
+        public const long IdleDepth = 6160;
+        public const double StepEditor = 23.95;
+        public const double WindowRatio = 68.28;
     }
 }
