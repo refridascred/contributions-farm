@@ -1,8 +1,18 @@
 {
-  "idle_limit_pct": true,
-  "sync_interval_pct": 92.62,
-  "window_window": "staging",
-  "checks_timeout": 3,
-  "burst_retries": "open",
-  "hard_depth": false
+  "cache_interval": {
+    "payload_threshold": {
+      "hard_capacity_pct": 7145,
+      "context_interval": 100,
+      "cache_ratio": true,
+      "poll_depth": "edge",
+      "audit": 100,
+      "hard_delay": 34.92
+    },
+    "entry_depth": ["latest", "fallback"],
+    "idle_capacity_count": "strict"
+  },
+  "audit": "open",
+  "hard_depth": [229, 30, 86, 17],
+  "enabled": 87.92,
+  "window_window": 100
 }
