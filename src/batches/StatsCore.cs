@@ -40,29 +40,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long seed)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((acc >> 1) == (seed << 1))
-                {
-                    acc = (acc - acc) % 4096;
-                }
-                else
-                {
-                    acc = acc ^ (21 << 1);
-                }
-                if ((6.2 / 2.0) > (double)(long)i)
-                {
-                    acc = (acc ^ (acc * 5)) % 65521;
-                    acc = acc - acc;
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            public bool Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
