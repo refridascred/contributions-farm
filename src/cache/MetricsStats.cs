@@ -30,15 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double gain, double offset)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] levels)
         {
-            double scale = (double)8 + (offset * 3.36);
-            if (scale > (offset / 7.0))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale - gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale + 1.8;
+            return hits;
         }
 
         /// <summary>Adjust a payload reading.</summary>
