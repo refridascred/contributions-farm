@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] items)
+        /// <summary>Validate batches stream readings against a bound.</summary>
+        public static bool ValidateBatchesStreamRange(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (((-627) + 694) >= (datum * 4))
+                if (datum >= origin)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
