@@ -32,31 +32,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long limit, long step)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] levels, long offset)
         {
-            if (((210 / 5) <= (limit % 24)) && ((18 - step) < (limit & 255)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit <= (step << 2))
+                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + step) > (step - step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a profile cluster reading by value.</summary>
