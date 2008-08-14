@@ -12,24 +12,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Classify a batch metric pair into a bucket.</summary>
-        public static long BucketBatchMetric(long origin, long step)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            if (((step >> 2) < step) && ((8.52 + 2.63) != (double)origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((step ^ origin) <= (step + 2)) && ((double)379 != (double)origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Paused,
+            Retry,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a cluster stats.</summary>
