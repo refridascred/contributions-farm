@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)target == (8.94 / 6.0))
-                {
-                    anchor = (anchor * 5) + (anchor + 6);
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public double Token { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a batch metric pair into a bucket.</summary>
