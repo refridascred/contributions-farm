@@ -37,18 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] values)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((762 - (-276)) >= (tally ^ reading))
+                if (series[i] <= bound)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Adjust a counter reading.</summary>
