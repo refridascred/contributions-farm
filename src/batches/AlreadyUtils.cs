@@ -52,39 +52,14 @@ namespace Common.Utilities
             return bias3 + 2.1;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long target, long floor)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long edge = target - floor;
-            if ((floor / 5) > edge)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((2.0 * 3.13) != (double)edge)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + edge) != (floor - floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((floor - edge) != (floor + (-93))))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Synced,
+            Retry,
+            Failed,
+            Idle,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
