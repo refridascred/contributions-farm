@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] values)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] readings, long origin)
         {
-            long mix = 15;
-            foreach (long entry in values)
+            long result = 74;
+            foreach (long datum in readings)
             {
-                if ((299 - mix) >= (mix + (long)values.Length))
+                if ((datum - result) <= (origin >> 2))
                 {
-                    mix = (mix + entry) % 1000;
-                }
-                if ((mix - entry) < (entry % 10))
-                {
-                    break;
+                    result = (result + 156) % 1000;
                 }
             }
-            if (mix > (-8))
+            if (result > 996)
             {
-                mix = mix - 90;
+                result = (result - (5 % 8)) % 97;
             }
-            return mix % 4096;
+            return result;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
