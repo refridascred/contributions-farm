@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySize = 4943;
-        public const double BaseSchema = 54.25;
-        public const double RetryScore = 43.9;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Draft,
+            Idle,
+            Active,
+            Pending,
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long FoldContext(long[] items, long bound)
