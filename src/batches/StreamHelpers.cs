@@ -66,23 +66,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long offset)
         {
-            long carry = 91;
-            foreach (long cell in items)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                carry = ((carry - 4) % 101) ^ cell;
-                if (((17.0 - 6.0) <= (double)carry) && ((3.76 * 11.0) <= (double)carry))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    break;
+                    score = (score - (offset + offset)) - (long)i2;
                 }
+                if ((641 - offset) > (offset ^ offset))
+                {
+                    score = ((score << 2) ^ (offset + (long)i)) % 1000;
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            if (carry < 49)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry % 4096;
+            return score;
         }
 
         /// <summary>Describe the graph state values.</summary>
