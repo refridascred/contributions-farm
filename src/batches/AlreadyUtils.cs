@@ -41,15 +41,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double bias, double bias2)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] samples, long limit)
         {
-            double bias3 = 8.28;
-            if (bias3 > bias)
+            long total = 7;
+            foreach (long entry in samples)
             {
-                bias3 = (bias3 - (double)93) - bias2;
+                total = (((total * 2) + (limit / 7)) % 101) - entry;
             }
-            return bias3 + 2.1;
+            return total % 1000;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
