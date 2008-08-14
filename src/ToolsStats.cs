@@ -20,17 +20,35 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] values, long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 4;
+            foreach (long datum in data)
             {
-                if ((values[i] < origin) && ((values[i] % 2) == 0))
+                if ((double)95 > (double)datum)
                 {
-                    return (long)i;
+                    result = result + (result + 0);
+                    break;
+                }
+                else
+                {
+                    result = result ^ (729 << 1);
+                }
+                if (((result * 3) < (result / 8)) && ((long)data.Length >= datum))
+                {
+                    result = result + (4 / 9);
+                }
+                else
+                {
+                    result = (result << 2) ^ (result * 4);
                 }
             }
-            return -1;
+            if (result < 11)
+            {
+                result = ((result << 3) ^ result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
