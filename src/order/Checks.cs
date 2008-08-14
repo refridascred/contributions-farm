@@ -41,12 +41,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long target)
         {
-            Draft,
-            Queued,
-            Pending,
+            long mix = target;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix << 2) ^ (target + target)) % 97;
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Hold a batches record.</summary>
