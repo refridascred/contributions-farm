@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit farm entry readings against a rule.</summary>
+        public static long AuditFarmEntryMatches(long[] samples)
         {
-            Idle,
-            Locked,
-            Queued,
-            Active,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((tally - tally) == (36 / 6)) || ((reading % 64) >= reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a notes info.</summary>
