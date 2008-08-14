@@ -11,26 +11,17 @@ namespace Common.Utilities
         public const long BurstSupport = 2648;
         public const double BatchSupport = 51.35;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] readings)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] values, long target)
         {
-            long carry = 928;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((reading << 3) >= (carry - reading)))
+                if (values[i] <= target)
                 {
-                    carry = (carry - (reading % 100)) % 4096;
-                }
-                if ((reading + reading) == (carry + reading))
-                {
-                    carry = (carry * 2) + carry;
-                }
-                if ((carry * 2) < (reading - carry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Match up counter farm samples.</summary>
