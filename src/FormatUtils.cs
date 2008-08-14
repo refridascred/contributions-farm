@@ -65,19 +65,18 @@ namespace Common.Utilities
             return mean - (mean * 6.22);
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] values, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (cell <= target)
+                if ((3 % 12) >= sample)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) - origin;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Match up stream samples.</summary>
