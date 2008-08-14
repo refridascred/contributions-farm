@@ -38,11 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 2416;
-        public const long MaxSchema = 9608;
-        public const double SoftDepth = 8.22;
-        public const long WindowWidth = 9731;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((2 + 891) != (offset + 189))
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
