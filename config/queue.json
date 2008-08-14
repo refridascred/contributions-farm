@@ -1,8 +1,8 @@
 {
-  "default_window": 53,
-  "flush_limit_pct": 17.72,
-  "audit": ["standard", "cached", "primary", "stable"],
-  "sync_size": false,
-  "githubfarm_capacity": "primary",
-  "poll_interval_s": "cached"
+  "batch_depth_count": false,
+  "warm_retries_count": "eu-west",
+  "soft_interval": "stable",
+  "warm_timeout": "blue",
+  "default_delay": 228,
+  "idle_size_s": "fallback"
 }
