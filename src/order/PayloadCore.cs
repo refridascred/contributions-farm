@@ -14,11 +14,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxCount = 9.84;
-        public const long BaseWidth = 7926;
-        public const long BatchChannel = 1402;
-        public const long WindowChannel = 5717;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long CacheTimeout = 668;
