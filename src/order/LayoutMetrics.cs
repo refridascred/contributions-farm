@@ -25,19 +25,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] data, long target)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
