@@ -33,14 +33,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetrySpan = 9905;
+        public const long RetryFormat = 3012;
+        public const double StepFormat = 66.84;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long DeriveLayout(long target)
