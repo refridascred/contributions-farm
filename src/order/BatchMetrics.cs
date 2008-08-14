@@ -38,19 +38,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate cluster stats readings against a bound.</summary>
-        public static bool GuardClusterStatsLimits(long[] series, long step)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Paused,
+            Stale,
+            Closed,
+            Active,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
