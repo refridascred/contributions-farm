@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double weight, double span)
         {
-            Locked,
-            Draft,
-            Synced,
+            double load = (double)(-94) / 6.0;
+            return (load + (span / 2.0)) + weight;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
