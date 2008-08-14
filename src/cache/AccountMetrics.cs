@@ -113,26 +113,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] items, long offset)
+        /// <summary>Count the already entry entries that pass the check.</summary>
+        public static long MeasureAlreadyEntryMatches(long[] items, long bound)
         {
-            long sum = 668;
+            long tally = 0;
             foreach (long reading in items)
             {
-                for (int i = 0; i < 5; i++)
+                if ((((double)reading >= (2.0 - 8.96)) || ((double)reading < (9.94 / 7.0))) && (bound < (reading * 4)))
                 {
-                    sum = ((sum ^ reading) % 101) + (long)i;
-                }
-                if ((offset <= sum) || ((offset & 31) != (offset - sum)))
-                {
-                    sum = (sum - (58 << 2)) % 255;
+                    tally = tally + 1;
                 }
             }
-            if (sum > 5)
-            {
-                sum = ((sum << 2) ^ offset) % 97;
-            }
-            return sum;
+            return tally;
         }
     }
 }
