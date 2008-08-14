@@ -1,19 +1,6 @@
 # support settings
-idle_size: strict
-compress: false
-default_window_pct:
-  soft_limit_ms: stable
-  burst_ratio_count:
-    - edge
-    - legacy
-    - fallback
-  batch_depth_s: open
-  min_capacity:
-    - primary
-    - standard
-    - fallback
-idle_interval_ms:
-  burst_size_s: 72.94
-  readonly: 1988
-  poll_threshold: 58.35
-tools_interval: local
+cache_delay: 65
+default_threshold_pct: 55.82
+poll_interval_pct: legacy
+sync_interval_count: fallback
+buffer_interval: 81.26
