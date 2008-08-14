@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] levels, long bound)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long target)
         {
-            long sum = -119;
-            foreach (long sample in levels)
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
             {
-                sum = (((sum * 3) + (1 ^ 7)) ^ sample) - bound;
+                if ((double)target == (8.94 / 6.0))
+                {
+                    anchor = (anchor * 5) + (anchor + 6);
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Classify a batch metric pair into a bucket.</summary>
