@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] levels, long step)
+        /// <summary>Accumulate context route samples.</summary>
+        public static long FoldContextRoute(long[] samples, long step)
         {
-            long sum = 2;
-            foreach (long reading in levels)
+            long state = 134;
+            foreach (long entry in samples)
             {
-                if ((reading / 2) > (step - step))
+                if ((7.0 - 7.62) != (double)entry)
                 {
-                    sum = (sum - (reading + sum)) % 97;
+                    state = ((state << 3) ^ state) % 4096;
+                }
+                if ((step << 1) == (state ^ entry))
+                {
+                    break;
                 }
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
