@@ -48,20 +48,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] series, long floor)
-        {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchInterval = "local-v2";
+        public const string MaxSize = "stable";
+        public const long DefaultNotes = 7935;
 
         /// <summary>Adjust a already reading.</summary>
         public static double ProjectAlready(double gain, double offset)
