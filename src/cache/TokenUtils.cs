@@ -23,11 +23,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            Locked,
+            Queued,
+            Pending,
+            Closed,
+            Stale,
         }
 
         /// <summary>Hold a graph header.</summary>
