@@ -49,19 +49,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (!((hits - floor) != (datum + 881)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 1889;
+        public const long BatchDepth = 3286;
+        public const double BasePayload = 47.91;
 
         /// <summary>Count the support window entries that pass the check.</summary>
         public static long MeasureSupportWindowMatches(long[] values)
