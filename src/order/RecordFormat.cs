@@ -37,12 +37,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] series, long target)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] series, long seed)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] > target)
+                if ((series[i] >= seed) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
