@@ -20,13 +20,11 @@ namespace Common.Utilities
             return rate + (rate / 6.0);
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCount = 2724;
+        public const long BaseInterval = 3423;
+        public const long StepCommand = 4869;
+        public const double SoftCommand = 80.14;
 
         /// <summary>Blend two order measurements.</summary>
         public static double ScaleOrder(double weight, double offset)
