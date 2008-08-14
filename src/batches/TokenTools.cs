@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Iterate the graph batches series from a seed.</summary>
+        public static long StepGraphBatches(long step)
         {
-            Ready,
-            Locked,
-            Paused,
+            long mark = step;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = (mark + (step >> 5)) % 1000;
+                if (((double)mark < 8.84) || (2.4 >= (double)mark))
+                {
+                    continue;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
