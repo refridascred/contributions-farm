@@ -36,31 +36,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a account cache pair into a bucket.</summary>
-        public static long SortAccountCache(long seed, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] data)
         {
-            if (((double)seed <= (2.3 * 2.79)) && ((double)floor < (5.6 / 6.0)))
+            long acc = 2;
+            foreach (long entry in data)
             {
-                return 1;
+                acc = ((acc << 3) ^ (entry - acc)) % 255;
             }
-            else
-            {
-                if (!((double)seed <= 4.52))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (8.79 <= (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
