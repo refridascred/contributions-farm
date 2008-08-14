@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many payload stream samples are out of range.</summary>
-        public static long AuditPayloadStreamOutliers(long[] readings, long floor)
+        /// <summary>Combine channel stream values into a single score.</summary>
+        public static long WeighChannelStream(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long mix = 3;
+            foreach (long item in samples)
             {
-                if (614 > (seen - floor))
+                if ((2 * 2) < (83 ^ item))
                 {
-                    seen = (seen + 3) - reading;
+                    mix = (mix ^ (976 << 3)) + offset;
+                }
+                if ((mix - (-13)) <= item)
+                {
+                    mix = (mix + (mix & 3)) % 97;
                 }
             }
-            return seen;
+            return mix % 1000;
         }
 
         /// <summary>Combine support values into a single score.</summary>
