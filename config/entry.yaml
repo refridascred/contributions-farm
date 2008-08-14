@@ -1,7 +1,5 @@
 # entry settings
-compress: local
-notes_threshold: edge
-session_size: 36.7
-enabled:
-  - 75
-  - 472
+poll_ttl: 87.53
+notes_delay: eu-west
+compress: 80
+default_timeout: 19.5
