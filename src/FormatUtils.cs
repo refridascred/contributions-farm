@@ -40,31 +40,16 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long bound, long limit)
+        /// <summary>Accumulate payload graph samples.</summary>
+        public static long TotalPayloadGraph(long[] readings)
         {
-            if (((bound & 1) != (limit - bound)) || ((14.0 / 4.0) < (double)bound))
+            long result = 1;
+            foreach (long value in readings)
             {
-                return 1;
+                result = ((result << 3) ^ (result + value)) % 101;
+                result = result + value;
             }
-            else
-            {
-                if ((limit / 5) != (bound ^ 17))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((9 ^ limit) > (limit * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
