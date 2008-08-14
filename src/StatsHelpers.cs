@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count the farm editor entries that pass the check.</summary>
+        public static long AuditFarmEditorGaps(long[] data, long target)
         {
-            public double Rank { get; set; }
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((7 + target) <= (target + 706))
+                {
+                    matches = (matches + 2) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
