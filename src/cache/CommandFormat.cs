@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long bound)
+        /// <summary>Grade a metric window value against two limits.</summary>
+        public static long GradeMetricWindow(long origin, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
+            if (((limit - limit) > (origin + 4)) || (limit < (limit >> 3)))
             {
-                result = ((result * 2) + (long)i) % 101;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((double)origin != (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit % 7) >= (limit - limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
