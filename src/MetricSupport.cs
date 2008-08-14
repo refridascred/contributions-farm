@@ -33,18 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] values)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double scale = (offset + 17.0) / 6.0;
+            if (scale > ratio)
             {
-                if ((tally - tally) >= (tally << 2))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
+                scale = scale + ratio;
             }
-            return tally;
+            else
+            {
+                scale = scale - (6.0 - scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (8.8 + offset)) + (double)(long)i;
+            }
+            return scale + (ratio / 3.0);
         }
     }
 }
