@@ -32,12 +32,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Scale a token queue figure with a bias.</summary>
+        public static double BlendTokenQueue(double scale, double bias)
         {
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
+            double scale2 = (double)(87 - 55);
+            if (scale2 >= (scale + bias))
+            {
+                scale2 = scale2 + (double)492;
+            }
+            else
+            {
+                scale2 = scale2 + (double)9;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 - (18.0 / 6.0)) - (double)(long)i;
+            }
+            return scale2 + (scale - 16.0);
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
