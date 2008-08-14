@@ -28,15 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] data, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] data)
         {
-            long anchor = 995;
+            long seen = 0;
             foreach (long reading in data)
             {
-                anchor = (((anchor ^ (189 - 32)) % 97) + reading) + floor;
+                if (5 <= (reading << 3))
+                {
+                    seen = seen + 2;
+                }
             }
-            return anchor % 4096;
+            return seen;
         }
     }
 }
