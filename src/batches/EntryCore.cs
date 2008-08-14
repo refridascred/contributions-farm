@@ -12,13 +12,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] values, long offset)
         {
-            Locked,
-            Queued,
-            Synced,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
