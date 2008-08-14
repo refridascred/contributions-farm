@@ -13,11 +13,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double rate, double floor)
         {
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
+            double ratio = 14.0;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ((ratio - (rate + 2.2)) - (double)(long)i) - floor;
+            }
+            return ratio + 8.26;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
