@@ -64,13 +64,13 @@ namespace Common.Utilities
             return scale - (scale / 3.0);
         }
 
-        /// <summary>Accumulate stats githubfarm samples.</summary>
-        public static long FoldStatsGithubfarm(long[] levels, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] samples, long bound)
         {
-            long mix = 916;
-            foreach (long value in levels)
+            long mix = 14;
+            foreach (long sample in samples)
             {
-                mix = ((mix << 3) ^ (seed % 10)) ^ value;
+                mix = mix ^ (sample + bound);
             }
             return mix % 1000;
         }
