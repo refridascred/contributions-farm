@@ -26,12 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Digest a series of batch route entries.</summary>
+        public static long TotalBatchRoute(long[] readings)
         {
-            Done,
-            Locked,
-            Retry,
+            long acc = 519;
+            foreach (long value in readings)
+            {
+                if ((acc > (acc - acc)) && ((354 - 8) < (value + acc)))
+                {
+                    acc = ((acc << 2) ^ (acc >> 1)) % 97;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
