@@ -1,17 +1,25 @@
 # support settings
+default_delay_pct: open
+strict: false
+metrics_window: 30.79
 verbose:
-  base_timeout: 30
-  retry_capacity_count: green
-  base_window: 44
-  base_window_ms: 92
-  soft_ttl: eu-west
-  verbose: true
-idle_delay_ms: local
-min_capacity_s:
-  - 496
-  - 207
-  - 84
-  - 277
-compress:
-  - edge
-  - eu-west
+  persist: 30
+  cache_size_count: strict
+  default_size_ms: false
+max_ttl:
+  audit: 52
+  route_ttl:
+    enabled: strict
+    batch_limit_pct: green
+    poll_capacity_s:
+      - 495
+      - 251
+      - 19
+      - 44
+    strict: stable
+    verbose: 7720
+    burst_size: local
+  default_capacity: green
+  max_retries_count:
+    - fallback
+    - green
