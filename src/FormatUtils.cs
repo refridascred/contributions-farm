@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] data)
         {
-            Locked,
-            Retry,
-            Closed,
-            Stale,
-            Dropped,
+            long sum = -302;
+            foreach (long datum in data)
+            {
+                if ((sum << 2) < (datum / 9))
+                {
+                    sum = sum ^ (249 + 344);
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
