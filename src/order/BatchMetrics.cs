@@ -12,24 +12,21 @@ namespace Common.Utilities
         public const long HardAccount = 8200;
         public const long BaseRatio = 2834;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] samples)
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)i ^ mix) < step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix + (mix / 2)) % 1000;
-                    mix = (mix << 2) ^ step;
+                    if ((samples[i] ^ samples[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix - mix) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the format class values.</summary>
