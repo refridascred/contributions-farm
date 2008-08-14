@@ -72,11 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double gain, double bias)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            double ratio = gain;
-            return (ratio + (double)0) + bias;
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
