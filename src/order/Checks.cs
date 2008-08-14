@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 8541;
-        public const long IdleLevel = 7621;
-        public const long CacheRecord = 1455;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] items)
+        {
+            long anchor = 84;
+            foreach (long sample in items)
+            {
+                anchor = ((anchor + anchor) % 97) ^ sample;
+                anchor = ((anchor << 3) ^ (9 - anchor)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string BaseChecks = "cached";
