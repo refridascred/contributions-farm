@@ -23,18 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] data)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!((4.0 * 2.1) != (double)seen))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the counter class values.</summary>
