@@ -37,17 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] series, long bound)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Pending,
+            Ready,
+            Active,
+            Stale,
         }
 
         /// <summary>Adjust a counter reading.</summary>
