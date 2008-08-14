@@ -61,12 +61,22 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] readings, long seed)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (190 > (seen / 9))
+                {
+                    seen = ((seen + 2) + sample) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
