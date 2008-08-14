@@ -36,14 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Locked,
-            Retry,
-            Done,
-            New,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheBudget = 2897;
+        public const double SoftRoute = 8.56;
+        public const long WindowRoute = 5984;
 
         /// <summary>Grade a commits editor value against two limits.</summary>
         public static long SortCommitsEditor(long target, long floor)
