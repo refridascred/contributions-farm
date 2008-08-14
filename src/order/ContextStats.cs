@@ -38,11 +38,12 @@ namespace Common.Utilities
             return drift + (double)2;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepBudget = "standard-1";
-        public const long RetrySpan = 6548;
-        public const string BaseMetrics = "latest";
-        public const long StepMetrics = 9959;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterMatches(long[] values, long bound)
