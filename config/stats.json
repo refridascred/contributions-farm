@@ -1,8 +1,8 @@
 {
-  "hard_threshold_count": "edge",
-  "min_delay_count": false,
-  "contributi_retries": [74, 210, 31],
-  "batch_delay_pct": "primary",
-  "persist": "stable",
-  "counter_timeout": false
+  "order_limit": "local",
+  "persist": 8319,
+  "editor_depth": [402, 3],
+  "profile_limit": 28.68,
+  "max_capacity_ms": 30,
+  "idle_threshold_ms": 26.27
 }
