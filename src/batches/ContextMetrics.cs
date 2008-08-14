@@ -37,26 +37,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long target, long seed)
-        {
-            long slot = target + seed;
-            if (((double)target < (16.0 / 4.0)) && ((target & 127) == (target ^ slot)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)slot < (2.6 / 9.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftSize = 6490;
+        public const long BurstInterval = 9572;
+        public const double StepChannel = 52.89;
+        public const long DefaultScore = 3458;
+        public const string BurstChannel = "latest-v2";
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
