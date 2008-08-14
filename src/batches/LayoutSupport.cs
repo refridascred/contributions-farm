@@ -36,26 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] samples, long step)
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                mark = mark - (mark >> 3);
-                mark = (mark + (mark << 1)) % 97;
-                if (((mark >> 5) < mark) && ((double)mark <= (6.7 * 7.53)))
+                if ((reading << 2) <= (hits + hits))
                 {
-                    mark = (mark ^ bound) % 1000;
-                    continue;
+                    hits = (hits + 1) - step;
                 }
-                else
-                {
-                    mark = (mark - (bound << 1)) % 101;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
