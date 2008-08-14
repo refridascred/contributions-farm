@@ -20,18 +20,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] items)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long total = 463;
+            foreach (long sample in readings)
             {
-                if ((tally % 2) >= 77)
+                if (((sample >> 2) != (total << 3)) || ((total + total) > (total - floor)))
                 {
-                    tally = (tally + 1) ^ cell;
+                    total = (total ^ (sample - total)) % 65521;
+                }
+                else
+                {
+                    total = (total << 2) ^ (sample & 255);
+                }
+                if ((266 << 2) <= (total >> 5))
+                {
+                    total = total ^ (2 + floor);
+                }
+                else
+                {
+                    total = total + (sample ^ floor);
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
