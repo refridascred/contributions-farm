@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const string MinAlready = "open";
         public const string IdleAlready = "alpha";
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long step)
         {
-            public bool Score { get; set; }
-            public bool Label { get; set; }
-            public double Count { get; set; }
-            public long Size { get; set; }
+            long result = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((step - result) == (6 << 3))
+                {
+                    result = result - (result + step);
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
