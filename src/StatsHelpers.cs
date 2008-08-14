@@ -50,11 +50,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public long Offset { get; set; }
-            public double Label { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
