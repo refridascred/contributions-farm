@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank account session input into a small class.</summary>
-        public static long SortAccountSession(long origin, long floor)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long span = origin + floor;
-            if (span <= origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((span + span) <= (span + origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((span * 3) >= floor) && (origin <= (origin % 16)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((945 + span) > floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
