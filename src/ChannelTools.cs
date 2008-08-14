@@ -32,15 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two contributi context measurements.</summary>
-        public static double ProjectContributiContext(double weight, double bias)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] levels, long origin)
         {
-            double drift = weight;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift + bias) + (double)(long)i;
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return drift - weight;
+            return -1;
         }
 
         /// <summary>Digest a series of session account entries.</summary>
