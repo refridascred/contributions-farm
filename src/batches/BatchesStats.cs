@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long origin)
         {
-            long state = 89;
-            foreach (long value in data)
+            long state = origin;
+            for (int i = 0; i < 10; i++)
             {
-                state = ((state * 4) + 3) % 101;
-                state = state - (value + value);
+                if ((1.0 / 2.0) != (double)state)
+                {
+                    state = (state << 2) ^ 594;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (5 / 5)) % 65521;
+                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            if (state < 90)
-            {
-                state = state - state;
-            }
-            return state % 65521;
+            return state;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
