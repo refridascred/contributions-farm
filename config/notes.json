@@ -1,13 +1,12 @@
 {
-  "hard_depth_ms": "local",
-  "soft_ratio": "latest",
-  "strict": {
-    "idle_threshold_count": ["staging", "fallback", "blue"],
-    "warm_capacity_pct": "legacy",
-    "soft_window_s": 1903,
-    "burst_ttl_pct": "eu-west",
-    "verbose": false,
-    "default_ratio_s": 500
+  "persist": {
+    "hard_ttl_ms": 62.94,
+    "default_depth_s": true,
+    "base_window_pct": ["standard", "latest"],
+    "soft_timeout_count": 49,
+    "verbose": 100,
+    "persist": "primary"
   },
-  "default_size_count": 16.44
+  "retry_ratio_pct": 41,
+  "context_limit": "standard"
 }
