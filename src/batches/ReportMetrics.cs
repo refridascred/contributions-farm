@@ -29,18 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] data)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count & 3) > item)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            Done,
+            Pending,
+            Active,
         }
     }
 }
