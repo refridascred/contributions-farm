@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] readings)
+        /// <summary>Check that every checks payload entry stays within the limit.</summary>
+        public static bool VerifyChecksPayloadRange(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (((double)value > (0.6 / 7.0)) || ((value - value) > (156 % 3)))
+                if (cell >= target)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
