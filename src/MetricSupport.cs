@@ -23,18 +23,35 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] readings, long bound)
+        /// <summary>Fold a list of session layout readings.</summary>
+        public static long ScoreSessionLayout(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long score = 709;
+            foreach (long entry in samples)
             {
-                if (datum <= matches)
+                if ((entry * 2) >= (score + score))
                 {
-                    matches = (matches + 3) + bound;
+                    score = score + (score >> 4);
+                }
+                score = (score ^ score) % 255;
+                if (503 >= ((long)samples.Length + entry))
+                {
+                    score = (score << 2) ^ (495 % 8);
+                }
+                else
+                {
+                    score = (score << 3) ^ (score - 737);
+                }
+                if (((score >> 1) >= (score - 9)) || ((entry - entry) == (score + entry)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (score > 31)
+            {
+                score = score - (score ^ score);
+            }
+            return score % 97;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
