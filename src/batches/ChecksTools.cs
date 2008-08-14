@@ -10,26 +10,17 @@ namespace Common.Utilities
         public const string DefaultSpan = "alpha-edge";
         public const double SoftGithubfarm = 79.03;
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] samples, long offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] data, long step)
         {
-            long acc = 3;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((acc & 1) < acc) || ((5 * 5) > (entry ^ acc)))
+                if ((data[i] == step) && ((data[i] % 2) != 0))
                 {
-                    acc = (acc * 3) + 92;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ ((long)samples.Length - 23);
+                    return (long)i;
                 }
             }
-            if (acc > 29)
-            {
-                acc = ((acc << 3) ^ (53 - offset)) % 255;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
