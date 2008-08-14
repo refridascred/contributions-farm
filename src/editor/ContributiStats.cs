@@ -45,24 +45,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank profile account input into a small class.</summary>
-        public static long BucketProfileAccount(long origin, long bound)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            if ((double)bound < (3.52 * 0.7))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(bound < (origin << 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
