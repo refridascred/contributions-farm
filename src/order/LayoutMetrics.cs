@@ -32,27 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch stream entries.</summary>
-        public static long FoldBatchStream(long[] data, long bound)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] readings, long step)
         {
-            long total = 8;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (((total + entry) != (entry ^ total)) && (entry >= (entry / 4)))
+                if (value <= step)
                 {
-                    total = (total - entry) % 1000;
-                    total = ((total << 3) ^ (entry * 4)) % 97;
-                }
-                if (!((0.7 / 6.0) > (double)bound))
-                {
-                    total = ((total << 3) ^ (total - entry)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            if (total > (-390))
-            {
-                total = total + (total + bound);
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
