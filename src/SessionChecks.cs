@@ -33,21 +33,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up profile already samples.</summary>
-        public static long PairProfileAlreadyCount(long[] series)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 51;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry >> 4) != (8 >> 3))
                 {
-                    if ((series[i] + series[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc << 3) ^ acc) % 1000;
+                }
+                if (acc >= (entry ^ entry))
+                {
+                    break;
                 }
             }
-            return count;
+            if (acc < (-59))
+            {
+                acc = (acc - (acc ^ target)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
