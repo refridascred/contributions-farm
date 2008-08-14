@@ -31,18 +31,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] readings, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (!((matches << 2) > (seed / 3)))
+                if (reading >= offset)
                 {
-                    matches = (matches + 1) + item;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the counter class values.</summary>
