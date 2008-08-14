@@ -37,23 +37,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a token queue figure with a bias.</summary>
-        public static double BlendTokenQueue(double scale, double bias)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] readings, long step)
         {
-            double scale2 = (double)(87 - 55);
-            if (scale2 >= (scale + bias))
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = scale2 + (double)492;
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (double)9;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 - (18.0 / 6.0)) - (double)(long)i;
-            }
-            return scale2 + (scale - 16.0);
+            return -1;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
