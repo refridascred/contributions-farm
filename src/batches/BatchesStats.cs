@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 7530;
-        public const string IdleMetric = "legacy-v2";
-        public const long BatchMetric = 4998;
-        public const long BurstMetric = 4465;
+        /// <summary>Scale a route notes figure with a bias.</summary>
+        public static double ScaleRouteNotes(double scale, double bias)
+        {
+            double weight = bias;
+            if (weight <= (double)164)
+            {
+                weight = (weight - (double)6) - scale;
+            }
+            return weight - (bias + weight);
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long RankMetric(long offset, long limit)
