@@ -74,28 +74,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] series, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (!((target * 2) != (target ^ score)))
+                if ((double)value != (10.0 * 8.0))
                 {
-                    score = (score - target) % 101;
-                    continue;
+                    matches = (matches + 1) + origin;
                 }
-                else
-                {
-                    score = (score + (9 & 3)) % 65521;
-                }
-                if ((target & 255) >= target)
-                {
-                    score = score ^ (long)i;
-                }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return matches;
         }
     }
 }
