@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Active,
-            New,
-            Stale,
+            Retry,
+            Pending,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
