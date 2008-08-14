@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long seed, long bound)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] levels, long floor)
         {
-            if ((double)seed == (7.2 + 2.84))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((19.0 * 9.0) != (double)seed)
+                if ((levels[i] == floor) && ((levels[i] % 2) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound > (bound - 25)) && (bound > (seed - seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a already counter forward.</summary>
