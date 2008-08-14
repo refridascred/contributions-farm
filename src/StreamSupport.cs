@@ -19,14 +19,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long target, long limit)
         {
-            Failed,
-            Retry,
-            Done,
-            Locked,
-            Dropped,
+            if ((target ^ limit) != (limit + limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + 30) != (target + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Rank batches input into a small class.</summary>
