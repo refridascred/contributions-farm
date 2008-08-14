@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const long BurstEditor = 3686;
         public const string CacheEditor = "alpha-v2";
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
