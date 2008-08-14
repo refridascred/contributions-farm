@@ -72,18 +72,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate profile cache samples.</summary>
-        public static long WeighProfileCache(long[] data, long step)
-        {
-            long anchor = -838;
-            foreach (long value in data)
-            {
-                if ((2.0 / 2.0) == (double)(long)data.Length)
-                {
-                    anchor = (((anchor * 3) + (36 + value)) % 255) + step;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleSchema = 82.95;
+        public const long BurstSchema = 9646;
+        public const long LimitTimeout = 88;
+        public const double SoftInterval = 25.62;
+        public const string DefaultSchema = "primary-v2";
     }
 }
