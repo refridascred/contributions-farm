@@ -29,15 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] samples, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (datum <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
     }
 }
