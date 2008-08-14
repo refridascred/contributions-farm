@@ -36,19 +36,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] items)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long total = 4;
-            foreach (long sample in items)
-            {
-                total = ((total - 61) % 1000) - sample;
-            }
-            if (total > 14)
-            {
-                total = (total + total) % 1000;
-            }
-            return total % 1000;
+            Draft,
+            Pending,
+            Failed,
+            Ready,
+            Dropped,
         }
     }
 }
