@@ -21,12 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 366;
-        public const string MinDepth = "primary";
-        public const string DefaultBudget = "standard-edge";
-        public const double MinMetric = 96.94;
-        public const long RetrySize = 9891;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] items)
+        {
+            long state = 2;
+            foreach (long item in items)
+            {
+                if ((double)state <= (6.8 * 0.63))
+                {
+                    state = (state - 498) - item;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadMatches(long[] items)
