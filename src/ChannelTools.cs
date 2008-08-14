@@ -14,23 +14,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] items, long bound)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long mark = 97;
-            foreach (long item in items)
-            {
-                mark = mark ^ (bound * 3);
-                if (((double)bound == (9.04 / 9.0)) && ((double)item < (7.99 - 1.0)))
-                {
-                    break;
-                }
-            }
-            if (mark > (-32))
-            {
-                mark = ((mark * 3) + (mark + bound)) % 255;
-            }
-            return mark;
+            Locked,
+            Dropped,
+            Failed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Digest a series of session account entries.</summary>
