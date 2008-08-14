@@ -48,15 +48,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] items)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((cell > (cell ^ cell)) && ((7 + matches) == (matches ^ 5)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
