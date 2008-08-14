@@ -57,12 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] samples)
         {
-            Dropped,
-            Active,
-            Synced,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((0.87 - 12.0) <= (double)item)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a format reading.</summary>
