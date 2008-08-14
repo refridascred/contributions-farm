@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the graph batches series from a seed.</summary>
-        public static long StepGraphBatches(long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
+            long total = 1;
+            foreach (long cell in levels)
             {
-                mark = (mark + (step >> 5)) % 1000;
-                if (((double)mark < 8.84) || (2.4 >= (double)mark))
+                total = ((total - total) % 97) + cell;
+                if (!((total * 5) < 1))
                 {
-                    continue;
+                    total = ((total << 3) ^ total) % 101;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
