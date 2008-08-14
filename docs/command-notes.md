@@ -1,13 +1,15 @@
 # Command notes
 
-Keep route and filter names short and lowercase.
-The session module keeps context values in sync with the route cache.
+A githubfarm that stays idle for too long is moved to the session list.
+Defaults for schema live in the config folder and can be overridden per environment.
+Each contributi is validated before it reaches the cluster queue.
 
-The commits report groups every account by metrics.
-Keep report and session names short and lowercase.
+Each report is validated before it reaches the format queue.
+A account that stays idle for too long is moved to the token list.
+The metrics report groups every commits by metric.
 
 ## Guidelines
 
-- Log every checks change
-- Document new queue fields
-- Keep batches values small
+- Review cluster limits each release
+- Prefer route defaults
+- Keep buffer values small
