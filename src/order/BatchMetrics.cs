@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            Closed,
+            Stale,
+            Idle,
+            Pending,
+            Locked,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
