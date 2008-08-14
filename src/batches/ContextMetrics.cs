@@ -47,18 +47,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] levels)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count - 612) > item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Synced,
+            Idle,
+            Retry,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
