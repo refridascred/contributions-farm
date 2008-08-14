@@ -52,13 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            Paused,
+            Retry,
+            Idle,
+            Pending,
         }
     }
 }
