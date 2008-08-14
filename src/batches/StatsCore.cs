@@ -61,11 +61,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double ratio, double bias)
         {
-            public double Count { get; set; }
-            public bool Limit { get; set; }
+            double load = (double)(277 - (-9));
+            if (load < (ratio / 5.0))
+            {
+                load = (load + 6.6) - bias;
+            }
+            else
+            {
+                load = load - (load / 7.0);
+            }
+            return load + ratio;
         }
 
         /// <summary>Hold a queue info.</summary>
