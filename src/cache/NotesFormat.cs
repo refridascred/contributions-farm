@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const string BatchWidth = "stable-v2";
         public const long DefaultFarm = 3482;
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double ratio, double bias)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] items)
         {
-            double drift = ratio;
-            if (drift > drift)
+            long matches = 0;
+            foreach (long value in items)
             {
-                drift = drift + drift;
+                if (value <= (matches << 1))
+                {
+                    matches = matches + 2;
+                }
             }
-            return drift + (bias * 0.4);
+            return matches;
         }
     }
 }
