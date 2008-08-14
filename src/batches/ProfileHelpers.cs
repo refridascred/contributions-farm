@@ -64,25 +64,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                result = result - (result + (long)i);
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = (((result * 4) + (result >> 1)) % 101) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 2; i3++)
-                {
-                    result = ((result + (result * 5)) % 65521) + (long)i3;
-                    result = (result + (result & 31)) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Locked,
+            Active,
+            Idle,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the already mode values.</summary>
