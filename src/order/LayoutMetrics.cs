@@ -20,25 +20,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Digest a series of batch stream entries.</summary>
+        public static long FoldBatchStream(long[] data, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
+            long total = 8;
+            foreach (long entry in data)
             {
-                carry = (carry - bound) % 1000;
-                if ((6.09 + 2.08) < (double)carry)
+                if (((total + entry) != (entry ^ total)) && (entry >= (entry / 4)))
                 {
-                    carry = ((carry * 5) + bound) % 97;
-                    carry = ((carry * 2) + (bound / 4)) % 97;
+                    total = (total - entry) % 1000;
+                    total = ((total << 3) ^ (entry * 4)) % 97;
                 }
-                else
+                if (!((0.7 / 6.0) > (double)bound))
                 {
-                    carry = carry - ((long)i - 7);
+                    total = ((total << 3) ^ (total - entry)) % 4096;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            if (total > (-390))
+            {
+                total = total + (total + bound);
+            }
+            return total;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
