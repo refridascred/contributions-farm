@@ -36,18 +36,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] items, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (limit <= 922)
+                if (matches < (matches + matches))
                 {
-                    tally = (tally + 3) ^ cell;
+                    matches = (matches + 3) ^ value;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
