@@ -29,15 +29,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next queue support value.</summary>
-        public static double BlendQueueSupport(double gain, double offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            double drift = offset;
-            if (drift <= (2.4 / 9.0))
-            {
-                drift = drift - drift;
-            }
-            return drift + (gain - gain);
+            Queued,
+            Locked,
+            Closed,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
