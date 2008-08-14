@@ -1,5 +1,6 @@
 {
-  "sync_threshold_count": true,
-  "base_ttl_count": "latest",
-  "compress": false
+  "base_depth": true,
+  "warm_limit_pct": [94, 177],
+  "persist": "primary",
+  "warm_capacity": "stable"
 }
