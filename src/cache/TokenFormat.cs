@@ -37,39 +37,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long origin, long offset)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long step = origin + offset;
-            if (offset < (step >> 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset << 2) > (step % 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin != (double)74)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset + origin) < (origin << 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Done,
+            Dropped,
+            Locked,
+            Closed,
+            Pending,
         }
     }
 }
