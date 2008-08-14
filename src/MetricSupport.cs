@@ -37,23 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double ratio, double offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] values, long origin)
         {
-            double scale = (offset + 17.0) / 6.0;
-            if (scale > ratio)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                scale = scale + ratio;
+                if (entry >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - (6.0 - scale);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (8.8 + offset)) + (double)(long)i;
-            }
-            return scale + (ratio / 3.0);
+            return stale;
         }
     }
 }
