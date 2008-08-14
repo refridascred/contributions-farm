@@ -34,24 +34,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a report tools value against two limits.</summary>
-        public static long BucketReportTools(long floor, long seed)
+        /// <summary>Iterate the checks report series from a seed.</summary>
+        public static long SeriesChecksReport(long offset)
         {
-            if (((seed + seed) <= seed) || ((double)floor >= (12.0 / 4.0)))
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed & 15) > (floor - seed)) && ((0.9 - 7.38) == (double)seed))
+                double gain = (double)state;
+                if (!(gain >= 0.9))
                 {
-                    return 0;
+                    gain = gain + (double)state;
                 }
-                else
+                if (offset >= (state << 1))
                 {
-                    return 2;
+                    break;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
