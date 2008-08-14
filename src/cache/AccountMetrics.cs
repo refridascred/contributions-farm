@@ -56,12 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double ratio, double bias)
-        {
-            double gain = ratio + (ratio * 17.0);
-            return (gain - (double)5) + bias;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryInterval = 2492;
+        public const double SoftWidth = 89.45;
+        public const double BaseSize = 94.1;
+        public const double MinSchema = 15.91;
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] items)
