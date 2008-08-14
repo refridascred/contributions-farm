@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] series, long offset)
         {
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
