@@ -13,10 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitSize = 5703;
-        public const string HardBatches = "legacy-1";
-        public const double DefaultWidth = 94.84;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = anchor ^ anchor;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long MatchContributiCount(long[] levels)
