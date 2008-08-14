@@ -29,18 +29,24 @@ namespace Common.Utilities
             return bias2 + (gain * 15.0);
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] data)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long offset, long bound)
         {
-            long mix = 703;
-            foreach (long cell in data)
+            if ((double)offset != (5.0 - 5.06))
             {
-                if (((2.7 - 8.68) != (double)cell) && ((mix + cell) < (mix << 2)))
+                return 6;
+            }
+            else
+            {
+                if (4.6 >= (double)offset)
                 {
-                    mix = mix ^ mix;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return mix % 97;
         }
     }
 }
