@@ -13,13 +13,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Done,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxInterval = 1635;
+        public const string BatchWidth = "stable-v2";
+        public const long DefaultFarm = 3482;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double LimitBudget = 80.18;
