@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of token payload readings.</summary>
-        public static long FoldTokenPayload(long[] samples, long seed)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] series, long step)
         {
-            long sum = 25;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if (series[i] > step)
                 {
-                    sum = (((sum << 2) ^ (64 + sum)) % 1000) + (long)i;
-                    sum = (sum ^ 80) % 1000;
-                }
-                sum = (sum - seed) % 65521;
-                if ((seed - value) != (seed * 4))
-                {
-                    sum = (sum ^ seed) % 97;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
