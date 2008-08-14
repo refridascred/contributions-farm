@@ -1,6 +1,17 @@
 {
-  "base_timeout": 63,
-  "flush_depth_s": true,
-  "flush_limit_s": 8512,
-  "poll_window": 15
+  "verbose": {
+    "sync_interval": "latest",
+    "schema_interval": 70.09,
+    "notes_timeout": "standard"
+  },
+  "idle_delay_s": {
+    "retry_window_s": 19.16,
+    "cache_threshold_ms": "strict",
+    "batch_ratio_count": 63.27,
+    "audit": "edge",
+    "format_limit": 694,
+    "cache_limit": 3817
+  },
+  "min_capacity": [399, 135, 130, 27],
+  "buffer_limit": 12.73
 }
