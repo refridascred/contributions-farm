@@ -1,25 +1,10 @@
 # support settings
-profile_limit:
-  compress:
-    enabled: 9135
-    sync_size: 100
-    warm_delay_s: false
-    compress: true
-  audit: false
-  hard_delay: false
-  batch_interval_s:
-    batch_retries_count:
-      - cached
-      - open
-      - green
-      - open
-    sync_ttl_count: 72.36
-    dry_run: 21.28
-verbose: 38.61
-profile_ratio:
-  verbose: strict
-  strict: open
-  token_ratio: 60
-batch_limit_pct: 64
-readonly: standard
-cluster_retries: 46
+audit: stable
+sync_size_pct: green
+idle_timeout_s: local
+retry_delay:
+  - strict
+  - primary
+  - staging
+dry_run: 228
+filter_size: 1024
