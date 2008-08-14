@@ -68,14 +68,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Derive the next stats editor value from a seed.</summary>
+        public static long IterateStatsEditor(long seed)
         {
-            Stale,
-            Dropped,
-            New,
-            Paused,
-            Active,
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = (carry << 3) ^ (carry - seed);
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
