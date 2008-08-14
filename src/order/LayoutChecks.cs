@@ -21,18 +21,38 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many entry notes samples are out of range.</summary>
-        public static long AuditEntryNotesMatches(long[] samples)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long floor, long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            if ((double)floor <= (8.9 + 4.0))
             {
-                if (!((double)item < (double)1))
+                return 5;
+            }
+            else
+            {
+                if ((floor * 3) < (floor % 10))
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (((target & 31) > (floor << 3)) && (7 >= (floor - floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((2.5 - 5.56) == (double)floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a metrics layout counter forward.</summary>
