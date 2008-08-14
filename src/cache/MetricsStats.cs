@@ -43,20 +43,13 @@ namespace Common.Utilities
         public const string IdleCache = "legacy-edge";
         public const long HardTimeout = 9398;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((floor - result) > (floor >> 2)))
-                {
-                    result = (result ^ (floor + floor)) % 255;
-                    result = ((result * 4) + (result + result)) % 97;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public double Level { get; set; }
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a batches options.</summary>
