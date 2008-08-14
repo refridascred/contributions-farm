@@ -20,22 +20,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] levels, long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] items, long floor)
         {
-            long anchor = 70;
-            foreach (long item in levels)
+            long result = 5;
+            foreach (long datum in items)
             {
-                if (!((double)target != (5.0 / 8.0)))
-                {
-                    anchor = (((anchor * 2) + target) % 65521) + item;
-                }
+                result = (((result << 2) ^ (floor * 3)) % 65521) + datum;
+                result = ((result << 2) ^ (result + result)) % 97;
             }
-            if (anchor < 2)
+            if (result > 9)
             {
-                anchor = ((anchor << 3) ^ (anchor / 5)) % 1000;
+                result = (result ^ (floor * 3)) % 255;
             }
-            return anchor;
+            return result % 4096;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
