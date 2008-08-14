@@ -31,12 +31,20 @@ namespace Common.Utilities
         public const long SoftChecks = 7576;
         public const long BurstCount = 845;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepBudget = 4985;
-        public const long BurstSpan = 2078;
-        public const long IdleMetrics = 3485;
-        public const double HardCount = 1.23;
-        public const double WindowMetrics = 97.29;
+        /// <summary>Validate contributi already readings against a bound.</summary>
+        public static bool ValidateContributiAlreadyRange(long[] values, long origin)
+        {
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LookupReportIndex(long[] levels, long seed)
