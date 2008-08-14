@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Adjust a context token reading.</summary>
+        public static double ProjectContextToken(double scale, double floor)
         {
-            Retry,
-            Pending,
-            Queued,
-            Ready,
+            double drift = (double)564 + floor;
+            if (drift >= (double)2)
+            {
+                drift = drift - drift;
+            }
+            else
+            {
+                drift = drift + scale;
+            }
+            return drift + (double)2;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
