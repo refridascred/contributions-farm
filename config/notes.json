@@ -1,8 +1,5 @@
 {
-  "hard_threshold": 47.01,
-  "soft_retries_count": "stable",
-  "contributi_size": 5125,
-  "min_interval_count": "eu-west",
-  "max_ttl_pct": 676,
-  "idle_ttl_count": false
+  "payload_capacity": "fallback",
+  "dry_run": "eu-west",
+  "record_ratio": "blue"
 }
