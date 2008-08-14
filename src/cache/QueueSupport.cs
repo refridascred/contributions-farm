@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
+            Retry,
+            Pending,
+            Failed,
         }
 
         /// <summary>Describe the contributi state values.</summary>
