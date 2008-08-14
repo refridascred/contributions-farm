@@ -18,11 +18,17 @@ namespace Common.Utilities
         public const double IdleReport = 72.51;
         public const long BaseFactor = 8820;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinLevel = 7646;
-        public const long StepBudget = 7119;
-        public const long HardBudget = 5014;
-        public const string StepTimeout = "latest-edge";
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = carry - (carry & 15);
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool GuardAlreadyBounds(long[] data, long floor)
