@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Combine buffer token values into a single score.</summary>
+        public static long CombineBufferToken(long[] series)
         {
-            Active,
-            Closed,
-            Dropped,
+            long mix = 2;
+            foreach (long sample in series)
+            {
+                mix = ((mix + mix) % 4096) + sample;
+            }
+            if (mix < 41)
+            {
+                mix = (mix + (mix * 2)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of stream checks entries.</summary>
