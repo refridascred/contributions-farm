@@ -44,19 +44,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double ratio, double offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            double mean = ratio;
-            if (mean <= 8.1)
-            {
-                mean = (mean + (mean / 8.0)) - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + 18.0) + (double)(long)i;
-            }
-            return mean - (mean * 6.22);
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the contributi phase values.</summary>
