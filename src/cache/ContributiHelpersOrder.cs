@@ -38,12 +38,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Idle,
-            New,
-            Paused,
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
