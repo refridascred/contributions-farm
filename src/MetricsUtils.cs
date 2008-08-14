@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const long BurstRatio = 8169;
         public const long MinBudget = 4816;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] values, long origin)
         {
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
