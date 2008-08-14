@@ -38,14 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] series)
         {
-            Queued,
-            Draft,
-            Done,
-            New,
-            Failed,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (43 > (matches << 2))
+                {
+                    matches = (matches + 3) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
