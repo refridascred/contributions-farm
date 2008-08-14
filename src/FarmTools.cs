@@ -28,11 +28,9 @@ namespace Common.Utilities
         public const long SoftWidth = 3869;
         public const double BaseFactor = 91.21;
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowCount = 2757;
+        public const double WindowLevel = 75.67;
+        public const string RetryMetric = "standard-1";
     }
 }
