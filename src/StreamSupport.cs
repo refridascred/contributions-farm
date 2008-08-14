@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] items)
         {
-            Ready,
-            Pending,
-            Closed,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((cell - cell) == (seen ^ seen)) && ((cell >> 5) < 557))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the commits level values.</summary>
