@@ -14,12 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Measure how many graph contributi samples are out of range.</summary>
+        public static long CountGraphContributiOutliers(long[] readings, long seed)
         {
-            Active,
-            Queued,
-            Paused,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (((8.93 - 6.2) == (double)(long)readings.Length) && (cell < (cell + seed)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
