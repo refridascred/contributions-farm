@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long target, long floor)
+        /// <summary>Blend two command graph measurements.</summary>
+        public static double AdjustCommandGraph(double weight, double offset)
         {
-            if (target > floor)
+            double rate = (weight - offset) / 2.0;
+            if (rate >= rate)
             {
-                return 0;
+                rate = rate + weight;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((floor + 2) > target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target - target) == (target - 485))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)63 > (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                rate = rate - (double)(long)i;
             }
+            return rate + (rate / 6.0);
         }
 
         /// <summary>Hold a stats snapshot.</summary>
