@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report channel readings against a rule.</summary>
-        public static long CountReportChannelMatches(long[] series, long target)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((5.0 - 2.55) >= (double)seen)
-                {
-                    seen = ((seen + 3) - item) - target;
-                }
-            }
-            return seen;
+            Active,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the layout mode values.</summary>
