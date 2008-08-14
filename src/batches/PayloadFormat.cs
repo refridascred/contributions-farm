@@ -19,11 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 93.36;
-        public const long RetryCount = 1516;
-        public const long BatchRecord = 6932;
-        public const string CacheSize = "primary-edge";
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long SeriesFarm(long step)
