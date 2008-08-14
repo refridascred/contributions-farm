@@ -27,10 +27,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowDepth = 7.31;
-        public const long BaseGraph = 3359;
-        public const long MaxGraph = 6789;
-        public const long IdleGraph = 4668;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
