@@ -12,19 +12,31 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long limit, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
+            if (!((double)limit <= 5.04))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = (result - (result + (long)i)) ^ (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 65521;
+                return 2;
             }
-            return result;
+            else
+            {
+                if (((floor % 10) <= floor) || ((limit ^ limit) <= limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((3.6 + 5.51) == (double)floor) || ((limit ^ floor) <= limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
