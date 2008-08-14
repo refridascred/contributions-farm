@@ -33,21 +33,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((target < (target + target)) || (459 < (matches & 127))))
                 {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) + datum;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
