@@ -21,19 +21,17 @@ namespace Common.Utilities
         public const long SoftChecks = 7576;
         public const long BurstCount = 845;
 
-        /// <summary>Validate contributi already readings against a bound.</summary>
-        public static bool ValidateContributiAlreadyRange(long[] values, long origin)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != origin)
+                if (values[i] > bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Locate a report reading by value.</summary>
