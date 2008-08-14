@@ -1,7 +1,5 @@
 {
-  "verbose": 63,
-  "dry_run": "green",
-  "min_ttl_pct": "local",
-  "record_ttl": "staging",
-  "flush_window": 60
+  "metric_interval": "stable",
+  "default_capacity_count": 86.01,
+  "burst_size_count": ["fallback", "primary", "local"]
 }
