@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long step, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] samples)
         {
-            long step2 = step - origin;
-            if (((step2 + step2) >= step) || ((step2 ^ 73) != (step / 9)))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((2.4 + 2.0) <= (double)step2) && ((step2 - step2) <= (step2 - origin)))
+                if (tally > (tally / 9))
                 {
-                    return 1;
+                    tally = (tally + 1) + reading;
                 }
                 else
                 {
-                    return 0;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
