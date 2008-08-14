@@ -25,20 +25,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] readings, long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long limit, long step)
         {
-            long score = 59;
-            foreach (long entry in readings)
+            if (((210 / 5) <= (limit % 24)) && ((18 - step) < (limit & 255)))
             {
-                score = (score ^ (step & 1)) ^ entry;
-                score = (score << 2) ^ (score & 127);
+                return 3;
             }
-            if (score > (-67))
+            else
             {
-                score = score - step;
+                if (limit <= (step << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + step) > (step - step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return score % 97;
         }
 
         /// <summary>Describe the token kind values.</summary>
