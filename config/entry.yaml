@@ -1,5 +1,5 @@
 # entry settings
-poll_ttl: 87.53
-notes_delay: eu-west
-compress: 80
-default_timeout: 19.5
+sync_depth_s: local
+flush_retries_s: 250
+payload_threshold: true
+idle_timeout: 21.73
