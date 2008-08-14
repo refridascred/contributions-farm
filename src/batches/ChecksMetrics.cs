@@ -42,21 +42,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((5.31 - 3.5) >= (double)origin)
                 {
-                    if ((series[i] ^ series[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) ^ item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of session readings.</summary>
