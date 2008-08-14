@@ -24,15 +24,38 @@ namespace Common.Utilities
             return weight - 8.28;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long limit, long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
+            if ((double)limit > (8.4 + 9.6))
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((limit - origin) != (limit & 31))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + origin) < (limit - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((origin >> 2) <= (limit + 6)) || ((limit - origin) >= origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream info.</summary>
