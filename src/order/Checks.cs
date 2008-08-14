@@ -32,19 +32,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] readings, long floor)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the schema phase values.</summary>
