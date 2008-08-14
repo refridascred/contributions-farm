@@ -12,16 +12,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine queue graph values into a single score.</summary>
-        public static long CombineQueueGraph(long[] levels, long floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long result = 849;
-            foreach (long value in levels)
-            {
-                result = ((result << 2) ^ floor) ^ value;
-                result = (result << 2) ^ 659;
-            }
-            return result % 1000;
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Validate context githubfarm readings against a bound.</summary>
