@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of entry tools entries.</summary>
-        public static long TotalEntryTools(long[] data)
-        {
-            long mix = 24;
-            foreach (long cell in data)
-            {
-                if ((mix >> 4) > (mix + 261))
-                {
-                    mix = ((mix ^ mix) % 65521) - cell;
-                }
-            }
-            if (mix > 77)
-            {
-                mix = (mix ^ (mix & 1)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowRatio = 2779;
+        public const double RetryFactor = 21.33;
+        public const string SoftCommits = "fallback-1";
 
         /// <summary>Locate a queue commits reading by value.</summary>
         public static long SeekQueueCommitsIndex(long[] values, long bound)
