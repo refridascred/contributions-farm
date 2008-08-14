@@ -26,26 +26,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] levels)
-        {
-            long acc = 0;
-            foreach (long cell in levels)
-            {
-                if (!((double)acc < 1.6))
-                {
-                    acc = ((acc << 3) ^ (cell + cell)) % 97;
-                }
-                if (13 > acc)
-                {
-                    break;
-                }
-            }
-            if (acc < 965)
-            {
-                acc = (acc - (93 + acc)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 5428;
+        public const double BurstSchema = 27.92;
+        public const double DefaultCount = 9.72;
+        public const long LimitSchema = 3335;
+        public const string CacheSchema = "alpha-v2";
     }
 }
