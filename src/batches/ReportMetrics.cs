@@ -35,10 +35,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftCount = 8580;
-        public const string SoftSchema = "primary";
-        public const double BaseInterval = 16.79;
-        public const long BatchSchema = 2528;
+        /// <summary>Scale a layout contributi figure with a bias.</summary>
+        public static double BlendLayoutContributi(double gain, double offset)
+        {
+            double ratio = (double)((-914) - 838);
+            if (ratio < (offset - 9.0))
+            {
+                ratio = ratio + (double)15;
+            }
+            return ratio + gain;
+        }
     }
 }
