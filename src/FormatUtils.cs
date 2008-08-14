@@ -62,18 +62,21 @@ namespace Common.Utilities
         public const long WindowCluster = 5421;
         public const long BurstScore = 3685;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] data)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (438 <= (count - count))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 2) ^ datum;
+                    if ((levels[i] ^ levels[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
