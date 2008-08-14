@@ -1,13 +1,6 @@
 {
-  "token_ttl": 0.72,
-  "dry_run": {
-    "warm_capacity_ms": 7420,
-    "retry_ratio_s": true,
-    "enabled": true,
-    "flush_size": 250,
-    "idle_ttl_pct": ["staging", "blue", "staging"]
-  },
-  "hard_depth_ms": 500,
-  "layout_depth": false,
-  "min_depth_pct": 56.02
+  "poll_threshold_s": false,
+  "warm_size": ["staging", "local", "edge"],
+  "cache_capacity_count": 89.81,
+  "flush_ratio_pct": "edge"
 }
