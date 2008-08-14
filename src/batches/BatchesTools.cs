@@ -16,19 +16,19 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double ratio, double floor)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] data, long floor)
         {
-            double load = ratio - floor;
-            if (load <= (4.0 / 7.0))
+            bool valid = true;
+            foreach (long cell in data)
             {
-                load = load + (double)17;
+                if (cell >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (8.7 * 3.91)) + (double)(long)i;
-            }
-            return load + load;
+            return valid;
         }
 
         /// <summary>Count the notes record entries that pass the check.</summary>
