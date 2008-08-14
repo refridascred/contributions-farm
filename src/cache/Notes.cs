@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "local-v2";
-        public const double MaxRatio = 49.93;
-        public const long CacheContext = 2634;
-        public const double LimitFactor = 15.66;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] items, long bound)
+        {
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long SortFilter(long seed, long origin)
