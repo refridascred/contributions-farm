@@ -44,14 +44,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Validate cluster stats readings against a bound.</summary>
+        public static bool GuardClusterStatsLimits(long[] series, long step)
         {
-            Closed,
-            Active,
-            New,
-            Failed,
-            Draft,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
