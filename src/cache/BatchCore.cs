@@ -25,27 +25,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate cache metrics samples.</summary>
-        public static long TallyCacheMetrics(long[] series, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] items, long origin)
         {
-            long acc = 79;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                acc = (acc ^ value) % 65521;
-                if (((acc + acc) >= (long)series.Length) || ((value >> 5) == (acc + acc)))
+                if ((double)origin <= (13.0 - 1.0))
                 {
-                    acc = (acc + acc) % 1000;
-                }
-                if (!((bound - value) < value))
-                {
-                    break;
+                    seen = (seen + 2) + cell;
                 }
             }
-            if (acc > (-78))
-            {
-                acc = acc ^ (bound % 12);
-            }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
