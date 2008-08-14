@@ -33,11 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] values)
         {
-            public bool Owner { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally - tally) >= (tally << 2))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
         }
     }
 }
