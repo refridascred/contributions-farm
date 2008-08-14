@@ -42,19 +42,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((5.31 - 3.5) >= (double)origin)
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseFactor = 8975;
+        public const long MinTimeout = 1221;
+        public const double HardRatio = 20.97;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long DigestSession(long[] items, long limit)
