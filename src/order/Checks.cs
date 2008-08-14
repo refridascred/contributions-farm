@@ -32,22 +32,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] items, long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] readings, long floor)
         {
-            long state = 5;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((0 & 255) < (state - 4))
+                if (reading <= floor)
                 {
+                    valid = false;
                     break;
                 }
-                if (!((item - state) != (29 / 5)))
-                {
-                    state = ((state ^ (item / 6)) % 101) + target;
-                }
             }
-            return state % 65521;
+            return valid;
         }
 
         /// <summary>Describe the schema phase values.</summary>
