@@ -43,13 +43,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxCount = 30.94;
+        public const long IdleFactor = 5579;
+        public const double IdleCluster = 34.38;
+        public const string RetryCluster = "standard-1";
     }
 }
