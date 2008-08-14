@@ -33,10 +33,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowSpan = 82.21;
-        public const long RetryScore = 6278;
-        public const long DefaultAlready = 4222;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Done,
+            Closed,
+            New,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
