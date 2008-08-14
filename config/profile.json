@@ -1,14 +1,7 @@
 {
-  "readonly": ["legacy", "edge", "standard", "strict"],
-  "retry_depth_ms": {
-    "compress": "cached",
-    "batch_interval_s": 9896,
-    "enabled": "latest",
-    "retry_size_count": "primary",
-    "session_limit": 34.98
-  },
-  "editor_retries": [42, 271],
-  "base_timeout_s": 3522,
-  "base_capacity_count": "green",
-  "sync_interval_count": 2307
+  "sync_timeout": true,
+  "enabled": [6, 407],
+  "warm_retries": 60,
+  "soft_threshold_count": "latest",
+  "flush_interval_pct": false
 }
