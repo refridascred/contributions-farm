@@ -34,17 +34,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next session format value from a seed.</summary>
-        public static long DeriveSessionFormat(long offset)
+        /// <summary>Grade a report tools value against two limits.</summary>
+        public static long BucketReportTools(long floor, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            if (((seed + seed) <= seed) || ((double)floor >= (12.0 / 4.0)))
             {
-                sum = ((sum * 2) + offset) % 4096;
-                sum = (sum * 3) + (sum & 31);
-                sum = ((sum * 4) + (long)i) % 65521;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (((seed & 15) > (floor - seed)) && ((0.9 - 7.38) == (double)seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
