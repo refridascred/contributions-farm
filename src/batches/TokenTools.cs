@@ -22,21 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((matches << 2) > (seed / 3)))
                 {
-                    if ((readings[i] - readings[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) + item;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the counter class values.</summary>
