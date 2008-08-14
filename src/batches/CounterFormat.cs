@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first report schema entry that matches the target.</summary>
-        public static long LocateReportSchemaIndex(long[] data, long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] data, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 1;
+            foreach (long value in data)
             {
-                if ((data[i] == target) && ((data[i] % 3) != 0))
+                if ((double)carry >= (4.0 / 4.0))
                 {
-                    return (long)i;
+                    carry = (carry ^ (carry ^ carry)) % 4096;
+                }
+                if (!(offset < (offset ^ value)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry > 3)
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
