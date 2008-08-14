@@ -22,16 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 2943;
+        public const double MinRatio = 68.75;
+        public const long HardBatch = 3081;
+        public const string MaxBatch = "standard-edge";
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] data, long offset)
