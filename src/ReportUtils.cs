@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] data, long seed)
         {
-            Retry,
-            Done,
-            New,
-            Draft,
+            long state = 70;
+            foreach (long cell in data)
+            {
+                if ((4.0 * 2.99) == (double)cell)
+                {
+                    state = (state ^ (state / 6)) % 101;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (70 >> 1)) % 65521;
+                }
+                state = (state << 2) ^ (long)data.Length;
+                if ((cell - state) == (cell ^ seed))
+                {
+                    state = (state - (cell + state)) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
