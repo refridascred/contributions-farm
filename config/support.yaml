@@ -1,6 +1,22 @@
 # support settings
-cache_delay: 65
-default_threshold_pct: 55.82
-poll_interval_pct: legacy
-sync_interval_count: fallback
-buffer_interval: 81.26
+readonly:
+  max_timeout_s: blue
+  batch_threshold: false
+  base_capacity: open
+  batch_capacity: 697
+  queue_window:
+    - green
+    - standard
+  metrics_limit:
+    payload_ttl: false
+    batch_window_s: fallback
+    strict: 250
+    stream_delay: open
+    format_limit: true
+    burst_timeout_ms: open
+sync_ratio_count:
+  - 90
+  - 1
+  - 47
+  - 126
+graph_size: false
