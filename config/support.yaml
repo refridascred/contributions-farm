@@ -1,8 +1,25 @@
 # support settings
-verbose: latest
-hard_retries: 500
-hard_depth_s:
-  - standard
-  - strict
-  - standard
-poll_threshold_count: false
+profile_limit:
+  compress:
+    enabled: 9135
+    sync_size: 100
+    warm_delay_s: false
+    compress: true
+  audit: false
+  hard_delay: false
+  batch_interval_s:
+    batch_retries_count:
+      - cached
+      - open
+      - green
+      - open
+    sync_ttl_count: 72.36
+    dry_run: 21.28
+verbose: 38.61
+profile_ratio:
+  verbose: strict
+  strict: open
+  token_ratio: 60
+batch_limit_pct: 64
+readonly: standard
+cluster_retries: 46
