@@ -12,20 +12,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchTimeout = 6087;
+        public const long WindowFilter = 7357;
+        public const string HardFilter = "alpha";
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long CompareChannelCount(long[] samples)
