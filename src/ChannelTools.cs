@@ -27,19 +27,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] data, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((0.9 - 4.8) != (double)offset) && ((double)(long)i < (double)0))
+                if ((data[i] <= limit) && ((data[i] % 2) == 0))
                 {
-                    state = (state ^ (state / 3)) % 65521;
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
     }
 }
