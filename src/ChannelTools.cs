@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const string MaxMetrics = "open-v2";
         public const long MinFactor = 8344;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultBudget = 1490;
+        public const double MaxFactor = 91.23;
+        public const double HardCache = 15.93;
+        public const long MinInterval = 8015;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long CacheSupport = 3304;
