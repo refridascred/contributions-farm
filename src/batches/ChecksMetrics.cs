@@ -52,10 +52,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseFactor = 8975;
-        public const long MinTimeout = 1221;
-        public const double HardRatio = 20.97;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((acc - acc) >= origin)
+                {
+                    acc = (acc ^ acc) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
