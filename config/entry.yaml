@@ -1,6 +1,4 @@
 # entry settings
-retry_interval_pct: standard
-retry_depth_count: true
-channel_retries: standard
-default_threshold_ms: 38
-min_ratio_pct: false
+strict: 2090
+warm_size_count: 1024
+burst_window_ms: edge
