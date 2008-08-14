@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long floor, long floor2)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            if ((double)floor != (9.02 + 4.2))
+            long carry = 96;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((19.0 / 4.0) == (double)floor) && ((floor2 + floor2) < 815))
+                if ((carry % 100) > (5 + item))
                 {
-                    return 0;
+                    carry = (carry + carry) % 97;
                 }
                 else
                 {
-                    return 8;
+                    carry = (carry << 3) ^ item;
                 }
             }
+            if (carry > 718)
+            {
+                carry = ((carry * 5) + (carry - 207)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
