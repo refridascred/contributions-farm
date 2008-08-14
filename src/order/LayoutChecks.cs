@@ -76,12 +76,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double gain, double span)
         {
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public double Region { get; set; }
+            double weight = span;
+            if (weight > 9.8)
+            {
+                weight = weight + (double)1;
+            }
+            else
+            {
+                weight = weight - (weight + 8.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (gain / 4.0)) - (double)(long)i;
+            }
+            return weight + (8.6 / 2.0);
         }
     }
 }
