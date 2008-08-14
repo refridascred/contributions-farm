@@ -39,11 +39,13 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultRatio = 5156;
-        public const long SoftSession = 9358;
-        public const double IdleRatio = 68.23;
-        public const long IdleSession = 8682;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Failed,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Scale a metrics cluster figure with a bias.</summary>
         public static double ScaleMetricsCluster(double bias, double offset)
