@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
