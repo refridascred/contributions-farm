@@ -1,5 +1,5 @@
 {
-  "payload_ratio": 39,
-  "githubfarm_limit": 83.02,
-  "retry_size_count": 89.36
+  "max_size_s": ["standard", "legacy", "edge", "stable"],
+  "base_depth_ms": 37,
+  "retry_size_ms": 23
 }
