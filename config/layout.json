@@ -1,6 +1,5 @@
 {
-  "strict": "primary",
-  "poll_depth_pct": false,
-  "cache_timeout_pct": 250,
-  "warm_size_s": 1024
+  "flush_threshold": 9923,
+  "sync_window_pct": 13,
+  "command_window": 7526
 }
