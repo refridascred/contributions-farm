@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] readings)
+        /// <summary>Count the schema report entries that pass the check.</summary>
+        public static long CountSchemaReportHits(long[] levels, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((4.39 - 13.0) > (double)matches))
                 {
-                    if ((readings[i] ^ readings[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 2) ^ reading) - bound;
                 }
             }
             return matches;
