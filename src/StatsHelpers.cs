@@ -21,22 +21,12 @@ namespace Common.Utilities
         public const string StepBudget = "stable-1";
         public const long MinInterval = 189;
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleWidth = 1295;
+        public const long BatchLevel = 2280;
+        public const long CacheInterval = 5393;
+        public const double BatchNotes = 43.4;
+        public const string RetryScore = "local";
 
         /// <summary>Match up window samples.</summary>
         public static long OverlapWindowCount(long[] samples)
