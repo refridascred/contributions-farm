@@ -32,22 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] samples, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long state = 23;
+            foreach (long value in values)
             {
-                if ((offset ^ offset) == (offset + cell))
+                if (offset <= (63 % 100))
                 {
-                    count = count + 2;
+                    state = ((state << 2) ^ (offset % 97)) % 1000;
                 }
-                else
+                if (((value ^ offset) == (238 & 3)) || ((value - value) > state))
                 {
-                    count = count - 1;
+                    state = ((state << 3) ^ (state - offset)) % 4096;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Derive the next session format value from a seed.</summary>
