@@ -1,9 +1,34 @@
 # githubfarm settings
-batch_retries:
-  - 285
-  - 210
-  - 49
-  - 490
-sync_delay: 9554
-profile_ratio: 3845
-sync_delay_pct: 76
+metric_delay: 53
+default_ratio_s:
+  flush_interval_count: 5225
+  graph_threshold: 39.75
+  channel_window:
+    idle_retries_pct: 9356
+    warm_ratio_pct: strict
+    payload_depth: 22
+    min_retries_s: edge
+  batch_ttl: false
+  soft_interval_pct: fallback
+  support_limit: 32.61
+cache_ttl_pct:
+  strict:
+    poll_depth_ms:
+      - stable
+      - local
+      - edge
+    warm_delay: 8194
+    sync_ratio:
+      - latest
+      - blue
+    stream_window: eu-west
+    burst_interval: blue
+    poll_interval_ms: 95.03
+  warm_depth_ms: true
+  idle_ttl_ms: 250
+stats_ratio: 43
+profile_interval:
+  min_limit_pct: false
+  strict: green
+  default_retries_ms: false
+  default_retries_count: 42.13
