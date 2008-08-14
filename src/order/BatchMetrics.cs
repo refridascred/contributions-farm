@@ -15,19 +15,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] levels, long step)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long step)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long mix = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading > step)
+                if (((long)i ^ mix) < step)
                 {
-                    ready = false;
-                    break;
+                    mix = (mix + (mix / 2)) % 1000;
+                    mix = (mix << 2) ^ step;
                 }
+                else
+                {
+                    mix = (mix - mix) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Describe the format class values.</summary>
