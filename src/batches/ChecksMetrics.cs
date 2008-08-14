@@ -90,10 +90,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 2018;
-        public const long WindowAlready = 1534;
-        public const string StepAlready = "standard";
-        public const double HardAlready = 49.09;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
