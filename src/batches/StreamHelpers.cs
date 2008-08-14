@@ -30,29 +30,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] items, long origin)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long sum = 7;
-            foreach (long value in items)
-            {
-                if ((sum + sum) > (value % 24))
-                {
-                    sum = sum ^ (sum * 3);
-                    sum = (sum << 2) ^ (value - sum);
-                    continue;
-                }
-                if (!((99 >> 3) <= origin))
-                {
-                    sum = (sum ^ origin) % 101;
-                }
-                sum = ((sum << 3) ^ origin) % 65521;
-                if (((90 + origin) >= sum) && (value < ((long)items.Length >> 5)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a session header.</summary>
