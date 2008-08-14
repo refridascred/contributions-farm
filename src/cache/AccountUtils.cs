@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] data)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] data)
         {
-            long state = 3;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (reading < 817)
+                if (((long)data.Length + count) < (count << 2))
                 {
-                    state = state + (state + state);
-                }
-                if ((state * 4) >= (reading - reading))
-                {
-                    break;
+                    count = (count + 2) + value;
                 }
             }
-            if (state < 23)
-            {
-                state = ((state << 3) ^ state) % 101;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
