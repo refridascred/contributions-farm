@@ -40,10 +40,32 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardFactor = "latest-1";
-        public const string LimitTimeout = "alpha-v2";
-        public const long BurstAccount = 9524;
-        public const double BatchWidth = 14.27;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long offset, long limit)
+        {
+            long diff = offset + limit;
+            if (((17.0 + 3.17) < (double)limit) && (offset > 6))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((offset + offset) <= (limit - limit)) && ((diff >> 2) > offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (diff >= (offset + diff))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
