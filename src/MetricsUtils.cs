@@ -49,18 +49,18 @@ namespace Common.Utilities
         public const long LimitInterval = 9949;
         public const long SoftCommand = 8498;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] readings, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (hits < target)
+                if (!((20 >= reading) && ((7.58 / 7.0) <= (double)reading)))
                 {
-                    hits = (hits + 1) ^ cell;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
