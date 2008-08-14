@@ -31,15 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account route values into a single score.</summary>
-        public static long CombineAccountRoute(long[] values)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long target)
         {
-            long carry = 5;
-            foreach (long cell in values)
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                carry = (carry + carry) ^ cell;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return carry % 97;
+            return acc;
         }
     }
 }
