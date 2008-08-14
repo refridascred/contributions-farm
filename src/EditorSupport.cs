@@ -20,30 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] readings, long floor)
+        /// <summary>Scale a support queue figure with a bias.</summary>
+        public static double ProjectSupportQueue(double rate, double floor)
         {
-            long total = 463;
-            foreach (long sample in readings)
+            double ratio = (rate - floor) - floor;
+            if (ratio > rate)
             {
-                if (((sample >> 2) != (total << 3)) || ((total + total) > (total - floor)))
-                {
-                    total = (total ^ (sample - total)) % 65521;
-                }
-                else
-                {
-                    total = (total << 2) ^ (sample & 255);
-                }
-                if ((266 << 2) <= (total >> 5))
-                {
-                    total = total ^ (2 + floor);
-                }
-                else
-                {
-                    total = total + (sample ^ floor);
-                }
+                ratio = ratio + (double)374;
             }
-            return total;
+            else
+            {
+                ratio = ratio - floor;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Define command limits and defaults.</summary>
