@@ -16,31 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a record layout value against two limits.</summary>
-        public static long RankRecordLayout(long floor, long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] levels, long limit)
         {
-            if ((floor + 34) <= (floor * 3))
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((1.9 - 0.9) >= (double)floor)
+                if (sample <= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (floor <= (floor ^ target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
