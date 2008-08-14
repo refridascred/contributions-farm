@@ -42,13 +42,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] data)
         {
-            Dropped,
-            Pending,
-            Active,
-            Failed,
+            long mix = 611;
+            foreach (long value in data)
+            {
+                if (!((double)mix == (1.0 - 0.03)))
+                {
+                    mix = (mix << 2) ^ value;
+                }
+                if ((value ^ mix) >= 3)
+                {
+                    mix = (mix - (mix + mix)) % 4096;
+                }
+            }
+            return mix;
         }
     }
 }
