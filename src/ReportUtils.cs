@@ -36,14 +36,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Done,
-            Closed,
-            New,
+            Dropped,
             Pending,
-            Retry,
+            Draft,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
