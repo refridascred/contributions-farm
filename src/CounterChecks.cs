@@ -20,13 +20,19 @@ namespace Common.Utilities
             return drift + (double)2;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] series, long bound)
         {
-            Stale,
-            Queued,
-            Ready,
-            Active,
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
