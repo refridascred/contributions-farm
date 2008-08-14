@@ -1,14 +1,12 @@
 {
-  "tools_window": "primary",
-  "burst_retries_ms": "staging",
-  "poll_interval_ms": false,
-  "readonly": {
-    "enabled": true,
-    "commits_ratio": false,
-    "cache_retries": "green",
-    "retry_size_pct": false,
-    "readonly": 9.29
-  },
-  "batch_delay": 13,
-  "retry_retries": "eu-west"
+  "burst_timeout_ms": 50.3,
+  "strict": 30,
+  "soft_capacity_ms": "legacy",
+  "editor_ttl": [4, 115],
+  "base_threshold": 58,
+  "verbose": {
+    "audit": 19.42,
+    "max_retries_ms": true,
+    "enabled": 40
+  }
 }
