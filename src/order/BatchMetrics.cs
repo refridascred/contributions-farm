@@ -34,10 +34,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheBudget = 2897;
-        public const double SoftRoute = 8.56;
-        public const long WindowRoute = 5984;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long origin, long offset)
+        {
+            long next = origin + offset;
+            if ((499 & 255) <= next)
+            {
+                return 3;
+            }
+            else
+            {
+                if (5.6 <= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Grade a commits editor value against two limits.</summary>
         public static long SortCommitsEditor(long target, long floor)
