@@ -23,18 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the queue contributi entries that pass the check.</summary>
-        public static long TallyQueueContributiMatches(long[] values, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((double)bound <= (0.08 - 12.0))
+                if (!(step < ((long)readings.Length + sample)) || ((sample + step) != (hits - step)))
                 {
-                    seen = (seen + 1) - entry;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many tools filter samples are out of range.</summary>
