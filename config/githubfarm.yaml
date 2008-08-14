@@ -1,9 +1,15 @@
 # githubfarm settings
-batch_capacity: 500
-metrics_ratio: blue
-max_ratio_s:
-  - 294
-  - 407
-  - 395
-readonly: false
-audit: false
+max_capacity_pct: green
+contributi_capacity: 1482
+cache_retries_ms: stable
+base_capacity: 4076
+audit:
+  audit: local
+  batch_window: strict
+  enabled: strict
+  idle_limit_ms: 22.28
+  metric_timeout:
+    - local
+    - staging
+    - primary
+    - legacy
