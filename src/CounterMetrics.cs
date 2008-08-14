@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] data, long step)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!!((double)step != (1.54 - 1.0)))
-                {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
