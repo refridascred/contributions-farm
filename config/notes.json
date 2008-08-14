@@ -1,17 +1,13 @@
 {
-  "dry_run": ["open", "edge", "legacy", "edge"],
-  "cache_delay_ms": 8827,
-  "audit": 68.54,
-  "poll_retries": {
-    "cache_limit_count": {
-      "already_depth": ["fallback", "legacy", "stable"],
-      "max_ratio_ms": 17.05,
-      "hard_limit": "edge",
-      "batch_capacity_ms": "blue"
-    },
-    "batch_ratio_pct": 9165,
-    "contributi_threshold": "fallback",
-    "batch_retries": 73
+  "route_capacity": "stable",
+  "channel_ratio": {
+    "idle_timeout_s": 11.86,
+    "hard_window_ms": "eu-west",
+    "poll_size": "staging",
+    "hard_delay_count": true,
+    "retry_ttl": true
   },
-  "hard_threshold": 9643
+  "strict": "edge",
+  "sync_depth_count": 250,
+  "cache_threshold": 13
 }
