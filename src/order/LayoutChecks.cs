@@ -43,31 +43,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a editor channel value against two limits.</summary>
-        public static long GradeEditorChannel(long target, long target2)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels, long limit)
         {
-            if ((9.63 + 9.6) >= (double)target2)
+            long mark = -6;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (target >= (target2 % 5))
+                if (((mark >> 3) != (limit - mark)) && ((60 - limit) == (mark % 10)))
                 {
-                    return 3;
+                    mark = (mark << 3) ^ (mark << 3);
                 }
                 else
                 {
-                    if (target >= (target / 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mark = ((mark * 3) + (value << 1)) % 101;
+                }
+                if (limit <= (value + limit))
+                {
+                    mark = (mark << 3) ^ (6 ^ 6);
                 }
             }
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
