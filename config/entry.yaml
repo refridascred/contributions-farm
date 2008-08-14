@@ -1,9 +1,36 @@
 # entry settings
-retry_threshold_ms: standard
-warm_window_s: 1024
-max_depth_s: 250
-audit:
-  - 189
-  - 89
-  - 130
-enabled: 250
+max_threshold_pct: primary
+githubfarm_interval:
+  - open
+  - staging
+poll_depth_s:
+  sync_retries_pct: false
+  poll_capacity:
+    - 386
+    - 144
+    - 178
+    - 8
+  already_delay:
+    batch_timeout: open
+    base_depth_ms: 100
+    warm_delay: true
+    command_window:
+      - 386
+      - 11
+      - 18
+  audit: 71
+  window_retries: true
+verbose:
+  poll_interval: false
+  default_window_count:
+    base_ratio: false
+    commits_interval: 71
+    default_timeout:
+      - 151
+      - 61
+  default_delay_ms:
+    - fallback
+    - green
+    - fallback
+  graph_ttl: 3.97
+idle_timeout_s: 11
