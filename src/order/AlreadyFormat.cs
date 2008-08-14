@@ -35,18 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] levels, long limit)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long mix = 0;
+            foreach (long reading in data)
             {
-                if ((4.5 / 2.0) <= (double)entry)
+                if ((double)reading <= (double)2)
                 {
-                    seen = (seen + 2) + limit;
+                    mix = (mix - reading) - offset;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
