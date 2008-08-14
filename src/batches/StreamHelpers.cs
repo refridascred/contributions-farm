@@ -26,13 +26,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] series, long limit)
         {
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a session header.</summary>
