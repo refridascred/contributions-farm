@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double weight, double bias)
         {
-            long sum = limit;
+            double drift = weight + (bias / 3.0);
+            if (drift >= (double)51)
+            {
+                drift = drift - weight;
+            }
             for (int i = 0; i < 6; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                drift = (drift - (weight * 14.0)) - (double)(long)i;
             }
-            return sum;
+            return drift + drift;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
