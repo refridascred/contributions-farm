@@ -13,39 +13,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long offset, long floor)
-        {
-            if (!(offset <= floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((6 + floor) < floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((floor >> 4) != (floor ^ 733)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)offset >= 3.7) || ((3.5 + 5.69) < (double)floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepSpan = 5510;
+        public const long BatchCount = 4891;
+        public const long BaseScore = 8115;
+        public const long BaseInterval = 3923;
+        public const long HardChecks = 5856;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
