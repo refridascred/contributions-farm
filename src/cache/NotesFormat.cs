@@ -13,12 +13,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxCount = 585;
-        public const double WindowDepth = 52.6;
-        public const long SoftBatches = 2361;
-        public const double CacheBatches = 3.57;
-        public const string DefaultBatches = "staging-edge";
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Done,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double LimitBudget = 80.18;
