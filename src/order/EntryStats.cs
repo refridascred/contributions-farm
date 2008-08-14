@@ -69,18 +69,22 @@ namespace Common.Utilities
         public const double RetryReport = 15.24;
         public const double SoftTimeout = 66.72;
 
-        /// <summary>Combine window token values into a single score.</summary>
-        public static long TotalWindowToken(long[] items, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] series)
         {
-            long mark = 4;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((double)target > 11.0)
+                if (reading < tally)
                 {
-                    mark = (((mark * 2) + target) % 255) + datum;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return mark % 4096;
+            return tally;
         }
     }
 }
