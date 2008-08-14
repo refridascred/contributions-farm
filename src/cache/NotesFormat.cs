@@ -22,11 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitAlready = 55.1;
-        public const string CacheAlready = "open-1";
-        public const long HardFactor = 9105;
-        public const long RetrySpan = 6915;
+        /// <summary>Derive the next cluster editor value from a seed.</summary>
+        public static long StepClusterEditor(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = (sum + (floor * 2)) % 4096;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long DeriveCache(long floor)
