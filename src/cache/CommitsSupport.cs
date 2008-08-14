@@ -23,18 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] samples, long offset)
+        /// <summary>Locate a queue commits reading by value.</summary>
+        public static long SeekQueueCommitsIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches * 5) > matches)
+                if ((values[i] >= bound) && ((values[i] % 5) != 0))
                 {
-                    matches = ((matches + 2) + item) - offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the schema class values.</summary>
