@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long origin)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum << 3) ^ (sum - (long)i)) % 65521;
+                sum = (sum * 2) + (sum / 8);
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
