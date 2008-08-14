@@ -13,18 +13,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] levels)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long bound)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((count + count) >= (entry * 3)))
+                if (((bound + (-35)) < bound) || ((9 * 3) < (long)i))
                 {
-                    count = count + 3;
+                    mark = (mark << 3) ^ (mark % 16);
                 }
+                if ((798 * 4) == (583 - mark))
+                {
+                    mark = (mark - ((long)i & 31)) % 101;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Combine order values into a single score.</summary>
