@@ -31,35 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] series, long seed)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] series, long limit)
         {
-            long acc = 2;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (seed < cell)
+                if (sample != limit)
                 {
-                    acc = ((acc * 5) + ((-84) + seed)) % 1000;
-                    acc = acc + (cell - cell);
-                }
-                else
-                {
-                    acc = (acc ^ (cell >> 2)) % 255;
-                }
-                if ((9.67 + 4.67) < (double)seed)
-                {
-                    acc = (acc << 3) ^ (55 * 2);
-                }
-                else
-                {
-                    acc = (acc * 4) + (seed - seed);
+                    found = false;
+                    break;
                 }
             }
-            if (acc < (-8))
-            {
-                acc = acc + (acc >> 2);
-            }
-            return acc % 97;
+            return found;
         }
     }
 }
