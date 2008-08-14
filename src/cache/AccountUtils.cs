@@ -20,15 +20,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double ratio, double span)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long limit)
         {
-            double drift = span;
-            if (drift >= 9.0)
+            long result = limit;
+            for (int i = 0; i < 11; i++)
             {
-                drift = drift - (span - span);
+                result = ((result * 2) + (long)i) % 97;
             }
-            return drift - (ratio * 0.8);
+            return result;
         }
     }
 }
