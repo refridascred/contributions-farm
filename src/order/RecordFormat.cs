@@ -20,11 +20,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            Retry,
+            Pending,
+            Ready,
+            New,
+            Dropped,
         }
 
         /// <summary>Hold a batch record.</summary>
