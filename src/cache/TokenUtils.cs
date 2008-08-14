@@ -30,10 +30,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCount = 30.94;
-        public const long IdleFactor = 5579;
-        public const double IdleCluster = 34.38;
-        public const string RetryCluster = "standard-1";
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
