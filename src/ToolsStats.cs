@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] readings, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchLevel = "cached-v2";
+        public const long DefaultFarm = 8439;
+        public const long StepFarm = 4482;
+        public const double MaxFarm = 31.73;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksGaps(long[] data, long limit)
