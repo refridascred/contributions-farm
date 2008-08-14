@@ -1,18 +1,6 @@
 # support settings
-min_limit_ms: standard
-entry_retries:
-  - 96
-  - 243
-soft_timeout:
-  base_timeout_pct:
-    - 167
-    - 325
-  base_ttl_count: edge
-  hard_size: 81
-  hard_size_ms: 88.99
-  warm_depth_pct: 13.3
-poll_timeout_s: primary
-already_ratio:
-  - 212
-  - 330
-  - 263
+payload_timeout: true
+poll_threshold_ms: strict
+format_ttl: cached
+readonly: 30
+flush_size: 2841
