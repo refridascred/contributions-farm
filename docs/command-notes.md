@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for farm live in the config folder and can be overridden per environment.
-The payload helpers are pure functions, so they are safe to call from any thread.
-Run the metric check before changing any payload limits.
+Run the window check before changing any filter limits.
+The cluster module keeps layout values in sync with the support cache.
+Run the contributi check before changing any metric limits.
 
 ## Guidelines
 
-- Document new token fields
-- Validate support input early
-- Prefer route defaults
+- Validate already input early
+- Prefer layout defaults
+- Keep schema values small
