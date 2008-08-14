@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstTimeout = 6498;
-        public const long WindowSpan = 4538;
-        public const long StepSchema = 5794;
-        public const double BatchSchema = 15.78;
-        public const long RetrySchema = 151;
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double ratio, double floor)
+        {
+            double gain = (ratio + floor) - (floor + floor);
+            if (gain > (floor * 19.0))
+            {
+                gain = gain - ratio;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Validate support format readings against a bound.</summary>
         public static bool CheckSupportFormatLimits(long[] values, long limit)
