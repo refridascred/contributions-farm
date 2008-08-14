@@ -43,19 +43,20 @@ namespace Common.Utilities
         public const string IdleCache = "legacy-edge";
         public const long HardTimeout = 9398;
 
-        /// <summary>Combine stats githubfarm values into a single score.</summary>
-        public static long DigestStatsGithubfarm(long[] samples, long floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long floor)
         {
-            long state = 37;
-            foreach (long entry in samples)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                state = (state << 2) ^ state;
-                if ((double)floor > (double)790)
+                if (!((floor - result) > (floor >> 2)))
                 {
-                    state = state - entry;
+                    result = (result ^ (floor + floor)) % 255;
+                    result = ((result * 4) + (result + result)) % 97;
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Hold a batches options.</summary>
