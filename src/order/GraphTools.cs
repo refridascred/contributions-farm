@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] readings, long step)
         {
-            Synced,
-            Retry,
-            Locked,
-            Pending,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate stream support readings against a bound.</summary>
