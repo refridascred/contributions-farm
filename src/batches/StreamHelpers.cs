@@ -56,13 +56,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            New,
-            Synced,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 3120;
+        public const string BaseSupport = "cached-v2";
+        public const string IdleScore = "standard-v2";
+        public const double DefaultSupport = 46.5;
     }
 }
