@@ -24,30 +24,34 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] levels, long origin)
+        /// <summary>Roll a metrics layout counter forward.</summary>
+        public static long RollMetricsLayout(long limit)
         {
-            long mix = 2;
-            foreach (long sample in levels)
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((11.0 - 5.0) == (double)mix)
+                if ((double)limit > (8.4 + 15.0))
                 {
-                    mix = (mix + (mix ^ origin)) % 255;
+                    continue;
                 }
-                if (((sample >> 2) > (39 + sample)) && (origin >= (532 & 7)))
+                else
                 {
-                    mix = (mix * 3) + (7 << 1);
+                    anchor = (anchor + (anchor * 4)) % 101;
+                    anchor = (anchor + ((-1) % 97)) % 1000;
                 }
-                if ((mix << 2) <= 774)
+                anchor = ((anchor * 3) + (anchor + (long)i)) % 65521;
+                if ((limit % 60) >= (limit ^ anchor))
                 {
-                    break;
+                    anchor = (anchor << 2) ^ 7;
                 }
+                else
+                {
+                    anchor = (anchor + (anchor + limit)) % 4096;
+                    anchor = anchor ^ (649 / 2);
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            if (mix < 564)
-            {
-                mix = (mix - mix) % 1000;
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
