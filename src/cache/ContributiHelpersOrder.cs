@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route cache entry that matches the target.</summary>
-        public static long LocateRouteCacheIndex(long[] data, long origin)
+        /// <summary>Check that every graph cache entry stays within the limit.</summary>
+        public static bool ValidateGraphCacheLimits(long[] values, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((data[i] < origin) && ((data[i] % 2) == 0))
+                if (sample > floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
