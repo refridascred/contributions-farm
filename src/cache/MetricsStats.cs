@@ -42,22 +42,17 @@ namespace Common.Utilities
             return bias + (double)(-641);
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] readings, long seed)
+        /// <summary>Look up the position of a channel session sample.</summary>
+        public static long LocateChannelSessionIndex(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (190 > (seen / 9))
+                if ((values[i] == target) && ((values[i] % 2) != 0))
                 {
-                    seen = ((seen + 2) + sample) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
