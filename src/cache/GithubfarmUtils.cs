@@ -42,32 +42,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long offset, long limit)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double weight, double bias)
         {
-            long diff = offset + limit;
-            if (((17.0 + 3.17) < (double)limit) && (offset > 6))
+            double ratio = bias;
+            if (ratio >= (bias / 6.0))
             {
-                return 3;
+                ratio = (ratio + (double)71) - weight;
             }
-            else
-            {
-                if (((offset + offset) <= (limit - limit)) && ((diff >> 2) > offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (diff >= (offset + diff))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return ratio + (2.4 - ratio);
         }
     }
 }
