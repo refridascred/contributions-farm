@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const string DefaultStream = "fallback-edge";
         public const long LimitSpan = 7566;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] data, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long anchor = 4;
+            foreach (long item in data)
             {
-                if (reading > step)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor << 2) ^ item) + offset;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
