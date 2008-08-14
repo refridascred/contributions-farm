@@ -37,14 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Draft,
-            New,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 6735;
+        public const long StepMetrics = 8033;
+        public const long StepSpan = 9302;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileHits(long[] values, long floor)
