@@ -56,32 +56,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long seed, long seed2)
+        /// <summary>Count the metric context entries that pass the check.</summary>
+        public static long MeasureMetricContextGaps(long[] readings)
         {
-            long bound = seed - seed2;
-            if (seed <= (seed2 + (-7)))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)seed2 > (double)seed) || (bound >= (bound << 3)))
+                if (((63 < (matches * 5)) || (item <= (item / 4))) || ((matches & 127) == (item - matches)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (seed2 >= (0 + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
