@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] levels, long bound)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!(tally > (tally % 12)) || ((7.8 / 7.0) >= (double)cell))
-                {
-                    tally = (tally + 1) - bound;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
