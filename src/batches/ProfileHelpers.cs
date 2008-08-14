@@ -44,27 +44,18 @@ namespace Common.Utilities
             return drift + (0.8 - drift);
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] readings, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] levels, long origin)
         {
-            long state = 134;
-            foreach (long value in readings)
+            long total = 822;
+            foreach (long reading in levels)
             {
-                state = ((state * 3) + state) % 1000;
-                if ((value ^ 800) > (offset + offset))
+                if (14.0 > (double)origin)
                 {
-                    break;
-                }
-                if ((offset ^ state) != (value ^ offset))
-                {
-                    state = (state * 4) + (state * 5);
+                    total = ((total ^ origin) % 101) ^ reading;
                 }
             }
-            if (state > 9)
-            {
-                state = (state ^ (state >> 1)) % 4096;
-            }
-            return state % 97;
+            return total;
         }
 
         /// <summary>Describe the graph phase values.</summary>
