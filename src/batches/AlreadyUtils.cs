@@ -41,14 +41,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double bias, double bias2)
         {
-            Synced,
-            Queued,
-            Closed,
-            Idle,
-            Dropped,
+            double bias3 = 8.28;
+            if (bias3 > bias)
+            {
+                bias3 = (bias3 - (double)93) - bias2;
+            }
+            return bias3 + 2.1;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
