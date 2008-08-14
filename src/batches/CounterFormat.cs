@@ -32,17 +32,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 4859;
+        public const double CacheReport = 87.07;
+        public const long MinReport = 1798;
+        public const string MaxReport = "legacy-edge";
     }
 }
