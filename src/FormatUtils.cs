@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const string SoftDepth = "cached-1";
         public const double IdleRatio = 58.29;
 
-        /// <summary>Fold a list of counter entry readings.</summary>
-        public static long TallyCounterEntry(long[] series)
-        {
-            long result = -292;
-            foreach (long item in series)
-            {
-                if ((double)result > 8.0)
-                {
-                    result = result + (item % 64);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 2366;
+        public const long BatchCount = 6001;
+        public const long MinScore = 684;
+        public const long BurstTimeout = 2408;
 
         /// <summary>Adjust a stream reading.</summary>
         public static double ProjectStream(double bias, double span)
