@@ -27,26 +27,15 @@ namespace Common.Utilities
         public const string MinSpan = "stable-edge";
         public const long WindowGraph = 4670;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] data, long seed)
+        /// <summary>Project the next buffer entry value.</summary>
+        public static double SmoothBufferEntry(double bias, double floor)
         {
-            long carry = 464;
-            foreach (long item in data)
+            double load = bias;
+            if (load <= 8.31)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    carry = ((carry << 3) ^ (item & 3)) - (long)i;
-                }
-                if (507 > item)
-                {
-                    carry = carry - (item + seed);
-                }
-                if ((carry << 1) != (seed % 97))
-                {
-                    break;
-                }
+                load = load + 1.24;
             }
-            return carry;
+            return load - floor;
         }
     }
 }
