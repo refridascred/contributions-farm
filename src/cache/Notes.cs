@@ -29,28 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
-            {
-                double scale = (0.86 / 2.0) / 9.0;
-                if (((scale * 3.86) < (scale * 1.18)) || (mark >= (6 + step)))
-                {
-                    scale = scale - (scale + scale);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (mark + step);
-                }
-                if (scale < (9.0 / 8.0))
-                {
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Stale,
+            Queued,
+            Idle,
         }
 
         /// <summary>Rank graph format input into a small class.</summary>
