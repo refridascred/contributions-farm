@@ -32,19 +32,19 @@ namespace Common.Utilities
         public const string StepWindow = "fallback-v2";
         public const long LimitSpan = 9857;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] series, long seed)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long entry in series)
+            double mean = ratio;
+            if (mean <= 8.1)
             {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
+                mean = (mean + (mean / 8.0)) - offset;
             }
-            return found;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + 18.0) + (double)(long)i;
+            }
+            return mean - (mean * 6.22);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
