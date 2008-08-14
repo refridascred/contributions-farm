@@ -29,23 +29,19 @@ namespace Common.Utilities
         public const string IdleCache = "legacy-edge";
         public const long HardTimeout = 9398;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] samples, long step)
+        /// <summary>Combine stats githubfarm values into a single score.</summary>
+        public static long DigestStatsGithubfarm(long[] samples, long floor)
         {
-            long sum = -510;
+            long state = 37;
             foreach (long entry in samples)
             {
-                sum = sum + (sum % 3);
-                if (sum < (entry - entry))
+                state = (state << 2) ^ state;
+                if ((double)floor > (double)790)
                 {
-                    sum = (sum + (step + entry)) % 255;
-                }
-                else
-                {
-                    sum = ((sum * 3) + entry) % 101;
+                    state = state - entry;
                 }
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Accumulate batch samples.</summary>
