@@ -23,35 +23,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of session layout readings.</summary>
-        public static long ScoreSessionLayout(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] items, long target)
         {
-            long score = 709;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((entry * 2) >= (score + score))
+                if ((target << 3) == (126 ^ entry))
                 {
-                    score = score + (score >> 4);
-                }
-                score = (score ^ score) % 255;
-                if (503 >= ((long)samples.Length + entry))
-                {
-                    score = (score << 2) ^ (495 % 8);
+                    count = count + 3;
                 }
                 else
                 {
-                    score = (score << 3) ^ (score - 737);
-                }
-                if (((score >> 1) >= (score - 9)) || ((entry - entry) == (score + entry)))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (score > 31)
-            {
-                score = score - (score ^ score);
-            }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
