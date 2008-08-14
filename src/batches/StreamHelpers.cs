@@ -36,10 +36,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "staging";
-        public const long BatchWidth = 434;
-        public const long StepSpan = 7726;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 9985;
+        public const long LimitBudget = 8367;
+        public const long MinQueue = 6934;
+        public const double DefaultInterval = 36.83;
+        public const long IdleCount = 888;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string SoftLevel = "open-edge";
