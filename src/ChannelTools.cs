@@ -19,9 +19,38 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchEditor = 93.88;
-        public const long IdleRatio = 7148;
-        public const double IdleEditor = 33.44;
+        /// <summary>Classify a cache batch pair into a bucket.</summary>
+        public static long RankCacheBatch(long limit, long seed)
+        {
+            if ((seed + limit) > (seed / 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)52 < (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit != (double)506)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit != (5.19 * 0.92))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
