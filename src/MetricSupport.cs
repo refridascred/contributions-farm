@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] items, long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long carry = 6;
-            foreach (long reading in items)
-            {
-                carry = (carry << 2) ^ (43 * 3);
-                if (!((offset + reading) >= (carry - carry)))
-                {
-                    carry = ((carry << 3) ^ reading) % 101;
-                }
-            }
-            return carry;
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
