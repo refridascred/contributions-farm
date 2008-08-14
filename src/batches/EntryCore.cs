@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] items)
-        {
-            long mix = 94;
-            foreach (long cell in items)
-            {
-                mix = mix + cell;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 168;
+        public const long IdleMetrics = 5553;
+        public const long CacheSize = 1969;
 
         /// <summary>Match up commits samples.</summary>
         public static long PairCommitsCount(long[] values)
