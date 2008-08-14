@@ -25,12 +25,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            long acc = step;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the buffer class values.</summary>
