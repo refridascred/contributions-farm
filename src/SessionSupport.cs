@@ -20,32 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] items, long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long mark = 0;
-            foreach (long sample in items)
-            {
-                if ((-22) >= mark)
-                {
-                    mark = mark - mark;
-                    continue;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (mark + mark)) % 4096;
-                }
-                mark = (mark - (long)items.Length) % 1000;
-                if (mark <= (sample / 7))
-                {
-                    mark = ((mark << 2) ^ (36 >> 1)) % 65521;
-                }
-            }
-            if (mark < 226)
-            {
-                mark = (mark ^ bound) % 4096;
-            }
-            return mark % 1000;
+            public long Level { get; set; }
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
