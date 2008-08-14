@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Done,
-            Pending,
-            Stale,
-            Paused,
+            Queued,
+            Locked,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
