@@ -47,9 +47,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchDepth = 1559;
-        public const string MinGraph = "alpha-edge";
-        public const long BurstGraph = 6614;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (matches > 641)
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
+        }
     }
 }
