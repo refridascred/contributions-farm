@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream support readings against a bound.</summary>
-        public static bool GuardStreamSupportLimits(long[] values, long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long origin, long floor)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long next = origin + floor;
+            if ((double)origin < (5.0 * 18.0))
             {
-                if (value <= limit)
+                return 3;
+            }
+            else
+            {
+                if (!((floor & 255) < (origin - next)))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
