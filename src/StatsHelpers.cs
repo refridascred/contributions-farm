@@ -49,22 +49,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many session batches samples are out of range.</summary>
-        public static long CountSessionBatchesGaps(long[] samples)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)entry < (6.7 * 8.5))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
     }
 }
