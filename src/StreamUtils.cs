@@ -41,16 +41,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Count commits account pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsAccountCount(long[] readings)
         {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 5) + (bound << 3)) % 65521;
-                carry = ((carry * 4) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a stats header.</summary>
