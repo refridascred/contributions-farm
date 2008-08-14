@@ -1,19 +1,17 @@
 {
-  "poll_size_ms": {
-    "persist": true,
-    "min_limit_pct": 250,
-    "retry_ttl_ms": "legacy",
-    "soft_threshold": true,
-    "audit": 16,
-    "cache_window": {
-      "buffer_window": 5832,
-      "idle_ratio": 64,
-      "route_ratio": "open",
-      "record_limit": "staging",
-      "batches_window": 25,
-      "filter_window": "local"
-    }
+  "batches_capacity": {
+    "record_window": false,
+    "persist": "open",
+    "compress": 9412,
+    "flush_interval_s": "primary",
+    "strict": 500,
+    "commits_limit": "strict"
   },
-  "burst_depth_ms": ["standard", "local"],
-  "flush_threshold": 69.07
+  "readonly": "primary",
+  "schema_ratio": {
+    "hard_depth": "edge",
+    "channel_size": false,
+    "verbose": 100
+  },
+  "hard_depth_count": "green"
 }
