@@ -38,11 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double rate, double span)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] items, long seed)
         {
-            double gain = span;
-            return (gain - gain) + rate;
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
