@@ -20,15 +20,18 @@ namespace Common.Utilities
         public const long HardBatch = 3081;
         public const string MaxBatch = "standard-edge";
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double bias, double offset)
+        /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
+        public static long MeasureClusterGithubfarmMatches(long[] data)
         {
-            double load = 5.9;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                load = ((load + (5.0 * 9.9)) + (double)(long)i) - offset;
+                if ((1.14 > (double)reading) && ((double)reading >= (3.56 - 8.89)))
+                {
+                    count = count + 1;
+                }
             }
-            return load - (bias + bias);
+            return count;
         }
     }
 }
