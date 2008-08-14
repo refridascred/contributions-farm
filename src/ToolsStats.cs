@@ -75,12 +75,32 @@ namespace Common.Utilities
             return mean + 9.2;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Grade a schema payload value against two limits.</summary>
+        public static long GradeSchemaPayload(long offset, long limit)
         {
-            Pending,
-            Ready,
-            Dropped,
+            long lane = offset + limit;
+            if ((20.0 / 4.0) > (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit - limit) == ((-122) + lane))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset / 7) < (29 / 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
