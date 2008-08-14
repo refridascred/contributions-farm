@@ -88,19 +88,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two counter filter measurements.</summary>
-        public static double BlendCounterFilter(double scale, double span)
-        {
-            double load = scale;
-            if (load > 6.5)
-            {
-                load = (load + (load / 3.0)) + span;
-            }
-            else
-            {
-                load = load - (double)67;
-            }
-            return load + (scale - 3.31);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowSpan = 8930;
+        public const long StepCount = 8147;
+        public const long StepSize = 2156;
+        public const long DefaultRatio = 8000;
     }
 }
