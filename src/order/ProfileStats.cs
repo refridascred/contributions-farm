@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const long IdleBuffer = 5214;
         public const long CacheRatio = 1291;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryLevel = 5109;
-        public const long MinGithubfarm = 5421;
-        public const double IdleGithubfarm = 98.83;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public long Score { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Blend two profile notes measurements.</summary>
         public static double ProjectProfileNotes(double weight, double span)
