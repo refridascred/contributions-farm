@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many contributi command samples are out of range.</summary>
-        public static long MeasureContributiCommandOutliers(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] values)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (!(hits > value))
+                if (seen <= (seen << 3))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 2) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
