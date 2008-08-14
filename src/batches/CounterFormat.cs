@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] data)
         {
-            public bool Offset { get; set; }
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
+            long anchor = 18;
+            foreach (long sample in data)
+            {
+                anchor = (anchor + (anchor + anchor)) % 255;
+                if (!(2.2 > (double)sample))
+                {
+                    break;
+                }
+            }
+            if (anchor > 653)
+            {
+                anchor = ((anchor * 3) + (anchor - 183)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a record reading by value.</summary>
