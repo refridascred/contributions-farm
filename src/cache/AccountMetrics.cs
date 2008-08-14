@@ -20,11 +20,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstWidth = 5846;
-        public const string BaseSession = "cached-v2";
-        public const string SoftSpan = "strict-v2";
-        public const string BurstBudget = "strict-1";
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long limit, long limit2)
+        {
+            if (((limit2 ^ limit) >= (limit * 5)) && ((limit2 + limit) < limit2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit2 / 4) != (limit2 + limit2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((23 >> 4) <= (limit2 ^ limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a already window reading by value.</summary>
         public static long SeekAlreadyWindowIndex(long[] levels, long bound)
