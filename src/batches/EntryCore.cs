@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] samples, long origin)
-        {
-            long score = 80;
-            foreach (long item in samples)
-            {
-                score = (score + origin) ^ item;
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 2265;
+        public const double BurstWidth = 2.69;
+        public const double BaseWidth = 69.79;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
