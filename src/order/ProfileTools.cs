@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long bound, long origin)
-        {
-            if ((double)origin != (1.38 - 4.5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 2) < (63 << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultLevel = 53.99;
+        public const long BatchBatches = 6372;
+        public const double WindowInterval = 51.61;
+        public const long BaseSize = 9136;
 
         /// <summary>Project the next support value.</summary>
         public static double ProjectSupport(double scale, double bias)
