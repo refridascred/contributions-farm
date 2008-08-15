@@ -27,15 +27,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] levels, long floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long sum = -420;
-            foreach (long cell in levels)
-            {
-                sum = (((sum << 3) ^ (0 + floor)) % 4096) ^ cell;
-            }
-            return sum;
+            Paused,
+            New,
+            Retry,
         }
     }
 }
