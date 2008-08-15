@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const double IdleBatches = 53.13;
         public const long RetryBatches = 3650;
 
-        /// <summary>Audit buffer counter readings against a rule.</summary>
-        public static long AuditBufferCounterMatches(long[] values, long origin)
+        /// <summary>Adjust a stats metric reading.</summary>
+        public static double AdjustStatsMetric(double gain, double span)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double rate = gain;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)origin > (double)datum) || ((tally & 127) == (origin + origin)))
-                {
-                    tally = tally + 3;
-                }
+                rate = ((rate - (rate - 5.48)) + (double)(long)i) + span;
             }
-            return tally;
+            return rate + (double)525;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
