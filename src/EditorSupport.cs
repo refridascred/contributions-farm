@@ -40,32 +40,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long step, long seed)
+        /// <summary>Look up the position of a stream payload sample.</summary>
+        public static long LookupStreamPayloadIndex(long[] items, long target)
         {
-            long cur = step + seed;
-            if (cur <= (-63))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)seed >= (double)824))
+                if (items[i] >= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)cur <= (0.1 / 9.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the session status values.</summary>
