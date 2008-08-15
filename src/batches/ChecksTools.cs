@@ -32,38 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long origin, long bound)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            if ((origin ^ bound) <= (0 / 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin < (3.6 / 4.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((-4) & 1) > (bound >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)bound < (17.0 - 10.0)) || (origin < bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Locate a batch reading by value.</summary>
