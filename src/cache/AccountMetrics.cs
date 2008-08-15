@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] series)
+        /// <summary>Classify a tools checks pair into a bucket.</summary>
+        public static long GradeToolsChecks(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            if ((double)seed != (3.23 * 4.8))
             {
-                if (tally >= (3 + reading))
+                return 7;
+            }
+            else
+            {
+                if ((double)bound <= (double)seed)
                 {
-                    tally = tally + 1;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((seed + seed) < bound) || (seed >= (seed + bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed <= (seed ^ 815)) || (8.0 > (double)seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
