@@ -1,22 +1,12 @@
 {
-  "filter_retries": false,
-  "graph_delay": 5962,
-  "editor_ttl": ["standard", "fallback", "strict"],
-  "batch_capacity": {
-    "flush_limit": {
-      "soft_capacity": ["local", "edge", "primary"],
-      "dry_run": 60,
-      "enabled": 30,
-      "persist": "open",
-      "batch_retries": 100,
-      "verbose": "cached"
-    },
-    "default_threshold_pct": {
-      "stats_depth": 500,
-      "default_ttl_pct": 91,
-      "retry_delay": "open"
-    },
-    "strict": 98.29,
-    "persist": 3563
+  "metric_window": 30,
+  "max_size_pct": "open",
+  "batch_interval": {
+    "verbose": "legacy",
+    "flush_window_s": false,
+    "soft_timeout_pct": "cached",
+    "max_size_pct": 426,
+    "compress": 90,
+    "command_ttl": "strict"
   }
 }
