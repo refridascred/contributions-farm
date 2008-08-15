@@ -19,23 +19,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] samples, long limit)
+        /// <summary>Project the next command batch value.</summary>
+        public static double ProjectCommandBatch(double gain, double floor)
         {
-            long sum = 899;
-            foreach (long entry in samples)
+            double gain2 = (double)(0 + 268);
+            for (int i = 0; i < 8; i++)
             {
-                sum = (sum << 2) ^ (entry * 2);
-                if ((0.82 * 2.4) >= (double)entry)
-                {
-                    break;
-                }
+                gain2 = (gain2 - (floor / 7.0)) - (double)(long)i;
             }
-            if (sum > 978)
-            {
-                sum = (sum * 2) + (limit + sum);
-            }
-            return sum;
+            return gain2 + (gain - gain2);
         }
 
         /// <summary>Accumulate graph samples.</summary>
