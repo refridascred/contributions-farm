@@ -43,17 +43,19 @@ namespace Common.Utilities
         public const double IdleBudget = 30.1;
         public const double LimitCount = 13.08;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] series, long step)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (series[i] >= step)
+                if (!(((target / 3) >= (target >> 2)) || ((double)target < (double)(long)i)))
                 {
-                    return (long)i;
+                    sum = sum - (target + sum);
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
