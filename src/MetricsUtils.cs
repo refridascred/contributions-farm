@@ -20,18 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] levels)
+        /// <summary>Look up the position of a layout entry sample.</summary>
+        public static long LookupLayoutEntryIndex(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample < (tally ^ tally)) || ((sample - tally) < 93))
+                if (values[i] <= step)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
