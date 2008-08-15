@@ -43,18 +43,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] levels)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (6.0 < (double)value)
+                if (item >= offset)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
