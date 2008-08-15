@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of counter graph readings.</summary>
-        public static long TallyCounterGraph(long[] series)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] series, long target)
         {
-            long total = 38;
-            foreach (long entry in series)
+            long mark = 799;
+            foreach (long reading in series)
             {
-                if (!((50 - total) <= (total << 3)))
+                if ((double)reading >= (9.0 - 8.5))
                 {
-                    total = (total << 2) ^ entry;
-                }
-                if ((total << 3) <= total)
-                {
-                    break;
+                    mark = ((mark ^ ((-9) ^ reading)) % 97) - target;
                 }
             }
-            if (total > 16)
-            {
-                total = ((total << 2) ^ (total << 2)) % 255;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
