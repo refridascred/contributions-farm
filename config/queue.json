@@ -1,12 +1,5 @@
 {
-  "stream_delay": 77.89,
-  "batch_window_ms": 26.14,
-  "poll_threshold_pct": {
-    "queue_delay": 1,
-    "base_threshold_count": "strict",
-    "hard_retries_s": 2021,
-    "warm_timeout_count": "edge"
-  },
-  "poll_interval_s": "cached",
-  "window_threshold": 740
+  "hard_capacity": 10,
+  "flush_capacity": "strict",
+  "record_interval": 710
 }
