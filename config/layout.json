@@ -1,5 +1,6 @@
 {
-  "account_threshold": 14.11,
-  "soft_interval_ms": 6.96,
-  "max_ratio_s": "latest"
+  "compress": "primary",
+  "cache_limit_s": 47.61,
+  "max_capacity_s": false,
+  "hard_ttl": "blue"
 }
