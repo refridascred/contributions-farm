@@ -22,16 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepCommits = "primary-edge";
+        public const long RetrySize = 3591;
+        public const long BurstCommits = 9020;
+        public const string BurstBudget = "cached";
+        public const string BurstSpan = "cached-edge";
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long AuditBufferMatches(long[] values, long limit)
