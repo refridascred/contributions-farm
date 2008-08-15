@@ -59,24 +59,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long limit, long bound)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            if (((double)limit > 8.0) && ((bound >> 2) != (51 + limit)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound + limit) <= (bound / 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
