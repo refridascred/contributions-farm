@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleOrder = "alpha-1";
-        public const string HardSpan = "standard";
-        public const long DefaultOrder = 7560;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Ready,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheSpan = 7758;
