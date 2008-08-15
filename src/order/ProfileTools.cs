@@ -66,14 +66,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Retry,
-            New,
+            Stale,
+            Pending,
             Paused,
-            Closed,
-            Active,
+            Dropped,
+            Queued,
         }
     }
 }
