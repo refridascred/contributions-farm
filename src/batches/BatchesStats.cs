@@ -29,19 +29,17 @@ namespace Common.Utilities
         public const double IdleBudget = 30.1;
         public const double LimitCount = 13.08;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long target)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] series, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((target / 3) >= (target >> 2)) || ((double)target < (double)(long)i)))
+                if (series[i] > step)
                 {
-                    sum = sum - (target + sum);
+                    return (long)i;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
     }
 }
