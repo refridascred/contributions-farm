@@ -41,22 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] series, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long anchor = 115;
+            foreach (long datum in samples)
             {
-                if (((long)series.Length + reading) > tally)
-                {
-                    tally = (tally + 3) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor + (anchor + 97)) % 97) - datum;
             }
-            return tally;
+            return anchor % 4096;
         }
     }
 }
