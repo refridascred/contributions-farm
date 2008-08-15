@@ -24,16 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long seed)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = (anchor << 3) ^ (69 + anchor);
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Failed,
+            Pending,
+            Closed,
         }
     }
 }
