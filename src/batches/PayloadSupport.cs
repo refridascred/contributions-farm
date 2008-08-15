@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long target)
         {
-            New,
-            Pending,
-            Stale,
+            long carry = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)6 <= (double)carry)
+                {
+                    break;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
