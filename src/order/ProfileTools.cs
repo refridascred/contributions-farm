@@ -60,19 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] values, long bound)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < bound)
+                if ((values[i] > limit) && ((values[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the support status values.</summary>
