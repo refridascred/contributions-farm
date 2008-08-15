@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] readings, long limit)
         {
-            Ready,
-            Retry,
-            Pending,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (!((matches & 15) >= ((long)readings.Length + matches)) && ((15 < (matches & 15)) && ((matches >> 4) <= (cell % 3))))
+                {
+                    matches = (matches + 2) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
