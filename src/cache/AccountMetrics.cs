@@ -84,18 +84,12 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Count the already entry entries that pass the check.</summary>
-        public static long MeasureAlreadyEntryMatches(long[] items, long bound)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((((double)reading >= (2.0 - 8.96)) || ((double)reading < (9.94 / 7.0))) && (bound < (reading * 4)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
