@@ -27,25 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long limit, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] series, long bound)
         {
-            long next = limit + step;
-            if (((double)limit == (9.16 * 3.8)) || ((step + next) < step))
+            bool ready = true;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2.5 * 13.0) <= (double)step)
+                if (entry <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
