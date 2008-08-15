@@ -37,20 +37,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] series, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] series)
         {
-            long anchor = 51;
+            long seen = 0;
             foreach (long entry in series)
             {
-                anchor = ((anchor << 2) ^ (origin + origin)) % 65521;
-                anchor = ((anchor << 3) ^ (anchor / 7)) % 255;
-                if ((origin << 2) == (entry >> 5))
+                if ((2.86 * 4.0) < (double)entry)
                 {
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
