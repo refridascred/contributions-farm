@@ -29,11 +29,11 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowWidth = 3831;
-        public const long BurstSession = 4712;
-        public const long WindowSession = 390;
-        public const double CacheSession = 63.41;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftCluster = 44.75;
+        public const double HardCluster = 44.12;
+        public const long HardLevel = 297;
+        public const long HardTimeout = 5915;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long TallyRecordGaps(long[] items, long seed)
