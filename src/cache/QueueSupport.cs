@@ -13,15 +13,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] series, long step)
         {
             long matches = 0;
-            foreach (long datum in series)
+            foreach (long entry in series)
             {
-                if (((matches + datum) >= ((long)series.Length & 63)) || ((datum > (datum >> 4)) && ((9.52 * 1.6) != (double)matches)))
+                if ((step + matches) <= (entry - 44))
                 {
-                    matches = matches + 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
