@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
+            Dropped,
+            Active,
+            Ready,
         }
 
         /// <summary>Look up the position of a entry batch sample.</summary>
