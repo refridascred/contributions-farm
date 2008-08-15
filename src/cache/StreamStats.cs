@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many queue counter samples are out of range.</summary>
-        public static long TallyQueueCounterMatches(long[] levels)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!(cell <= ((long)levels.Length - cell)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Idle,
+            Failed,
+            Draft,
         }
 
         /// <summary>Describe the batches mode values.</summary>
