@@ -1,8 +1,13 @@
 # support settings
-burst_limit:
-  - primary
-  - blue
-  - local
-burst_interval: 14.82
-idle_depth_pct: 3989
-default_depth_ms: standard
+contributi_interval:
+  - green
+  - fallback
+  - standard
+verbose: standard
+stream_capacity: 39.59
+max_threshold_s: blue
+hard_capacity_s:
+  - 437
+  - 229
+  - 7
+  - 116
