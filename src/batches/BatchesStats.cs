@@ -48,26 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] series, long bound)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] items, long target)
         {
-            long mix = 337;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if (!(((double)824 <= (3.6 - 9.0)) && ((mix ^ cell) <= (mix / 5))))
+                if (reading > target)
                 {
-                    mix = (mix * 3) + (cell - (-412));
-                }
-                if ((6.8 + 1.0) >= (double)bound)
-                {
-                    mix = (mix + (-9)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            if (mix > 69)
-            {
-                mix = (mix * 3) + (mix + bound);
-            }
-            return mix % 1000;
+            return found;
         }
     }
 }
