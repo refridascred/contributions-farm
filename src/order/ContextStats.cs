@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] data, long floor)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count ^ 83) > (item * 3))
+                if (samples[i] > origin)
                 {
-                    count = (count + 3) - floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the batches state values.</summary>
