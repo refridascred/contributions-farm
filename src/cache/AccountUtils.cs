@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 475;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 7; i++)
                 {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score + ((long)i >> 1)) % 97;
+                }
+                score = (score - (score + (long)readings.Length)) % 1000;
+                if (6.49 <= (double)datum)
+                {
+                    score = ((score << 2) ^ (datum << 1)) % 97;
                 }
             }
-            return matches;
+            if (score > 6)
+            {
+                score = (score + (score + score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
