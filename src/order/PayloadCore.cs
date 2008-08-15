@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] items, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (((target << 1) != (40 - hits)) && ((target << 3) <= (item * 5)))
+                if (cell >= origin)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
