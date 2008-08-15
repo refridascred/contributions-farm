@@ -1,9 +1,32 @@
 # githubfarm settings
-soft_size_pct:
-  - 91
-  - 373
-  - 160
-verbose: true
-flush_delay:
-  - 436
-  - 386
+batch_retries:
+  stream_window:
+    persist: primary
+    default_ratio:
+      - stable
+      - eu-west
+      - staging
+    queue_size: local
+    queue_depth: eu-west
+  enabled: 1.22
+  hard_timeout: 4.78
+  burst_ttl: false
+readonly:
+  - 320
+  - 194
+  - 444
+base_ratio: legacy
+tools_size:
+  - 406
+  - 341
+  - 416
+soft_interval_ms: standard
+max_timeout_ms:
+  cluster_threshold: 74
+  warm_delay_count:
+    retry_window_ms: eu-west
+    soft_window_count: latest
+    retry_ratio_pct: latest
+    readonly: edge
+    cluster_ttl: false
+  strict: primary
