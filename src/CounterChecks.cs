@@ -27,20 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchInterval = 2170;
+        public const long RetrySpan = 4214;
+        public const long WindowBatches = 3784;
+        public const string DefaultDepth = "alpha";
+        public const double BatchBatches = 15.64;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long WeighCommand(long[] data)
