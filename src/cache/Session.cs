@@ -13,15 +13,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long floor)
+        /// <summary>Roll a channel editor counter forward.</summary>
+        public static long SeriesChannelEditor(long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
