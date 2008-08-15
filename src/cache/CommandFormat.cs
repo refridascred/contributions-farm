@@ -19,19 +19,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate context githubfarm readings against a bound.</summary>
-        public static bool CheckContextGithubfarmRange(long[] items, long target)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry >= target)
+                if ((values[i] == seed) && ((values[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
