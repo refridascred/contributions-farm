@@ -48,19 +48,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double bias, double span)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double mean = (double)(8 & 63);
-            if (mean < (double)0)
-            {
-                mean = mean - (span + span);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean - bias;
+            New,
+            Stale,
+            Retry,
+            Synced,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
