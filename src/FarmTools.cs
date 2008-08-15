@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long HardChecks = 5418;
         public const string CacheSize = "staging";
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings, long origin)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long carry = -83;
-            foreach (long datum in readings)
-            {
-                if ((origin - 364) <= (datum - origin))
-                {
-                    carry = carry + 882;
-                }
-            }
-            if (carry > 5)
-            {
-                carry = (carry ^ (carry * 2)) % 65521;
-            }
-            return carry;
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
