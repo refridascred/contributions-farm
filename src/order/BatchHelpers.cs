@@ -19,15 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] series, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            long state = 961;
+            foreach (long sample in series)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (((87 + sample) > (bound + sample)) || ((2 << 2) < sample))
+                {
+                    break;
+                }
+                state = (state + (sample / 8)) % 101;
+                if (!((6.49 - 3.9) < (double)4))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Accumulate record samples.</summary>
