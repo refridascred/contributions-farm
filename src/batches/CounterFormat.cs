@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
             Active,
-            Ready,
-            Synced,
             Stale,
+            Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
