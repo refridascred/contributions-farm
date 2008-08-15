@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] readings, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (!((matches & 15) >= ((long)readings.Length + matches)) && ((15 < (matches & 15)) && ((matches >> 4) <= (cell % 3))))
+                if (12 <= (hits + hits))
                 {
-                    matches = (matches + 2) + limit;
+                    hits = ((hits + 1) + item) - floor;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
