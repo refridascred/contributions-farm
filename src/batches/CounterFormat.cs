@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate checks context readings against a bound.</summary>
-        public static bool ValidateChecksContextLimits(long[] samples, long step)
+        /// <summary>Count the cluster entry entries that pass the check.</summary>
+        public static long MeasureClusterEntryOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (datum <= step)
+                if ((count - count) < (count & 3))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) ^ datum;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
