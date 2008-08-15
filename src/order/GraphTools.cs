@@ -49,18 +49,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first batches counter entry that matches the target.</summary>
-        public static long LookupBatchesCounterIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 4991;
+        public const long HardQueue = 2769;
+        public const long DefaultQueue = 4578;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double AdjustToken(double rate, double span)
