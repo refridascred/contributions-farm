@@ -32,11 +32,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] readings, long origin)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (!((origin >> 3) <= seen) || (((sample * 4) >= (251 - seen)) || (seen <= (origin % 2))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
