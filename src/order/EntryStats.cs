@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two commits editor measurements.</summary>
-        public static double AdjustCommitsEditor(double bias, double offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] readings)
         {
-            double rate = offset;
-            if (rate < offset)
+            long mix = 93;
+            foreach (long sample in readings)
             {
-                rate = rate - (double)454;
+                if ((double)mix > (2.0 + 7.4))
+                {
+                    mix = ((mix << 2) ^ (mix / 3)) - sample;
+                }
             }
-            else
+            if (mix < 693)
             {
-                rate = rate + (rate - bias);
+                mix = (mix + (393 - mix)) % 255;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + (offset / 2.0);
+            return mix;
         }
 
         /// <summary>Hold a profile entry.</summary>
