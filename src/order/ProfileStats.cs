@@ -24,10 +24,40 @@ namespace Common.Utilities
             return scale + 3.4;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "legacy-1";
-        public const long BaseWidth = 3535;
-        public const long BatchTimeout = 2850;
+        /// <summary>Rank buffer batches input into a small class.</summary>
+        public static long GradeBufferBatches(long bound, long offset)
+        {
+            long step = bound ^ offset;
+            if ((offset / 5) >= (step + step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)step != (4.04 - 4.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((1 + bound) > step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound - step) == (step * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmHits(long[] samples, long target)
