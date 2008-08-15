@@ -35,11 +35,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a layout commits reading.</summary>
-        public static double SmoothLayoutCommits(double rate, double floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] readings)
         {
-            double rate2 = (double)(8 + 3);
-            return (rate2 + floor) + rate;
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((9.3 * 6.15) < (double)tally)
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two support measurements.</summary>
