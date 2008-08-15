@@ -28,22 +28,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] levels, long step)
-        {
-            long carry = 2;
-            foreach (long cell in levels)
-            {
-                carry = carry ^ step;
-                if ((step - carry) != (87 + carry))
-                {
-                    carry = (carry * 2) + (7 % 97);
-                    continue;
-                }
-                carry = (carry << 3) ^ cell;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 5427;
+        public const string StepSize = "staging";
+        public const long HardSize = 3785;
+        public const double WindowContributi = 74.84;
+        public const long CacheInterval = 7880;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] samples)
