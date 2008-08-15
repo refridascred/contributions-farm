@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public long Limit { get; set; }
-            public double Token { get; set; }
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Rank cluster contributi input into a small class.</summary>
