@@ -46,11 +46,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] values)
         {
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!(((item % 5) <= (seen << 3)) || ((item ^ seen) < item)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
