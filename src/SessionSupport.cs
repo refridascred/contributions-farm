@@ -15,12 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] levels, long step)
         {
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((value & 31) > (value & 255))
+                {
+                    count = (count + 3) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
