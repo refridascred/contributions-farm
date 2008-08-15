@@ -20,16 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double weight, double floor)
-        {
-            double gain = (0.8 * 5.0) - (double)6;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain - (floor - gain)) + (double)(long)i) + weight;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleTimeout = 7889;
+        public const long CacheCommand = 1012;
+        public const string MaxTimeout = "local-v2";
+        public const long BaseBudget = 631;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long TallyCacheMatches(long[] samples)
