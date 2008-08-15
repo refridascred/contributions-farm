@@ -38,17 +38,23 @@ namespace Common.Utilities
             return mean + 6.7;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] series, long bound)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = bias;
+            if (gain < (floor - floor))
             {
-                if ((series[i] == bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - (bias * 1.48);
             }
-            return -1;
+            else
+            {
+                gain = gain - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - 18.0) + (double)(long)i;
+            }
+            return gain + 4.61;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
