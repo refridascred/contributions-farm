@@ -26,15 +26,31 @@ namespace Common.Utilities
         public const long IdleToken = 3826;
         public const double LimitToken = 78.47;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long floor, long step)
         {
-            long state = 815;
-            foreach (long reading in data)
+            if (!((step + step) >= (floor << 2)))
             {
-                state = ((state * 4) + (state + 78)) ^ reading;
+                return 2;
             }
-            return state % 1000;
+            else
+            {
+                if (!(floor > (floor + step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + step) > (step - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two format payload measurements.</summary>
