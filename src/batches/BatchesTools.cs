@@ -27,10 +27,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheCommits = 40.42;
-        public const long MaxTimeout = 7804;
-        public const double BurstSize = 87.44;
-        public const long MaxCommits = 2944;
+        /// <summary>Accumulate batch buffer samples.</summary>
+        public static long FoldBatchBuffer(long[] items, long bound)
+        {
+            long state = 191;
+            foreach (long sample in items)
+            {
+                if (((66 >> 1) != (state + bound)) && (state >= (sample + sample)))
+                {
+                    state = state ^ bound;
+                }
+                else
+                {
+                    state = (state + (state % 16)) % 101;
+                }
+            }
+            return state;
+        }
     }
 }
