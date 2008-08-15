@@ -28,13 +28,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
+            Closed,
+            New,
+            Dropped,
+            Queued,
+            Pending,
         }
     }
 }
