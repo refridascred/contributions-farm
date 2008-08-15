@@ -37,18 +37,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many graph window samples are out of range.</summary>
-        public static long CountGraphWindowOutliers(long[] series)
+        /// <summary>Rank schema checks input into a small class.</summary>
+        public static long BucketSchemaChecks(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long edge = bound ^ floor;
+            if (bound > floor)
             {
-                if ((entry << 2) > (408 << 2))
+                return 4;
+            }
+            else
+            {
+                if ((double)bound > (2.4 - 0.51))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (!((bound / 8) > edge))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)floor <= (double)bound) && ((bound + (-9)) < (5 + (-47))))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
