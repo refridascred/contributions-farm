@@ -49,19 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] series, long limit)
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (item <= limit)
                 {
-                    mix = ((mix ^ (99 ^ 3)) % 65521) + (long)i2;
+                    found = false;
+                    break;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return found;
         }
     }
 }
