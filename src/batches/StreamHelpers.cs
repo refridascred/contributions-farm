@@ -61,19 +61,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double weight, double bias)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long bound)
         {
-            double drift = (double)(5 % 16);
-            if (drift <= (double)2)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                drift = (drift + (double)9) - weight;
+                acc = ((acc << 2) ^ (bound + acc)) % 65521;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (bias - bias)) + (double)(long)i;
-            }
-            return drift - (bias + drift);
+            return acc;
         }
     }
 }
