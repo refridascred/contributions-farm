@@ -27,18 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] values, long limit)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((7.7 * 0.56) >= (double)hits)
-                {
-                    hits = ((hits + 2) - item) - limit;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit command batch readings against a rule.</summary>
