@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] items)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long target, long origin)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            if (((277 - target) != (origin / 3)) && ((298 / 9) >= (5 + origin)))
             {
-                if ((double)sample > 5.9)
+                return 5;
+            }
+            else
+            {
+                if (target <= (origin ^ origin))
                 {
-                    tally = tally + 3;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((11 & 31) < (target << 2)) || ((target * 5) > origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((7.0 - 3.0) < (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
