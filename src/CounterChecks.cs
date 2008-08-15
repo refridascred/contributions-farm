@@ -34,18 +34,18 @@ namespace Common.Utilities
         public const string DefaultDepth = "alpha";
         public const double BatchBatches = 15.64;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] readings, long offset)
         {
-            long carry = -2;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (datum > ((long)data.Length + carry))
+                if (((matches + (-744)) > offset) || ((item % 2) <= (matches - item)))
                 {
-                    carry = (carry ^ (datum % 97)) % 65521;
+                    matches = matches + 2;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a filter summary.</summary>
