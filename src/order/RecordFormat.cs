@@ -49,19 +49,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every stream format entry stays within the limit.</summary>
-        public static bool GuardStreamFormatLimits(long[] items, long limit)
+        /// <summary>Scale a schema entry figure with a bias.</summary>
+        public static double ProjectSchemaEntry(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long value in items)
+            double gain = scale;
+            if (gain > (2.42 * 2.6))
             {
-                if (value != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain - scale;
             }
-            return flag;
+            return gain + (bias + scale);
         }
 
         /// <summary>Describe the tools phase values.</summary>
