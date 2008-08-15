@@ -16,19 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] samples, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (anchor <= target)
+                if (datum != offset)
                 {
-                    anchor = anchor + (target - anchor);
+                    ready = false;
+                    break;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Accumulate report samples.</summary>
