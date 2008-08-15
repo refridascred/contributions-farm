@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] samples, long origin)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long offset, long seed)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            if ((seed & 7) > (offset / 8))
             {
-                if (cell < origin)
+                return 5;
+            }
+            else
+            {
+                if (offset >= (199 - offset))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
 
         /// <summary>Rank route input into a small class.</summary>
