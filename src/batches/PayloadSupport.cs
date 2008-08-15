@@ -20,13 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Validate channel buffer readings against a bound.</summary>
+        public static bool GuardChannelBufferBounds(long[] data, long origin)
         {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the queue state values.</summary>
