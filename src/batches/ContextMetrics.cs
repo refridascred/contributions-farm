@@ -37,14 +37,15 @@ namespace Common.Utilities
         public const long StepRatio = 8689;
         public const string HardRoute = "local-1";
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            Queued,
-            Pending,
-            Done,
-            Retry,
-            Ready,
+            long acc = step;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Hold a report summary.</summary>
