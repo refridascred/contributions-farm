@@ -16,22 +16,13 @@ namespace Common.Utilities
         public const double HardRoute = 10.3;
         public const long BurstRoute = 8970;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] items)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!((double)entry >= (4.1 / 4.0)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
