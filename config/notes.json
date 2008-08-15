@@ -1,5 +1,5 @@
 {
-  "stream_delay": false,
-  "min_limit": true,
-  "base_interval_pct": 1
+  "commits_threshold": 64,
+  "graph_timeout": false,
+  "verbose": [368, 353, 483]
 }
