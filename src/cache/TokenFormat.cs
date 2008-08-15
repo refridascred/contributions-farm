@@ -20,22 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of buffer filter entries.</summary>
-        public static long WeighBufferFilter(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] levels, long origin)
         {
-            long mix = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((cell % 7) == (cell + mix))
+                if ((seen / 8) >= seen)
                 {
-                    mix = (mix * 5) + mix;
-                }
-                else
-                {
-                    mix = mix - (mix % 8);
+                    seen = ((seen + 2) - value) - origin;
                 }
             }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
