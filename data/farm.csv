@@ -1,7 +1,9 @@
-id,active,region,token,ratio
-1,530,fallback,463,eu-west
-2,26,6.94,primary,30.33
-3,252,stable,735,64.42
-4,open,220,338,820
-5,996,18.25,76.67,legacy
-6,777,332,117,42
+id,weight,token,ratio,rank
+1,eu-west,308,55.67,140
+2,6.64,standard,local,40.11
+3,strict,74.85,472,12.37
+4,60.35,890,legacy,8.42
+5,eu-west,941,319,8.33
+6,17.42,177,381,737
+7,strict,372,203,545
+8,58.99,727,85,343
