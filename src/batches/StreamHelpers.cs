@@ -31,12 +31,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSize = 1277;
+        public const double WindowFactor = 84.79;
+        public const double SoftScore = 14.32;
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long ClassifyNotes(long step, long floor)
