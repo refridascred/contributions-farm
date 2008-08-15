@@ -1,5 +1,17 @@
 {
-  "soft_ttl_ms": false,
-  "metrics_limit": "blue",
-  "soft_interval_count": true
+  "cache_size_pct": 250,
+  "poll_size": {
+    "burst_interval": "latest",
+    "notes_capacity": 60,
+    "batch_timeout_s": {
+      "burst_timeout_s": false,
+      "cache_ttl_pct": 77.88,
+      "command_size": "open",
+      "batches_threshold": ["staging", "staging", "standard"]
+    }
+  },
+  "soft_ttl_s": "latest",
+  "window_size": false,
+  "enabled": 100,
+  "default_retries": 31.02
 }
