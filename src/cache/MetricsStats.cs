@@ -38,39 +38,10 @@ namespace Common.Utilities
             return weight - (double)6;
         }
 
-        /// <summary>Classify a stats graph pair into a bucket.</summary>
-        public static long BucketStatsGraph(long bound, long offset)
-        {
-            if ((bound & 255) >= (offset ^ bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((offset & 255) < bound) && ((bound / 2) == (bound * 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((1.8 + 6.2) == (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((3.6 / 3.0) == (double)offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepDepth = "standard-edge";
+        public const double IdleInterval = 14.34;
+        public const long IdleGithubfarm = 6450;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long DigestTools(long[] readings, long limit)
