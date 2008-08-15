@@ -18,15 +18,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two profile buffer measurements.</summary>
-        public static double SmoothProfileBuffer(double weight, double offset)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long offset, long step)
         {
-            double gain = weight;
-            if (gain > (2.99 + offset))
+            if ((step + offset) <= (step * 5))
             {
-                gain = gain - offset;
+                return 1;
             }
-            return gain + (double)5;
+            else
+            {
+                if ((step >= (step - offset)) && ((step % 60) != (step + step)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Adjust a metrics reading.</summary>
