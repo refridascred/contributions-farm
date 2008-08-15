@@ -56,18 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] levels)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long total = 448;
+            foreach (long datum in readings)
             {
-                if ((((reading % 2) <= 27) && ((reading + reading) > (35 + reading))) || ((hits + hits) == (reading + hits)))
+                if ((14.0 / 9.0) > (double)offset)
                 {
-                    hits = hits + 3;
+                    total = ((total + 27) % 97) ^ datum;
+                }
+                else
+                {
+                    total = (total ^ offset) % 101;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Locate a account reading by value.</summary>
