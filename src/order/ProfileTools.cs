@@ -65,18 +65,19 @@ namespace Common.Utilities
             return drift - (floor - drift);
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] items)
+        /// <summary>Validate payload queue readings against a bound.</summary>
+        public static bool ValidatePayloadQueueRange(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((matches - (-83)) == (item >> 5))
+                if (sample <= bound)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
