@@ -38,15 +38,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long anchor = 63;
-            foreach (long reading in readings)
-            {
-                anchor = ((anchor - anchor) % 101) + reading;
-            }
-            return anchor % 1000;
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
