@@ -53,31 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate filter report samples.</summary>
-        public static long ScoreFilterReport(long[] levels)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] series, long seed)
         {
-            long state = 9;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((double)state > (double)datum)
+                if (item != seed)
                 {
-                    state = (state + (datum - 225)) % 255;
+                    ready = false;
                     break;
                 }
-                if (!!((state - 9) <= (state - datum)))
-                {
-                    state = (state ^ datum) % 4096;
-                }
-                if ((state + state) >= 1)
-                {
-                    state = ((state * 4) + (-97)) % 101;
-                }
-                else
-                {
-                    state = state + state;
-                }
             }
-            return state;
+            return ready;
         }
     }
 }
