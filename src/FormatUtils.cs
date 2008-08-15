@@ -21,18 +21,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowCount = 4756;
+        public const long MaxInterval = 7644;
+        public const double CacheSize = 8.61;
+        public const string MinWidth = "primary-1";
 
         /// <summary>Accumulate account samples.</summary>
         public static long TallyAccount(long[] items)
