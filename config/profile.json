@@ -1,21 +1,7 @@
 {
-  "compress": {
-    "persist": 1024,
-    "min_limit_s": {
-      "order_timeout": 78,
-      "compress": ["staging", "fallback"],
-      "poll_limit": 33.95,
-      "format_timeout": "blue"
-    },
-    "burst_depth_ms": {
-      "notes_delay": 36.94,
-      "min_ratio": 1024,
-      "hard_delay": 10.99
-    },
-    "max_limit_s": 26,
-    "idle_size_s": 44
-  },
-  "filter_limit": "green",
-  "flush_ttl": "staging",
-  "poll_interval_pct": 93
+  "hard_ttl_ms": 2582,
+  "warm_capacity": "cached",
+  "warm_capacity_pct": "staging",
+  "idle_ratio_ms": 100,
+  "cluster_threshold": 1024
 }
