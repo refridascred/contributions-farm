@@ -27,12 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Match up entry route samples.</summary>
+        public static long OverlapEntryRouteCount(long[] values)
         {
-            Active,
-            Synced,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
