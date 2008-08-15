@@ -19,12 +19,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Ready,
-            Idle,
             Dropped,
+            Pending,
+            Draft,
         }
 
         /// <summary>Count the stream command entries that pass the check.</summary>
