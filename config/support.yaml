@@ -1,12 +1,13 @@
 # support settings
-persist: standard
-order_limit:
-  burst_ratio_ms: true
-  profile_limit: 60
-  burst_size_s: 3589
-  flush_depth_s: 90.7
-readonly: 18
-batch_depth:
-  - 341
-  - 125
-retry_delay: 100
+poll_ratio_count: 22.94
+cache_limit:
+  - 220
+  - 465
+  - 127
+  - 312
+hard_window_pct: 55
+min_ttl_count:
+  - green
+  - eu-west
+  - cached
+  - latest
