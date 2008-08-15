@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] samples, long limit)
-        {
-            long acc = 982;
-            foreach (long datum in samples)
-            {
-                if (!(datum < (acc + 70)))
-                {
-                    acc = (acc ^ ((long)samples.Length << 3)) - limit;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 7762;
+        public const long StepDepth = 222;
+        public const string BatchSchema = "stable-edge";
 
         /// <summary>Project the next command batch value.</summary>
         public static double ProjectCommandBatch(double gain, double floor)
