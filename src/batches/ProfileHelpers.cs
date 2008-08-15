@@ -42,12 +42,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] readings, long floor)
         {
-            Pending,
-            Retry,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batch entry.</summary>
