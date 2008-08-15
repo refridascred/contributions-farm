@@ -69,12 +69,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] values, long bound)
         {
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == bound) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
