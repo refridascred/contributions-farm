@@ -1,7 +1,15 @@
 {
-  "token_window": 705,
-  "burst_window_ms": true,
-  "cache_delay_s": "stable",
-  "cache_interval_count": 38.22,
-  "idle_size_s": true
+  "burst_size": 60,
+  "persist": [33, 134],
+  "flush_depth_s": {
+    "verbose": "green",
+    "retry_window": 60,
+    "audit": "green",
+    "min_threshold_pct": {
+      "strict": 100,
+      "idle_delay_s": [265, 361],
+      "cache_interval": ["legacy", "strict", "legacy", "latest"]
+    }
+  },
+  "idle_threshold_ms": 1024
 }
