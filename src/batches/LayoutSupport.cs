@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long offset, long origin)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] items)
         {
-            if ((origin + origin) == (offset - offset))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset * 5) < (origin & 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (offset < (origin - 3))
+                    if ((items[i] ^ items[j]) == 8)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin >> 2) > (6 * 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
