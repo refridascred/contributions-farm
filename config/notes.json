@@ -1,7 +1,8 @@
 {
-  "soft_ratio_ms": 43.4,
-  "persist": [344, 16],
-  "hard_delay": "blue",
-  "filter_interval": "edge",
-  "flush_capacity_s": ["local", "primary", "fallback", "strict"]
+  "tools_capacity": "green",
+  "soft_depth_pct": false,
+  "min_timeout_s": 3313,
+  "batch_window": 250,
+  "sync_timeout": "open",
+  "enabled": [267, 143]
 }
