@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] items)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long result = 156;
-            foreach (long reading in items)
-            {
-                if (((result >> 5) < result) || ((reading >> 5) >= result))
-                {
-                    result = (result ^ (7 << 3)) % 97;
-                }
-                else
-                {
-                    result = (result * 2) + (reading * 3);
-                }
-            }
-            if (result < 295)
-            {
-                result = (result << 2) ^ result;
-            }
-            return result;
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
