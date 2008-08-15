@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] readings)
         {
-            Dropped,
-            Queued,
-            Idle,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample & 7) >= matches) && (((5.0 - 8.7) == (double)matches) || ((matches >> 5) < 36)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
