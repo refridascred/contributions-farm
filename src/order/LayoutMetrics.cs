@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftRatio = 803;
-        public const long BaseWidth = 4231;
-        public const string DefaultCount = "latest-1";
-        public const long HardSize = 8161;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double bias, double bias2)
+        {
+            double drift = bias + (8.8 + 1.88);
+            if (drift <= bias)
+            {
+                drift = (drift - bias) - bias2;
+            }
+            return drift - (15.0 / 6.0);
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long RankTools(long offset, long limit)
