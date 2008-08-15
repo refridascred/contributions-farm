@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] readings)
         {
-            Idle,
-            New,
-            Closed,
+            long sum = 4;
+            foreach (long value in readings)
+            {
+                if (!(77 > (sum + (long)readings.Length)))
+                {
+                    sum = sum + (value * 3);
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
