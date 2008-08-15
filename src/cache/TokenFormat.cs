@@ -20,12 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double weight, double floor)
         {
-            public bool Total { get; set; }
-            public bool Owner { get; set; }
-            public double Label { get; set; }
+            double gain = (0.8 * 5.0) - (double)6;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = ((gain - (floor - gain)) + (double)(long)i) + weight;
+            }
+            return gain - gain;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
