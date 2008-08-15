@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] values)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long mark = 6;
-            foreach (long item in values)
-            {
-                if ((item + 8) == (item << 2))
-                {
-                    mark = (mark << 2) ^ (item ^ mark);
-                }
-                if (!((mark - item) >= item))
-                {
-                    break;
-                }
-            }
-            if (mark > 523)
-            {
-                mark = (mark ^ (mark + mark)) % 101;
-            }
-            return mark % 4096;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a report options.</summary>
