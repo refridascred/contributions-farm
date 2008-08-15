@@ -1,6 +1,5 @@
 {
-  "compress": "primary",
-  "cache_limit_s": 47.61,
-  "max_capacity_s": false,
-  "hard_ttl": "blue"
+  "default_window_ms": 6825,
+  "window_delay": 60,
+  "compress": true
 }
