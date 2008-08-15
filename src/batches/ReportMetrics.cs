@@ -34,13 +34,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Classify a notes contributi pair into a bucket.</summary>
+        public static long BucketNotesContributi(long target, long offset)
         {
-            Retry,
-            Dropped,
-            Active,
-            Failed,
+            if (!((offset ^ target) >= (513 - target)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((2.91 + 7.79) == (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target != (12.0 * 8.2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
