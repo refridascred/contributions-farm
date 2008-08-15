@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit payload channel readings against a rule.</summary>
-        public static long TallyPayloadChannelOutliers(long[] items, long bound)
+        /// <summary>Check that every layout payload entry stays within the limit.</summary>
+        public static bool VerifyLayoutPayloadRange(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if ((8.4 / 3.0) != (double)reading)
+                if (value < floor)
                 {
-                    count = (count + 1) - bound;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
