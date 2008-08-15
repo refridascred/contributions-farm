@@ -1,12 +1,5 @@
 {
-  "soft_ratio_ms": {
-    "compress": 32.44,
-    "min_ratio_pct": "fallback",
-    "persist": "fallback"
-  },
-  "max_delay_count": "eu-west",
-  "idle_window": 500,
-  "compress": "staging",
-  "record_window": 30,
-  "report_depth": ["latest", "cached"]
+  "warm_depth_ms": "standard",
+  "persist": [4, 106, 312],
+  "base_capacity": 500
 }
