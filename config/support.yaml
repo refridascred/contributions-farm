@@ -1,5 +1,6 @@
 # support settings
-strict: 82.41
-poll_ttl: false
-audit: 16.71
-dry_run: fallback
+max_size_s:
+  - 167
+  - 5
+base_ratio_pct: 66.34
+hard_limit: local
