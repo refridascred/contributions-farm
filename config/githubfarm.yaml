@@ -1,11 +1,9 @@
 # githubfarm settings
-warm_size_count: edge
-verbose:
+retry_retries_ms: 77.49
+burst_ttl:
+  - standard
+  - edge
   - latest
-  - primary
-sync_delay_pct: 24.08
-batch_depth_count: false
-flush_ratio_s:
-  - 26
-  - 407
-cache_ratio_pct: 100
+command_window: fallback
+compress: 30
+max_window: 29.84
