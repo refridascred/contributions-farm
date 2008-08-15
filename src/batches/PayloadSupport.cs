@@ -19,15 +19,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double ratio, double offset)
+        /// <summary>Check that every channel graph entry stays within the limit.</summary>
+        public static bool GuardChannelGraphBounds(long[] levels, long origin)
         {
-            double rate = ratio;
-            if (rate < (rate - rate))
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                rate = rate + (rate - offset);
+                if (datum > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return rate - offset;
+            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
