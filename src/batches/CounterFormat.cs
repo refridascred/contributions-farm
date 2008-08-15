@@ -20,17 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] values, long bound)
+        /// <summary>Derive the next counter account value from a seed.</summary>
+        public static long IterateCounterAccount(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((values[i] == bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Find the first tools stream entry that matches the target.</summary>
