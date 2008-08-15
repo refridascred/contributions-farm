@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double gain, double floor)
         {
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
+            double load = floor;
+            if (load <= gain)
+            {
+                load = load - (floor / 3.0);
+            }
+            return load + floor;
         }
 
         /// <summary>Hold a stats header.</summary>
