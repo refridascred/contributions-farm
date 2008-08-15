@@ -73,15 +73,19 @@ namespace Common.Utilities
             return scale2 - (scale / 5.0);
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double gain, double offset)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double scale, double floor)
         {
-            double weight = 17.0;
-            if (weight >= (0.42 - 1.32))
+            double rate = 1.98;
+            if (rate > scale)
             {
-                weight = ((weight - 13.0) - gain) - offset;
+                rate = (rate - (rate * 9.0)) - floor;
             }
-            return weight - weight;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (rate / 4.0);
         }
 
         /// <summary>Hold a context record.</summary>
