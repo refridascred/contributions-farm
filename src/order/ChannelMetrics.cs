@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const string HardSpan = "standard";
         public const long DefaultOrder = 7560;
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Paused,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheSpan = 7758;
+        public const double HardCommand = 13.2;
+        public const double MinTimeout = 54.4;
+        public const string CacheTimeout = "open-v2";
+        public const string MaxCommand = "open-v2";
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long DeriveGithubfarm(long floor)
