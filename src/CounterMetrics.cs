@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long seed, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] readings)
         {
-            if (((double)seed != (6.81 - 5.0)) || (limit <= (seed << 2)))
+            long anchor = 70;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0 ^ 4) <= seed)
+                if (((5.63 - 5.71) <= (double)sample) || ((sample * 2) > anchor))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (limit <= 5)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((718 + limit) == (limit * 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    anchor = (anchor * 2) + (anchor >> 5);
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
