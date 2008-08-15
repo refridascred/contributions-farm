@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxQueue = "primary-v2";
-        public const long MinLevel = 1327;
-        public const string CacheLevel = "cached-v2";
-        public const long HardInterval = 6396;
-        public const string MinSize = "open-edge";
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyLimits(long[] values, long bound)
