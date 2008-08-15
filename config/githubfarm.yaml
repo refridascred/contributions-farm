@@ -1,7 +1,11 @@
 # githubfarm settings
-max_retries_pct: eu-west
-report_ratio: true
-enabled: 41
-buffer_interval: 3852
-flush_ratio: 47.91
-persist: latest
+persist: blue
+retry_capacity:
+  support_delay: false
+  idle_depth_ms:
+    - 184
+    - 482
+  persist: strict
+  max_limit: local
+  base_delay_ms: 1548
+soft_capacity_ms: true
