@@ -32,11 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] series, long floor)
         {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((item / 8) > (item + count))
+                {
+                    count = (count + 1) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
