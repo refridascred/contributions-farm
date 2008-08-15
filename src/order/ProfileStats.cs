@@ -52,15 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] data)
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((reading + 625) <= matches)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
