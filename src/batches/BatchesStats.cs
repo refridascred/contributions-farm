@@ -39,11 +39,31 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long target, long origin)
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
+            if ((target & 3) > (target + 71))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3.6 * 2.0) < (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((origin << 2) <= (target * 4)) || ((origin >> 2) < (target / 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
