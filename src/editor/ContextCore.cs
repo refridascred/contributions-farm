@@ -37,18 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the filter order entries that pass the check.</summary>
-        public static long AuditFilterOrderMatches(long[] levels)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (!(sample < (hits ^ hits)) || ((double)hits >= (double)sample))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Synced,
+            Done,
+            Draft,
+            Locked,
         }
     }
 }
