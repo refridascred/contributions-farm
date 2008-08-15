@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a filter window value against two limits.</summary>
-        public static long SortFilterWindow(long limit, long target)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            if (545 >= (target * 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target - target) < (limit - target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
