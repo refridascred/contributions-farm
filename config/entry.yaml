@@ -1,8 +1,14 @@
 # entry settings
-batch_threshold_s:
-  farm_retries: green
-  idle_retries_count: 63.62
-  sync_delay: green
-  support_threshold: 250
-poll_depth_ms: 30.33
-retry_window_s: 22
+queue_depth:
+  sync_window_s:
+    max_size_count: 51.65
+    idle_interval_pct: 30
+    soft_size_ms: 1584
+    default_window_pct: 1229
+  queue_timeout: 500
+  counter_limit: primary
+tools_size:
+  - 322
+  - 432
+  - 197
+base_size_s: primary
