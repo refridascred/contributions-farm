@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue standard strict eu-west; do
+for item in primary local standard edge; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=313
+BUFFER_LIMIT=132
 log "limit is ${BUFFER_LIMIT}"
