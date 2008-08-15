@@ -29,20 +29,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] samples, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 5864;
+        public const long BaseSize = 3079;
+        public const long IdleBudget = 5480;
+        public const string HardWidth = "open";
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
