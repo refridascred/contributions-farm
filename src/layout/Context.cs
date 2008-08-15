@@ -33,12 +33,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxCount = 60.73;
-        public const string SoftSchema = "open-edge";
-        public const long BatchSchema = 7780;
-        public const long StepSchema = 3481;
-        public const long RetrySchema = 2299;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string RetryRatio = "legacy-1";
