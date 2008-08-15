@@ -32,10 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 5970;
-        public const double CacheInterval = 75.69;
-        public const string MaxCount = "fallback";
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Idle,
+            Done,
+            Synced,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double WindowWidth = 97.24;
