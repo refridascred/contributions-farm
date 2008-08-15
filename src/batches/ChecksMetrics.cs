@@ -62,18 +62,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((4 % 7) < datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 8113;
+        public const long SoftAlready = 4909;
+        public const double CacheAlready = 22.0;
+        public const string RetryAlready = "fallback";
+        public const string IdleBudget = "stable-1";
     }
 }
