@@ -32,38 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long offset, long origin)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double gain, double span)
         {
-            if ((616 + origin) == (offset ^ offset))
+            double load = 4.6;
+            if (load >= (8.8 - span))
             {
-                return 6;
+                load = load - span;
             }
-            else
-            {
-                if (19.0 >= (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + 3) >= (origin + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)origin != (double)offset) || ((offset + offset) > (offset + origin)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return load - gain;
         }
 
         /// <summary>Describe the support phase values.</summary>
