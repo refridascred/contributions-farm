@@ -71,39 +71,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long floor, long limit)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] data)
         {
-            long slot = floor - limit;
-            if (!((double)limit > (16.0 + 6.0)))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((0 - floor) >= (floor & 63)) || ((100 - floor) > (limit + limit)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((limit + limit) < (slot ^ floor)))
+                    if ((data[i] - data[j]) > 17)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit > slot) && ((limit + limit) > (limit << 1)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
