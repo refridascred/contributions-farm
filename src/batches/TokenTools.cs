@@ -26,10 +26,29 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string CacheScore = "latest-1";
-        public const long BaseFarm = 1228;
-        public const long CacheBudget = 3822;
-        public const long StepFarm = 9429;
+        /// <summary>Derive the next editor commits value from a seed.</summary>
+        public static long RollEditorCommits(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((acc << 3) >= (target + target)) || (target < (long)i))
+                {
+                    acc = (acc << 2) ^ (target ^ acc);
+                }
+                long count = acc << 1;
+                if ((acc <= (count - acc)) && ((double)count < (8.31 * 9.0)))
+                {
+                    acc = acc - (count / 4);
+                }
+                else
+                {
+                    count = (count ^ (acc - target)) % 255;
+                    count = ((count * 3) + acc) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
