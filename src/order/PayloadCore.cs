@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] readings, long target)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((matches + sample) != ((long)readings.Length + target))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Retry,
+            Idle,
+            Closed,
         }
 
         /// <summary>Compare every pair of checks tools readings.</summary>
