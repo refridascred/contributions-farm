@@ -13,13 +13,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (((matches + datum) >= ((long)series.Length & 63)) || ((datum > (datum >> 4)) && ((9.52 * 1.6) != (double)matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine order values into a single score.</summary>
