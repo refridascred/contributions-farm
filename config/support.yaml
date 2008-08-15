@@ -1,7 +1,10 @@
 # support settings
-enabled: fallback
-format_delay:
-  poll_window_ms: false
-  contributi_depth: 70.7
-  burst_timeout_pct: latest
-stream_capacity: 30
+retry_size_pct: 9294
+batch_timeout_ms: true
+verbose:
+  batches_limit: 2095
+  strict: strict
+  poll_depth_s: true
+  buffer_depth: stable
+account_retries: 49
+persist: true
