@@ -12,19 +12,15 @@ namespace Common.Utilities
             return (bias + (span - bias)) + gain;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] samples, long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long origin)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Find the first tools stream entry that matches the target.</summary>
