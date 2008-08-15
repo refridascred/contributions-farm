@@ -39,10 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 4420;
-        public const double MinRatio = 47.29;
-        public const string BatchDepth = "stable-edge";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheGithubfarm = 31.69;
+        public const long BaseGithubfarm = 3014;
+        public const long DefaultSize = 3680;
+        public const long LimitGithubfarm = 9615;
+        public const double CacheRatio = 6.93;
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] values, long limit)
