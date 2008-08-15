@@ -19,18 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] samples)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long result = 0;
+            foreach (long cell in samples)
             {
-                if (!((datum << 2) != (datum + datum)) && ((95 % 2) > (datum ^ count)))
+                if (((-70) << 1) <= cell)
                 {
-                    count = count + 3;
+                    result = (result - 123) % 255;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result - (long)samples.Length)) % 1000;
                 }
             }
-            return count;
+            if (result < (-4))
+            {
+                result = (result + (result ^ result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
