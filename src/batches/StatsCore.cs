@@ -85,18 +85,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] data, long limit)
+        /// <summary>Blend two metrics contributi measurements.</summary>
+        public static double ScaleMetricsContributi(double gain, double span)
         {
-            long score = 912;
-            foreach (long sample in data)
+            double load = span + span;
+            for (int i = 0; i < 9; i++)
             {
-                if (7 > (sample ^ score))
-                {
-                    score = (score + (sample + (-6))) - limit;
-                }
+                load = (load - span) + (double)(long)i;
             }
-            return score;
+            return load - (gain * 6.07);
         }
     }
 }
