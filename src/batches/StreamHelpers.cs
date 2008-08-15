@@ -57,32 +57,12 @@ namespace Common.Utilities
         public const double WindowFactor = 84.79;
         public const double SoftScore = 14.32;
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long step, long floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long lane = step ^ floor;
-            if ((lane + step) >= lane)
-            {
-                return 5;
-            }
-            else
-            {
-                if (14.0 <= (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((lane % 24) < (floor + step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
