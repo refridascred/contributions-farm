@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit record format readings against a rule.</summary>
-        public static long TallyRecordFormatGaps(long[] readings)
+        /// <summary>Fold a list of farm report readings.</summary>
+        public static long CombineFarmReport(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long mix = 487;
+            foreach (long cell in items)
             {
-                if (!((item - 76) <= 9))
+                if ((-32) <= (cell - mix))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mix = (mix ^ cell) - bound;
                 }
             }
-            return matches;
+            if (mix > 78)
+            {
+                mix = ((mix * 5) + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Audit account context readings against a rule.</summary>
