@@ -13,14 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] values, long limit)
         {
-            Locked,
-            Active,
-            Dropped,
-            Ready,
-            Stale,
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
