@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Closed,
-            Ready,
-            Synced,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 3914;
+        public const string LimitSize = "legacy-1";
+        public const long MaxCommand = 4788;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
