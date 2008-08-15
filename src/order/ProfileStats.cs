@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxTimeout = 70.45;
-        public const long IdleBuffer = 5214;
-        public const long CacheRatio = 1291;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long seed, long floor)
+        {
+            if (floor > (32 ^ seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed / 2) >= ((-204) + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor < (seed << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
