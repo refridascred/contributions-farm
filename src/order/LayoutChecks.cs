@@ -27,12 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double rate, double bias)
         {
-            Retry,
-            Queued,
-            Synced,
+            double gain = (double)(45 - 73);
+            if (gain >= (4.02 - gain))
+            {
+                gain = (gain + (double)(-9)) - bias;
+            }
+            return gain + (rate + 1.0);
         }
 
         /// <summary>Validate payload report readings against a bound.</summary>
