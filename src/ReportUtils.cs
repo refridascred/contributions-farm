@@ -57,18 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the buffer channel entries that pass the check.</summary>
-        public static long MeasureBufferChannelMatches(long[] items, long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (7.7 <= (double)matches)
+                if (sample != origin)
                 {
-                    matches = ((matches + 1) - value) + step;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
