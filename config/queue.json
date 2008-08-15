@@ -1,12 +1,12 @@
 {
-  "flush_retries_s": 92,
-  "dry_run": {
-    "strict": 5393,
-    "notes_delay": 100,
-    "audit": 30,
-    "poll_ttl_s": true,
-    "dry_run": "green"
+  "stream_delay": 77.89,
+  "batch_window_ms": 26.14,
+  "poll_threshold_pct": {
+    "queue_delay": 1,
+    "base_threshold_count": "strict",
+    "hard_retries_s": 2021,
+    "warm_timeout_count": "edge"
   },
-  "enabled": 50,
-  "batch_timeout_ms": false
+  "poll_interval_s": "cached",
+  "window_threshold": 740
 }
