@@ -1,7 +1,14 @@
 {
-  "channel_timeout": false,
-  "counter_depth": "edge",
-  "format_limit": 27.23,
-  "cache_threshold_ms": 60,
-  "burst_timeout_s": 8
+  "persist": 1024,
+  "batch_ratio_count": 99,
+  "base_interval_pct": {
+    "channel_size": 1024,
+    "min_window": 30,
+    "dry_run": 250,
+    "persist": true,
+    "strict": "eu-west"
+  },
+  "channel_interval": 30,
+  "min_retries": "open",
+  "stats_threshold": [219, 121, 65]
 }
