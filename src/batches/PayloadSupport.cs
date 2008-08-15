@@ -19,21 +19,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((676 << 1) <= value) && ((4.1 + 5.6) == (double)(long)values.Length))
                 {
-                    if ((readings[i] ^ readings[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
