@@ -39,22 +39,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] samples)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long bound)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (seen <= (item << 2))
+                if (((double)mark < (double)bound) || ((double)mark < 6.6))
                 {
-                    seen = seen + 3;
+                    mark = ((mark * 5) + (bound + bound)) % 255;
+                    break;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mark = (mark ^ bound) % 97;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
     }
 }
