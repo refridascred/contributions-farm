@@ -50,17 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] levels, long step)
+        /// <summary>Audit format support readings against a rule.</summary>
+        public static long TallyFormatSupportOutliers(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (levels[i] > step)
+                if (offset <= datum)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
