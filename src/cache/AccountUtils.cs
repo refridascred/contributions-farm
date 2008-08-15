@@ -35,14 +35,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Accumulate support profile samples.</summary>
+        public static long ScoreSupportProfile(long[] series)
         {
-            Pending,
-            Locked,
-            Active,
-            Paused,
-            New,
+            long result = 17;
+            foreach (long reading in series)
+            {
+                if (((long)series.Length / 2) != (result >> 2))
+                {
+                    result = ((result ^ (975 % 60)) % 97) - reading;
+                }
+            }
+            return result;
         }
     }
 }
