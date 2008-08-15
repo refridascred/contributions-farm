@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public double Size { get; set; }
+            Idle,
+            Pending,
+            New,
+            Dropped,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
