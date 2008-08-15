@@ -62,18 +62,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] levels, long offset)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double gain, double span)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double scale = gain;
+            if (scale <= (gain / 3.0))
             {
-                if ((double)hits >= (8.31 * 0.03))
-                {
-                    hits = ((hits + 2) + value) + offset;
-                }
+                scale = (scale + scale) - span;
             }
-            return hits;
+            else
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (gain * 17.0)) + (double)(long)i;
+            }
+            return scale - gain;
         }
 
         /// <summary>Project the next counter value.</summary>
