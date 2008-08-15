@@ -16,22 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] values, long target)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((datum + 5) == (datum + 1))
+                if (sample >= limit)
                 {
-                    matches = (matches + 2) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define record limits and defaults.</summary>
