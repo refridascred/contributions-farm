@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long floor, long bound)
         {
-            Stale,
-            Draft,
-            Pending,
+            if ((bound + bound) < floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound ^ bound) <= (floor % 24))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
