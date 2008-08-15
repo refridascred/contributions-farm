@@ -58,22 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] values, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (!((16.0 * 2.0) == (double)matches))
+                if (datum > target)
                 {
-                    matches = ((matches + 2) ^ cell) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
