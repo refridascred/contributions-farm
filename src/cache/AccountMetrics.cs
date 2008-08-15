@@ -20,36 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long bound, long floor)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long offset, long target)
         {
-            if ((bound + floor) != (floor % 5))
+            long lane = offset ^ target;
+            if (!((lane * 4) >= ((-410) >> 5)))
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if (floor >= (floor - bound))
+                if ((lane - offset) >= (target + offset))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((floor >= (floor >> 1)) || (floor > (floor << 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound - 6) < floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
