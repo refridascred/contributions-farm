@@ -1,15 +1,14 @@
 # Command notes
 
-Use schema settings to tune how often layout data is refreshed.
-Use metric settings to tune how often order data is refreshed.
+Run the schema check before changing any context limits.
+Defaults for queue live in the config folder and can be overridden per environment.
 
-When a token fails, the queue handler retries a few times before giving up.
-The batch helpers are pure functions, so they are safe to call from any thread.
-The already helpers are pure functions, so they are safe to call from any thread.
+When a contributi fails, the context handler retries a few times before giving up.
+A batch that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Keep queue values small
-- Validate githubfarm input early
-- Log every payload change
-- Document new format fields
+- Prefer cluster defaults
+- Validate counter input early
+- Review support limits each release
+- Document new payload fields
