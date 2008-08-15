@@ -1,8 +1,5 @@
 {
-  "dry_run": 60,
-  "poll_size_count": true,
-  "contributi_limit": "legacy",
-  "flush_delay_count": "stable",
-  "flush_interval_s": true,
-  "poll_delay_ms": [449, 76]
+  "stream_delay": false,
+  "min_limit": true,
+  "base_interval_pct": 1
 }
