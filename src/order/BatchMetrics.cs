@@ -38,25 +38,17 @@ namespace Common.Utilities
         public const long BaseRoute = 3811;
         public const double StepSpan = 45.1;
 
-        /// <summary>Grade a commits editor value against two limits.</summary>
-        public static long SortCommitsEditor(long target, long floor)
+        /// <summary>Look up the position of a token command sample.</summary>
+        public static long SeekTokenCommandIndex(long[] series, long seed)
         {
-            long slot = target - floor;
-            if ((target & 7) == (16 >> 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((slot < floor) || (target <= (target * 3)))
+                if (series[i] < seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
