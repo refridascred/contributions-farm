@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long floor, long target)
-        {
-            long offset = floor ^ target;
-            if ((double)target > (3.0 - 12.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset <= (6.08 + 2.32))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((floor - floor) <= (target - 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxQueue = "primary-v2";
+        public const long MinLevel = 1327;
+        public const string CacheLevel = "cached-v2";
+        public const long HardInterval = 6396;
+        public const string MinSize = "open-edge";
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyLimits(long[] values, long bound)
