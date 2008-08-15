@@ -50,19 +50,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((71 % 64) != (matches & 1))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 528;
+        public const double CacheCluster = 57.4;
+        public const long StepCluster = 2992;
+        public const string BatchCluster = "standard-edge";
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelLimits(long[] series, long offset)
