@@ -1,6 +1,19 @@
 {
-  "checks_retries": 2031,
-  "account_ratio": 17,
-  "dry_run": "stable",
-  "schema_timeout": "blue"
+  "base_delay_pct": {
+    "max_depth": "standard",
+    "dry_run": [51, 151],
+    "persist": {
+      "idle_threshold_ms": 20.01,
+      "soft_timeout_ms": true,
+      "profile_delay": 5087,
+      "token_timeout": 3
+    },
+    "sync_depth_count": true,
+    "burst_retries": "local",
+    "idle_timeout_count": 500
+  },
+  "strict": ["cached", "edge", "green"],
+  "max_interval_ms": 49,
+  "burst_ratio_ms": 32,
+  "command_ratio": 6857
 }
