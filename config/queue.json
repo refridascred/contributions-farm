@@ -1,6 +1,19 @@
 {
-  "poll_depth_s": "fallback",
-  "enabled": 1593,
-  "retry_capacity_pct": "standard",
-  "batch_ttl": "open"
+  "max_ratio_ms": "local",
+  "command_timeout": {
+    "batch_limit_s": 14.09,
+    "checks_threshold": [199, 424],
+    "strict": {
+      "batch_depth": 95.9,
+      "default_limit_pct": 97.47,
+      "batch_depth_count": 9.35,
+      "warm_ratio_s": "eu-west"
+    },
+    "poll_capacity_pct": 50.19,
+    "farm_capacity": 250,
+    "warm_window_ms": 79
+  },
+  "sync_ttl": 250,
+  "soft_capacity_count": "latest",
+  "poll_window_pct": 8871
 }
