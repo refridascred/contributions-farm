@@ -23,11 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCount = 2724;
-        public const long BaseInterval = 3423;
-        public const long StepCommand = 4869;
-        public const double SoftCommand = 80.14;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - cell) < (7 * 4))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long WeighCommits(long[] levels, long floor)
