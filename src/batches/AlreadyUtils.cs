@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] series, long origin)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] <= origin)
+                if (items[i] >= limit)
                 {
                     return (long)i;
                 }
