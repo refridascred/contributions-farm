@@ -43,13 +43,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            Idle,
+            Synced,
+            Queued,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the channel mode values.</summary>
