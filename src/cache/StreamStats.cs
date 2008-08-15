@@ -22,18 +22,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] values)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((9 ^ matches) < item)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Draft,
+            Pending,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
