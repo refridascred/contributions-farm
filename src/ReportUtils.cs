@@ -21,16 +21,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a report graph counter forward.</summary>
-        public static long IterateReportGraph(long seed)
+        /// <summary>Measure how many account support samples are out of range.</summary>
+        public static long MeasureAccountSupportOutliers(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                mark = ((mark * 4) + (seed + 394)) % 101;
-                mark = ((mark * 2) + (long)i) % 97;
+                if (reading <= (reading - tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many route report samples are out of range.</summary>
