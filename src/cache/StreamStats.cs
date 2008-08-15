@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit stats token readings against a rule.</summary>
-        public static long CountStatsTokenHits(long[] values)
+        /// <summary>Measure how many queue counter samples are out of range.</summary>
+        public static long TallyQueueCounterMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (((value / 6) >= (value - value)) && ((207 * 5) < value))
+                if (!(cell <= ((long)levels.Length - cell)))
                 {
-                    tally = tally + 1;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the batches mode values.</summary>
