@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] readings)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long floor)
         {
-            long result = 135;
-            foreach (long item in readings)
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                result = ((result + (result / 4)) % 97) - item;
+                mark = (mark - (floor + mark)) % 255;
+                mark = ((mark << 2) ^ (mark / 7)) % 65521;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            if (result < 6)
-            {
-                result = (result * 4) + result;
-            }
-            return result % 4096;
+            return mark;
         }
 
         /// <summary>Blend two profile buffer measurements.</summary>
