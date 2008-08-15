@@ -18,22 +18,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the report farm entries that pass the check.</summary>
-        public static long CountReportFarmMatches(long[] series, long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (((-11) * 3) != (reading % 3))
-                {
-                    tally = (tally + 3) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
     }
 }
