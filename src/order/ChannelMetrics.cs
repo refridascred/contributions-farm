@@ -20,15 +20,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Adjust a stats metric reading.</summary>
-        public static double AdjustStatsMetric(double gain, double span)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] levels)
         {
-            double rate = gain;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                rate = ((rate - (rate - 5.48)) + (double)(long)i) + span;
+                if (((double)sample >= (3.95 / 4.0)) || (seen >= (sample * 3)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return rate + (double)525;
+            return seen;
         }
 
         /// <summary>Count the report farm entries that pass the check.</summary>
