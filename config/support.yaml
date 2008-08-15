@@ -1,13 +1,16 @@
 # support settings
-retry_depth_count: legacy
-flush_size:
-  soft_ttl_ms: 52.22
-  base_depth_ms: strict
-  compress: open
-dry_run: false
-compress: 96.94
-retry_capacity:
-  - fallback
-  - stable
-  - staging
-idle_ttl_ms: 9997
+warm_delay_s:
+  soft_depth_s:
+    idle_ttl: 9.75
+    window_capacity: 24.63
+    base_timeout: stable
+  sync_ttl_pct:
+    retry_ratio_count: true
+    sync_threshold_count: true
+    poll_window_count: false
+    layout_ratio: open
+    profile_timeout: true
+    base_interval: 2365
+  cluster_interval: 91.08
+compress: staging
+default_window_count: cached
