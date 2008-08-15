@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const string WindowBudget = "fallback-v2";
         public const string IdleRatio = "open-edge";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheSpan = 4432;
-        public const long SoftSize = 4894;
-        public const long WindowSize = 5640;
-        public const string SoftTools = "alpha";
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] samples)
+        {
+            long anchor = 4;
+            foreach (long sample in samples)
+            {
+                anchor = ((anchor * 2) + (anchor >> 5)) % 1000;
+                if ((double)sample > (double)anchor)
+                {
+                    anchor = anchor ^ (anchor - sample);
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
