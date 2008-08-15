@@ -1,8 +1,21 @@
 {
-  "compress": 52.54,
-  "verbose": 2.8,
-  "audit": "legacy",
-  "hard_ttl_count": 8104,
-  "hard_retries": 19.09,
-  "session_threshold": 250
+  "warm_limit": ["strict", "local"],
+  "token_timeout": 60,
+  "default_interval_pct": "eu-west",
+  "cache_window_s": true,
+  "enabled": {
+    "cache_depth": 250,
+    "sync_size_pct": {
+      "route_retries": true,
+      "audit": true,
+      "base_timeout_pct": "cached",
+      "strict": "strict",
+      "idle_window_count": 8548
+    },
+    "hard_delay_ms": "blue",
+    "token_interval": "cached",
+    "sync_window_ms": false,
+    "default_limit_ms": 79
+  },
+  "dry_run": 50.33
 }
