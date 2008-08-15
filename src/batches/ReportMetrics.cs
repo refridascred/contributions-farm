@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double weight, double span)
+        /// <summary>Digest a series of profile stream entries.</summary>
+        public static long CombineProfileStream(long[] readings, long origin)
         {
-            double bias = 7.6;
-            if (bias >= 3.2)
+            long mix = -27;
+            foreach (long sample in readings)
             {
-                bias = (bias + (bias - weight)) + span;
+                mix = ((mix - (0 << 1)) + sample) + origin;
             }
-            return bias + (double)542;
+            return mix % 97;
         }
 
         /// <summary>Match up context githubfarm samples.</summary>
