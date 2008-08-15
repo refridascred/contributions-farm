@@ -14,18 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] series)
         {
-            long mix = 96;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((7 * 5) == (datum + datum))
+                if (((matches + sample) < (matches & 127)) && ((7 << 1) <= (sample + sample)))
                 {
-                    mix = (mix + (datum % 12)) % 97;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Derive the next editor commits value from a seed.</summary>
