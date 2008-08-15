@@ -20,27 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] readings)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long total = 2;
-            foreach (long reading in readings)
-            {
-                total = (total + (total + total)) ^ reading;
-                if (total < 5)
-                {
-                    total = (total + (797 - total)) % 101;
-                }
-                else
-                {
-                    total = total + (total / 9);
-                }
-            }
-            if (total > 91)
-            {
-                total = (total - (total * 3)) % 101;
-            }
-            return total;
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the queue state values.</summary>
