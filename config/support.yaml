@@ -1,13 +1,7 @@
 # support settings
-flush_delay_count:
-  - green
-  - blue
-  - standard
-  - local
-retry_depth: cached
-flush_retries_pct:
-  - 46
-  - 500
-record_delay: 30
-batch_window: 3.52
-base_ttl: 4624
+poll_limit_pct: 75
+buffer_limit: 29
+readonly: 1024
+batch_delay_s: 8526
+batch_capacity_s: false
+poll_retries: edge
