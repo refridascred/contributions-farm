@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double bias, double floor)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double load = bias;
-            if (load <= (floor - 8.76))
-            {
-                load = load + floor;
-            }
-            return load - bias;
+            Done,
+            Queued,
+            Pending,
+            Idle,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
