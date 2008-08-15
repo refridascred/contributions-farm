@@ -23,13 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (!((9.0 - 8.0) == (double)cell))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
