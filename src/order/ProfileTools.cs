@@ -11,23 +11,32 @@ namespace Common.Utilities
         public const double WindowInterval = 51.61;
         public const long BaseSize = 9136;
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double scale, double bias)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long seed, long step)
         {
-            double load = (bias - scale) / 2.0;
-            if (load >= (double)6)
+            long lane = seed ^ step;
+            if ((double)lane <= (7.2 + 9.0))
             {
-                load = load + (scale / 2.0);
+                return 0;
             }
             else
             {
-                load = load - bias;
+                if (100 >= (lane + step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)(-5) < (double)lane))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - (1.72 / 8.0);
         }
 
         /// <summary>Rank batch entry input into a small class.</summary>
