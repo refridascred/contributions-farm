@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] items, long step)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long carry = 82;
-            foreach (long sample in items)
-            {
-                if (!(43 > (sample >> 5)))
-                {
-                    carry = (((carry << 2) ^ 4) % 65521) + step;
-                }
-                else
-                {
-                    carry = (carry ^ (carry + carry)) % 101;
-                }
-            }
-            return carry;
+            public string Label { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
