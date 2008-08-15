@@ -28,14 +28,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double gain, double offset)
         {
-            New,
-            Stale,
-            Ready,
-            Dropped,
-            Draft,
+            double scale = offset;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = ((scale - offset) + (double)(long)i) - gain;
+            }
+            return scale - (4.58 * 3.98);
         }
     }
 }
