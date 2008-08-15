@@ -43,12 +43,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public double Level { get; set; }
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
+            Pending,
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Project the next githubfarm value.</summary>
