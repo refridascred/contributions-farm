@@ -45,13 +45,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Rank batch record input into a small class.</summary>
+        public static long GradeBatchRecord(long target, long origin)
         {
-            Ready,
-            Done,
-            Locked,
-            Retry,
+            if ((49 % 100) >= target)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target ^ (-32)) >= (target + 73))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (target > origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (target > (target + origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
