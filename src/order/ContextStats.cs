@@ -19,11 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long limit, long bound)
         {
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
+            if ((2.54 + 3.5) != (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound & 255) < (limit / 9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + limit) > (limit & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound + 6) > (limit + bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
