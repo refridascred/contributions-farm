@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long MaxEditor = 5347;
         public const string LimitFactor = "staging-1";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepGithubfarm = "cached-1";
-        public const long BatchScore = 1849;
-        public const string MinGithubfarm = "stable-v2";
-        public const long HardSpan = 6790;
-        public const long WindowGithubfarm = 6045;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = (mix + (floor + mix)) % 101;
+                if ((floor - floor) > (9 << 2))
+                {
+                    mix = (mix << 3) ^ (mix * 2);
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
