@@ -1,12 +1,8 @@
 # githubfarm settings
-base_depth_ms: edge
-min_threshold_ms: blue
-compress:
-  - 142
-  - 115
-  - 278
-strict: 43
-default_ratio_s:
-  - blue
-  - legacy
-base_window_count: legacy
+checks_ttl: true
+dry_run: true
+min_ratio: stable
+warm_ttl_pct: standard
+idle_interval:
+  - fallback
+  - open
