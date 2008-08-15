@@ -48,22 +48,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate record channel samples.</summary>
-        public static long DigestRecordChannel(long[] samples)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] items)
         {
-            long mark = 48;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark / 9) < datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark - (datum - 28)) % 255;
+                    if ((items[i] - items[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark > 24)
-            {
-                mark = mark - ((long)samples.Length / 9);
-            }
-            return mark;
+            return count;
         }
     }
 }
