@@ -43,13 +43,11 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Pending,
-            Idle,
-            Stale,
-            Active,
+            public double Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
