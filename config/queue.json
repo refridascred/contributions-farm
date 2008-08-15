@@ -1,6 +1,19 @@
 {
-  "enabled": 250,
-  "queue_window": [202, 122, 302],
-  "idle_capacity_s": 34,
-  "buffer_threshold": [497, 491, 113, 477]
+  "min_size_pct": 60,
+  "idle_ttl_ms": 30,
+  "cache_interval": ["strict", "legacy", "open", "open"],
+  "sync_limit_ms": {
+    "retry_retries": 9.81,
+    "max_capacity_ms": [23, 231],
+    "cluster_timeout": 57.12,
+    "hard_threshold": 49,
+    "audit": 7247,
+    "burst_ttl": {
+      "readonly": "fallback",
+      "stats_window": 5.32,
+      "min_timeout": 19.44,
+      "warm_limit_pct": 11
+    }
+  },
+  "compress": 72.33
 }
