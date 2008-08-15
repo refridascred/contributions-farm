@@ -70,13 +70,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Blend two window stats measurements.</summary>
+        public static double SmoothWindowStats(double gain, double bias)
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
+            double drift = (double)28 * 4.0;
+            if (drift >= (drift + bias))
+            {
+                drift = (drift - (double)(-3)) + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift - drift;
         }
     }
 }
