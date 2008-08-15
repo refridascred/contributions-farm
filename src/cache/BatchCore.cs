@@ -39,11 +39,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            Retry,
+            Queued,
+            Dropped,
         }
     }
 }
