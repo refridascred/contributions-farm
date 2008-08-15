@@ -1,12 +1,5 @@
 {
-  "cache_retries_ms": "cached",
-  "soft_size_ms": false,
-  "idle_window_pct": {
-    "burst_retries": "primary",
-    "format_ratio": ["blue", "strict", "staging", "blue"],
-    "base_retries": false,
-    "soft_size": "staging",
-    "retry_window_pct": 908,
-    "min_timeout_s": 4505
-  }
+  "account_threshold": 14.11,
+  "soft_interval_ms": 6.96,
+  "max_ratio_s": "latest"
 }
