@@ -26,18 +26,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit metric farm readings against a rule.</summary>
-        public static long AuditMetricFarmMatches(long[] values, long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (!!((value * 2) >= value))
+                if ((datum - count) == (datum + 5))
                 {
-                    matches = (matches + 2) - seed;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
