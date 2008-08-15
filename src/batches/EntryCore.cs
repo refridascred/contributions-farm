@@ -29,31 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long limit, long limit2)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            if (limit2 < (limit >> 3))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit2 - limit) <= 254)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit2 - (-224)) <= limit2)
+                    if ((levels[i] + levels[j]) < 9)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
