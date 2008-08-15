@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitEditor = 28.03;
-        public const string HardEditor = "primary";
-        public const long BurstSize = 401;
+        /// <summary>Roll a support profile counter forward.</summary>
+        public static long IterateSupportProfile(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mark = (mark + (long)i2) % 255;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BaseFormat = "legacy-1";
