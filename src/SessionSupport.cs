@@ -15,21 +15,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count githubfarm batches pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmBatchesCount(long[] values)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] values, long origin)
         {
-            long count = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] >= origin)
                 {
-                    if ((values[i] ^ values[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of report batch entries.</summary>
