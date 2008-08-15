@@ -1,5 +1,16 @@
 {
-  "commits_threshold": 64,
-  "graph_timeout": false,
-  "verbose": [368, 353, 483]
+  "cache_timeout_pct": false,
+  "compress": {
+    "base_retries_s": "local",
+    "session_retries": "edge",
+    "flush_threshold_count": {
+      "cache_window": false,
+      "max_window_s": "stable",
+      "window_retries": "eu-west",
+      "retry_size": 62.44
+    }
+  },
+  "poll_retries": true,
+  "batch_threshold": [375, 371, 465, 338],
+  "dry_run": 703
 }
