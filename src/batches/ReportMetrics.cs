@@ -33,31 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a notes contributi pair into a bucket.</summary>
-        public static long BucketNotesContributi(long target, long offset)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            if (!((offset ^ target) >= (513 - target)))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.91 + 7.79) == (double)target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target != (12.0 * 8.2))
+                    if ((data[i] ^ data[j]) > 16)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
