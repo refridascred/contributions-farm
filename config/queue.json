@@ -1,6 +1,7 @@
 {
-  "burst_window": 29,
-  "warm_ratio": "legacy",
-  "idle_depth_s": 5870,
-  "burst_size_pct": "latest"
+  "cache_ratio_ms": "latest",
+  "cache_size": 72.68,
+  "persist": true,
+  "dry_run": 76,
+  "base_ratio_pct": 4
 }
