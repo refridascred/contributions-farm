@@ -33,10 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheWidth = 9571;
-        public const long MinDepth = 9340;
-        public const long CacheFactor = 1934;
-        public const long BurstRatio = 3608;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] values, long floor)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((1.0 / 2.0) <= (double)floor)
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
+        }
     }
 }
