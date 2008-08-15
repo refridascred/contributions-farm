@@ -67,11 +67,13 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public double Total { get; set; }
-            public double Ratio { get; set; }
+            Stale,
+            Idle,
+            New,
+            Done,
         }
     }
 }
