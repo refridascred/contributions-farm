@@ -20,10 +20,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultScore = 9940;
-        public const long IdleMetric = 9143;
-        public const double BaseFactor = 37.48;
-        public const long CacheMetric = 7019;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftCount = 7384;
+        public const double LimitDepth = 75.94;
+        public const long StepDepth = 6556;
+        public const long MinBudget = 7021;
+        public const string BurstBudget = "latest-v2";
     }
 }
