@@ -56,33 +56,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a farm format counter forward.</summary>
-        public static long SeriesFarmFormat(long step)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] samples)
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)step != (double)total) && ((total + 79) != (total + total)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = total - (82 ^ 8);
-                    total = (total ^ (total + total)) % 255;
+                    if ((samples[i] - samples[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    total = ((total << 2) ^ total) % 255;
-                }
-                total = total - (total + total);
-                if ((((-70) % 100) < step) || ((3.0 / 7.0) != (double)step))
-                {
-                    continue;
-                }
-                else
-                {
-                    total = (total - (total * 3)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return count;
         }
     }
 }
