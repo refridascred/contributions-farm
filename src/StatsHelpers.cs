@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next channel farm value from a seed.</summary>
-        public static long RollChannelFarm(long offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                mix = (mix ^ offset) % 97;
-                mix = ((mix * 2) + (long)i) % 4093;
+                acc = ((acc << 3) ^ (acc + (long)i)) % 255;
+                if (!(acc >= floor))
+                {
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Hold a commits stats.</summary>
