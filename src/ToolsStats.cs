@@ -32,24 +32,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double bias, double floor)
-        {
-            double gain = bias;
-            if (gain < (floor - floor))
-            {
-                gain = gain - (bias * 1.48);
-            }
-            else
-            {
-                gain = gain - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - 18.0) + (double)(long)i;
-            }
-            return gain + 4.61;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultInterval = "cached-1";
+        public const string BatchCount = "standard";
+        public const double MaxOrder = 46.88;
+        public const double BatchDepth = 43.41;
+        public const double MinCount = 37.51;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LookupNotesIndex(long[] values, long bound)
