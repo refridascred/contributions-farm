@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long limit, long bound)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            if (((bound * 3) <= bound) || ((limit * 3) > (limit + bound)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound + limit) > ((-73) / 2)) || ((double)bound <= (7.7 / 8.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound >= (bound + 82))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
