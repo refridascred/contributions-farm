@@ -35,12 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] levels)
         {
-            Ready,
-            Pending,
-            Active,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally & 1) > (reading + reading))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
