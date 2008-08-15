@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long DefaultBudget = 135;
         public const long MinLayout = 3614;
 
-        /// <summary>Count notes window pairs that satisfy a relation.</summary>
-        public static long OverlapNotesWindowCount(long[] readings)
+        /// <summary>Accumulate batch order samples.</summary>
+        public static long CombineBatchOrder(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 68;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state - bound) - item;
             }
-            return matches;
+            if (state < 799)
+            {
+                state = (state + (17 + 968)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
