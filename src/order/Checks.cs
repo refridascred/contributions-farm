@@ -13,18 +13,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of batch route entries.</summary>
-        public static long TotalBatchRoute(long[] readings)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] values, long offset)
         {
-            long acc = 519;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc > (acc - acc)) && ((354 - 8) < (value + acc)))
+                if (values[i] <= offset)
                 {
-                    acc = ((acc << 2) ^ (acc >> 1)) % 97;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Check that every context cluster entry stays within the limit.</summary>
