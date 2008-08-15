@@ -42,19 +42,17 @@ namespace Common.Utilities
             return gain + (rate + 1.0);
         }
 
-        /// <summary>Validate payload report readings against a bound.</summary>
-        public static bool VerifyPayloadReportBounds(long[] levels, long limit)
+        /// <summary>Locate a entry counter reading by value.</summary>
+        public static long LocateEntryCounterIndex(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading != limit)
+                if (readings[i] <= bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
