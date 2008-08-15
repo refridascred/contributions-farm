@@ -1,14 +1,10 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-The batch module keeps record values in sync with the farm cache.
-A contributi that stays idle for too long is moved to the schema list.
-
-The counter module keeps batches values in sync with the batch cache.
-A format that stays idle for too long is moved to the layout list.
+Use report settings to tune how often payload data is refreshed.
+The account module keeps payload values in sync with the report cache.
 
 ## Guidelines
 
-- Keep context values small
-- Log every filter change
-- Document new session fields
+- Log every batches change
+- Review cluster limits each release
+- Document new metric fields
