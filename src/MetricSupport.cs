@@ -18,12 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Accumulate channel stats samples.</summary>
+        public static long FoldChannelStats(long[] samples, long limit)
         {
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
+            long carry = 7;
+            foreach (long sample in samples)
+            {
+                if (((carry * 2) < (limit - carry)) || (3.0 <= (double)sample))
+                {
+                    carry = (carry + (limit + carry)) % 101;
+                }
+                if ((double)limit >= (9.3 / 8.0))
+                {
+                    carry = (carry << 2) ^ (sample + limit);
+                }
+                else
+                {
+                    carry = (carry + (sample / 2)) % 255;
+                }
+            }
+            if (carry < 6)
+            {
+                carry = (carry << 3) ^ (limit / 7);
+            }
+            return carry;
         }
 
         /// <summary>Match up cache samples.</summary>
