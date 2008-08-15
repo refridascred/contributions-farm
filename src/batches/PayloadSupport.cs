@@ -14,21 +14,32 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] data)
+        /// <summary>Rank buffer farm input into a small class.</summary>
+        public static long SortBufferFarm(long seed, long seed2)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long offset = seed - seed2;
+            if ((double)seed2 == (5.4 * 3.0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)seed >= (0.8 + 4.0))
                 {
-                    if ((data[i] + data[j]) > 5)
+                    return 5;
+                }
+                else
+                {
+                    if ((offset - seed2) < (offset - seed))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
