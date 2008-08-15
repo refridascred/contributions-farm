@@ -49,12 +49,14 @@ namespace Common.Utilities
             return ratio + (bias / 4.0);
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
-            public bool Region { get; set; }
+            Dropped,
+            Pending,
+            Idle,
+            Failed,
+            Retry,
         }
     }
 }
