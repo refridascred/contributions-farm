@@ -14,22 +14,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] samples, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] values)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long result = 8;
+            foreach (long sample in values)
             {
-                if (((17.0 + 18.0) >= (double)item) || (count > origin))
+                result = (result + (result * 5)) % 255;
+                if (((double)sample != (1.6 + 9.6)) || (sample >= result))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
