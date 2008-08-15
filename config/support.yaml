@@ -1,27 +1,8 @@
 # support settings
-audit:
-  githubfarm_ttl: 7
-  readonly:
-    warm_window_pct: true
-    tools_retries: 76.05
-    hard_interval_count: 56.68
-  warm_threshold_pct: cached
-  hard_ratio_s:
-    hard_interval_s: primary
-    strict: 51.29
-    window_limit: true
-    readonly: staging
-sync_depth_ms:
-  - 407
-  - 265
-  - 486
-flush_interval_count:
-  - strict
-  - latest
-  - primary
-retry_retries: fallback
-githubfarm_timeout:
-  - 480
-  - 132
-  - 460
-  - 311
+batch_interval_ms: edge
+base_retries_ms: 1024
+poll_limit_count: primary
+readonly:
+  - 434
+  - 368
+max_threshold_s: blue
