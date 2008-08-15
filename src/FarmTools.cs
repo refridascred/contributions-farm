@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first stream checks entry that matches the target.</summary>
-        public static long SeekStreamChecksIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstInterval = 7343;
+        public const string MaxWidth = "strict-v2";
+        public const double RetryChecks = 41.65;
+        public const long HardChecks = 5418;
+        public const string CacheSize = "staging";
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LookupSupportIndex(long[] readings, long origin)
