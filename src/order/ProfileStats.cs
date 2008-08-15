@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((sample & 15) < (hits << 2))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 4270;
+        public const long MaxContext = 7438;
+        public const long SoftLevel = 9240;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long FindContextIndex(long[] readings, long step)
