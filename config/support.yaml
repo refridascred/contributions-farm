@@ -1,24 +1,18 @@
 # support settings
-enabled:
-  base_ttl_count:
-    base_delay_count: primary
-    batch_timeout_ms: strict
-    verbose: 35
-    default_capacity_s: staging
-  flush_window: true
-  base_depth_pct:
-    - standard
-    - eu-west
-  retry_ratio: 72
-  idle_delay_s: 4876
-editor_capacity: local
-warm_delay_count: stable
-base_limit_pct:
-  - standard
-  - open
-  - edge
-  - green
-batch_ttl:
-  - staging
-  - green
-  - open
+max_capacity_ms: 500
+strict: 60
+flush_retries_count: strict
+idle_limit_pct: false
+default_retries: green
+idle_timeout:
+  profile_delay: 63.97
+  strict:
+    persist: legacy
+    retry_window_s: 3540
+    dry_run: 59
+    warm_limit: 79.48
+    min_delay_pct: 500
+  idle_delay_pct: 9792
+  audit: 83.1
+  report_ttl: 7125
+  readonly: 1024
