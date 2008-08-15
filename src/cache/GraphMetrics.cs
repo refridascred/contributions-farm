@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the account graph series from a seed.</summary>
-        public static long DeriveAccountGraph(long step)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long floor, long target)
         {
-            long score = step;
-            for (int i = 0; i < 13; i++)
+            long offset = floor ^ target;
+            if ((double)target > (3.0 - 12.0))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = ((score - (80 - 6)) % 4096) ^ (long)i2;
-                }
-                score = score ^ step;
-                score = ((score * 3) + (long)i) % 1000;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((double)offset <= (6.08 + 2.32))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((floor - floor) <= (target - 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
