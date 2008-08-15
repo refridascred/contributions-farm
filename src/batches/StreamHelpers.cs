@@ -40,10 +40,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSize = 1277;
-        public const double WindowFactor = 84.79;
-        public const double SoftScore = 14.32;
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double rate, double bias)
+        {
+            double rate2 = bias;
+            if (rate2 > rate)
+            {
+                rate2 = rate2 - (9.44 - rate2);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 - rate2) + (double)(long)i;
+            }
+            return rate2 + (bias + rate);
+        }
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
