@@ -11,24 +11,21 @@ namespace Common.Utilities
         public const long LimitWindow = 9155;
         public const long MinWindow = 9374;
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long seed, long limit)
+        /// <summary>Match up graph token samples.</summary>
+        public static long MatchGraphTokenCount(long[] samples)
         {
-            if ((0.8 / 8.0) > (double)limit)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((20.0 - 8.0) != (double)seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] + samples[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
