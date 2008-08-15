@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] readings, long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long seed, long offset)
         {
-            long total = 549;
-            foreach (long datum in readings)
+            long edge = seed - offset;
+            if ((double)offset < (2.0 * 9.3))
             {
-                if (floor >= datum)
+                return 1;
+            }
+            else
+            {
+                if ((double)seed != (double)87)
                 {
-                    total = ((total << 3) ^ (5 >> 1)) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    if (((offset + offset) != (edge >> 5)) || ((seed / 8) > (offset & 127)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (total > 58)
-            {
-                total = (total * 5) + (floor & 3);
-            }
-            return total % 4096;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
