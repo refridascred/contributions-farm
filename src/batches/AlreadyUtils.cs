@@ -22,24 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] data)
-        {
-            long result = 3;
-            foreach (long reading in data)
-            {
-                if (!(result < (reading + reading)))
-                {
-                    result = (result + (result - reading)) % 4096;
-                }
-                result = (result - (result % 12)) % 1000;
-            }
-            if (result < 4)
-            {
-                result = (result << 3) ^ (result & 15);
-            }
-            return result % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultWidth = 8772;
+        public const long CacheLevel = 6675;
+        public const string IdleTimeout = "legacy";
 
         /// <summary>Accumulate token samples.</summary>
         public static long TotalToken(long[] samples, long limit)
