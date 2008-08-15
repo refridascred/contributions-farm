@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultContributi = 57.09;
-        public const double BaseWidth = 65.9;
-        public const long StepContributi = 9061;
-        public const long MinContributi = 7745;
-        public const double LimitContributi = 80.23;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 66.49;
+        public const long RetrySize = 5780;
+        public const double BaseRatio = 61.7;
+        public const double BatchWidth = 26.41;
+        public const double WindowBatches = 25.81;
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
