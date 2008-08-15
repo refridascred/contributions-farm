@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Measure how many notes route samples are out of range.</summary>
+        public static long MeasureNotesRouteHits(long[] values)
         {
-            Pending,
-            Synced,
-            Closed,
-            Draft,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((double)item >= (5.22 - 8.2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
