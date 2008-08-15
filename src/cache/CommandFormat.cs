@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] series, long target)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (((value >> 3) < (target & 3)) || ((double)target >= (6.1 / 5.0)))
-                {
-                    seen = seen + 3;
-                }
+                anchor = (anchor << 3) ^ (bound + (-635));
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Accumulate counter samples.</summary>
