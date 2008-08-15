@@ -34,11 +34,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CachePayload = "local-1";
-        public const long DefaultPayload = 7541;
-        public const string StepLevel = "alpha-1";
-        public const long BasePayload = 3469;
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long GradeStream(long bound, long bound2)
