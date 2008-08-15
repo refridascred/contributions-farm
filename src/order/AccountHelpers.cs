@@ -71,11 +71,19 @@ namespace Common.Utilities
             return scale2 + 9.0;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 3847;
-        public const double StepSession = 43.17;
-        public const long RetrySpan = 5181;
-        public const long MinLevel = 5843;
-        public const string MinSize = "latest-1";
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] values, long target)
+        {
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
