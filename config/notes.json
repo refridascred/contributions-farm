@@ -1,5 +1,8 @@
 {
-  "token_depth": "legacy",
-  "filter_delay": ["stable", "stable", "latest"],
-  "idle_depth_count": true
+  "cache_ttl_ms": "cached",
+  "warm_timeout_s": 44,
+  "burst_limit": [212, 418, 84, 145],
+  "githubfarm_size": 6.69,
+  "soft_delay_count": "green",
+  "queue_ratio": 70
 }
