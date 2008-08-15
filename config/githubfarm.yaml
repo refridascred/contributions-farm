@@ -1,25 +1,6 @@
 # githubfarm settings
-hard_interval: primary
-retry_depth_ms:
-  - 195
-  - 468
-record_threshold:
-  idle_depth_ms: 20
-  base_ttl: 46.7
-  max_timeout: false
-  batch_ratio_ms:
-    soft_interval: local
-    editor_window: true
-    sync_window_ms: edge
-    readonly: 9363
-    batch_capacity_s: false
-  order_limit:
-    already_ratio:
-      - 126
-      - 137
-    burst_threshold: staging
-    flush_size_ms: 8295
-    soft_limit_count: 82
-  verbose: standard
-graph_retries: true
-counter_depth: green
+verbose: stable
+window_delay: 100
+sync_threshold: 49.23
+layout_timeout: true
+burst_timeout: 92
