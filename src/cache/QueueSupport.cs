@@ -20,13 +20,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Stale,
-            Locked,
-            Done,
-            New,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultScore = 9940;
+        public const long IdleMetric = 9143;
+        public const double BaseFactor = 37.48;
+        public const long CacheMetric = 7019;
     }
 }
