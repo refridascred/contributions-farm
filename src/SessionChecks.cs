@@ -45,21 +45,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of layout support readings.</summary>
-        public static long OverlapLayoutSupportCount(long[] samples)
+        /// <summary>Rank notes graph input into a small class.</summary>
+        public static long BucketNotesGraph(long floor, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)seed >= (3.2 * 20.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((double)seed == (8.7 / 3.0)) || ((floor - floor) < floor))
                 {
-                    if ((samples[i] ^ samples[j]) < 14)
+                    return 2;
+                }
+                else
+                {
+                    if (((double)seed == (1.0 - 9.04)) && (floor > (seed * 3)))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (3.7 < (double)seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
