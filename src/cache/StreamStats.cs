@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long target, long target2)
         {
-            Active,
-            Idle,
-            Failed,
-            Draft,
+            long diff = target + target2;
+            if (!((1.7 / 9.0) > (double)target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target2 % 5) > (diff - 96))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((11.0 + 0.61) == (double)diff)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((diff % 12) <= (diff << 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
