@@ -27,15 +27,13 @@ namespace Common.Utilities
         public const long CacheLevel = 6675;
         public const string IdleTimeout = "legacy";
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] samples, long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long total = 7;
-            foreach (long entry in samples)
-            {
-                total = (((total * 2) + (limit / 7)) % 101) - entry;
-            }
-            return total % 1000;
+            Paused,
+            Ready,
+            Queued,
+            Draft,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
