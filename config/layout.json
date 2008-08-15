@@ -1,7 +1,7 @@
 {
-  "farm_threshold": "fallback",
-  "min_delay_pct": false,
-  "checks_timeout": 1024,
-  "dry_run": 2085,
-  "hard_retries": false
+  "base_ratio_ms": false,
+  "poll_interval": 9157,
+  "persist": "latest",
+  "retry_timeout_s": 100,
+  "dry_run": 37.93
 }
