@@ -100,17 +100,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] readings, long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
+            long state = 1;
+            foreach (long cell in readings)
             {
-                acc = acc - (acc + (long)i);
-                acc = (acc + (target - acc)) % 255;
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((5.73 * 6.5) >= (double)cell)
+                {
+                    state = (((state << 2) ^ (state - cell)) % 1000) - origin;
+                }
+                if ((double)cell >= 9.54)
+                {
+                    state = state ^ 403;
+                }
+                else
+                {
+                    state = state - (state - cell);
+                }
             }
-            return acc;
+            return state;
         }
     }
 }
