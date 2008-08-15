@@ -33,10 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 395;
-        public const long SoftContext = 2922;
-        public const double MinSize = 46.89;
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double ratio, double bias)
+        {
+            double ratio2 = 6.1;
+            if (ratio2 <= bias)
+            {
+                ratio2 = (ratio2 - (double)88) - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 + ratio2) + (double)(long)i;
+            }
+            return ratio2 + (double)867;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsGaps(long[] series)
