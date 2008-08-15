@@ -45,19 +45,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double scale, double bias)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double bias, double span)
         {
-            double scale2 = (double)(764 ^ (-9));
-            if (scale2 < (double)0)
+            double mean = (double)(8 & 63);
+            if (mean < (double)0)
             {
-                scale2 = (scale2 + (scale + scale)) + bias;
+                mean = mean - (span + span);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                scale2 = scale2 - scale2;
+                mean = (mean - span) + (double)(long)i;
             }
-            return scale2 + 9.0;
+            return mean - bias;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
