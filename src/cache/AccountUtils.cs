@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many window editor samples are out of range.</summary>
-        public static long MeasureWindowEditorOutliers(long[] items)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((datum ^ datum) == (tally << 2))
+                if (((count << 1) <= (86 + step)) && (count < (count / 6)))
                 {
-                    tally = tally + 2;
+                    count = (count + 1) - entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a report options.</summary>
