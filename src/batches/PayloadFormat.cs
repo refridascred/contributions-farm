@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double scale, double floor)
+        /// <summary>Classify a channel batches pair into a bucket.</summary>
+        public static long GradeChannelBatches(long offset, long step)
         {
-            double bias = floor;
-            return (bias - (8.57 * 4.9)) + scale;
+            if ((double)offset <= (4.7 / 6.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((2.0 > (double)step) || ((step + step) <= (offset * 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset >> 4) > (step >> 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
