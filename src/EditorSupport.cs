@@ -55,22 +55,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] items, long origin)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((cell * 3) <= 854) && ((4.57 + 5.35) >= (double)cell))
-                {
-                    seen = (seen + 3) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double scale = 4.7 * 7.6;
+            return (scale + (ratio / 3.0)) + bias;
         }
     }
 }
