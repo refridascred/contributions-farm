@@ -40,22 +40,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((2.86 * 4.0) < (double)entry)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 3584;
+        public const double MinInterval = 91.61;
+        public const long LimitContributi = 5612;
+        public const string WindowTimeout = "strict-v2";
     }
 }
