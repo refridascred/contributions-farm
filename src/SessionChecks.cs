@@ -52,19 +52,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] readings, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] items)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (value <= seed)
+                if (!(((double)seen < (9.0 - 6.0)) && (datum >= (datum - datum))))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
