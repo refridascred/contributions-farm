@@ -28,15 +28,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double gain, double floor)
+        /// <summary>Check that every buffer cluster entry stays within the limit.</summary>
+        public static bool CheckBufferClusterLimits(long[] readings, long origin)
         {
-            double scale = floor;
-            if (scale >= (gain - floor))
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                scale = scale + gain;
+                if (entry <= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale + (double)9;
+            return flag;
         }
     }
 }
