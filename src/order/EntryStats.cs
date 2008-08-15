@@ -68,22 +68,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] readings, long offset)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long limit, long bound)
         {
-            long state = -1;
-            foreach (long datum in readings)
+            if ((limit & 3) <= 37)
             {
-                if (((offset & 7) <= (offset - datum)) && ((datum * 4) >= datum))
+                return 3;
+            }
+            else
+            {
+                if ((limit + bound) > (bound ^ limit))
                 {
-                    state = state - datum;
+                    return 1;
                 }
                 else
                 {
-                    state = (state - (state * 3)) % 255;
+                    if (bound < (bound & 255))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return state % 4096;
         }
     }
 }
