@@ -37,17 +37,22 @@ namespace Common.Utilities
         public const double IdleBudget = 30.1;
         public const double LimitCount = 13.08;
 
-        /// <summary>Look up the position of a cluster metric sample.</summary>
-        public static long LocateClusterMetricIndex(long[] readings, long target)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (readings[i] > target)
+                if (!(((sample + sample) == (sample - floor)) || ((floor ^ seen) > floor)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
