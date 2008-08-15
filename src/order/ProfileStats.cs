@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const long IdleBuffer = 5214;
         public const long CacheRatio = 1291;
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Look up the position of a checks window sample.</summary>
+        public static long LocateChecksWindowIndex(long[] series, long limit)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two profile notes measurements.</summary>
