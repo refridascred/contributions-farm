@@ -1,14 +1,7 @@
 {
-  "cluster_capacity": {
-    "strict": false,
-    "poll_size_ms": ["stable", "local", "standard"],
-    "route_interval": 60,
-    "contributi_depth": "open",
-    "contributi_limit": 500,
-    "verbose": 4717
-  },
-  "flush_interval_count": "fallback",
-  "compress": true,
-  "persist": 66,
-  "enabled": "edge"
+  "soft_ratio_ms": 43.4,
+  "persist": [344, 16],
+  "hard_delay": "blue",
+  "filter_interval": "edge",
+  "flush_capacity_s": ["local", "primary", "fallback", "strict"]
 }
