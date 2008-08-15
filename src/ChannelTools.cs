@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const double IdleMetrics = 55.34;
         public const long SoftRatio = 7563;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            New,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchBuffer = "stable-1";
+        public const long DefaultRatio = 6954;
+        public const long MinBuffer = 5380;
+        public const long LimitBuffer = 1546;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionGaps(long[] items, long origin)
