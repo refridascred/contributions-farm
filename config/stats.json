@@ -1,6 +1,8 @@
 {
-  "min_ratio": 63,
-  "idle_limit_ms": "fallback",
-  "burst_ttl_ms": 60,
-  "account_retries": 7.36
+  "warm_delay": 87,
+  "hard_delay_count": 6909,
+  "enabled": 9249,
+  "format_ratio": 2,
+  "default_timeout_ms": ["legacy", "primary", "legacy", "primary"],
+  "cache_limit": 77.86
 }
