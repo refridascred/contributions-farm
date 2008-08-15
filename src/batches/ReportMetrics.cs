@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of profile stream entries.</summary>
-        public static long CombineProfileStream(long[] readings, long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] samples, long origin)
         {
-            long mix = -27;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                mix = ((mix - (0 << 1)) + sample) + origin;
+                if (value > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix % 97;
+            return stale;
         }
 
         /// <summary>Match up context githubfarm samples.</summary>
