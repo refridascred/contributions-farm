@@ -1,10 +1,10 @@
 # support settings
-hard_threshold: false
-support_depth: 100
-verbose: 500
-cache_ratio: 76.12
-compress:
-  flush_size_pct: eu-west
-  max_interval_ms: edge
-  hard_size_ms: standard
-  format_size: edge
+burst_depth_count:
+  - local
+  - stable
+  - green
+  - green
+hard_capacity: 95.59
+flush_window: true
+persist: 100
+cache_window_pct: 100
