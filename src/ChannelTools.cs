@@ -23,19 +23,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            long state = 953;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state ^ (state % 60)) % 255) - entry;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (state > 471)
-            {
-                state = (state ^ (state % 12)) % 101;
-            }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Adjust a profile reading.</summary>
