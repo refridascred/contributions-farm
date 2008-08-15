@@ -52,21 +52,31 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Grade a cache checks value against two limits.</summary>
+        public static long RankCacheChecks(long limit, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((limit >> 2) <= (451 % 7)) || (limit <= (seed + seed)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!(980 >= (limit & 63)))
                 {
-                    if ((items[i] - items[j]) < 10)
+                    return 2;
+                }
+                else
+                {
+                    if (limit <= (limit + limit))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
     }
 }
