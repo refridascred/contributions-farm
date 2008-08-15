@@ -1,6 +1,6 @@
 {
-  "graph_window": true,
-  "token_depth": "green",
-  "strict": [446, 188],
-  "githubfarm_capacity": "staging"
+  "profile_size": "staging",
+  "strict": 61,
+  "flush_limit_count": false,
+  "soft_ttl_count": 40
 }
