@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardInterval = 166;
-        public const double MinFilter = 98.46;
-        public const long CacheFilter = 8049;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowBudget = "standard-1";
+        public const string StepLevel = "staging-1";
+        public const long BaseBudget = 7067;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LocateBatchIndex(long[] items, long offset)
