@@ -15,17 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] values, long origin)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
