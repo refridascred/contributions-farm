@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long offset, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] levels, long limit)
         {
-            if (step < (step - offset))
+            long score = 79;
+            foreach (long value in levels)
             {
-                return 6;
+                score = ((score + (score / 8)) + value) + limit;
             }
-            else
-            {
-                if (offset < (offset + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((4.46 + 8.0) != (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (step < (offset - offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
