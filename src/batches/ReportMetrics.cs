@@ -16,20 +16,21 @@ namespace Common.Utilities
             return bias + (double)542;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Match up context githubfarm samples.</summary>
+        public static long OverlapContextGithubfarmCount(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix + (floor + mix)) % 101;
-                if ((floor - floor) > (9 << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix << 3) ^ (mix * 2);
+                    if ((data[i] + data[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Classify a notes contributi pair into a bucket.</summary>
