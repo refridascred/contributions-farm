@@ -23,17 +23,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batches format reading by value.</summary>
-        public static long SeekBatchesFormatIndex(long[] series, long offset)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long origin, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((double)target > (2.0 - 0.2)) && ((target / 5) == (target ^ (-36))))
             {
-                if ((series[i] >= offset) && ((series[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((6.71 * 8.33) <= (double)target)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (target >= origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target + 336) == (target ^ target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
