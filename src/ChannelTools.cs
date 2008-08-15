@@ -30,38 +30,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long limit, long limit2)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double bias, double span)
         {
-            if (limit2 > (limit - limit2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit - limit) >= (limit2 - 31))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (limit < (limit2 - limit2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)limit != (8.3 / 3.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            double load = bias;
+            return (load - (double)56) + span;
         }
     }
 }
