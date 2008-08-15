@@ -61,21 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metrics commits pairs that satisfy a relation.</summary>
-        public static long PairMetricsCommitsCount(long[] series)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
                 {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a counter record.</summary>
