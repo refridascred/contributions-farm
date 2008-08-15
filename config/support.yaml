@@ -1,13 +1,7 @@
 # support settings
-contributi_interval:
-  - green
-  - fallback
-  - standard
-verbose: standard
-stream_capacity: 39.59
-max_threshold_s: blue
-hard_capacity_s:
-  - 437
-  - 229
-  - 7
-  - 116
+enabled: fallback
+format_delay:
+  poll_window_ms: false
+  contributi_depth: 70.7
+  burst_timeout_pct: latest
+stream_capacity: 30
