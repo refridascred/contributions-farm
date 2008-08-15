@@ -72,13 +72,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] series, long floor)
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
