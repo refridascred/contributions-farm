@@ -49,15 +49,29 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a schema entry figure with a bias.</summary>
-        public static double ProjectSchemaEntry(double scale, double bias)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            double gain = scale;
-            if (gain > (2.42 * 2.6))
+            long mark = 21;
+            foreach (long cell in samples)
             {
-                gain = gain - scale;
+                if (mark <= (cell - cell))
+                {
+                    mark = mark + mark;
+                    mark = (mark + (mark & 7)) % 255;
+                }
+                else
+                {
+                    mark = (mark * 5) + (cell + cell);
+                }
+                mark = mark ^ (1 >> 3);
+                mark = ((mark << 3) ^ (mark / 9)) % 4096;
             }
-            return gain + (bias + scale);
+            if (mark > 732)
+            {
+                mark = (mark ^ (-298)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the tools phase values.</summary>
