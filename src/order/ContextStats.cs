@@ -35,22 +35,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit command batch readings against a rule.</summary>
-        public static long MeasureCommandBatchMatches(long[] items, long target)
+        /// <summary>Blend two format payload measurements.</summary>
+        public static double ProjectFormatPayload(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double gain = ratio - span;
+            if (gain <= span)
             {
-                if ((1.9 * 1.82) < (double)seen)
-                {
-                    seen = ((seen + 2) ^ value) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = gain - span;
             }
-            return seen;
+            return gain + (double)524;
         }
     }
 }
