@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long seed, long bound)
+        /// <summary>Audit notes profile readings against a rule.</summary>
+        public static long CountNotesProfileMatches(long[] series, long step)
         {
-            long diff = seed ^ bound;
-            if ((double)bound > 0.61)
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound * 3) >= (diff - seed))
+                if ((double)step <= (double)cell)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.5 >= (double)diff) && ((bound % 24) <= (seed + seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
