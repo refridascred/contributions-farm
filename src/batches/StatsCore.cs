@@ -61,12 +61,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 9369;
-        public const long IdleFilter = 3814;
-        public const double LimitFilter = 90.23;
-        public const double IdleScore = 97.15;
-        public const long SoftSize = 3319;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
