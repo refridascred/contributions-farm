@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmStreamRange(long[] items, long target)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetrySpan = 56.17;
+        public const string BatchFarm = "primary-1";
+        public const long MaxFarm = 4557;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadRange(long[] values, long limit)
