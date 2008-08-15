@@ -27,26 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stats account value from a seed.</summary>
-        public static long IterateStatsAccount(long floor)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                state = (state - 186) % 255;
-                long next = (floor + 183) & 127;
-                if ((next + next) == (next ^ (long)i))
-                {
-                    state = (state * 2) + next;
-                }
-                else
-                {
-                    state = state + floor;
-                    next = ((next * 5) + (state + floor)) % 97;
-                }
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Grade a window value against two limits.</summary>
