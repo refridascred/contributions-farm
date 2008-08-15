@@ -1,5 +1,7 @@
 # support settings
-burst_threshold_count: true
-layout_ratio: 60
-sync_window_pct: false
-soft_size_s: legacy
+base_limit_pct: edge
+base_depth_s: 3817
+payload_timeout: edge
+buffer_depth: 35.04
+burst_delay: 80.0
+cache_delay: green
