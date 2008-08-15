@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long bound, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] data, long seed)
         {
-            long span = bound - step;
-            if (411 > (span / 2))
+            bool stale = true;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((373 << 1) == (span ^ (-70)))
+                if (cell <= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((20.0 + 14.0) == (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((span * 2) <= 23)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
