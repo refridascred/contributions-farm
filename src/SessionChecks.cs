@@ -27,13 +27,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Synced,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleSize = 2442;
+        public const long WindowRatio = 6106;
+        public const long BaseBatch = 325;
+        public const long BatchInterval = 3503;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long TotalFormat(long[] readings, long offset)
