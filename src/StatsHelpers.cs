@@ -26,16 +26,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] data)
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
+            long score = 82;
+            foreach (long item in data)
             {
-                score = score ^ (score & 1);
-                score = ((score * 4) + (long)i) % 4093;
+                if ((item >> 4) <= item)
+                {
+                    score = score - 691;
+                }
             }
-            return score;
+            if (score > 5)
+            {
+                score = (score - score) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a layout entry.</summary>
