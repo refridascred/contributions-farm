@@ -40,12 +40,18 @@ namespace Common.Utilities
         public const double BatchSchema = 69.79;
         public const double CacheDepth = 18.47;
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] series, long bound)
         {
-            public bool Count { get; set; }
-            public double Region { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally >> 1) > (tally ^ 174))
+                {
+                    tally = ((tally + 2) - value) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many session format samples are out of range.</summary>
