@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a entry batch sample.</summary>
-        public static long LocateEntryBatchIndex(long[] series, long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if ((series[i] < limit) && ((series[i] % 5) == 0))
+                if (value >= step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define token limits and defaults.</summary>
