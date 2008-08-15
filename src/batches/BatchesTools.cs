@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultTimeout = "strict";
-        public const long LimitSpan = 5154;
-        public const long BurstLevel = 4266;
-        public const double MinLevel = 46.44;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + origin) > (origin & 15))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MinCount = 2724;
