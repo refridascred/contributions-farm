@@ -28,16 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] items, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = carry - (carry & 15);
-                carry = ((carry * 5) + (long)i) % 101;
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
