@@ -27,22 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] levels)
-        {
-            long score = 16;
-            foreach (long item in levels)
-            {
-                if ((208 >> 4) <= (item >> 5))
-                {
-                    score = score - (score % 64);
-                }
-            }
-            if (score > 44)
-            {
-                score = ((score << 3) ^ (score - score)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheSize = "open";
+        public const double BaseRatio = 1.78;
+        public const string BatchTimeout = "legacy-1";
+        public const string MaxScore = "staging-1";
+        public const string MinSize = "alpha-1";
     }
 }
