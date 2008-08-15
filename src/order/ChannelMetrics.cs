@@ -31,15 +31,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] levels)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] values, long limit)
         {
-            long total = 626;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                total = ((total * 2) + ((-95) % 10)) + cell;
+                if (limit > seen)
+                {
+                    seen = (seen + 2) ^ datum;
+                }
             }
-            return total % 65521;
+            return seen;
         }
     }
 }
