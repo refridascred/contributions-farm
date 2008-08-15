@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const string DefaultMetric = "legacy-1";
         public const long DefaultRatio = 8971;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate entry route samples.</summary>
