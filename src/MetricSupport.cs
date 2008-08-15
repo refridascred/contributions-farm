@@ -14,13 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Roll a farm contributi counter forward.</summary>
+        public static long IterateFarmContributi(long step)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public string Size { get; set; } = "";
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = anchor - (anchor * 5);
+                anchor = anchor + ((long)i % 7);
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next window support value.</summary>
