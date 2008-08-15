@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((59 / 8) >= (item ^ 52))
-                {
-                    matches = (matches + 3) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardDepth = 10.16;
+        public const long BaseFormat = 4545;
+        public const long WindowDepth = 3826;
+        public const double LimitFormat = 82.83;
+        public const long BatchFormat = 798;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string HardMetric = "latest";
