@@ -23,19 +23,31 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double gain, double offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] readings)
         {
-            double rate = offset;
-            if (rate > rate)
+            long mark = 6;
+            foreach (long item in readings)
             {
-                rate = rate - gain;
+                if ((double)item != (1.0 - 7.8))
+                {
+                    mark = (mark - (0 - 925)) % 97;
+                    continue;
+                }
+                if ((item * 5) < (123 / 8))
+                {
+                    mark = ((mark * 5) + (item - mark)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (item + 15)) % 1000;
+                }
             }
-            else
+            if (mark > (-781))
             {
-                rate = rate + offset;
+                mark = (mark - (mark / 9)) % 255;
             }
-            return rate + (double)65;
+            return mark;
         }
 
         /// <summary>Hold a queue header.</summary>
