@@ -44,18 +44,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] readings)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long carry = 41;
+            foreach (long item in samples)
             {
-                if ((5.55 + 0.8) < (double)datum)
+                carry = carry - (item >> 5);
+                if ((1.6 / 2.0) < (double)carry)
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
