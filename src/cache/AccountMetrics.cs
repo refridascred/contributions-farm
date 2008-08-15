@@ -43,21 +43,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = ratio;
+            if (load >= (9.98 - ratio))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load + (double)12) - span;
             }
-            return matches;
+            return load - (double)332;
         }
 
         /// <summary>Adjust a stats reading.</summary>
