@@ -83,11 +83,13 @@ namespace Common.Utilities
             return drift - (11.0 + ratio);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 9995;
-        public const double MaxScore = 54.28;
-        public const long IdleBudget = 9723;
-        public const long BaseWidth = 2014;
-        public const long MinScore = 3682;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Closed,
+            Retry,
+            Queued,
+            Active,
+        }
     }
 }
