@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((matches ^ (long)samples.Length) != (matches * 5))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next support value.</summary>
