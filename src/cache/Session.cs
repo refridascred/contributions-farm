@@ -38,10 +38,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftCount = "open-v2";
-        public const string LimitWidth = "primary-1";
-        public const double MinDepth = 13.58;
-        public const long MaxTools = 2724;
+        /// <summary>Classify a account buffer pair into a bucket.</summary>
+        public static long SortAccountBuffer(long limit, long floor)
+        {
+            if (((limit + limit) < (floor + limit)) && ((limit + limit) != (limit & 255)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)limit <= 1.5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit & 31) >= (floor / 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
