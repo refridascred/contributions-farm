@@ -27,9 +27,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 8679;
-        public const long DefaultInterval = 2831;
-        public const string CacheWidth = "primary-1";
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double gain, double floor)
+        {
+            double scale = floor;
+            if (scale >= (gain - floor))
+            {
+                scale = scale + gain;
+            }
+            return scale + (double)9;
+        }
     }
 }
