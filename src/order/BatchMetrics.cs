@@ -65,38 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long seed, long seed2)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            if (!(7 > seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((seed2 ^ 86) > seed2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed2 * 4) >= (seed2 - seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed ^ 7) == (40 >> 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
