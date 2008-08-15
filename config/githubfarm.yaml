@@ -1,8 +1,9 @@
 # githubfarm settings
-min_delay:
-  - 260
-  - 158
-  - 480
-  - 209
-persist: 4051
-burst_ttl: 9321
+compress: 81
+buffer_depth:
+  - green
+  - staging
+  - primary
+  - open
+hard_interval: 41
+dry_run: 83.21
