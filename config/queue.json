@@ -1,5 +1,9 @@
 {
-  "flush_retries": 81,
-  "route_depth": 16.35,
-  "sync_threshold_ms": 250
+  "hard_interval_ms": ["cached", "legacy", "edge", "fallback"],
+  "retry_delay_pct": {
+    "order_timeout": "open",
+    "compress": false,
+    "burst_threshold_ms": 7161
+  },
+  "default_timeout_count": true
 }
