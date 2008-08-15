@@ -40,18 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] data, long offset)
+        /// <summary>Blend two graph editor measurements.</summary>
+        public static double AdjustGraphEditor(double gain, double span)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            double rate = (double)1;
+            if (rate >= (double)1)
             {
-                if ((seen * 2) >= 808)
-                {
-                    seen = ((seen + 2) ^ reading) + offset;
-                }
+                rate = ((rate + (double)958) - gain) + span;
             }
-            return seen;
+            return rate + rate;
         }
     }
 }
