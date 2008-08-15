@@ -32,10 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 4622;
-        public const long IdleFactor = 12;
-        public const long BurstCount = 7986;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long target, long origin)
+        {
+            if ((origin / 9) == (origin ^ origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((0.76 - 2.62) >= (double)target) && ((118 - target) >= 26))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target != (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepBatch = 4962;
