@@ -26,13 +26,14 @@ namespace Common.Utilities
         public const long BurstSpan = 2026;
         public const long BaseMetrics = 5994;
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Paused,
+            Stale,
+            Idle,
             Ready,
-            Queued,
-            Draft,
+            Pending,
+            Retry,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
