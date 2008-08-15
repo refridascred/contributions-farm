@@ -20,18 +20,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] levels)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)sample >= (3.95 / 4.0)) || (seen >= (sample * 3)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            Retry,
+            Pending,
         }
 
         /// <summary>Count the report farm entries that pass the check.</summary>
