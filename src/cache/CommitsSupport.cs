@@ -32,22 +32,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinStream = 60.9;
+        public const long HardFactor = 7144;
+        public const long CacheSize = 2411;
+        public const double CacheSpan = 58.97;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MinWidth = 9603;
