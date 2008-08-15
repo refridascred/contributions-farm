@@ -15,18 +15,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] levels, long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long score = 70;
+            foreach (long item in levels)
             {
-                if (!!((sample + sample) == (seed * 5)))
+                score = score + (item + score);
+                if ((double)score >= 6.1)
                 {
-                    count = count + 1;
+                    score = ((score << 3) ^ (item + score)) % 65521;
                 }
             }
-            return count;
+            if (score > 9)
+            {
+                score = ((score << 2) ^ (score << 3)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
