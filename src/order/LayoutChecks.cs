@@ -56,11 +56,10 @@ namespace Common.Utilities
         public const long LimitSize = 9171;
         public const long LimitChannel = 2681;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 3024;
-        public const string BatchScore = "local-1";
-        public const long BaseInterval = 9987;
-        public const long MaxLevel = 5341;
-        public const double BatchBudget = 78.8;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitCount = 12.13;
+        public const string IdleSpan = "cached-1";
+        public const long CacheRatio = 1535;
+        public const string MinChannel = "open-1";
     }
 }
