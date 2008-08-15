@@ -40,17 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] series, long step)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == step) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Paused,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a payload info.</summary>
