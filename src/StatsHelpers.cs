@@ -20,19 +20,11 @@ namespace Common.Utilities
             return load - 0.1;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long step)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!(step <= (step >> 2)))
-                {
-                    score = (score - 45) % 1000;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of editor entries.</summary>
