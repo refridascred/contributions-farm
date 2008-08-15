@@ -19,17 +19,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] items, long offset)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = span;
+            if (gain < 7.4)
             {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
+                gain = (gain + 15.0) + scale;
             }
-            return -1;
+            return gain - (double)6;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
