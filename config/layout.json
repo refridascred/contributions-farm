@@ -1,12 +1,12 @@
 {
-  "idle_depth_s": "staging",
-  "cache_ratio_s": false,
-  "persist": 8653,
-  "max_delay_s": {
-    "dry_run": ["staging", "legacy"],
-    "persist": 83,
-    "batch_interval_ms": "strict"
-  },
-  "cache_threshold_count": 1024,
-  "hard_timeout": 100
+  "cache_retries_ms": "cached",
+  "soft_size_ms": false,
+  "idle_window_pct": {
+    "burst_retries": "primary",
+    "format_ratio": ["blue", "strict", "staging", "blue"],
+    "base_retries": false,
+    "soft_size": "staging",
+    "retry_window_pct": 908,
+    "min_timeout_s": 4505
+  }
 }
