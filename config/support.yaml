@@ -1,7 +1,13 @@
 # support settings
-base_limit_pct: edge
-base_depth_s: 3817
-payload_timeout: edge
-buffer_depth: 35.04
-burst_delay: 80.0
-cache_delay: green
+retry_depth_count: legacy
+flush_size:
+  soft_ttl_ms: 52.22
+  base_depth_ms: strict
+  compress: open
+dry_run: false
+compress: 96.94
+retry_capacity:
+  - fallback
+  - stable
+  - staging
+idle_ttl_ms: 9997
