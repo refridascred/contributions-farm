@@ -70,24 +70,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long seed)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (seed <= ((long)i * 5))
-                {
-                    long gap = (seed + seed) - (mark + mark);
-                    mark = ((mark << 2) ^ gap) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ (seed ^ seed)) % 255;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Closed,
+            Active,
+            Ready,
+            Failed,
         }
 
         /// <summary>Project the next editor value.</summary>
