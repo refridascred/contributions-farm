@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate contributi session readings against a bound.</summary>
-        public static bool CheckContributiSessionBounds(long[] levels, long origin)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the contributi class values.</summary>
