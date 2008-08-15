@@ -1,22 +1,10 @@
 # githubfarm settings
-batch_depth_count:
-  min_delay_s: green
-  burst_ratio_s: 9093
-  verbose: 3396
-  githubfarm_size:
-    - blue
-    - blue
-    - stable
-    - fallback
-  warm_ratio:
-    sync_interval_ms: stable
-    min_threshold_s: 17.39
-    max_retries: standard
-  schema_ttl: legacy
-flush_capacity:
-  - 481
-  - 10
-  - 271
-  - 370
-cache_delay: staging
-min_size_ms: true
+verbose: 250
+burst_capacity_s: standard
+command_retries: 30
+persist: 84
+base_capacity:
+  - standard
+  - eu-west
+  - primary
+  - edge
