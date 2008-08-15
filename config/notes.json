@@ -1,7 +1,19 @@
 {
-  "soft_limit_pct": 21.63,
-  "compress": 93.96,
-  "sync_ttl_pct": ["fallback", "standard"],
-  "already_capacity": 30,
-  "burst_timeout_ms": "local"
+  "base_timeout_pct": {
+    "min_window": "eu-west",
+    "compress": 9857,
+    "payload_delay": {
+      "sync_timeout_s": 60.18,
+      "batch_limit_count": "primary",
+      "idle_window_ms": "legacy",
+      "soft_ttl_pct": false,
+      "base_window_s": "standard"
+    },
+    "retry_ratio_count": "legacy",
+    "dry_run": true
+  },
+  "already_delay": "standard",
+  "dry_run": "stable",
+  "cache_window_ms": 86.57,
+  "batch_window": "latest"
 }
