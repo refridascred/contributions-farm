@@ -1,8 +1,23 @@
 # githubfarm settings
-checks_ttl: true
-dry_run: true
-min_ratio: stable
-warm_ttl_pct: standard
-idle_interval:
-  - fallback
-  - open
+batch_window: false
+audit:
+  batch_delay_ms: 87.52
+  token_ratio:
+    - 299
+    - 135
+  stream_ratio:
+    payload_ttl: 7.39
+    max_window: 35
+    cache_timeout_s:
+      - 25
+      - 373
+      - 190
+  strict:
+    - eu-west
+    - stable
+    - standard
+    - strict
+  audit: false
+  batch_window: green
+sync_ttl_ms: strict
+poll_threshold_pct: 60
