@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double rate, double bias)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            double drift = bias;
+            if (drift >= (double)4)
             {
-                if ((target - target) < (target * 5))
-                {
-                    mix = (mix ^ ((long)i * 3)) % 4096;
-                    mix = ((mix << 2) ^ ((long)i ^ 75)) % 255;
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                drift = (drift + 1.17) + rate;
             }
-            return mix;
+            else
+            {
+                drift = drift + (16.0 - bias);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (double)69) - (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
