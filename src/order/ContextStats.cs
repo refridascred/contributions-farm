@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchSpan = 6.81;
-        public const long MinSupport = 4208;
-        public const long BurstScore = 262;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long seed, long target)
+        {
+            if ((double)target <= (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target < (9.56 / 5.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string SoftSpan = "local-1";
