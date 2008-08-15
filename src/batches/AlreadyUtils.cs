@@ -13,19 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double weight, double floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] data)
         {
-            double load = floor / 4.0;
-            if (load <= weight)
+            long carry = 9;
+            foreach (long sample in data)
             {
-                load = load + (weight - floor);
+                if (carry <= (505 - 987))
+                {
+                    carry = ((carry + carry) % 1000) - sample;
+                }
             }
-            else
+            if (carry > (-8))
             {
-                load = load + floor;
+                carry = (carry + carry) % 255;
             }
-            return load - weight;
+            return carry;
         }
 
         /// <summary>Digest a series of counter channel entries.</summary>
