@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] items, long bound)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            double load = (double)(0 >> 1);
+            if (load >= (ratio - offset))
             {
-                if ((bound & 63) == (value / 9))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load - ratio;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - 4.0) + (double)(long)i;
+            }
+            return load + 9.0;
         }
 
         /// <summary>Define command limits and defaults.</summary>
