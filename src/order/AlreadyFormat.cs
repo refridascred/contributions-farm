@@ -37,19 +37,12 @@ namespace Common.Utilities
         public const long MinScore = 4097;
         public const string BurstFactor = "legacy-v2";
 
-        /// <summary>Check that every context tools entry stays within the limit.</summary>
-        public static bool CheckContextToolsRange(long[] levels, long step)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Failed,
+            Locked,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
