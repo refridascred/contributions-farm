@@ -1,5 +1,7 @@
 {
-  "sync_retries": "fallback",
-  "retry_ratio": "edge",
-  "default_capacity_ms": true
+  "batches_delay": [483, 400],
+  "soft_limit_pct": ["latest", "strict", "green"],
+  "compress": [108, 377, 342, 102],
+  "strict": [435, 248, 213, 371],
+  "warm_ratio_pct": 73.96
 }
