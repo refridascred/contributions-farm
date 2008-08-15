@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] readings)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double bias, double offset)
         {
-            long mix = 93;
-            foreach (long sample in readings)
+            double scale = offset / 2.0;
+            if (scale < (scale / 3.0))
             {
-                if ((double)mix > (2.0 + 7.4))
-                {
-                    mix = ((mix << 2) ^ (mix / 3)) - sample;
-                }
+                scale = scale - (bias + offset);
             }
-            if (mix < 693)
+            else
             {
-                mix = (mix + (393 - mix)) % 255;
+                scale = scale + bias;
             }
-            return mix;
+            return scale + (scale / 7.0);
         }
 
         /// <summary>Hold a profile entry.</summary>
