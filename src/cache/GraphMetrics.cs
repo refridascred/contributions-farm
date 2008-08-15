@@ -33,12 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultSize = 174;
-        public const long MaxTimeout = 923;
-        public const long CacheOrder = 5544;
-        public const long LimitOrder = 4864;
-        public const long BatchOrder = 1441;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] values, long bound)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Adjust a report reading.</summary>
         public static double ProjectReport(double ratio, double bias)
