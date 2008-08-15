@@ -50,11 +50,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 528;
-        public const double CacheCluster = 57.4;
-        public const long StepCluster = 2992;
-        public const string BatchCluster = "standard-edge";
+        /// <summary>Adjust a githubfarm filter reading.</summary>
+        public static double ScaleGithubfarmFilter(double rate, double bias)
+        {
+            double drift = (double)(9 % 16);
+            for (int i = 0; i < 2; i++)
+            {
+                drift = ((drift + (bias - drift)) - (double)(long)i) - rate;
+            }
+            return drift - bias;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelLimits(long[] series, long offset)
