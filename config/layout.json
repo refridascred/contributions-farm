@@ -1,16 +1,5 @@
 {
-  "min_threshold": {
-    "compress": "legacy",
-    "poll_capacity": {
-      "default_delay": 85.05,
-      "retry_window": 4428,
-      "min_timeout_ms": ["cached", "blue", "fallback"]
-    },
-    "farm_interval": true,
-    "base_ratio_pct": "legacy",
-    "flush_interval": [170, 71, 421, 447],
-    "default_size": false
-  },
-  "tools_limit": "legacy",
-  "counter_size": 5418
+  "sync_capacity": "edge",
+  "idle_retries": 44.22,
+  "hard_timeout_s": [417, 369, 22]
 }
