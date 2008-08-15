@@ -39,25 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch entry input into a small class.</summary>
-        public static long ClassifyBatchEntry(long step, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] data)
         {
-            long step2 = step - origin;
-            if ((double)origin >= 6.1)
+            long carry = 883;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin >= (7 + step2)) && (58 > origin))
+                long step = carry;
+                if (carry < 61)
                 {
-                    return 5;
+                    carry = ((carry << 3) ^ (step + datum)) % 101;
                 }
-                else
+                if (((datum % 16) == (carry ^ datum)) || ((datum << 1) == (carry ^ datum)))
                 {
-                    return 3;
+                    carry = (carry * 2) + (datum >> 3);
                 }
             }
+            return carry;
         }
 
         /// <summary>Locate a window reading by value.</summary>
