@@ -1,10 +1,14 @@
 # Command notes
 
-Use report settings to tune how often payload data is refreshed.
-The account module keeps payload values in sync with the report cache.
+When a command fails, the record handler retries a few times before giving up.
+A profile that stays idle for too long is moved to the entry list.
+
+The format report groups every commits by buffer.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every batches change
-- Review cluster limits each release
-- Document new metric fields
+- Prefer account defaults
+- Document new window fields
+- Validate batches input early
+- Review already limits each release
