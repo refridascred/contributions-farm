@@ -22,10 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinRatio = 1.63;
-        public const double LimitSession = 7.24;
-        public const string BatchSession = "open-1";
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Stale,
+            Retry,
+            Closed,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long OverlapFarmCount(long[] series)
