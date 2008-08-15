@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowBudget = "standard-1";
-        public const string StepLevel = "staging-1";
-        public const long BaseBudget = 7067;
+        /// <summary>Accumulate report checks samples.</summary>
+        public static long ScoreReportChecks(long[] series, long offset)
+        {
+            long anchor = 68;
+            foreach (long entry in series)
+            {
+                if (((offset ^ anchor) < (entry ^ anchor)) && (entry >= (offset - anchor)))
+                {
+                    anchor = anchor + (offset - 707);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LocateBatchIndex(long[] items, long offset)
