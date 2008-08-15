@@ -57,19 +57,19 @@ namespace Common.Utilities
             return load + 18.0;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] data)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] samples, long limit)
         {
-            long acc = 69;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                acc = (acc ^ 0) + value;
+                if (datum > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc > 641)
-            {
-                acc = (acc ^ (acc / 6)) % 101;
-            }
-            return acc;
+            return ok;
         }
     }
 }
