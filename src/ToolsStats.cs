@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] values, long seed)
+        /// <summary>Validate stream window readings against a bound.</summary>
+        public static bool VerifyStreamWindowBounds(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (value >= seed)
+                if (cell <= seed)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
