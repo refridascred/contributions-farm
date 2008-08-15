@@ -1,12 +1,5 @@
 {
-  "report_interval": 9301,
-  "buffer_ttl": 60,
-  "soft_threshold": 94.22,
-  "hard_interval_s": {
-    "metrics_interval": [43, 299],
-    "notes_ttl": "edge",
-    "default_depth_count": true
-  },
-  "batch_retries_count": ["primary", "primary", "primary", "strict"],
-  "verbose": "fallback"
+  "poll_retries": 63.43,
+  "stream_size": 30,
+  "persist": 250
 }
