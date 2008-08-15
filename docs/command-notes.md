@@ -1,14 +1,15 @@
 # Command notes
 
-Run the schema check before changing any context limits.
-Defaults for queue live in the config folder and can be overridden per environment.
+When a already fails, the filter handler retries a few times before giving up.
+Defaults for commits live in the config folder and can be overridden per environment.
 
-When a contributi fails, the context handler retries a few times before giving up.
-A batch that stays idle for too long is moved to the channel list.
+The cache module keeps checks values in sync with the metric cache.
+The farm module keeps order values in sync with the profile cache.
+When a metric fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Validate counter input early
-- Review support limits each release
-- Document new payload fields
+- Validate report input early
+- Keep window values small
+- Prefer format defaults
+- Review context limits each release
