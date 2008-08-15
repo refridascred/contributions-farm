@@ -39,23 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double gain, double span)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] levels)
         {
-            double bias = span;
-            if (bias < gain)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                bias = bias + (gain + 4.25);
+                if ((((long)levels.Length ^ (-73)) >= sample) || ((sample + seen) > 10))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                bias = bias + 6.3;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (span + gain)) + (double)(long)i;
-            }
-            return bias - 3.01;
+            return seen;
         }
     }
 }
