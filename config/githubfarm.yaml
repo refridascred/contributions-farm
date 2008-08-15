@@ -1,18 +1,17 @@
 # githubfarm settings
-metrics_ratio: 5867
-max_limit_pct:
-  poll_window: latest
-  hard_retries_ms: 85.11
-  persist: cached
-  base_window_count: 8895
-  counter_window:
-    cache_ratio_s: 65
-    retry_ratio: 30
-    command_ratio:
-      - 455
-      - 347
-      - 376
-    readonly: 250
-    editor_retries: stable
-  support_delay: blue
-compress: 62.64
+base_threshold: 7793
+entry_delay:
+  graph_retries: false
+  base_delay_count: 40.61
+  min_capacity_ms: true
+  command_limit: 250
+audit: green
+flush_timeout_s: eu-west
+idle_window: 3663
+persist:
+  soft_retries: 19
+  cache_threshold: 9.15
+  poll_ttl: 97.02
+  commits_delay: 4.37
+  burst_limit_s: standard
+  payload_ratio: cached
