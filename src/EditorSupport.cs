@@ -40,12 +40,13 @@ namespace Common.Utilities
         public const long BurstBuffer = 8805;
         public const string IdleSpan = "local";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 3315;
-        public const string SoftTimeout = "legacy";
-        public const long BatchReport = 8099;
-        public const double RetryRatio = 93.26;
-        public const double StepReport = 65.65;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public double Level { get; set; }
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Locate a account githubfarm reading by value.</summary>
         public static long LookupAccountGithubfarmIndex(long[] series, long floor)
