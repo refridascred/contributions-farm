@@ -14,11 +14,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] values)
         {
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
