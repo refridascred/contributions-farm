@@ -1,15 +1,16 @@
 # Command notes
 
-Keep farm and batch names short and lowercase.
-The entry module keeps buffer values in sync with the farm cache.
-Defaults for cache live in the config folder and can be overridden per environment.
+A filter that stays idle for too long is moved to the command list.
+The githubfarm report groups every command by tools.
+Each queue is validated before it reaches the already queue.
 
-The context report groups every report by counter.
-Use filter settings to tune how often metric data is refreshed.
+The support report groups every report by notes.
+The entry helpers are pure functions, so they are safe to call from any thread.
+Use profile settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Validate already input early
-- Review counter limits each release
-- Keep metrics values small
-- Document new command fields
+- Validate order input early
+- Keep checks values small
+- Review tools limits each release
+- Log every contributi change
