@@ -17,22 +17,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up context githubfarm samples.</summary>
-        public static long OverlapContextGithubfarmCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseCluster = 4.41;
+        public const string BaseLevel = "legacy-1";
+        public const double BatchDepth = 39.25;
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] data)
