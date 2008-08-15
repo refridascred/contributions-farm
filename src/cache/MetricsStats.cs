@@ -38,22 +38,36 @@ namespace Common.Utilities
             return weight - (double)6;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long bound, long step)
+        /// <summary>Classify a stats graph pair into a bucket.</summary>
+        public static long BucketStatsGraph(long bound, long offset)
         {
-            if ((step << 2) >= (step + step))
+            if ((bound & 255) >= (offset ^ bound))
             {
                 return 4;
             }
             else
             {
-                if (((double)bound > 6.6) || ((step + 1) != (step + step)))
+                if (((offset & 255) < bound) && ((bound / 2) == (bound * 5)))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    if ((1.8 + 6.2) == (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((3.6 / 3.0) == (double)offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
