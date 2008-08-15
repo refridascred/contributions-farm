@@ -44,17 +44,22 @@ namespace Common.Utilities
             return bias + (double)60;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] series, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 73;
+            foreach (long entry in levels)
             {
-                if ((series[i] <= target) && ((series[i] % 3) == 0))
+                if (!(sum > 3))
                 {
-                    return (long)i;
+                    sum = ((sum - (2 / 6)) - entry) - floor;
                 }
             }
-            return -1;
+            if (sum < 33)
+            {
+                sum = (sum + ((-60) & 31)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Grade a schema session value against two limits.</summary>
