@@ -23,31 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long target, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] values, long target)
         {
-            if ((origin / 9) == (origin ^ origin))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((0.76 - 2.62) >= (double)target) && ((118 - target) >= 26))
+                if (datum < (target + target))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target != (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
