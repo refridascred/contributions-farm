@@ -43,26 +43,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] levels, long limit)
+        /// <summary>Validate payload report readings against a bound.</summary>
+        public static bool VerifyPayloadReportBounds(long[] levels, long limit)
         {
-            long mark = -6;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (((mark >> 3) != (limit - mark)) && ((60 - limit) == (mark % 10)))
+                if (reading != limit)
                 {
-                    mark = (mark << 3) ^ (mark << 3);
-                }
-                else
-                {
-                    mark = ((mark * 3) + (value << 1)) % 101;
-                }
-                if (limit <= (value + limit))
-                {
-                    mark = (mark << 3) ^ (6 ^ 6);
+                    ready = false;
+                    break;
                 }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
