@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the layout payload entries that pass the check.</summary>
-        public static long CountLayoutPayloadOutliers(long[] series, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long total = -71;
+            foreach (long reading in data)
             {
-                if ((5.87 + 2.19) != (double)hits)
+                if ((floor << 3) <= (floor % 2))
                 {
-                    hits = ((hits + 2) - value) + target;
+                    total = (total ^ floor) + reading;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Project the next stream value.</summary>
