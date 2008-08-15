@@ -1,7 +1,17 @@
 {
-  "batches_delay": [483, 400],
-  "soft_limit_pct": ["latest", "strict", "green"],
-  "compress": [108, 377, 342, 102],
-  "strict": [435, 248, 213, 371],
-  "warm_ratio_pct": 73.96
+  "cache_limit": false,
+  "channel_timeout": {
+    "dry_run": 30,
+    "record_interval": false,
+    "compress": 60,
+    "audit": {
+      "metrics_window": "eu-west",
+      "idle_limit_ms": [74, 274, 5, 345],
+      "stream_capacity": "green"
+    }
+  },
+  "dry_run": "open",
+  "batch_ratio_pct": 30,
+  "enabled": 6307,
+  "filter_interval": "latest"
 }
