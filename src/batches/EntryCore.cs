@@ -46,18 +46,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] samples)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            if ((double)origin != (1.64 - 3.4))
             {
-                if ((double)entry <= 20.0)
+                return 0;
+            }
+            else
+            {
+                if (!((origin >> 3) == (limit / 7)))
                 {
-                    tally = tally + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (((origin - limit) == (origin - origin)) || ((origin << 2) >= origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
