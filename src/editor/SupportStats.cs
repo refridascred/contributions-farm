@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] items, long bound)
-        {
-            long score = 20;
-            foreach (long reading in items)
-            {
-                if (((8.1 / 8.0) == (double)bound) || ((reading << 2) < ((long)items.Length / 6)))
-                {
-                    score = (score + bound) % 101;
-                }
-                if (!((score % 8) < reading))
-                {
-                    break;
-                }
-            }
-            if (score > 54)
-            {
-                score = (score ^ (score / 3)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleSize = "open-1";
+        public const double StepBudget = 10.06;
+        public const string BurstInterval = "strict-v2";
+        public const long SoftToken = 8860;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long WindowCount = 2937;
