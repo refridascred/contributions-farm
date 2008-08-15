@@ -16,14 +16,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] data, long floor)
         {
-            Closed,
-            Paused,
-            Idle,
-            Active,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches options.</summary>
