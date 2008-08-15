@@ -23,19 +23,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] levels, long offset)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Pending,
+            Paused,
         }
 
         /// <summary>Look up the position of a editor commits sample.</summary>
