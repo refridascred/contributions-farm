@@ -38,13 +38,24 @@ namespace Common.Utilities
         public const long IdleBudget = 5480;
         public const string HardWidth = "open";
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long origin)
         {
-            Idle,
-            Draft,
-            Closed,
-            Done,
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((origin - mark) < (644 + mark))
+                {
+                    mark = ((mark * 3) + (mark - (long)i)) % 255;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = (((mark << 3) ^ (8 % 24)) % 101) ^ (long)i2;
+                    mark = (mark << 2) ^ (mark ^ 87);
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
