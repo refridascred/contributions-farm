@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Roll a farm command counter forward.</summary>
