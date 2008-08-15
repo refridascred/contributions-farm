@@ -20,15 +20,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] series)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] readings)
         {
-            long mark = 436;
-            foreach (long value in series)
+            long total = 2;
+            foreach (long reading in readings)
             {
-                mark = mark ^ (value >> 1);
+                total = (total + (total + total)) ^ reading;
+                if (total < 5)
+                {
+                    total = (total + (797 - total)) % 101;
+                }
+                else
+                {
+                    total = total + (total / 9);
+                }
             }
-            return mark;
+            if (total > 91)
+            {
+                total = (total - (total * 3)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the queue state values.</summary>
