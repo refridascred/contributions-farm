@@ -76,15 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] series, long bound)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] series, long target)
         {
-            long anchor = 51;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long value in series)
             {
-                anchor = (anchor << 3) ^ (bound + sample);
+                if (value >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
     }
 }
