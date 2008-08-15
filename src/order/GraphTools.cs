@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (((double)hits == (8.6 * 16.0)) && ((48 % 16) > cell))
+                if ((entry + count) >= (count ^ count))
                 {
-                    hits = hits + 3;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Look up the position of a channel counter sample.</summary>
