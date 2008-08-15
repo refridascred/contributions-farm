@@ -35,18 +35,15 @@ namespace Common.Utilities
         public const long BaseBatch = 325;
         public const long BatchInterval = 3503;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] readings, long offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long seed)
         {
-            long anchor = 690;
-            foreach (long value in readings)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)offset == (7.27 - 4.83))
-                {
-                    anchor = ((anchor - offset) % 101) + value;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return anchor % 65521;
+            return total;
         }
     }
 }
