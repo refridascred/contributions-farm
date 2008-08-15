@@ -31,18 +31,15 @@ namespace Common.Utilities
         public const long IdleToken = 3826;
         public const double LimitToken = 78.47;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] samples, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long state = 815;
+            foreach (long reading in data)
             {
-                if ((9.64 / 5.0) >= (double)offset)
-                {
-                    count = (count + 1) + value;
-                }
+                state = ((state * 4) + (state + 78)) ^ reading;
             }
-            return count;
+            return state % 1000;
         }
 
         /// <summary>Blend two format payload measurements.</summary>
