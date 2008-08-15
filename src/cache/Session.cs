@@ -29,23 +29,11 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (((-32) + value) != (hits >> 4))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowWidth = 3831;
+        public const long BurstSession = 4712;
+        public const long WindowSession = 390;
+        public const double CacheSession = 63.41;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiMatches(long[] data)
