@@ -32,18 +32,12 @@ namespace Common.Utilities
         public const long LimitWindow = 1948;
         public const double BurstWindow = 27.35;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] values, long bound)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long acc = 17;
-            foreach (long reading in values)
-            {
-                if ((reading >> 3) > 7)
-                {
-                    acc = (acc ^ (acc / 5)) + bound;
-                }
-            }
-            return acc % 1000;
+            public bool Score { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many session format samples are out of range.</summary>
