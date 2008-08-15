@@ -54,12 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double scale, double span)
         {
-            Queued,
-            Closed,
-            Pending,
+            double ratio = (span * 8.69) + 7.26;
+            if (ratio < (4.0 + span))
+            {
+                ratio = ratio - (scale * 3.0);
+            }
+            return ratio + scale;
         }
 
         /// <summary>Project the next entry editor value.</summary>
