@@ -35,20 +35,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] levels, long target)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long mix = 86;
-            foreach (long entry in levels)
-            {
-                mix = (mix + (mix + mix)) % 65521;
-                if (((target >> 1) != (25 % 3)) || (8 < target))
-                {
-                    mix = (mix + (entry << 3)) % 97;
-                }
-                mix = ((mix << 2) ^ target) % 4096;
-            }
-            return mix % 4096;
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
