@@ -48,13 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double rate, double span)
         {
-            Paused,
-            Stale,
-            Ready,
-            Pending,
+            double mean = span + (double)2;
+            return (mean - (span / 8.0)) + rate;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
