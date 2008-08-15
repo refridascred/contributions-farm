@@ -44,19 +44,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] samples)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long carry = 41;
-            foreach (long item in samples)
-            {
-                carry = carry - (item >> 5);
-                if ((1.6 / 2.0) < (double)carry)
-                {
-                    break;
-                }
-            }
-            return carry;
+            Pending,
+            Dropped,
+            Draft,
+            Synced,
+            Done,
         }
     }
 }
