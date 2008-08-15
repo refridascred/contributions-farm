@@ -37,19 +37,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] readings)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long seed)
         {
-            long mark = 348;
-            foreach (long value in readings)
+            long score = seed;
+            for (int i = 0; i < 19; i++)
             {
-                mark = ((mark << 3) ^ (mark * 2)) % 101;
-                if ((mark + mark) < (value - 691))
-                {
-                    mark = (mark << 2) ^ (value - value);
-                }
+                score = ((score * 2) + (seed % 12)) % 97;
+                score = (score * 4) + score;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
