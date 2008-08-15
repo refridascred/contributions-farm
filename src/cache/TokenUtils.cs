@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long origin, long offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] data, long origin)
         {
-            if ((origin >= (origin % 3)) && ((origin ^ origin) > (origin + 9)))
+            long acc = 9;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset >> 2) <= (origin >> 3))
+                for (int i = 0; i < 10; i++)
                 {
-                    return 8;
+                    acc = (((acc + acc) % 65521) + (long)i) + value;
                 }
-                else
-                {
-                    return 2;
-                }
+                acc = (acc << 2) ^ (origin - acc);
             }
+            return acc % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
