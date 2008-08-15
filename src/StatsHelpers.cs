@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 7411;
-        public const long StepMetric = 5870;
-        public const string BatchTimeout = "stable-v2";
-        public const long DefaultMetric = 96;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double ratio, double bias)
+        {
+            double load = 5.6;
+            if (load < (4.9 * 7.5))
+            {
+                load = (load + (ratio * 5.8)) - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - ratio) - (double)(long)i;
+            }
+            return load - 0.1;
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long IterateAccount(long step)
