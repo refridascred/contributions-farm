@@ -76,10 +76,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 9281;
-        public const long DefaultCount = 8115;
-        public const long DefaultCommand = 6640;
-        public const long MaxCommand = 9998;
+        /// <summary>Look up the position of a already graph sample.</summary>
+        public static long LookupAlreadyGraphIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
