@@ -1,21 +1,7 @@
 # entry settings
-strict:
-  cache_ttl_pct: fallback
-  contributi_timeout: 32
-  poll_retries: 1436
-  readonly:
-    max_ratio_s: 91.65
-    retry_size_ms: true
-    cache_size: 32
-    dry_run: 84.18
-    burst_ratio: 17.03
-    retry_interval_ms: false
-base_capacity_pct: green
-commits_retries:
-  batch_depth: 60
-  burst_depth: legacy
-  stats_ttl: 98
-  min_size: 49.23
-  idle_delay_count: latest
-  route_threshold: eu-west
-buffer_capacity: 60
+base_timeout_pct:
+  - 453
+  - 271
+readonly: 70
+poll_delay: fallback
+burst_ratio_count: local
