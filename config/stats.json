@@ -1,25 +1,7 @@
 {
-  "default_interval": {
-    "flush_delay_pct": 7168,
-    "hard_ratio_count": {
-      "burst_interval_ms": [323, 238, 107, 122],
-      "min_ttl": "fallback",
-      "batch_window": "strict",
-      "hard_window_ms": true,
-      "strict": 250
-    },
-    "idle_size_pct": false,
-    "cache_threshold_s": "cached",
-    "commits_ratio": [245, 478],
-    "burst_window_count": "green"
-  },
-  "strict": 1024,
-  "idle_depth_s": "cached",
-  "max_interval_count": {
-    "graph_size": 500,
-    "strict": 1024,
-    "soft_threshold": 3908
-  },
-  "verbose": ["primary", "cached", "fallback"],
-  "batch_window": 55
+  "retry_threshold_ms": 96,
+  "min_delay_ms": "staging",
+  "flush_window_s": 30,
+  "hard_ttl_s": "primary",
+  "metric_ratio": 66
 }
