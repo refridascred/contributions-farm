@@ -1,7 +1,4 @@
 # entry settings
-min_ratio_s:
-  - primary
-  - primary
-batch_window: true
-audit: true
-flush_capacity: latest
+burst_size_count: 2128
+cache_delay_s: 100
+burst_timeout_pct: blue
