@@ -1,7 +1,22 @@
 # githubfarm settings
-min_ratio_pct: 60
-retry_timeout_count: 39
-entry_delay: latest
-enabled: 30
-cache_threshold_s: 86.21
-verbose: local
+persist: green
+poll_interval: 6.86
+burst_timeout_ms: true
+strict: strict
+support_limit:
+  retry_depth_pct:
+    - 55
+    - 180
+    - 271
+    - 40
+  farm_retries:
+    - 265
+    - 205
+    - 250
+  enabled: true
+  profile_capacity: false
+  notes_threshold: local
+compress:
+  - stable
+  - latest
+  - local
