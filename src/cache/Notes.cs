@@ -95,13 +95,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] values)
         {
-            Retry,
-            New,
-            Failed,
-            Idle,
+            long acc = 9;
+            foreach (long value in values)
+            {
+                if ((acc + acc) != (value - value))
+                {
+                    acc = (acc ^ (acc + value)) % 101;
+                }
+            }
+            return acc;
         }
     }
 }
