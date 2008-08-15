@@ -14,18 +14,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] levels)
+        /// <summary>Rank token support input into a small class.</summary>
+        public static long ClassifyTokenSupport(long step, long limit)
         {
-            long mark = -9;
-            foreach (long datum in levels)
+            long lane = step + limit;
+            if ((double)step <= (9.0 * 0.8))
             {
-                if (((double)mark == (0.4 + 2.3)) && ((datum % 64) >= 983))
+                return 7;
+            }
+            else
+            {
+                if ((step + 9) > lane)
                 {
-                    mark = (mark - (datum + 452)) % 1000;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step > (4.0 * 3.2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
