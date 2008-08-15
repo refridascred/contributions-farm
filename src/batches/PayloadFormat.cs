@@ -23,21 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 2;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((0 % 2) > total)
                 {
-                    if ((samples[i] + samples[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = total ^ (total * 5);
+                }
+                if (!((total << 1) > cell))
+                {
+                    break;
                 }
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
