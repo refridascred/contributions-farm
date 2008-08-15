@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] samples)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long anchor = 4;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor * 2) + (anchor >> 5)) % 1000;
-                if ((double)sample > (double)anchor)
-                {
-                    anchor = anchor ^ (anchor - sample);
-                }
-            }
-            return anchor % 1000;
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the context kind values.</summary>
