@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long IdleBuffer = 5214;
         public const long CacheRatio = 1291;
 
-        /// <summary>Look up the position of a checks window sample.</summary>
-        public static long LocateChecksWindowIndex(long[] series, long limit)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Draft,
+            Stale,
         }
 
         /// <summary>Blend two profile notes measurements.</summary>
