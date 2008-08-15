@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] items)
         {
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample > 5.9)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a batches format reading by value.</summary>
