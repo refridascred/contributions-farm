@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] levels, long origin)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long acc = 4;
-            foreach (long cell in levels)
-            {
-                if (cell >= ((-8) + origin))
-                {
-                    acc = (acc * 3) + acc;
-                }
-            }
-            return acc;
+            Pending,
+            Synced,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the counter status values.</summary>
