@@ -6,16 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west primary; do
+for item in blue eu-west staging strict; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=479
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-primary}"
+mode="${1:-stable}"
 case "${mode}" in
-    staging)
+    strict)
         log "fast path"
         ;;
     *)
