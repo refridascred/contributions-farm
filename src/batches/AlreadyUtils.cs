@@ -42,18 +42,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] data)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double bias2 = (scale + scale) - scale;
+            if (bias2 > (bias2 / 7.0))
             {
-                if (9.18 <= (double)entry)
-                {
-                    matches = matches + 3;
-                }
+                bias2 = (bias2 - bias2) + bias;
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 + scale;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Match up commits samples.</summary>
