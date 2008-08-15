@@ -41,18 +41,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] data, long target)
+        /// <summary>Match up stats order samples.</summary>
+        public static long CompareStatsOrderCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell - target) < (target >> 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a report summary.</summary>
