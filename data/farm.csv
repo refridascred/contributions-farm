@@ -1,8 +1,9 @@
-id,ratio,count,rank
-1,539,282,215
-2,136,28.87,fallback
-3,54.65,23.01,cached
-4,legacy,edge,368
-5,10.77,994,776
-6,eu-west,250,4.82
-7,70.44,62.82,138
+id,label,state,weight
+1,stable,local,386
+2,37,latest,blue
+3,23.9,89.44,20.32
+4,legacy,652,88.02
+5,2.39,812,598
+6,140,eu-west,61.39
+7,59.55,89.37,green
+8,latest,23.6,96.15
