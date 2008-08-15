@@ -1,8 +1,5 @@
 {
-  "order_size": 5955,
-  "burst_threshold_s": 6820,
-  "sync_interval": 25,
-  "profile_delay": true,
-  "cache_limit_pct": "open",
-  "default_ratio_count": 500
+  "flush_retries": 81,
+  "route_depth": 16.35,
+  "sync_threshold_ms": 250
 }
