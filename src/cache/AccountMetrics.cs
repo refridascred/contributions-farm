@@ -98,12 +98,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
