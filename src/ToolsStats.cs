@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Measure how many editor stats samples are out of range.</summary>
+        public static long CountEditorStatsMatches(long[] series, long origin)
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((32 >> 5) == (origin + (long)series.Length))
+                {
+                    seen = (seen + 2) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a support reading.</summary>
