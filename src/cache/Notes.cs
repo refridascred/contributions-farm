@@ -49,18 +49,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 7165;
+        public const long DefaultBudget = 6797;
+        public const double BatchSchema = 69.79;
+        public const double CacheDepth = 18.47;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
