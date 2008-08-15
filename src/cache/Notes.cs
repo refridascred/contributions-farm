@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long limit, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] items, long step)
         {
-            if (((limit & 3) != (step * 3)) || ((limit - 174) >= step))
+            long state = 123;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (29 > (99 + limit))
+                if (((reading % 60) >= step) || (reading > (reading - reading)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    state = (state - (step << 3)) % 4096;
                 }
             }
+            if (state > (-84))
+            {
+                state = (state - step) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
