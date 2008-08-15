@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Retry,
-            Synced,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchEditor = "cached-edge";
+        public const long RetryEditor = 5305;
+        public const double CacheEditor = 83.92;
+        public const long DefaultBudget = 9836;
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
