@@ -26,9 +26,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 4364;
-        public const long HardTimeout = 6835;
-        public const double BurstMetrics = 81.25;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum < (7.0 - 5.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
