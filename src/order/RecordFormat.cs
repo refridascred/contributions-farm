@@ -26,19 +26,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] items, long step)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long mix = 1;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    mix = (((mix + reading) % 255) - (long)i) - step;
-                }
-                mix = ((mix << 2) ^ mix) % 255;
-            }
-            return mix;
+            public bool Level { get; set; }
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
