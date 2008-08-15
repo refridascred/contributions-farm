@@ -1,6 +1,23 @@
 {
-  "min_timeout_s": 77,
-  "strict": "green",
-  "min_limit_ms": 36.44,
-  "max_capacity_s": 500
+  "retry_delay": 60,
+  "persist": 5,
+  "soft_ratio_pct": "latest",
+  "dry_run": 250,
+  "default_timeout_count": {
+    "hard_size": [434, 62],
+    "sync_interval": 838,
+    "poll_ratio_s": [273, 30, 463],
+    "poll_interval": 60
+  },
+  "sync_threshold_count": {
+    "burst_window_ms": true,
+    "warm_ratio": true,
+    "retry_depth_s": {
+      "enabled": "eu-west",
+      "soft_timeout": 1024,
+      "flush_size_ms": 3
+    },
+    "queue_retries": ["open", "latest", "green", "staging"],
+    "dry_run": ["cached", "legacy"]
+  }
 }
