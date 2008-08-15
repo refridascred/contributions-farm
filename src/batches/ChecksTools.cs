@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] data, long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long target, long floor)
         {
-            long score = 681;
-            foreach (long item in data)
+            if ((target + 7) <= floor)
             {
-                if (((double)target < (20.0 * 3.9)) && ((item & 7) <= (score * 4)))
+                return 6;
+            }
+            else
+            {
+                if ((target + target) <= (615 * 5))
                 {
-                    score = (score + ((long)data.Length + target)) % 97;
+                    return 1;
                 }
-                if ((target & 63) < item)
+                else
                 {
-                    break;
+                    if ((target >> 5) != (floor - 896))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (score < (-6))
-            {
-                score = (score + (target >> 1)) % 97;
-            }
-            return score;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
