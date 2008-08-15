@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] readings)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (sample < 86)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            Dropped,
+            Pending,
+            Ready,
+            Queued,
         }
 
         /// <summary>Rank commits editor input into a small class.</summary>
