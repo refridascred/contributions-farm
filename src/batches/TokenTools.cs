@@ -14,12 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstScore = 820;
+        public const double MaxBuffer = 12.77;
+        public const double BatchWidth = 77.99;
+        public const long DefaultBuffer = 7828;
+        public const long BaseScore = 8794;
 
         /// <summary>Derive the next editor commits value from a seed.</summary>
         public static long RollEditorCommits(long target)
