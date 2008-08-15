@@ -46,21 +46,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 8;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sample + step) >= total)
                 {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total ^ (sample - sample)) % 97;
                 }
             }
-            return count;
+            if (total > 40)
+            {
+                total = (total + step) % 97;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
