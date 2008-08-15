@@ -39,24 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] data, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((origin - mark) < (644 + mark))
+                if ((data[i] == limit) && ((data[i] % 2) == 0))
                 {
-                    mark = ((mark * 3) + (mark - (long)i)) % 255;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = (((mark << 3) ^ (8 % 24)) % 101) ^ (long)i2;
-                    mark = (mark << 2) ^ (mark ^ 87);
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
