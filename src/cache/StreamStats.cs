@@ -30,19 +30,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double gain, double span)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] series, long origin)
         {
-            double gain2 = (double)12 * 0.7;
-            if (gain2 <= span)
+            long anchor = 51;
+            foreach (long entry in series)
             {
-                gain2 = (gain2 - (double)7) - gain;
+                anchor = ((anchor << 2) ^ (origin + origin)) % 65521;
+                anchor = ((anchor << 3) ^ (anchor / 7)) % 255;
+                if ((origin << 2) == (entry >> 5))
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 - (double)(-60);
-            }
-            return gain2 - (double)22;
+            return anchor;
         }
     }
 }
