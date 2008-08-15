@@ -27,14 +27,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Retry,
-            Stale,
-            Idle,
-            Paused,
-            Draft,
+            public string Stamp { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
