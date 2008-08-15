@@ -1,6 +1,6 @@
 {
-  "stats_ratio": 35,
-  "max_interval_count": 6305,
-  "poll_capacity": "fallback",
-  "soft_ratio_count": "strict"
+  "soft_capacity": 84.61,
+  "filter_timeout": "edge",
+  "metric_delay": "green",
+  "retry_delay": "latest"
 }
