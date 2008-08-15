@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowRatio = 2779;
-        public const double RetryFactor = 21.33;
-        public const string SoftCommits = "fallback-1";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseDepth = 9805;
+        public const long StepStats = 8295;
+        public const long LimitStats = 4143;
+        public const long SoftCount = 5620;
 
         /// <summary>Roll a account cache counter forward.</summary>
         public static long RollAccountCache(long offset)
