@@ -1,15 +1,15 @@
 # entry settings
-default_limit_s:
-  - 210
-  - 97
-  - 422
-sync_interval_pct: staging
-batch_interval: 64.36
-payload_capacity:
-  - 162
-  - 450
-  - 415
-base_retries_count:
-  - staging
-  - open
-persist: 250
+soft_threshold: 21
+max_delay_count:
+  idle_capacity:
+    graph_window: latest
+    enabled: false
+    readonly: 500
+  max_ratio_ms: blue
+  burst_window_count: 44
+dry_run: open
+cache_capacity:
+  - 432
+  - 455
+enabled: eu-west
+retry_delay: 4.91
