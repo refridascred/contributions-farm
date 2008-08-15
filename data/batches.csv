@@ -1,7 +1,7 @@
-id,ratio,owner
-1,38.86,107
-2,888,33.9
-3,local,staging
-4,23.16,516
-5,42.21,637
-6,86.56,stable
+id,owner
+1,stable
+2,552
+3,legacy
+4,stable
+5,standard
+6,585
