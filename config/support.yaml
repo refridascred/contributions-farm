@@ -1,13 +1,6 @@
 # support settings
-idle_window_count: 3603
-min_retries_ms:
-  hard_retries_count: 7757
-  contributi_interval: 30
-  persist: latest
-  flush_capacity_ms:
-    - 379
-    - 209
-    - 144
-    - 388
-batch_capacity: fallback
-burst_interval_ms: 8206
+metric_capacity:
+  - standard
+  - blue
+burst_ratio_s: strict
+payload_capacity: false
