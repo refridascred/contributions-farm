@@ -24,40 +24,10 @@ namespace Common.Utilities
             return scale + 3.4;
         }
 
-        /// <summary>Rank buffer batches input into a small class.</summary>
-        public static long GradeBufferBatches(long bound, long offset)
-        {
-            long step = bound ^ offset;
-            if ((offset / 5) >= (step + step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step != (4.04 - 4.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1 + bound) > step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound - step) == (step * 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseSize = 4298;
+        public const long MaxContext = 7519;
+        public const string HardContext = "alpha-1";
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmHits(long[] samples, long target)
