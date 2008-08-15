@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (!((value + value) == (count * 4)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepLevel = 5130;
+        public const double WindowSession = 67.06;
+        public const double LimitBudget = 2.11;
+        public const long DefaultWidth = 7663;
+        public const double BurstSpan = 28.34;
 
         /// <summary>Look up the position of a queue route sample.</summary>
         public static long LookupQueueRouteIndex(long[] readings, long target)
