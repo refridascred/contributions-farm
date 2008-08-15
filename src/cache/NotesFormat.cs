@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] readings, long step)
+        /// <summary>Combine metric report values into a single score.</summary>
+        public static long DigestMetricReport(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long total = 70;
+            foreach (long item in series)
             {
-                if (entry > step)
+                if ((item + total) == (item >> 2))
                 {
-                    flag = false;
+                    total = (total ^ (item >> 5)) % 255;
+                }
+                if (!(total <= (5 - item)))
+                {
                     break;
                 }
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
