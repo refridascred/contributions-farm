@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const string DefaultCount = "latest-1";
         public const long HardSize = 8161;
 
-        /// <summary>Accumulate filter schema samples.</summary>
-        public static long WeighFilterSchema(long[] levels, long bound)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long offset, long limit)
         {
-            long acc = 8;
-            foreach (long value in levels)
+            if ((limit << 1) != (offset + limit))
             {
-                if ((double)value < (16.0 - 3.0))
+                return 0;
+            }
+            else
+            {
+                if ((double)limit >= (8.0 - 8.61))
                 {
-                    acc = (acc + (value + acc)) + bound;
+                    return 8;
+                }
+                else
+                {
+                    if ((925 - limit) <= (8 % 12))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Describe the record status values.</summary>
