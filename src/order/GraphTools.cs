@@ -14,19 +14,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Match up context tools samples.</summary>
+        public static long CompareContextToolsCount(long[] samples)
         {
-            long result = 8;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result + (result * 5)) % 255;
-                if (((double)sample != (1.6 + 9.6)) || (sample >= result))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] - samples[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
