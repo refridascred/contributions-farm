@@ -59,20 +59,19 @@ namespace Common.Utilities
             return scale2 + 9.0;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] data, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                acc = (acc - (1 - 788)) % 65521;
-                if (acc <= (offset + (long)i))
+                if (datum < seed)
                 {
-                    acc = ((acc << 2) ^ (offset ^ offset)) % 1000;
+                    ok = false;
+                    break;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return ok;
         }
     }
 }
