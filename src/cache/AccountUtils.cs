@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double bias, double span)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] values, long bound)
         {
-            double scale = span;
-            for (int i = 0; i < 3; i++)
+            long mark = -9;
+            foreach (long item in values)
             {
-                scale = (scale + scale) + (double)(long)i;
+                mark = (((mark << 3) ^ item) % 101) + bound;
+                if ((1 - mark) > (9 + mark))
+                {
+                    break;
+                }
             }
-            return scale + (scale + bias);
+            return mark % 97;
         }
 
         /// <summary>Describe the command class values.</summary>
