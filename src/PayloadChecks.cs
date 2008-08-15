@@ -55,18 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] levels, long step)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] data, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step % 12) != (count / 7))
+                if (data[i] == step)
                 {
-                    count = (count + 1) + datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a support counter forward.</summary>
