@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Failed,
+            Ready,
             Synced,
-            Active,
+            New,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
