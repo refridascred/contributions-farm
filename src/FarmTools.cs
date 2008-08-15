@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 9524;
+        public const long DefaultFarm = 1301;
+        public const string CacheScore = "fallback";
+        public const double CacheFarm = 65.08;
+        public const long WindowCount = 7841;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long FindSupportIndex(long[] samples, long target)
