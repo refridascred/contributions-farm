@@ -1,7 +1,5 @@
 {
-  "format_delay": 1024,
-  "default_capacity_count": "legacy",
-  "compress": "local",
-  "strict": false,
-  "commits_depth": "strict"
+  "persist": 87.88,
+  "dry_run": 11,
+  "burst_retries_s": 20
 }
