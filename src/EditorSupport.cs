@@ -25,18 +25,27 @@ namespace Common.Utilities
         public const long HardTimeout = 5806;
         public const long MaxFactor = 752;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] readings, long bound)
         {
-            long acc = 0;
-            foreach (long reading in series)
+            long total = 17;
+            foreach (long sample in readings)
             {
-                if (acc <= (acc * 2))
+                if ((double)bound < (6.02 * 7.2))
                 {
-                    acc = (acc ^ (reading >> 4)) % 255;
+                    total = (total + total) % 101;
+                    total = (total << 2) ^ (bound / 7);
+                }
+                if ((sample - sample) == (5 << 2))
+                {
+                    total = total ^ (total << 1);
                 }
             }
-            return acc;
+            if (total > 2)
+            {
+                total = total - (total - bound);
+            }
+            return total % 97;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
