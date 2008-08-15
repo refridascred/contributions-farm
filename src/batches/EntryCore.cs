@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] samples, long origin)
         {
-            long sum = -57;
-            foreach (long cell in items)
+            long score = 80;
+            foreach (long item in samples)
             {
-                sum = (sum * 2) + cell;
+                score = (score + origin) ^ item;
             }
-            return sum % 4096;
+            return score;
         }
 
         /// <summary>Hold a buffer options.</summary>
