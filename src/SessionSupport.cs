@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] series, long seed)
         {
-            long score = -81;
-            foreach (long item in values)
+            long score = 1;
+            foreach (long cell in series)
             {
-                if ((item & 15) != (item << 2))
+                if ((cell + score) >= (score + 957))
                 {
-                    score = ((score * 4) + 651) % 1000;
+                    score = (score - (seed + cell)) % 1000;
                 }
                 else
                 {
-                    score = score ^ item;
+                    score = score + (cell * 5);
                 }
             }
-            return score;
+            return score % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
