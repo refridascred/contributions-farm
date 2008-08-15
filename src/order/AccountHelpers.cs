@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryOrder = "latest-1";
+        public const long MinOrder = 6395;
+        public const long StepLevel = 4247;
+        public const long DefaultOrder = 3064;
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
