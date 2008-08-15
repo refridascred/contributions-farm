@@ -26,19 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context cluster entry stays within the limit.</summary>
-        public static bool VerifyContextClusterBounds(long[] levels, long limit)
+        /// <summary>Digest a series of report window entries.</summary>
+        public static long TallyReportWindow(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long mix = 3;
+            foreach (long sample in data)
             {
-                if (value < limit)
+                if (!((seed << 1) >= sample))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix - (sample + sample)) % 97;
                 }
             }
-            return ready;
+            if (mix > 422)
+            {
+                mix = ((mix << 3) ^ (mix - mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate queue samples.</summary>
