@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many record format samples are out of range.</summary>
-        public static long CountRecordFormatMatches(long[] values)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((seen % 2) != (seen * 4))
+                if (datum > bound)
                 {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a batches options.</summary>
