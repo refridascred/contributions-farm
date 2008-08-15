@@ -13,12 +13,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
