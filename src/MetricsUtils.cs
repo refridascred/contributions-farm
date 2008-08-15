@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double bias, double span)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] levels)
         {
-            double rate = (double)(31 ^ 31);
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                rate = (((rate + (double)86) - (double)(long)i) - bias) + span;
+                if ((sample < (tally ^ tally)) || ((sample - tally) < 93))
+                {
+                    tally = tally + 2;
+                }
             }
-            return rate + 3.57;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
