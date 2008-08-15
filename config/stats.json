@@ -1,5 +1,6 @@
 {
-  "batch_ttl": "legacy",
-  "idle_threshold": "open",
-  "commits_retries": 55.72
+  "tools_window": ["blue", "open", "edge", "eu-west"],
+  "max_depth_count": 35,
+  "cluster_delay": 60,
+  "retry_threshold_ms": 64
 }
