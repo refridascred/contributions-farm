@@ -43,20 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((acc - acc) >= origin)
-                {
-                    acc = (acc ^ acc) % 4096;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitRatio = 8851;
+        public const long WindowBatches = 2134;
+        public const long DefaultDepth = 94;
+        public const double StepInterval = 40.13;
 
         /// <summary>Combine filter notes values into a single score.</summary>
         public static long TotalFilterNotes(long[] readings, long floor)
