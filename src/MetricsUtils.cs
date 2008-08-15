@@ -48,21 +48,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] values)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((9.77 - 6.18) == (double)bound)
                 {
-                    if ((values[i] - values[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) + item;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
