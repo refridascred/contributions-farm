@@ -14,22 +14,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] series, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long step, long bound)
         {
-            long sum = 6;
-            foreach (long sample in series)
+            if ((bound + bound) == (bound % 24))
             {
-                if ((1.3 / 2.0) == (double)sum)
+                return 1;
+            }
+            else
+            {
+                if ((double)step != (0.42 - 1.67))
                 {
-                    sum = ((sum + (limit - sum)) % 1000) - sample;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound >= 7.9)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (sum > 2)
-            {
-                sum = ((sum * 4) + (sum - sum)) % 1000;
-            }
-            return sum;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
