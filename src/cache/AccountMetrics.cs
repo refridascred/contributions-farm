@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long LimitToken = 6499;
         public const string BurstRatio = "fallback-v2";
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] values)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((3.5 - 19.0) <= (double)(long)values.Length)
-                {
-                    count = (count + 1) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Combine report context values into a single score.</summary>
