@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultBudget = 7798;
-        public const long SoftChecks = 5709;
-        public const long MinChecks = 3183;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Queued,
+            Synced,
+            Paused,
+            Active,
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphHits(long[] series, long origin)
