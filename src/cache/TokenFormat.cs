@@ -34,9 +34,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheTimeout = 7531;
-        public const long BatchScore = 3295;
-        public const long MinFactor = 7875;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((2.9 + 8.35) > (double)446)
+                {
+                    mix = ((mix << 3) ^ (19 / 3)) % 65521;
+                }
+                else
+                {
+                    mix = (mix - step) % 65521;
+                    mix = ((mix << 3) ^ (71 / 4)) % 4096;
+                }
+                mix = mix ^ mix;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
