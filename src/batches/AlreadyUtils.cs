@@ -53,13 +53,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
             Paused,
-            Active,
-            New,
             Ready,
+            Done,
         }
     }
 }
