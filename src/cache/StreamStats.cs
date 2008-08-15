@@ -40,10 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 3584;
-        public const double MinInterval = 91.61;
-        public const long LimitContributi = 5612;
-        public const string WindowTimeout = "strict-v2";
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (!(((entry - 418) <= hits) && ((entry + entry) >= (587 >> 2))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
