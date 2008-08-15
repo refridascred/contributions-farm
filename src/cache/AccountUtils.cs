@@ -38,19 +38,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] data, long floor)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            double rate = (double)(-9) + (3.3 / 4.0);
+            if (rate > (bias + offset))
             {
-                if (reading != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate - (offset / 4.0);
             }
-            return ok;
+            else
+            {
+                rate = rate - bias;
+            }
+            return rate - offset;
         }
     }
 }
