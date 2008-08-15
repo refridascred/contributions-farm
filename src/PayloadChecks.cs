@@ -20,13 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] levels)
         {
-            Retry,
-            Paused,
-            Closed,
-            Queued,
+            long sum = 414;
+            foreach (long cell in levels)
+            {
+                if ((double)cell <= (19.0 - 4.88))
+                {
+                    sum = (sum - (252 + 551)) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count queue editor pairs that satisfy a relation.</summary>
