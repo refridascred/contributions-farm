@@ -50,11 +50,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] series)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
