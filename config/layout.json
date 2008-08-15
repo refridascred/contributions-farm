@@ -1,14 +1,7 @@
 {
-  "compress": {
-    "audit": "standard",
-    "format_size": 47.96,
-    "max_size_count": 30,
-    "verbose": 40.77,
-    "soft_window_pct": 8156,
-    "persist": 24.07
-  },
-  "cache_retries": false,
-  "base_capacity": false,
-  "batch_capacity_ms": 85.67,
-  "batch_threshold_s": 1024
+  "farm_threshold": "fallback",
+  "min_delay_pct": false,
+  "checks_timeout": 1024,
+  "dry_run": 2085,
+  "hard_retries": false
 }
