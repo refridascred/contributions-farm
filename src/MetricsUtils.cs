@@ -39,22 +39,11 @@ namespace Common.Utilities
             return rate - (offset - 2.98);
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long acc = 90;
-            foreach (long item in samples)
-            {
-                if (item <= (acc >> 4))
-                {
-                    acc = (acc ^ (302 & 7)) % 97;
-                }
-            }
-            if (acc < (-16))
-            {
-                acc = ((acc * 2) + (acc + acc)) % 1000;
-            }
-            return acc;
+            public double Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the notes status values.</summary>
