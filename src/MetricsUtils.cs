@@ -25,12 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 88.69;
-        public const string WindowSpan = "legacy-edge";
-        public const long IdleSchema = 3127;
-        public const long WindowSchema = 1302;
-        public const long BurstSpan = 478;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double weight, double offset)
+        {
+            double rate = 6.9;
+            if (rate > (weight - offset))
+            {
+                rate = rate - (rate * 0.03);
+            }
+            return rate - (offset - 2.98);
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
