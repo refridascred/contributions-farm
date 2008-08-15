@@ -51,11 +51,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 2108;
-        public const long IdleContext = 3596;
-        public const double MaxWidth = 0.47;
-        public const long BaseSpan = 5314;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Paused,
+            Active,
+            Synced,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
