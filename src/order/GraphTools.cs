@@ -60,18 +60,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] values, long seed)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long limit, long target)
         {
-            long matches = 0;
-            foreach (long item in values)
+            if ((target ^ limit) <= (limit + target))
             {
-                if (!((seed - seed) == (seed - matches)) || !(0.44 < (double)matches))
+                return 7;
+            }
+            else
+            {
+                if ((limit * 2) >= target)
                 {
-                    matches = (matches + 1) ^ item;
+                    return 5;
+                }
+                else
+                {
+                    if ((target * 4) >= (target - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit > (double)target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
