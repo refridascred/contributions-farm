@@ -1,10 +1,7 @@
 # githubfarm settings
-audit: latest
-burst_size: stable
-session_capacity: 100
-tools_timeout: false
-idle_threshold_ms: 40
-max_ttl_pct:
-  - green
-  - fallback
-  - edge
+graph_retries: 500
+verbose: 5822
+poll_retries_s: edge
+default_size_ms: 100
+compress: 40.28
+default_window_count: 17
