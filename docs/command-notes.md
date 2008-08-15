@@ -1,11 +1,15 @@
 # Command notes
 
-The batches module keeps githubfarm values in sync with the filter cache.
-A filter that stays idle for too long is moved to the layout list.
+The session report groups every editor by batch.
+Run the support check before changing any githubfarm limits.
+Keep contributi and window names short and lowercase.
+
+The already report groups every farm by batches.
+When a support fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate editor input early
-- Keep layout values small
-- Review format limits each release
-- Document new checks fields
+- Log every window change
+- Review record limits each release
+- Document new farm fields
+- Validate notes input early
