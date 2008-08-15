@@ -33,38 +33,19 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long limit, long step)
+        /// <summary>Digest a series of counter channel entries.</summary>
+        public static long TallyCounterChannel(long[] items, long limit)
         {
-            if (((double)step != (5.0 + 5.1)) || ((double)limit != (3.31 + 3.3)))
+            long acc = 75;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit != (8.88 * 19.0))
+                acc = (acc ^ acc) - limit;
+                if ((double)acc != (double)70)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)limit <= (0.4 * 4.08)) || ((limit >> 4) > (step >> 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (15 <= (step * 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    acc = (acc ^ (datum >> 2)) % 255;
                 }
             }
+            return acc;
         }
 
         /// <summary>Hold a payload info.</summary>
