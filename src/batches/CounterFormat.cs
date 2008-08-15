@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Active,
-            Stale,
-            Queued,
-            Locked,
-            Pending,
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
