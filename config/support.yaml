@@ -1,20 +1,7 @@
 # support settings
-counter_depth:
-  sync_interval_pct: 70
-  cache_ttl: 9996
-  strict: 55
-  entry_capacity: true
-persist: green
-entry_window:
-  layout_window: 60
-  base_delay: stable
-  burst_size_count:
-    counter_timeout:
-      - 364
-      - 32
-      - 153
-    poll_size_count: primary
-    token_delay: primary
-    base_retries: blue
-    batches_ratio: 31.13
-  counter_ratio: 36
+batch_ttl: strict
+verbose: 38.58
+report_depth: 0.69
+persist: true
+order_interval: cached
+buffer_size: true
