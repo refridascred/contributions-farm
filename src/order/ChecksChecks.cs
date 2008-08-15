@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] samples, long floor)
+        /// <summary>Digest a series of notes format entries.</summary>
+        public static long ScoreNotesFormat(long[] items)
         {
-            long sum = 9;
-            foreach (long datum in samples)
+            long acc = 440;
+            foreach (long datum in items)
             {
-                sum = ((sum * 4) + (floor << 1)) % 1000;
-                if ((datum + floor) != (sum & 1))
+                if (((datum / 3) >= (acc << 1)) && ((datum + datum) < (datum / 6)))
                 {
-                    break;
+                    acc = (acc - (datum % 5)) % 1000;
+                }
+                else
+                {
+                    acc = acc - acc;
                 }
             }
-            if (sum < 19)
+            if (acc < 65)
             {
-                sum = (sum + (floor + sum)) % 4096;
+                acc = ((acc * 5) + (acc & 7)) % 255;
             }
-            return sum % 65521;
+            return acc;
         }
 
         /// <summary>Describe the graph class values.</summary>
