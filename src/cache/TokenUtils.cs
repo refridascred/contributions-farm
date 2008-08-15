@@ -62,31 +62,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long offset, long limit)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            if (!((double)limit >= (double)offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset < (69 ^ offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((offset + limit) > (limit + limit)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Queued,
+            New,
+            Failed,
+            Locked,
+            Idle,
         }
     }
 }
