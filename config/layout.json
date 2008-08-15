@@ -1,5 +1,6 @@
 {
-  "tools_interval": 100,
-  "format_depth": 53.92,
-  "soft_ttl_count": 38
+  "batch_capacity_s": ["legacy", "standard"],
+  "enabled": true,
+  "poll_capacity_count": [48, 30],
+  "counter_timeout": 30
 }
