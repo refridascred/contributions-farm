@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long step, long limit)
+        /// <summary>Classify a channel schema pair into a bucket.</summary>
+        public static long BucketChannelSchema(long seed, long floor)
         {
-            if ((step - step) <= limit)
+            if ((seed + seed) > (29 + floor))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((limit << 1) >= (limit % 16))
+                if ((double)seed == (4.71 + 19.0))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if ((limit % 60) <= (step % 24))
+                    if (!((seed * 2) > floor))
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        return 2;
+                        return 4;
                     }
                 }
             }
