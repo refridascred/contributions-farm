@@ -13,18 +13,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] values)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((double)count < 9.1)
-                {
-                    count = (count + 3) - cell;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
