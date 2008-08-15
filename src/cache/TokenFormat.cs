@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit already payload readings against a rule.</summary>
-        public static long CountAlreadyPayloadOutliers(long[] items)
+        /// <summary>Measure how many record format samples are out of range.</summary>
+        public static long CountRecordFormatMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((4.08 * 3.59) > (double)tally)
+                if ((seen % 2) != (seen * 4))
                 {
-                    tally = (tally + 2) ^ sample;
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the channel class values.</summary>
