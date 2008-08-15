@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] levels, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                bool valid = 27 < (total - total);
-                if (valid)
+                if (sample >= step)
                 {
-                    total = ((total << 3) ^ (2 + 28)) % 97;
+                    found = false;
+                    break;
                 }
-                total = (total * 5) + floor;
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
