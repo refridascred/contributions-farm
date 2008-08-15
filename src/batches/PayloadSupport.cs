@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double scale, double floor)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double load = floor;
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load - 9.93) + (double)(long)i) + scale;
-            }
-            return load + floor;
+            New,
+            Pending,
+            Stale,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
