@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheRecord = "latest-1";
-        public const long IdleRecord = 4706;
-        public const double HardRecord = 61.91;
-        public const string DefaultRatio = "latest-1";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 2662;
+        public const long MaxRatio = 3650;
+        public const double IdleWidth = 71.39;
+        public const double SoftCache = 94.64;
+        public const string StepScore = "latest-1";
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long IterateCommits(long limit)
