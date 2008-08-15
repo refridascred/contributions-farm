@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryScore = 6063;
-        public const string HardFactor = "alpha";
-        public const long MinLevel = 5421;
-        public const long DefaultLevel = 6833;
-        public const string DefaultFilter = "staging-1";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinSize = 3177;
+        public const long IdleEditor = 4588;
+        public const long MaxEditor = 5347;
+        public const string LimitFactor = "staging-1";
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatBounds(long[] levels, long step)
