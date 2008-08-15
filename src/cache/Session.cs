@@ -16,38 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long floor, long offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double ratio, double span)
         {
-            if (offset >= (floor + offset))
+            double gain = ratio;
+            if (gain > ratio)
             {
-                return 4;
+                gain = (gain - (gain + gain)) + span;
             }
-            else
-            {
-                if (!(((-182) & 1) >= (offset << 1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset < (floor % 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((547 + offset) != (offset << 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return gain - (double)501;
         }
 
         /// <summary>Define command limits and defaults.</summary>
