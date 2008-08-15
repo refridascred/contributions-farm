@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public double Rank { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            Stale,
+            Draft,
+            Pending,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
