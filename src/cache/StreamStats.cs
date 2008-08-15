@@ -14,10 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstBudget = "local-v2";
-        public const long DefaultFilter = 3386;
-        public const string HardCount = "staging-edge";
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Stale,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferHits(long[] values)
