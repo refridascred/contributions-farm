@@ -44,22 +44,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of report window entries.</summary>
-        public static long TallyReportWindow(long[] data, long seed)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] samples, long target)
         {
-            long mix = 3;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((seed << 1) >= sample))
+                if (samples[i] >= target)
                 {
-                    mix = (mix - (sample + sample)) % 97;
+                    return (long)i;
                 }
             }
-            if (mix > 422)
-            {
-                mix = ((mix << 3) ^ (mix - mix)) % 97;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Check that every batch context entry stays within the limit.</summary>
