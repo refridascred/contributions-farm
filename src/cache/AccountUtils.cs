@@ -28,19 +28,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] values, long bound)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long mark = -9;
-            foreach (long item in values)
-            {
-                mark = (((mark << 3) ^ item) % 101) + bound;
-                if ((1 - mark) > (9 + mark))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
+            Draft,
+            Dropped,
+            Active,
+            Queued,
+            Done,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
