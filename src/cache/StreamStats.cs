@@ -19,12 +19,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
+            New,
             Stale,
-            Draft,
-            Pending,
+            Idle,
+            Active,
+            Ready,
         }
 
         /// <summary>Fold a list of already readings.</summary>
