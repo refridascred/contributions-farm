@@ -35,22 +35,18 @@ namespace Common.Utilities
         public const long WindowSession = 390;
         public const double CacheSession = 63.41;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] data)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (!((6.17 - 5.0) == (double)reading))
+                if ((count + seed) <= 27)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 2) ^ value;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
