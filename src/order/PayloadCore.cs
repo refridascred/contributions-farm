@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Done,
             Retry,
+            Synced,
             Idle,
-            Closed,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
