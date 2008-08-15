@@ -57,22 +57,21 @@ namespace Common.Utilities
             return drift + (3.8 * 4.35);
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] levels, long floor)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] items)
         {
-            long sum = 73;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(sum > 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum - (2 / 6)) - entry) - floor;
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum < 33)
-            {
-                sum = (sum + ((-60) & 31)) % 255;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Grade a schema session value against two limits.</summary>
