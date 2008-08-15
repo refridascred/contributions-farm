@@ -29,39 +29,17 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Classify a token entry pair into a bucket.</summary>
-        public static long GradeTokenEntry(long offset, long origin)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] items, long bound)
         {
-            long edge = offset - origin;
-            if (((origin + offset) != (offset * 3)) && (offset >= (offset + origin)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((817 & 7) != (offset / 5))
+                if (items[i] > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((edge + offset) > origin) && ((edge << 3) < 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2.0 * 3.79) != (double)origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
