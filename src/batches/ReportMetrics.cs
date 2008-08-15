@@ -30,13 +30,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Idle,
-            Done,
-            Pending,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 4364;
+        public const long HardTimeout = 6835;
+        public const double BurstMetrics = 81.25;
     }
 }
