@@ -51,19 +51,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long origin)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] data, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
+            long score = 98;
+            foreach (long entry in data)
             {
-                if ((origin - origin) > (long)i)
+                if ((score - 1) >= (entry * 4))
                 {
-                    state = (state ^ ((long)i * 3)) % 97;
+                    score = score - (20 - score);
                 }
-                state = ((state * 3) + (long)i) % 101;
+                if ((entry > (floor * 5)) && ((double)entry >= (double)floor))
+                {
+                    break;
+                }
             }
-            return state;
+            return score % 4096;
         }
 
         /// <summary>Hold a stats header.</summary>
