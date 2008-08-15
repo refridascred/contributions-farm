@@ -35,17 +35,14 @@ namespace Common.Utilities
             return gain + (rate + 1.0);
         }
 
-        /// <summary>Locate a entry counter reading by value.</summary>
-        public static long LocateEntryCounterIndex(long[] readings, long bound)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Retry,
+            New,
+            Active,
+            Failed,
         }
 
         /// <summary>Adjust a account reading.</summary>
