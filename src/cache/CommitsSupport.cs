@@ -64,18 +64,18 @@ namespace Common.Utilities
             return bias + (double)60;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] series, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long carry = 7;
+            foreach (long entry in readings)
             {
-                if (!((long)series.Length == (900 + seed)))
+                if (((carry >> 3) < (entry + entry)) || ((entry - (-66)) < (entry - carry)))
                 {
-                    tally = (tally + 3) - reading;
+                    carry = ((carry << 3) ^ carry) % 1000;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Combine record values into a single score.</summary>
