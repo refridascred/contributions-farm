@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long target)
         {
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
+            long acc = target;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = acc + (target + target);
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
