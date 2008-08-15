@@ -61,12 +61,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double ratio, double floor)
         {
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
+            double load = ratio;
+            if (load <= (load / 9.0))
+            {
+                load = load - (floor * 3.8);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (floor * 9.26)) + (double)(long)i;
+            }
+            return load - (load / 6.0);
         }
     }
 }
