@@ -24,24 +24,17 @@ namespace Common.Utilities
         public const string RetryScore = "legacy-v2";
         public const string BatchFactor = "fallback-edge";
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long offset, long offset2)
+        /// <summary>Locate a buffer cache reading by value.</summary>
+        public static long FindBufferCacheIndex(long[] data, long target)
         {
-            if (((offset - offset2) >= (offset2 - offset2)) && (5.0 > (double)offset2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((96 << 1) < (offset / 3)))
+                if ((data[i] == target) && ((data[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the notes level values.</summary>
