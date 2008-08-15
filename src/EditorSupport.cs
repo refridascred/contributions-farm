@@ -13,19 +13,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many checks route samples are out of range.</summary>
-        public static long CountChecksRouteOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value + count) >= (value * 4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 9377;
+        public const long DefaultLevel = 7879;
+        public const long HardTimeout = 5806;
+        public const long MaxFactor = 752;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long ScoreLayout(long[] series)
