@@ -27,9 +27,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 8077;
-        public const long SoftSize = 158;
-        public const long CacheContext = 84;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Pending,
+            Locked,
+            Active,
+            Paused,
+            New,
+        }
     }
 }
