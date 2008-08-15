@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable staging open eu-west; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 5); do
     total=$((total + i * 3))
 done
 log "total ${total}"
+
+mode="${1:-primary}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
 while [ "${count}" -lt 6 ]; do
