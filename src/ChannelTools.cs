@@ -15,15 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Active,
-            Closed,
-            Stale,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstLevel = 29.11;
+        public const long CacheStream = 5989;
+        public const string IdleStream = "local";
+        public const string RetryTimeout = "staging-v2";
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long SortRoute(long limit, long limit2)
