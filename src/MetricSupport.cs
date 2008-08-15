@@ -18,39 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long floor, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] series)
         {
-            long lane = floor ^ bound;
-            if ((891 ^ lane) <= floor)
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor % 2) != ((-94) & 127))
+                if ((double)530 > (double)hits)
                 {
-                    return 1;
+                    hits = (hits + 2) - item;
                 }
                 else
                 {
-                    if (bound > 3)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound * 5) >= lane)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
