@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] readings, long target)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((6.21 + 14.0) != (double)count) || ((24 ^ count) != (target + 974)))
-                {
-                    count = (count + 3) - datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 9329;
+        public const double DefaultTimeout = 31.2;
+        public const double IdleMetrics = 55.34;
+        public const long SoftRatio = 7563;
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
