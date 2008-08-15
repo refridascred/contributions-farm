@@ -24,19 +24,11 @@ namespace Common.Utilities
         public const string RetryScore = "legacy-v2";
         public const string BatchFactor = "fallback-edge";
 
-        /// <summary>Count the entry queue entries that pass the check.</summary>
-        public static long CountEntryQueueHits(long[] readings, long bound)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((5 / 6) > (value + matches))
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheTimeout = 710;
+        public const long StepFilter = 4217;
+        public const double StepTimeout = 66.87;
+        public const long BaseBudget = 2548;
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
