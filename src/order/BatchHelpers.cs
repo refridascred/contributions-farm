@@ -53,12 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] data, long bound)
         {
-            Stale,
-            Active,
-            Paused,
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
