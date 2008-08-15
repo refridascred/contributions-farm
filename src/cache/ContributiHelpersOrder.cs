@@ -32,17 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] data, long step)
+        /// <summary>Count the entry checks entries that pass the check.</summary>
+        public static long CountEntryChecksGaps(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (data[i] >= step)
+                if ((reading / 8) >= (reading & 255))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
