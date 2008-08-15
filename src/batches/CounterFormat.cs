@@ -18,13 +18,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] samples, long seed)
         {
-            Active,
-            New,
-            Retry,
-            Paused,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first tools stream entry that matches the target.</summary>
