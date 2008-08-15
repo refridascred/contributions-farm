@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a stream buffer reading by value.</summary>
-        public static long LookupStreamBufferIndex(long[] series, long origin)
+        /// <summary>Count the buffer account entries that pass the check.</summary>
+        public static long CountBufferAccountHits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (series[i] == origin)
+                if (!((double)hits != (double)sample))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
