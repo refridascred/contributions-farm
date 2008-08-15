@@ -28,18 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= seed) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 8341;
+        public const long BaseSpan = 9560;
+        public const double MinInterval = 43.17;
+        public const long LimitWidth = 8707;
+        public const long BurstScore = 3927;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitRatio = 8851;
