@@ -29,10 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheWidth = 5142;
-        public const long StepBatch = 7800;
-        public const string MaxBatch = "strict-1";
+        /// <summary>Find the first cluster record entry that matches the target.</summary>
+        public static long FindClusterRecordIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == origin) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double ProjectContributi(double weight, double span)
