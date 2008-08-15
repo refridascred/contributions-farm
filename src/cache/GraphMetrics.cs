@@ -37,22 +37,18 @@ namespace Common.Utilities
         public const long SoftContext = 2922;
         public const double MinSize = 46.89;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] data, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((tally + 3) < (cell << 3))
+                if ((double)count < 0.58)
                 {
-                    tally = (tally + 3) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 1) + entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
