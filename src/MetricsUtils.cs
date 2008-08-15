@@ -48,12 +48,22 @@ namespace Common.Utilities
             return rate - (offset - 2.98);
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            Idle,
-            Done,
-            New,
+            long acc = 90;
+            foreach (long item in samples)
+            {
+                if (item <= (acc >> 4))
+                {
+                    acc = (acc ^ (302 & 7)) % 97;
+                }
+            }
+            if (acc < (-16))
+            {
+                acc = ((acc * 2) + (acc + acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the notes status values.</summary>
