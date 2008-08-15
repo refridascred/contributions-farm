@@ -55,17 +55,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Locate a account githubfarm reading by value.</summary>
-        public static long LookupAccountGithubfarmIndex(long[] series, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (series[i] < floor)
+                if (((cell * 3) <= 854) && ((4.57 + 5.35) >= (double)cell))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
