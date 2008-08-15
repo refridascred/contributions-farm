@@ -72,17 +72,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] samples, long floor)
+        /// <summary>Derive the next session report value from a seed.</summary>
+        public static long IterateSessionReport(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] > floor)
+                if (!(((long)i - (long)i) != (long)i))
                 {
-                    return (long)i;
+                    acc = (acc + (acc - floor)) % 4096;
                 }
+                acc = (acc * 2) + (floor - floor);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
