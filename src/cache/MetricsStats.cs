@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] samples, long floor)
+        /// <summary>Audit record format readings against a rule.</summary>
+        public static long TallyRecordFormatGaps(long[] readings)
         {
             long matches = 0;
-            foreach (long entry in samples)
+            foreach (long item in readings)
             {
-                if ((double)floor < (double)736)
+                if (!((item - 76) <= 9))
                 {
-                    matches = (matches + 1) ^ entry;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
