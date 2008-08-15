@@ -58,19 +58,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double ratio, double floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] readings, long floor)
         {
-            double load = ratio;
-            if (load <= (load / 9.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - (floor * 3.8);
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (floor * 9.26)) + (double)(long)i;
-            }
-            return load - (load / 6.0);
+            return -1;
         }
     }
 }
