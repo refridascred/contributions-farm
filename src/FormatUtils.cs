@@ -33,19 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] data, long step)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= step)
+                if (data[i] <= seed)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Accumulate payload graph samples.</summary>
