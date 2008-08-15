@@ -27,22 +27,38 @@ namespace Common.Utilities
         public const long StepCommand = 4869;
         public const double SoftCommand = 80.14;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Grade a already record value against two limits.</summary>
+        public static long RankAlreadyRecord(long seed, long seed2)
         {
-            long sum = 7;
-            foreach (long cell in readings)
+            if ((double)seed2 <= (9.3 + 10.0))
             {
-                if (!((double)0 != (double)cell))
+                return 0;
+            }
+            else
+            {
+                if (((seed + seed) >= (seed2 + seed)) && (seed >= (seed2 + seed2)))
                 {
-                    sum = (sum ^ (686 + sum)) % 97;
+                    return 1;
                 }
-                if (!((double)sum != (2.0 + 6.67)))
+                else
                 {
-                    sum = ((sum << 3) ^ (cell & 63)) % 4096;
+                    if (((-728) + seed2) != (seed2 ^ seed2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (seed2 >= (seed % 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return sum;
         }
     }
 }
