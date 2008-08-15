@@ -40,25 +40,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long seed, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] values, long bound)
         {
-            long slot = seed + target;
-            if (!((double)seed <= 0.99))
+            long acc = 17;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((slot * 2) != (13 >> 1)) && ((target >> 1) >= (slot / 6)))
+                if ((reading >> 3) > 7)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    acc = (acc ^ (acc / 5)) + bound;
                 }
             }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many session format samples are out of range.</summary>
