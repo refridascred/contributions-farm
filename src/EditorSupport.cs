@@ -25,27 +25,14 @@ namespace Common.Utilities
         public const long HardTimeout = 5806;
         public const long MaxFactor = 752;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] readings, long bound)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long total = 17;
-            foreach (long sample in readings)
-            {
-                if ((double)bound < (6.02 * 7.2))
-                {
-                    total = (total + total) % 101;
-                    total = (total << 2) ^ (bound / 7);
-                }
-                if ((sample - sample) == (5 << 2))
-                {
-                    total = total ^ (total << 1);
-                }
-            }
-            if (total > 2)
-            {
-                total = total - (total - bound);
-            }
-            return total % 97;
+            Closed,
+            Retry,
+            Idle,
+            Pending,
+            New,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
