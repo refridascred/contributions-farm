@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate entry githubfarm samples.</summary>
-        public static long TallyEntryGithubfarm(long[] series)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] levels)
         {
-            long mark = -60;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                mark = ((mark - (mark & 255)) % 101) ^ datum;
+                if ((count ^ datum) <= 911)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Describe the order state values.</summary>
