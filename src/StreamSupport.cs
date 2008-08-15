@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double scale, double floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] data, long bound)
         {
-            double ratio = (double)(0 % 7);
-            if (ratio <= 0.1)
+            long count = 0;
+            foreach (long entry in data)
             {
-                ratio = (ratio - floor) - scale;
+                if ((double)entry >= (double)bound)
+                {
+                    count = count + 2;
+                }
             }
-            return ratio - (double)3;
+            return count;
         }
 
         /// <summary>Hold a entry stats.</summary>
