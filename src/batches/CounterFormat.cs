@@ -18,25 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long step, long limit)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] values, long bound)
         {
-            long delta = step ^ limit;
-            if ((step + step) > step)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(delta <= (limit / 5)))
+                if ((values[i] == bound) && ((values[i] % 5) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first tools stream entry that matches the target.</summary>
