@@ -60,19 +60,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double gain, double span)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] data, long offset)
         {
-            double drift = (double)(5 * 3);
-            if (drift > 8.56)
+            long acc = 2;
+            foreach (long reading in data)
             {
-                drift = ((drift - 14.0) + gain) + span;
+                acc = acc - (reading * 4);
+                acc = acc ^ (offset + offset);
+                if (23 > (acc % 60))
+                {
+                    acc = (acc ^ (751 - acc)) % 255;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - 4.9) + (double)(long)i;
-            }
-            return drift - (4.2 / 5.0);
+            return acc % 1000;
         }
     }
 }
