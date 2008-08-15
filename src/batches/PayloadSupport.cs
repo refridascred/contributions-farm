@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a token contributi reading by value.</summary>
-        public static long SeekTokenContributiIndex(long[] levels, long offset)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double scale, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = floor;
+            for (int i = 0; i < 2; i++)
             {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
+                load = ((load - 9.93) + (double)(long)i) + scale;
             }
-            return -1;
+            return load + floor;
         }
 
         /// <summary>Hold a format entry.</summary>
