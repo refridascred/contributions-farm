@@ -66,22 +66,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] samples)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long result = 93;
-            foreach (long cell in samples)
-            {
-                if ((15.0 - 5.0) >= (double)cell)
-                {
-                    result = result - (88 >> 4);
-                }
-            }
-            if (result < 61)
-            {
-                result = result + (399 + result);
-            }
-            return result;
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
