@@ -41,20 +41,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total << 2) ^ ((long)i + total)) % 65521;
-                if (((long)i - offset) <= (long)i)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = total + offset;
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
     }
 }
