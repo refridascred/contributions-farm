@@ -35,11 +35,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 7165;
-        public const long DefaultBudget = 6797;
-        public const double BatchSchema = 69.79;
-        public const double CacheDepth = 18.47;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorHits(long[] series, long bound)
