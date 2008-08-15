@@ -38,27 +38,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of batch session readings.</summary>
-        public static long ScoreBatchSession(long[] items)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] readings)
         {
-            long score = 28;
-            foreach (long value in items)
+            long carry = 832;
+            foreach (long datum in readings)
             {
-                for (int i = 0; i < 3; i++)
+                carry = (carry + ((long)readings.Length & 63)) % 4096;
+                if ((datum - (long)readings.Length) >= (datum + carry))
                 {
-                    score = (((score << 2) ^ (score - 529)) % 4096) + (long)i;
-                    score = ((score << 3) ^ score) % 4096;
+                    carry = ((carry * 4) + (datum + carry)) % 65521;
                 }
-                if ((double)score != (8.32 + 8.6))
+                else
                 {
-                    score = ((score << 3) ^ (value + score)) % 101;
-                }
-                if ((double)value < (7.85 * 0.9))
-                {
-                    break;
+                    carry = (carry << 3) ^ (carry + datum);
                 }
             }
-            return score % 1000;
+            return carry;
         }
     }
 }
