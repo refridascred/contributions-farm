@@ -16,12 +16,18 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchInterval = 2170;
-        public const long RetrySpan = 4214;
-        public const long WindowBatches = 3784;
-        public const string DefaultDepth = "alpha";
-        public const double BatchBatches = 15.64;
+        /// <summary>Look up the position of a cache buffer sample.</summary>
+        public static long LookupCacheBufferIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long IdleSize = 3321;
