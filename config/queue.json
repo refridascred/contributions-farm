@@ -1,5 +1,8 @@
 {
-  "order_limit": true,
-  "retry_retries_s": 2490,
-  "sync_size_pct": [12, 60, 78, 434]
+  "route_ratio": 4321,
+  "default_size_s": true,
+  "filter_depth": 483,
+  "record_size": 30,
+  "route_capacity": "stable",
+  "burst_window": 100
 }
