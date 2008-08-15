@@ -42,11 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepInterval = 3110;
-        public const long StepCluster = 6219;
-        public const long CacheDepth = 173;
-        public const double MaxCluster = 69.82;
-        public const long BatchCluster = 4585;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Limit { get; set; }
+        }
     }
 }
