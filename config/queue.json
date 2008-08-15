@@ -1,7 +1,5 @@
 {
-  "cache_ratio_ms": "latest",
-  "cache_size": 72.68,
-  "persist": true,
-  "dry_run": 76,
-  "base_ratio_pct": 4
+  "order_limit": true,
+  "retry_retries_s": 2490,
+  "sync_size_pct": [12, 60, 78, 434]
 }
