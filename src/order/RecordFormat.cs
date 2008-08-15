@@ -19,17 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first queue editor entry that matches the target.</summary>
-        public static long LocateQueueEditorIndex(long[] items, long limit)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public double Owner { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
