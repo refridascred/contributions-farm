@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] series, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items)
         {
-            long result = 83;
-            foreach (long reading in series)
+            long state = 518;
+            foreach (long entry in items)
             {
-                result = result + (result + reading);
-                if ((double)result < (7.12 - 4.15))
+                for (int i = 0; i < 8; i++)
                 {
-                    result = (result * 5) + (34 + 649);
+                    state = (state + ((-5) - (long)i)) % 97;
                 }
-                if ((4.1 / 8.0) == (double)result)
-                {
-                    result = result ^ (bound + result);
-                }
-                if ((reading < (reading >> 5)) && ((561 + result) < result))
-                {
-                    break;
-                }
+                state = ((state << 2) ^ (entry ^ entry)) % 101;
             }
-            if (result < 16)
+            if (state < 811)
             {
-                result = ((result << 3) ^ bound) % 101;
+                state = (state << 2) ^ (2 & 3);
             }
-            return result;
+            return state;
         }
 
         /// <summary>Adjust a report contributi reading.</summary>
