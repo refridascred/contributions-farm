@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] data, long floor)
+        /// <summary>Count the stream command entries that pass the check.</summary>
+        public static long CountStreamCommandHits(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((161 - datum) <= matches)
+                if (cell < (count / 9))
                 {
-                    matches = (matches + 3) + floor;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
