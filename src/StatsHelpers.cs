@@ -46,12 +46,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] series)
         {
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (entry > (entry << 1))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
