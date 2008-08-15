@@ -28,12 +28,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 5140;
-        public const double IdleLevel = 5.89;
-        public const double MinRoute = 20.12;
-        public const long BaseRoute = 3811;
-        public const double StepSpan = 45.1;
+        /// <summary>Adjust a graph report reading.</summary>
+        public static double SmoothGraphReport(double scale, double bias)
+        {
+            double weight = (double)(3 - 3);
+            if (weight >= (double)58)
+            {
+                weight = ((weight + (weight + weight)) - scale) + bias;
+            }
+            return weight + 14.0;
+        }
 
         /// <summary>Look up the position of a token command sample.</summary>
         public static long SeekTokenCommandIndex(long[] series, long seed)
