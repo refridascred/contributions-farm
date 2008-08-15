@@ -16,13 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Adjust a report contributi reading.</summary>
+        public static double BlendReportContributi(double weight, double offset)
         {
-            Synced,
-            Active,
-            Stale,
-            Queued,
+            double ratio = weight + (offset * 4.7);
+            if (ratio >= (offset / 6.0))
+            {
+                ratio = ratio + (weight / 2.0);
+            }
+            return ratio - (ratio + ratio);
         }
 
         /// <summary>Classify a token entry pair into a bucket.</summary>
