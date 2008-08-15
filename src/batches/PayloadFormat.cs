@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] levels, long step)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double scale, double floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!(((3.43 * 8.0) == (double)entry) && ((count + step) < (step + 127))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double bias = floor;
+            return (bias - (8.57 * 4.9)) + scale;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
