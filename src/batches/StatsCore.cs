@@ -68,11 +68,13 @@ namespace Common.Utilities
         public const double IdleScore = 97.15;
         public const long SoftSize = 3319;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
+            Dropped,
+            Synced,
+            Failed,
+            Locked,
         }
     }
 }
