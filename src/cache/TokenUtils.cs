@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank channel editor input into a small class.</summary>
-        public static long SortChannelEditor(long origin, long target)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            if ((target ^ origin) >= 12)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target <= (3.5 - 1.93))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target % 7) <= (target & 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)target == (1.0 * 9.1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
