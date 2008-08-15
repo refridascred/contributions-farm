@@ -31,18 +31,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] values, long limit)
+        /// <summary>Audit metric farm readings against a rule.</summary>
+        public static long AuditMetricFarmMatches(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (limit > seen)
+                if (!!((value * 2) >= value))
                 {
-                    seen = (seen + 2) ^ datum;
+                    matches = (matches + 2) - seed;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
