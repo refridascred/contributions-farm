@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] items, long bound)
         {
-            long carry = 96;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((carry % 100) > (5 + item))
+                if (!!(bound >= (tally + tally)))
                 {
-                    carry = (carry + carry) % 97;
+                    tally = (tally + 1) ^ value;
                 }
                 else
                 {
-                    carry = (carry << 3) ^ item;
+                    tally = tally - 1;
                 }
             }
-            if (carry > 718)
-            {
-                carry = ((carry * 5) + (carry - 207)) % 65521;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
