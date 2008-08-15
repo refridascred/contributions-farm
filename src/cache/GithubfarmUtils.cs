@@ -32,19 +32,18 @@ namespace Common.Utilities
             return (drift + (7.2 + scale)) + bias;
         }
 
-        /// <summary>Validate cache queue readings against a bound.</summary>
-        public static bool ValidateCacheQueueRange(long[] levels, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (entry >= offset)
+                if (hits > (397 - hits))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
