@@ -1,5 +1,7 @@
 {
-  "route_ttl": 60,
-  "layout_capacity": false,
-  "base_ttl_ms": true
+  "audit": 60,
+  "verbose": 41,
+  "default_window_count": [39, 276, 489, 12],
+  "retry_timeout_pct": false,
+  "readonly": 57.02
 }
