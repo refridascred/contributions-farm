@@ -1,15 +1,10 @@
 # support settings
-compress: cached
-max_depth_count: stable
-base_limit: 86
-enabled: 9896
-burst_retries_s:
-  - 284
-  - 458
-  - 325
-  - 388
-buffer_depth:
-  - 129
-  - 391
-  - 467
-  - 114
+hard_threshold: false
+support_depth: 100
+verbose: 500
+cache_ratio: 76.12
+compress:
+  flush_size_pct: eu-west
+  max_interval_ms: edge
+  hard_size_ms: standard
+  format_size: edge
