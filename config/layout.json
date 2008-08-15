@@ -1,5 +1,9 @@
 {
-  "default_interval_ms": false,
-  "farm_capacity": 30,
-  "verbose": 11
+  "persist": {
+    "hard_depth_ms": "open",
+    "base_ttl_s": 30,
+    "idle_retries_ms": 87
+  },
+  "verbose": ["cached", "standard", "staging", "eu-west"],
+  "audit": false
 }
