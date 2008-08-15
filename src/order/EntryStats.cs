@@ -50,19 +50,18 @@ namespace Common.Utilities
             return scale2 + (8.8 / 8.0);
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] values, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long score = 313;
+            foreach (long sample in data)
             {
-                if (reading > seed)
+                if ((target + target) >= (70 ^ 49))
                 {
-                    ok = false;
-                    break;
+                    score = ((score + score) % 65521) ^ sample;
                 }
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Hold a metric entry.</summary>
