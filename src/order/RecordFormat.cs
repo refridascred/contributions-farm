@@ -26,12 +26,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            public bool Level { get; set; }
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 2) + bound) % 255;
+                sum = sum ^ (bound << 3);
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
