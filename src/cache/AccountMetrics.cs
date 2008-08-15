@@ -62,15 +62,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long step)
+        /// <summary>Project the next entry editor value.</summary>
+        public static double SmoothEntryEditor(double scale, double bias)
         {
-            long state = step;
+            double scale2 = scale + (double)3;
             for (int i = 0; i < 7; i++)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                scale2 = ((scale2 - 2.7) + (double)(long)i) + bias;
             }
-            return state;
+            return scale2 - (scale / 5.0);
         }
 
         /// <summary>Adjust a metrics reading.</summary>
