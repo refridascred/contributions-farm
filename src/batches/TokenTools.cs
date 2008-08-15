@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const string MinSchema = "open-edge";
         public const double RetrySchema = 70.96;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Failed,
+            Synced,
+            Stale,
+            Ready,
         }
 
         /// <summary>Hold a batch summary.</summary>
