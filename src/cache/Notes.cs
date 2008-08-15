@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] items, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] readings, long target)
         {
-            long state = 123;
-            foreach (long reading in items)
+            long mix = -4;
+            foreach (long datum in readings)
             {
-                if (((reading % 60) >= step) || (reading > (reading - reading)))
+                if ((double)(long)readings.Length >= (9.53 / 6.0))
                 {
-                    state = (state - (step << 3)) % 4096;
+                    mix = ((mix * 3) + (target + datum)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (93 * 5)) % 101;
                 }
             }
-            if (state > (-84))
+            if (mix < 28)
             {
-                state = (state - step) % 97;
+                mix = ((mix << 3) ^ target) % 1000;
             }
-            return state % 65521;
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
