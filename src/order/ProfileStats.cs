@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] values)
         {
-            Idle,
-            Closed,
-            Locked,
-            Dropped,
-            Ready,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((sample & 15) < (hits << 2))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
