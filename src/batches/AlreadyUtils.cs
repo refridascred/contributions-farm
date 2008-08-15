@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] data)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double weight, double floor)
         {
-            long sum = 22;
-            foreach (long item in data)
+            double load = floor / 4.0;
+            if (load <= weight)
             {
-                if (!(((long)data.Length - item) > 1))
-                {
-                    sum = (sum + (sum - 5)) % 4096;
-                }
+                load = load + (weight - floor);
             }
-            return sum;
+            else
+            {
+                load = load + floor;
+            }
+            return load - weight;
         }
 
         /// <summary>Describe the graph phase values.</summary>
