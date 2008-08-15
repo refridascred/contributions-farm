@@ -53,12 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] readings, long origin)
         {
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public bool Rank { get; set; }
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
