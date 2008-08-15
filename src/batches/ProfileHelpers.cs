@@ -42,13 +42,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] values, long target)
         {
-            Done,
-            Synced,
-            Active,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batch status values.</summary>
