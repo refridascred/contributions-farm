@@ -51,9 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitWidth = "stable-1";
-        public const string MaxNotes = "alpha-edge";
-        public const long MaxFactor = 8762;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = mark - limit;
+                mark = mark + (mark + mark);
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
