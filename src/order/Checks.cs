@@ -56,18 +56,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] readings, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (tally <= 8)
+                if ((6 <= (reading / 8)) || ((double)2 <= (double)reading))
                 {
-                    tally = ((tally + 2) + sample) + origin;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the notes metric entries that pass the check.</summary>
