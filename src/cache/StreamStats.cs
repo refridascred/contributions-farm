@@ -22,10 +22,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 5074;
-        public const long HardCommits = 3571;
-        public const long IdleCommits = 994;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (!((16.0 * 2.0) == (double)matches))
+                {
+                    matches = ((matches + 2) ^ cell) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordHits(long[] series)
