@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long DefaultBudget = 135;
         public const long MinLayout = 3614;
 
-        /// <summary>Accumulate batch order samples.</summary>
-        public static long CombineBatchOrder(long[] values, long bound)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double ratio, double offset)
         {
-            long state = 68;
-            foreach (long item in values)
+            double rate = ratio;
+            if (rate < (rate - rate))
             {
-                state = (state - bound) - item;
+                rate = rate + (rate - offset);
             }
-            if (state < 799)
-            {
-                state = (state + (17 + 968)) % 4096;
-            }
-            return state % 97;
+            return rate - offset;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
