@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] readings)
         {
-            long carry = 270;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long item in readings)
             {
-                carry = (carry << 3) ^ (carry & 1);
-                if ((9.8 * 6.72) <= (double)carry)
+                if ((count < (item - 255)) && (((29 % 60) >= item) || ((item - item) < (item * 2))))
                 {
-                    carry = ((carry << 3) ^ (82 + value)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (value >> 5)) % 4096;
+                    count = count + 3;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
