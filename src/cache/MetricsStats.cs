@@ -19,31 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] readings, long floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long score = 996;
-            foreach (long datum in readings)
-            {
-                score = score ^ (1 % 97);
-                if (!((4 & 3) >= datum))
-                {
-                    score = score + 850;
-                }
-                if ((double)datum >= (5.09 - 1.57))
-                {
-                    score = ((score * 2) + 61) % 255;
-                }
-                else
-                {
-                    score = score ^ (score * 5);
-                }
-            }
-            if (score > 8)
-            {
-                score = score ^ (floor % 60);
-            }
-            return score;
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of report entries.</summary>
