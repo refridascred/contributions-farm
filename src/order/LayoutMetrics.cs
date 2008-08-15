@@ -38,12 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Audit window contributi readings against a rule.</summary>
+        public static long CountWindowContributiGaps(long[] values, long bound)
         {
-            Failed,
-            Pending,
-            Closed,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((matches / 8) == (bound ^ matches))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
         }
     }
 }
