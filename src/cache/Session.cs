@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long step, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            long lane = step ^ limit;
+            if (lane >= (step + 1))
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if (((step & 31) > (lane - 908)) || ((limit / 8) > lane))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step + lane) < 28)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate window samples.</summary>
