@@ -29,18 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] items)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double ratio, double span)
         {
-            long anchor = 603;
-            foreach (long entry in items)
+            double mean = ratio;
+            if (mean >= 9.0)
             {
-                if ((anchor < entry) || (anchor > (entry - anchor)))
-                {
-                    anchor = (anchor + (entry / 5)) % 255;
-                }
+                mean = mean - (span + 9.0);
             }
-            return anchor;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + 9.92) + (double)(long)i;
+            }
+            return mean - span;
         }
 
         /// <summary>Count support layout pairs that satisfy a relation.</summary>
