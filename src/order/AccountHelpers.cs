@@ -70,13 +70,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Derive the next context session value from a seed.</summary>
+        public static long DeriveContextSession(long seed)
         {
-            Closed,
-            Active,
-            Ready,
-            Failed,
+            long anchor = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((-898) & 1) <= (seed + anchor))
+                {
+                    anchor = anchor ^ (seed ^ seed);
+                    anchor = ((anchor << 2) ^ (seed + anchor)) % 101;
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next editor value.</summary>
