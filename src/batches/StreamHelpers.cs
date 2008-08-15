@@ -33,15 +33,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Ready,
-            Retry,
-            Idle,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowSupport = 79.61;
+        public const long StepSupport = 6128;
+        public const double RetrySpan = 6.52;
+        public const long SoftSupport = 1407;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long WindowSize = 1277;
