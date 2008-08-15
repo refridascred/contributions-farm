@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] series, long step)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
