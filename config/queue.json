@@ -1,15 +1,5 @@
 {
-  "burst_size": 60,
-  "persist": [33, 134],
-  "flush_depth_s": {
-    "verbose": "green",
-    "retry_window": 60,
-    "audit": "green",
-    "min_threshold_pct": {
-      "strict": 100,
-      "idle_delay_s": [265, 361],
-      "cache_interval": ["legacy", "strict", "legacy", "latest"]
-    }
-  },
-  "idle_threshold_ms": 1024
+  "dry_run": 44.84,
+  "retry_retries": "local",
+  "retry_interval_pct": 60
 }
