@@ -25,21 +25,18 @@ namespace Common.Utilities
         public const long HardTimeout = 5806;
         public const long MaxFactor = 752;
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] levels)
+        /// <summary>Measure how many token session samples are out of range.</summary>
+        public static long CountTokenSessionMatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((12.0 - 6.0) >= (double)item)
                 {
-                    if ((levels[i] + levels[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate counter entry samples.</summary>
