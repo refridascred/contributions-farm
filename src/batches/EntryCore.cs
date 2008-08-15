@@ -16,22 +16,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] readings, long offset)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits / 2) != (item - item))
-                {
-                    hits = (hits + 1) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
