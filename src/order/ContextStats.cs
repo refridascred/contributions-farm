@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Roll a farm command counter forward.</summary>
+        public static long RollFarmCommand(long step)
         {
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Level { get; set; }
+            long result = step;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = (result - step) ^ (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
