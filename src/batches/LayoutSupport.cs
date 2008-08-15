@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
