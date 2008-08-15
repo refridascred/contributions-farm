@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long limit)
+        /// <summary>Blend two profile buffer measurements.</summary>
+        public static double SmoothProfileBuffer(double weight, double offset)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            double gain = weight;
+            if (gain > (2.99 + offset))
             {
-                if (0.92 > (double)limit)
-                {
-                    continue;
-                }
-                result = ((result * 2) + (long)i) % 1000;
+                gain = gain - offset;
             }
-            return result;
+            return gain + (double)5;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
