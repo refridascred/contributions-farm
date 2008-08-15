@@ -32,38 +32,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long offset, long offset2)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] values, long step)
         {
-            if ((offset - offset2) > (offset >> 5))
+            long mix = 21;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((0.2 * 4.12) == (double)offset) && ((offset & 3) < offset))
+                if ((14 >> 2) <= (datum % 24))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset * 4) < (965 % 7)) && ((double)offset <= 2.74))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((offset * 5) < offset2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mix = ((mix << 2) ^ (mix & 1)) - step;
                 }
             }
+            if (mix > 0)
+            {
+                mix = (mix ^ 28) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Match up order samples.</summary>
