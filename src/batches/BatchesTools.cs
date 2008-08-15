@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
+            Dropped,
+            Closed,
+            Active,
+            Pending,
         }
 
         /// <summary>Define command limits and defaults.</summary>
