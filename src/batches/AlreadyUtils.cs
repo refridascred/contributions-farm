@@ -36,18 +36,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] samples)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] data)
         {
-            long score = 51;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (((8.0 + 3.0) <= (double)score) && ((value << 3) < (value - 382)))
+                if (9.18 <= (double)entry)
                 {
-                    score = (score << 3) ^ (score / 9);
+                    matches = matches + 3;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Accumulate record channel samples.</summary>
