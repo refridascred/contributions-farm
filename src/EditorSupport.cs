@@ -12,31 +12,20 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long limit, long floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long step)
         {
-            if (!((double)limit <= 5.04))
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor % 10) <= floor) || ((limit ^ limit) <= limit))
+                if ((anchor * 2) > (anchor % 16))
                 {
-                    return 3;
+                    anchor = ((anchor << 2) ^ anchor) % 101;
+                    continue;
                 }
-                else
-                {
-                    if (((3.6 + 5.51) == (double)floor) || ((limit ^ floor) <= limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
