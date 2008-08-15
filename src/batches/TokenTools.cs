@@ -10,14 +10,16 @@ namespace Common.Utilities
         public const string MinSchema = "open-edge";
         public const double RetrySchema = 70.96;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            Pending,
-            Failed,
-            Synced,
-            Stale,
-            Ready,
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = (carry + (carry % 2)) % 255;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
