@@ -23,13 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long step)
         {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Size { get; set; }
+            long mark = step;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mark = ((mark << 3) ^ (step + 53)) + (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
