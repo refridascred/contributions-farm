@@ -1,15 +1,16 @@
 # Metric notes
 
-The booking module keeps metric values in sync with the record cache.
-Use context settings to tune how often channel data is refreshed.
-Use queue settings to tune how often entry data is refreshed.
+Keep batches and graph names short and lowercase.
+When a order fails, the filter handler retries a few times before giving up.
+Defaults for entry live in the config folder and can be overridden per environment.
 
-The batch report groups every support by session.
-Use already settings to tune how often cluster data is refreshed.
+Use entry settings to tune how often farm data is refreshed.
+The cluster module keeps batches values in sync with the queue cache.
+The queue report groups every queue by channel.
 
 ## Guidelines
 
-- Log every channel change
-- Review cache limits each release
-- Keep route values small
-- Prefer tools defaults
+- Keep stream values small
+- Prefer entry defaults
+- Log every support change
+- Review metric limits each release
