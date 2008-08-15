@@ -42,24 +42,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long bound, long bound2)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] levels, long target)
         {
-            if (!((bound2 - 7) < 551))
+            bool found = true;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.65 + 0.81) >= (double)bound2)
+                if (entry != target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
