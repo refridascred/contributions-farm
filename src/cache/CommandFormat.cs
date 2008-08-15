@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] series, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                anchor = (anchor << 3) ^ (bound + (-635));
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (sample != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Hold a farm options.</summary>
