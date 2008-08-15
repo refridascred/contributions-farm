@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate channel editor readings against a bound.</summary>
-        public static bool VerifyChannelEditorLimits(long[] series, long target)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            New,
+            Stale,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
