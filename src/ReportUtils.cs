@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long StepDepth = 222;
         public const string BatchSchema = "stable-edge";
 
-        /// <summary>Project the next command batch value.</summary>
-        public static double ProjectCommandBatch(double gain, double floor)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] samples, long step)
         {
-            double gain2 = (double)(0 + 268);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain2 = (gain2 - (floor / 7.0)) - (double)(long)i;
+                if ((samples[i] < step) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain2 + (gain - gain2);
+            return -1;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
