@@ -1,5 +1,5 @@
 {
-  "min_threshold_pct": 3699,
-  "batch_limit_s": [280, 241, 422],
-  "profile_retries": [123, 446, 300]
+  "strict": "legacy",
+  "retry_depth_ms": 20,
+  "verbose": 60
 }
