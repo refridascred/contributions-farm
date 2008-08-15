@@ -1,7 +1,7 @@
 {
-  "retry_threshold_ms": 96,
-  "min_delay_ms": "staging",
-  "flush_window_s": 30,
-  "hard_ttl_s": "primary",
-  "metric_ratio": 66
+  "default_timeout_pct": 1024,
+  "contributi_limit": true,
+  "dry_run": false,
+  "cache_depth": "primary",
+  "account_window": 55.88
 }
