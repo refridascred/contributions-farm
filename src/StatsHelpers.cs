@@ -24,22 +24,24 @@ namespace Common.Utilities
         public const string RetryScore = "legacy-v2";
         public const string BatchFactor = "fallback-edge";
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] data)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long offset, long offset2)
         {
-            long score = 82;
-            foreach (long item in data)
+            if (((offset - offset2) >= (offset2 - offset2)) && (5.0 > (double)offset2))
             {
-                if ((item >> 4) <= item)
+                return 2;
+            }
+            else
+            {
+                if (!((96 << 1) < (offset / 3)))
                 {
-                    score = score - 691;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (score > 5)
-            {
-                score = (score - score) % 65521;
-            }
-            return score % 4096;
         }
 
         /// <summary>Describe the notes level values.</summary>
