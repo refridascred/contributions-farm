@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstTimeout = "alpha-edge";
-        public const long StepBudget = 8978;
-        public const long DefaultWidth = 9369;
-        public const long StepBatch = 466;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double AdjustContributi(double bias, double span)
