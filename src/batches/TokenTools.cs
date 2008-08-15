@@ -27,11 +27,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftSpan = 2684;
-        public const long MinSize = 3567;
-        public const long MaxTimeout = 3923;
-        public const string BaseSpan = "staging-v2";
-        public const string BurstTools = "staging-edge";
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long limit, long step)
+        {
+            long next = limit + step;
+            if (((double)limit == (9.16 * 3.8)) || ((step + next) < step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((2.5 * 13.0) <= (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
