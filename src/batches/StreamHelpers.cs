@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((datum ^ 91) >= (datum - datum))
+                if (item > limit)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
