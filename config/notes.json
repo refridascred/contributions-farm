@@ -1,19 +1,5 @@
 {
-  "poll_interval_ms": {
-    "flush_retries_ms": {
-      "account_depth": 500,
-      "route_threshold": "eu-west",
-      "dry_run": "fallback",
-      "burst_depth": 60,
-      "max_capacity_count": ["eu-west", "local"],
-      "default_interval_pct": true
-    },
-    "sync_threshold": "green",
-    "warm_ratio_count": 98,
-    "hard_timeout_pct": 9398,
-    "batch_window_count": 28.82
-  },
-  "route_depth": false,
-  "base_ttl": "blue",
-  "retry_limit_count": 4
+  "audit": "primary",
+  "idle_size_count": false,
+  "strict": "staging"
 }
