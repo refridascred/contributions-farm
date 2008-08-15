@@ -23,14 +23,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public string Weight { get; set; } = "";
-            public double Flag { get; set; }
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepFactor = 4794;
+        public const long CacheCounter = 7565;
+        public const long MinCounter = 469;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long StepLevel = 3896;
