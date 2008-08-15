@@ -59,13 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public double Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCount = 2334;
+        public const double CacheCommand = 49.43;
+        public const string RetryCommand = "open-edge";
+        public const double BurstSpan = 39.39;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long FoldStats(long[] readings, long origin)
