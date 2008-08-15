@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] series)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long sum = -239;
+            foreach (long reading in series)
             {
-                if ((count < (item - 255)) && (((29 % 60) >= item) || ((item - item) < (item * 2))))
-                {
-                    count = count + 3;
-                }
+                sum = sum - (reading >> 4);
             }
-            return count;
+            if (sum < 42)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a profile filter sample.</summary>
