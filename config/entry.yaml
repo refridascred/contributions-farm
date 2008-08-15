@@ -1,6 +1,35 @@
 # entry settings
-max_retries_s: 92.43
-stats_ratio: blue
-min_ttl_ms:
-  - 446
-  - 315
+base_capacity_ms:
+  soft_threshold_ms: open
+  default_ratio:
+    - open
+    - stable
+    - open
+    - legacy
+  support_size: true
+  batch_ttl_pct:
+    warm_limit: 60
+    strict: 30
+    soft_capacity_pct: blue
+  max_ttl_s: green
+  poll_depth_count: 72
+schema_window:
+  context_ratio:
+    retry_timeout:
+      - stable
+      - latest
+      - stable
+      - eu-west
+    warm_depth_s: false
+    batch_depth: 10.77
+    min_threshold_s: standard
+  payload_size: true
+  idle_depth_pct: 98.99
+  verbose: strict
+  route_ttl: false
+  burst_depth: false
+verbose: primary
+default_size_s:
+  - primary
+  - staging
+  - green
