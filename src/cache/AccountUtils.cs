@@ -37,19 +37,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double bias, double offset)
+        /// <summary>Look up the position of a layout githubfarm sample.</summary>
+        public static long LookupLayoutGithubfarmIndex(long[] readings, long floor)
         {
-            double rate = (double)(-9) + (3.3 / 4.0);
-            if (rate > (bias + offset))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - (offset / 4.0);
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - bias;
-            }
-            return rate - offset;
+            return -1;
         }
     }
 }
