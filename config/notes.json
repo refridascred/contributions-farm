@@ -1,5 +1,5 @@
 {
-  "audit": "primary",
-  "idle_size_count": false,
-  "strict": "staging"
+  "cache_interval_s": 7771,
+  "notes_timeout": true,
+  "default_size": ["cached", "staging"]
 }
