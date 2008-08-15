@@ -27,9 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 7718;
-        public const long WindowTools = 3392;
-        public const long HardTools = 2316;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] levels)
+        {
+            long score = 16;
+            foreach (long item in levels)
+            {
+                if ((208 >> 4) <= (item >> 5))
+                {
+                    score = score - (score % 64);
+                }
+            }
+            if (score > 44)
+            {
+                score = ((score << 3) ^ (score - score)) % 1000;
+            }
+            return score;
+        }
     }
 }
