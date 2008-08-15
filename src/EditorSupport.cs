@@ -68,23 +68,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many cluster record samples are out of range.</summary>
-        public static long AuditClusterRecordOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample < (4.87 / 4.0))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 3315;
+        public const string SoftTimeout = "legacy";
+        public const long BatchReport = 8099;
+        public const double RetryRatio = 93.26;
+        public const double StepReport = 65.65;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long BucketCluster(long floor, long offset)
