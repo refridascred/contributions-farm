@@ -1,7 +1,7 @@
 {
-  "poll_ratio_count": "eu-west",
-  "flush_interval_count": "stable",
-  "cache_threshold": false,
-  "strict": ["standard", "edge", "latest", "blue"],
-  "max_depth_s": 8086
+  "poll_timeout": [413, 452],
+  "commits_delay": 32,
+  "burst_limit_count": "fallback",
+  "readonly": "open",
+  "base_size_count": 1
 }
