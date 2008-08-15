@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 7571;
+        public const long DefaultSpan = 5912;
+        public const long MinNotes = 8209;
+        public const long IdleInterval = 4434;
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
