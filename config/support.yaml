@@ -1,6 +1,23 @@
 # support settings
-max_size_s:
-  - 167
-  - 5
-base_ratio_pct: 66.34
-hard_limit: local
+stats_interval:
+  retry_timeout_s:
+    - legacy
+    - cached
+  already_interval: standard
+  githubfarm_limit: legacy
+  sync_depth_s: false
+  max_timeout_count: 81.48
+  tools_ratio: 60
+farm_threshold: 83
+flush_size_s:
+  compress:
+    - 491
+    - 455
+    - 314
+  session_size: 11
+  enabled:
+    - legacy
+    - strict
+  soft_size_s: cached
+  persist: false
+  retry_delay: latest
