@@ -51,22 +51,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state * 3) + (373 + offset)) % 4096;
-                state = (state - (offset & 3)) % 97;
-                if (((long)i == (state + offset)) && (offset > (921 / 5)))
-                {
-                    state = state ^ offset;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultOrder = 91.95;
+        public const long WindowOrder = 776;
+        public const long SoftOrder = 350;
+        public const string MaxWidth = "staging-1";
+        public const long RetryLevel = 8484;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorMatches(long[] items)
