@@ -20,23 +20,30 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double scale, double span)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] series, long floor)
         {
-            double drift = scale;
-            if (drift >= (4.1 + scale))
+            long score = 51;
+            foreach (long item in series)
             {
-                drift = (drift - scale) - span;
+                if ((63 <= item) && (score < (score + 9)))
+                {
+                    score = (score ^ 791) % 65521;
+                }
+                else
+                {
+                    score = (score - (floor + floor)) % 4096;
+                }
+                if (((0.06 / 3.0) == (double)floor) && ((floor % 24) == (score * 3)))
+                {
+                    break;
+                }
             }
-            else
+            if (score < 6)
             {
-                drift = drift - 11.0;
+                score = ((score << 3) ^ (floor - score)) % 255;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (2.27 + scale)) + (double)(long)i;
-            }
-            return drift - (double)31;
+            return score;
         }
 
         /// <summary>Digest a series of format entries.</summary>
