@@ -24,12 +24,22 @@ namespace Common.Utilities
             return drift + (9.3 + drift);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseScore = 63.95;
-        public const long BurstStream = 673;
-        public const long LimitStream = 1993;
-        public const double IdleStream = 81.97;
-        public const long CacheCount = 6762;
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
