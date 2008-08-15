@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] samples, long seed)
+        /// <summary>Adjust a order queue reading.</summary>
+        public static double BlendOrderQueue(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            double rate = offset / 3.0;
+            if (rate >= (scale * 7.3))
             {
-                if (datum > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = rate + (rate * 2.9);
             }
-            return valid;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
