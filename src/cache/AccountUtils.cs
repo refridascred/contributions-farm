@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            long carry = 76;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = (carry - (value - carry)) + (long)i;
+                }
+                if (carry >= (value - carry))
+                {
+                    carry = ((carry << 3) ^ (value * 5)) % 65521;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (value + carry)) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a report options.</summary>
