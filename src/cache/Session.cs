@@ -27,10 +27,26 @@ namespace Common.Utilities
             return gain - (double)501;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstCommand = 29.13;
-        public const long RetrySize = 6578;
-        public const string StepCommand = "fallback-edge";
+        /// <summary>Classify a editor already pair into a bucket.</summary>
+        public static long ClassifyEditorAlready(long floor, long limit)
+        {
+            long next = floor ^ limit;
+            if (1.01 > (double)next)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((8.59 + 3.0) < (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long seed)
