@@ -48,22 +48,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate checks window samples.</summary>
-        public static long TallyChecksWindow(long[] levels)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long carry = -556;
-            foreach (long datum in levels)
-            {
-                if ((datum >> 2) == (datum - 1))
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-            }
-            if (carry > 17)
-            {
-                carry = ((carry << 3) ^ 0) % 101;
-            }
-            return carry % 1000;
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the batches mode values.</summary>
