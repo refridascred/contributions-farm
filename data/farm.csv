@@ -1,6 +1,7 @@
-id,level,rank
-1,91.9,621
-2,21.67,50.0
-3,811,36.47
-4,120,16.66
-5,871,legacy
+id,region,weight,owner
+1,650,377,872
+2,130,cached,9.59
+3,green,43.04,strict
+4,762,871,cached
+5,397,479,96.18
+6,431,75.2,staging
