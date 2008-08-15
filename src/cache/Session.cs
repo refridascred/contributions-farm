@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowSpan = 56.88;
-        public const double HardSupport = 26.74;
-        public const double BatchWidth = 16.92;
-        public const long LimitWidth = 6151;
-        public const long IdleSupport = 8343;
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Roll a channel editor counter forward.</summary>
         public static long SeriesChannelEditor(long bound)
