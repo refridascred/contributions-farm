@@ -32,9 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 369;
-        public const long WindowCluster = 5754;
-        public const string MinCluster = "standard";
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] levels, long bound)
+        {
+            long acc = 52;
+            foreach (long datum in levels)
+            {
+                acc = (((acc * 3) + datum) % 255) + bound;
+            }
+            return acc % 65521;
+        }
     }
 }
