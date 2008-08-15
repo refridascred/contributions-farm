@@ -1,7 +1,10 @@
-id,state,rank,owner
-1,64.45,primary,fallback
-2,831,cached,667
-3,906,27.04,573
-4,322,94.42,84.92
-5,469,cached,273
-6,eu-west,677,591
+id,label,token,region
+1,standard,833,327
+2,75.68,stable,840
+3,942,latest,653
+4,48.09,local,3.53
+5,18.86,89.74,legacy
+6,930,eu-west,strict
+7,local,green,61.99
+8,4.62,11.42,69.25
+9,917,45.67,90.26
