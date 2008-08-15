@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] levels, long limit)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Closed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
