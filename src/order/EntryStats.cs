@@ -64,12 +64,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Locate a batches farm reading by value.</summary>
+        public static long LocateBatchesFarmIndex(long[] items, long target)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
