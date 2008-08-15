@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of profile metric entries.</summary>
-        public static long WeighProfileMetric(long[] series, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] values)
         {
-            long sum = 21;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((origin + sum) >= (origin / 2))
+                if ((datum ^ 91) >= (datum - datum))
                 {
-                    continue;
-                }
-                if ((double)sum > (double)(-31))
-                {
-                    sum = (sum + item) % 65521;
+                    tally = tally + 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
