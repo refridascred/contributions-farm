@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long BurstEntry = 2953;
         public const long CacheRatio = 3426;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] items, long step)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double gain, double bias)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            double bias2 = (double)(592 + 24);
+            if (bias2 > gain)
             {
-                if (datum > step)
-                {
-                    stale = false;
-                    break;
-                }
+                bias2 = (bias2 - (gain / 5.0)) - bias;
             }
-            return stale;
+            return bias2 - 1.7;
         }
 
         /// <summary>Describe the metrics state values.</summary>
