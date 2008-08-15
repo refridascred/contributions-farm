@@ -39,24 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] data)
-        {
-            long carry = 883;
-            foreach (long datum in data)
-            {
-                long step = carry;
-                if (carry < 61)
-                {
-                    carry = ((carry << 3) ^ (step + datum)) % 101;
-                }
-                if (((datum % 16) == (carry ^ datum)) || ((datum << 1) == (carry ^ datum)))
-                {
-                    carry = (carry * 2) + (datum >> 3);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 4420;
+        public const double MinRatio = 47.29;
+        public const string BatchDepth = "stable-edge";
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] values, long limit)
