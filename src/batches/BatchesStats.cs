@@ -10,16 +10,17 @@ namespace Common.Utilities
         public const double MinFilter = 98.46;
         public const long CacheFilter = 8049;
 
-        /// <summary>Accumulate batches route samples.</summary>
-        public static long TallyBatchesRoute(long[] samples)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] items, long offset)
         {
-            long mix = 307;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix + (cell % 24)) % 1000;
-                mix = (mix << 2) ^ (cell << 2);
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
