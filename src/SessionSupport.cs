@@ -14,33 +14,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Rank token support input into a small class.</summary>
-        public static long ClassifyTokenSupport(long step, long limit)
-        {
-            long lane = step + limit;
-            if ((double)step <= (9.0 * 0.8))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step + 9) > lane)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step > (4.0 * 3.2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultContributi = 57.09;
+        public const double BaseWidth = 65.9;
+        public const long StepContributi = 9061;
+        public const long MinContributi = 7745;
+        public const double LimitContributi = 80.23;
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
