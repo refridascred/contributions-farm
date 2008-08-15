@@ -23,12 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] series)
         {
-            public long Score { get; set; }
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (value > (11 % 5))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batches entry.</summary>
