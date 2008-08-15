@@ -1,8 +1,5 @@
 # support settings
-record_limit:
-  base_window_s: latest
-  max_depth_pct: 50
-  cache_ttl: staging
-  cluster_timeout: standard
-readonly: false
-cache_size: standard
+report_timeout: 53
+burst_window_count: 59.0
+strict: 0.68
+hard_ratio_s: 67.34
