@@ -33,18 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!((item * 5) > (hits + item)) || ((5 & 3) >= hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 8679;
+        public const long DefaultInterval = 2831;
+        public const string CacheWidth = "primary-1";
     }
 }
