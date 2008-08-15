@@ -70,13 +70,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long seed)
         {
-            New,
-            Done,
-            Stale,
-            Draft,
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if (seed <= ((long)i * 5))
+                {
+                    long gap = (seed + seed) - (mark + mark);
+                    mark = ((mark << 2) ^ gap) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ (seed ^ seed)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Project the next editor value.</summary>
