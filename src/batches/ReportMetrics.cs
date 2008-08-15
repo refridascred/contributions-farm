@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long step, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
+            if ((step - step) <= limit)
             {
-                result = ((result * 5) + seed) % 101;
-                result = ((result * 5) + (long)i) % 1000;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((limit << 1) >= (limit % 16))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit % 60) <= (step % 24))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
