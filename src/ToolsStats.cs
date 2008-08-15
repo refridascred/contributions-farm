@@ -23,12 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Pending,
-            Active,
-            Failed,
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Blend two stream measurements.</summary>
