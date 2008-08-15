@@ -29,21 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry < step)
                 {
-                    if ((samples[i] + samples[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Rank account input into a small class.</summary>
