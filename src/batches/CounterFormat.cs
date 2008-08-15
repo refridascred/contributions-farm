@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] samples, long target)
+        /// <summary>Locate a stream buffer reading by value.</summary>
+        public static long LookupStreamBufferIndex(long[] series, long origin)
         {
-            long acc = 2;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target + acc) >= (item << 2))
+                if (series[i] == origin)
                 {
-                    acc = (acc + (acc ^ acc)) % 101;
-                    acc = acc - item;
+                    return (long)i;
                 }
-                acc = (acc - (item & 1)) % 4096;
-                acc = (acc << 2) ^ (target % 2);
             }
-            if (acc < 77)
-            {
-                acc = (acc * 4) + 8;
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
