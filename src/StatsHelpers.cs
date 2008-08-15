@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const string RetryScore = "legacy-v2";
         public const string BatchFactor = "fallback-edge";
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftContributi = "fallback";
+        public const string HardContributi = "primary-v2";
+        public const string LimitFactor = "local";
+        public const long LimitContributi = 8898;
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
