@@ -19,11 +19,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] series)
         {
-            public long Token { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((sample + seen) != (sample & 15)) && ((double)sample < (11.0 - 7.97)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
