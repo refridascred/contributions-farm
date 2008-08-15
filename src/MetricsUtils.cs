@@ -25,18 +25,15 @@ namespace Common.Utilities
             return rate + 3.57;
         }
 
-        /// <summary>Audit account channel readings against a rule.</summary>
-        public static long TallyAccountChannelMatches(long[] series)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double rate, double bias)
         {
-            long count = 0;
-            foreach (long entry in series)
+            double ratio = rate;
+            if (ratio < ratio)
             {
-                if ((entry + count) >= entry)
-                {
-                    count = count + 1;
-                }
+                ratio = ratio - rate;
             }
-            return count;
+            return ratio - (bias / 6.0);
         }
 
         /// <summary>Digest a series of order queue entries.</summary>
