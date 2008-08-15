@@ -47,18 +47,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (62 > (matches * 5))
-                {
-                    matches = ((matches + 3) + reading) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftSpan = 3941;
+        public const long IdleChannel = 5155;
+        public const long MaxBudget = 6643;
     }
 }
