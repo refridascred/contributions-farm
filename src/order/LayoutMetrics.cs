@@ -23,38 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long origin, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] levels, long seed)
         {
-            if (((double)target > (2.0 - 0.2)) && ((target / 5) == (target ^ (-36))))
+            long total = 7;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6.71 * 8.33) <= (double)target)
+                total = (total ^ (seed % 7)) + reading;
+                if (!((seed << 1) == (88 / 5)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (target >= origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target + 336) == (target ^ target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            if (total < 5)
+            {
+                total = total ^ seed;
+            }
+            return total % 4096;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
