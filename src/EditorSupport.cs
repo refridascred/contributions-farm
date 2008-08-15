@@ -25,14 +25,21 @@ namespace Common.Utilities
         public const long HardTimeout = 5806;
         public const long MaxFactor = 752;
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long limit)
         {
-            Closed,
-            Retry,
-            Idle,
-            Pending,
-            New,
+            long result = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = (result ^ (long)i) ^ (long)i2;
+                }
+                result = ((result * 3) + ((long)i + (long)i)) % 65521;
+                result = ((result * 3) + 70) % 101;
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
