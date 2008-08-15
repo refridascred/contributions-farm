@@ -32,17 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a editor commits sample.</summary>
-        public static long LookupEditorCommitsIndex(long[] levels, long limit)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
