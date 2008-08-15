@@ -60,22 +60,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchEditor = 13.94;
+        public const long BurstEditor = 7863;
+        public const long BaseEditor = 1956;
+        public const long BurstSize = 6830;
+        public const string StepEditor = "latest-edge";
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long GradeRecord(long floor, long limit)
