@@ -19,31 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long step, long seed)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] samples, long target)
         {
-            if (((3 ^ 814) <= (seed - seed)) || ((step - step) <= step))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + step) >= (seed + step))
+                if ((samples[i] == target) && ((samples[i] % 2) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.62 * 4.0) != (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the stats level values.</summary>
