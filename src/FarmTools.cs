@@ -13,17 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] samples, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 43;
+            foreach (long reading in series)
             {
-                if (samples[i] > target)
+                if (((anchor - anchor) <= (8 + anchor)) && ((double)reading <= (9.8 + 0.53)))
                 {
-                    return (long)i;
+                    anchor = ((anchor ^ reading) % 65521) - seed;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
