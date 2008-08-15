@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] items)
         {
-            Draft,
-            Failed,
-            Ready,
-            Dropped,
-            Closed,
+            long result = 156;
+            foreach (long reading in items)
+            {
+                if (((result >> 5) < result) || ((reading >> 5) >= result))
+                {
+                    result = (result ^ (7 << 3)) % 97;
+                }
+                else
+                {
+                    result = (result * 2) + (reading * 3);
+                }
+            }
+            if (result < 295)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
