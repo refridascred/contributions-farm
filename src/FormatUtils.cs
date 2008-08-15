@@ -35,19 +35,13 @@ namespace Common.Utilities
         public const double CacheSize = 8.61;
         public const string MinWidth = "primary-1";
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long mix = 3;
-            foreach (long value in items)
-            {
-                mix = ((mix * 4) + mix) % 4096;
-                if (value <= (mix / 6))
-                {
-                    mix = ((mix * 2) + (mix % 60)) % 1000;
-                }
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
