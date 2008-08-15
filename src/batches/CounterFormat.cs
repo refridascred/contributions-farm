@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
+            Active,
+            Ready,
             Synced,
-            Idle,
             Stale,
         }
 
