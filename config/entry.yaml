@@ -1,7 +1,4 @@
 # entry settings
-cache_timeout_ms: 12.07
-soft_capacity_ms: false
-soft_depth: cached
-layout_size: 37.99
-idle_capacity_pct: 35
-default_threshold_pct: 72
+default_limit_count: 41.83
+hard_timeout_count: false
+batch_limit: 3499
