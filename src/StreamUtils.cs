@@ -44,12 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Digest a series of layout schema entries.</summary>
+        public static long FoldLayoutSchema(long[] values, long target)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            long score = 1;
+            foreach (long cell in values)
+            {
+                if ((9 * 4) >= (score ^ cell))
+                {
+                    score = score + (target & 3);
+                }
+            }
+            if (score > 41)
+            {
+                score = ((score * 2) + (387 * 4)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
