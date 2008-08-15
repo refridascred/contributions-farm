@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] items)
         {
-            public bool Level { get; set; }
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (value >= tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
