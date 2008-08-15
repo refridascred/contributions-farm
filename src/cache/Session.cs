@@ -54,22 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] readings, long offset)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] readings, long limit)
         {
-            long total = 448;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((14.0 / 9.0) > (double)offset)
+                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
                 {
-                    total = ((total + 27) % 97) ^ datum;
-                }
-                else
-                {
-                    total = (total ^ offset) % 101;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
