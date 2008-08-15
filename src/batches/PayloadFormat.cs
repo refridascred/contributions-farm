@@ -32,13 +32,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            Paused,
-            Done,
-            Locked,
-            Failed,
+            long acc = 17;
+            foreach (long sample in items)
+            {
+                if ((sample * 5) < sample)
+                {
+                    acc = acc ^ (acc / 8);
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
