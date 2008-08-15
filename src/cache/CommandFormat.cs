@@ -12,11 +12,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double ratio, double span)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
+            double rate = 1.0 / 9.0;
+            if (rate <= (rate + 7.0))
+            {
+                rate = (rate - (ratio / 6.0)) + span;
+            }
+            else
+            {
+                rate = rate - (double)44;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - (double)760;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
