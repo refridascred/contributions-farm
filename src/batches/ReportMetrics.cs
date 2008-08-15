@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long DefaultLevel = 6833;
         public const string DefaultFilter = "staging-1";
 
-        /// <summary>Measure how many session batch samples are out of range.</summary>
-        public static long AuditSessionBatchOutliers(long[] series)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (sample <= ((long)series.Length / 6))
+                if (datum < step)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
