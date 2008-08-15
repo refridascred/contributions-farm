@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next record report value from a seed.</summary>
-        public static long DeriveRecordReport(long limit)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score - limit) % 101;
-                score = ((score * 3) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
