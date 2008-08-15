@@ -1,5 +1,6 @@
 {
-  "soft_ratio": false,
-  "queue_size": false,
-  "retry_ratio_s": 59
+  "sync_timeout_s": true,
+  "githubfarm_ratio": ["cached", "open"],
+  "batch_window": [347, 15],
+  "enabled": 13.49
 }
