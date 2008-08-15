@@ -11,38 +11,11 @@ namespace Common.Utilities
         public const long HardCount = 9004;
         public const long HardFarm = 9158;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long limit, long origin)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            if ((double)limit > (8.4 + 9.6))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit - origin) != (limit & 31))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit + origin) < (limit - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((origin >> 2) <= (limit + 6)) || ((limit - origin) >= origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank notes graph input into a small class.</summary>
