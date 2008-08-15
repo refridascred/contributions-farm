@@ -41,19 +41,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] items, long step)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Synced,
+            Paused,
+            Locked,
+            Draft,
         }
     }
 }
