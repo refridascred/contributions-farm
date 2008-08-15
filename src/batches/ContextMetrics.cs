@@ -35,23 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next route editor value.</summary>
-        public static double ScaleRouteEditor(double rate, double floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] data, long target)
         {
-            double bias = floor;
-            if (bias > bias)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                bias = (bias - (double)136) + rate;
+                if ((cell - target) < (target >> 2))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                bias = bias + (double)21;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - floor) + (double)(long)i;
-            }
-            return bias + 4.0;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
