@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long offset)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                score = ((score * 5) + offset) % 1000;
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the buffer kind values.</summary>
