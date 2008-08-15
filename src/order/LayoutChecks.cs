@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = (mark - (floor + mark)) % 255;
-                mark = ((mark << 2) ^ (mark / 7)) % 65521;
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 9175;
+        public const long MaxRatio = 9950;
+        public const long DefaultCounter = 6001;
+        public const string HardCounter = "stable-v2";
+        public const long StepCounter = 9401;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long BucketOrder(long offset, long step)
