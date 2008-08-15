@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] levels)
-        {
-            long carry = 61;
-            foreach (long entry in levels)
-            {
-                carry = (carry + (2 + 97)) ^ entry;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitEditor = 28.03;
+        public const string HardEditor = "primary";
+        public const long BurstSize = 401;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BaseFormat = "legacy-1";
