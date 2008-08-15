@@ -34,22 +34,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowBudget = 9321;
+        public const double WindowScore = 84.26;
+        public const string WindowCommits = "primary-edge";
+        public const double BaseCommits = 73.22;
 
         /// <summary>Blend two graph editor measurements.</summary>
         public static double AdjustGraphEditor(double gain, double span)
