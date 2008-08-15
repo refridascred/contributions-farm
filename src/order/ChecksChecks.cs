@@ -36,11 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long offset)
         {
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
