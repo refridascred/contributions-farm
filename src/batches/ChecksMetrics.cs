@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const long IdleFarm = 6282;
         public const string IdleDepth = "alpha";
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] samples)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Retry,
+            Ready,
+            Idle,
+            Pending,
         }
 
         /// <summary>Blend two payload measurements.</summary>
