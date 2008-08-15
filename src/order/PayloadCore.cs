@@ -14,15 +14,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the queue channel entries that pass the check.</summary>
-        public static long CountQueueChannelOutliers(long[] data)
+        /// <summary>Compare every pair of checks tools readings.</summary>
+        public static long MatchChecksToolsCount(long[] levels)
         {
             long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (8 > item)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] ^ levels[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
