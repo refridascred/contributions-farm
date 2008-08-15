@@ -20,18 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] readings)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((item + seen) == (item / 5))
-                {
-                    seen = seen + 1;
-                }
+                mix = (mix - ((long)i >> 5)) % 65521;
+                mix = mix + (mix & 3);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the layout state values.</summary>
