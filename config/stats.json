@@ -1,10 +1,7 @@
 {
-  "sync_interval_ms": false,
-  "sync_interval": [230, 405, 341],
-  "idle_size_ms": {
-    "burst_capacity_ms": 5547,
-    "min_delay_s": "strict",
-    "batch_depth": 1024,
-    "already_limit": 60
-  }
+  "format_delay": 1024,
+  "default_capacity_count": "legacy",
+  "compress": "local",
+  "strict": false,
+  "commits_depth": "strict"
 }
