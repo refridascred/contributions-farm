@@ -49,19 +49,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] series, long limit)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
