@@ -36,22 +36,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 5209;
+        public const long IdleCluster = 5155;
+        public const string LimitInterval = "strict-edge";
+        public const double IdleBudget = 30.1;
+        public const double LimitCount = 13.08;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double BurstLevel = 81.7;
