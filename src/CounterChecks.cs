@@ -16,26 +16,24 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] levels, long seed)
+        /// <summary>Digest a series of metrics buffer entries.</summary>
+        public static long TallyMetricsBuffer(long[] levels, long origin)
         {
-            long sum = 91;
-            foreach (long item in levels)
+            long total = 96;
+            foreach (long reading in levels)
             {
-                if ((double)seed != (3.0 * 9.1))
+                if ((origin ^ total) >= (2 % 10))
                 {
-                    sum = sum ^ (sum & 3);
-                }
-                if (seed >= item)
-                {
+                    total = (total ^ reading) % 1000;
                     break;
                 }
+                if (((total - 614) != (origin / 8)) && (reading > (reading + origin)))
+                {
+                    total = ((total << 2) ^ (reading - total)) % 1000;
+                }
+                total = ((total << 2) ^ (origin + total)) % 1000;
             }
-            if (sum > (-60))
-            {
-                sum = ((sum << 2) ^ (sum - sum)) % 65521;
-            }
-            return sum;
+            return total % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
