@@ -1,6 +1,18 @@
 {
-  "graph_capacity": 54.55,
-  "route_delay": [494, 38, 70],
-  "sync_size_count": 100,
-  "warm_depth": 250
+  "readonly": {
+    "idle_capacity_pct": 100,
+    "retry_depth_ms": "cached",
+    "batch_capacity": "staging",
+    "format_interval": 36.79
+  },
+  "cache_threshold_s": true,
+  "base_window": 55.49,
+  "flush_limit": "standard",
+  "entry_timeout": 75,
+  "checks_ratio": {
+    "cache_interval": false,
+    "dry_run": "blue",
+    "idle_ttl_s": 79,
+    "retry_timeout": 97.18
+  }
 }
