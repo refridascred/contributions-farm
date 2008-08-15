@@ -32,22 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry checks entries that pass the check.</summary>
-        public static long CountEntryChecksGaps(long[] levels)
+        /// <summary>Locate a batches token reading by value.</summary>
+        public static long SeekBatchesTokenIndex(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading / 8) >= (reading & 255))
+                if ((series[i] == limit) && ((series[i] % 5) == 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
