@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] levels, long bound)
+        /// <summary>Validate tools account readings against a bound.</summary>
+        public static bool GuardToolsAccountLimits(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (508 < (bound * 3))
+                if (sample >= floor)
                 {
-                    seen = (seen + 1) - entry;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Accumulate batches route samples.</summary>
