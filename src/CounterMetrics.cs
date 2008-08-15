@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long anchor = 70;
-            foreach (long sample in readings)
-            {
-                if (((5.63 - 5.71) <= (double)sample) || ((sample * 2) > anchor))
-                {
-                    anchor = (anchor * 2) + (anchor >> 5);
-                }
-            }
-            return anchor % 97;
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
