@@ -49,9 +49,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowWidth = 97.24;
-        public const long BatchFarm = 2964;
-        public const string HardFarm = "staging-1";
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long floor, long step)
+        {
+            if (floor > (floor % 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor <= (floor + floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (692 <= (step >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
