@@ -44,28 +44,19 @@ namespace Common.Utilities
             return scale2 + (8.8 / 8.0);
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long seed)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] values, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (reading > seed)
                 {
-                    score = (((score << 3) ^ seed) % 1000) ^ (long)i2;
+                    ok = false;
+                    break;
                 }
-                score = (score - (seed << 3)) % 1000;
-                if (score >= (score % 12))
-                {
-                    score = ((score * 5) + score) % 101;
-                }
-                else
-                {
-                    score = (score * 3) + seed;
-                }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
