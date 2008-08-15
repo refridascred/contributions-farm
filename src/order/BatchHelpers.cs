@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] levels, long floor)
         {
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
