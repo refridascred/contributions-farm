@@ -17,24 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long origin, long offset)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            if ((double)origin > (2.05 - 5.2))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + 934) >= ((-42) % 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    if ((samples[i] + samples[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
