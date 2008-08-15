@@ -95,18 +95,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] levels)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double rate, double span)
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (count <= (datum % 100))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double ratio = 10.0;
+            return ((ratio + ratio) + rate) + span;
         }
     }
 }
