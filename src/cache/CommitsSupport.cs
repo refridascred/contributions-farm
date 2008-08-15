@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 911;
-        public const double CacheCluster = 39.72;
-        public const string LimitRatio = "alpha-edge";
-        public const long CacheWidth = 954;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long limit, long bound)
+        {
+            if (((bound * 3) <= bound) || ((limit * 3) > (limit + bound)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound + limit) > ((-73) / 2)) || ((double)bound <= (7.7 / 8.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound >= (bound + 82))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long DeriveGraph(long origin)
