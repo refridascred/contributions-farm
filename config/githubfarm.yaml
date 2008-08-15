@@ -1,7 +1,22 @@
 # githubfarm settings
-route_retries:
-  max_threshold_count: edge
-  flush_capacity: 1024
-  layout_window: latest
-warm_ratio_ms: 64
-hard_ttl: 7358
+batch_depth_count:
+  min_delay_s: green
+  burst_ratio_s: 9093
+  verbose: 3396
+  githubfarm_size:
+    - blue
+    - blue
+    - stable
+    - fallback
+  warm_ratio:
+    sync_interval_ms: stable
+    min_threshold_s: 17.39
+    max_retries: standard
+  schema_ttl: legacy
+flush_capacity:
+  - 481
+  - 10
+  - 271
+  - 370
+cache_delay: staging
+min_size_ms: true
