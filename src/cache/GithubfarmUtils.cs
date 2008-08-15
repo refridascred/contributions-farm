@@ -12,17 +12,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Find the first context session entry that matches the target.</summary>
-        public static long LocateContextSessionIndex(long[] readings, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (readings[i] < bound)
+                if (!((value + value) == (count * 4)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Adjust a record reading.</summary>
