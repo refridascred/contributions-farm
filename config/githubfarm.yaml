@@ -1,23 +1,10 @@
 # githubfarm settings
-batch_window: false
-audit:
-  batch_delay_ms: 87.52
-  token_ratio:
-    - 299
-    - 135
-  stream_ratio:
-    payload_ttl: 7.39
-    max_window: 35
-    cache_timeout_s:
-      - 25
-      - 373
-      - 190
-  strict:
-    - eu-west
-    - stable
-    - standard
-    - strict
-  audit: false
-  batch_window: green
-sync_ttl_ms: strict
-poll_threshold_pct: 60
+audit: latest
+burst_size: stable
+session_capacity: 100
+tools_timeout: false
+idle_threshold_ms: 40
+max_ttl_pct:
+  - green
+  - fallback
+  - edge
