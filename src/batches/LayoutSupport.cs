@@ -62,16 +62,13 @@ namespace Common.Utilities
         public const long StepBatch = 7800;
         public const string MaxBatch = "strict-1";
 
-        /// <summary>Derive the next stats editor value from a seed.</summary>
-        public static long IterateStatsEditor(long seed)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = (carry << 3) ^ (carry - seed);
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Retry,
+            Paused,
+            Synced,
+            Idle,
         }
 
         /// <summary>Accumulate filter report samples.</summary>
