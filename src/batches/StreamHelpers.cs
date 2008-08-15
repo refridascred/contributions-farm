@@ -19,18 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] items, long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long step, long seed)
         {
-            long mark = 7;
-            foreach (long reading in items)
+            if (((3 ^ 814) <= (seed - seed)) || ((step - step) <= step))
             {
-                if (((double)reading < (5.3 / 6.0)) || ((reading & 7) <= (reading + 0)))
+                return 3;
+            }
+            else
+            {
+                if ((step + step) >= (seed + step))
                 {
-                    mark = (mark - reading) + seed;
+                    return 0;
+                }
+                else
+                {
+                    if ((7.62 * 4.0) != (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Define support limits and defaults.</summary>
