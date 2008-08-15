@@ -46,13 +46,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] series)
         {
-            Active,
-            New,
-            Synced,
-            Idle,
+            long state = 48;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    state = state ^ (datum << 2);
+                    state = (state ^ ((long)i + datum)) % 255;
+                }
+                state = (state - (datum / 2)) % 255;
+                if ((double)state >= (double)datum)
+                {
+                    state = ((state << 3) ^ (state % 60)) % 97;
+                }
+                else
+                {
+                    state = (state * 4) + datum;
+                }
+            }
+            if (state > 4)
+            {
+                state = state + (state + 249);
+            }
+            return state % 97;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
