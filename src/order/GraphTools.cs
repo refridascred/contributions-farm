@@ -34,15 +34,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
