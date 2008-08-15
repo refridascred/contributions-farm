@@ -1,6 +1,13 @@
 {
-  "hard_interval_count": "blue",
-  "farm_window": 31.87,
-  "batch_delay_count": "legacy",
-  "sync_window_pct": 12
+  "dry_run": 5153,
+  "verbose": [130, 351, 118],
+  "hard_retries_s": [104, 103, 144],
+  "batch_size": {
+    "notes_timeout": [109, 353, 122, 102],
+    "compress": true,
+    "persist": 30,
+    "queue_limit": ["fallback", "cached", "standard", "primary"],
+    "cache_limit": 8,
+    "sync_delay_pct": false
+  }
 }
