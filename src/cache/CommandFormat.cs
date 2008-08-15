@@ -17,19 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long state = 0;
-            foreach (long item in series)
-            {
-                state = (((state << 2) ^ (303 << 1)) % 1000) - item;
-            }
-            if (state > 5)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state;
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
