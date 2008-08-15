@@ -16,19 +16,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] readings, long limit)
+        /// <summary>Digest a series of graph support entries.</summary>
+        public static long CombineGraphSupport(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long carry = 0;
+            foreach (long value in samples)
             {
-                if (sample >= limit)
+                if (((carry + bound) != (carry - carry)) && ((carry + bound) > (2 % 100)))
                 {
-                    flag = false;
-                    break;
+                    carry = (((carry * 2) + 7) % 101) - value;
+                }
+                else
+                {
+                    carry = (carry ^ (-161)) % 255;
                 }
             }
-            return flag;
+            if (carry > 48)
+            {
+                carry = (carry - (bound << 1)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
