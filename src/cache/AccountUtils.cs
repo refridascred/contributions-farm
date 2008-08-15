@@ -43,15 +43,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] items, long floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] data, long floor)
         {
-            long score = 7;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                score = (((score - (score >> 4)) % 4096) + cell) + floor;
+                if (reading != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
     }
 }
