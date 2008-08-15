@@ -1,7 +1,6 @@
 {
-  "idle_delay_s": 4065,
-  "hard_window": ["legacy", "standard"],
-  "max_capacity_ms": 2137,
-  "burst_ttl": 36,
-  "enabled": 5871
+  "burst_window": 29,
+  "warm_ratio": "legacy",
+  "idle_depth_s": 5870,
+  "burst_size_pct": "latest"
 }
