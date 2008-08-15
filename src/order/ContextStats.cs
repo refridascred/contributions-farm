@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long seed, long target)
+        /// <summary>Look up the position of a entry batch sample.</summary>
+        public static long LocateEntryBatchIndex(long[] series, long limit)
         {
-            if ((double)target <= (double)seed)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target < (9.56 / 5.0))
+                if ((series[i] < limit) && ((series[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
