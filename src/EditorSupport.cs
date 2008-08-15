@@ -48,20 +48,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] readings, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseDepth = 4976;
+        public const long BurstBuffer = 8805;
+        public const string IdleSpan = "local";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MaxReport = 3315;
