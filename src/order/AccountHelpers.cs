@@ -27,22 +27,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] data, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] readings, long seed)
         {
-            long sum = 8;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (((sample / 3) < sample) || ((double)limit >= (4.98 * 6.08)))
+                if ((seen - entry) == (long)readings.Length)
                 {
-                    sum = sum - limit;
+                    seen = (seen + 2) + seed;
                 }
             }
-            if (sum < 10)
-            {
-                sum = (sum - (sum ^ limit)) % 65521;
-            }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
