@@ -44,11 +44,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
     }
 }
