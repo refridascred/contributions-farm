@@ -1,18 +1,16 @@
 # support settings
-max_capacity_ms: 500
-strict: 60
-flush_retries_count: strict
-idle_limit_pct: false
-default_retries: green
-idle_timeout:
-  profile_delay: 63.97
-  strict:
-    persist: legacy
-    retry_window_s: 3540
-    dry_run: 59
-    warm_limit: 79.48
-    min_delay_pct: 500
-  idle_delay_pct: 9792
-  audit: 83.1
-  report_ttl: 7125
-  readonly: 1024
+cache_depth:
+  farm_ratio: blue
+  min_retries_s: 5398
+  retry_size_pct: 81
+  retry_ttl_ms: 12
+idle_retries_ms: true
+base_window_pct:
+  - 77
+  - 125
+  - 141
+  - 343
+default_ttl_pct:
+  - 416
+  - 373
+  - 340
