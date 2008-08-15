@@ -46,11 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowSupport = 79.61;
-        public const long StepSupport = 6128;
-        public const double RetrySpan = 6.52;
-        public const long SoftSupport = 1407;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Active,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long WindowSize = 1277;
