@@ -23,17 +23,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a cluster queue reading by value.</summary>
-        public static long LookupClusterQueueIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSupport = 38.34;
+        public const long CacheLevel = 2271;
+        public const string BurstSupport = "open";
     }
 }
