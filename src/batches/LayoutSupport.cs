@@ -14,19 +14,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long step)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = ((sum + ((long)i + sum)) % 101) ^ (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Match up stream samples.</summary>
