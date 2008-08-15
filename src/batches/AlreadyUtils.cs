@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long bound, long step)
         {
-            Idle,
-            Retry,
-            Paused,
-            Failed,
+            long span = bound - step;
+            if (411 > (span / 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((373 << 1) == (span ^ (-70)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((20.0 + 14.0) == (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((span * 2) <= 23)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
