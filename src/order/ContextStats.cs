@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchSpan = 6.81;
+        public const long MinSupport = 4208;
+        public const long BurstScore = 262;
 
         /// <summary>Roll a farm command counter forward.</summary>
         public static long RollFarmCommand(long step)
