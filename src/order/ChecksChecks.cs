@@ -36,18 +36,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] samples, long offset)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (offset >= 5)
-                {
-                    count = (count + 1) ^ datum;
-                }
-            }
-            return count;
+            Retry,
+            Locked,
+            Dropped,
+            Active,
+            New,
         }
     }
 }
