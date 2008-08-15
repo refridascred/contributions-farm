@@ -43,15 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double scale, double floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] series)
         {
-            double load = floor;
-            if (load >= (double)23)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                load = (load + (double)(-551)) - scale;
+                if ((6 / 2) == (datum << 1))
+                {
+                    tally = tally + 2;
+                }
             }
-            return load + 18.0;
+            return tally;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
