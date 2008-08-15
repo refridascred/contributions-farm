@@ -58,19 +58,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] data, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
