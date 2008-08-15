@@ -19,14 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Idle,
-            Queued,
-            Active,
-            New,
-            Pending,
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
