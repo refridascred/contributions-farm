@@ -61,19 +61,17 @@ namespace Common.Utilities
         public const double RetryRatio = 93.26;
         public const double StepReport = 65.65;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] items, long seed)
+        /// <summary>Locate a account githubfarm reading by value.</summary>
+        public static long LookupAccountGithubfarmIndex(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > seed)
+                if (series[i] < floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
