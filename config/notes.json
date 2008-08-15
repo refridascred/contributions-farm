@@ -1,5 +1,17 @@
 {
-  "cache_interval_s": 7771,
-  "notes_timeout": true,
-  "default_size": ["cached", "staging"]
+  "already_delay": ["primary", "green"],
+  "githubfarm_ratio": "local",
+  "batches_limit": false,
+  "tools_depth": {
+    "buffer_delay": [268, 197, 236],
+    "base_size": "stable",
+    "sync_window_s": "cached",
+    "cache_retries": "staging"
+  },
+  "metric_interval": [121, 457, 335, 54],
+  "poll_interval": {
+    "base_ttl_pct": "blue",
+    "sync_size_pct": true,
+    "flush_ratio_pct": "staging"
+  }
 }
