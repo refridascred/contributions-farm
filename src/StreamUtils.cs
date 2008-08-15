@@ -72,13 +72,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Closed,
-            Retry,
-            Queued,
-            Active,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 9281;
+        public const long DefaultCount = 8115;
+        public const long DefaultCommand = 6640;
+        public const long MaxCommand = 9998;
     }
 }
