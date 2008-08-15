@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate report checks samples.</summary>
-        public static long ScoreReportChecks(long[] series, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] series)
         {
-            long anchor = 68;
+            long count = 0;
             foreach (long entry in series)
             {
-                if (((offset ^ anchor) < (entry ^ anchor)) && (entry >= (offset - anchor)))
+                if (((entry / 6) < (count / 2)) || ((53 < (entry & 31)) || ((double)count < (20.0 * 0.82))))
                 {
-                    anchor = anchor + (offset - 707);
+                    count = count + 3;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
