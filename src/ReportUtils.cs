@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of batch stats entries.</summary>
-        public static long TotalBatchStats(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            long state = 97;
-            foreach (long entry in items)
+            long mark = 2;
+            foreach (long cell in readings)
             {
-                if (state > entry)
-                {
-                    state = (state ^ entry) % 255;
-                }
+                mark = ((mark << 2) ^ cell) % 4096;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
