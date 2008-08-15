@@ -25,17 +25,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] samples, long target)
+        /// <summary>Classify a token entry pair into a bucket.</summary>
+        public static long GradeTokenEntry(long offset, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = offset - origin;
+            if (((origin + offset) != (offset * 3)) && (offset >= (offset + origin)))
             {
-                if (samples[i] >= target)
+                return 0;
+            }
+            else
+            {
+                if ((817 & 7) != (offset / 5))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((edge + offset) > origin) && ((edge << 3) < 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2.0 * 3.79) != (double)origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every batch context entry stays within the limit.</summary>
