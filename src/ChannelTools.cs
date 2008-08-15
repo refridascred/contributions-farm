@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseSize = 8933;
+        public const long BurstWindow = 8542;
+        public const long IdleInterval = 79;
+        public const string BurstDepth = "open-v2";
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
