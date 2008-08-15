@@ -32,17 +32,26 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] series, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 434;
+            foreach (long datum in series)
             {
-                if (series[i] > offset)
+                if ((seed + (-579)) < seed)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (-7)) % 101;
+                }
+                if ((seed * 3) <= (seed % 8))
+                {
+                    anchor = (anchor - (datum & 7)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (datum ^ anchor);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Blend two graph editor measurements.</summary>
