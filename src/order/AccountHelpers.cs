@@ -54,22 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] readings, long target)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((target - item) >= (target << 1))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Draft,
+            Failed,
+            Paused,
         }
 
         /// <summary>Derive the next context session value from a seed.</summary>
