@@ -1,12 +1,12 @@
 # Command notes
 
-When a batch fails, the entry handler retries a few times before giving up.
-The payload module keeps contributi values in sync with the batch cache.
-A metrics that stays idle for too long is moved to the cache list.
+The payload module keeps schema values in sync with the metric cache.
+Use counter settings to tune how often account data is refreshed.
+The payload helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new channel fields
-- Validate githubfarm input early
-- Prefer batch defaults
-- Log every githubfarm change
+- Keep stream values small
+- Document new notes fields
+- Review format limits each release
+- Validate batches input early
