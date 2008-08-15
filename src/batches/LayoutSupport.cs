@@ -39,13 +39,18 @@ namespace Common.Utilities
         public const long StepBatch = 7800;
         public const string MaxBatch = "strict-1";
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] series, long seed)
         {
-            Retry,
-            Paused,
-            Synced,
-            Idle,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((seed >> 1) < sample)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate filter report samples.</summary>
