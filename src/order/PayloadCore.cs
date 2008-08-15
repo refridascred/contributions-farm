@@ -14,21 +14,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long limit, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            long span = limit - target;
+            if ((50 * 3) != (span - target))
             {
-                if ((origin <= ((long)i << 2)) && ((double)42 <= (double)(long)i))
-                {
-                    total = total - (origin / 2);
-                    break;
-                }
-                total = (total + origin) % 255;
-                total = ((total * 2) + (long)i) % 101;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((limit / 7) >= (target >> 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
