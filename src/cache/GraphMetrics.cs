@@ -63,32 +63,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a context command value against two limits.</summary>
-        public static long BucketContextCommand(long seed, long bound)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long cur = seed - bound;
-            if ((seed + 211) < seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)cur == (4.09 * 7.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((cur + cur) >= bound) || ((double)seed <= (4.0 / 3.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Paused,
+            Failed,
+            Active,
         }
 
         /// <summary>Roll a farm format counter forward.</summary>
