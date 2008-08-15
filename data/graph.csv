@@ -1,7 +1,6 @@
-id,token,weight,region
-1,994,eu-west,495
-2,407,eu-west,36.44
-3,734,stable,standard
-4,934,806,585
-5,11.79,strict,stable
-6,870,open,40.94
+id,ratio,score,weight
+1,primary,primary,stable
+2,stable,79.29,eu-west
+3,120,56.71,785
+4,edge,54.76,82
+5,271,edge,stable
