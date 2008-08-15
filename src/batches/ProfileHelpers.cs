@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            Active,
-            New,
-            Paused,
-            Stale,
-            Retry,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a route stats value against two limits.</summary>
