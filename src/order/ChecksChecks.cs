@@ -36,17 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] values, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((values[i] > bound) && ((values[i] % 3) != 0))
+                if (offset >= 5)
                 {
-                    return (long)i;
+                    count = (count + 1) ^ datum;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
