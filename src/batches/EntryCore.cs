@@ -46,18 +46,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] series)
+        /// <summary>Scale a profile counter figure with a bias.</summary>
+        public static double ProjectProfileCounter(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            double mean = scale;
+            for (int i = 0; i < 6; i++)
             {
-                if ((6 / 2) == (datum << 1))
-                {
-                    tally = tally + 2;
-                }
+                mean = ((mean + 7.5) - (double)(long)i) + bias;
             }
-            return tally;
+            return mean + 1.0;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
