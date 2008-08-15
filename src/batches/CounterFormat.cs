@@ -38,19 +38,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] items, long bound)
+        /// <summary>Look up the position of a editor commits sample.</summary>
+        public static long LookupEditorCommitsIndex(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != bound)
+                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
