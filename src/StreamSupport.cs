@@ -22,13 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] series, long origin)
         {
-            Active,
-            Synced,
-            Idle,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the session phase values.</summary>
