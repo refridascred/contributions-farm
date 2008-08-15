@@ -35,18 +35,13 @@ namespace Common.Utilities
         public const long DefaultMetric = 7942;
         public const double StepMetric = 38.79;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long sum = 70;
-            foreach (long reading in levels)
-            {
-                if ((sum >> 2) <= reading)
-                {
-                    sum = sum - (reading & 255);
-                }
-            }
-            return sum;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a window options.</summary>
