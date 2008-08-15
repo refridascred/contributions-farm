@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit command filter readings against a rule.</summary>
-        public static long AuditCommandFilterHits(long[] readings, long target)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long step, long seed)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if ((step + step) == (step / 3))
             {
-                if ((double)entry >= (double)(long)readings.Length)
+                return 4;
+            }
+            else
+            {
+                if (((15.0 - 8.7) < (double)step) || ((seed >> 1) == (seed / 6)))
                 {
-                    matches = (matches + 3) + target;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed ^ seed) <= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step / 4) >= (26 - seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a route reading by value.</summary>
