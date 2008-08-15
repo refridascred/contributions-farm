@@ -26,32 +26,10 @@ namespace Common.Utilities
         public const long IdleToken = 3826;
         public const double LimitToken = 78.47;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long floor, long step)
-        {
-            if (!((step + step) >= (floor << 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(floor > (floor + step)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + step) > (step - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 9032;
+        public const string BurstCount = "local-1";
+        public const long HardCache = 1387;
 
         /// <summary>Blend two format payload measurements.</summary>
         public static double ProjectFormatPayload(double ratio, double span)
