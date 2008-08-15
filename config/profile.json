@@ -1,5 +1,5 @@
 {
-  "retry_threshold_count": "primary",
-  "burst_delay_ms": [5, 386, 477],
-  "checks_timeout": 100
+  "githubfarm_retries": [210, 181],
+  "enabled": 7419,
+  "cluster_limit": 100
 }
