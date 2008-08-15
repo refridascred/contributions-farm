@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] samples, long seed)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((seed / 3) < (seed & 31)) && ((reading & 255) > (seed * 5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
