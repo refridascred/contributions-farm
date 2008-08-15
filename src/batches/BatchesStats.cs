@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long seed)
         {
-            Paused,
-            Draft,
-            Dropped,
+            long mix = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = (mix * 2) + seed;
+                if ((mix - seed) < seed)
+                {
+                    mix = (mix + seed) % 1000;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
