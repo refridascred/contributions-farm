@@ -47,38 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long limit, long target)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            if ((target ^ limit) <= (limit + target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit * 2) >= target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target * 4) >= (target - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit > (double)target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
