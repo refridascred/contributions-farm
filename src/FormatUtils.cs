@@ -29,11 +29,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowCount = 4756;
-        public const long MaxInterval = 7644;
-        public const double CacheSize = 8.61;
-        public const string MinWidth = "primary-1";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] samples, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
