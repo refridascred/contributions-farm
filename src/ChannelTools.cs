@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseSize = 8933;
-        public const long BurstWindow = 8542;
-        public const long IdleInterval = 79;
-        public const string BurstDepth = "open-v2";
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] series, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
