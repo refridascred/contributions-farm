@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Blend two booking measurements.</summary>
-        public static double AdjustBooking(double rate, double span)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long bound, long step)
         {
-            double gain = 7.0;
-            return ((gain + gain) + rate) + span;
+            if ((16 > (4 - bound)) && ((step + (-2)) != (step + step)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step <= (6.99 / 9.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)bound >= (4.0 * 7.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound >> 1) <= (step ^ bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a githubfarm booking reading by value.</summary>
