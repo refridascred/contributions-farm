@@ -48,18 +48,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine route context values into a single score.</summary>
-        public static long TallyRouteContext(long[] samples)
+        /// <summary>Check that every stream format entry stays within the limit.</summary>
+        public static bool GuardStreamFormatLimits(long[] items, long limit)
         {
-            long state = 6;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((state < (state >> 1)) || ((5.4 + 7.61) > (double)state))
+                if (value != limit)
                 {
-                    state = (state + (entry >> 1)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Describe the tools phase values.</summary>
