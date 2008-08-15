@@ -70,12 +70,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Locked,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 3040;
+        public const long LimitSupport = 593;
+        public const long RetryScore = 7325;
     }
 }
