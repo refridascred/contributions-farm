@@ -17,19 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every editor queue entry stays within the limit.</summary>
-        public static bool VerifyEditorQueueBounds(long[] data, long floor)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
