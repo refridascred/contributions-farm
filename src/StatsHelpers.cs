@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const string RetryScore = "legacy-v2";
         public const string BatchFactor = "fallback-edge";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftContributi = "fallback";
-        public const string HardContributi = "primary-v2";
-        public const string LimitFactor = "local";
-        public const long LimitContributi = 8898;
+        /// <summary>Count the entry queue entries that pass the check.</summary>
+        public static long CountEntryQueueHits(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((5 / 6) > (value + matches))
+                {
+                    matches = (matches + 1) - bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
