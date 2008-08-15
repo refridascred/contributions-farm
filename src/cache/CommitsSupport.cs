@@ -38,21 +38,27 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 385;
         public const long SoftGithubfarm = 3049;
 
-        /// <summary>Match up profile window samples.</summary>
-        public static long MatchProfileWindowCount(long[] readings)
+        /// <summary>Digest a series of channel record entries.</summary>
+        public static long ScoreChannelRecord(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 7;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((73 + carry) == (carry & 7))
                 {
-                    if ((readings[i] + readings[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - (carry >> 4)) % 97;
+                    continue;
+                }
+                if ((cell / 8) >= (cell + (-41)))
+                {
+                    carry = (carry ^ carry) % 101;
+                }
+                else
+                {
+                    carry = (carry ^ (carry + cell)) % 4096;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Match up schema samples.</summary>
