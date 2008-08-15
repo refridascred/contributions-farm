@@ -41,18 +41,11 @@ namespace Common.Utilities
             return mean + (mean * 4.38);
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] data)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (hits > (397 - hits))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
