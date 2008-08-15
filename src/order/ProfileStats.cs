@@ -32,12 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Count account already pairs that satisfy a relation.</summary>
+        public static long OverlapAccountAlreadyCount(long[] values)
         {
-            Synced,
-            Draft,
-            Stale,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a contributi window reading by value.</summary>
