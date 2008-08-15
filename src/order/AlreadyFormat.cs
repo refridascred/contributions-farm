@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)10 <= (double)bound)
-                {
-                    sum = ((sum * 3) + (bound % 7)) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftTimeout = "latest-edge";
+        public const long BurstDepth = 8445;
+        public const string BaseLevel = "fallback-1";
+        public const string SoftDepth = "staging-v2";
+        public const long CacheFactor = 5290;
 
         /// <summary>Adjust a payload reading.</summary>
         public static double ScalePayload(double bias, double offset)
