@@ -36,18 +36,31 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] series)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long offset, long step)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            if ((4.19 + 6.25) < (double)step)
             {
-                if (entry > (entry << 1))
+                return 4;
+            }
+            else
+            {
+                if (step < (offset >> 4))
                 {
-                    matches = matches + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (!((step >> 2) == (step * 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
