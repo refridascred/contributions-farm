@@ -34,18 +34,26 @@ namespace Common.Utilities
         public const string DefaultDepth = "alpha";
         public const double BatchBatches = 15.64;
 
-        /// <summary>Count the support payload entries that pass the check.</summary>
-        public static long CountSupportPayloadOutliers(long[] samples, long floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long score = 32;
+            foreach (long reading in samples)
             {
-                if ((floor + sample) >= (floor & 7))
+                if (!((reading + score) != (score & 1)))
                 {
-                    count = count + 2;
+                    score = ((score << 3) ^ (score * 4)) % 1000;
+                }
+                if (((315 & 1) == ((long)samples.Length - reading)) && ((5.06 * 6.49) == (double)score))
+                {
+                    break;
                 }
             }
-            return count;
+            if (score < 645)
+            {
+                score = (score * 5) + (score - 745);
+            }
+            return score;
         }
 
         /// <summary>Hold a filter summary.</summary>
