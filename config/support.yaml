@@ -1,12 +1,5 @@
 # support settings
-contributi_capacity:
-  - 61
-  - 9
-  - 228
-persist: 4.25
-base_depth_s:
-  - 262
-  - 56
-  - 172
-max_retries_count: cached
-dry_run: 92
+dry_run: 72.61
+retry_delay_ms: false
+already_threshold: 1024
+base_depth_ms: true
