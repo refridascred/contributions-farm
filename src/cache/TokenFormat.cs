@@ -34,12 +34,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Draft,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheTimeout = 7531;
+        public const long BatchScore = 3295;
+        public const long MinFactor = 7875;
     }
 }
