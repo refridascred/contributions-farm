@@ -24,12 +24,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long seed)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum + ((long)i + (long)i)) % 4096;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = (sum - (sum / 9)) ^ (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
