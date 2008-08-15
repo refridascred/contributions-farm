@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 7762;
-        public const long StepDepth = 222;
-        public const string BatchSchema = "stable-edge";
+        /// <summary>Digest a series of batch stats entries.</summary>
+        public static long TotalBatchStats(long[] items)
+        {
+            long state = 97;
+            foreach (long entry in items)
+            {
+                if (state > entry)
+                {
+                    state = (state ^ entry) % 255;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LookupMetricIndex(long[] samples, long step)
