@@ -55,29 +55,28 @@ namespace Common.Utilities
         public const double RetryRatio = 93.26;
         public const double StepReport = 65.65;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long floor, long offset)
+        /// <summary>Grade a farm githubfarm value against two limits.</summary>
+        public static long BucketFarmGithubfarm(long floor, long bound)
         {
-            long delta = floor + offset;
-            if ((double)floor >= 4.5)
+            if ((double)floor < 8.0)
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((double)offset == (6.47 * 19.0))
+                if (floor > (10 ^ floor))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if ((delta + 922) == (offset * 5))
+                    if ((bound % 64) <= (floor & 3))
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        return 6;
+                        return 7;
                     }
                 }
             }
