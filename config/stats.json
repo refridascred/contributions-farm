@@ -1,6 +1,7 @@
 {
-  "retry_ttl_count": 69.62,
-  "strict": 474,
-  "compress": "local",
-  "buffer_threshold": true
+  "flush_retries": true,
+  "min_ratio_count": "stable",
+  "enabled": "stable",
+  "order_depth": [493, 22],
+  "readonly": 94
 }
