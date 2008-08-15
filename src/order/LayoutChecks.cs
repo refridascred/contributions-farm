@@ -45,11 +45,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double rate, double span)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long offset)
         {
-            double mean = span + (double)2;
-            return (mean - (span / 8.0)) + rate;
+            long state = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 3) + (373 + offset)) % 4096;
+                state = (state - (offset & 3)) % 97;
+                if (((long)i == (state + offset)) && (offset > (921 / 5)))
+                {
+                    state = state ^ offset;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
