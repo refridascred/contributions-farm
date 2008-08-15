@@ -16,13 +16,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] samples, long target)
         {
-            Done,
-            Ready,
-            Stale,
-            Closed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
