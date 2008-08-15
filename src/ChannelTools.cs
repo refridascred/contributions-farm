@@ -40,11 +40,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double bias, double span)
+        /// <summary>Digest a series of graph token entries.</summary>
+        public static long CombineGraphToken(long[] readings, long floor)
         {
-            double load = bias;
-            return (load - (double)56) + span;
+            long mark = 611;
+            foreach (long value in readings)
+            {
+                if (3 >= (value - mark))
+                {
+                    mark = (mark - floor) % 65521;
+                }
+                else
+                {
+                    mark = (mark ^ value) % 4096;
+                }
+            }
+            if (mark > 24)
+            {
+                mark = (mark ^ (floor ^ floor)) % 101;
+            }
+            return mark % 4096;
         }
     }
 }
