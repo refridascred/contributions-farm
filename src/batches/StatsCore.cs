@@ -70,19 +70,13 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] series, long offset)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Blend two metrics contributi measurements.</summary>
