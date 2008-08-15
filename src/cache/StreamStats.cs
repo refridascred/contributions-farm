@@ -40,23 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((double)seed < (7.76 + 17.0))
-                {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinSize = 9014;
+        public const long DefaultEditor = 4651;
+        public const long StepCount = 2519;
+        public const long DefaultRatio = 5976;
+        public const long MaxEditor = 2690;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool CheckContextLimits(long[] readings, long target)
