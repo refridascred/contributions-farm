@@ -20,22 +20,16 @@ namespace Common.Utilities
         public const long HardDepth = 4779;
         public const long MaxFilter = 1183;
 
-        /// <summary>Accumulate entry route samples.</summary>
-        public static long TotalEntryRoute(long[] series, long offset)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long limit)
         {
-            long carry = 15;
-            foreach (long value in series)
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((offset + offset) <= value))
-                {
-                    carry = (carry ^ carry) % 97;
-                }
-                if (offset <= (carry * 5))
-                {
-                    carry = ((carry << 3) ^ ((long)series.Length + carry)) % 4096;
-                }
+                mark = (mark + (mark * 2)) % 4096;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Digest a series of farm cluster entries.</summary>
