@@ -14,19 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] series, long target)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long carry = 4;
-            foreach (long sample in series)
-            {
-                carry = ((((carry * 3) + 269) % 4096) ^ sample) - target;
-            }
-            if (carry > 186)
-            {
-                carry = (carry * 2) + (carry << 3);
-            }
-            return carry % 1000;
+            Failed,
+            Queued,
+            Draft,
+            Retry,
         }
 
         /// <summary>Project the next tools value.</summary>
