@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] series, long step)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
