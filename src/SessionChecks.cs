@@ -20,13 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Stale,
-            Done,
+            Active,
             Synced,
-            Failed,
+            Retry,
         }
 
         /// <summary>Fold a list of route readings.</summary>
