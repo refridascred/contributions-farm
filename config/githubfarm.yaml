@@ -1,5 +1,7 @@
 # githubfarm settings
-route_interval: 30
-profile_ratio: 1024
-flush_timeout: 49.82
-cache_limit_pct: 73.33
+idle_size_count: 97.48
+idle_depth_s: 9431
+route_timeout: 98.04
+warm_threshold_pct: 6830
+cache_capacity: true
+base_depth: true
