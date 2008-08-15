@@ -33,22 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultSize = 174;
+        public const long MaxTimeout = 923;
+        public const long CacheOrder = 5544;
+        public const long LimitOrder = 4864;
+        public const long BatchOrder = 1441;
 
         /// <summary>Adjust a report reading.</summary>
         public static double ProjectReport(double ratio, double bias)
