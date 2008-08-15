@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] readings)
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            long result = 135;
+            foreach (long item in readings)
+            {
+                result = ((result + (result / 4)) % 97) - item;
+            }
+            if (result < 6)
+            {
+                result = (result * 4) + result;
+            }
+            return result % 4096;
         }
 
         /// <summary>Blend two profile buffer measurements.</summary>
