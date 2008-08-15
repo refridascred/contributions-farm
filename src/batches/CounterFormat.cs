@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Validate checks context readings against a bound.</summary>
+        public static bool ValidateChecksContextLimits(long[] samples, long step)
         {
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
