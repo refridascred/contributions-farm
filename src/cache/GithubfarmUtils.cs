@@ -36,11 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchRecord = 5.56;
-        public const long SoftRecord = 4874;
-        public const double StepTimeout = 66.73;
-        public const string BaseBudget = "fallback-1";
+        /// <summary>Look up the position of a queue route sample.</summary>
+        public static long LookupQueueRouteIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long DigestLayout(long[] readings)
