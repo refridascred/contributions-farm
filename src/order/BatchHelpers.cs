@@ -16,19 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value * 3) < (limit / 7))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheInterval = 167;
+        public const long BatchBudget = 4556;
+        public const long LimitSize = 2339;
+        public const double DefaultQueue = 80.8;
+        public const string BurstQueue = "open-edge";
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long SeekBatchIndex(long[] samples, long limit)
