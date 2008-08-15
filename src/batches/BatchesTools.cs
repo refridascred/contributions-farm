@@ -27,38 +27,15 @@ namespace Common.Utilities
         public const long StepCommand = 4869;
         public const double SoftCommand = 80.14;
 
-        /// <summary>Grade a already record value against two limits.</summary>
-        public static long RankAlreadyRecord(long seed, long seed2)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] levels, long floor)
         {
-            if ((double)seed2 <= (9.3 + 10.0))
+            long sum = -420;
+            foreach (long cell in levels)
             {
-                return 0;
+                sum = (((sum << 3) ^ (0 + floor)) % 4096) ^ cell;
             }
-            else
-            {
-                if (((seed + seed) >= (seed2 + seed)) && (seed >= (seed2 + seed2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-728) + seed2) != (seed2 ^ seed2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (seed2 >= (seed % 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
