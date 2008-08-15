@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long step, long limit)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long lane = step ^ limit;
-            if (lane >= (step + 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step & 31) > (lane - 908)) || ((limit / 8) > lane))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + lane) < 28)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Draft,
+            Failed,
+            Ready,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Accumulate window samples.</summary>
