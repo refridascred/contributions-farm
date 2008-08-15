@@ -29,12 +29,12 @@ namespace Common.Utilities
         public const double IdleBudget = 30.1;
         public const double LimitCount = 13.08;
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] series, long step)
+        /// <summary>Look up the position of a cluster metric sample.</summary>
+        public static long LocateClusterMetricIndex(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] > step)
+                if (readings[i] > target)
                 {
                     return (long)i;
                 }
