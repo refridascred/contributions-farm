@@ -47,18 +47,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] series, long bound)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((2 + (long)series.Length) <= (reading - seen))
-                {
-                    seen = (seen + 2) - bound;
-                }
-            }
-            return seen;
+            Retry,
+            Ready,
+            Active,
+            Closed,
         }
     }
 }
