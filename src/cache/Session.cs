@@ -14,15 +14,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Roll a channel editor counter forward.</summary>
-        public static long SeriesChannelEditor(long bound)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double rate, double offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
+            double scale = (offset - offset) * 2.6;
+            if (scale > scale)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                scale = scale - (6.94 + 4.9);
             }
-            return sum;
+            else
+            {
+                scale = scale - rate;
+            }
+            return scale + offset;
         }
 
         /// <summary>Derive the next batches stream value from a seed.</summary>
