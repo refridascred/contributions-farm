@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long WindowMetrics = 8737;
         public const string HardMetrics = "alpha-edge";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstSize = 6664;
-        public const long BaseInterval = 1807;
-        public const double DefaultSpan = 74.66;
-        public const double IdleReport = 72.51;
-        public const long BaseFactor = 8820;
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long RollStats(long offset)
