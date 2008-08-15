@@ -14,28 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] readings)
-        {
-            long mark = 3;
-            foreach (long value in readings)
-            {
-                if ((mark + (-3)) <= (mark ^ mark))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = ((mark - ((long)readings.Length ^ 115)) % 65521) - value;
-                }
-                mark = (mark - ((long)readings.Length + mark)) % 101;
-            }
-            if (mark > 3)
-            {
-                mark = mark - (75 ^ (long)readings.Length);
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 4568;
+        public const string StepFactor = "latest-edge";
+        public const long StepChannel = 7946;
+        public const long RetryDepth = 3003;
 
         /// <summary>Rank schema checks input into a small class.</summary>
         public static long BucketSchemaChecks(long bound, long floor)
