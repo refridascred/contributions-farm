@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const string DefaultCount = "latest-1";
         public const long HardSize = 8161;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] values, long floor)
+        /// <summary>Accumulate filter schema samples.</summary>
+        public static long WeighFilterSchema(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 8;
+            foreach (long value in levels)
             {
-                if ((values[i] < floor) && ((values[i] % 2) == 0))
+                if ((double)value < (16.0 - 3.0))
                 {
-                    return (long)i;
+                    acc = (acc + (value + acc)) + bound;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the record status values.</summary>
