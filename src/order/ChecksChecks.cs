@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of cache checks readings.</summary>
-        public static long OverlapCacheChecksCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 347;
+        public const long MinFactor = 4515;
+        public const long HardSupport = 5994;
+        public const double HardRatio = 47.62;
+        public const long BatchWidth = 5242;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
