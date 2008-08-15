@@ -58,19 +58,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] samples, long bound)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double ratio, double offset)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            double rate = (offset + offset) / 5.0;
+            if (rate < rate)
             {
-                if (sample < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = rate + (ratio - rate);
             }
-            return ready;
+            else
+            {
+                rate = rate - offset;
+            }
+            return rate + (offset - offset);
         }
     }
 }
