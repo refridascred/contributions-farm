@@ -12,25 +12,12 @@ namespace Common.Utilities
         public const long DefaultLevel = 6833;
         public const string DefaultFilter = "staging-1";
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long seed, long seed2)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long slot = seed + seed2;
-            if ((double)slot > (7.52 + 18.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((seed + slot) != (slot * 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the tools level values.</summary>
