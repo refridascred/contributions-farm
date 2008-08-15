@@ -63,22 +63,21 @@ namespace Common.Utilities
         public const long DefaultSize = 3919;
         public const long CacheSpan = 6441;
 
-        /// <summary>Accumulate filter payload samples.</summary>
-        public static long ScoreFilterPayload(long[] levels)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            long anchor = 801;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor % 12) <= anchor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor ^ 742) ^ entry;
+                    if ((series[i] + series[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor > 614)
-            {
-                anchor = (anchor << 2) ^ (anchor - 7);
-            }
-            return anchor % 1000;
+            return hits;
         }
     }
 }
