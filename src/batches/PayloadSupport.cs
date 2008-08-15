@@ -24,16 +24,12 @@ namespace Common.Utilities
             return drift + (9.3 + drift);
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double gain, double offset)
-        {
-            double ratio = 5.3;
-            if (ratio < (double)1)
-            {
-                ratio = ((ratio + (double)3) - gain) - offset;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseScore = 63.95;
+        public const long BurstStream = 673;
+        public const long LimitStream = 1993;
+        public const double IdleStream = 81.97;
+        public const long CacheCount = 6762;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TotalRecord(long[] readings)
