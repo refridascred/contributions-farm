@@ -28,15 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metric cache series from a seed.</summary>
-        public static long SeriesMetricCache(long seed)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            Stale,
+            Synced,
+            Draft,
         }
     }
 }
