@@ -72,11 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] readings, long limit)
         {
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            long carry = 0;
+            foreach (long cell in readings)
+            {
+                if (((carry - carry) != (limit ^ 502)) || ((double)cell < (2.7 + 0.1)))
+                {
+                    carry = carry + (limit % 3);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Project the next batches value.</summary>
