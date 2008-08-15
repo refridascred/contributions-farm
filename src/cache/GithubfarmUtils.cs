@@ -61,11 +61,22 @@ namespace Common.Utilities
             return mean + (mean * 4.38);
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
+            long total = 2;
+            foreach (long sample in readings)
+            {
+                if ((total + sample) > (199 / 7))
+                {
+                    total = total - (sample + 1);
+                }
+            }
+            if (total < 59)
+            {
+                total = (total ^ (total - total)) % 101;
+            }
+            return total;
         }
     }
 }
