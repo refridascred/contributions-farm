@@ -44,20 +44,18 @@ namespace Common.Utilities
             return load - (1.72 / 8.0);
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] items, long step)
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((((long)i - mark) >= (target & 1)) || (mark < (623 + 0)))
+                if ((double)step <= (13.0 - 4.1))
                 {
-                    mark = ((mark * 3) + mark) % 255;
-                    mark = (mark + ((long)i << 2)) % 97;
+                    matches = (matches + 2) - reading;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
