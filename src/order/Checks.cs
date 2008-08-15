@@ -43,17 +43,19 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] items, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (items[i] > bound)
+                if (sample != bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
