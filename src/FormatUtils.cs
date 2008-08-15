@@ -32,11 +32,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 5864;
-        public const long BaseSize = 3079;
-        public const long IdleBudget = 5480;
-        public const string HardWidth = "open";
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long bound, long bound2)
+        {
+            if ((bound2 + bound2) <= 38)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((8.7 * 2.63) == (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long DeriveCache(long origin)
