@@ -33,13 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheWidth = 9571;
+        public const long MinDepth = 9340;
+        public const long CacheFactor = 1934;
+        public const long BurstRatio = 3608;
     }
 }
