@@ -21,29 +21,15 @@ namespace Common.Utilities
         public const long DefaultBuffer = 7828;
         public const long BaseScore = 8794;
 
-        /// <summary>Derive the next editor commits value from a seed.</summary>
-        public static long RollEditorCommits(long target)
+        /// <summary>Scale a commits entry figure with a bias.</summary>
+        public static double AdjustCommitsEntry(double rate, double bias)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            double ratio = bias;
+            if (ratio <= rate)
             {
-                if (((acc << 3) >= (target + target)) || (target < (long)i))
-                {
-                    acc = (acc << 2) ^ (target ^ acc);
-                }
-                long count = acc << 1;
-                if ((acc <= (count - acc)) && ((double)count < (8.31 * 9.0)))
-                {
-                    acc = acc - (count / 4);
-                }
-                else
-                {
-                    count = (count ^ (acc - target)) % 255;
-                    count = ((count * 3) + acc) % 65521;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
+                ratio = ratio + (bias / 3.0);
             }
-            return acc;
+            return ratio + (double)(-375);
         }
     }
 }
