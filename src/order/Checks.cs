@@ -62,22 +62,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] items, long offset)
+        /// <summary>Check that every batch context entry stays within the limit.</summary>
+        public static bool ValidateBatchContextLimits(long[] series, long limit)
         {
-            long acc = 2;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (acc < (7 + sample))
+                if (cell <= limit)
                 {
-                    continue;
-                }
-                if (!((double)sample == (15.0 - 2.17)))
-                {
-                    acc = ((acc ^ (508 + 77)) % 101) - offset;
+                    valid = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return valid;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
