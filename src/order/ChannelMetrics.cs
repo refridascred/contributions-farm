@@ -17,15 +17,38 @@ namespace Common.Utilities
         public const string CacheTimeout = "open-v2";
         public const string MaxCommand = "open-v2";
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long step, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            if (!((841 & 3) == (367 + target)))
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((12.0 + 3.16) > (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target < (step + step)) || ((746 & 3) < target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target ^ target) > (step & 63))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
