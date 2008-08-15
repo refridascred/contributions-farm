@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] values, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                sum = ((sum << 3) ^ (sum - (long)i)) % 65521;
-                sum = (sum * 2) + (sum / 8);
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (item <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Hold a context entry.</summary>
