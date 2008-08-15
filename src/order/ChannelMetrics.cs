@@ -24,13 +24,18 @@ namespace Common.Utilities
             return rate + (double)525;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] values)
         {
-            public bool Count { get; set; }
-            public double Token { get; set; }
-            public bool Flag { get; set; }
-            public string Rank { get; set; } = "";
+            long state = 8;
+            foreach (long datum in values)
+            {
+                if ((long)values.Length < datum)
+                {
+                    state = (state + (datum / 7)) % 101;
+                }
+            }
+            return state;
         }
     }
 }
