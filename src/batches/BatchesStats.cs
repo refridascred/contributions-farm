@@ -36,31 +36,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long target, long origin)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] levels)
         {
-            if ((target & 3) > (target + 71))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.6 * 2.0) < (double)origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin << 2) <= (target * 4)) || ((origin >> 2) < (target / 3)))
+                    if ((levels[i] + levels[j]) == 3)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
