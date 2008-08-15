@@ -18,30 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel stats samples.</summary>
-        public static long FoldChannelStats(long[] samples, long limit)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] readings, long step)
         {
-            long carry = 7;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (((carry * 2) < (limit - carry)) || (3.0 <= (double)sample))
+                if (cell != step)
                 {
-                    carry = (carry + (limit + carry)) % 101;
-                }
-                if ((double)limit >= (9.3 / 8.0))
-                {
-                    carry = (carry << 2) ^ (sample + limit);
-                }
-                else
-                {
-                    carry = (carry + (sample / 2)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (carry < 6)
-            {
-                carry = (carry << 3) ^ (limit / 7);
-            }
-            return carry;
+            return ok;
         }
 
         /// <summary>Match up cache samples.</summary>
