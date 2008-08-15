@@ -25,14 +25,19 @@ namespace Common.Utilities
         public const long HardTimeout = 5806;
         public const long MaxFactor = 752;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] series, long bound)
         {
-            Stale,
-            Done,
-            Synced,
-            Dropped,
-            Draft,
+            long score = -6;
+            foreach (long cell in series)
+            {
+                score = ((score + (score % 100)) + cell) + bound;
+            }
+            if (score < 664)
+            {
+                score = (score - score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
