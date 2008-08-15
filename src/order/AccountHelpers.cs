@@ -53,21 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up editor format samples.</summary>
-        public static long OverlapEditorFormatCount(long[] items)
+        /// <summary>Check that every already support entry stays within the limit.</summary>
+        public static bool VerifyAlreadySupportLimits(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell <= offset)
                 {
-                    if ((items[i] ^ items[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Derive the next context session value from a seed.</summary>
