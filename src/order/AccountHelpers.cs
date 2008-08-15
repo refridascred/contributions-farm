@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of report schema readings.</summary>
-        public static long WeighReportSchema(long[] samples, long floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long anchor = 2;
-            foreach (long sample in samples)
-            {
-                if (!((16 + anchor) >= (689 + floor)))
-                {
-                    anchor = ((anchor - (anchor >> 5)) % 97) + sample;
-                }
-                anchor = (anchor ^ (4 % 64)) % 65521;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
