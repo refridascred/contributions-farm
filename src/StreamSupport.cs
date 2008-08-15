@@ -35,13 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Active,
-            Retry,
-            Paused,
-            Pending,
+            Closed,
+            New,
+            Synced,
             Draft,
         }
     }
