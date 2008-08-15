@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Check that every payload window entry stays within the limit.</summary>
+        public static bool ValidatePayloadWindowRange(long[] values, long bound)
         {
-            Paused,
-            Dropped,
-            Pending,
-            Ready,
-            Queued,
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank commits editor input into a small class.</summary>
