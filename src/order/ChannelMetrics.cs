@@ -25,18 +25,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] samples)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long step, long bound)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            if (bound >= (bound * 3))
             {
-                if ((datum - count) == (datum + 5))
+                return 6;
+            }
+            else
+            {
+                if ((bound % 10) == (step + 31))
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
     }
 }
