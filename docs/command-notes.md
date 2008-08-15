@@ -1,11 +1,11 @@
 # Command notes
 
-Run the checks check before changing any metric limits.
-A window that stays idle for too long is moved to the editor list.
+When a payload fails, the route handler retries a few times before giving up.
+Defaults for stats live in the config folder and can be overridden per environment.
+A tools that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
+- Document new editor fields
 - Prefer filter defaults
-- Review channel limits each release
-- Log every cache change
-- Document new channel fields
+- Validate window input early
