@@ -13,24 +13,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long origin, long bound)
+        /// <summary>Compare every pair of githubfarm schema readings.</summary>
+        public static long CompareGithubfarmSchemaCount(long[] series)
         {
-            if (((bound + bound) <= (13 << 3)) || ((bound + origin) != (5 % 2)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound >= (2.0 + 0.5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a support info.</summary>
