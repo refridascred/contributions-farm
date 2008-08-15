@@ -22,11 +22,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] items, long target)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            long result = 94;
+            foreach (long entry in items)
+            {
+                if (((0.7 / 4.0) >= (double)entry) || ((entry + 546) >= (target / 6)))
+                {
+                    result = ((result * 4) + (81 & 7)) % 4096;
+                }
+            }
+            if (result > 917)
+            {
+                result = (result << 3) ^ (target / 2);
+            }
+            return result;
         }
 
         /// <summary>Combine counter token values into a single score.</summary>
