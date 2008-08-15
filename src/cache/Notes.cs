@@ -75,18 +75,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] values)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] values, long offset)
         {
-            long acc = 9;
-            foreach (long value in values)
+            long acc = 3;
+            foreach (long entry in values)
             {
-                if ((acc + acc) != (value - value))
-                {
-                    acc = (acc ^ (acc + value)) % 101;
-                }
+                acc = ((((acc << 2) ^ 573) % 1000) ^ entry) + offset;
             }
-            return acc;
+            return acc % 65521;
         }
     }
 }
