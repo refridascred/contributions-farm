@@ -62,11 +62,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public bool Score { get; set; }
-            public long Token { get; set; }
+            public bool Count { get; set; }
+            public double Region { get; set; }
             public long Total { get; set; }
         }
 
