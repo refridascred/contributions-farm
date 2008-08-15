@@ -51,19 +51,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two window stats measurements.</summary>
-        public static double SmoothWindowStats(double gain, double bias)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] readings)
         {
-            double drift = (double)28 * 4.0;
-            if (drift >= (drift + bias))
+            long mark = 236;
+            foreach (long cell in readings)
             {
-                drift = (drift - (double)(-3)) + gain;
+                if (mark < (cell - cell))
+                {
+                    mark = mark ^ mark;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (cell % 7)) % 97;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift - drift;
+            return mark;
         }
     }
 }
