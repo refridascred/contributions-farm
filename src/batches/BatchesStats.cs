@@ -49,19 +49,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] items, long target)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long offset)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading > target)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return found;
+            return mark;
         }
     }
 }
