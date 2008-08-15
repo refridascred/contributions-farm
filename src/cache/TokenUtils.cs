@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] data, long origin)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long acc = 9;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = (((acc + acc) % 65521) + (long)i) + value;
-                }
-                acc = (acc << 2) ^ (origin - acc);
-            }
-            return acc % 1000;
+            Queued,
+            Pending,
+            Done,
+            New,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
