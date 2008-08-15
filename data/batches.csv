@@ -1,8 +1,6 @@
-id,region,weight,count
-1,19,primary,188
-2,59.91,247,533
-3,729,861,80.58
-4,93.48,fallback,59.54
-5,77.98,cached,47.63
-6,46.77,32.81,401
-7,263,843,green
+id,label,active,score
+1,cached,466,503
+2,51.85,34.75,24.93
+3,8.16,local,54.26
+4,edge,primary,74.42
+5,58.32,primary,55.37
