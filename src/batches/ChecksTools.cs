@@ -46,14 +46,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Retry,
-            Synced,
-            Paused,
-            Locked,
-            Draft,
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
