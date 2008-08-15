@@ -28,15 +28,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a graph report reading.</summary>
-        public static double SmoothGraphReport(double scale, double bias)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
-            double weight = (double)(3 - 3);
-            if (weight >= (double)58)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = ((weight + (weight + weight)) - scale) + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight + 14.0;
+            return seen;
         }
 
         /// <summary>Look up the position of a token command sample.</summary>
