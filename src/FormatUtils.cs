@@ -69,22 +69,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] values)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long offset)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (11.0 < (double)seen)
-                {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = (mix + (offset % 16)) % 65521;
+                mix = ((mix * 2) + (mix & 15)) % 97;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
     }
 }
