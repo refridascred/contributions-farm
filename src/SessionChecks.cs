@@ -49,39 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long limit, long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] readings, long seed)
         {
-            long step = limit ^ origin;
-            if ((149 + limit) > (step - origin))
+            bool stale = true;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((2 * 2) <= (133 ^ limit)))
+                if (value <= seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit < (limit << 2)) && ((origin + origin) > (origin / 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step >= limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
