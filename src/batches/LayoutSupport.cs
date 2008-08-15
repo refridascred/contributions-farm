@@ -70,18 +70,24 @@ namespace Common.Utilities
         public const long CacheCount = 4138;
         public const double RetryCluster = 48.89;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] readings, long floor)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long limit, long bound)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if (((double)limit > 8.0) && ((bound >> 2) != (51 + limit)))
             {
-                if ((double)value != (double)85)
+                return 5;
+            }
+            else
+            {
+                if ((bound + limit) <= (bound / 6))
                 {
-                    tally = (tally + 2) + floor;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
     }
 }
