@@ -36,15 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double bias, double offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] data, long target)
         {
-            double scale = 0.9;
-            if (scale <= offset)
+            long count = 0;
+            foreach (long datum in data)
             {
-                scale = (scale - (double)294) + bias;
+                if ((count << 1) != (target - count))
+                {
+                    count = (count + 3) + datum;
+                }
             }
-            return scale + (scale + 2.0);
+            return count;
         }
 
         /// <summary>Audit entry commits readings against a rule.</summary>
