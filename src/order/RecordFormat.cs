@@ -32,22 +32,38 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] values, long step)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long bound, long step)
         {
-            long mix = 21;
-            foreach (long datum in values)
+            if (bound > (step - step))
             {
-                if ((14 >> 2) <= (datum % 24))
+                return 6;
+            }
+            else
+            {
+                if ((double)step <= 1.5)
                 {
-                    mix = ((mix << 2) ^ (mix & 1)) - step;
+                    return 8;
+                }
+                else
+                {
+                    if ((step + 69) > bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((bound >> 1) < 4) && ((double)step >= (double)bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (mix > 0)
-            {
-                mix = (mix ^ 28) % 255;
-            }
-            return mix;
         }
 
         /// <summary>Match up order samples.</summary>
