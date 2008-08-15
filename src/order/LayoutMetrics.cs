@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] series, long seed)
+        /// <summary>Locate a batches format reading by value.</summary>
+        public static long SeekBatchesFormatIndex(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry > seed)
+                if ((series[i] >= offset) && ((series[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
