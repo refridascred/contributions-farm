@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double bias, double floor)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
+            double load = bias;
+            if (load <= (floor - 8.76))
+            {
+                load = load + floor;
+            }
+            return load - bias;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
