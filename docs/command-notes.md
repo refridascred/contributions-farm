@@ -1,10 +1,12 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the format list.
-A queue that stays idle for too long is moved to the graph list.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Run the batches check before changing any stream limits.
+The payload module keeps cluster values in sync with the account cache.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Document new layout fields
-- Keep batch values small
+- Prefer cache defaults
+- Keep buffer values small
+- Log every filter change
+- Document new buffer fields
