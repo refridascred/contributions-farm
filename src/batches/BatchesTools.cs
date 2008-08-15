@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long BurstEntry = 2953;
         public const long CacheRatio = 3426;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] series, long seed)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Synced,
+            Closed,
+            New,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
