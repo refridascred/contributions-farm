@@ -20,14 +20,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] readings)
         {
-            Ready,
-            Dropped,
-            Synced,
-            Active,
-            Failed,
+            long mark = 96;
+            foreach (long sample in readings)
+            {
+                if ((mark - 8) < (mark ^ mark))
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = (mark - 2) % 255;
+                    mark = mark - (sample ^ 136);
+                }
+                if (((1.3 / 6.0) == (double)mark) && (mark >= sample))
+                {
+                    mark = ((mark * 5) + (sample + mark)) % 65521;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Locate a session token reading by value.</summary>
