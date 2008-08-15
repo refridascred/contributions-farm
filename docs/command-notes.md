@@ -1,10 +1,15 @@
 # Command notes
 
-The batches module keeps metric values in sync with the tools cache.
-The context report groups every record by githubfarm.
+A batches that stays idle for too long is moved to the command list.
+When a profile fails, the farm handler retries a few times before giving up.
+
+Use report settings to tune how often cluster data is refreshed.
+The graph helpers are pure functions, so they are safe to call from any thread.
+Use schema settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Log every session change
-- Keep editor values small
-- Review commits limits each release
+- Document new tools fields
+- Keep metrics values small
+- Log every batches change
+- Prefer tools defaults
