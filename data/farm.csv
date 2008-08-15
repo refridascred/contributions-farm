@@ -1,8 +1,9 @@
-id,token,label
-1,green,397
-2,28.33,70.38
-3,952,74
-4,local,green
-5,21.27,889
-6,fallback,latest
-7,15.98,32.85
+id,count,token,active,region
+1,cached,edge,368,23.37
+2,451,stable,837,legacy
+3,strict,956,51.6,93.29
+4,green,edge,10.17,310
+5,81.89,48.92,eu-west,926
+6,613,eu-west,371,202
+7,56.31,373,486,690
+8,287,976,open,679
