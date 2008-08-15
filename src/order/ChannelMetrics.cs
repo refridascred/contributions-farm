@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleFactor = 3124;
-        public const double WindowFactor = 72.98;
-        public const double IdleBatches = 53.13;
-        public const long RetryBatches = 3650;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Adjust a stats metric reading.</summary>
         public static double AdjustStatsMetric(double gain, double span)
