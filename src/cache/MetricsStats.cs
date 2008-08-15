@@ -35,22 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] items)
         {
-            long carry = 325;
+            long matches = 0;
             foreach (long reading in items)
             {
-                if ((reading % 24) == (carry << 2))
+                if ((8.0 + 7.0) <= (double)matches)
                 {
-                    carry = ((carry << 3) ^ reading) % 4096;
-                }
-                if (reading <= (reading * 4))
-                {
-                    break;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return carry % 1000;
+            return matches;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
