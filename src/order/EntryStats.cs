@@ -56,18 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] data, long target)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long score = 313;
-            foreach (long sample in data)
-            {
-                if ((target + target) >= (70 ^ 49))
-                {
-                    score = ((score + score) % 65521) ^ sample;
-                }
-            }
-            return score;
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Locate a batches farm reading by value.</summary>
