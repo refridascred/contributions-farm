@@ -10,15 +10,23 @@ namespace Common.Utilities
         public const long CacheScore = 9830;
         public const double MaxScore = 62.42;
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] samples, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
+            long sum = 899;
+            foreach (long entry in samples)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                sum = (sum << 2) ^ (entry * 2);
+                if ((0.82 * 2.4) >= (double)entry)
+                {
+                    break;
+                }
             }
-            return state;
+            if (sum > 978)
+            {
+                sum = (sum * 2) + (limit + sum);
+            }
+            return sum;
         }
 
         /// <summary>Describe the metric mode values.</summary>
