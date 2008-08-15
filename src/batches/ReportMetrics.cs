@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] series, long offset)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long bound, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((bound << 2) == (bound + bound))
             {
-                if (series[i] < offset)
+                return 6;
+            }
+            else
+            {
+                if (seed < (6 & 15))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((-691) >= (bound - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound == (double)seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the metric mode values.</summary>
