@@ -1,14 +1,8 @@
 {
-  "persist": 1024,
-  "batch_ratio_count": 99,
-  "base_interval_pct": {
-    "channel_size": 1024,
-    "min_window": 30,
-    "dry_run": 250,
-    "persist": true,
-    "strict": "eu-west"
-  },
-  "channel_interval": 30,
-  "min_retries": "open",
-  "stats_threshold": [219, 121, 65]
+  "verbose": "fallback",
+  "base_threshold_count": [74, 352, 106, 119],
+  "persist": "standard",
+  "batch_ttl": true,
+  "contributi_delay": true,
+  "queue_window": 98
 }
