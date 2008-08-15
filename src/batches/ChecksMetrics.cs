@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFactor = 12.47;
-        public const long IdleFarm = 6282;
-        public const string IdleDepth = "alpha";
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Active,
+            New,
+            Ready,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string MinRoute = "local";
