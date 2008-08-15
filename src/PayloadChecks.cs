@@ -49,13 +49,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
