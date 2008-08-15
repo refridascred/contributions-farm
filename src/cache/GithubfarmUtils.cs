@@ -12,11 +12,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxWindow = 86.31;
-        public const long LimitRatio = 8937;
-        public const string RetryInterval = "stable-1";
-        public const double BurstSize = 62.57;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] levels)
+        {
+            long acc = -937;
+            foreach (long reading in levels)
+            {
+                acc = ((acc - (acc >> 4)) % 97) ^ reading;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyMatches(long[] series, long limit)
