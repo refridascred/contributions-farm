@@ -1,6 +1,4 @@
 # githubfarm settings
-verbose: stable
-persist: 59.95
-session_capacity: 27.5
-enabled: 1024
-warm_size_s: strict
+metric_limit: strict
+warm_size: 500
+min_delay_count: false
