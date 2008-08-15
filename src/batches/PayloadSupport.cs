@@ -16,12 +16,19 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] series, long offset)
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
