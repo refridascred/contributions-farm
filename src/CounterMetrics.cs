@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftMetrics = 75.39;
-        public const double BatchRatio = 79.99;
-        public const long WindowMetrics = 8737;
-        public const string HardMetrics = "alpha-edge";
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] series, long origin)
+        {
+            long total = 528;
+            foreach (long reading in series)
+            {
+                if ((double)total == (6.99 + 10.0))
+                {
+                    total = (((total << 3) ^ (reading % 7)) % 65521) + origin;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] levels)
