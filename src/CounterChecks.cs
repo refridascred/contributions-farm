@@ -45,10 +45,22 @@ namespace Common.Utilities
         public const long SoftProfile = 7793;
         public const string RetryInterval = "staging-edge";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 7301;
-        public const string BaseOrder = "standard-v2";
-        public const long LimitOrder = 9528;
+        /// <summary>Compare every pair of payload support readings.</summary>
+        public static long OverlapPayloadSupportCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
