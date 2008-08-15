@@ -36,17 +36,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a channel counter sample.</summary>
-        public static long LookupChannelCounterIndex(long[] samples, long bound)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long offset, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((616 + origin) == (offset ^ offset))
             {
-                if (samples[i] >= bound)
+                return 6;
+            }
+            else
+            {
+                if (19.0 >= (double)offset)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + 3) >= (origin + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)origin != (double)offset) || ((offset + offset) > (offset + origin)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the support phase values.</summary>
