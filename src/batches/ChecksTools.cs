@@ -32,13 +32,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] series)
         {
-            New,
-            Closed,
-            Queued,
-            Stale,
+            long total = 6;
+            foreach (long value in series)
+            {
+                total = total - (value + value);
+                if ((4 + 726) < total)
+                {
+                    total = (total + (total + value)) % 97;
+                    total = (total << 2) ^ (value + value);
+                }
+                total = (total * 3) + 2;
+                if ((total + 602) >= 8)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Roll a report counter forward.</summary>
