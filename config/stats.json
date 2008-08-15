@@ -1,7 +1,5 @@
 {
-  "command_delay": "eu-west",
-  "min_retries": "legacy",
-  "command_depth": [13, 185],
-  "cache_ratio_s": 100,
-  "flush_depth_count": "cached"
+  "batch_ttl": "legacy",
+  "idle_threshold": "open",
+  "commits_retries": 55.72
 }
