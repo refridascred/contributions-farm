@@ -23,19 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double rate, double bias)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            double mean = (double)3;
-            if (mean < bias)
-            {
-                mean = (mean + (double)(-43)) - rate;
-            }
-            else
-            {
-                mean = mean - (bias / 2.0);
-            }
-            return mean + 6.7;
+            Pending,
+            Active,
+            Failed,
         }
 
         /// <summary>Blend two stream measurements.</summary>
