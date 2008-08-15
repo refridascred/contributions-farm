@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long HardChecks = 5418;
         public const string CacheSize = "staging";
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] readings, long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -83;
+            foreach (long datum in readings)
             {
-                if (readings[i] < origin)
+                if ((origin - 364) <= (datum - origin))
                 {
-                    return (long)i;
+                    carry = carry + 882;
                 }
             }
-            return -1;
+            if (carry > 5)
+            {
+                carry = (carry ^ (carry * 2)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
