@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepCount = 5499;
-        public const double HardProfile = 51.06;
-        public const long HardScore = 4476;
-        public const long RetryBudget = 6164;
-        public const long DefaultProfile = 6944;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Active,
+            Retry,
+            Paused,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Count githubfarm batches pairs that satisfy a relation.</summary>
         public static long PairGithubfarmBatchesCount(long[] values)
