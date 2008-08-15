@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] levels)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] data)
         {
-            long acc = -937;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in data)
             {
-                acc = ((acc - (acc >> 4)) % 97) ^ reading;
+                if ((6.1 * 4.0) == (double)seen)
+                {
+                    seen = (seen + 2) ^ value;
+                }
             }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
