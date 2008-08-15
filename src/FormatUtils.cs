@@ -14,32 +14,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long step, long bound)
-        {
-            if ((bound + bound) == (bound % 24))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step != (0.42 - 1.67))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound >= 7.9)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftFactor = "fallback-v2";
+        public const long DefaultWindow = 3851;
+        public const long HardTimeout = 9193;
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long RankQueue(long bound, long bound2)
