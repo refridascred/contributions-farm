@@ -19,22 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] series)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long anchor = -9;
+            foreach (long entry in data)
             {
-                if ((double)530 > (double)hits)
-                {
-                    hits = (hits + 2) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (((anchor * 5) + anchor) ^ entry) - step;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
