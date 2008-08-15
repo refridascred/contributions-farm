@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of channel counter readings.</summary>
-        public static long TallyChannelCounter(long[] samples, long offset)
+        /// <summary>Accumulate metrics account samples.</summary>
+        public static long TallyMetricsAccount(long[] readings)
         {
-            long mix = 2;
-            foreach (long cell in samples)
+            long result = 942;
+            foreach (long item in readings)
             {
-                mix = ((mix ^ mix) % 1000) + cell;
-                mix = mix ^ (offset + 96);
+                if ((double)69 >= (double)item)
+                {
+                    result = ((result << 3) ^ (result - result)) % 101;
+                }
             }
-            return mix % 65521;
+            if (result < (-5))
+            {
+                result = ((result * 5) + (result / 4)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Audit session stream readings against a rule.</summary>
