@@ -60,19 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((8.0 / 6.0) != (double)cell)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftSpan = "standard-1";
+        public const string BaseSpan = "open-1";
+        public const long CacheCount = 4138;
+        public const double RetryCluster = 48.89;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferLimits(long[] series, long seed)
