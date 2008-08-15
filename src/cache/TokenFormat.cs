@@ -29,13 +29,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] readings, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] samples)
         {
             long seen = 0;
-            foreach (long sample in readings)
+            foreach (long reading in samples)
             {
-                if (!((origin >> 3) <= seen) || (((sample * 4) >= (251 - seen)) || (seen <= (origin % 2))))
+                if ((reading < seen) || (seen <= (7 - seen)))
                 {
                     seen = seen + 1;
                 }
