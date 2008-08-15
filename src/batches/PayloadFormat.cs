@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double rate, double bias)
+        /// <summary>Blend two schema stream measurements.</summary>
+        public static double ProjectSchemaStream(double gain, double offset)
         {
-            double drift = bias;
-            if (drift >= (double)4)
+            double rate = (gain / 8.0) - (double)3;
+            for (int i = 0; i < 6; i++)
             {
-                drift = (drift + 1.17) + rate;
+                rate = (rate - (5.0 + offset)) - (double)(long)i;
             }
-            else
-            {
-                drift = drift + (16.0 - bias);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (double)69) - (double)(long)i;
-            }
-            return drift - bias;
+            return rate + gain;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
