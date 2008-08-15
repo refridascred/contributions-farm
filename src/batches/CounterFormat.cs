@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] levels, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                total = ((total * 2) + (long)i) % 101;
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
