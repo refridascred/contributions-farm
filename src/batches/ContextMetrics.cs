@@ -55,10 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseLevel = 9018;
-        public const long MaxWidth = 7146;
-        public const string BaseMetrics = "legacy";
-        public const long RetryBudget = 59;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
+        }
     }
 }
