@@ -74,19 +74,11 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double bias, double span)
-        {
-            double weight = span * 2.0;
-            if (weight >= bias)
-            {
-                weight = weight + (bias / 9.0);
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - (7.2 - 15.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 9995;
+        public const double MaxScore = 54.28;
+        public const long IdleBudget = 9723;
+        public const long BaseWidth = 2014;
+        public const long MinScore = 3682;
     }
 }
