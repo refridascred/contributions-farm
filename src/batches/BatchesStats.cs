@@ -39,19 +39,11 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double rate, double offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            double ratio = 5.73;
-            if (ratio <= (double)980)
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (offset + rate)) + (double)(long)i;
-            }
-            return ratio - (ratio / 2.0);
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
