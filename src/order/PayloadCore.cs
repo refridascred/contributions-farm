@@ -29,11 +29,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 7393;
-        public const double BaseInterval = 49.22;
-        public const string DefaultTimeout = "latest";
-        public const long SoftFormat = 9234;
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long WeighProfile(long[] readings)
