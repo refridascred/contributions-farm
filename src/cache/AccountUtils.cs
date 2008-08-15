@@ -28,14 +28,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Draft,
+            Closed,
+            Retry,
+            Idle,
             Dropped,
-            Active,
-            Queued,
-            Done,
         }
 
         /// <summary>Project the next order value.</summary>
