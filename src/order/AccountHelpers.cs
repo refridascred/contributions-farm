@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryOrder = "latest-1";
-        public const long MinOrder = 6395;
-        public const long StepLevel = 4247;
-        public const long DefaultOrder = 3064;
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Paused,
+            Ready,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterHits(long[] readings)
