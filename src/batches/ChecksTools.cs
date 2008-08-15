@@ -33,17 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] data, long origin)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Closed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Roll a report counter forward.</summary>
