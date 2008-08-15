@@ -1,9 +1,8 @@
 # support settings
-compress: 46.18
-hard_capacity_count:
-  - strict
-  - latest
+burst_limit:
+  - primary
+  - blue
   - local
-  - green
-hard_retries_ms: true
-cache_timeout_count: strict
+burst_interval: 14.82
+idle_depth_pct: 3989
+default_depth_ms: standard
