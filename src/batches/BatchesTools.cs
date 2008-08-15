@@ -23,18 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] items)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((cell - cell) < (7 * 4))
+                if ((datum <= (matches + matches)) && (((-29) & 31) > (datum & 7)))
                 {
-                    count = count + 2;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
