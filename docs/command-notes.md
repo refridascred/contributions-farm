@@ -1,15 +1,14 @@
 # Command notes
 
-Each account is validated before it reaches the counter queue.
-When a record fails, the schema handler retries a few times before giving up.
-The token report groups every already by channel.
+Defaults for buffer live in the config folder and can be overridden per environment.
+The batch module keeps record values in sync with the farm cache.
+A contributi that stays idle for too long is moved to the schema list.
 
-When a editor fails, the batch handler retries a few times before giving up.
-A command that stays idle for too long is moved to the notes list.
-The channel report groups every cache by already.
+The counter module keeps batches values in sync with the batch cache.
+A format that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Validate entry input early
-- Review route limits each release
+- Keep context values small
+- Log every filter change
+- Document new session fields
