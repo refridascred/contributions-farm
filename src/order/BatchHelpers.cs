@@ -19,13 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long floor, long offset)
         {
-            Ready,
-            Closed,
-            Idle,
-            Pending,
+            if (((floor + 4) != (offset >> 5)) && ((double)offset < (6.0 - 18.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor <= (offset + offset)) || ((525 & 255) < (floor & 255)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset >> 1) >= 3)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset <= 12.0)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch status values.</summary>
