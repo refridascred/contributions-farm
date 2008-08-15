@@ -33,19 +33,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long limit)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long offset, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            if ((5.29 * 9.7) <= (double)offset)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    total = ((total - limit) % 255) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 1000;
+                return 3;
             }
-            return total;
+            else
+            {
+                if (((double)target == (14.0 + 5.0)) && ((781 >> 1) == (target % 64)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Audit farm channel readings against a rule.</summary>
