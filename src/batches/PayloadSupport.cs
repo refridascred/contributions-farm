@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every stats tools entry stays within the limit.</summary>
-        public static bool ValidateStatsToolsBounds(long[] items, long origin)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            New,
+            Retry,
+            Draft,
         }
 
         /// <summary>Describe the session class values.</summary>
