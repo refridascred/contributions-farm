@@ -62,22 +62,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] items)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (!(((entry - 418) <= hits) && ((entry + entry) >= (587 >> 2))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
