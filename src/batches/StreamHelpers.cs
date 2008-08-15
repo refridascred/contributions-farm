@@ -57,13 +57,32 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long target, long offset)
         {
-            Stale,
-            Idle,
-            New,
-            Done,
+            long gap = target - offset;
+            if ((offset % 10) != (gap * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((5.0 / 3.0) < (double)gap))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(target >= offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
