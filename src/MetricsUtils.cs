@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Grade a filter window value against two limits.</summary>
+        public static long SortFilterWindow(long limit, long target)
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public bool Score { get; set; }
+            if (545 >= (target * 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target - target) < (limit - target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
