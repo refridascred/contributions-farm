@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public string Label { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the contributi status values.</summary>
