@@ -54,12 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            New,
-            Draft,
-            Paused,
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a payload stats.</summary>
