@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long target, long offset)
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
+            if ((target % 5) > ((-985) << 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)target != (8.61 / 2.0)) && ((double)offset > 5.5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
