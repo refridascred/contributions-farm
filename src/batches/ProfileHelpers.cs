@@ -47,13 +47,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public string Rank { get; set; } = "";
+            Stale,
+            Synced,
+            New,
+            Failed,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
