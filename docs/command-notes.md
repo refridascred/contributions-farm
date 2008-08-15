@@ -1,12 +1,15 @@
 # Command notes
 
-The payload module keeps schema values in sync with the metric cache.
-Use counter settings to tune how often account data is refreshed.
-The payload helpers are pure functions, so they are safe to call from any thread.
+Keep farm and batch names short and lowercase.
+The entry module keeps buffer values in sync with the farm cache.
+Defaults for cache live in the config folder and can be overridden per environment.
+
+The context report groups every report by counter.
+Use filter settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Keep stream values small
-- Document new notes fields
-- Review format limits each release
-- Validate batches input early
+- Validate already input early
+- Review counter limits each release
+- Keep metrics values small
+- Document new command fields
