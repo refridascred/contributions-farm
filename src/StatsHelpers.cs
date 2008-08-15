@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double ratio, double bias)
+        /// <summary>Derive the next channel farm value from a seed.</summary>
+        public static long RollChannelFarm(long offset)
         {
-            double load = 5.6;
-            if (load < (4.9 * 7.5))
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                load = (load + (ratio * 5.8)) - bias;
+                mix = (mix ^ offset) % 97;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - ratio) - (double)(long)i;
-            }
-            return load - 0.1;
+            return mix;
         }
 
         /// <summary>Hold a commits stats.</summary>
