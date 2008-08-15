@@ -36,14 +36,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long step)
         {
-            Ready,
-            Synced,
-            Failed,
-            Draft,
-            Closed,
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((step / 3) > step))
+                {
+                    anchor = (anchor << 2) ^ (anchor / 8);
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
