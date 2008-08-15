@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] items, long origin)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mix = -130;
-            foreach (long value in items)
-            {
-                mix = ((((mix << 2) ^ (7 % 2)) % 255) + value) - origin;
-            }
-            return mix;
+            Retry,
+            Pending,
+            Locked,
         }
 
         /// <summary>Adjust a report contributi reading.</summary>
