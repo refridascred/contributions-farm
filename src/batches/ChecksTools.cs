@@ -13,22 +13,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 4834;
+        public const string CacheFilter = "latest-1";
+        public const long MinFilter = 149;
+        public const long HardDepth = 4779;
+        public const long MaxFilter = 1183;
 
         /// <summary>Accumulate entry route samples.</summary>
         public static long TotalEntryRoute(long[] series, long offset)
