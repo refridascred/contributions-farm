@@ -22,19 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long step)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long seed, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            if ((0.8 / 8.0) > (double)limit)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = ((mark << 3) ^ (step + 53)) + (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((20.0 - 8.0) != (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
