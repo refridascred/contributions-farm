@@ -27,11 +27,13 @@ namespace Common.Utilities
             return (weight + (offset + weight)) + bias;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultTimeout = 7863;
-        public const long IdleRecord = 1173;
-        public const long MinScore = 4097;
-        public const string BurstFactor = "legacy-v2";
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Paused,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
