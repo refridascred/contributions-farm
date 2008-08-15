@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit route token readings against a rule.</summary>
-        public static long CountRouteTokenMatches(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell >> 3) > (bound / 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitMetric = 49.93;
+        public const long WindowMetric = 3932;
+        public const string DefaultMetric = "legacy-1";
+        public const long DefaultRatio = 8971;
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
