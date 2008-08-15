@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] values)
+        /// <summary>Compare every pair of account filter readings.</summary>
+        public static long OverlapAccountFilterCount(long[] items)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seen > (5.0 / 9.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) + item;
+                    if ((items[i] - items[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
