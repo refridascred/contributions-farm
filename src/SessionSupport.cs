@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Locked,
+            Ready,
             Stale,
             Paused,
+            Pending,
         }
 
         /// <summary>Combine support values into a single score.</summary>
