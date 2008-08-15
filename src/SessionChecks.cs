@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Retry,
-            Paused,
-            Stale,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 6686;
+        public const double HardSpan = 3.97;
+        public const long HardWidth = 2998;
+        public const long DefaultRatio = 5503;
+        public const long SoftCache = 8164;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long BucketContributi(long limit, long origin)
