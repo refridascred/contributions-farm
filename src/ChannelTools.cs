@@ -11,14 +11,10 @@ namespace Common.Utilities
         public const double IdleMetrics = 55.34;
         public const long SoftRatio = 7563;
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Done,
-            Dropped,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "alpha";
+        public const long BurstMetric = 6151;
+        public const string BatchSpan = "cached";
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionGaps(long[] items, long origin)
