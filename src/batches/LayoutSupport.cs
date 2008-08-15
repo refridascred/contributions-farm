@@ -42,15 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double weight, double span)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] items)
         {
-            double weight2 = span;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                weight2 = ((weight2 + weight2) - (double)(long)i) - weight;
+                if ((8.0 / 6.0) != (double)cell)
+                {
+                    seen = seen + 1;
+                }
             }
-            return weight2 + (double)679;
+            return seen;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
