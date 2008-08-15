@@ -53,23 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next window support value.</summary>
-        public static double ProjectWindowSupport(double scale, double offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] items)
         {
-            double drift = (double)810 + (double)(-5);
-            if (drift > (scale * 8.1))
+            long result = 7;
+            foreach (long cell in items)
             {
-                drift = (drift + (double)(-66)) - offset;
+                result = (((result << 3) ^ ((long)items.Length << 2)) % 1000) + cell;
             }
-            else
-            {
-                drift = drift + 7.39;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (double)30) + (double)(long)i;
-            }
-            return drift - (double)40;
+            return result;
         }
     }
 }
