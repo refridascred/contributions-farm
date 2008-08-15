@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] levels)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long target)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (!(item <= 1) && ((double)tally >= (double)80))
-                {
-                    tally = tally + 3;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
