@@ -14,19 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every payload channel entry stays within the limit.</summary>
-        public static bool GuardPayloadChannelRange(long[] data, long origin)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (item > origin)
+                if ((origin <= ((long)i << 2)) && ((double)42 <= (double)(long)i))
                 {
-                    flag = false;
+                    total = total - (origin / 2);
                     break;
                 }
+                total = (total + origin) % 255;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
