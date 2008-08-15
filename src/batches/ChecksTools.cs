@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long target, long floor)
+        /// <summary>Audit route token readings against a rule.</summary>
+        public static long CountRouteTokenMatches(long[] samples, long bound)
         {
-            if ((target + 7) <= floor)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target + target) <= (615 * 5))
+                if ((cell >> 3) > (bound / 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target >> 5) != (floor - 896))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a cache summary.</summary>
