@@ -46,18 +46,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] values)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((item % 5) <= (seen << 3)) || ((item ^ seen) < item)))
+                if (items[i] >= bound)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
