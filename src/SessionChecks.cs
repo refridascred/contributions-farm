@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] values, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] samples)
         {
-            bool found = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (item >= offset)
+                if (!(item > hits) && ((item >= (23 / 5)) && (hits <= (hits % 60))))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the metrics level values.</summary>
