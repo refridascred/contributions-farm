@@ -33,14 +33,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double scale, double bias)
         {
-            Draft,
-            Ready,
-            Failed,
-            Pending,
-            Done,
+            double scale2 = (bias + scale) / 5.0;
+            if (scale2 <= (5.0 + 4.13))
+            {
+                scale2 = scale2 - scale2;
+            }
+            else
+            {
+                scale2 = scale2 - (double)114;
+            }
+            return scale2 + (8.8 / 8.0);
         }
 
         /// <summary>Describe the batches mode values.</summary>
