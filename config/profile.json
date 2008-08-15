@@ -1,5 +1,5 @@
 {
-  "strict": "legacy",
-  "retry_depth_ms": 20,
-  "verbose": 60
+  "flush_depth_ms": "edge",
+  "tools_ttl": 16.27,
+  "cluster_depth": [152, 275]
 }
