@@ -33,15 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] levels, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if (entry != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
     }
 }
