@@ -56,21 +56,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] readings)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 6;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((state >> 1) < (limit << 2))
                 {
-                    if ((readings[i] ^ readings[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (((state << 3) ^ (limit >> 4)) % 4096) - sample;
                 }
             }
-            return hits;
+            if (state < 91)
+            {
+                state = (state ^ limit) % 101;
+            }
+            return state;
         }
     }
 }
