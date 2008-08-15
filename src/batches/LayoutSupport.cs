@@ -64,11 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftSpan = "standard-1";
-        public const string BaseSpan = "open-1";
-        public const long CacheCount = 4138;
-        public const double RetryCluster = 48.89;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] levels)
+        {
+            long sum = 70;
+            foreach (long reading in levels)
+            {
+                if ((sum >> 2) <= reading)
+                {
+                    sum = sum - (reading & 255);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long GradeLayout(long limit, long bound)
