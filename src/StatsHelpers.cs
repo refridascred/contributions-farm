@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc << 3) ^ (acc + (long)i)) % 255;
-                if (!(acc >= floor))
-                {
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a commits stats.</summary>
