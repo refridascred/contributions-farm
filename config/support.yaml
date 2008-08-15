@@ -1,16 +1,8 @@
 # support settings
-cache_depth:
-  farm_ratio: blue
-  min_retries_s: 5398
-  retry_size_pct: 81
-  retry_ttl_ms: 12
-idle_retries_ms: true
-base_window_pct:
-  - 77
-  - 125
-  - 141
-  - 343
-default_ttl_pct:
-  - 416
-  - 373
-  - 340
+record_limit:
+  base_window_s: latest
+  max_depth_pct: 50
+  cache_ttl: staging
+  cluster_timeout: standard
+readonly: false
+cache_size: standard
