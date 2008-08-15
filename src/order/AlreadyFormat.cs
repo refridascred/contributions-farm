@@ -31,22 +31,12 @@ namespace Common.Utilities
         public const long MinScore = 4097;
         public const string BurstFactor = "legacy-v2";
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftWidth = 583;
+        public const string CacheEditor = "stable-v2";
+        public const long CacheSpan = 9512;
+        public const string HardRatio = "primary-edge";
+        public const long DefaultRatio = 1464;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsGaps(long[] data, long offset)
