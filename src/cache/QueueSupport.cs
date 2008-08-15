@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const double HardRecord = 61.91;
         public const string DefaultRatio = "latest-1";
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] series, long step)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((step + matches) <= (entry - 44))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public bool Size { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the cache phase values.</summary>
