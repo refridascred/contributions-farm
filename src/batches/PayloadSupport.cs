@@ -18,32 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer farm input into a small class.</summary>
-        public static long SortBufferFarm(long seed, long seed2)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long offset = seed - seed2;
-            if ((double)seed2 == (5.4 * 3.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed >= (0.8 + 4.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset - seed2) < (offset - seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
