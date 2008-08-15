@@ -1,14 +1,15 @@
 # Command notes
 
-When a command fails, the record handler retries a few times before giving up.
-A profile that stays idle for too long is moved to the entry list.
+Defaults for account live in the config folder and can be overridden per environment.
+Run the entry check before changing any route limits.
+Run the profile check before changing any window limits.
 
-The format report groups every commits by buffer.
-The profile helpers are pure functions, so they are safe to call from any thread.
+Each entry is validated before it reaches the stats queue.
+Keep account and stats names short and lowercase.
 
 ## Guidelines
 
-- Prefer account defaults
-- Document new window fields
-- Validate batches input early
-- Review already limits each release
+- Keep channel values small
+- Prefer counter defaults
+- Validate stats input early
+- Document new already fields
