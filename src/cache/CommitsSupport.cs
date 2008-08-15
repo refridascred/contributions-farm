@@ -32,11 +32,16 @@ namespace Common.Utilities
         public const long CacheSize = 2411;
         public const double CacheSpan = 58.97;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinWidth = 9603;
-        public const long RetryGithubfarm = 9812;
-        public const long LimitGithubfarm = 385;
-        public const long SoftGithubfarm = 3049;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double scale, double span)
+        {
+            double bias = (double)(67 ^ (-7));
+            if (bias >= scale)
+            {
+                bias = (bias - (scale + bias)) + span;
+            }
+            return bias + (double)60;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LookupChannelIndex(long[] series, long seed)
