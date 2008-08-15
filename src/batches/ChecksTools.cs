@@ -28,17 +28,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] readings, long limit)
+        /// <summary>Accumulate entry route samples.</summary>
+        public static long TotalEntryRoute(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 15;
+            foreach (long value in series)
             {
-                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
+                if (!((offset + offset) <= value))
                 {
-                    return (long)i;
+                    carry = (carry ^ carry) % 97;
+                }
+                if (offset <= (carry * 5))
+                {
+                    carry = ((carry << 3) ^ ((long)series.Length + carry)) % 4096;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
