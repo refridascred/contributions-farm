@@ -22,24 +22,13 @@ namespace Common.Utilities
             return rate + (double)525;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long step, long bound)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            if (bound >= (bound * 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound % 10) == (step + 31))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Count { get; set; }
+            public double Token { get; set; }
+            public bool Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
