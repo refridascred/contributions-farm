@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitBudget = 5942;
-        public const long BaseWindow = 5313;
-        public const string LimitSpan = "latest";
-        public const string MinWidth = "strict";
-        public const string CacheWindow = "stable-v2";
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double rate, double offset)
+        {
+            double scale = (double)5 + offset;
+            if (scale <= scale)
+            {
+                scale = (scale - (double)2) - rate;
+            }
+            else
+            {
+                scale = scale + (offset / 2.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + offset) + (double)(long)i;
+            }
+            return scale - offset;
+        }
 
         /// <summary>Adjust a payload reading.</summary>
         public static double ScalePayload(double bias, double offset)
