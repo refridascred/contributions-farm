@@ -19,10 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepCount = 9552;
-        public const double HardFactor = 90.03;
-        public const double DefaultBuffer = 76.35;
+        /// <summary>Find the first queue editor entry that matches the target.</summary>
+        public static long LocateQueueEditorIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] levels, long step)
