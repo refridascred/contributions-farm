@@ -43,11 +43,17 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Find the first batches counter entry that matches the target.</summary>
+        public static long LookupBatchesCounterIndex(long[] data, long bound)
         {
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
