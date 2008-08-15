@@ -20,10 +20,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchTimeout = 6087;
-        public const long WindowFilter = 7357;
-        public const string HardFilter = "alpha";
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long FoldCommand(long[] items, long step)
