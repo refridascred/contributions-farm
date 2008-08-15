@@ -39,39 +39,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a checks buffer pair into a bucket.</summary>
-        public static long RankChecksBuffer(long floor, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] items)
         {
-            long offset = floor ^ limit;
-            if (((limit % 2) >= (89 ^ limit)) && (limit > (8 >> 3)))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor - 3) < (24 << 3))
+                if ((71 % 64) != (matches & 1))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit > (limit % 64))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset - offset) > (offset + floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = (matches + 2) ^ entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
