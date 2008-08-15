@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Queued,
-            New,
-            Stale,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowDepth = "open-v2";
+        public const long MinWidth = 357;
+        public const long MinBudget = 5481;
+        public const string SoftSession = "open-v2";
+        public const string LimitSession = "legacy";
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadRange(long[] values, long limit)
