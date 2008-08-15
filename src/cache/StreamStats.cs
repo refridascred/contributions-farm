@@ -33,12 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long offset)
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long score = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
