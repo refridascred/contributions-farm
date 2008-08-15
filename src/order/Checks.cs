@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long state = 518;
-            foreach (long entry in items)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    state = (state + ((-5) - (long)i)) % 97;
-                }
-                state = ((state << 2) ^ (entry ^ entry)) % 101;
-            }
-            if (state < 811)
-            {
-                state = (state << 2) ^ (2 & 3);
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
