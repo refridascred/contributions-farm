@@ -32,16 +32,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double gain, double span)
-        {
-            double load = 4.6;
-            if (load >= (8.8 - span))
-            {
-                load = load - span;
-            }
-            return load - gain;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRatio = 636;
+        public const string MinInterval = "staging";
+        public const string DefaultRatio = "primary-v2";
 
         /// <summary>Find the first batches counter entry that matches the target.</summary>
         public static long LookupBatchesCounterIndex(long[] data, long bound)
