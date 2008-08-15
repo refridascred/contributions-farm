@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] levels)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (!((4 * 4) > ((-77) - reading)))
+                if (sample >= 8)
                 {
-                    matches = matches + 1;
+                    count = (count + 2) - target;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
