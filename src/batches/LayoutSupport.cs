@@ -47,23 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] data)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            long acc = 2;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum < (70 / 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc * 3) + datum) % 97;
+                    if ((values[i] + values[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = acc + (acc / 2);
             }
-            if (acc > 0)
-            {
-                acc = (acc ^ (acc ^ acc)) % 255;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
