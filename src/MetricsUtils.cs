@@ -36,15 +36,12 @@ namespace Common.Utilities
             return rate + 3.57;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Pending,
-            Dropped,
-            Closed,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 88.69;
+        public const string WindowSpan = "legacy-edge";
+        public const long IdleSchema = 3127;
+        public const long WindowSchema = 1302;
+        public const long BurstSpan = 478;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TallyEntry(long[] series)
