@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate contributi schema readings against a bound.</summary>
-        public static bool ValidateContributiSchemaLimits(long[] values, long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long step)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
