@@ -1,12 +1,14 @@
 # Command notes
 
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Run the batches check before changing any stream limits.
-The payload module keeps cluster values in sync with the account cache.
+Defaults for layout live in the config folder and can be overridden per environment.
+Each cache is validated before it reaches the session queue.
+
+Run the support check before changing any batch limits.
+Use context settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Keep buffer values small
-- Log every filter change
-- Document new buffer fields
+- Log every githubfarm change
+- Document new batch fields
+- Review cache limits each release
+- Validate account input early
