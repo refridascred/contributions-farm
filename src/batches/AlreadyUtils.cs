@@ -33,14 +33,38 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long limit, long step)
         {
-            Stale,
-            Idle,
-            Ready,
-            Pending,
-            Retry,
+            if (((double)step != (5.0 + 5.1)) || ((double)limit != (3.31 + 3.3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit != (8.88 * 19.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)limit <= (0.4 * 4.08)) || ((limit >> 4) > (step >> 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (15 <= (step * 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a payload info.</summary>
