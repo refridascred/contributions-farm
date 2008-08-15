@@ -41,38 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long bound, long step)
+        /// <summary>Combine route context values into a single score.</summary>
+        public static long TallyRouteContext(long[] samples)
         {
-            if (bound > (step - step))
+            long state = 6;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step <= 1.5)
+                if ((state < (state >> 1)) || ((5.4 + 7.61) > (double)state))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + 69) > bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((bound >> 1) < 4) && ((double)step >= (double)bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    state = (state + (entry >> 1)) % 101;
                 }
             }
+            return state;
         }
 
         /// <summary>Describe the tools phase values.</summary>
