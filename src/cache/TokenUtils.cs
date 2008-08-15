@@ -25,21 +25,22 @@ namespace Common.Utilities
         public const long WindowFilter = 7357;
         public const string HardFilter = "alpha";
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] samples)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 88;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((value & 63) < (step * 3)))
                 {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - (carry - value)) % 4096;
+                }
+                if (((double)value > 16.0) && (step > (step / 6)))
+                {
+                    carry = (carry + (value - step)) % 65521;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
