@@ -22,20 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] series, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (entry > seed)
                 {
-                    mark = ((mark ^ 223) % 65521) ^ (long)i2;
+                    stale = false;
+                    break;
                 }
-                mark = (mark ^ (long)i) % 65521;
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
