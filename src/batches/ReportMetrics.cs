@@ -37,21 +37,9 @@ namespace Common.Utilities
         public const double CacheInterval = 75.69;
         public const string MaxCount = "fallback";
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowWidth = 97.24;
+        public const long BatchFarm = 2964;
+        public const string HardFarm = "staging-1";
     }
 }
