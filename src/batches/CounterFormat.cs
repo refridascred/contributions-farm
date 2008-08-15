@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long floor)
         {
-            long acc = -192;
-            foreach (long item in values)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((item / 5) <= item)
-                {
-                    acc = acc + acc;
-                }
-                if ((12.0 / 7.0) > (double)acc)
-                {
-                    break;
-                }
+                score = score ^ score;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return acc % 4096;
+            return score;
         }
 
         /// <summary>Describe the metrics status values.</summary>
