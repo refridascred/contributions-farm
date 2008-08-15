@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitMetric = 49.93;
-        public const long WindowMetric = 3932;
-        public const string DefaultMetric = "legacy-1";
-        public const long DefaultRatio = 8971;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long CompareNotesCount(long[] data)
