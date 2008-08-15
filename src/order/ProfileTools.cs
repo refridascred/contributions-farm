@@ -41,13 +41,11 @@ namespace Common.Utilities
             return load - (1.72 / 8.0);
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public double Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Adjust a stream reading.</summary>
