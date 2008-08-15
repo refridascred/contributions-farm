@@ -1,5 +1,6 @@
 {
-  "githubfarm_interval": 500,
-  "metrics_ttl": 250,
-  "dry_run": true
+  "stats_ratio": 35,
+  "max_interval_count": 6305,
+  "poll_capacity": "fallback",
+  "soft_ratio_count": "strict"
 }
