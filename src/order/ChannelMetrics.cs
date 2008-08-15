@@ -28,23 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Iterate the counter session series from a seed.</summary>
+        public static long RollCounterSession(long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 15; i++)
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((3.0 <= (double)(long)i) || ((long)i < (sum + sum)))
+                if ((double)(long)i <= (double)total)
                 {
-                    sum = (sum - (sum - limit)) % 65521;
+                    total = total + (total * 3);
                 }
-                else
-                {
-                    sum = (sum + sum) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return sum;
+            return total;
         }
     }
 }
