@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] data, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((sample + origin) > (origin & 15))
+                if (matches > (matches + datum))
                 {
-                    count = count + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
