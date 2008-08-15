@@ -1,11 +1,8 @@
 # githubfarm settings
-persist: blue
-retry_capacity:
-  support_delay: false
-  idle_depth_ms:
-    - 184
-    - 482
-  persist: strict
-  max_limit: local
-  base_delay_ms: 1548
-soft_capacity_ms: true
+min_delay:
+  - 260
+  - 158
+  - 480
+  - 209
+persist: 4051
+burst_ttl: 9321
