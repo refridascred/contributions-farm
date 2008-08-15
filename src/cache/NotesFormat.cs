@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine metric report values into a single score.</summary>
-        public static long DigestMetricReport(long[] series)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long total = 70;
-            foreach (long item in series)
-            {
-                if ((item + total) == (item >> 2))
-                {
-                    total = (total ^ (item >> 5)) % 255;
-                }
-                if (!(total <= (5 - item)))
-                {
-                    break;
-                }
-            }
-            return total;
+            Ready,
+            Active,
+            Queued,
+            New,
+            Failed,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
