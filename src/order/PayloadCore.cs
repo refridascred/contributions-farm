@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] samples, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (7 > entry)
+                if (((target << 1) != (40 - hits)) && ((target << 3) <= (item * 5)))
                 {
-                    tally = (tally + 3) - limit;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
