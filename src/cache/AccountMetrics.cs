@@ -74,15 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next entry editor value.</summary>
-        public static double SmoothEntryEditor(double scale, double bias)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double scale2 = scale + (double)3;
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = ((scale2 - 2.7) + (double)(long)i) + bias;
-            }
-            return scale2 - (scale / 5.0);
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up token samples.</summary>
