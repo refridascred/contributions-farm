@@ -1,6 +1,7 @@
 {
-  "soft_capacity": 84.61,
-  "filter_timeout": "edge",
-  "metric_delay": "green",
-  "retry_delay": "latest"
+  "soft_limit_pct": 21.63,
+  "compress": 93.96,
+  "sync_ttl_pct": ["fallback", "standard"],
+  "already_capacity": 30,
+  "burst_timeout_ms": "local"
 }
