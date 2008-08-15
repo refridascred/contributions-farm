@@ -1,29 +1,7 @@
 # entry settings
-verbose:
-  base_retries_ms:
-    stats_size: false
-    buffer_limit: true
-    strict: 8237
-    idle_depth_s: cached
-  sync_ratio:
-    enabled: 5848
-    readonly: blue
-    hard_depth_count: 100
-    stream_limit: 113
-    retry_ratio_count: 100
-    burst_depth:
-      - 124
-      - 202
-  commits_limit:
-    - 420
-    - 3
-  compress: green
-  base_ratio_pct: 70.88
-  enabled: eu-west
-sync_interval_ms:
-  flush_delay_s: 9940
-  readonly: edge
-  batch_ratio: staging
-cache_delay_pct: true
-readonly: 60
-idle_depth_s: 7987
+min_ratio_s:
+  - primary
+  - primary
+batch_window: true
+audit: true
+flush_capacity: latest
