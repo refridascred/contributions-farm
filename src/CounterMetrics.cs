@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] series, long origin)
-        {
-            long total = 528;
-            foreach (long reading in series)
-            {
-                if ((double)total == (6.99 + 10.0))
-                {
-                    total = (((total << 3) ^ (reading % 7)) % 65521) + origin;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 5435;
+        public const long SoftStats = 261;
+        public const string BurstStats = "alpha-1";
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] levels)
