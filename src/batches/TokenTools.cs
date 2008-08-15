@@ -27,19 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] series, long bound)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Rank { get; set; } = "";
+            public double Total { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
