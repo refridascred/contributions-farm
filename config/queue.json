@@ -1,5 +1,8 @@
 {
-  "warm_threshold": true,
-  "poll_depth": [399, 349],
-  "compress": "legacy"
+  "counter_retries": 85,
+  "sync_size": 83,
+  "already_window": 33,
+  "profile_ttl": 94,
+  "persist": false,
+  "min_timeout_count": "primary"
 }
