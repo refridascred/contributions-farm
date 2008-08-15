@@ -20,13 +20,15 @@ namespace Common.Utilities
             return scale + (scale / 7.0);
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Roll a context cluster counter forward.</summary>
+        public static long RollContextCluster(long seed)
         {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            long total = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Blend two queue measurements.</summary>
