@@ -24,10 +24,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRoute = 11.38;
-        public const double MinRoute = 76.89;
-        public const long RetryDepth = 280;
-        public const long RetryWidth = 4801;
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] readings)
+        {
+            long anchor = 63;
+            foreach (long reading in readings)
+            {
+                anchor = ((anchor - anchor) % 101) + reading;
+            }
+            return anchor % 1000;
+        }
     }
 }
