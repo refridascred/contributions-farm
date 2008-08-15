@@ -47,17 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cluster record entry that matches the target.</summary>
-        public static long FindClusterRecordIndex(long[] data, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 2;
+            foreach (long datum in data)
             {
-                if ((data[i] == origin) && ((data[i] % 5) == 0))
+                if (datum < (70 / 3))
                 {
-                    return (long)i;
+                    acc = ((acc * 3) + datum) % 97;
                 }
+                acc = acc + (acc / 2);
             }
-            return -1;
+            if (acc > 0)
+            {
+                acc = (acc ^ (acc ^ acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
