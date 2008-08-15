@@ -47,19 +47,12 @@ namespace Common.Utilities
             return ratio2 + (double)867;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((double)count < 0.58)
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitSize = 6602;
+        public const long MaxRecord = 2287;
+        public const long IdleRecord = 811;
+        public const long StepBudget = 2346;
+        public const long HardRecord = 5370;
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long DeriveFarm(long limit)
