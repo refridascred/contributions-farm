@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const long MaxContext = 7438;
         public const long SoftLevel = 9240;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] readings, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] levels, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
+                if ((sample - step) <= 2)
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
