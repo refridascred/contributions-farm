@@ -1,11 +1,7 @@
 # entry settings
-cache_window: strict
-compress: fallback
-already_limit: legacy
-default_timeout_pct:
-  soft_interval: false
-  base_threshold_pct: 34
-  channel_retries: 97.74
-  poll_ratio_pct: open
-hard_retries: fallback
-strict: open
+default_retries_s: false
+buffer_depth: 100
+account_interval: fallback
+readonly: 26
+schema_threshold: 250
+tools_window: 69.96
