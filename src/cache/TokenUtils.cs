@@ -20,21 +20,28 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] readings)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 55;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)mark > (0.9 / 4.0))
                 {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = mark + (seed << 1);
+                    mark = mark + value;
+                    break;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    mark = ((mark - value) % 4096) ^ (long)i;
+                }
+                if ((seed * 4) > (seed / 6))
+                {
+                    mark = ((mark * 4) + seed) % 1000;
                 }
             }
-            return matches;
+            return mark % 4096;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
