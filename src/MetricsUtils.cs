@@ -43,17 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] levels, long limit)
+        /// <summary>Digest a series of order queue entries.</summary>
+        public static long FoldOrderQueue(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -306;
+            foreach (long value in values)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
+                if (!((double)target <= 7.7))
                 {
-                    return (long)i;
+                    acc = (((acc * 5) + (acc / 6)) % 65521) - value;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of stream commits entries.</summary>
