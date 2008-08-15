@@ -33,18 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                score = (score - limit) % 255;
-                score = ((score * 2) + limit) % 101;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 5861;
+        public const long WindowFilter = 2279;
+        public const double BatchScore = 34.35;
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long IterateGithubfarm(long bound)
