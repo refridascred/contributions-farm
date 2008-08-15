@@ -46,20 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double rate, double offset)
-        {
-            double mean = offset;
-            if (mean >= (double)(-20))
-            {
-                mean = mean + offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - rate) + (double)(long)i;
-            }
-            return mean + (mean * 4.38);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchRecord = 5.56;
+        public const long SoftRecord = 4874;
+        public const double StepTimeout = 66.73;
+        public const string BaseBudget = "fallback-1";
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long DigestLayout(long[] readings)
