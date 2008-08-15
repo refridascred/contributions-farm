@@ -78,22 +78,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings, long limit)
+        /// <summary>Grade a schema session value against two limits.</summary>
+        public static long BucketSchemaSession(long floor, long limit)
         {
-            long state = 6;
-            foreach (long sample in readings)
+            long next = floor - limit;
+            if ((floor - limit) > (limit ^ next))
             {
-                if ((state >> 1) < (limit << 2))
+                return 0;
+            }
+            else
+            {
+                if ((limit << 2) >= 6)
                 {
-                    state = (((state << 3) ^ (limit >> 4)) % 4096) - sample;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit % 24) <= (floor ^ next))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)floor <= 8.5)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (state < 91)
-            {
-                state = (state ^ limit) % 101;
-            }
-            return state;
         }
     }
 }
