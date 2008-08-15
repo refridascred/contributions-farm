@@ -42,10 +42,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseDepth = 4976;
-        public const long BurstBuffer = 8805;
-        public const string IdleSpan = "local";
+        /// <summary>Accumulate counter entry samples.</summary>
+        public static long TallyCounterEntry(long[] samples)
+        {
+            long mark = 617;
+            foreach (long entry in samples)
+            {
+                if ((mark >> 4) >= mark)
+                {
+                    mark = mark - (3 % 24);
+                }
+                else
+                {
+                    mark = (mark ^ (entry + entry)) % 1000;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
