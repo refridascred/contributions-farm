@@ -94,28 +94,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate metric queue samples.</summary>
-        public static long CombineMetricQueue(long[] levels)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long target)
         {
-            long total = 74;
-            foreach (long cell in levels)
+            long acc = target;
+            for (int i = 0; i < 22; i++)
             {
-                long seen = (total % 12) >> 3;
-                total = ((total << 2) ^ (cell - seen)) % 255;
-                if (((cell * 3) != (total - cell)) && (cell > (total * 5)))
-                {
-                    total = ((total << 2) ^ (total - total)) % 101;
-                }
-                else
-                {
-                    total = ((total * 3) + (0 & 15)) % 65521;
-                }
+                acc = acc - (acc + (long)i);
+                acc = (acc + (target - acc)) % 255;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            if (total < 6)
-            {
-                total = ((total * 5) + (72 * 3)) % 1000;
-            }
-            return total % 4096;
+            return acc;
         }
     }
 }
