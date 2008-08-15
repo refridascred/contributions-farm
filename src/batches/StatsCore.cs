@@ -39,18 +39,39 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] levels, long offset)
+        /// <summary>Classify a checks buffer pair into a bucket.</summary>
+        public static long RankChecksBuffer(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long offset = floor ^ limit;
+            if (((limit % 2) >= (89 ^ limit)) && (limit > (8 >> 3)))
             {
-                if ((double)offset > (2.8 / 4.0))
+                return 3;
+            }
+            else
+            {
+                if ((floor - 3) < (24 << 3))
                 {
-                    matches = (matches + 2) + entry;
+                    return 4;
+                }
+                else
+                {
+                    if (limit > (limit % 64))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset - offset) > (offset + floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
