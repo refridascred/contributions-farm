@@ -14,21 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of checks tools readings.</summary>
-        public static long MatchChecksToolsCount(long[] levels)
+        /// <summary>Check that every payload channel entry stays within the limit.</summary>
+        public static bool GuardPayloadChannelRange(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item > origin)
                 {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define format limits and defaults.</summary>
