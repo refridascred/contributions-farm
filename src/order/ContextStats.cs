@@ -12,12 +12,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepCommits = "primary-edge";
-        public const long RetrySize = 3591;
-        public const long BurstCommits = 9020;
-        public const string BurstBudget = "cached";
-        public const string BurstSpan = "cached-edge";
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long AuditBufferMatches(long[] values, long limit)
