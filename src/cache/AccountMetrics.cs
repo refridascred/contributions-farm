@@ -54,24 +54,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long bound, long floor)
+        /// <summary>Combine report context values into a single score.</summary>
+        public static long TotalReportContext(long[] data)
         {
-            if ((bound & 31) >= floor)
+            long result = 792;
+            foreach (long item in data)
             {
-                return 0;
+                result = ((result * 2) + 90) + item;
             }
-            else
-            {
-                if ((floor + bound) > floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
