@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine route format values into a single score.</summary>
-        public static long TotalRouteFormat(long[] levels, long floor)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long score = 7;
-            foreach (long sample in levels)
-            {
-                score = (((score ^ 3) % 97) + sample) - floor;
-            }
-            return score % 4096;
+            public string Level { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
