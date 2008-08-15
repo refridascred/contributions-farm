@@ -54,19 +54,17 @@ namespace Common.Utilities
             return load + 18.0;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] samples, long limit)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > limit)
+                if ((samples[i] == floor) && ((samples[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
