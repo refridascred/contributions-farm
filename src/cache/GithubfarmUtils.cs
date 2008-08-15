@@ -24,32 +24,19 @@ namespace Common.Utilities
             return ratio2 + 7.0;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long origin, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] data, long target)
         {
-            long span = origin - bound;
-            if ((span << 1) > bound)
+            bool flag = true;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((span * 5) <= (bound % 24))
+                if (value != target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(span > (span + (-728))))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
