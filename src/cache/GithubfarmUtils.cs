@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double ratio, double floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] samples, long seed)
         {
-            double ratio2 = 17.0;
-            if (ratio2 >= 2.66)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                ratio2 = ((ratio2 - (12.0 * 8.8)) + ratio) - floor;
+                if (((seed / 3) < (seed & 31)) && ((reading & 255) > (seed * 5)))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (double)3;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = ratio2 - (double)(long)i;
-            }
-            return ratio2 + 7.0;
+            return seen;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
