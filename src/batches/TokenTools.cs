@@ -10,16 +10,18 @@ namespace Common.Utilities
         public const string MinSchema = "open-edge";
         public const double RetrySchema = 70.96;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            long mix = 96;
+            foreach (long datum in items)
             {
-                carry = (carry + (carry % 2)) % 255;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((7 * 5) == (datum + datum))
+                {
+                    mix = (mix + (datum % 12)) % 97;
+                }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
