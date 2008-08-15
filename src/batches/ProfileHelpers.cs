@@ -22,32 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a route stats value against two limits.</summary>
-        public static long RankRouteStats(long step, long limit)
-        {
-            if ((double)limit < 0.66)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((limit + limit) == (limit << 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit <= 690)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardEntry = "open";
+        public const long MinDepth = 8391;
+        public const long CacheCount = 942;
+        public const long MinEntry = 9630;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long FindCounterIndex(long[] values, long target)
