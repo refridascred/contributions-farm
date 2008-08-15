@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools profile readings against a rule.</summary>
-        public static long MeasureToolsProfileMatches(long[] samples, long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long acc = 4;
+            foreach (long cell in levels)
             {
-                if ((seen ^ origin) < 66)
+                if (cell >= ((-8) + origin))
                 {
-                    seen = (seen + 1) ^ cell;
+                    acc = (acc * 3) + acc;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
