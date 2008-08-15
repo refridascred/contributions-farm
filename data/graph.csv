@@ -1,10 +1,7 @@
-id,region,token,ratio
-1,1.61,cached,513
-2,primary,753,519
-3,open,fallback,77.08
-4,green,93.93,752
-5,open,primary,9.43
-6,66.26,888,eu-west
-7,52,2.78,open
-8,628,legacy,47.57
-9,stable,630,391
+id,token,weight,region
+1,994,eu-west,495
+2,407,eu-west,36.44
+3,734,stable,standard
+4,934,806,585
+5,11.79,strict,stable
+6,870,open,40.94
