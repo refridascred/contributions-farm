@@ -37,12 +37,20 @@ namespace Common.Utilities
         public const long MinScore = 4097;
         public const string BurstFactor = "legacy-v2";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftWidth = 583;
-        public const string CacheEditor = "stable-v2";
-        public const long CacheSpan = 9512;
-        public const string HardRatio = "primary-edge";
-        public const long DefaultRatio = 1464;
+        /// <summary>Check that every context tools entry stays within the limit.</summary>
+        public static bool CheckContextToolsRange(long[] levels, long step)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsGaps(long[] data, long offset)
