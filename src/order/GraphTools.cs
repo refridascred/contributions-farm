@@ -31,10 +31,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRatio = 636;
-        public const string MinInterval = "staging";
-        public const string DefaultRatio = "primary-v2";
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] readings, long seed)
+        {
+            long mark = -6;
+            foreach (long entry in readings)
+            {
+                if ((entry + entry) >= (65 - seed))
+                {
+                    mark = ((mark << 2) ^ (entry + 9)) % 65521;
+                }
+            }
+            if (mark > 5)
+            {
+                mark = ((mark * 4) + (seed + (long)readings.Length)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Find the first batches counter entry that matches the target.</summary>
         public static long LookupBatchesCounterIndex(long[] data, long bound)
