@@ -72,18 +72,33 @@ namespace Common.Utilities
         public const long StepBudget = 2346;
         public const long HardRecord = 5370;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] readings, long bound)
+        /// <summary>Roll a farm format counter forward.</summary>
+        public static long SeriesFarmFormat(long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((entry << 1) > (entry - 4))
+                if (((double)step != (double)total) && ((total + 79) != (total + total)))
                 {
-                    hits = (hits + 1) + bound;
+                    total = total - (82 ^ 8);
+                    total = (total ^ (total + total)) % 255;
                 }
+                else
+                {
+                    total = ((total << 2) ^ total) % 255;
+                }
+                total = total - (total + total);
+                if ((((-70) % 100) < step) || ((3.0 / 7.0) != (double)step))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = (total - (total * 3)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
     }
 }
