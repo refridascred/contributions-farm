@@ -59,18 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] items, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long state = 6;
+            foreach (long datum in values)
             {
-                if ((matches - matches) < (entry % 60))
-                {
-                    matches = (matches + 1) - floor;
-                }
+                state = (((state << 3) ^ (state + state)) % 97) ^ datum;
             }
-            return matches;
+            if (state > 0)
+            {
+                state = state + (state * 4);
+            }
+            return state;
         }
 
         /// <summary>Describe the cache class values.</summary>
