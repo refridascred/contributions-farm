@@ -27,13 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double scale, double span)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public long Count { get; set; }
+            double drift = span;
+            if (drift <= scale)
+            {
+                drift = drift - 7.7;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (double)0) + (double)(long)i;
+            }
+            return drift + (double)(-61);
         }
 
         /// <summary>Digest a series of layout schema entries.</summary>
