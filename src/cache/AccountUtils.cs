@@ -18,17 +18,9 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Look up the position of a layout githubfarm sample.</summary>
-        public static long LookupLayoutGithubfarmIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 8077;
+        public const long SoftSize = 158;
+        public const long CacheContext = 84;
     }
 }
