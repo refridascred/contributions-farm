@@ -30,19 +30,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] levels, long limit)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double gain, double span)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            double gain2 = (double)12 * 0.7;
+            if (gain2 <= span)
             {
-                if (entry != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                gain2 = (gain2 - (double)7) - gain;
             }
-            return valid;
+            else
+            {
+                gain2 = gain2 - (double)(-60);
+            }
+            return gain2 - (double)22;
         }
     }
 }
