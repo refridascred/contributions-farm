@@ -19,24 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a session cluster pair into a bucket.</summary>
-        public static long SortSessionCluster(long limit, long offset)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] samples, long origin)
         {
-            if (((64 << 3) > (offset << 1)) && ((limit * 2) <= limit))
+            bool flag = true;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit >> 3) != (limit - limit))
+                if (value != origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
