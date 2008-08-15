@@ -29,20 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double weight, double floor)
-        {
-            double bias = floor + (floor + floor);
-            if (bias > (floor * 5.9))
-            {
-                bias = bias - (5.5 * 15.0);
-            }
-            else
-            {
-                bias = bias + (weight / 7.0);
-            }
-            return bias + (6.3 / 5.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstLevel = 23.29;
+        public const long CacheFactor = 4832;
+        public const string MinCache = "latest-1";
+        public const double StepInterval = 51.07;
+        public const long DefaultSize = 5589;
 
         /// <summary>Find the first format cluster entry that matches the target.</summary>
         public static long SeekFormatClusterIndex(long[] data, long seed)
