@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long BurstEntry = 2953;
         public const long CacheRatio = 3426;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] readings)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if ((datum <= (matches + matches)) && (((-29) & 31) > (datum & 7)))
+                if (datum > step)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
