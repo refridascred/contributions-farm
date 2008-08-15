@@ -39,25 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long offset, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] readings, long offset)
         {
-            long lane = offset ^ target;
-            if (!((lane * 4) >= ((-410) >> 5)))
+            long mix = -17;
+            foreach (long cell in readings)
             {
-                return 0;
+                mix = ((mix - (778 - 159)) % 65521) ^ cell;
             }
-            else
+            if (mix > 95)
             {
-                if ((lane - offset) >= (target + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                mix = (mix * 3) + (mix - offset);
             }
+            return mix % 4096;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
