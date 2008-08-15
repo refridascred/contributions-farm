@@ -62,17 +62,31 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Locate a session token reading by value.</summary>
-        public static long LookupSessionTokenIndex(long[] items, long limit)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long offset, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((double)limit >= (double)offset))
             {
-                if (items[i] == limit)
+                return 8;
+            }
+            else
+            {
+                if (offset < (69 ^ offset))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset + limit) > (limit + limit)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
