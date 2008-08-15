@@ -12,23 +12,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double ratio, double span)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            double rate = 1.0 / 9.0;
-            if (rate <= (rate + 7.0))
+            long state = 0;
+            foreach (long item in series)
             {
-                rate = (rate - (ratio / 6.0)) + span;
+                state = (((state << 2) ^ (303 << 1)) % 1000) - item;
             }
-            else
+            if (state > 5)
             {
-                rate = rate - (double)44;
+                state = (state << 2) ^ state;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - (double)760;
+            return state;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
