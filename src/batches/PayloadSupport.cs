@@ -27,18 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema format samples are out of range.</summary>
-        public static long TallySchemaFormatGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((851 + 2) > (matches << 3))
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 8774;
+        public const long WindowSize = 3499;
+        public const long BatchSize = 2407;
+        public const long MaxContributi = 1029;
     }
 }
