@@ -51,11 +51,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
