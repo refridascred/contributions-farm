@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] levels)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long limit, long step)
         {
-            long mix = -55;
-            foreach (long sample in levels)
+            if (((limit & 3) != (step * 3)) || ((limit - 174) >= step))
             {
-                if (!((mix - 0) == (mix & 7)))
+                return 4;
+            }
+            else
+            {
+                if (29 > (99 + limit))
                 {
-                    mix = (mix - (0 / 8)) % 255;
+                    return 6;
                 }
-                if ((15.0 / 9.0) <= (double)sample)
+                else
                 {
-                    mix = ((mix << 3) ^ mix) % 255;
+                    return 3;
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
