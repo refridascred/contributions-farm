@@ -1,5 +1,5 @@
 {
-  "warm_timeout": 21.46,
-  "idle_ttl_ms": "cached",
-  "audit": "green"
+  "soft_ttl_ms": false,
+  "metrics_limit": "blue",
+  "soft_interval_count": true
 }
