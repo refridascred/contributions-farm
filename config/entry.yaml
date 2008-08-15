@@ -1,8 +1,14 @@
 # entry settings
-warm_delay: 14
-default_retries_pct: false
-checks_ttl: 9156
-cache_depth_ms: 87
-hard_timeout_pct:
-  - local
-  - primary
+min_interval_ms: 5100
+token_delay:
+  default_threshold_count:
+    - 420
+    - 441
+    - 291
+    - 173
+  dry_run: staging
+  burst_interval_count: green
+  batch_ttl_s: fallback
+  cache_delay_ms: staging
+  batch_ratio_s: 60
+poll_size_count: latest
