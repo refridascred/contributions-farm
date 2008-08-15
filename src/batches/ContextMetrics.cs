@@ -31,17 +31,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] items, long target)
+        /// <summary>Classify a route batches pair into a bucket.</summary>
+        public static long GradeRouteBatches(long seed, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long edge = seed ^ floor;
+            if ((double)seed > (8.9 * 0.6))
             {
-                if (items[i] > target)
+                return 4;
+            }
+            else
+            {
+                if (!(edge >= (edge % 24)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((47 <= (edge >> 4)) && (edge < (seed >> 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((edge + floor) <= (edge & 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up stats order samples.</summary>
