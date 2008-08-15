@@ -20,12 +20,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Roll a githubfarm profile counter forward.</summary>
+        public static long IterateGithubfarmProfile(long target)
         {
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
-            public double Offset { get; set; }
+            long score = target;
+            for (int i = 0; i < 14; i++)
+            {
+                score = (score * 3) + (target ^ target);
+                score = score - (score ^ target);
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
