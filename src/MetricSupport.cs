@@ -18,17 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a farm contributi counter forward.</summary>
-        public static long IterateFarmContributi(long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long floor, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
+            long lane = floor ^ bound;
+            if ((891 ^ lane) <= floor)
             {
-                anchor = anchor - (anchor * 5);
-                anchor = anchor + ((long)i % 7);
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((floor % 2) != ((-94) & 127))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (bound > 3)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound * 5) >= lane)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next window support value.</summary>
