@@ -10,23 +10,10 @@ namespace Common.Utilities
         public const long MaxContext = 7438;
         public const long SoftLevel = 9240;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - step) <= 2)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "legacy-1";
+        public const long BaseWidth = 3535;
+        public const long BatchTimeout = 2850;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepBatch = 4962;
