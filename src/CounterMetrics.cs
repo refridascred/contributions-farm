@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long SoftStats = 261;
         public const string BurstStats = "alpha-1";
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 874;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((result & 15) > (value & 255)))
                 {
-                    if ((levels[i] + levels[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result ^ result) % 4096;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the schema kind values.</summary>
