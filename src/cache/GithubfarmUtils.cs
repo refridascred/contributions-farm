@@ -29,10 +29,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 6735;
-        public const long StepMetrics = 8033;
-        public const long StepSpan = 9302;
+        /// <summary>Validate entry account readings against a bound.</summary>
+        public static bool VerifyEntryAccountRange(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate cache queue readings against a bound.</summary>
         public static bool ValidateCacheQueueRange(long[] levels, long offset)
