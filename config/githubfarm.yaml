@@ -1,18 +1,9 @@
 # githubfarm settings
-queue_depth: local
-poll_depth: standard
-warm_retries_ms:
-  persist:
-    burst_ratio_pct: 100
-    idle_ttl_count: 9488
-    idle_limit:
-      - blue
-      - staging
-    flush_retries_s: primary
-  poll_size_pct: 30
-  base_limit_ms: green
-  default_threshold: 45.34
-  batch_timeout_ms: 37.43
-  idle_capacity: 9980
-queue_ttl: 20.59
-warm_ratio_ms: 17
+soft_size_pct:
+  - 91
+  - 373
+  - 160
+verbose: true
+flush_delay:
+  - 436
+  - 386
