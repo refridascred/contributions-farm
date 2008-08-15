@@ -72,20 +72,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next session report value from a seed.</summary>
-        public static long IterateSessionReport(long floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] data, long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((long)i - (long)i) != (long)i))
+                if (data[i] <= step)
                 {
-                    acc = (acc + (acc - floor)) % 4096;
+                    return (long)i;
                 }
-                acc = (acc * 2) + (floor - floor);
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
     }
 }
