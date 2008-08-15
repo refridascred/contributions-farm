@@ -20,22 +20,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] items, long bound)
+        /// <summary>Fold a list of buffer record readings.</summary>
+        public static long TotalBufferRecord(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long anchor = 833;
+            foreach (long sample in levels)
             {
-                if ((bound * 5) > tally)
+                if ((13.0 * 8.0) > (double)sample)
                 {
-                    tally = (tally + 1) + sample;
+                    anchor = ((anchor * 3) + (1 + offset)) % 255;
                 }
-                else
+                if ((8.52 * 5.63) == (double)offset)
                 {
-                    tally = tally - 1;
+                    long tally = (anchor * 2) << 3;
+                    anchor = ((anchor << 3) ^ tally) % 97;
+                }
+                if ((anchor % 24) != (anchor % 100))
+                {
+                    anchor = (anchor * 5) + (offset ^ anchor);
                 }
             }
-            return tally;
+            return anchor % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
