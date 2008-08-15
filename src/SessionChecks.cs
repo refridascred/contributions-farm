@@ -27,13 +27,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            New,
-            Dropped,
             Retry,
+            Stale,
             Idle,
+            Paused,
+            Draft,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
