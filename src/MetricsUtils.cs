@@ -25,15 +25,14 @@ namespace Common.Utilities
             return rate + 3.57;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double rate, double bias)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            double ratio = rate;
-            if (ratio < ratio)
-            {
-                ratio = ratio - rate;
-            }
-            return ratio - (bias / 6.0);
+            Pending,
+            Dropped,
+            Closed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Digest a series of order queue entries.</summary>
