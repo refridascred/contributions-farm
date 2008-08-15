@@ -32,10 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseCluster = 4.41;
-        public const string BaseLevel = "legacy-1";
-        public const double BatchDepth = 39.25;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 5970;
+        public const double CacheInterval = 75.69;
+        public const string MaxCount = "fallback";
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] data)
