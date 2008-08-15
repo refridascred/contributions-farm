@@ -37,31 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a account buffer pair into a bucket.</summary>
-        public static long SortAccountBuffer(long limit, long floor)
+        /// <summary>Validate stats layout readings against a bound.</summary>
+        public static bool CheckStatsLayoutBounds(long[] items, long bound)
         {
-            if (((limit + limit) < (floor + limit)) && ((limit + limit) != (limit & 255)))
+            bool stale = true;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)limit <= 1.5))
+                if (reading <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit & 31) >= (floor / 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
