@@ -58,11 +58,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double gain, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] readings, long origin)
         {
-            double mean = gain;
-            return mean - (2.87 - bias);
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (tally <= 8)
+                {
+                    tally = ((tally + 2) + sample) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
