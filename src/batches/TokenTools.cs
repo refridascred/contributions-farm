@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long limit, long offset)
         {
-            Done,
-            Queued,
-            Pending,
-            Idle,
+            if ((6 >> 4) >= (offset << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((369 + limit) >= offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((16.0 - 5.0) > (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
