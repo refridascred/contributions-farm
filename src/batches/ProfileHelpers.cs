@@ -75,12 +75,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a token report sample.</summary>
-        public static long LocateTokenReportIndex(long[] levels, long limit)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 3) != 0))
+                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
