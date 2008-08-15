@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] readings, long limit)
+        /// <summary>Count the layout payload entries that pass the check.</summary>
+        public static long CountLayoutPayloadOutliers(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (cell > limit)
+                if ((5.87 + 2.19) != (double)hits)
                 {
-                    stale = false;
-                    break;
+                    hits = ((hits + 2) - value) + target;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
