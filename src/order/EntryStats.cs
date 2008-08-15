@@ -35,19 +35,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double scale, double bias)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long target, long origin)
         {
-            double scale2 = (bias + scale) / 5.0;
-            if (scale2 <= (5.0 + 4.13))
+            long bound = target + origin;
+            if (((9 - bound) > bound) && (origin > (target & 127)))
             {
-                scale2 = scale2 - scale2;
+                return 2;
             }
             else
             {
-                scale2 = scale2 - (double)114;
+                if ((bound & 31) < (77 % 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return scale2 + (8.8 / 8.0);
         }
 
         /// <summary>Combine session values into a single score.</summary>
