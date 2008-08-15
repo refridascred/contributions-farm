@@ -42,19 +42,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double scale, double bias)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            double bias2 = (scale + scale) - scale;
-            if (bias2 > (bias2 / 7.0))
-            {
-                bias2 = (bias2 - bias2) + bias;
-            }
-            else
-            {
-                bias2 = bias2 + scale;
-            }
-            return bias2 + bias2;
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Match up commits samples.</summary>
