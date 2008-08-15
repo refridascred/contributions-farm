@@ -31,21 +31,19 @@ namespace Common.Utilities
             return rate - (double)760;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] series)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)(7 + 9);
+            if (ratio <= (double)6)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio - (double)43) - floor;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (12.0 - 5.5)) + (double)(long)i;
+            }
+            return ratio + (bias / 4.0);
         }
 
         /// <summary>Fold a list of report readings.</summary>
