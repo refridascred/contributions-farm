@@ -32,12 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Look up the position of a channel counter sample.</summary>
+        public static long LookupChannelCounterIndex(long[] samples, long bound)
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
