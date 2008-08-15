@@ -64,11 +64,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
