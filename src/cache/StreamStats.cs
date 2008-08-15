@@ -40,12 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinSize = 9014;
-        public const long DefaultEditor = 4651;
-        public const long StepCount = 2519;
-        public const long DefaultRatio = 5976;
-        public const long MaxEditor = 2690;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] items)
+        {
+            long mark = 4;
+            foreach (long reading in items)
+            {
+                mark = ((mark * 2) + (mark ^ reading)) % 255;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool CheckContextLimits(long[] readings, long target)
