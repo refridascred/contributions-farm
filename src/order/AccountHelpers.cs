@@ -23,17 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] levels, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                mix = (mix - ((long)i >> 5)) % 65521;
-                mix = mix + (mix & 3);
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Describe the layout state values.</summary>
