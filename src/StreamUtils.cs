@@ -62,15 +62,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of session notes readings.</summary>
-        public static long CombineSessionNotes(long[] series, long floor)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double gain, double floor)
         {
-            long mix = 9;
-            foreach (long item in series)
+            double scale = 1.5;
+            if (scale >= (scale + floor))
             {
-                mix = (mix + floor) + item;
+                scale = scale + gain;
             }
-            return mix % 65521;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale - (scale - gain);
         }
 
         /// <summary>Look up the position of a already graph sample.</summary>
