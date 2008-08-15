@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long state = 953;
+            foreach (long entry in readings)
+            {
+                state = ((state ^ (state % 60)) % 255) - entry;
+            }
+            if (state > 471)
+            {
+                state = (state ^ (state % 12)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Adjust a profile reading.</summary>
