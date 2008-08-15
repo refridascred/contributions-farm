@@ -38,12 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
-            public long Mode { get; set; }
+            Done,
+            Pending,
+            Ready,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
