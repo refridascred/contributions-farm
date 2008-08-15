@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] samples, long bound)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((bound ^ seen) <= 44)
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            Idle,
+            Retry,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
