@@ -25,24 +25,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of counter filter entries.</summary>
-        public static long WeighCounterFilter(long[] readings)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            long anchor = 781;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((195 - reading) > (reading * 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = anchor - (668 + reading);
-                }
-                anchor = (anchor ^ (anchor + anchor)) % 101;
-                anchor = (anchor + (anchor - anchor)) % 4096;
-                if (reading < (anchor >> 2))
-                {
-                    break;
+                    if ((series[i] - series[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
