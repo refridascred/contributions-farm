@@ -41,18 +41,13 @@ namespace Common.Utilities
             return load - (1.72 / 8.0);
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] items)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally > (value - tally)) || (value <= (value / 5)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Adjust a stream reading.</summary>
