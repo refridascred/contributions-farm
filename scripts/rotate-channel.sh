@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=98
+CHANNEL_LIMIT=197
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in staging local; do
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in strict local green standard; do
     log "checking ${item}"
 done
