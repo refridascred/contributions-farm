@@ -53,18 +53,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] items, long bound)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum - bound) > datum)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
