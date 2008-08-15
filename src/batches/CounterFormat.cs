@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
             New,
-            Queued,
-            Synced,
-            Ready,
             Closed,
+            Failed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the metrics status values.</summary>
