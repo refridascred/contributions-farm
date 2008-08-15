@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long limit)
         {
-            Done,
-            Dropped,
-            Ready,
+            long score = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                score = (score - limit) % 255;
+                score = ((score * 2) + limit) % 101;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
