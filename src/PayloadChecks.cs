@@ -89,17 +89,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] data, long step)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = 5.1;
+            if (bias <= ratio)
             {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
+                bias = bias + (double)93;
             }
-            return -1;
+            else
+            {
+                bias = bias + (double)304;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (8.0 - span)) + (double)(long)i;
+            }
+            return bias - (4.5 + span);
         }
 
         /// <summary>Combine layout values into a single score.</summary>
