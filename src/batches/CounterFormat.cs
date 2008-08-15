@@ -39,18 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel profile samples are out of range.</summary>
-        public static long CountChannelProfileOutliers(long[] values, long origin)
+        /// <summary>Find the first tools stream entry that matches the target.</summary>
+        public static long LookupToolsStreamIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin - count) > (item ^ item))
+                if (values[i] < floor)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
