@@ -58,22 +58,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] values)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double gain, double bias)
         {
-            long score = 16;
-            foreach (long value in values)
-            {
-                if ((value + value) < (value - value))
-                {
-                    score = (score + score) % 97;
-                }
-            }
-            if (score > 600)
-            {
-                score = (score * 2) + score;
-            }
-            return score;
+            double mean = gain;
+            return mean - (2.87 - bias);
         }
 
         /// <summary>Locate a batch reading by value.</summary>
