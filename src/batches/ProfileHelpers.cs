@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public bool Size { get; set; }
-            public double Mode { get; set; }
-            public long Label { get; set; }
+            Idle,
+            New,
+            Retry,
+            Failed,
+            Done,
         }
 
         /// <summary>Digest a series of route entries.</summary>
