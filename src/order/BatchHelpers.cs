@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long acc = 587;
-            foreach (long value in values)
-            {
-                acc = ((acc + ((long)values.Length % 8)) % 65521) + value;
-            }
-            return acc;
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
