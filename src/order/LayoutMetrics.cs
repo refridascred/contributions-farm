@@ -58,19 +58,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double ratio, double offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] series, long offset)
         {
-            double rate = (offset + offset) / 5.0;
-            if (rate < rate)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (ratio - rate);
+                if ((series[i] == offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - offset;
-            }
-            return rate + (offset - offset);
+            return -1;
         }
     }
 }
