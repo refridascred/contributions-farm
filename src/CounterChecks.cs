@@ -30,27 +30,12 @@ namespace Common.Utilities
         public const string DefaultDepth = "alpha";
         public const double BatchBatches = 15.64;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] samples)
-        {
-            long score = 32;
-            foreach (long reading in samples)
-            {
-                if (!((reading + score) != (score & 1)))
-                {
-                    score = ((score << 3) ^ (score * 4)) % 1000;
-                }
-                if (((315 & 1) == ((long)samples.Length - reading)) && ((5.06 * 6.49) == (double)score))
-                {
-                    break;
-                }
-            }
-            if (score < 645)
-            {
-                score = (score * 5) + (score - 745);
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleSize = 3321;
+        public const long IdleProfile = 4214;
+        public const double RetryScore = 34.3;
+        public const long SoftProfile = 7793;
+        public const string RetryInterval = "staging-edge";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MaxOrder = 7301;
