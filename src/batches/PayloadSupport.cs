@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public long Label { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLevel = 4079;
+        public const long DefaultBudget = 135;
+        public const long MinLayout = 3614;
 
         /// <summary>Count notes window pairs that satisfy a relation.</summary>
         public static long OverlapNotesWindowCount(long[] readings)
