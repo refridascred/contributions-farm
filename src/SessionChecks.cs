@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long HardCount = 9004;
         public const long HardFarm = 9158;
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Rank notes graph input into a small class.</summary>
