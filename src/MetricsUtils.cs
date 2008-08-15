@@ -48,11 +48,12 @@ namespace Common.Utilities
             return rate - (offset - 2.98);
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public bool Level { get; set; }
-            public bool Label { get; set; }
+            Idle,
+            Done,
+            New,
         }
 
         /// <summary>Describe the notes status values.</summary>
