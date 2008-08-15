@@ -57,18 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] levels)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((tally & 1) > (reading + reading))
+                if (sample < bound)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
