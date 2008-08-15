@@ -20,16 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the context cache series from a seed.</summary>
-        public static long IterateContextCache(long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] readings)
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                anchor = (anchor * 2) + (bound ^ anchor);
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if (!((cell + cell) >= 2) || (seen <= (cell / 3)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Grade a counter support value against two limits.</summary>
