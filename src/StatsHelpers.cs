@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every layout payload entry stays within the limit.</summary>
-        public static bool VerifyLayoutPayloadRange(long[] series, long floor)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < floor)
+                if (series[i] >= offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
