@@ -1,16 +1,7 @@
 {
-  "idle_capacity_s": "staging",
-  "checks_depth": {
-    "report_delay": {
-      "flush_delay_ms": 39,
-      "min_size_count": 1024,
-      "hard_retries_count": 64,
-      "burst_ratio_ms": 1246
-    },
-    "compress": 11,
-    "verbose": "legacy",
-    "warm_depth": false,
-    "idle_window": false
-  },
-  "contributi_threshold": "eu-west"
+  "already_depth": true,
+  "cache_ratio_pct": [82, 91, 416],
+  "payload_threshold": 71.07,
+  "cluster_limit": "legacy",
+  "already_size": false
 }
