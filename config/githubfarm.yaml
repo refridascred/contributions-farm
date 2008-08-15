@@ -1,15 +1,5 @@
 # githubfarm settings
-persist: false
-batch_interval:
-  poll_timeout_s: 100
-  metrics_ratio:
-    idle_window_ms: 78.23
-    enabled: blue
-    idle_ratio_s: 96.02
-    buffer_interval: 25.03
-    verbose: 4362
-  hard_ratio_pct: true
-  command_threshold: false
-  compress: stable
-  buffer_interval: open
-schema_threshold: true
+soft_delay_s: staging
+counter_depth: 54
+payload_limit: 3.69
+default_timeout_s: 91
