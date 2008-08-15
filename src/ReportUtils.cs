@@ -33,12 +33,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Measure how many route report samples are out of range.</summary>
+        public static long AuditRouteReportMatches(long[] series, long target)
         {
-            Dropped,
-            Pending,
-            Draft,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (!(datum < (datum + 8)))
+                {
+                    hits = (hits + 3) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
