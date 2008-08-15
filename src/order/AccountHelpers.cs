@@ -56,13 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
             New,
-            Stale,
-            Retry,
-            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
