@@ -81,13 +81,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] samples)
         {
-            Paused,
-            Locked,
-            Dropped,
-            Ready,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((8.54 - 8.57) > (double)tally)
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every report format entry stays within the limit.</summary>
