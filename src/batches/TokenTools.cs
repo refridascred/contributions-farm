@@ -20,17 +20,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a githubfarm profile counter forward.</summary>
-        public static long IterateGithubfarmProfile(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 14; i++)
-            {
-                score = (score * 3) + (target ^ target);
-                score = score - (score ^ target);
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string CacheScore = "latest-1";
+        public const long BaseFarm = 1228;
+        public const long CacheBudget = 3822;
+        public const long StepFarm = 9429;
     }
 }
