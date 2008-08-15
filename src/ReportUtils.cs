@@ -29,21 +29,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 2;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc << 3) ^ (9 & 15)) - value;
             }
-            return hits;
+            if (acc < 48)
+            {
+                acc = ((acc * 2) + (acc ^ acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many route report samples are out of range.</summary>
