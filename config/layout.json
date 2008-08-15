@@ -1,5 +1,8 @@
 {
-  "min_delay_s": 100,
-  "min_threshold": 60,
-  "githubfarm_delay": "fallback"
+  "strict": "cached",
+  "already_window": 1024,
+  "warm_limit": ["primary", "strict"],
+  "flush_limit": 66.06,
+  "counter_threshold": 7683,
+  "compress": 1024
 }
