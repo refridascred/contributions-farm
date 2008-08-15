@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long BurstEntry = 2953;
         public const long CacheRatio = 3426;
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long target)
         {
-            Done,
-            Synced,
-            Closed,
-            New,
+            long anchor = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if (anchor <= target)
+                {
+                    anchor = anchor + (target - anchor);
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
