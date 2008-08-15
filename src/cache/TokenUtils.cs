@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long origin, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
+            if ((origin >= (origin % 3)) && ((origin ^ origin) > (origin + 9)))
             {
-                acc = acc + (target + target);
-                acc = ((acc * 4) + (long)i) % 65521;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((offset >> 2) <= (origin >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
