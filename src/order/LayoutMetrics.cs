@@ -33,22 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] readings, long seed)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (!((double)seed >= (double)entry) && ((hits * 3) > seed))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
