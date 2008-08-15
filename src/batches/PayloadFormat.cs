@@ -36,26 +36,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter token values into a single score.</summary>
-        public static long ScoreCounterToken(long[] values)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long offset)
         {
-            long mark = 32;
-            foreach (long entry in values)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (((0.59 / 7.0) <= (double)mark) && ((66 % 7) == (entry >> 2)))
-                {
-                    mark = (mark + (mark * 5)) % 255;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ mark;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            if (mark < 633)
-            {
-                mark = (mark - ((-875) + mark)) % 65521;
-            }
-            return mark;
+            return carry;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
