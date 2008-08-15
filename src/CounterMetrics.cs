@@ -53,25 +53,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a counter contributi value against two limits.</summary>
-        public static long GradeCounterContributi(long offset, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] readings)
         {
-            long offset2 = offset ^ seed;
-            if (7.86 >= (double)seed)
+            long total = 807;
+            foreach (long entry in readings)
             {
-                return 5;
+                total = (total + (total / 3)) + entry;
             }
-            else
+            if (total > 477)
             {
-                if ((offset2 + 26) < seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
+                total = ((total * 5) + (total * 2)) % 65521;
             }
+            return total;
         }
 
         /// <summary>Grade a already metric value against two limits.</summary>
