@@ -13,26 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] series, long origin)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long result = 45;
-            foreach (long item in series)
-            {
-                if ((581 % 64) > (244 - origin))
-                {
-                    result = (result * 4) + result;
-                }
-                if (!((origin + 678) != (8 + 257)))
-                {
-                    result = (result * 3) + (origin >> 3);
-                }
-                if (!((item + result) <= (item - result)))
-                {
-                    break;
-                }
-            }
-            return result;
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of counter channel entries.</summary>
