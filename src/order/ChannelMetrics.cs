@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 5621;
+        public const string MinInterval = "latest-edge";
+        public const long BaseCache = 3764;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
