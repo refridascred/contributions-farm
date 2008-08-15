@@ -40,15 +40,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double gain, double span)
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
+            double bias = span;
+            if (bias < gain)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                bias = bias + (gain + 4.25);
             }
-            return total;
+            else
+            {
+                bias = bias + 6.3;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (span + gain)) + (double)(long)i;
+            }
+            return bias - 3.01;
         }
     }
 }
