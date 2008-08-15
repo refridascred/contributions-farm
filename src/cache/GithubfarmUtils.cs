@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
