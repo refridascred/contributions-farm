@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a contributi metric reading.</summary>
-        public static double AdjustContributiMetric(double ratio, double offset)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double ratio, double floor)
         {
-            double ratio2 = (double)(685 ^ 1);
-            if (ratio2 >= (double)5)
+            double bias = floor;
+            if (bias <= floor)
             {
-                ratio2 = (ratio2 + offset) - ratio;
+                bias = (bias + (6.65 * 4.1)) + ratio;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                ratio2 = (ratio2 + offset) - (double)(long)i;
+                bias = bias - (double)49;
             }
-            return ratio2 + (9.78 / 3.0);
+            return bias + bias;
         }
 
         /// <summary>Fold a list of batch contributi readings.</summary>
