@@ -31,15 +31,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] levels, long bound)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long bound, long origin)
         {
-            long acc = 52;
-            foreach (long datum in levels)
+            if ((origin / 5) > bound)
             {
-                acc = (((acc * 3) + datum) % 255) + bound;
+                return 7;
             }
-            return acc % 65521;
+            else
+            {
+                if (!((14.0 - 9.48) != (double)bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
