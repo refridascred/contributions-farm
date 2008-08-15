@@ -31,18 +31,14 @@ namespace Common.Utilities
         public const double IdleStream = 81.97;
         public const long CacheCount = 6762;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long carry = 664;
-            foreach (long datum in readings)
-            {
-                if (((8 + carry) == (carry ^ (-33))) || (carry < (carry + datum)))
-                {
-                    carry = (carry * 5) + (datum % 60);
-                }
-            }
-            return carry;
+            Dropped,
+            Locked,
+            Done,
+            Closed,
+            Stale,
         }
     }
 }
