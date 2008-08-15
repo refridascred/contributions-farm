@@ -1,7 +1,6 @@
 {
-  "sync_timeout": true,
-  "enabled": [6, 407],
-  "warm_retries": 60,
-  "soft_threshold_count": "latest",
-  "flush_interval_pct": false
+  "persist": 7541,
+  "max_window_pct": "legacy",
+  "burst_retries_pct": 48,
+  "metrics_threshold": [393, 337]
 }
