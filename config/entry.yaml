@@ -1,7 +1,10 @@
 # entry settings
-base_timeout_pct:
-  - 453
-  - 271
-readonly: 70
-poll_delay: fallback
-burst_ratio_count: local
+compress: stable
+command_capacity:
+  - strict
+  - local
+  - staging
+  - primary
+warm_ttl_s: 41.46
+metrics_depth: 500
+cluster_limit: staging
