@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long StepLevel = 4247;
         public const long DefaultOrder = 3064;
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((item + seen) == (item / 5))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the layout state values.</summary>
