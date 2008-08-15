@@ -66,13 +66,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Locate a cache entry reading by value.</summary>
+        public static long FindCacheEntryIndex(long[] data, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
