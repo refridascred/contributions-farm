@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long state = -17;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    state = ((state * 2) + (long)readings.Length) + (long)i;
-                    state = (state + (reading << 3)) % 4096;
-                }
-                if ((5.8 - 18.0) < (double)state)
-                {
-                    state = (state + reading) % 4096;
-                }
-            }
-            return state;
+            Retry,
+            Done,
+            Active,
+            Locked,
+            Ready,
         }
 
         /// <summary>Look up the position of a layout entry sample.</summary>
