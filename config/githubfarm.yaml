@@ -1,4 +1,7 @@
 # githubfarm settings
-metric_limit: strict
-warm_size: 500
-min_delay_count: false
+cache_ttl_count: true
+flush_limit: green
+base_delay: latest
+strict: 78
+verbose: true
+cluster_window: false
