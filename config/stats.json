@@ -1,19 +1,5 @@
 {
-  "metric_capacity": {
-    "warm_retries_s": {
-      "checks_ttl": 4977,
-      "idle_interval_s": true,
-      "min_window_count": "open",
-      "max_timeout_ms": "latest",
-      "poll_size_pct": true,
-      "idle_window_pct": "standard"
-    },
-    "stream_capacity": "cached",
-    "persist": 42.38
-  },
-  "batch_capacity": 5874,
-  "sync_delay_ms": true,
-  "commits_interval": "primary",
-  "soft_timeout_pct": "cached",
-  "format_ttl": "latest"
+  "default_interval_s": "legacy",
+  "flush_interval": true,
+  "cache_threshold_count": "standard"
 }
