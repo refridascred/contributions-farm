@@ -61,20 +61,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double gain, double bias)
-        {
-            double scale = 8.0;
-            if (scale >= 9.23)
-            {
-                scale = (scale + bias) + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + 5.48) + (double)(long)i;
-            }
-            return scale - (scale / 3.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepNotes = 61.66;
+        public const string BaseNotes = "fallback-edge";
+        public const long HardScore = 1026;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TallyMetric(long[] samples, long bound)
