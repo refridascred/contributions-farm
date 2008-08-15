@@ -50,10 +50,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstPayload = "alpha-edge";
-        public const long DefaultSize = 3919;
-        public const long CacheSpan = 6441;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string SoftRatio = "fallback-1";
+        public const long HardLevel = 4847;
+        public const long LimitSize = 9171;
+        public const long LimitChannel = 2681;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BurstOrder = 3024;
