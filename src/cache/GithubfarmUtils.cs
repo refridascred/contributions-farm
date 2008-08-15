@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] items, long bound)
         {
-            public double Label { get; set; }
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
