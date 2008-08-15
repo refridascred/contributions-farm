@@ -1,8 +1,8 @@
 {
-  "verbose": "fallback",
-  "base_threshold_count": [74, 352, 106, 119],
-  "persist": "standard",
-  "batch_ttl": true,
-  "contributi_delay": true,
-  "queue_window": 98
+  "order_size": 5955,
+  "burst_threshold_s": 6820,
+  "sync_interval": 25,
+  "profile_delay": true,
+  "cache_limit_pct": "open",
+  "default_ratio_count": 500
 }
