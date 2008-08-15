@@ -1,7 +1,6 @@
 {
-  "hard_ttl_ms": 2582,
-  "warm_capacity": "cached",
-  "warm_capacity_pct": "staging",
-  "idle_ratio_ms": 100,
-  "cluster_threshold": 1024
+  "max_capacity_count": false,
+  "contributi_window": "open",
+  "soft_limit_s": false,
+  "hard_capacity": 1767
 }
