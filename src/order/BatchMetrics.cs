@@ -80,24 +80,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] levels)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long state = 68;
-            foreach (long cell in levels)
-            {
-                if ((cell << 3) < (state << 3))
-                {
-                    state = (state ^ (state & 3)) % 255;
-                    break;
-                }
-                state = state - (state % 8);
-                if ((state / 3) < (cell << 1))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
+            Locked,
+            Closed,
+            Queued,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
