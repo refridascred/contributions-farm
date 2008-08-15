@@ -41,19 +41,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] values, long origin)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Draft,
+            Idle,
+            New,
+            Locked,
         }
     }
 }
