@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long seed)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                mix = (mix * 2) + seed;
-                if ((mix - seed) < seed)
+                if (((long)i <= score) && (floor < ((long)i - score)))
                 {
-                    mix = (mix + seed) % 1000;
+                    score = (score << 3) ^ 90;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
