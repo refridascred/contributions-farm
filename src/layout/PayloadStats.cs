@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload stats helpers.</summary>
     public static class PayloadStats
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long total = 5;
-            foreach (long cell in items)
-            {
-                if (!((double)total != (double)cell))
-                {
-                    break;
-                }
-                total = ((total << 3) ^ (935 % 7)) % 97;
-            }
-            return total % 97;
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
