@@ -1,23 +1,21 @@
 # entry settings
 strict:
-  - 199
-  - 29
-  - 147
-default_delay_pct: 60
-cluster_ratio:
-  - 105
-  - 401
-record_timeout:
-  - 279
-  - 62
-  - 59
-  - 88
-commits_depth:
-  hard_limit_s: 8475
-  enabled:
-    min_retries: true
-    burst_capacity: true
-    route_window: 250
-  warm_ratio_count: 2386
-  compress: 994
-warm_capacity: cached
+  cache_ttl_pct: fallback
+  contributi_timeout: 32
+  poll_retries: 1436
+  readonly:
+    max_ratio_s: 91.65
+    retry_size_ms: true
+    cache_size: 32
+    dry_run: 84.18
+    burst_ratio: 17.03
+    retry_interval_ms: false
+base_capacity_pct: green
+commits_retries:
+  batch_depth: 60
+  burst_depth: legacy
+  stats_ttl: 98
+  min_size: 49.23
+  idle_delay_count: latest
+  route_threshold: eu-west
+buffer_capacity: 60
