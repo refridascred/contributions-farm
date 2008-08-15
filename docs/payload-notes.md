@@ -1,15 +1,12 @@
 # Payload notes
 
-Use metric settings to tune how often route data is refreshed.
-Use filter settings to tune how often route data is refreshed.
-Each counter is validated before it reaches the stats queue.
-
-Use command settings to tune how often filter data is refreshed.
-Use metric settings to tune how often token data is refreshed.
-The format helpers are pure functions, so they are safe to call from any thread.
+The editor report groups every graph by context.
+Use checks settings to tune how often schema data is refreshed.
+Run the metrics check before changing any payload limits.
 
 ## Guidelines
 
-- Prefer order defaults
-- Validate counter input early
-- Keep metrics values small
+- Keep session values small
+- Prefer cluster defaults
+- Document new booking fields
+- Validate graph input early
