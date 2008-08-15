@@ -14,18 +14,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] data, long floor)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (12 <= (hits + hits))
-                {
-                    hits = ((hits + 1) + item) - floor;
-                }
-            }
-            return hits;
+            Paused,
+            Draft,
+            Ready,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
