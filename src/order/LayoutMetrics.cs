@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double bias, double bias2)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            double drift = bias + (8.8 + 1.88);
-            if (drift <= bias)
-            {
-                drift = (drift - bias) - bias2;
-            }
-            return drift - (15.0 / 6.0);
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
