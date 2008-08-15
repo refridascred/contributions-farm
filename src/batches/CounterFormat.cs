@@ -14,11 +14,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 8492;
-        public const long BurstCluster = 7820;
-        public const double MinInterval = 58.72;
-        public const long LimitCluster = 8451;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaBounds(long[] items, long bound)
