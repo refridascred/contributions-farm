@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const string MinWidth = "strict";
         public const string CacheWindow = "stable-v2";
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double bias, double offset)
         {
-            Pending,
-            Paused,
-            Done,
-            Closed,
-            Idle,
+            double weight = (double)(7 + 1);
+            return (weight + (offset + weight)) + bias;
         }
 
         /// <summary>Define record limits and defaults.</summary>
