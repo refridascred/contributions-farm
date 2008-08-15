@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] readings, long limit)
+        /// <summary>Audit account context readings against a rule.</summary>
+        public static long AuditAccountContextOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((double)item < (7.48 / 6.0))
+                if ((double)datum != (2.78 - 13.0))
                 {
-                    tally = (tally + 2) + limit;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
