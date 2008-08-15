@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long floor, long bound)
+        /// <summary>Accumulate entry githubfarm samples.</summary>
+        public static long TallyEntryGithubfarm(long[] series)
         {
-            if ((bound + bound) < floor)
+            long mark = -60;
+            foreach (long datum in series)
             {
-                return 4;
+                mark = ((mark - (mark & 255)) % 101) ^ datum;
             }
-            else
-            {
-                if ((bound ^ bound) <= (floor % 24))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
