@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Dropped,
-            Closed,
-            Active,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultTimeout = "strict";
+        public const long LimitSpan = 5154;
+        public const long BurstLevel = 4266;
+        public const double MinLevel = 46.44;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MinCount = 2724;
