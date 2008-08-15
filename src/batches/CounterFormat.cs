@@ -47,12 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Measure how many channel profile samples are out of range.</summary>
+        public static long CountChannelProfileOutliers(long[] values, long origin)
         {
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((origin - count) > (item ^ item))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
