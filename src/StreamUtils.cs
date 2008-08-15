@@ -31,12 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            public long Region { get; set; }
             public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
