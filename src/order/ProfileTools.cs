@@ -63,13 +63,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            Retry,
+            New,
+            Paused,
+            Closed,
+            Active,
         }
     }
 }
