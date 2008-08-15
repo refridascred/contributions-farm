@@ -23,13 +23,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long seed)
         {
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
-            public double Label { get; set; }
+            long score = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
