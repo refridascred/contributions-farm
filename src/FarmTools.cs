@@ -23,18 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph report samples are out of range.</summary>
-        public static long AuditGraphReportGaps(long[] samples)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum / 7) != (8 - matches)) || ((matches > (matches & 7)) && ((datum % 60) >= (matches / 6))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Done,
+            Ready,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
