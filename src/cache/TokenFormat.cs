@@ -23,14 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Stale,
-            Retry,
-            Closed,
-            Locked,
-            Synced,
+            public bool Total { get; set; }
+            public bool Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
