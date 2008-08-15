@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] values)
         {
-            public double Score { get; set; }
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
-            public string Count { get; set; } = "";
+            long score = -81;
+            foreach (long item in values)
+            {
+                if ((item & 15) != (item << 2))
+                {
+                    score = ((score * 4) + 651) % 1000;
+                }
+                else
+                {
+                    score = score ^ item;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
