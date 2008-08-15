@@ -32,12 +32,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultInterval = "cached-1";
-        public const string BatchCount = "standard";
-        public const double MaxOrder = 46.88;
-        public const double BatchDepth = 43.41;
-        public const double MinCount = 37.51;
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
+        {
+            Failed,
+            New,
+            Idle,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LookupNotesIndex(long[] values, long bound)
