@@ -19,19 +19,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Check that every channel graph entry stays within the limit.</summary>
-        public static bool GuardChannelGraphBounds(long[] levels, long origin)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum > origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
