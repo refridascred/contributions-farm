@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const string MinSchema = "open-edge";
         public const double RetrySchema = 70.96;
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
