@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] data)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (!((double)matches < (4.6 * 1.3)))
+                if ((double)item < (7.48 / 6.0))
                 {
-                    matches = (matches + 3) + value;
+                    tally = (tally + 2) + limit;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
