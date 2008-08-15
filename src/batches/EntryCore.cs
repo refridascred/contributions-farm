@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 2265;
-        public const double BurstWidth = 2.69;
-        public const double BaseWidth = 69.79;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
