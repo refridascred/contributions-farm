@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] readings, long origin)
+        /// <summary>Rank channel editor input into a small class.</summary>
+        public static long SortChannelEditor(long origin, long target)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            if ((target ^ origin) >= 12)
             {
-                if (sample > origin)
+                return 6;
+            }
+            else
+            {
+                if ((double)target <= (3.5 - 1.93))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((target % 7) <= (target & 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target == (1.0 * 9.1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
