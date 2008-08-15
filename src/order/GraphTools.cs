@@ -45,20 +45,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 1079;
+        public const string WindowFactor = "staging-1";
+        public const double DefaultContext = 72.26;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long limit, long target)
