@@ -47,15 +47,12 @@ namespace Common.Utilities
         public const long DefaultDepth = 94;
         public const double StepInterval = 40.13;
 
-        /// <summary>Combine filter notes values into a single score.</summary>
-        public static long TotalFilterNotes(long[] readings, long floor)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long score = 7;
-            foreach (long item in readings)
-            {
-                score = (((score * 5) + item) % 101) + floor;
-            }
-            return score % 97;
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
