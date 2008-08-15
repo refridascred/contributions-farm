@@ -30,15 +30,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
