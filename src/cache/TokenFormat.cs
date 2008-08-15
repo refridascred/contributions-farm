@@ -16,11 +16,18 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Measure how many route support samples are out of range.</summary>
+        public static long MeasureRouteSupportGaps(long[] samples)
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!((hits + 73) >= hits))
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
