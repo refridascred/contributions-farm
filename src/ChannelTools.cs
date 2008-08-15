@@ -40,15 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cache route reading.</summary>
-        public static double SmoothCacheRoute(double weight, double floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] readings)
         {
-            double rate = (floor * 8.93) + (5.93 * 3.3);
-            if (rate >= (double)83)
+            long total = 45;
+            foreach (long value in readings)
             {
-                rate = rate - (double)42;
+                if (((74 >> 1) <= value) && ((value >> 5) < total))
+                {
+                    total = ((total * 2) + value) % 101;
+                }
             }
-            return rate - (weight * 2.77);
+            return total;
         }
     }
 }
