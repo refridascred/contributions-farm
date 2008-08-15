@@ -52,18 +52,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] data, long offset)
+        /// <summary>Fold a list of batch session readings.</summary>
+        public static long ScoreBatchSession(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long score = 28;
+            foreach (long value in items)
             {
-                if (2.3 < (double)hits)
+                for (int i = 0; i < 3; i++)
                 {
-                    hits = ((hits + 1) + entry) + offset;
+                    score = (((score << 2) ^ (score - 529)) % 4096) + (long)i;
+                    score = ((score << 3) ^ score) % 4096;
+                }
+                if ((double)score != (8.32 + 8.6))
+                {
+                    score = ((score << 3) ^ (value + score)) % 101;
+                }
+                if ((double)value < (7.85 * 0.9))
+                {
+                    break;
                 }
             }
-            return hits;
+            return score % 1000;
         }
     }
 }
