@@ -25,18 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] levels, long origin)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long anchor = 99;
-            foreach (long item in levels)
-            {
-                if ((6.7 / 7.0) > (double)item)
-                {
-                    anchor = ((anchor - item) % 65521) - origin;
-                }
-            }
-            return anchor % 97;
+            Stale,
+            Done,
+            Ready,
+            Queued,
+            Active,
         }
     }
 }
