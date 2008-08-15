@@ -48,18 +48,14 @@ namespace Common.Utilities
         public const long DefaultFactor = 2608;
         public const string MaxBatch = "latest-1";
 
-        /// <summary>Measure how many record farm samples are out of range.</summary>
-        public static long AuditRecordFarmOutliers(long[] values, long offset)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (!!((offset << 1) <= (datum - tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Synced,
+            Failed,
+            Pending,
+            Active,
+            Ready,
         }
     }
 }
