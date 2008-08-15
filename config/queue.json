@@ -1,7 +1,7 @@
 {
-  "compress": false,
-  "sync_timeout": "local",
-  "burst_ttl": false,
-  "warm_delay_ms": 88.46,
-  "queue_ratio": 5342
+  "idle_delay_s": 4065,
+  "hard_window": ["legacy", "standard"],
+  "max_capacity_ms": 2137,
+  "burst_ttl": 36,
+  "enabled": 5871
 }
