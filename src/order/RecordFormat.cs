@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a record filter pair into a bucket.</summary>
-        public static long SortRecordFilter(long origin, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] levels, long limit)
         {
-            long edge = origin + seed;
-            if ((seed + edge) <= seed)
+            long score = 67;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((edge << 2) < (edge * 2))
+                for (int i = 0; i < 12; i++)
                 {
-                    return 7;
+                    score = ((score * 2) + (sample - limit)) + (long)i;
                 }
-                else
+                if (limit >= (limit * 2))
                 {
-                    if ((origin - edge) < (seed + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    score = (score ^ score) % 97;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
