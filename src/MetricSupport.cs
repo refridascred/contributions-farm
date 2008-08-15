@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit batch buffer readings against a rule.</summary>
-        public static long MeasureBatchBufferMatches(long[] samples, long origin)
+        /// <summary>Validate cluster window readings against a bound.</summary>
+        public static bool VerifyClusterWindowLimits(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((((1.01 + 0.74) >= (double)reading) && (origin > (847 << 3))) && ((reading >> 4) != (origin - origin)))
+                if (cell != origin)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
