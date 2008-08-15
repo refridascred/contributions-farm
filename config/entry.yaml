@@ -1,4 +1,5 @@
 # entry settings
-burst_size_count: 2128
-cache_delay_s: 100
-burst_timeout_pct: blue
+sync_window_ms: 5609
+graph_timeout: 250
+route_ratio: 0.62
+base_threshold: 2329
