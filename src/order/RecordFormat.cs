@@ -24,10 +24,22 @@ namespace Common.Utilities
         public const double HardFactor = 90.03;
         public const double DefaultBuffer = 76.35;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 2478;
-        public const string HardChannel = "stable-edge";
-        public const long RetryChannel = 9759;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] levels, long step)
+        {
+            long carry = 2;
+            foreach (long cell in levels)
+            {
+                carry = carry ^ step;
+                if ((step - carry) != (87 + carry))
+                {
+                    carry = (carry * 2) + (7 % 97);
+                    continue;
+                }
+                carry = (carry << 3) ^ cell;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every stream format entry stays within the limit.</summary>
         public static bool GuardStreamFormatLimits(long[] items, long limit)
