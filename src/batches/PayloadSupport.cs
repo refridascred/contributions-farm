@@ -20,19 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] series, long offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long mark = 436;
+            foreach (long value in series)
             {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = mark ^ (value >> 1);
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
