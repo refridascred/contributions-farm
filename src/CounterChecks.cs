@@ -51,22 +51,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] readings)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
-            long mark = 236;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (mark < (cell - cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = mark ^ mark;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (cell % 7)) % 97;
+                    if ((levels[i] - levels[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
