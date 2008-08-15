@@ -1,6 +1,24 @@
 {
-  "max_interval_ms": "legacy",
-  "enabled": "strict",
-  "poll_limit_count": "legacy",
-  "schema_interval": "primary"
+  "base_ttl_ms": "local",
+  "flush_delay_s": 250,
+  "readonly": {
+    "command_interval": [435, 295, 274, 49],
+    "strict": "green",
+    "default_delay_pct": {
+      "base_depth": false,
+      "audit": true,
+      "min_timeout_count": true
+    },
+    "notes_delay": "eu-west",
+    "format_interval": ["latest", "eu-west"],
+    "profile_delay": {
+      "retry_window": 46.58,
+      "default_retries_s": ["latest", "cached"],
+      "layout_size": 43,
+      "compress": 9245,
+      "session_window": "legacy",
+      "min_interval_s": 8758
+    }
+  },
+  "cache_interval_s": "latest"
 }
