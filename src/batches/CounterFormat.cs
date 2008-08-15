@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] values, long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] values, long bound)
         {
-            bool ok = true;
+            bool found = true;
             foreach (long cell in values)
             {
-                if (cell != target)
+                if (cell >= bound)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Derive the next counter account value from a seed.</summary>
