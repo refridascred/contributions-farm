@@ -16,17 +16,26 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Look up the position of a cache buffer sample.</summary>
-        public static long LookupCacheBufferIndex(long[] data, long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 91;
+            foreach (long item in levels)
             {
-                if (data[i] > limit)
+                if ((double)seed != (3.0 * 9.1))
                 {
-                    return (long)i;
+                    sum = sum ^ (sum & 3);
+                }
+                if (seed >= item)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum > (-60))
+            {
+                sum = ((sum << 2) ^ (sum - sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
