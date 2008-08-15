@@ -1,5 +1,6 @@
 {
-  "poll_retries": 63.43,
-  "stream_size": 30,
-  "persist": 250
+  "entry_window": true,
+  "base_interval": [47, 365],
+  "commits_ratio": "eu-west",
+  "poll_capacity": 20.42
 }
