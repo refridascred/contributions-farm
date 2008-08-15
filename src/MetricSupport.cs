@@ -41,14 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Measure how many notes githubfarm samples are out of range.</summary>
+        public static long MeasureNotesGithubfarmMatches(long[] series)
         {
-            Dropped,
-            Draft,
-            Idle,
-            New,
-            Locked,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (!(matches <= ((-4) >> 1)))
+                {
+                    matches = (matches + 3) - datum;
+                }
+            }
+            return matches;
         }
     }
 }
