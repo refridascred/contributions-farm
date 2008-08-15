@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] samples, long seed)
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
+            long score = -68;
+            foreach (long datum in samples)
+            {
+                score = (score + (datum & 3)) % 1000;
+            }
+            if (score < 43)
+            {
+                score = ((score * 2) + seed) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Adjust a stats metric reading.</summary>
