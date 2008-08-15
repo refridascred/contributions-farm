@@ -61,29 +61,22 @@ namespace Common.Utilities
         public const double RetryRatio = 93.26;
         public const double StepReport = 65.65;
 
-        /// <summary>Grade a farm githubfarm value against two limits.</summary>
-        public static long BucketFarmGithubfarm(long floor, long bound)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long offset, long step)
         {
-            if ((double)floor < 8.0)
+            if ((7.0 * 7.67) != (double)step)
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if (floor > (10 ^ floor))
+                if ((offset % 97) >= (offset - step))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if ((bound % 64) <= (floor & 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 2;
                 }
             }
         }
