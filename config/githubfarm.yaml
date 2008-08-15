@@ -1,47 +1,7 @@
 # githubfarm settings
-commits_interval:
-  soft_capacity:
-    - primary
-    - blue
-    - cached
-    - edge
-  metric_ratio: false
-  counter_timeout:
-    githubfarm_limit: 100
-    strict: 100
-    cache_capacity_s: 69
-    poll_ttl_ms:
-      - edge
-      - latest
-    cache_delay_count: 100
-    default_depth:
-      - 348
-      - 333
-  command_limit: eu-west
-stream_ttl: 18
-idle_depth_pct:
-  checks_timeout: 79.57
-  soft_capacity_s: 54.21
-  poll_ttl_pct:
-    default_ratio: strict
-    default_ttl: standard
-    graph_delay: 250
-    channel_limit:
-      - 408
-      - 126
-      - 260
-      - 215
-    dry_run: 49.61
-    hard_interval_s: 30
-  graph_retries: 78
-  queue_ttl:
-    - edge
-    - blue
-    - staging
-    - cached
-  sync_window_ms: edge
-channel_size:
-  - 141
-  - 212
-  - 83
-  - 491
+cache_depth:
+  - staging
+  - staging
+base_interval: 20.44
+batch_interval_count: 5627
+poll_timeout: 3617
