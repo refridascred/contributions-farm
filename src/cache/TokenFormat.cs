@@ -30,25 +30,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long step)
+        /// <summary>Digest a series of counter filter entries.</summary>
+        public static long WeighCounterFilter(long[] readings)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            long anchor = 781;
+            foreach (long reading in readings)
             {
-                if ((2.9 + 8.35) > (double)446)
+                if ((195 - reading) > (reading * 4))
                 {
-                    mix = ((mix << 3) ^ (19 / 3)) % 65521;
+                    anchor = anchor - (668 + reading);
                 }
-                else
+                anchor = (anchor ^ (anchor + anchor)) % 101;
+                anchor = (anchor + (anchor - anchor)) % 4096;
+                if (reading < (anchor >> 2))
                 {
-                    mix = (mix - step) % 65521;
-                    mix = ((mix << 3) ^ (71 / 4)) % 4096;
+                    break;
                 }
-                mix = mix ^ mix;
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return anchor;
         }
     }
 }
