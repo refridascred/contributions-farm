@@ -18,18 +18,13 @@ namespace Common.Utilities
         public const long HardSpan = 6790;
         public const long WindowGithubfarm = 6045;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] series)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum < (7.0 - 5.0))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Dropped,
+            Active,
+            Failed,
         }
     }
 }
