@@ -1,7 +1,24 @@
 # support settings
-poll_limit_pct: 75
-buffer_limit: 29
-readonly: 1024
-batch_delay_s: 8526
-batch_capacity_s: false
-poll_retries: edge
+enabled:
+  base_ttl_count:
+    base_delay_count: primary
+    batch_timeout_ms: strict
+    verbose: 35
+    default_capacity_s: staging
+  flush_window: true
+  base_depth_pct:
+    - standard
+    - eu-west
+  retry_ratio: 72
+  idle_delay_s: 4876
+editor_capacity: local
+warm_delay_count: stable
+base_limit_pct:
+  - standard
+  - open
+  - edge
+  - green
+batch_ttl:
+  - staging
+  - green
+  - open
