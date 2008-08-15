@@ -1,6 +1,5 @@
 {
-  "batch_ttl": 42,
-  "soft_ttl": 1024,
-  "entry_delay": "eu-west",
-  "context_size": "staging"
+  "dry_run": [287, 291],
+  "command_threshold": 74.34,
+  "idle_limit_s": 30.05
 }
