@@ -50,18 +50,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] readings)
+        /// <summary>Measure how many batch metrics samples are out of range.</summary>
+        public static long CountBatchMetricsHits(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (!((entry & 127) <= (entry * 4)))
+                if (!((double)step > (double)962) && (((step << 1) != (tally + step)) || ((tally / 5) == (datum + datum))))
                 {
-                    seen = seen + 1;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
