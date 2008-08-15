@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the profile graph entries that pass the check.</summary>
-        public static long CountProfileGraphMatches(long[] levels, long seed)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((seed > (seed - seed)) && ((600 >> 2) <= (tally - tally)))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
+            Stale,
+            Done,
+            Queued,
+            Failed,
         }
 
         /// <summary>Hold a queue summary.</summary>
