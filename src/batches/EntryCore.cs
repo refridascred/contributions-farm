@@ -39,31 +39,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long limit, long origin)
+        /// <summary>Validate context token readings against a bound.</summary>
+        public static bool CheckContextTokenBounds(long[] samples, long bound)
         {
-            if ((double)origin != (1.64 - 3.4))
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((origin >> 3) == (limit / 7)))
+                if (datum < bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin - limit) == (origin - origin)) || ((origin << 2) >= origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
