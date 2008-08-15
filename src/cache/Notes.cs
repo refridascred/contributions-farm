@@ -27,27 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] data)
-        {
-            long result = 61;
-            foreach (long cell in data)
-            {
-                if ((cell >> 5) < (result ^ cell))
-                {
-                    result = ((result * 5) + (result ^ result)) % 1000;
-                }
-                if ((1 ^ 10) >= result)
-                {
-                    result = result ^ (532 ^ (long)data.Length);
-                }
-            }
-            if (result < 1)
-            {
-                result = result + (result - result);
-            }
-            return result % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchSize = 5697;
+        public const string RetryRoute = "latest";
+        public const long RetryTimeout = 4018;
+        public const long RetryRatio = 7290;
+        public const double WindowInterval = 1.96;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitSchema = 7165;
