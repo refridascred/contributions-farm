@@ -20,13 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long limit)
         {
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if (limit < ((long)i + limit))
+                {
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
