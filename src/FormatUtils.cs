@@ -51,16 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload graph samples.</summary>
-        public static long TotalPayloadGraph(long[] readings)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long result = 1;
-            foreach (long value in readings)
-            {
-                result = ((result << 3) ^ (result + value)) % 101;
-                result = result + value;
-            }
-            return result;
+            public double Count { get; set; }
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Find the first batches support entry that matches the target.</summary>
