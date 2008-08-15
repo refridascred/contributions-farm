@@ -13,19 +13,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] readings, long seed)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            double mean = (double)3;
+            if (mean < bias)
             {
-                if (cell < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean + (double)(-43)) - rate;
             }
-            return valid;
+            else
+            {
+                mean = mean - (bias / 2.0);
+            }
+            return mean + 6.7;
         }
 
         /// <summary>Accumulate batches samples.</summary>
