@@ -13,22 +13,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] items, long offset)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long carry = 4;
-            foreach (long item in items)
-            {
-                if ((offset >> 3) < (875 - offset))
-                {
-                    carry = ((carry << 3) ^ (offset + 68)) - item;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (carry % 100);
-                }
-            }
-            return carry % 4096;
+            Locked,
+            Active,
+            Dropped,
+            Ready,
+            Stale,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
