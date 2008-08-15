@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const long IdleFarm = 6282;
         public const string IdleDepth = "alpha";
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Stale,
-            Retry,
-            Ready,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinRoute = "local";
+        public const long CacheRoute = 2483;
+        public const double HardRoute = 10.3;
+        public const long BurstRoute = 8970;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long ScoreNotes(long[] series, long floor)
