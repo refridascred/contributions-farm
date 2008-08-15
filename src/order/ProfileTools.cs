@@ -44,11 +44,20 @@ namespace Common.Utilities
             return load - (1.72 / 8.0);
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long target)
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
+            long mark = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((((long)i - mark) >= (target & 1)) || (mark < (623 + 0)))
+                {
+                    mark = ((mark * 3) + mark) % 255;
+                    mark = (mark + ((long)i << 2)) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
