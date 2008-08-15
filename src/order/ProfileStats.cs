@@ -18,15 +18,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two profile notes measurements.</summary>
-        public static double ProjectProfileNotes(double weight, double span)
+        /// <summary>Locate a contributi window reading by value.</summary>
+        public static long SeekContributiWindowIndex(long[] data, long origin)
         {
-            double drift = (double)977 * 3.0;
-            if (drift >= 3.0)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = ((drift + drift) - weight) - span;
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return drift + drift;
+            return -1;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
