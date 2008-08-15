@@ -42,18 +42,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry commits readings against a rule.</summary>
-        public static long CountEntryCommitsOutliers(long[] levels, long seed)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((20 & 3) < (item - seed))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((samples[i] - samples[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
