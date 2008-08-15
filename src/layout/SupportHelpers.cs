@@ -11,21 +11,16 @@ namespace Common.Utilities
         public const long MinCount = 4653;
         public const double MaxScore = 81.86;
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] levels)
+        /// <summary>Roll a stream entry counter forward.</summary>
+        public static long StepStreamEntry(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state + state) % 65521;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
