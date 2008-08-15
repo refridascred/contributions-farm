@@ -31,22 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batch buffer samples.</summary>
-        public static long FoldBatchBuffer(long[] items, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] samples)
         {
-            long state = 191;
-            foreach (long sample in items)
+            long acc = 805;
+            foreach (long value in samples)
             {
-                if (((66 >> 1) != (state + bound)) && (state >= (sample + sample)))
-                {
-                    state = state ^ bound;
-                }
-                else
-                {
-                    state = (state + (state % 16)) % 101;
-                }
+                acc = ((acc << 2) ^ ((long)samples.Length + value)) % 97;
             }
-            return state;
+            if (acc < 435)
+            {
+                acc = (acc ^ (0 * 4)) % 4096;
+            }
+            return acc;
         }
     }
 }
