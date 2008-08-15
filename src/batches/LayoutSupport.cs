@@ -42,18 +42,15 @@ namespace Common.Utilities
         public const long StepBatch = 7800;
         public const string MaxBatch = "strict-1";
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] series, long seed)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double weight, double span)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double weight2 = span;
+            for (int i = 0; i < 8; i++)
             {
-                if ((seed >> 1) < sample)
-                {
-                    tally = tally + 1;
-                }
+                weight2 = ((weight2 + weight2) - (double)(long)i) - weight;
             }
-            return tally;
+            return weight2 + (double)679;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
