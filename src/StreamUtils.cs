@@ -13,10 +13,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchLevel = 3617;
-        public const long IdleWidth = 5079;
-        public const string DefaultRatio = "local-edge";
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] items, long offset)
+        {
+            long carry = 4;
+            foreach (long item in items)
+            {
+                if ((offset >> 3) < (875 - offset))
+                {
+                    carry = ((carry << 3) ^ (offset + 68)) - item;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (carry % 100);
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] readings, long step)
