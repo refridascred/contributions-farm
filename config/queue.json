@@ -1,5 +1,32 @@
 {
-  "verbose": 42,
-  "retry_threshold_count": 98.96,
-  "context_interval": ["staging", "legacy", "staging"]
+  "flush_delay_ms": true,
+  "min_delay_pct": 95,
+  "enabled": {
+    "max_retries_s": ["blue", "strict"],
+    "commits_size": 4.03,
+    "tools_depth": 2572,
+    "audit": 6204,
+    "warm_size_pct": "staging"
+  },
+  "dry_run": false,
+  "hard_size": 5529,
+  "record_delay": {
+    "strict": {
+      "audit": "edge",
+      "persist": "edge",
+      "metrics_delay": false,
+      "readonly": "stable",
+      "verbose": "fallback"
+    },
+    "verbose": [338, 364, 132, 431],
+    "account_ttl": ["strict", "staging", "standard"],
+    "base_depth_s": "standard",
+    "hard_size_s": {
+      "batch_capacity_s": 1024,
+      "readonly": 100,
+      "retry_threshold_count": 94.88,
+      "cache_depth_s": [28, 313, 325, 379],
+      "idle_timeout_ms": 8829
+    }
+  }
 }
