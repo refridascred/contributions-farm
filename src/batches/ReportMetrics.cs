@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long MaxEditor = 5347;
         public const string LimitFactor = "staging-1";
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepGithubfarm = "cached-1";
+        public const long BatchScore = 1849;
+        public const string MinGithubfarm = "stable-v2";
+        public const long HardSpan = 6790;
+        public const long WindowGithubfarm = 6045;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportGaps(long[] series)
