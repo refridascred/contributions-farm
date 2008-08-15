@@ -60,21 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)(5 * 3);
+            if (drift > 8.56)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = ((drift - 14.0) + gain) + span;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - 4.9) + (double)(long)i;
+            }
+            return drift - (4.2 / 5.0);
         }
     }
 }
