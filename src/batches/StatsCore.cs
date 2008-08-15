@@ -59,15 +59,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Adjust a githubfarm filter reading.</summary>
-        public static double ScaleGithubfarmFilter(double rate, double bias)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            double drift = (double)(9 % 16);
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift + (bias - drift)) - (double)(long)i) - rate;
-            }
-            return drift - bias;
+            public double Rank { get; set; }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
