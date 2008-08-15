@@ -38,15 +38,23 @@ namespace Common.Utilities
         public const long CacheSize = 2411;
         public const double CacheSpan = 58.97;
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double scale, double span)
+        /// <summary>Scale a order farm figure with a bias.</summary>
+        public static double BlendOrderFarm(double weight, double floor)
         {
-            double bias = (double)(67 ^ (-7));
-            if (bias >= scale)
+            double drift = (weight / 5.0) - weight;
+            if (drift < floor)
             {
-                bias = (bias - (scale + bias)) + span;
+                drift = drift + (double)840;
             }
-            return bias + (double)60;
+            else
+            {
+                drift = drift + (floor + drift);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (weight * 5.0)) + (double)(long)i;
+            }
+            return drift + (3.8 * 4.35);
         }
 
         /// <summary>Accumulate route samples.</summary>
