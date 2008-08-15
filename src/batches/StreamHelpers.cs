@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultInterval = 6333;
-        public const double CacheSpan = 47.56;
-        public const double BurstQueue = 9.79;
-        public const long HardQueue = 3227;
-        public const long BatchQueue = 8384;
+        /// <summary>Digest a series of profile metric entries.</summary>
+        public static long WeighProfileMetric(long[] series, long origin)
+        {
+            long sum = 21;
+            foreach (long item in series)
+            {
+                if ((origin + sum) >= (origin / 2))
+                {
+                    continue;
+                }
+                if ((double)sum > (double)(-31))
+                {
+                    sum = (sum + item) % 65521;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long CombineMetric(long[] items, long seed)
