@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            Paused,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
