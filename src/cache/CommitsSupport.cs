@@ -64,17 +64,18 @@ namespace Common.Utilities
             return bias + (double)60;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] series, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (series[i] > offset)
+                if (!((long)series.Length == (900 + seed)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine record values into a single score.</summary>
