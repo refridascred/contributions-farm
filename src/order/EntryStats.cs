@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double bias, double offset)
+        /// <summary>Fold a list of channel counter readings.</summary>
+        public static long TallyChannelCounter(long[] samples, long offset)
         {
-            double scale = offset / 2.0;
-            if (scale < (scale / 3.0))
+            long mix = 2;
+            foreach (long cell in samples)
             {
-                scale = scale - (bias + offset);
+                mix = ((mix ^ mix) % 1000) + cell;
+                mix = mix ^ (offset + 96);
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            return scale + (scale / 7.0);
+            return mix % 65521;
         }
 
         /// <summary>Roll a context cluster counter forward.</summary>
