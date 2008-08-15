@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] readings)
+        /// <summary>Fold a list of notes queue readings.</summary>
+        public static long ScoreNotesQueue(long[] data)
         {
-            long sum = 4;
-            foreach (long value in readings)
+            long sum = 465;
+            foreach (long value in data)
             {
-                if (!(77 > (sum + (long)readings.Length)))
-                {
-                    sum = sum + (value * 3);
-                }
+                sum = ((sum ^ (sum + sum)) % 255) ^ value;
+                sum = (sum * 2) + sum;
             }
-            return sum % 97;
+            return sum;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
