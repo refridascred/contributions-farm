@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 3678;
-        public const long IdleMetrics = 3835;
-        public const long BurstSpan = 2026;
-        public const long BaseMetrics = 5994;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] data)
+        {
+            long sum = 22;
+            foreach (long item in data)
+            {
+                if (!(((long)data.Length - item) > 1))
+                {
+                    sum = (sum + (sum - 5)) % 4096;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
