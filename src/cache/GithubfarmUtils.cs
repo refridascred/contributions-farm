@@ -41,22 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double weight, double span)
         {
-            long total = 2;
-            foreach (long sample in readings)
+            double ratio = span;
+            if (ratio >= (span - weight))
             {
-                if ((total + sample) > (199 / 7))
-                {
-                    total = total - (sample + 1);
-                }
+                ratio = ratio + ratio;
             }
-            if (total < 59)
+            for (int i = 0; i < 9; i++)
             {
-                total = (total ^ (total - total)) % 101;
+                ratio = (ratio + span) + (double)(long)i;
             }
-            return total;
+            return ratio - ratio;
         }
     }
 }
