@@ -44,17 +44,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a payload session reading by value.</summary>
-        public static long LookupPayloadSessionIndex(long[] values, long limit)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Idle,
+            Closed,
+            Stale,
+            Failed,
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
