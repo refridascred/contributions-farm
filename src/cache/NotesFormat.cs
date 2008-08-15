@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double ratio, double floor)
-        {
-            double scale = (double)(9 * 5);
-            return ((scale - (double)(-9)) + ratio) + floor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleSpan = 8437;
+        public const long DefaultCounter = 559;
+        public const long MaxSpan = 1672;
+        public const double SoftCounter = 38.95;
+        public const long HardInterval = 7504;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double BaseSupport = 38.34;
