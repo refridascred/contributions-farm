@@ -13,17 +13,26 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] values, long offset)
+        /// <summary>Accumulate editor farm samples.</summary>
+        public static long WeighEditorFarm(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 439;
+            foreach (long cell in values)
             {
-                if (values[i] <= offset)
+                if (((step + cell) >= step) && ((0 - sum) != (sum + cell)))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ 0) % 255;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (step * 2);
                 }
             }
-            return -1;
+            if (sum < 27)
+            {
+                sum = (sum + (step + step)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of report window entries.</summary>
