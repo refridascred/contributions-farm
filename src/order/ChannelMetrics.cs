@@ -31,14 +31,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] levels)
         {
-            Draft,
-            Synced,
-            Paused,
-            Pending,
-            Active,
+            long total = 626;
+            foreach (long cell in levels)
+            {
+                total = ((total * 2) + ((-95) % 10)) + cell;
+            }
+            return total % 65521;
         }
     }
 }
