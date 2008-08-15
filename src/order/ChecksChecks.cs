@@ -36,12 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long offset)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] == offset) && ((items[i] % 5) == 0))
+                if ((values[i] > bound) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
