@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] levels, long limit)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] samples, long bound)
         {
-            long score = 79;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score + (score / 8)) + value) + limit;
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the layout class values.</summary>
