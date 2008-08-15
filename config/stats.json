@@ -1,8 +1,16 @@
 {
-  "warm_delay": 87,
-  "hard_delay_count": 6909,
-  "enabled": 9249,
-  "format_ratio": 2,
-  "default_timeout_ms": ["legacy", "primary", "legacy", "primary"],
-  "cache_limit": 77.86
+  "hard_interval": [166, 121, 356],
+  "poll_ttl_count": true,
+  "min_interval_ms": {
+    "max_delay_pct": {
+      "max_size_s": "cached",
+      "sync_limit_count": 8536,
+      "hard_ttl": false,
+      "batch_capacity": false,
+      "contributi_threshold": false
+    },
+    "retry_timeout_ms": "edge",
+    "burst_capacity": 6259
+  },
+  "max_retries_pct": "local"
 }
