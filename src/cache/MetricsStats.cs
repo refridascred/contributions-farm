@@ -86,19 +86,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double rate, double offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] readings, long target)
         {
-            double load = rate;
-            if (load <= load)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + (load - rate);
+                if ((readings[i] > target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (offset / 9.0)) + (double)(long)i;
-            }
-            return load - 0.93;
+            return -1;
         }
     }
 }
