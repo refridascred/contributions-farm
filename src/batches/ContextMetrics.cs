@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long seed, long bound)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
+            long diff = seed ^ bound;
+            if ((double)bound > 0.61)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound * 3) >= (diff - seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((4.5 >= (double)diff) && ((bound % 24) <= (seed + seed)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
