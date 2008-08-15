@@ -32,12 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long limit, long offset)
         {
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
-            public double Count { get; set; }
+            if ((limit + offset) >= (offset >> 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit >= (offset % 8)) && ((limit << 3) > offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset << 2) >= (limit - 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit < 799)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
