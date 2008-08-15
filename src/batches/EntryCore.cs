@@ -26,18 +26,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] samples, long target)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (((double)tally <= (3.03 / 9.0)) || ((15.0 * 5.1) >= 5.81))
-                {
-                    tally = ((tally + 2) - value) - target;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
