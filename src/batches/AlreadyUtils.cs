@@ -26,12 +26,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
+            Retry,
+            Ready,
+            Draft,
         }
 
         /// <summary>Describe the batches status values.</summary>
