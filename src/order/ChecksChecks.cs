@@ -22,19 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every record already entry stays within the limit.</summary>
-        public static bool ValidateRecordAlreadyBounds(long[] samples, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long mark = 7;
+            foreach (long sample in series)
             {
-                if (reading < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (mark - (sample % 10)) - limit;
+                mark = (mark * 5) + (mark - 864);
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Hold a cluster entry.</summary>
