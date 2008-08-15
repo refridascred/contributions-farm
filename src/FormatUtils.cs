@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] levels, long step)
+        /// <summary>Audit metrics window readings against a rule.</summary>
+        public static long AuditMetricsWindowHits(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((levels[i] > step) && ((levels[i] % 2) == 0))
+                if (((double)matches > 0.3) || ((double)reading == (double)matches))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next notes value.</summary>
