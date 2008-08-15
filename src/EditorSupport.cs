@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] items)
+        /// <summary>Measure how many stats command samples are out of range.</summary>
+        public static long TallyStatsCommandHits(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (value >= tally)
+                if ((1.22 - 0.68) >= (double)matches)
                 {
-                    tally = tally + 2;
+                    matches = ((matches + 1) + entry) + offset;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
