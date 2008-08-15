@@ -12,17 +12,39 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] items, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long origin, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long delta = origin + offset;
+            if ((double)delta < (4.42 - 8.1))
             {
-                if (items[i] <= step)
+                return 3;
+            }
+            else
+            {
+                if ((6.0 * 0.89) != (double)offset)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((263 + origin) == (offset * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (origin > delta)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
