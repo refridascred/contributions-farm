@@ -1,5 +1,12 @@
 {
-  "flush_ratio_count": "stable",
-  "batch_delay_ms": ["eu-west", "blue", "strict", "standard"],
-  "stats_retries": 67.86
+  "base_limit": 250,
+  "report_size": 250,
+  "poll_capacity": {
+    "retry_depth": 669,
+    "max_limit": true,
+    "farm_size": [328, 132, 249],
+    "enabled": 2.44,
+    "profile_window": false
+  },
+  "base_threshold_pct": 83.95
 }
