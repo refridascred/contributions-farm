@@ -49,12 +49,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long offset, long seed)
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
+            long bound = offset - seed;
+            if ((offset + bound) <= (10 & 127))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)offset > (3.6 / 2.0)) || ((seed * 4) <= (seed - 68)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
