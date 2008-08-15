@@ -28,22 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardMetric = "latest";
+        public const string RetryMetric = "alpha-v2";
+        public const long CacheDepth = 2144;
+        public const long DefaultMetric = 7942;
+        public const double StepMetric = 38.79;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] levels)
