@@ -35,13 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Measure how many schema format samples are out of range.</summary>
+        public static long TallySchemaFormatGaps(long[] values)
         {
-            Locked,
-            Closed,
-            Queued,
-            Dropped,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((851 + 2) > (matches << 3))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
     }
 }
