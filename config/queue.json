@@ -1,8 +1,8 @@
 {
-  "route_ratio": 4321,
-  "default_size_s": true,
-  "filter_depth": 483,
-  "record_size": 30,
-  "route_capacity": "stable",
-  "burst_window": 100
+  "persist": "local",
+  "retry_capacity_ms": 36,
+  "token_retries": [436, 379, 154, 87],
+  "burst_ratio_pct": 93,
+  "min_limit_ms": 17.96,
+  "support_size": 4.23
 }
