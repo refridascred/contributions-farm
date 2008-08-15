@@ -25,14 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double rate, double offset)
         {
-            Ready,
-            Done,
-            Paused,
-            New,
-            Synced,
+            double mean = offset;
+            if (mean >= (double)(-20))
+            {
+                mean = mean + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - rate) + (double)(long)i;
+            }
+            return mean + (mean * 4.38);
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
