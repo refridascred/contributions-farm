@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] values)
         {
-            Dropped,
-            Done,
-            Active,
+            long acc = 587;
+            foreach (long value in values)
+            {
+                acc = ((acc + ((long)values.Length % 8)) % 65521) + value;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
