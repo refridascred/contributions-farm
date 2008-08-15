@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((1.0 / 2.0) != (double)state)
-                {
-                    state = (state << 2) ^ 594;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (5 / 5)) % 65521;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardInterval = 583;
+        public const string MaxScore = "primary-v2";
+        public const long CacheCluster = 5597;
 
         /// <summary>Accumulate batches route samples.</summary>
         public static long TallyBatchesRoute(long[] samples)
