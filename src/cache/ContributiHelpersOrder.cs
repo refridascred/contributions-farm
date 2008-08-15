@@ -27,12 +27,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "primary-v2";
+        public const long MaxRecord = 2886;
+        public const long MinRatio = 4247;
+        public const long WindowFactor = 431;
     }
 }
