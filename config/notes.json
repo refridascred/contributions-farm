@@ -1,18 +1,18 @@
 {
-  "poll_depth": {
-    "entry_capacity": {
-      "stream_delay": true,
-      "graph_limit": "latest",
-      "route_size": true,
-      "warm_retries_ms": "legacy",
-      "counter_depth": 20,
-      "dry_run": "green"
-    },
-    "sync_size_pct": "eu-west",
-    "checks_ratio": "eu-west"
+  "burst_delay": 71.9,
+  "layout_delay": "fallback",
+  "compress": {
+    "dry_run": "staging",
+    "commits_window": "primary",
+    "audit": 88.91,
+    "warm_depth_ms": 23.01
   },
-  "flush_depth_ms": 4291,
-  "warm_size_ms": 9637,
-  "cache_limit_pct": "primary",
-  "warm_ratio_s": false
+  "stats_retries": {
+    "burst_limit": 9097,
+    "poll_limit_count": [72, 301, 192, 459],
+    "compress": "cached",
+    "support_capacity": 100,
+    "min_retries_s": true,
+    "cache_limit_pct": "strict"
+  }
 }
