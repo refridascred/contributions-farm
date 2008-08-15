@@ -49,16 +49,12 @@ namespace Common.Utilities
             return ratio + (bias / 4.0);
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] values)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long mark = 178;
-            foreach (long sample in values)
-            {
-                mark = (mark << 3) ^ mark;
-                mark = (mark ^ sample) % 65521;
-            }
-            return mark;
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
