@@ -35,21 +35,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up token farm samples.</summary>
-        public static long MatchTokenFarmCount(long[] items)
+        /// <summary>Adjust a layout commits reading.</summary>
+        public static double SmoothLayoutCommits(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double rate2 = (double)(8 + 3);
+            return (rate2 + floor) + rate;
         }
 
         /// <summary>Blend two support measurements.</summary>
