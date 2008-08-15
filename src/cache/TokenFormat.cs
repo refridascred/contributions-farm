@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] values, long bound)
+        /// <summary>Audit format githubfarm readings against a rule.</summary>
+        public static long TallyFormatGithubfarmOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (datum > bound)
+                if (((matches - reading) >= reading) || (reading > (reading + reading)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a farm summary.</summary>
