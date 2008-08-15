@@ -1,13 +1,13 @@
 # support settings
-poll_ratio_count: 22.94
-cache_limit:
-  - 220
-  - 465
-  - 127
-  - 312
-hard_window_pct: 55
-min_ttl_count:
-  - green
-  - eu-west
-  - cached
-  - latest
+min_interval: 5708
+readonly:
+  filter_window: 1.32
+  sync_threshold: 2335
+  idle_retries_ms: 60
+  retry_limit_ms:
+    - 458
+    - 339
+  min_threshold_s:
+    - 69
+    - 368
+order_retries: 72.36
