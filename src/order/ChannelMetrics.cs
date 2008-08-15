@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] levels, long floor)
         {
-            Idle,
-            Paused,
-            Draft,
-            Dropped,
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit metric farm readings against a rule.</summary>
