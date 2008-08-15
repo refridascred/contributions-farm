@@ -16,17 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] samples, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (samples[i] >= limit)
+                if ((value * 3) < (limit / 7))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
