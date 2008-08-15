@@ -64,18 +64,17 @@ namespace Common.Utilities
             return bias + (double)60;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] series, long target)
         {
-            long carry = 7;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((carry >> 3) < (entry + entry)) || ((entry - (-66)) < (entry - carry)))
+                if ((series[i] <= target) && ((series[i] % 3) == 0))
                 {
-                    carry = ((carry << 3) ^ carry) % 1000;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Grade a schema session value against two limits.</summary>
