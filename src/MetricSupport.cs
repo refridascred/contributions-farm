@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first buffer metric entry that matches the target.</summary>
-        public static long LookupBufferMetricIndex(long[] data, long origin)
+        /// <summary>Audit batch buffer readings against a rule.</summary>
+        public static long MeasureBatchBufferMatches(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (data[i] <= origin)
+                if ((((1.01 + 0.74) >= (double)reading) && (origin > (847 << 3))) && ((reading >> 4) != (origin - origin)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
