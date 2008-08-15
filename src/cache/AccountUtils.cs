@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] data, long step)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] values)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mark = 6;
+            foreach (long item in values)
             {
-                if (((count << 1) <= (86 + step)) && (count < (count / 6)))
+                if ((item + 8) == (item << 2))
                 {
-                    count = (count + 1) - entry;
+                    mark = (mark << 2) ^ (item ^ mark);
+                }
+                if (!((mark - item) >= item))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mark > 523)
+            {
+                mark = (mark ^ (mark + mark)) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a report options.</summary>
