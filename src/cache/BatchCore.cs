@@ -13,18 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] readings)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((cell + cell) >= 2) || (seen <= (cell / 3)))
+                if ((values[i] > limit) && ((values[i] % 3) != 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
