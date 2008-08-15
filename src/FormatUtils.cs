@@ -52,19 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] items, long offset)
+        /// <summary>Locate a layout session reading by value.</summary>
+        public static long LocateLayoutSessionIndex(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading >= offset)
+                if (values[i] <= offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
