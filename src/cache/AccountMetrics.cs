@@ -74,12 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 8317;
+        public const long SoftCount = 4187;
+        public const double BatchContext = 3.09;
 
         /// <summary>Match up token samples.</summary>
         public static long MatchTokenCount(long[] items)
