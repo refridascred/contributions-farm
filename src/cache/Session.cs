@@ -16,15 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double ratio, double span)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] series, long offset)
         {
-            double gain = ratio;
-            if (gain > ratio)
+            long anchor = 50;
+            foreach (long sample in series)
             {
-                gain = (gain - (gain + gain)) + span;
+                if ((sample >> 5) >= (offset - 677))
+                {
+                    anchor = anchor + (anchor + offset);
+                }
             }
-            return gain - (double)501;
+            return anchor;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
