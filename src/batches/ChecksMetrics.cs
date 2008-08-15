@@ -14,14 +14,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] values, long origin)
         {
-            Dropped,
-            Draft,
-            Idle,
-            Failed,
-            Stale,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a route contributi reading by value.</summary>
