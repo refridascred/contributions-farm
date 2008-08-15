@@ -53,19 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] data, long bound)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long carry = 0;
+            foreach (long reading in readings)
             {
-                if (entry <= bound)
+                if ((carry + carry) >= carry)
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry ^ reading) % 65521) + offset;
                 }
             }
-            return valid;
+            return carry;
         }
     }
 }
