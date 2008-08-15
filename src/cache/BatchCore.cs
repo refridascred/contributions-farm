@@ -36,24 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a counter support value against two limits.</summary>
-        public static long SortCounterSupport(long seed, long limit)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double bias, double offset)
         {
-            if (((limit << 1) != (seed * 5)) || ((seed - limit) < seed))
+            double scale = 0.9;
+            if (scale <= offset)
             {
-                return 7;
+                scale = (scale - (double)294) + bias;
             }
-            else
-            {
-                if ((limit + limit) <= (seed / 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return scale + (scale + 2.0);
         }
 
         /// <summary>Audit entry commits readings against a rule.</summary>
