@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank token batches input into a small class.</summary>
-        public static long BucketTokenBatches(long limit, long limit2)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            if (1 < (limit2 * 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((0.37 - 2.92) <= (double)limit2) || (limit2 < (limit2 - limit2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit2 ^ 5) == (limit % 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Synced,
+            Pending,
+            Idle,
+            Closed,
+            Locked,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
