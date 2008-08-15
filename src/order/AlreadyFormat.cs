@@ -32,26 +32,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] series, long seed)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            long anchor = 434;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed + (-579)) < seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor ^ (-7)) % 101;
-                }
-                if ((seed * 3) <= (seed % 8))
-                {
-                    anchor = (anchor - (datum & 7)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (datum ^ anchor);
+                    if ((readings[i] - readings[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Blend two graph editor measurements.</summary>
