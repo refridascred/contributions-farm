@@ -1,11 +1,14 @@
 # Command notes
 
-When a payload fails, the route handler retries a few times before giving up.
-Defaults for stats live in the config folder and can be overridden per environment.
-A tools that stays idle for too long is moved to the buffer list.
+Defaults for schema live in the config folder and can be overridden per environment.
+The session report groups every contributi by stream.
+Use route settings to tune how often editor data is refreshed.
+
+Defaults for already live in the config folder and can be overridden per environment.
+Keep cluster and command names short and lowercase.
 
 ## Guidelines
 
-- Document new editor fields
-- Prefer filter defaults
-- Validate window input early
+- Keep farm values small
+- Log every metric change
+- Prefer cluster defaults
