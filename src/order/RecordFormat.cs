@@ -19,13 +19,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepCount = 9552;
+        public const double HardFactor = 90.03;
+        public const double DefaultBuffer = 76.35;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long SoftChannel = 2478;
