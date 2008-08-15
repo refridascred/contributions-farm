@@ -13,21 +13,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] values)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
