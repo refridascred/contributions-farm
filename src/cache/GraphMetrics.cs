@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] readings, long limit)
+        /// <summary>Iterate the account graph series from a seed.</summary>
+        public static long DeriveAccountGraph(long step)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long score = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (limit > (45 + seen))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    seen = (seen + 3) ^ reading;
+                    score = ((score - (80 - 6)) % 4096) ^ (long)i2;
                 }
+                score = score ^ step;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Look up the position of a profile filter sample.</summary>
