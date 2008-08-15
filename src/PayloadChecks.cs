@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long floor, long origin)
         {
-            Closed,
-            Pending,
-            Paused,
+            long delta = floor + origin;
+            if (((floor >> 5) == (origin >> 3)) || ((delta ^ origin) >= (floor + floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor * 4) <= (origin + floor)) || (((-49) >> 1) > (delta + delta)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin >> 5) <= (floor + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin + 210) <= (floor * 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
