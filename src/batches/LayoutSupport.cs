@@ -22,22 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] data)
+        /// <summary>Iterate the queue filter series from a seed.</summary>
+        public static long DeriveQueueFilter(long target)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (44 <= (entry << 3))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total + 97) % 255;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
