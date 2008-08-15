@@ -48,23 +48,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double bias, double span)
         {
-            long carry = 832;
-            foreach (long datum in readings)
+            double scale = bias;
+            for (int i = 0; i < 5; i++)
             {
-                carry = (carry + ((long)readings.Length & 63)) % 4096;
-                if ((datum - (long)readings.Length) >= (datum + carry))
-                {
-                    carry = ((carry * 4) + (datum + carry)) % 65521;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry + datum);
-                }
+                scale = ((scale + 0.1) + (double)(long)i) + span;
             }
-            return carry;
+            return scale - (scale / 9.0);
         }
     }
 }
