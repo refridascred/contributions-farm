@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] levels, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] data, long floor)
         {
-            long state = 8;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((state % 12) <= bound)
+                if ((161 - datum) <= matches)
                 {
-                    state = (state - state) ^ reading;
+                    matches = (matches + 3) + floor;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
