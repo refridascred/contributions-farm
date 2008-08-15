@@ -19,31 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a route stream value against two limits.</summary>
-        public static long BucketRouteStream(long bound, long origin)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double bias, double span)
         {
-            if (((-4) + bound) <= (bound - bound))
+            double scale = span;
+            for (int i = 0; i < 3; i++)
             {
-                return 7;
+                scale = (scale + scale) + (double)(long)i;
             }
-            else
-            {
-                if (9.1 < (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.1 + 7.9) == (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return scale + (scale + bias);
         }
 
         /// <summary>Describe the command class values.</summary>
