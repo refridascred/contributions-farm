@@ -1,11 +1,7 @@
 {
-  "verbose": {
-    "enabled": "primary",
-    "min_threshold_count": 97.55,
-    "command_timeout": "cached",
-    "readonly": 27.47,
-    "sync_window": ["standard", "latest"]
-  },
-  "cache_timeout": 5984,
-  "warm_retries_pct": 4366
+  "token_window": 705,
+  "burst_window_ms": true,
+  "cache_delay_s": "stable",
+  "cache_interval_count": 38.22,
+  "idle_size_s": true
 }
