@@ -28,39 +28,17 @@ namespace Common.Utilities
             return rate + (double)(-3);
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long origin, long seed)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] samples, long offset)
         {
-            long offset = origin - seed;
-            if ((31 - offset) < (origin + origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin << 2) > (458 << 3))
+                if (samples[i] >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)origin >= 9.56) || ((double)offset != (double)origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((841 < (offset + origin)) || ((seed + offset) > (origin + seed)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
