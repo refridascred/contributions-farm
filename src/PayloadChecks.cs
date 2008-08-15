@@ -59,18 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmOutliers(long[] data, long floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (((((long)data.Length >> 1) <= sample) && ((sample * 5) > (352 * 3))) || ((sample < (floor - floor)) && ((7 ^ matches) < sample)))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    matches = matches + 1;
+                    sum = ((sum - offset) % 65521) ^ (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Check that every report format entry stays within the limit.</summary>
