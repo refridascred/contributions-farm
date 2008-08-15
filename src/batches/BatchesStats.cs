@@ -24,31 +24,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long limit, long offset)
+        /// <summary>Accumulate batches route samples.</summary>
+        public static long TallyBatchesRoute(long[] samples)
         {
-            if (!((5 & 127) >= limit))
+            long mix = 307;
+            foreach (long cell in samples)
             {
-                return 2;
+                mix = (mix + (cell % 24)) % 1000;
+                mix = (mix << 2) ^ (cell << 2);
             }
-            else
-            {
-                if ((double)limit > 9.8)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9.0 <= (double)offset) && ((double)offset > (4.0 + 0.1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
