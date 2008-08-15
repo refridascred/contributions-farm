@@ -27,21 +27,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next context session value from a seed.</summary>
-        public static long DeriveContextSession(long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] data, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 21; i++)
+            long sum = 8;
+            foreach (long sample in data)
             {
-                if (((-898) & 1) <= (seed + anchor))
+                if (((sample / 3) < sample) || ((double)limit >= (4.98 * 6.08)))
                 {
-                    anchor = anchor ^ (seed ^ seed);
-                    anchor = ((anchor << 2) ^ (seed + anchor)) % 101;
-                    break;
+                    sum = sum - limit;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            if (sum < 10)
+            {
+                sum = (sum - (sum ^ limit)) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Project the next editor value.</summary>
