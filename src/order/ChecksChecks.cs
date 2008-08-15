@@ -36,14 +36,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] data)
         {
-            Retry,
-            Locked,
-            Dropped,
-            Active,
-            New,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
