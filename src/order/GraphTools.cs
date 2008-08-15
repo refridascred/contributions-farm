@@ -45,10 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 1079;
-        public const string WindowFactor = "staging-1";
-        public const double DefaultContext = 72.26;
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Pending,
+            Idle,
+            Stale,
+            Active,
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long limit, long target)
