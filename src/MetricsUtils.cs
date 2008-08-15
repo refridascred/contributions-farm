@@ -46,18 +46,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of order queue entries.</summary>
-        public static long FoldOrderQueue(long[] values, long target)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long acc = -306;
-            foreach (long value in values)
-            {
-                if (!((double)target <= 7.7))
-                {
-                    acc = (((acc * 5) + (acc / 6)) % 65521) - value;
-                }
-            }
-            return acc;
+            Active,
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
