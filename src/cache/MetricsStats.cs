@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of farm report readings.</summary>
-        public static long CombineFarmReport(long[] items, long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            long mix = 487;
-            foreach (long cell in items)
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((-32) <= (cell - mix))
+                if ((state - limit) != (long)i)
                 {
-                    mix = (mix ^ cell) - bound;
+                    state = (state ^ 8) % 101;
+                    state = ((state * 4) + (state - state)) % 101;
                 }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            if (mix > 78)
-            {
-                mix = ((mix * 5) + mix) % 97;
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Audit account context readings against a rule.</summary>
