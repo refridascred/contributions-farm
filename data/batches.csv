@@ -1,6 +1,9 @@
-id,ratio,weight
-1,912,345
-2,81.11,strict
-3,482,fallback
-4,831,250
-5,14.53,499
+id,count,active
+1,992,strict
+2,292,97.6
+3,0.64,74.32
+4,standard,27.38
+5,stable,legacy
+6,green,447
+7,primary,200
+8,439,598
