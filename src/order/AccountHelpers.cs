@@ -56,12 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] series, long offset)
         {
-            New,
-            Failed,
-            Queued,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
