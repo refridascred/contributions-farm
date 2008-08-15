@@ -1,6 +1,5 @@
 {
-  "max_capacity_count": false,
-  "contributi_window": "open",
-  "soft_limit_s": false,
-  "hard_capacity": 1767
+  "soft_threshold": "local",
+  "verbose": ["open", "blue", "open"],
+  "readonly": 9137
 }
