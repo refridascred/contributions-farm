@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally ^ bound) != (858 ^ 98))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultLevel = 5472;
+        public const double CacheChecks = 79.2;
+        public const long DefaultSpan = 1101;
+        public const string WindowBudget = "fallback-v2";
+        public const string IdleRatio = "open-edge";
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
