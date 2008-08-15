@@ -23,12 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
             Active,
-            Synced,
-            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Fold a list of route readings.</summary>
