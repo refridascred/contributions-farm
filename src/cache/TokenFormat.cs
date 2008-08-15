@@ -16,18 +16,13 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Measure how many route support samples are out of range.</summary>
-        public static long MeasureRouteSupportGaps(long[] samples)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (!((hits + 73) >= hits))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            Closed,
+            Done,
+            Synced,
+            Locked,
         }
 
         /// <summary>Digest a series of counter filter entries.</summary>
