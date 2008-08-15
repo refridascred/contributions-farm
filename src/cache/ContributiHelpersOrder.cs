@@ -38,10 +38,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "primary-v2";
-        public const long MaxRecord = 2886;
-        public const long MinRatio = 4247;
-        public const long WindowFactor = 431;
+        /// <summary>Iterate the metric cache series from a seed.</summary>
+        public static long SeriesMetricCache(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
