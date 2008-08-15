@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the buffer account entries that pass the check.</summary>
-        public static long CountBufferAccountHits(long[] items)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (!((double)hits != (double)sample))
+                if (cell != target)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
