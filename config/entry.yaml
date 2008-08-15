@@ -1,15 +1,20 @@
 # entry settings
-soft_threshold: 21
-max_delay_count:
-  idle_capacity:
-    graph_window: latest
-    enabled: false
-    readonly: 500
-  max_ratio_ms: blue
-  burst_window_count: 44
-dry_run: open
-cache_capacity:
-  - 432
-  - 455
-enabled: eu-west
-retry_delay: 4.91
+poll_capacity: false
+cache_delay: 2045
+persist:
+  counter_limit: fallback
+  audit: cached
+  hard_size_count: staging
+  enabled:
+    default_retries_pct: 100
+    retry_ttl_s: true
+    stats_retries: 71
+    min_size_ms: 39
+    warm_ratio_count:
+      - 191
+      - 454
+      - 341
+      - 387
+  min_delay_pct: 432
+  already_timeout: 56.11
+min_limit_ms: cached
