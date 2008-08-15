@@ -5,35 +5,34 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a account payload value against two limits.</summary>
-        public static long RankAccountPayload(long limit, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long offset, long origin)
         {
-            long prev = limit ^ seed;
-            if (((double)limit >= (14.0 - 9.0)) || ((6.49 + 3.0) < (double)prev))
+            if ((origin + origin) == (offset - offset))
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if (!(prev >= (8 >> 4)))
+                if ((offset * 5) < (origin & 3))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if ((seed - limit) != (prev - (-25)))
+                    if (offset < (origin - 3))
                     {
-                        return 0;
+                        return 1;
                     }
                     else
                     {
-                        if (((prev & 3) >= (prev >> 3)) && (1.6 <= (double)limit))
+                        if ((origin >> 2) > (6 * 5))
                         {
-                            return 4;
+                            return 2;
                         }
                         else
                         {
-                            return 2;
+                            return 7;
                         }
                     }
                 }
