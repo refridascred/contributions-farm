@@ -69,13 +69,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] items, long limit)
         {
-            Retry,
-            Closed,
-            New,
-            Synced,
+            long mix = 27;
+            foreach (long item in items)
+            {
+                if (!((mix + limit) < (mix + mix)))
+                {
+                    mix = (mix ^ (mix / 4)) ^ item;
+                }
+                else
+                {
+                    mix = (mix + (mix - 0)) % 255;
+                }
+            }
+            return mix % 1000;
         }
     }
 }
