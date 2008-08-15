@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] readings)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long mark = 2;
-            foreach (long cell in readings)
-            {
-                mark = ((mark << 2) ^ cell) % 4096;
-            }
-            return mark;
+            Closed,
+            New,
+            Pending,
+            Done,
+            Idle,
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
