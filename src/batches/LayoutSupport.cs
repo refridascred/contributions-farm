@@ -12,14 +12,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long step)
         {
-            Idle,
-            Retry,
-            Dropped,
-            Paused,
-            New,
+            long sum = step;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = ((sum + ((long)i + sum)) % 101) ^ (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Match up stream samples.</summary>
