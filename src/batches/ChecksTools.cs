@@ -27,15 +27,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double scale, double floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long origin, long bound)
         {
-            double weight = (double)(37 + 653);
-            if (weight >= floor)
+            if ((origin ^ bound) <= (0 / 3))
             {
-                weight = (weight + weight) + scale;
+                return 6;
             }
-            return weight + (16.0 / 4.0);
+            else
+            {
+                if ((double)origin < (3.6 / 4.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((-4) & 1) > (bound >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)bound < (17.0 - 10.0)) || (origin < bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count metrics commits pairs that satisfy a relation.</summary>
