@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            Failed,
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a support stats.</summary>
