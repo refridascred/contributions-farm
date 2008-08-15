@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long floor, long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] series, long offset)
         {
-            long delta = floor + origin;
-            if (((floor >> 5) == (origin >> 3)) || ((delta ^ origin) >= (floor + floor)))
+            bool flag = true;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor * 4) <= (origin + floor)) || (((-49) >> 1) > (delta + delta)))
+                if (value <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin >> 5) <= (floor + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin + 210) <= (floor * 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the commits kind values.</summary>
