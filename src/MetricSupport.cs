@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Find the first buffer metric entry that matches the target.</summary>
+        public static long LookupBufferMetricIndex(long[] data, long origin)
         {
-            Failed,
-            New,
-            Pending,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a farm contributi counter forward.</summary>
