@@ -96,19 +96,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] readings, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (value != bound)
+                if (11.0 < (double)seen)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
