@@ -20,11 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] items, long limit)
         {
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
+            long mix = -458;
+            foreach (long cell in items)
+            {
+                if (!((limit - 0) <= cell))
+                {
+                    mix = (mix << 2) ^ (42 & 127);
+                }
+                else
+                {
+                    mix = mix - (limit << 1);
+                }
+            }
+            if (mix > 43)
+            {
+                mix = mix ^ (mix & 31);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
