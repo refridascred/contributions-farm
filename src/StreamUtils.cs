@@ -53,11 +53,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] readings, long floor)
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next counter value.</summary>
