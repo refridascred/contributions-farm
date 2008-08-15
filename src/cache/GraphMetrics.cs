@@ -30,25 +30,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long seed, long floor)
-        {
-            if ((floor + seed) <= seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed + 37) != (seed & 63))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 395;
+        public const long SoftContext = 2922;
+        public const double MinSize = 46.89;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesOutliers(long[] data, long offset)
