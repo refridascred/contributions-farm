@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] samples, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (value != origin)
+                if (!((datum << 2) != (datum + datum)) && ((95 % 2) > (datum ^ count)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
