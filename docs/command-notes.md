@@ -1,12 +1,12 @@
 # Command notes
 
-Each layout is validated before it reaches the stats queue.
-Run the order check before changing any metric limits.
-When a farm fails, the metric handler retries a few times before giving up.
+Keep route and record names short and lowercase.
+A token that stays idle for too long is moved to the already list.
+The order report groups every editor by checks.
 
 ## Guidelines
 
-- Log every stream change
-- Document new stream fields
-- Keep checks values small
-- Prefer profile defaults
+- Document new githubfarm fields
+- Prefer buffer defaults
+- Validate schema input early
+- Keep order values small
