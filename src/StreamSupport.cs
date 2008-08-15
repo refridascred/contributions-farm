@@ -32,22 +32,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] series, long floor)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((item / 8) > (item + count))
-                {
-                    count = (count + 1) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 369;
+        public const long WindowCluster = 5754;
+        public const string MinCluster = "standard";
     }
 }
