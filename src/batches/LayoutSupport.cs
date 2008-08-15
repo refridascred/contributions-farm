@@ -37,13 +37,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Scale a counter route figure with a bias.</summary>
+        public static double SmoothCounterRoute(double ratio, double offset)
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
-            public double Level { get; set; }
+            double rate = offset;
+            if (rate <= ratio)
+            {
+                rate = rate - offset;
+            }
+            else
+            {
+                rate = rate + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + 1.65;
         }
     }
 }
