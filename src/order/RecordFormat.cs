@@ -60,12 +60,39 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchEditor = 13.94;
-        public const long BurstEditor = 7863;
-        public const long BaseEditor = 1956;
-        public const long BurstSize = 6830;
-        public const string StepEditor = "latest-edge";
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long offset, long offset2)
+        {
+            if ((offset - offset2) > (offset >> 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((0.2 * 4.12) == (double)offset) && ((offset & 3) < offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((offset * 4) < (965 % 7)) && ((double)offset <= 2.74))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((offset * 5) < offset2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long GradeRecord(long floor, long limit)
