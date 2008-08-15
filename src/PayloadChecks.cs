@@ -95,25 +95,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((score >> 5) >= (1 + (long)i))
-                {
-                    long diff = bound + 411;
-                    score = (score ^ (1 - diff)) % 4096;
-                }
-                else
-                {
-                    score = (score + bound) % 1000;
-                }
-                score = (score ^ (bound + score)) % 4096;
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Closed,
+            Active,
+            Queued,
+            Failed,
         }
     }
 }
