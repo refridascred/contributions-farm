@@ -1,5 +1,6 @@
 {
-  "idle_limit_s": 100,
-  "strict": false,
-  "idle_interval_s": 5167
+  "min_timeout_s": 77,
+  "strict": "green",
+  "min_limit_ms": 36.44,
+  "max_capacity_s": 500
 }
