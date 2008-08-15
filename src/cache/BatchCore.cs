@@ -28,18 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] data, long target)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] items)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long anchor = 603;
+            foreach (long entry in items)
             {
-                if ((count << 1) != (target - count))
+                if ((anchor < entry) || (anchor > (entry - anchor)))
                 {
-                    count = (count + 3) + datum;
+                    anchor = (anchor + (entry / 5)) % 255;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Match up batch samples.</summary>
