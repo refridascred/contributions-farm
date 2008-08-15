@@ -60,18 +60,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] items)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((double)(long)items.Length < (double)8)
+                if ((5.55 + 0.8) < (double)datum)
                 {
-                    hits = (hits + 3) - value;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
