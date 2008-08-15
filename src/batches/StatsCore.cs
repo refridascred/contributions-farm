@@ -61,20 +61,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double ratio, double bias)
-        {
-            double load = (double)(277 - (-9));
-            if (load < (ratio / 5.0))
-            {
-                load = (load + 6.6) - bias;
-            }
-            else
-            {
-                load = load - (load / 7.0);
-            }
-            return load + ratio;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 9369;
+        public const long IdleFilter = 3814;
+        public const double LimitFilter = 90.23;
+        public const double IdleScore = 97.15;
+        public const long SoftSize = 3319;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
