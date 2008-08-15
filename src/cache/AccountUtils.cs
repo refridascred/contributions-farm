@@ -35,18 +35,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Accumulate support profile samples.</summary>
-        public static long ScoreSupportProfile(long[] series)
+        /// <summary>Measure how many session profile samples are out of range.</summary>
+        public static long MeasureSessionProfileGaps(long[] samples)
         {
-            long result = 17;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (((long)series.Length / 2) != (result >> 2))
+                if ((393 << 3) > (cell + seen))
                 {
-                    result = ((result ^ (975 % 60)) % 97) - reading;
+                    seen = seen + 1;
                 }
             }
-            return result;
+            return seen;
         }
     }
 }
