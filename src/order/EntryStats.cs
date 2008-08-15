@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] data, long target)
+        /// <summary>Blend two commits editor measurements.</summary>
+        public static double AdjustCommitsEditor(double bias, double offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            double rate = offset;
+            if (rate < offset)
             {
-                if (sample >= 8)
-                {
-                    count = (count + 2) - target;
-                }
+                rate = rate - (double)454;
             }
-            return count;
+            else
+            {
+                rate = rate + (rate - bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + (offset / 2.0);
         }
 
         /// <summary>Hold a profile entry.</summary>
