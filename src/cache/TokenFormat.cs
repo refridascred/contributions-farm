@@ -19,22 +19,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] samples, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long mark = 5;
+            foreach (long value in readings)
             {
-                if (8.83 > (double)count)
+                if (value >= mark)
                 {
-                    count = ((count + 2) + entry) + bound;
+                    mark = mark + (value + mark);
+                    mark = ((mark * 3) + mark) % 65521;
                 }
-                else
+                if (mark > (8 - mark))
                 {
-                    count = count - 1;
+                    mark = ((mark << 2) ^ (376 >> 1)) % 4096;
                 }
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
