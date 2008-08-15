@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 4270;
-        public const long MaxContext = 7438;
-        public const long SoftLevel = 9240;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] levels)
+        {
+            long carry = 61;
+            foreach (long entry in levels)
+            {
+                carry = (carry + (2 + 97)) ^ entry;
+            }
+            return carry;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BaseFormat = "legacy-1";
