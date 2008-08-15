@@ -74,11 +74,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] items, long step)
         {
-            public bool Region { get; set; }
-            public bool Flag { get; set; }
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
