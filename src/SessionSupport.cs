@@ -27,15 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepInterval = 3110;
+        public const long StepCluster = 6219;
+        public const long CacheDepth = 173;
+        public const double MaxCluster = 69.82;
+        public const long BatchCluster = 4585;
     }
 }
