@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public string Level { get; set; } = "";
-            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
