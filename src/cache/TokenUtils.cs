@@ -33,18 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] values, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] series)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((1.0 / 2.0) <= (double)floor)
+                if (((108 + item) <= (tally * 3)) && ((item - 723) <= (item + tally)))
                 {
-                    matches = (matches + 1) + item;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
