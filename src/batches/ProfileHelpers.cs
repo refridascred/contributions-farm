@@ -39,15 +39,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Locked,
-            Active,
-            Idle,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 2108;
+        public const long IdleContext = 3596;
+        public const double MaxWidth = 0.47;
+        public const long BaseSpan = 5314;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
