@@ -2,8 +2,11 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    created_at TIMESTAMP,
-    region TEXT
+    region TEXT,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
+CREATE INDEX IF NOT EXISTS idx_commits_records_score ON commits_records (score);
+
+INSERT INTO commits_records (score, region, token) VALUES (11.17, 'cached', 'fallback');
+INSERT INTO commits_records (score, region, token) VALUES (54.51, 'eu-west', 'eu-west');
