@@ -20,19 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (limit < ((long)i + limit))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    continue;
+                    if ((data[i] ^ data[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Locate a cluster queue reading by value.</summary>
