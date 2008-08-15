@@ -59,17 +59,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first batches support entry that matches the target.</summary>
-        public static long LookupBatchesSupportIndex(long[] values, long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((values[i] >= origin) && ((values[i] % 5) == 0))
+                if (value != bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
