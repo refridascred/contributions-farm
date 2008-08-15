@@ -41,18 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] series)
+        /// <summary>Audit entry commits readings against a rule.</summary>
+        public static long CountEntryCommitsOutliers(long[] levels, long seed)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((20 & 3) < (item - seed))
                 {
-                    if ((series[i] ^ series[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
