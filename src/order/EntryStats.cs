@@ -30,18 +30,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] values, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] readings)
         {
-            long state = 60;
-            foreach (long item in values)
+            long mark = 348;
+            foreach (long value in readings)
             {
-                if ((state >= (state + 3)) || ((item >> 3) >= (item << 2)))
+                mark = ((mark << 3) ^ (mark * 2)) % 101;
+                if ((mark + mark) < (value - 691))
                 {
-                    state = (((state * 4) + ((-686) - item)) % 1000) - limit;
+                    mark = (mark << 2) ^ (value - value);
                 }
             }
-            return state % 97;
+            return mark;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
