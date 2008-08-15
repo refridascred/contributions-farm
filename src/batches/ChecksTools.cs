@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] data, long step)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double scale, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)(37 + 653);
+            if (weight >= floor)
             {
-                if ((data[i] == step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + weight) + scale;
             }
-            return -1;
+            return weight + (16.0 / 4.0);
         }
 
         /// <summary>Count metrics commits pairs that satisfy a relation.</summary>
