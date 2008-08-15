@@ -1,6 +1,5 @@
 {
-  "sync_timeout_s": true,
-  "githubfarm_ratio": ["cached", "open"],
-  "batch_window": [347, 15],
-  "enabled": 13.49
+  "route_limit": 3316,
+  "record_delay": [463, 71],
+  "burst_size": 44
 }
