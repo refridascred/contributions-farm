@@ -29,13 +29,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Count queue editor pairs that satisfy a relation.</summary>
+        public static long OverlapQueueEditorCount(long[] series)
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
