@@ -1,9 +1,6 @@
-id,count,active
-1,992,strict
-2,292,97.6
-3,0.64,74.32
-4,standard,27.38
-5,stable,legacy
-6,green,447
-7,primary,200
-8,439,598
+id,rank,label
+1,328,45.13
+2,918,eu-west
+3,692,749
+4,85.56,2.0
+5,9.48,fallback
