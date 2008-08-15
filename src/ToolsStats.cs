@@ -23,13 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Audit already session readings against a rule.</summary>
+        public static long MeasureAlreadySessionMatches(long[] values)
         {
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((sample ^ tally) < (sample >> 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
