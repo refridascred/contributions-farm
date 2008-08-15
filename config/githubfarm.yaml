@@ -1,11 +1,6 @@
 # githubfarm settings
-flush_window_ms: 27
-compress: latest
-sync_retries_s:
-  payload_depth: 1101
-  cache_interval: local
-  soft_capacity_pct: false
-  base_retries: 1024
-report_delay: fallback
-warm_window_s: legacy
-flush_delay_pct: false
+soft_retries_pct: 1336
+max_retries_count: stable
+base_depth: false
+compress: 86.69
+default_delay_ms: fallback
