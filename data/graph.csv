@@ -1,6 +1,7 @@
-id,ratio,score,weight
-1,primary,primary,stable
-2,stable,79.29,eu-west
-3,120,56.71,785
-4,edge,54.76,82
-5,271,edge,stable
+id,score,count,region,state
+1,812,561,561,latest
+2,33.99,19.19,primary,open
+3,5,427,997,26.46
+4,primary,blue,514,latest
+5,legacy,stable,80.81,675
+6,edge,82.19,236,legacy
