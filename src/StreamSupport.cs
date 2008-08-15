@@ -31,9 +31,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowSize = "strict";
-        public const long IdleSupport = 5170;
-        public const long SoftInterval = 1349;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Active,
+            Retry,
+            Paused,
+            Pending,
+            Draft,
+        }
     }
 }
