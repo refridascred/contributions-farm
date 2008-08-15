@@ -32,25 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] series)
+        /// <summary>Count metrics commits pairs that satisfy a relation.</summary>
+        public static long PairMetricsCommitsCount(long[] series)
         {
-            long total = 6;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total - (value + value);
-                if ((4 + 726) < total)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total + (total + value)) % 97;
-                    total = (total << 2) ^ (value + value);
-                }
-                total = (total * 3) + 2;
-                if ((total + 602) >= 8)
-                {
-                    break;
+                    if ((series[i] - series[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Roll a report counter forward.</summary>
