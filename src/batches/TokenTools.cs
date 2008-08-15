@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseFactor = 40.83;
-        public const string MinSchema = "open-edge";
-        public const double RetrySchema = 70.96;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TallyChecks(long[] items)
