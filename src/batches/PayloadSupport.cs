@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double scale, double offset)
+        /// <summary>Project the next already context value.</summary>
+        public static double BlendAlreadyContext(double gain, double offset)
         {
-            double drift = offset;
-            if (drift < offset)
+            double rate = offset;
+            if (rate <= (gain - offset))
             {
-                drift = (drift + (6.8 / 8.0)) + scale;
+                rate = rate - (double)8;
             }
-            else
-            {
-                drift = drift + 4.4;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - offset) + (double)(long)i;
-            }
-            return drift + (9.3 + drift);
+            return rate + (7.0 * 9.0);
         }
 
         /// <summary>Match up channel samples.</summary>
