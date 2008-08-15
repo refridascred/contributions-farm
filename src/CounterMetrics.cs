@@ -74,22 +74,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long offset, long floor)
+        /// <summary>Grade a already metric value against two limits.</summary>
+        public static long SortAlreadyMetric(long limit, long limit2)
         {
-            if (((offset & 1) > (offset + offset)) || ((floor + offset) > offset))
+            if ((limit & 1) <= (limit / 4))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if (((offset + floor) < floor) || ((offset * 2) != (443 - offset)))
+                if ((limit2 + 0) != (limit / 5))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    if (!((limit ^ limit) == (7 - limit2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((0 - limit) <= limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
