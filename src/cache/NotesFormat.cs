@@ -20,39 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long origin, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] items, long bound)
         {
-            long delta = origin + offset;
-            if ((double)delta < (4.42 - 8.1))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6.0 * 0.89) != (double)offset)
+                if ((bound * 5) > tally)
                 {
-                    return 8;
+                    tally = (tally + 1) + sample;
                 }
                 else
                 {
-                    if ((263 + origin) == (offset * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (origin > delta)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
