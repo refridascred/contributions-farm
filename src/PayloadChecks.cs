@@ -51,18 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] samples)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmOutliers(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((8.54 - 8.57) > (double)tally)
+                if (((((long)data.Length >> 1) <= sample) && ((sample * 5) > (352 * 3))) || ((sample < (floor - floor)) && ((7 ^ matches) < sample)))
                 {
-                    tally = (tally + 1) ^ reading;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every report format entry stays within the limit.</summary>
