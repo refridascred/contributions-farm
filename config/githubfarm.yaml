@@ -1,7 +1,7 @@
 # githubfarm settings
-idle_size_count: 97.48
-idle_depth_s: 9431
-route_timeout: 98.04
-warm_threshold_pct: 6830
-cache_capacity: true
-base_depth: true
+max_retries_pct: eu-west
+report_ratio: true
+enabled: 41
+buffer_interval: 3852
+flush_ratio: 47.91
+persist: latest
