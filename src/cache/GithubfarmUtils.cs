@@ -29,13 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double scale, double bias)
         {
-            Draft,
-            Ready,
-            Closed,
-            Pending,
+            double drift = scale;
+            return (drift + (7.2 + scale)) + bias;
         }
 
         /// <summary>Validate cache queue readings against a bound.</summary>
