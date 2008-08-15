@@ -1,5 +1,12 @@
 {
-  "buffer_limit": 30,
-  "audit": "cached",
-  "entry_retries": 8.93
+  "retry_ttl_count": true,
+  "retry_size": 81.67,
+  "batch_capacity": {
+    "dry_run": 52,
+    "token_ratio": 100,
+    "base_threshold": ["blue", "eu-west"],
+    "min_delay": "local",
+    "burst_threshold_s": 500,
+    "enabled": "standard"
+  }
 }
