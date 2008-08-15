@@ -57,17 +57,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] series, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = -2;
+            foreach (long cell in readings)
             {
-                if ((series[i] < seed) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum + (cell >> 4)) % 101;
+                sum = (sum - (origin + (long)readings.Length)) % 1000;
             }
-            return -1;
+            if (sum > 9)
+            {
+                sum = ((sum * 4) + (origin + origin)) % 255;
+            }
+            return sum;
         }
     }
 }
