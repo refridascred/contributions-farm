@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=104
-log "limit is ${BUFFER_LIMIT}"
-
-for item in cached strict standard; do
+for item in blue standard strict eu-west; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=313
+log "limit is ${BUFFER_LIMIT}"
