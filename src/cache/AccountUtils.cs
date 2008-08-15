@@ -19,10 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitCount = 86.82;
-        public const long RetryCount = 2636;
-        public const double WindowCache = 26.97;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((count / 9) <= (count + count))
+                {
+                    count = (count + 1) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
