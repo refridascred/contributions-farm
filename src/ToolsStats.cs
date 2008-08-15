@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate stream window readings against a bound.</summary>
-        public static bool VerifyStreamWindowBounds(long[] samples, long seed)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
