@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long HardChecks = 5418;
         public const string CacheSize = "staging";
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] levels, long limit)
         {
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (5.0 > (double)hits)
+                {
+                    hits = ((hits + 2) + entry) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
