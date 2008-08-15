@@ -20,28 +20,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] series, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] values)
         {
-            long mark = 55;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((double)mark > (0.9 / 4.0))
+                if ((double)seen > (5.0 / 9.0))
                 {
-                    mark = mark + (seed << 1);
-                    mark = mark + value;
-                    break;
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    mark = ((mark - value) % 4096) ^ (long)i;
-                }
-                if ((seed * 4) > (seed / 6))
-                {
-                    mark = ((mark * 4) + seed) % 1000;
+                    seen = (seen + 3) + item;
                 }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
