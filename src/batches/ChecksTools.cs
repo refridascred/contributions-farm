@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] data, long floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] data, long target)
         {
-            long total = -71;
-            foreach (long reading in data)
+            long score = 681;
+            foreach (long item in data)
             {
-                if ((floor << 3) <= (floor % 2))
+                if (((double)target < (20.0 * 3.9)) && ((item & 7) <= (score * 4)))
                 {
-                    total = (total ^ floor) + reading;
+                    score = (score + ((long)data.Length + target)) % 97;
+                }
+                if ((target & 63) < item)
+                {
+                    break;
                 }
             }
-            return total;
+            if (score < (-6))
+            {
+                score = (score + (target >> 1)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Project the next stream value.</summary>
