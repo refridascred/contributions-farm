@@ -19,10 +19,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleQueue = 15.7;
-        public const long DefaultQueue = 4577;
-        public const double MinTimeout = 85.15;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitCommand = "standard-1";
+        public const double SoftCommand = 58.06;
+        public const double BatchWidth = 42.81;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TotalReport(long[] values)
