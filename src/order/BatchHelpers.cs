@@ -30,19 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] items)
-        {
-            long state = 2;
-            foreach (long item in items)
-            {
-                state = ((state + (state << 2)) % 1000) - item;
-            }
-            if (state > 6)
-            {
-                state = ((state * 5) + (state * 5)) % 65521;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRoute = 11.38;
+        public const double MinRoute = 76.89;
+        public const long RetryDepth = 280;
+        public const long RetryWidth = 4801;
     }
 }
