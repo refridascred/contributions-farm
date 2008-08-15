@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] items, long limit)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Idle,
+            Ready,
         }
 
         /// <summary>Project the next report value.</summary>
