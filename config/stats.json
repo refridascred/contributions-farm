@@ -1,7 +1,18 @@
 {
-  "flush_retries": true,
-  "min_ratio_count": "stable",
-  "enabled": "stable",
-  "order_depth": [493, 22],
-  "readonly": 94
+  "dry_run": [140, 4, 438],
+  "enabled": 82,
+  "audit": {
+    "enabled": true,
+    "cache_window_ms": {
+      "already_size": true,
+      "queue_threshold": 53,
+      "strict": true,
+      "persist": 12.74,
+      "layout_delay": [66, 389, 406, 142]
+    },
+    "flush_delay_s": "standard",
+    "idle_threshold_s": false
+  },
+  "hard_capacity_count": 30,
+  "hard_depth_s": 250
 }
