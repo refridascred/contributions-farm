@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] levels, long limit)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell ^ limit) > limit)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Rank channel input into a small class.</summary>
