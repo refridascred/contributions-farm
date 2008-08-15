@@ -24,16 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a report contributi reading.</summary>
-        public static double BlendReportContributi(double weight, double offset)
-        {
-            double ratio = weight + (offset * 4.7);
-            if (ratio >= (offset / 6.0))
-            {
-                ratio = ratio + (weight / 2.0);
-            }
-            return ratio - (ratio + ratio);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCount = 1557;
+        public const long BaseCount = 4418;
+        public const double StepSize = 7.33;
+        public const double BurstScore = 55.88;
+        public const double RetryCount = 53.65;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool GuardGraphLimits(long[] levels, long bound)
