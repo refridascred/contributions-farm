@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double scale, double span)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] readings)
         {
-            double gain = span;
-            if (gain < 7.4)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                gain = (gain + 15.0) + scale;
+                if ((9.0 * 3.0) != (double)tally)
+                {
+                    tally = (tally + 1) + entry;
+                }
             }
-            return gain - (double)6;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
