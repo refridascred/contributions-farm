@@ -20,38 +20,21 @@ namespace Common.Utilities
             return drift + (bias + drift);
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long offset, long limit)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] items)
         {
-            if ((limit < ((-69) >> 4)) || ((double)limit != (8.4 - 7.3)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((98 - offset) > 465) || (limit >= (0 >> 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((19.0 * 6.8) < (double)limit) && ((offset + offset) != (limit / 5)))
+                    if ((items[i] + items[j]) < 0)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset - offset) > (-5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
