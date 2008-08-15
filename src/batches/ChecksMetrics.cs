@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] readings)
+        /// <summary>Count format channel pairs that satisfy a relation.</summary>
+        public static long CompareFormatChannelCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 17)
+                    if ((items[i] - items[j]) < 7)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
