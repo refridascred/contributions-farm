@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] items, long bound)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double bias = 3.7 / 7.0;
+            if (bias < bias)
             {
-                if (!!(bound >= (tally + tally)))
-                {
-                    tally = (tally + 1) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias = (bias - bias) - offset;
             }
-            return tally;
+            return bias + gain;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
