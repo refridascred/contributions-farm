@@ -44,17 +44,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] samples, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (samples[i] > floor)
+                if ((4.56 + 5.0) <= (double)datum)
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
