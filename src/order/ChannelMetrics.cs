@@ -28,19 +28,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the counter session series from a seed.</summary>
-        public static long RollCounterSession(long step)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)(long)i <= (double)total)
-                {
-                    total = total + (total * 3);
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Draft,
+            Synced,
+            Paused,
+            Pending,
+            Active,
         }
     }
 }
