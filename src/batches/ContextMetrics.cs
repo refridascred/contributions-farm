@@ -31,40 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route batches pair into a bucket.</summary>
-        public static long GradeRouteBatches(long seed, long floor)
-        {
-            long edge = seed ^ floor;
-            if ((double)seed > (8.9 * 0.6))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(edge >= (edge % 24)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((47 <= (edge >> 4)) && (edge < (seed >> 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((edge + floor) <= (edge & 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 6440;
+        public const long BatchDepth = 8495;
+        public const long StepRatio = 8689;
+        public const string HardRoute = "local-1";
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
