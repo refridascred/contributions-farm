@@ -20,26 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] readings)
+        /// <summary>Measure how many graph report samples are out of range.</summary>
+        public static long AuditGraphReportGaps(long[] samples)
         {
-            long anchor = 699;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((cell + cell) <= 19)
+                if (((datum / 7) != (8 - matches)) || ((matches > (matches & 7)) && ((datum % 60) >= (matches / 6))))
                 {
-                    anchor = anchor - (cell + cell);
-                }
-                else
-                {
-                    anchor = (anchor * 4) + cell;
+                    matches = matches + 2;
                 }
             }
-            if (anchor > 3)
-            {
-                anchor = ((anchor * 2) + (anchor + anchor)) % 255;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
