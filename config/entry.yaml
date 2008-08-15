@@ -1,31 +1,6 @@
 # entry settings
-cache_limit: 30
-poll_ratio:
-  notes_ratio: blue
-  metric_limit:
-    - 49
-    - 116
-  commits_timeout: 95
-  flush_timeout_ms:
-    - standard
-    - edge
-  base_delay: 65
-  stats_limit:
-    - legacy
-    - blue
-hard_interval_pct:
-  soft_threshold: legacy
-  format_capacity:
-    - edge
-    - fallback
-    - standard
-    - open
-  sync_timeout:
-    stats_interval: 1930
-    format_limit: false
-    enabled: 72
-    max_ratio_pct: 46.26
-    max_retries_count: blue
-  idle_delay_pct: false
-verbose: 5492
-account_ratio: false
+max_retries_s: 92.43
+stats_ratio: blue
+min_ttl_ms:
+  - 446
+  - 315
