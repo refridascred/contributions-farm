@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double bias, double floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] samples, long seed)
         {
-            double drift = 5.1 - 2.51;
-            if (drift < 8.78)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                drift = (drift + drift) - floor;
+                if ((((cell + (long)samples.Length) == (count % 97)) || ((3.7 * 0.12) < (double)count)) || (cell < (seed * 2)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                drift = drift - (double)16;
-            }
-            return drift + (bias + drift);
+            return count;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
