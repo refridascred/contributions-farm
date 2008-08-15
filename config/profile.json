@@ -1,6 +1,13 @@
 {
-  "entry_window": true,
-  "base_interval": [47, 365],
-  "commits_ratio": "eu-west",
-  "poll_capacity": 20.42
+  "sync_delay_pct": {
+    "buffer_threshold": "primary",
+    "batch_timeout_pct": {
+      "token_delay": [489, 276, 104],
+      "buffer_ratio": 250,
+      "hard_window_pct": 73.79
+    },
+    "batch_timeout": "primary"
+  },
+  "base_threshold_ms": "open",
+  "audit": false
 }
