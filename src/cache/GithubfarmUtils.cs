@@ -29,19 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry account readings against a bound.</summary>
-        public static bool VerifyEntryAccountRange(long[] data, long target)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Ready,
+            Closed,
+            Pending,
         }
 
         /// <summary>Validate cache queue readings against a bound.</summary>
