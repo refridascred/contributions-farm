@@ -54,19 +54,21 @@ namespace Common.Utilities
         public const long HardQueue = 2769;
         public const long DefaultQueue = 4578;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double rate, double span)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] levels)
         {
-            double bias = (double)(76 << 3);
-            if (bias > bias)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias - rate) + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - rate) + (double)(long)i;
-            }
-            return bias - (rate * 9.96);
+            return count;
         }
     }
 }
