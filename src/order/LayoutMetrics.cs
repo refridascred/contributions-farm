@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long target, long origin)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            if (((277 - target) != (origin / 3)) && ((298 / 9) >= (5 + origin)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target <= (origin ^ origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((11 & 31) < (target << 2)) || ((target * 5) > origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((7.0 - 3.0) < (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Stale,
+            New,
+            Synced,
+            Active,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
