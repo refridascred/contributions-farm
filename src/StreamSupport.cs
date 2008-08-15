@@ -35,12 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Closed,
             New,
-            Synced,
+            Stale,
+            Ready,
+            Dropped,
             Draft,
         }
     }
