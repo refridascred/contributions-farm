@@ -89,23 +89,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double ratio, double span)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double bias = 5.1;
-            if (bias <= ratio)
-            {
-                bias = bias + (double)93;
-            }
-            else
-            {
-                bias = bias + (double)304;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (8.0 - span)) + (double)(long)i;
-            }
-            return bias - (4.5 + span);
+            Paused,
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
