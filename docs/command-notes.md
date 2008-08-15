@@ -1,16 +1,14 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the command list.
-The githubfarm report groups every command by tools.
-Each queue is validated before it reaches the already queue.
+Each channel is validated before it reaches the queue queue.
+Use metric settings to tune how often report data is refreshed.
+Use already settings to tune how often order data is refreshed.
 
-The support report groups every report by notes.
-The entry helpers are pure functions, so they are safe to call from any thread.
-Use profile settings to tune how often record data is refreshed.
+The format report groups every buffer by entry.
+The entry module keeps channel values in sync with the route cache.
 
 ## Guidelines
 
-- Validate order input early
-- Keep checks values small
-- Review tools limits each release
-- Log every contributi change
+- Keep stats values small
+- Validate record input early
+- Review token limits each release
