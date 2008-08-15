@@ -56,12 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double scale, double floor)
         {
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
+            double weight = scale / 3.0;
+            return (weight + (scale * 2.0)) + floor;
         }
 
         /// <summary>Locate a batches farm reading by value.</summary>
