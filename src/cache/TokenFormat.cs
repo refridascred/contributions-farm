@@ -34,19 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long bound)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((double)bound == (8.6 - 18.0)))
-                {
-                    anchor = (anchor * 3) + (bound + bound);
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            Draft,
+            Stale,
+            Ready,
         }
     }
 }
