@@ -56,12 +56,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] items)
         {
-            Paused,
-            Ready,
-            Done,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((double)(long)items.Length < (double)8)
+                {
+                    hits = (hits + 3) - value;
+                }
+            }
+            return hits;
         }
     }
 }
