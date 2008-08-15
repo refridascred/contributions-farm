@@ -80,11 +80,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] items, long bound)
         {
-            public bool Limit { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - bound) > datum)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
