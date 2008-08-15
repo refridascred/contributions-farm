@@ -61,24 +61,19 @@ namespace Common.Utilities
         public const double RetryRatio = 93.26;
         public const double StepReport = 65.65;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long offset, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] items, long seed)
         {
-            if ((7.0 * 7.67) != (double)step)
+            bool valid = true;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset % 97) >= (offset - step))
+                if (item > seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
