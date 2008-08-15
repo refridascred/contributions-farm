@@ -31,12 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 7393;
+        public const double BaseInterval = 49.22;
+        public const string DefaultTimeout = "latest";
+        public const long SoftFormat = 9234;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long WeighProfile(long[] readings)
