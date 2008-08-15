@@ -14,13 +14,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] values, long step)
         {
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((59 / 8) >= (item ^ 52))
+                {
+                    matches = (matches + 3) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up stream samples.</summary>
