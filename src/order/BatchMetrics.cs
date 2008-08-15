@@ -23,21 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
