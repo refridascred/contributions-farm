@@ -32,21 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count account already pairs that satisfy a relation.</summary>
-        public static long OverlapAccountAlreadyCount(long[] values)
+        /// <summary>Project the next order githubfarm value.</summary>
+        public static double SmoothOrderGithubfarm(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double bias = (1.9 - offset) - (ratio - offset);
+            return bias - offset;
         }
 
         /// <summary>Locate a contributi window reading by value.</summary>
