@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const double IdleMetrics = 55.34;
         public const long SoftRatio = 7563;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "alpha";
-        public const long BurstMetric = 6151;
-        public const string BatchSpan = "cached";
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            New,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionGaps(long[] items, long origin)
