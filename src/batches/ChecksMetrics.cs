@@ -58,18 +58,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] levels)
+        /// <summary>Combine filter notes values into a single score.</summary>
+        public static long TotalFilterNotes(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long score = 7;
+            foreach (long item in readings)
             {
-                if ((((cell + cell) >= (hits << 3)) || (hits > (hits >> 3))) || !(8.9 < (double)cell))
-                {
-                    hits = hits + 2;
-                }
+                score = (((score * 5) + item) % 101) + floor;
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
