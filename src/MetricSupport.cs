@@ -23,11 +23,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftLevel = "latest-1";
-        public const double HardSize = 11.81;
-        public const string WindowContext = "open-v2";
-        public const double SoftTimeout = 33.24;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (37 <= ((long)items.Length >> 4))
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadBounds(long[] values, long origin)
