@@ -29,13 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] values, long limit)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((7.7 * 0.56) >= (double)hits)
+                {
+                    hits = ((hits + 2) - item) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a report counter forward.</summary>
