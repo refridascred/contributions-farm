@@ -26,13 +26,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] data, long bound)
         {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
