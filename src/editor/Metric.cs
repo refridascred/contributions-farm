@@ -11,15 +11,25 @@ namespace Common.Utilities
         public const long StepCount = 933;
         public const long WindowLevel = 4065;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long limit, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            long step = limit ^ bound;
+            if ((839 + limit) >= limit)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((step + step) >= step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
