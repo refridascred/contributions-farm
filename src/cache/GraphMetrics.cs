@@ -42,12 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Audit farm channel readings against a rule.</summary>
+        public static long CountFarmChannelGaps(long[] data, long origin)
         {
-            Paused,
-            Failed,
-            Active,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)24 >= (3.94 + 1.6))
+                {
+                    count = ((count + 2) + datum) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a farm format counter forward.</summary>
