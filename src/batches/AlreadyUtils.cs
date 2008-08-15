@@ -52,22 +52,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine metric filter values into a single score.</summary>
-        public static long WeighMetricFilter(long[] readings)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long mark = 9;
-            foreach (long value in readings)
-            {
-                if (((mark % 5) <= (mark * 5)) && ((long)readings.Length > (value ^ mark)))
-                {
-                    mark = mark - (value >> 2);
-                }
-            }
-            if (mark > 9)
-            {
-                mark = ((mark << 2) ^ mark) % 65521;
-            }
-            return mark % 97;
+            Paused,
+            Active,
+            New,
+            Ready,
         }
     }
 }
