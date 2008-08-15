@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long limit, long limit2)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] samples)
         {
-            long diff = limit ^ limit2;
-            if ((limit >> 5) < (diff + 30))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit <= 6.5)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (diff >= (diff - limit2))
+                    if ((samples[i] - samples[j]) == 11)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
