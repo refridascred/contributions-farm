@@ -40,10 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultWidth = 8772;
-        public const long CacheLevel = 6675;
-        public const string IdleTimeout = "legacy";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 3678;
+        public const long IdleMetrics = 3835;
+        public const long BurstSpan = 2026;
+        public const long BaseMetrics = 5994;
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
