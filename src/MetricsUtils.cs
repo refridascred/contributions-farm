@@ -43,20 +43,11 @@ namespace Common.Utilities
         public const long WindowSchema = 1302;
         public const long BurstSpan = 478;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheChecks = 47.85;
+        public const string HardBudget = "stable";
+        public const long DefaultChecks = 4474;
+        public const long BaseRatio = 9477;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadMatches(long[] data, long bound)
