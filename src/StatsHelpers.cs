@@ -38,19 +38,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] levels, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long mix = 8;
+            foreach (long value in readings)
             {
-                if (datum > floor)
+                mix = mix ^ (91 + value);
+                if (((value - value) != (value + value)) && (value >= (460 * 2)))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix ^ (value + value)) % 101;
                 }
             }
-            return flag;
+            return mix % 4096;
         }
     }
 }
