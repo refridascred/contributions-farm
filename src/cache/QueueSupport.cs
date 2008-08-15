@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Stale,
-            Pending,
-            New,
-            Failed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheRecord = "latest-1";
+        public const long IdleRecord = 4706;
+        public const double HardRecord = 61.91;
+        public const string DefaultRatio = "latest-1";
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileMatches(long[] series, long step)
