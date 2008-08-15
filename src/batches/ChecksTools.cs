@@ -38,18 +38,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] series)
+        /// <summary>Digest a series of farm cluster entries.</summary>
+        public static long TallyFarmCluster(long[] series, long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long mark = 7;
+            foreach (long entry in series)
             {
-                if ((count % 10) >= (reading / 9))
+                mark = ((mark << 2) ^ (step + entry)) % 255;
+                if ((double)step <= (8.7 + 3.17))
                 {
-                    count = count + 1;
+                    mark = mark ^ (step ^ 5);
+                }
+                else
+                {
+                    mark = mark - (step % 16);
                 }
             }
-            return count;
+            return mark % 97;
         }
     }
 }
