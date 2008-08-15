@@ -1,5 +1,5 @@
 {
-  "githubfarm_retries": [210, 181],
-  "enabled": 7419,
-  "cluster_limit": 100
+  "tools_threshold": false,
+  "cluster_limit": 38.08,
+  "hard_interval_s": 954
 }
