@@ -33,23 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample > (7.0 / 6.0))
-                {
-                    tally = (tally + 3) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitFactor = 86.27;
+        public const string LimitRoute = "local";
+        public const string IdleRoute = "cached-1";
 
         /// <summary>Digest a series of already entries.</summary>
         public static long TotalAlready(long[] readings)
