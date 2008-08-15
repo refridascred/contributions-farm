@@ -1,9 +1,10 @@
 -- Create the cluster_logs table.
 CREATE TABLE IF NOT EXISTS cluster_logs (
     id INTEGER PRIMARY KEY,
+    level INTEGER,
     region TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    score REAL NOT NULL DEFAULT 0
+    rank INTEGER,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_cluster_logs_count ON cluster_logs (count);
+CREATE INDEX IF NOT EXISTS idx_cluster_logs_region ON cluster_logs (region);
