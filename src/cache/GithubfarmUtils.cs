@@ -44,11 +44,19 @@ namespace Common.Utilities
         public const long StepMetrics = 8033;
         public const long StepSpan = 9302;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 5629;
-        public const long MinWidth = 5475;
-        public const long BaseNotes = 5897;
-        public const double BurstTimeout = 9.74;
-        public const string MinNotes = "alpha-edge";
+        /// <summary>Validate cache queue readings against a bound.</summary>
+        public static bool ValidateCacheQueueRange(long[] levels, long offset)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
