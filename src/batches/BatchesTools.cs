@@ -25,19 +25,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] samples)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] readings)
         {
-            long acc = 805;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc << 2) ^ ((long)samples.Length + value)) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (acc < 435)
-            {
-                acc = (acc ^ (0 * 4)) % 4096;
-            }
-            return acc;
+            return hits;
         }
     }
 }
