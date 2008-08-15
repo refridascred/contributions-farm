@@ -86,17 +86,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next support format value from a seed.</summary>
-        public static long RollSupportFormat(long limit)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long floor, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            long delta = floor + offset;
+            if ((double)floor >= 4.5)
             {
-                anchor = anchor - (limit + anchor);
-                anchor = anchor - anchor;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if ((double)offset == (6.47 * 19.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((delta + 922) == (offset * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
