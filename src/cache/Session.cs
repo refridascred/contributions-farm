@@ -15,18 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] series, long offset)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long floor)
         {
-            long anchor = 50;
-            foreach (long sample in series)
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((sample >> 5) >= (offset - 677))
-                {
-                    anchor = anchor + (anchor + offset);
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
