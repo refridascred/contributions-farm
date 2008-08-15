@@ -1,7 +1,22 @@
 # entry settings
-default_retries_s: false
-buffer_depth: 100
-account_interval: fallback
-readonly: 26
-schema_threshold: 250
-tools_window: 69.96
+base_ttl_count:
+  hard_depth:
+    - edge
+    - staging
+    - latest
+  compress: legacy
+  account_capacity: 11.57
+  audit:
+    compress: true
+    idle_depth: 14.19
+    dry_run: legacy
+    soft_window_s: staging
+    soft_limit: eu-west
+    poll_size_pct: 500
+entry_interval:
+  batch_interval: false
+  account_timeout: 88.46
+  enabled: local
+  idle_timeout_count: 63
+  readonly: green
+buffer_timeout: true
