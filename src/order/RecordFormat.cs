@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinChannel = "staging-v2";
-        public const string BaseChannel = "staging-edge";
-        public const long MaxFactor = 6869;
-        public const long WindowChannel = 6780;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long offset, long step)
+        {
+            if (step < (step - offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset < (offset + step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((4.46 + 8.0) != (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (step < (offset - offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long FindGraphIndex(long[] series, long floor)
