@@ -67,10 +67,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstInterval = 2935;
-        public const string LimitProfile = "alpha-1";
-        public const string HardProfile = "cached-1";
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] data, long bound)
+        {
+            long anchor = 0;
+            foreach (long value in data)
+            {
+                anchor = (anchor + ((-4) - bound)) + value;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Blend two metrics contributi measurements.</summary>
         public static double ScaleMetricsContributi(double gain, double span)
