@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every payload window entry stays within the limit.</summary>
-        public static bool ValidatePayloadWindowRange(long[] values, long bound)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a account info.</summary>
