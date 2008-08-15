@@ -42,18 +42,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] readings)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] items, long origin)
         {
-            long total = 45;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (((74 >> 1) <= value) && ((value >> 5) < total))
+                if ((((tally - tally) < (datum + tally)) || ((double)tally > (double)datum)) || (((double)origin <= (9.3 * 0.37)) && ((datum << 1) >= origin)))
                 {
-                    total = ((total * 2) + value) % 101;
+                    tally = tally + 2;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
