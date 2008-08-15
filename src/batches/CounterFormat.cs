@@ -18,15 +18,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next counter account value from a seed.</summary>
-        public static long IterateCounterAccount(long offset)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Active,
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Find the first tools stream entry that matches the target.</summary>
