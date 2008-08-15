@@ -25,22 +25,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultTimeout = 7863;
+        public const long IdleRecord = 1173;
+        public const long MinScore = 4097;
+        public const string BurstFactor = "legacy-v2";
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long OverlapChecksCount(long[] samples)
